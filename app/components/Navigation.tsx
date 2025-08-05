@@ -25,7 +25,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link href="https://trueflow.ai/" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image 
               src="/true-flow-logo.webp" 
               alt="TrueFlow" 
@@ -43,22 +43,22 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             {pathname !== '/' && (
-              <Link href="https://trueflow.ai/" className="text-white/70 hover:text-white transition-colors text-sm">
+              <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm">
                 Back to Home
               </Link>
             )}
             {pathname === '/' && (
               <>
-                <Link href="https://trueflow.ai/content-engine" className="text-white/70 hover:text-white transition-colors">Content Engine</Link>
+                <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors">Content Engine</Link>
                 <a href="#features" className="text-white/70 hover:text-white transition-colors">Features</a>
                 <a href="#how-it-works" className="text-white/70 hover:text-white transition-colors">How it Works</a>
                 <a href="#testimonials" className="text-white/70 hover:text-white transition-colors">Success Stories</a>
                 <a href="#blog" className="text-white/70 hover:text-white transition-colors">Blog</a>
-                <Link href="https://trueflow.ai/faq" className="text-white/70 hover:text-white transition-colors">FAQs</Link>
+                <Link href="/faq" className="text-white/70 hover:text-white transition-colors">FAQs</Link>
               </>
             )}
             <Link 
-              href="https://trueflow.ai/get-started" 
+              href="/get-started" 
               className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold"
             >
               Get Started
@@ -80,28 +80,28 @@ export default function Navigation() {
         <div className="md:hidden bg-black/90 backdrop-blur-xl border-t border-white/10">
           <div className="px-4 py-6 space-y-4">
             <Link 
-              href="https://trueflow.ai/" 
+              href="/" 
               onClick={handleLinkClick}
               className={`block hover:text-white transition-colors text-lg ${pathname === '/' ? 'text-white font-semibold' : 'text-white/70'}`}
             >
               Home
             </Link>
             <Link 
-              href="https://trueflow.ai/content-engine" 
+              href="/content-engine" 
               onClick={handleLinkClick}
               className={`block hover:text-white transition-colors text-lg ${pathname === '/content-engine' ? 'text-white font-semibold' : 'text-white/70'}`}
             >
               Content Engine
             </Link>
             <Link 
-              href="https://trueflow.ai/blog" 
+              href="/blog" 
               onClick={handleLinkClick}
               className={`block hover:text-white transition-colors text-lg ${pathname.startsWith('/blog') ? 'text-white font-semibold' : 'text-white/70'}`}
             >
               Blog
             </Link>
             <Link 
-              href="https://trueflow.ai/faq" 
+              href="/faq" 
               onClick={handleLinkClick}
               className={`block hover:text-white transition-colors text-lg ${pathname === '/faq' ? 'text-white font-semibold' : 'text-white/70'}`}
             >
@@ -133,7 +133,7 @@ export default function Navigation() {
               </>
             )}
             <Link 
-              href="https://trueflow.ai/get-started" 
+              href="/get-started" 
               onClick={handleLinkClick}
               className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center mt-6"
             >

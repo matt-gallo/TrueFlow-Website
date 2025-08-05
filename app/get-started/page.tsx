@@ -711,7 +711,7 @@ export default function ReadinessAssessment() {
         // Metadata
         timestamp: new Date().toISOString(),
         assessmentVersion: '2.0',
-        source: 'readiness-assessment'
+        source: 'get-started-form'
       }
 
       // Send to GHL API
@@ -833,7 +833,7 @@ export default function ReadinessAssessment() {
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href="https://trueflow.ai/">
+            <Link href="/">
               <Image 
                 src="/true-flow-logo.webp" 
                 alt="TrueFlow" 
@@ -851,10 +851,10 @@ export default function ReadinessAssessment() {
 
           {/* Right side navigation - matching FAQ/content-engine style */}
           <div className="flex items-center space-x-6">
-            <Link href="https://trueflow.ai/" className="text-white/70 hover:text-white transition-colors text-sm">
+            <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm">
               ← Back to Home
             </Link>
-            <Link href="https://trueflow.ai/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
+            <Link href="/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
               Get Started
             </Link>
           </div>
@@ -953,7 +953,7 @@ export default function ReadinessAssessment() {
                 <CheckCircle className="h-5 w-5" />
                 <span>Check Your Email for Next Steps</span>
               </div>
-              <Link href="https://trueflow.ai/" className="text-white/70 hover:text-white transition-colors underline text-sm">
+              <Link href="/" className="text-white/70 hover:text-white transition-colors underline text-sm">
                 Return to Home
               </Link>
             </div>

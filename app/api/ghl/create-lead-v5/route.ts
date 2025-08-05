@@ -17,36 +17,8 @@ const GHL_API_VERSION = process.env.GHL_API_VERSION || '2021-07-28'
  * Accurately detects form type based on form-specific fields
  */
 function detectFormType(data: any): 'assessment' | 'get-started' {
-  // Check for source field first (most reliable)
-  if (data.source === 'readiness-assessment') {
-    return 'assessment'
-  }
-  
-  // Check for assessment-specific fields
-  if (data.assessmentVersion || data.recommendation || data.scorePercentage) {
-    return 'assessment'
-  }
-  
-  // Check for assessment-specific answer fields
-  if (data.answers && typeof data.answers === 'object') {
-    const assessmentKeys = ['current-content', 'content-volume', 'crm-usage', 'lead-response', 'time-spent', 'budget']
-    const hasAssessmentAnswers = assessmentKeys.some(key => data.answers[key])
-    if (hasAssessmentAnswers) {
-      return 'assessment'
-    }
-  }
-  
-  // Check for assessment results fields AND answers
-  if (data.assessmentAnswers && Array.isArray(data.assessmentAnswers) && data.assessmentAnswers.length > 0) {
-    return 'assessment'
-  }
-  
-  // Check for get-started specific fields
-  if (data.monthlyLeads || data.teamSize || data.currentTools || data.biggestChallenge || data.pricingPlan) {
-    return 'get-started'
-  }
-  
-  // Default to get-started if no clear indicators
+  // Since there's only ONE form (Get Started), always return 'get-started'
+  // The form includes assessment questions but is still the Get Started form
   return 'get-started'
 }
 
@@ -290,11 +262,102 @@ export async function POST(request: Request) {
     }
     
     const ghlResult = await ghlResponse.json()
+    const contactId = ghlResult.contact?.id || ghlResult.id
     console.log('[API V5] Contact created/updated successfully:', {
-      contactId: ghlResult.contact?.id || ghlResult.id,
+      contactId,
       hasContact: !!ghlResult.contact,
       hasId: !!ghlResult.id
     })
+    
+    // Create opportunity in pipeline for all form submissions
+    let opportunityId = null
+    // Create opportunities for all Get Started form submissions
+    if (contactId && process.env.GHL_CREATE_OPPORTUNITIES === 'true') {
+      try {
+        console.log('[API V5] Creating opportunity in pipeline...')
+        
+        // Pipeline configuration for "TrueFlow – Getting Started Form"
+        const pipelineId = 'tH245WTBIthgA8j8dYLI'
+        const firstStageId = '2e4484df-c32f-46e6-87be-eee88ca413f0' // New Lead (Getting Started Form)
+        
+        // Calculate monetary value based on selected pricing plan
+        // Convert weekly to monthly value (multiply by 4.33 weeks per month)
+        let monetaryValue = 650 // Default to lowest tier ($150/week * 4.33)
+        let selectedTier = 'Content Engine (Default)'
+        
+        // For assessment forms, check for selectedPlan field as well
+        const planField = data.pricingPlan || data.selectedPlan || ''
+        
+        if (planField) {
+          const planLower = planField.toLowerCase()
+          console.log('[API V5] Selected pricing plan:', planField)
+          
+          if (planLower.includes('content') || planLower === 'content-engine' || planLower === 'starter') {
+            monetaryValue = 650 // $150/week * 4.33 weeks
+            selectedTier = 'Content Engine'
+          } else if (planLower.includes('complete') || planLower === 'complete-system' || planLower === 'growth') {
+            monetaryValue = 1300 // $300/week * 4.33 weeks
+            selectedTier = 'Complete System'
+          } else if (planLower.includes('custom') || planLower === 'enterprise' || planLower === 'custom') {
+            monetaryValue = 2500 // Estimated value for enterprise
+            selectedTier = 'Custom Enterprise'
+          } else if (planLower.includes('not') || planLower === 'not-sure' || planLower === 'unsure') {
+            monetaryValue = 650 // Default to lowest tier
+            selectedTier = 'Not Sure (Defaulted to Content Engine)'
+          }
+        }
+        
+        console.log('[API V5] Opportunity value calculation:', {
+          formType,
+          selectedPlan: planField || 'Not specified',
+          selectedTier,
+          monthlyValue: monetaryValue
+        })
+        
+        const opportunityPayload = {
+          pipelineId,
+          locationId: process.env.GHL_LOCATION_ID!,
+          name: `${data.firstName} ${data.lastName} - ${data.businessName || 'New Lead'} (${selectedTier})`,
+          pipelineStageId: firstStageId,
+          status: 'open',
+          contactId,
+          monetaryValue,
+          source: 'TrueFlow Get Started Form',
+          customFields: []
+        }
+        
+        console.log('[API V5] Creating opportunity with:', {
+          name: opportunityPayload.name,
+          pipeline: 'TrueFlow – Getting Started Form',
+          stage: 'New Lead (Getting Started Form)',
+          monetaryValue: `$${monetaryValue}/month`,
+          contactId
+        })
+        
+        const oppResponse = await fetch(`${GHL_API_BASE}/opportunities/`, {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.GHL_ACCESS_TOKEN}`,
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Version': GHL_API_VERSION
+          },
+          body: JSON.stringify(opportunityPayload)
+        })
+        
+        if (oppResponse.ok) {
+          const oppResult = await oppResponse.json()
+          opportunityId = oppResult.opportunity?.id
+          console.log('[API V5] Opportunity created successfully:', opportunityId)
+        } else {
+          const errorText = await oppResponse.text()
+          console.error('[API V5] Failed to create opportunity:', oppResponse.status, errorText)
+        }
+      } catch (oppError) {
+        console.error('[API V5] Error creating opportunity:', oppError)
+        // Don't fail the request if opportunity creation fails
+      }
+    }
     
     // Send backup email notification
     try {
@@ -315,7 +378,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ 
       success: true, 
       message: 'Lead processed successfully',
-      ghlContactId: ghlResult.contact?.id || ghlResult.id,
+      ghlContactId: contactId,
+      ghlOpportunityId: opportunityId,
       leadScore,
       leadQuality,
       formType,

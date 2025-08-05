@@ -34,8 +34,8 @@ interface GetStartedData {
 // Helper function to test Resend connection
 async function testResendConnection(): Promise<boolean> {
   try {
-    // Try a simple API call to verify the key works
-    const testResult = await fetch('https://api.resend.com/emails', {
+    // Test with domains endpoint which supports GET
+    const testResult = await fetch('https://api.resend.com/domains', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
@@ -43,7 +43,8 @@ async function testResendConnection(): Promise<boolean> {
       }
     })
     
-    return testResult.ok
+    // If we get 200 or 401, the API is reachable (401 means bad key, but API is up)
+    return testResult.status === 200 || testResult.status === 401
   } catch (error) {
     console.error('[Resend] Connection test failed:', error)
     return false

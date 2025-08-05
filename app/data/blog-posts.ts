@@ -123,6 +123,142 @@ export const tagColorPalettes: Record<string, string> = {
 // Blog Posts
 export const blogPosts: BlogPost[] = [
   {
+    id: '5',
+    slug: '3-overlooked-ai-workflows-your-business-needs',
+    title: '3 Overlooked AI Workflows Your Business Needs Now (That You Probably Haven\'t Thought Of)',
+    excerpt: 'Monday morning conversation between two builders reveals the AI workflows that save time, money, and mental energy—but most businesses are missing them entirely.',
+    content: `
+# 3 Overlooked AI Workflows Your Business Needs Now (That You Probably Haven't Thought Of)
+
+Picture this: Monday morning. Two builders, Matt and Griffin, deep in conversation over coffee, tackling a question that's been on everyone's mind:
+
+**"What AI workflows could businesses implement TODAY that would save time, money, and mental energy—but they're just not thinking about?"**
+
+What followed was a masterclass in practical AI implementation. Here are the three game-changing workflows they uncovered:
+
+## Workflow 1: The Invisible Note-Taker That Never Sleeps
+
+**"Use Fathom or Otter. Literally every time you're on a Zoom call. Just turn it on."** – Matt
+
+Here's what's crazy: You're probably having 5-10 calls a day, and 90% of the value is evaporating the moment you hang up. 
+
+### The Setup (2 minutes):
+→ Sign up for Fathom or Otter
+→ Connect to your Zoom
+→ Forget it exists
+
+### What Actually Happens:
+Every call gets transcribed automatically. But here's where it gets interesting—Griffin drops this bomb: **"Take that transcript, throw it in Claude or ChatGPT, and ask: 'What are the three action items from this call?'"**
+
+Boom. You just went from scrambling to remember what was discussed to having crystal-clear next steps. Every. Single. Time.
+
+### The Hidden Goldmine:
+Matt takes it further: **"Think about sales calls. Create one prompt that analyzes every transcript the same way: pain points, budget mentioned, timeline, decision criteria."**
+
+Now you're not just recording calls—you're building a systematic intelligence machine.
+
+## Workflow 2: Your Leads Are Trying to Tell You Something (But You're Not Listening)
+
+**"The best salespeople already do this instinctively, but now AI can do it for everyone."** – Griffin
+
+Remember that CRM you spent thousands on? It's about to actually earn its keep.
+
+### The Problem Nobody Talks About:
+You get a lead. They fill out a form. Then what? Most businesses treat every lead the same. That's like using a sledgehammer to crack every nut.
+
+### The 15-Minute Setup That Changes Everything:
+1. Connect your CRM to Claude/ChatGPT (using Zapier or Make)
+2. Create these exact lead categories:
+   - **"Ready to Buy"** → Someone else mentioned, timeline discussed
+   - **"Tire Kicker"** → Lots of price questions, no timeline
+   - **"Education Mode"** → Asking how/what questions
+   - **"Comparison Shopping"** → Mentions competitors
+
+### The Magic Part:
+Matt reveals the secret: **"The AI reads their form submission, their email, maybe their LinkedIn, and tells you EXACTLY how to approach them."**
+
+**Education Mode lead?** Send them your best guide.
+**Ready to Buy?** Get them on a call TODAY.
+**Tire Kicker?** Nurture sequence.
+
+The result? Your conversion rate doubles because you're finally speaking their language.
+
+## Workflow 3: The $100K Memory That Never Forgets
+
+**"CEOs think they need a Chief of Staff. What they actually need is an AI brain."** – Matt
+
+This one's so simple it hurts, yet nobody's doing it.
+
+### The Setup (5 minutes):
+Create a Claude Project or Custom GPT called "[Your Company] Brain"
+
+### What Goes In:
+- Every meeting note
+- Every important decision and why you made it
+- Every process you create
+- Every client success story
+- Every failure and what you learned
+
+### How You Use It:
+**New employee starts?** "Hey, summarize our sales process"
+**Forgot why you made a decision?** "Why did we choose vendor X?"
+**Preparing for a similar client?** "What worked with our last e-commerce client?"
+
+Griffin nails it: **"It's like having a photographic memory of your entire business. Six months from now, you'll wonder how you ever operated without it."**
+
+### The Compound Effect:
+Every week, your AI brain gets smarter. Every month, it becomes more valuable. After a year? It's irreplaceable.
+
+## Here's What's Actually Happening
+
+These aren't just "cool AI tricks." Matt and Griffin are describing a fundamental shift in how businesses operate.
+
+**The old way:** Information lives in people's heads. When they leave, the knowledge leaves.
+
+**The new way:** Information lives in AI systems. When people leave, the intelligence stays and grows.
+
+## Your Monday Morning Action Plan
+
+Griffin challenges listeners at the end: **"Pick ONE of these. Just one. Set it up before lunch. Use it for a week. Then come back and tell us we were wrong."**
+
+Here's the thing—they know you won't. Because once you experience the difference, there's no going back.
+
+## The Bottom Line
+
+Matt sums it up perfectly: **"We're not talking about replacing people. We're talking about amplifying them. It's the difference between running a business and the business running you."**
+
+These workflows aren't coming "someday." They're here. They work. They're cheap (or free). 
+
+The only question is: Will you be using them Monday morning, or will your competition?
+
+**Action beats perfection.** Pick one workflow. Start today. 
+
+Your future self will thank you.
+
+---
+
+*P.S. - Griffin mentioned they tested all three workflows in their own businesses. Results? 3 hours saved per week on admin, 40% higher lead conversion, and "I actually remember what happened in meetings now." No fluff. Just results.*
+    `,
+    author: authors['matt-gallo'],
+    date: '2025-09-12',
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['productivity'], tags['lead-generation'], tags['crm'], tags['sales-automation'], tags['scaling']],
+    primaryTag: tags['workflow-automation'],
+    readTime: 6,
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=630&fit=crop',
+      alt: 'AI Workflows for Business Automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: '3 Overlooked AI Workflows Your Business Needs Now | TrueFlow AI',
+      metaDescription: 'Discover the AI workflows that save time, money, and mental energy. Auto-transcription, smart lead categorization, and living AI memory systems explained.',
+      keywords: ['AI workflows', 'business automation', 'lead categorization', 'AI transcription', 'workflow automation', 'CRM automation']
+    },
+    published: true
+  },
+  {
     id: '4',
     slug: 'does-your-business-even-need-a-blog',
     title: 'Does Your Business Even Need a Blog?',
@@ -245,7 +381,7 @@ Stop letting content creation slow down your growth.
 *See if your business is ready for AI-powered content that actually converts.*
     `,
     author: authors['matt-gallo'],
-    date: '2025-01-15',
+    date: '2025-08-15',
     category: categories.marketing,
     tags: [tags['business-blogging'], tags['content-strategy'], tags['lead-generation'], tags['seo'], tags['small-business'], tags['b2b'], tags['productivity'], tags['scaling']],
     primaryTag: tags['business-blogging'],
@@ -575,7 +711,7 @@ The businesses winning today aren't necessarily the biggest or the oldest—they
 Your customers are waiting for the exceptional experiences only AI can deliver. Don't keep them waiting.
     `,
     author: authors['matt-gallo'],
-    date: '2024-01-15',
+    date: '2025-07-22',
     category: categories.marketing,
     tags: [tags['ai-tools'], tags['email-marketing'], tags['analytics'], tags['customer-experience'], tags['saas'], tags['enterprise'], tags['b2b'], tags['b2c']],
     primaryTag: tags['ai-tools'],
@@ -1216,7 +1352,7 @@ The question isn't whether you should implement marketing automation—it's how 
 The journey to marketing automation excellence starts with a single step. Take yours today.
     `,
     author: authors['griffin-rutherford'],
-    date: '2024-01-10',
+    date: '2025-06-18',
     category: categories.automation,
     tags: [tags['workflow-automation'], tags['email-marketing'], tags['analytics'], tags['lead-generation'], tags['productivity'], tags['sales-automation'], tags['scaling'], tags['small-business'], tags['saas']],
     primaryTag: tags['workflow-automation'],
@@ -2019,7 +2155,7 @@ Join thousands of businesses already transforming their growth with data-driven 
 Start your data-driven journey today. Your future self—and your business—will thank you.
     `,
     author: authors['matt-gallo'],
-    date: '2024-01-05',
+    date: '2025-05-10',
     category: categories.growth,
     tags: [tags['analytics'], tags['ai-tools'], tags['workflow-automation'], tags['data-driven'], tags['scaling'], tags['enterprise'], tags['b2b'], tags['saas'], tags['startup']],
     primaryTag: tags['data-driven'],
@@ -2045,7 +2181,9 @@ export function getBlogPost(slug: string): BlogPost | undefined {
 }
 
 export function getPublishedPosts(): BlogPost[] {
-  return blogPosts.filter(post => post.published)
+  return blogPosts
+    .filter(post => post.published)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 }
 
 export function getPostsByCategory(categorySlug: string): BlogPost[] {

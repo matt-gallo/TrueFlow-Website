@@ -97,7 +97,7 @@ export default function ContentOfferLanding() {
       <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/10 bg-black/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            <Link href="https://trueflow.ai/" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <Image 
                 src="/true-flow-logo.webp" 
                 alt="TrueFlow" 
@@ -110,14 +110,14 @@ export default function ContentOfferLanding() {
             
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-8">
-              <Link href="https://trueflow.ai/" className="text-white/70 hover:text-white transition-colors">
+              <Link href="/" className="text-white/70 hover:text-white transition-colors">
                 Home
               </Link>
-              <Link href="https://trueflow.ai/faq" className="text-white/70 hover:text-white transition-colors">
+              <Link href="/faq" className="text-white/70 hover:text-white transition-colors">
                 FAQ
               </Link>
               <Link 
-                href="https://trueflow.ai/get-started" 
+                href="/get-started" 
                 className="px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300"
               >
                 Get Started
@@ -139,21 +139,21 @@ export default function ContentOfferLanding() {
           <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/10">
             <div className="px-4 py-4 space-y-4">
               <Link 
-                href="https://trueflow.ai/" 
+                href="/" 
                 className="block text-white/70 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </Link>
               <Link 
-                href="https://trueflow.ai/faq" 
+                href="/faq" 
                 className="block text-white/70 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 FAQ
               </Link>
               <Link 
-                href="https://trueflow.ai/get-started" 
+                href="/get-started" 
                 className="block w-full text-center px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -197,7 +197,7 @@ export default function ContentOfferLanding() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link 
-              href="https://trueflow.ai/get-started" 
+              href="/get-started" 
               className="group px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center gap-2"
             >
               Get My Free Content Engine
@@ -467,7 +467,7 @@ export default function ContentOfferLanding() {
 
             {/* CTA */}
             <Link 
-              href="https://trueflow.ai/get-started" 
+              href="/get-started" 
               className="block w-full text-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group"
             >
               Start Getting Weekly Blogs + Daily Newsletters
@@ -517,7 +517,7 @@ export default function ContentOfferLanding() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="https://trueflow.ai/faq" className="text-cyan-400 hover:text-cyan-300 transition-colors">
+            <Link href="/faq" className="text-cyan-400 hover:text-cyan-300 transition-colors">
               See More FAQs →
             </Link>
           </div>
@@ -538,7 +538,7 @@ export default function ContentOfferLanding() {
           </p>
 
           <Link 
-            href="https://trueflow.ai/get-started" 
+            href="/get-started" 
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group"
           >
             Start My Free Content Engine
@@ -577,13 +577,13 @@ export default function ContentOfferLanding() {
               <span className="text-white/50 text-sm">© 2024 TrueFlow AI</span>
             </div>
             <div className="flex gap-6 text-sm">
-              <Link href="https://trueflow.ai/privacy" className="text-white/50 hover:text-white transition-colors">
+              <Link href="/privacy" className="text-white/50 hover:text-white transition-colors">
                 Privacy
               </Link>
-              <Link href="https://trueflow.ai/terms" className="text-white/50 hover:text-white transition-colors">
+              <Link href="/terms" className="text-white/50 hover:text-white transition-colors">
                 Terms
               </Link>
-              <Link href="https://trueflow.ai/faq" className="text-white/50 hover:text-white transition-colors">
+              <Link href="/faq" className="text-white/50 hover:text-white transition-colors">
                 FAQ
               </Link>
             </div>
