@@ -187,8 +187,11 @@ Connect CRM → AI → Profit
 CEOs waste 10 hours weekly searching for information.
 
 ### Build Your AI Brain (5 Minutes):
+
+<!-- Reset numbering -->
+
 1. Create Claude Project: "[Company] Brain"
-2. Feed it everything
+2. Feed it everything  
 3. Ask it anything
 
 ### What Goes In:
