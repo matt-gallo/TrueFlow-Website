@@ -3629,3 +3629,11 @@
  ✓ Compiled in 503ms (336 modules)
  GET / 200 in 28ms
  ✓ Compiled in 236ms (336 modules)
+ GET / 200 in 22ms
+ GET / 200 in 50ms
+ ✓ Compiled /blog/[slug] in 264ms (350 modules)
+ ✓ Compiled in 483ms (686 modules)
+ ✓ Compiled in 416ms (686 modules)
+ ✓ Compiled in 474ms (686 modules)
+ ✓ Compiled in 185ms (336 modules)
+ ✓ Compiled in 210ms (336 modules)

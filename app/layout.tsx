@@ -54,6 +54,46 @@ export default function RootLayout({
         }}
         suppressHydrationWarning={true}
       >
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Only run if we're in an iframe
+            if (window.parent !== window) {
+              // Notify parent frame of navigation changes
+              const originalPushState = history.pushState;
+              const originalReplaceState = history.replaceState;
+              
+              history.pushState = function() {
+                originalPushState.apply(history, arguments);
+                window.parent.postMessage({
+                  type: 'navigation',
+                  path: window.location.pathname
+                }, '*');
+              };
+              
+              history.replaceState = function() {
+                originalReplaceState.apply(history, arguments);
+                window.parent.postMessage({
+                  type: 'navigation',
+                  path: window.location.pathname
+                }, '*');
+              };
+              
+              window.addEventListener('popstate', function() {
+                window.parent.postMessage({
+                  type: 'navigation',
+                  path: window.location.pathname
+                }, '*');
+              });
+              
+              // Listen for parent navigation requests
+              window.addEventListener('message', function(e) {
+                if (e.data.type === 'navigate') {
+                  window.location.pathname = e.data.path;
+                }
+              });
+            }
+          `
+        }} />
         <div suppressHydrationWarning={true}>
           {children}
         </div>

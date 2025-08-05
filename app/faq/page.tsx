@@ -635,10 +635,10 @@ export default function FAQPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <Link href="https://trueflow.ai/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity">
+                <Link href="/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity">
                   Get Started
                 </Link>
-                <Link href="https://trueflow.ai/" className="text-white/70 hover:text-white transition-colors underline text-sm">
+                <Link href="/" className="text-white/70 hover:text-white transition-colors underline text-sm">
                   Back to Home
                 </Link>
               </div>
@@ -680,20 +680,20 @@ export default function FAQPage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Product</h4>
               <div className="space-y-2">
-                <Link href="https://trueflow.ai/coming-soon" className="block text-white/70 hover:text-white transition-colors">Features</Link>
-                <Link href="https://trueflow.ai/coming-soon" className="block text-white/70 hover:text-white transition-colors">Pricing</Link>
-                <Link href="https://trueflow.ai/coming-soon" className="block text-white/70 hover:text-white transition-colors">API</Link>
-                <Link href="https://trueflow.ai/coming-soon" className="block text-white/70 hover:text-white transition-colors">Integrations</Link>
+                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Features</Link>
+                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Pricing</Link>
+                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">API</Link>
+                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Integrations</Link>
               </div>
             </div>
             
             <div>
               <h4 className="text-white font-semibold mb-4">Support</h4>
               <div className="space-y-2">
-                <Link href="https://trueflow.ai/coming-soon" className="block text-white/70 hover:text-white transition-colors">Help Center</Link>
-                <Link href="https://trueflow.ai/coming-soon" className="block text-white/70 hover:text-white transition-colors">Contact</Link>
-                <Link href="https://trueflow.ai/coming-soon" className="block text-white/70 hover:text-white transition-colors">Status</Link>
-                <Link href="https://trueflow.ai/coming-soon" className="block text-white/70 hover:text-white transition-colors">Community</Link>
+                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Help Center</Link>
+                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Contact</Link>
+                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Status</Link>
+                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Community</Link>
               </div>
             </div>
           </div>
