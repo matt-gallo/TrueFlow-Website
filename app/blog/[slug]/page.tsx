@@ -39,12 +39,17 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       publishedTime: post.date,
       authors: [post.author.name],
       images: post.featuredImage ? [post.featuredImage.url] : [],
+      url: `https://trueflow.ai/blog/${params.slug}`,
+      siteName: 'TrueFlow AI',
     },
     twitter: {
       card: 'summary_large_image',
       title: post.seo?.metaTitle || post.title,
       description: post.seo?.metaDescription || post.excerpt,
       images: post.featuredImage ? [post.featuredImage.url] : [],
+    },
+    alternates: {
+      canonical: `https://trueflow.ai/blog/${params.slug}`,
     }
   }
 }
