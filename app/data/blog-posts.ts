@@ -606,14 +606,14 @@ AI scores every lead:
 **The money is in the system.**
 
 Example workflow:
-```
+\`\`\`
 Lead submits form
 → AI scores lead
 → Hot? Sales gets notified
 → Warm? Nurture sequence starts
 → Cold? Long-term automation
 → Every lead handled perfectly
-```
+\`\`\`
 
 **No human needed. Ever.**
 
