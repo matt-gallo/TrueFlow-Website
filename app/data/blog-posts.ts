@@ -188,11 +188,11 @@ CEOs waste 10 hours weekly searching for information.
 
 ### Build Your AI Brain (5 Minutes):
 
-<!-- Reset numbering -->
-
-1. Create Claude Project: "[Company] Brain"
-2. Feed it everything  
-3. Ask it anything
+<ol>
+<li>Create Claude Project: "[Company] Brain"</li>
+<li>Feed it everything</li>
+<li>Ask it anything</li>
+</ol>
 
 ### What Goes In:
 - Every decision (and why)
