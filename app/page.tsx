@@ -669,13 +669,13 @@ export default function LandingPage() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">
               <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Home</a>
-              <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Content Engine</Link>
+              <Link href="https://trueflow.ai/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Content Engine</Link>
               <a href="#features" className="text-white/70 hover:text-white transition-colors text-sm">Features</a>
               <a href="#how-it-works" className="text-white/70 hover:text-white transition-colors text-sm">How it Works</a>
               <a href="#testimonials" className="text-white/70 hover:text-white transition-colors text-sm">Success Stories</a>
               <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
-              <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">FAQs</Link>
-              <Link href="/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
+              <Link href="https://trueflow.ai/faq" className="text-white/70 hover:text-white transition-colors text-sm">FAQs</Link>
+              <Link href="https://trueflow.ai/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
                 Get Started
               </Link>
             </div>
@@ -695,13 +695,13 @@ export default function LandingPage() {
           <div className="md:hidden bg-black/90 backdrop-blur-xl border-t border-white/10">
             <div className="px-4 py-6 space-y-4">
               <a href="#" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Home</a>
-              <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Content Engine</Link>
+              <Link href="https://trueflow.ai/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Content Engine</Link>
               <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Features</a>
               <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">How it Works</a>
               <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Success Stories</a>
               <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
-              <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-              <Link href="/get-started" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
+              <Link href="https://trueflow.ai/faq" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
+              <Link href="https://trueflow.ai/get-started" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
                 Get Started
               </Link>
             </div>
@@ -716,7 +716,7 @@ export default function LandingPage() {
       >
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
-            <Link href="/content-engine" className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-12 border border-white/20 mt-16 hover:bg-white/20 transition-colors">
+            <Link href="https://trueflow.ai/content-engine" className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-12 border border-white/20 mt-16 hover:bg-white/20 transition-colors">
               <Sparkles className="h-5 w-5 text-blue-400" />
               <span className="text-white/90 text-lg">Introducing TrueFlow AI Content Engine</span>
             </Link>
@@ -735,7 +735,7 @@ export default function LandingPage() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
               <Link 
-                href="/get-started" 
+                href="https://trueflow.ai/get-started" 
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -743,7 +743,7 @@ export default function LandingPage() {
                 <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
               
-              <Link href="/coming-soon" className="flex items-center space-x-3 sm:space-x-4 text-white/70 hover:text-white transition-all duration-300 group">
+              <Link href="https://trueflow.ai/coming-soon" className="flex items-center space-x-3 sm:space-x-4 text-white/70 hover:text-white transition-all duration-300 group">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative">
                   <div className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
                   <Play className="h-4 w-4 sm:h-6 sm:w-6 ml-1 relative z-10 group-hover:text-blue-400 transition-colors duration-300" />
@@ -1242,7 +1242,7 @@ export default function LandingPage() {
                   </p>
                   
                   {/* Learn More Link */}
-                  <Link href="/content-engine" className="flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-300 group-hover:translate-x-2">
+                  <Link href="https://trueflow.ai/content-engine" className="flex items-center text-blue-400 hover:text-blue-300 transition-colors duration-300 group-hover:translate-x-2">
                     <span className="font-medium">Learn More</span>
                     <ArrowRight className="h-4 w-4 ml-2 transition-transform duration-300" />
                   </Link>
@@ -1918,7 +1918,7 @@ export default function LandingPage() {
           {/* View All Posts Button */}
           <div className="text-center mt-12">
             <Link 
-              href="/blog" 
+              href="https://trueflow.ai/blog" 
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
             >
               View All Posts
@@ -1973,7 +1973,7 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <Link href="/get-started" className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group">
+                  <Link href="https://trueflow.ai/get-started" className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group">
                     <span className="relative z-10">Get Started</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
@@ -2014,7 +2014,7 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <Link href="/get-started" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group">
+                  <Link href="https://trueflow.ai/get-started" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group">
                     <span className="relative z-10">Get Complete System</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
@@ -2087,10 +2087,10 @@ export default function LandingPage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Product</h4>
               <ul className="space-y-2">
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Features</Link></li>
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Pricing</Link></li>
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">API</Link></li>
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Integrations</Link></li>
+                <li><Link href="https://trueflow.ai/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Features</Link></li>
+                <li><Link href="https://trueflow.ai/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Pricing</Link></li>
+                <li><Link href="https://trueflow.ai/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">API</Link></li>
+                <li><Link href="https://trueflow.ai/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Integrations</Link></li>
               </ul>
             </div>
             
@@ -2098,16 +2098,16 @@ export default function LandingPage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Support</h4>
               <ul className="space-y-2">
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Help Center</Link></li>
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Contact</Link></li>
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Status</Link></li>
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Community</Link></li>
+                <li><Link href="https://trueflow.ai/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Help Center</Link></li>
+                <li><Link href="https://trueflow.ai/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Contact</Link></li>
+                <li><Link href="https://trueflow.ai/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Status</Link></li>
+                <li><Link href="https://trueflow.ai/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Community</Link></li>
               </ul>
             </div>
             
             {/* CTA */}
             <div>
-              <Link href="/get-started" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
+              <Link href="https://trueflow.ai/get-started" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
                 Get Started
               </Link>
             </div>
@@ -2119,8 +2119,8 @@ export default function LandingPage() {
               © 2025 TrueFlow™️ AI, LLC. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link href="/coming-soon" className="text-white/40 hover:text-white/60 transition-colors text-sm">Terms</Link>
-              <Link href="/coming-soon" className="text-white/40 hover:text-white/60 transition-colors text-sm">Privacy Policy</Link>
+              <Link href="https://trueflow.ai/coming-soon" className="text-white/40 hover:text-white/60 transition-colors text-sm">Terms</Link>
+              <Link href="https://trueflow.ai/coming-soon" className="text-white/40 hover:text-white/60 transition-colors text-sm">Privacy Policy</Link>
             </div>
           </div>
         </div>
