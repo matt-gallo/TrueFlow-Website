@@ -154,50 +154,50 @@ export default function ForBusinessPage() {
   const businessProblems = [
     {
       icon: <MessageSquare className="h-8 w-8" />,
-      title: "My customers keep asking if we're on Facebook",
-      description: "More and more customers expect to find you online. When they can't, they wonder if your business is still active or trustworthy."
+      title: "You know your business better than anyone",
+      description: "But explaining it online feels impossible. AI understands your expertise and translates it into content customers can find."
     },
     {
       icon: <Target className="h-8 w-8" />,
-      title: "I don't understand hashtags and all that",
-      description: "Social media feels complicated with all the technical terms, features, and rules you're supposed to follow."
+      title: "Customers search online first",
+      description: "AI ensures they find YOU, not your competitors. It works 24/7 making sure your business appears when people search."
     },
     {
       icon: <Clock className="h-8 w-8" />,
-      title: "I'm too busy running my business",
-      description: "Between serving customers and managing operations, who has time to learn about posting and social media marketing?"
+      title: "You don't have time for marketing",
+      description: "AI handles it automatically. Like having an employee who only does marketing, but costs 90% less and never takes a day off."
     },
     {
       icon: <Brain className="h-8 w-8" />,
-      title: "Technology confuses me",
-      description: "Apps, platforms, settings - it all seems overwhelming when you just want to focus on what you do best: running your business."
+      title: "Technology shouldn't be this hard",
+      description: "AI eliminates the learning curve. Just tell it about your business in plain English, and it handles all the technical work."
     }
   ]
 
   const businessBenefits = [
     {
-      icon: <Users className="h-8 w-8" />,
-      title: "Stay Connected with Existing Customers",
-      description: "Keep your loyal customers engaged and informed about your business without any technical knowledge required",
-      metric: "Better relationships"
+      icon: <Brain className="h-8 w-8" />,
+      title: "AI Works While You Sleep",
+      description: "Your AI assistant creates content, responds to inquiries, and keeps your business visible 24/7 without any effort from you",
+      metric: "Always working"
     },
     {
-      icon: <Globe className="h-8 w-8" />,
-      title: "Be Found by New Customers",
-      description: "When people search for businesses like yours online, you'll show up professionally alongside your competitors",
-      metric: "More visibility"
+      icon: <Users className="h-8 w-8" />,
+      title: "AI Speaks Your Customers' Language",
+      description: "It learns how your customers talk and what they care about, then creates messages that resonate with them naturally",
+      metric: "Better connection"
+    },
+    {
+      icon: <Zap className="h-8 w-8" />,
+      title: "AI Adapts and Improves",
+      description: "Unlike static websites or ads, AI learns what works for your business and continuously improves your online presence",
+      metric: "Gets smarter"
     },
     {
       icon: <Shield className="h-8 w-8" />,
-      title: "Keep Up with Competitors",
-      description: "Don't let other businesses in your area get ahead because they're online and you're not",
-      metric: "Stay competitive"
-    },
-    {
-      icon: <Heart className="h-8 w-8" />,
-      title: "Personal Support Every Step",
-      description: "No technical knowledge required - we handle everything and provide real human help when you need it",
-      metric: "100% supported"
+      title: "AI + Human Support",
+      description: "You get the power of AI technology plus real people who ensure everything runs smoothly and helps when you need it",
+      metric: "Best of both"
     }
   ]
 
@@ -215,21 +215,21 @@ export default function ForBusinessPage() {
       name: "Frank Williams",
       business: "Williams Hardware (Est. 1952)",
       image: "/testimonial-frank.jpg",
-      quote: "At 73, I never thought I'd be on social media. TrueFlow set everything up for me - I just tell them about our products and they make us look professional online. Now younger customers find us too.",
+      quote: "At 73, I thought AI was science fiction. But TrueFlow's AI assistant is like having a tech-savvy grandkid helping out. I just talk about my hardware store, and AI creates professional content that brings in customers.",
       results: "35% increase in new customers"
     },
     {
       name: "Maria Santos",
       business: "Santos Family Restaurant (40 years)",
       image: "/testimonial-maria.jpg",
-      quote: "I was scared of technology, but TrueFlow made it so easy. I just talk about our daily specials like I always do, and somehow that becomes posts that bring people in. No apps to learn!",
+      quote: "AI sounded like robots taking over, but it's actually helping my family business thrive. The AI learns our recipes, our story, and creates beautiful content. It's like having a marketing expert who really knows us.",
       results: "Never used social media before - now getting 20+ new customers weekly"
     },
     {
       name: "Bob Thompson",
       business: "Thompson Plumbing",
       image: "/testimonial-bob.jpg",
-      quote: "My kids kept telling me I needed to be online. TrueFlow handles all the technical stuff - I just talk about plumbing tips and they make it look professional. Phone's ringing more than ever.",
+      quote: "I was skeptical about AI, but it's the best employee I never hired. It writes helpful plumbing tips, seasonal reminders, and emergency advice - all while I'm out fixing pipes. Technology that actually makes sense.",
       results: "Doubled service calls in 6 months"
     }
   ]
@@ -237,27 +237,27 @@ export default function ForBusinessPage() {
   const simpleSteps = [
     {
       step: 1,
-      title: "We Set Everything Up For You",
-      description: "No apps to download, no accounts to create. We handle all the technical setup so you don't have to worry about any of it.",
-      icon: <Shield className="h-12 w-12" />
+      title: "AI Learns Your Business",
+      description: "Just talk about your business like you would to a friend. AI understands and remembers everything that makes you special.",
+      icon: <Brain className="h-12 w-12" />
     },
     {
       step: 2,
-      title: "You Tell Us About Your Business",
-      description: "Just talk about your business in plain English - what you do, your customers, your daily work. That's it.",
-      icon: <MessageSquare className="h-12 w-12" />
+      title: "AI Creates Your Content",
+      description: "It writes posts, takes your ideas, and creates professional content that sounds like you - but polished and engaging.",
+      icon: <Sparkles className="h-12 w-12" />
     },
     {
       step: 3,
-      title: "We Handle All The Technical Stuff",
-      description: "Our team takes care of posting, scheduling, and all the complicated social media work behind the scenes.",
-      icon: <Layers className="h-12 w-12" />
+      title: "AI Manages Everything",
+      description: "Posts at the right times, responds to basic questions, and keeps your online presence active without you lifting a finger.",
+      icon: <Zap className="h-12 w-12" />
     },
     {
       step: 4,
-      title: "Your Business Appears Online Professionally",
-      description: "Customers see your business looking professional and established online, just like the bigger companies.",
-      icon: <Building className="h-12 w-12" />
+      title: "You Get More Customers",
+      description: "While AI handles the digital work, you focus on serving customers. More people find you, business grows, life stays simple.",
+      icon: <TrendingUp className="h-12 w-12" />
     }
   ]
 
@@ -366,7 +366,7 @@ export default function ForBusinessPage() {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            Your Customers Are Online.{" "}
+            Let AI Be Your{" "}
             <span 
               className="bg-clip-text text-transparent animate-pulse"
               style={{
@@ -374,13 +374,13 @@ export default function ForBusinessPage() {
                 backgroundSize: '300% 300%'
               }}
             >
-              You Should Be Too.
+              Digital Assistant
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto mb-12">
-            Simple Social Media for Established Businesses. No technical knowledge required - 
-            we handle everything so you can focus on what you do best.
+            Artificial Intelligence handles your online presence while you focus on your customers. 
+            It's like having a tech-savvy assistant who never sleeps.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12">
@@ -422,10 +422,10 @@ export default function ForBusinessPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Sound Familiar?
+              Why AI Changes Everything
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              Every business owner faces the same challenges when it comes to getting online
+              You've been doing business successfully for years. Now AI can help you reach more customers without changing how you work.
             </p>
           </div>
 
@@ -448,13 +448,14 @@ export default function ForBusinessPage() {
           <div className="text-center mt-16">
             <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-md rounded-2xl border border-red-500/30 p-8 max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold text-white mb-4">
-                Your Customers Are Looking for You Online
+                AI Bridges the Gap Between You and Your Customers
               </h3>
               <p className="text-white/80 text-lg mb-4">
-                When customers can't find your business online, they assume you're closed or outdated. Meanwhile, your competitors who are online are getting those customers instead.
+                You've built your business on personal relationships and quality service. AI helps you maintain that personal touch online, 
+                reaching customers where they spend their time without requiring you to become a tech expert.
               </p>
-              <p className="text-red-400 font-semibold text-xl">
-                Don't let customers slip away because you're not where they expect to find you
+              <p className="text-cyan-400 font-semibold text-xl">
+                Let AI be the bridge between your expertise and your customers' screens
               </p>
             </div>
           </div>
@@ -466,11 +467,11 @@ export default function ForBusinessPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              We Make It Simple for Business Owners Like You
+              How AI Becomes Your Business Partner
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              No complicated technology to learn, no time wasted figuring things out. 
-              We handle everything so your business looks professional online.
+              Think of AI as your digital employee - it learns about your business, 
+              understands what makes you unique, and shares that with customers online.
             </p>
           </div>
 
@@ -568,10 +569,10 @@ export default function ForBusinessPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Perfect for Traditional Businesses
+              AI Adapts to Your Business Type
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              We work with established businesses that serve their communities - just like yours
+              Our AI understands different industries and creates content that makes sense for your specific business
             </p>
           </div>
 
@@ -598,10 +599,10 @@ export default function ForBusinessPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Real Stories from Business Owners Like You
+              Business Owners Discover the Power of AI
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              These established business owners had never used social media before TrueFlow
+              These established business owners were skeptical about AI - until they saw what it could do
             </p>
           </div>
 
@@ -639,6 +640,75 @@ export default function ForBusinessPage() {
         </div>
       </section>
 
+      {/* Why AI Makes the Difference */}
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Why AI Is Different From Everything You've Tried
+            </h2>
+            <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              Forget complicated apps and confusing platforms. AI is like having a smart assistant who understands your business.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-red-500/10 backdrop-blur-md rounded-2xl border border-red-500/30 p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">❌ Without AI</h3>
+              <ul className="space-y-3 text-white/70">
+                <li className="flex items-start space-x-2">
+                  <span className="text-red-400">•</span>
+                  <span>You have to learn multiple apps and platforms</span>
+                </li>
+                <li className="flex items-start space-x-2">
+                  <span className="text-red-400">•</span>
+                  <span>You need to write posts and create content yourself</span>
+                </li>
+                <li className="flex items-start space-x-2">
+                  <span className="text-red-400">•</span>
+                  <span>You must understand hashtags, algorithms, and timing</span>
+                </li>
+                <li className="flex items-start space-x-2">
+                  <span className="text-red-400">•</span>
+                  <span>Hours spent trying to figure out what works</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-cyan-500/10 backdrop-blur-md rounded-2xl border border-cyan-500/30 p-8">
+              <h3 className="text-2xl font-bold text-white mb-4">✅ With AI</h3>
+              <ul className="space-y-3 text-white/70">
+                <li className="flex items-start space-x-2">
+                  <span className="text-cyan-400">•</span>
+                  <span>AI handles all the technical work automatically</span>
+                </li>
+                <li className="flex items-start space-x-2">
+                  <span className="text-cyan-400">•</span>
+                  <span>Just talk about your business - AI creates the content</span>
+                </li>
+                <li className="flex items-start space-x-2">
+                  <span className="text-cyan-400">•</span>
+                  <span>AI knows when and how to post for best results</span>
+                </li>
+                <li className="flex items-start space-x-2">
+                  <span className="text-cyan-400">•</span>
+                  <span>Focus on customers while AI handles the online work</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-2xl border border-white/30 p-8 text-center">
+            <p className="text-2xl text-white font-semibold mb-4">
+              "AI isn't here to replace you - it's here to help you compete"
+            </p>
+            <p className="text-white/70 text-lg">
+              Big companies have marketing teams. Now you have AI. It levels the playing field.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
@@ -646,11 +716,11 @@ export default function ForBusinessPage() {
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 relative z-10">
-              Don't Let Customers Think You're Closed
+              Let AI Work For Your Business
             </h2>
             <p className="text-xl text-white/70 mb-10 max-w-3xl mx-auto relative z-10">
-              When customers can't find you online, they assume you're not in business anymore. 
-              Let us help you show up professionally where your customers are looking.
+              While you focus on serving customers, AI handles your online presence 24/7. 
+              It's not replacing you - it's amplifying what makes your business special.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 relative z-10 mb-8">
