@@ -284,6 +284,11 @@ export default function ForBusinessPage() {
           0%, 100% { transform: translateY(0px); }
           50% { transform: translateY(-8px); }
         }
+        @keyframes gradient-shift {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
         .cursor-trail {
           pointer-events: none;
           position: fixed;
@@ -368,10 +373,15 @@ export default function ForBusinessPage() {
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
             Let AI Be Your{" "}
             <span 
-              className="bg-clip-text text-transparent animate-pulse"
+              className="bg-clip-text text-transparent font-bold"
               style={{
-                backgroundImage: `linear-gradient(${gradientOffset}deg, #06b6d4, #3b82f6)`,
-                backgroundSize: '300% 300%'
+                backgroundImage: `linear-gradient(${gradientOffset}deg, 
+                  hsl(${(gradientOffset + 220) % 360}, 70%, 60%), 
+                  hsl(${(gradientOffset + 280) % 360}, 80%, 65%), 
+                  hsl(${(gradientOffset + 340) % 360}, 85%, 70%), 
+                  hsl(${(gradientOffset + 40) % 360}, 75%, 65%))`,
+                backgroundSize: '300% 300%',
+                animation: 'gradient-shift 3s ease-in-out infinite'
               }}
             >
               Digital Assistant
