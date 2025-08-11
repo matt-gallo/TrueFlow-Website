@@ -153,114 +153,111 @@ export default function ForBusinessPage() {
 
   const businessProblems = [
     {
-      icon: <Clock className="h-8 w-8" />,
-      title: "No Time for Social Media",
-      description: "Running a business is demanding. Creating daily content feels impossible when you're focused on serving customers."
+      icon: <MessageSquare className="h-8 w-8" />,
+      title: "My customers keep asking if we're on Facebook",
+      description: "More and more customers expect to find you online. When they can't, they wonder if your business is still active or trustworthy."
     },
     {
       icon: <Target className="h-8 w-8" />,
-      title: "Don't Know What to Post",
-      description: "Staring at a blank screen wondering what your audience wants to see. Every post feels like guesswork."
+      title: "I don't understand hashtags and all that",
+      description: "Social media feels complicated with all the technical terms, features, and rules you're supposed to follow."
     },
     {
-      icon: <BarChart3 className="h-8 w-8" />,
-      title: "Inconsistent Online Presence",
-      description: "Posting sporadically when you remember, missing opportunities to connect with potential customers daily."
+      icon: <Clock className="h-8 w-8" />,
+      title: "I'm too busy running my business",
+      description: "Between serving customers and managing operations, who has time to learn about posting and social media marketing?"
     },
     {
-      icon: <Users className="h-8 w-8" />,
-      title: "Not Reaching Your Customers",
-      description: "Your ideal customers are on social media, but your business isn't showing up in their feeds."
+      icon: <Brain className="h-8 w-8" />,
+      title: "Technology confuses me",
+      description: "Apps, platforms, settings - it all seems overwhelming when you just want to focus on what you do best: running your business."
     }
   ]
 
   const businessBenefits = [
     {
-      icon: <TrendingUp className="h-8 w-8" />,
-      title: "Get More Customers",
-      description: "Professional social media presence that attracts new customers and keeps existing ones engaged",
-      metric: "3x more leads"
-    },
-    {
-      icon: <Clock className="h-8 w-8" />,
-      title: "Save 10+ Hours Weekly",
-      description: "Automated content creation and scheduling frees up time to focus on what you do best",
-      metric: "10+ hours saved"
-    },
-    {
-      icon: <DollarSign className="h-8 w-8" />,
-      title: "Increase Revenue",
-      description: "Consistent online presence drives more foot traffic, calls, and online orders",
-      metric: "$5K+ additional revenue"
+      icon: <Users className="h-8 w-8" />,
+      title: "Stay Connected with Existing Customers",
+      description: "Keep your loyal customers engaged and informed about your business without any technical knowledge required",
+      metric: "Better relationships"
     },
     {
       icon: <Globe className="h-8 w-8" />,
-      title: "Professional Brand Image",
-      description: "Look established and trustworthy across all platforms, competing with bigger businesses",
-      metric: "100% professional"
+      title: "Be Found by New Customers",
+      description: "When people search for businesses like yours online, you'll show up professionally alongside your competitors",
+      metric: "More visibility"
+    },
+    {
+      icon: <Shield className="h-8 w-8" />,
+      title: "Keep Up with Competitors",
+      description: "Don't let other businesses in your area get ahead because they're online and you're not",
+      metric: "Stay competitive"
+    },
+    {
+      icon: <Heart className="h-8 w-8" />,
+      title: "Personal Support Every Step",
+      description: "No technical knowledge required - we handle everything and provide real human help when you need it",
+      metric: "100% supported"
     }
   ]
 
   const industries = [
-    { name: "Restaurants", icon: <Utensils className="h-8 w-8" />, example: "Daily specials, behind-the-scenes kitchen content, customer testimonials" },
-    { name: "Real Estate", icon: <Home className="h-8 w-8" />, example: "Property showcases, market insights, neighborhood guides" },
-    { name: "Fitness & Wellness", icon: <Heart className="h-8 w-8" />, example: "Workout tips, transformation stories, healthy living advice" },
-    { name: "Beauty & Salon", icon: <Scissors className="h-8 w-8" />, example: "Before/after reveals, styling tips, product recommendations" },
-    { name: "Professional Services", icon: <Briefcase className="h-8 w-8" />, example: "Industry insights, client success stories, helpful tips" },
-    { name: "Retail & E-commerce", icon: <Building className="h-8 w-8" />, example: "Product highlights, customer features, shopping guides" },
-    { name: "Automotive", icon: <Car className="h-8 w-8" />, example: "Service tips, customer testimonials, industry updates" },
-    { name: "Legal", icon: <Scale className="h-8 w-8" />, example: "Legal tips, case studies, community involvement" },
-    { name: "Education", icon: <GraduationCap className="h-8 w-8" />, example: "Educational content, student success, learning tips" }
+    { name: "Local Restaurants & Cafes", icon: <Utensils className="h-8 w-8" />, example: "Share your daily specials and family recipes with customers who love coming in" },
+    { name: "Family-Owned Retail Stores", icon: <Building className="h-8 w-8" />, example: "Show off your products and help customers know you're open and welcoming" },
+    { name: "Professional Services", icon: <Briefcase className="h-8 w-8" />, example: "Accountants, lawyers, consultants - help clients find and trust your expertise" },
+    { name: "Home Services", icon: <Home className="h-8 w-8" />, example: "Plumbers, electricians, handymen - show your quality work and get more calls" },
+    { name: "Medical & Dental Practices", icon: <Heart className="h-8 w-8" />, example: "Keep patients informed about services and build trust in your community" },
+    { name: "Real Estate Agencies", icon: <Building className="h-8 w-8" />, example: "Show available properties and establish yourself as the local expert" }
   ]
 
   const testimonials = [
     {
-      name: "Sarah Mitchell",
-      business: "Mitchell's Bakery",
-      image: "/testimonial-sarah.jpg",
-      quote: "TrueFlow transformed my bakery's social media. I just talk about my daily baking process, and it creates professional posts that bring in new customers every week.",
-      results: "40% increase in daily foot traffic"
+      name: "Frank Williams",
+      business: "Williams Hardware (Est. 1952)",
+      image: "/testimonial-frank.jpg",
+      quote: "At 73, I never thought I'd be on social media. TrueFlow set everything up for me - I just tell them about our products and they make us look professional online. Now younger customers find us too.",
+      results: "35% increase in new customers"
     },
     {
-      name: "David Rodriguez",
-      business: "Rodriguez Real Estate",
-      image: "/testimonial-david.jpg",
-      quote: "As a busy realtor, I never had time for social media. Now I record quick market updates during my commute, and TrueFlow handles everything else. My lead generation has tripled.",
-      results: "200% more qualified leads"
+      name: "Maria Santos",
+      business: "Santos Family Restaurant (40 years)",
+      image: "/testimonial-maria.jpg",
+      quote: "I was scared of technology, but TrueFlow made it so easy. I just talk about our daily specials like I always do, and somehow that becomes posts that bring people in. No apps to learn!",
+      results: "Never used social media before - now getting 20+ new customers weekly"
     },
     {
-      name: "Lisa Chen",
-      business: "Zen Fitness Studio",
-      image: "/testimonial-lisa.jpg",
-      quote: "I was intimidated by social media marketing. TrueFlow makes it so simple - I just share my passion for fitness naturally, and it creates content that resonates with my community.",
-      results: "60+ new members in 3 months"
+      name: "Bob Thompson",
+      business: "Thompson Plumbing",
+      image: "/testimonial-bob.jpg",
+      quote: "My kids kept telling me I needed to be online. TrueFlow handles all the technical stuff - I just talk about plumbing tips and they make it look professional. Phone's ringing more than ever.",
+      results: "Doubled service calls in 6 months"
     }
   ]
 
   const simpleSteps = [
     {
       step: 1,
-      title: "Talk About Your Business",
-      description: "Record 2-3 minutes about your day, services, or tips for customers. No script needed - just be yourself.",
-      icon: <Mic className="h-12 w-12" />
+      title: "We Set Everything Up For You",
+      description: "No apps to download, no accounts to create. We handle all the technical setup so you don't have to worry about any of it.",
+      icon: <Shield className="h-12 w-12" />
     },
     {
       step: 2,
-      title: "AI Creates Professional Content",
-      description: "Our AI understands your business and creates engaging posts for Instagram, Facebook, LinkedIn, and more.",
-      icon: <Brain className="h-12 w-12" />
+      title: "You Tell Us About Your Business",
+      description: "Just talk about your business in plain English - what you do, your customers, your daily work. That's it.",
+      icon: <MessageSquare className="h-12 w-12" />
     },
     {
       step: 3,
-      title: "Automatically Publishes",
-      description: "Content goes live at optimal times across all your platforms. You focus on running your business.",
-      icon: <Send className="h-12 w-12" />
+      title: "We Handle All The Technical Stuff",
+      description: "Our team takes care of posting, scheduling, and all the complicated social media work behind the scenes.",
+      icon: <Layers className="h-12 w-12" />
     },
     {
       step: 4,
-      title: "Watch Your Business Grow",
-      description: "Track engagement, new followers, and leads. See the direct impact on your business success.",
-      icon: <TrendingUp className="h-12 w-12" />
+      title: "Your Business Appears Online Professionally",
+      description: "Customers see your business looking professional and established online, just like the bigger companies.",
+      icon: <Building className="h-12 w-12" />
     }
   ]
 
@@ -369,37 +366,33 @@ export default function ForBusinessPage() {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
-            Turn Your Voice Into{" "}
+            Your Customers Are Online.{" "}
             <span 
               className="bg-clip-text text-transparent animate-pulse"
               style={{
-                backgroundImage: `linear-gradient(${gradientOffset}deg, 
-                  hsl(${(gradientOffset + 220) % 360}, 70%, 60%), 
-                  hsl(${(gradientOffset + 280) % 360}, 80%, 65%), 
-                  hsl(${(gradientOffset + 340) % 360}, 85%, 70%), 
-                  hsl(${(gradientOffset + 40) % 360}, 75%, 65%))`,
+                backgroundImage: `linear-gradient(${gradientOffset}deg, #06b6d4, #3b82f6)`,
                 backgroundSize: '300% 300%'
               }}
             >
-              Customer Magnets
+              You Should Be Too.
             </span>
           </h1>
           
           <p className="text-xl md:text-2xl text-white/70 max-w-4xl mx-auto mb-12">
-            No social media experience? No problem. Just talk about your business for 2 minutes, 
-            and our AI creates professional content that brings in real customers every day.
+            Simple Social Media for Established Businesses. No technical knowledge required - 
+            we handle everything so you can focus on what you do best.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12">
-            <Link href="/get-started" className="bg-gradient-to-r from-green-500 to-blue-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-green-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="relative z-10">Start Free Trial</span>
+            <Link href="/get-started" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <span className="relative z-10">Start with Free Consultation</span>
               <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             
             <button className="flex items-center space-x-4 text-white/70 hover:text-white transition-all duration-300 group hover:scale-105">
-              <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:border-green-400/30 transition-all duration-300 relative">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-green-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:border-cyan-400/30 transition-all duration-300 relative">
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <Play className="h-6 w-6 ml-1 relative z-10 group-hover:scale-110 transition-transform duration-300" />
               </div>
               <span className="text-xl">See How It Works</span>
@@ -409,16 +402,16 @@ export default function ForBusinessPage() {
           {/* Trust Indicators */}
           <div className="flex items-center justify-center space-x-8 text-white/50 text-sm">
             <div className="flex items-center space-x-2">
-              <CheckCircle className="h-4 w-4 text-green-400" />
-              <span>No experience required</span>
+              <CheckCircle className="h-4 w-4 text-cyan-400" />
+              <span>No app downloads required</span>
             </div>
             <div className="flex items-center space-x-2">
-              <CheckCircle className="h-4 w-4 text-green-400" />
-              <span>Setup in 5 minutes</span>
+              <CheckCircle className="h-4 w-4 text-cyan-400" />
+              <span>We handle everything for you</span>
             </div>
             <div className="flex items-center space-x-2">
-              <CheckCircle className="h-4 w-4 text-green-400" />
-              <span>Cancel anytime</span>
+              <CheckCircle className="h-4 w-4 text-cyan-400" />
+              <span>Personal phone support available</span>
             </div>
           </div>
         </div>
@@ -432,7 +425,7 @@ export default function ForBusinessPage() {
               Sound Familiar?
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              You know social media could help your business, but these challenges keep holding you back
+              Every business owner faces the same challenges when it comes to getting online
             </p>
           </div>
 
@@ -455,13 +448,13 @@ export default function ForBusinessPage() {
           <div className="text-center mt-16">
             <div className="bg-gradient-to-r from-red-500/20 to-orange-500/20 backdrop-blur-md rounded-2xl border border-red-500/30 p-8 max-w-4xl mx-auto">
               <h3 className="text-2xl font-bold text-white mb-4">
-                The Real Cost of Doing Nothing
+                Your Customers Are Looking for You Online
               </h3>
               <p className="text-white/80 text-lg mb-4">
-                While you're struggling with social media, your competitors are attracting YOUR potential customers every single day.
+                When customers can't find your business online, they assume you're closed or outdated. Meanwhile, your competitors who are online are getting those customers instead.
               </p>
               <p className="text-red-400 font-semibold text-xl">
-                Every day without professional social media presence = lost customers and revenue
+                Don't let customers slip away because you're not where they expect to find you
               </p>
             </div>
           </div>
@@ -473,24 +466,24 @@ export default function ForBusinessPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Here's How TrueFlow Solves Everything
+              We Make It Simple for Business Owners Like You
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              No more guesswork, no more time waste, no more inconsistent posting. 
-              Just professional results that grow your business.
+              No complicated technology to learn, no time wasted figuring things out. 
+              We handle everything so your business looks professional online.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {simpleSteps.map((step, index) => (
               <div key={step.step} className="text-center group">
-                <div className="bg-gradient-to-r from-green-500 to-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-all duration-500">
+                <div className="bg-gradient-to-r from-cyan-500 to-blue-600 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-110 transition-all duration-500">
                   {step.icon}
                 </div>
                 
-                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 p-6 hover:bg-white/10 hover:border-green-400/30 transition-all duration-500 h-full">
+                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 p-6 hover:bg-white/10 hover:border-cyan-400/30 transition-all duration-500 h-full">
                   <div className="flex items-center justify-center mb-4">
-                    <span className="bg-gradient-to-r from-green-500 to-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full">
+                    <span className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-bold px-3 py-1 rounded-full">
                       Step {step.step}
                     </span>
                   </div>
@@ -500,7 +493,7 @@ export default function ForBusinessPage() {
 
                 {index < simpleSteps.length - 1 && (
                   <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2">
-                    <ArrowRight className="h-8 w-8 text-green-400/60" />
+                    <ArrowRight className="h-8 w-8 text-cyan-400/60" />
                   </div>
                 )}
               </div>
@@ -523,16 +516,16 @@ export default function ForBusinessPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {businessBenefits.map((benefit, index) => (
-              <div key={index} className="bg-black/60 backdrop-blur-md rounded-2xl border border-green-500/30 p-8 hover:bg-black/80 hover:border-green-400/50 hover:shadow-2xl hover:shadow-green-500/20 transition-all duration-500 group">
+              <div key={index} className="bg-black/60 backdrop-blur-md rounded-2xl border border-cyan-500/30 p-8 hover:bg-black/80 hover:border-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-500/20 transition-all duration-500 group">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-4">
-                    <div className="p-3 bg-green-500/20 rounded-lg border border-green-500/30">
+                    <div className="p-3 bg-cyan-500/20 rounded-lg border border-cyan-500/30">
                       {benefit.icon}
                     </div>
                     <h3 className="text-2xl font-bold text-white">{benefit.title}</h3>
                   </div>
                   <div className="text-right">
-                    <div className="text-green-400 font-bold text-xl">{benefit.metric}</div>
+                    <div className="text-cyan-400 font-bold text-xl">{benefit.metric}</div>
                     <div className="text-white/50 text-sm">Average result</div>
                   </div>
                 </div>
@@ -544,25 +537,25 @@ export default function ForBusinessPage() {
           </div>
 
           <div className="text-center mt-16">
-            <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 backdrop-blur-md rounded-2xl border border-green-500/30 p-8 max-w-4xl mx-auto">
+            <div className="bg-gradient-to-r from-cyan-500/20 to-blue-500/20 backdrop-blur-md rounded-2xl border border-cyan-500/30 p-8 max-w-4xl mx-auto">
               <h3 className="text-3xl font-bold text-white mb-4">
-                ROI That Makes Sense
+                Simple Investment, Real Results
               </h3>
               <p className="text-white/80 text-lg mb-6">
-                TrueFlow typically pays for itself within the first month through increased customer acquisition.
+                Most of our business owners see more customers within their first month. No complicated contracts or hidden fees.
               </p>
               <div className="grid grid-cols-3 gap-6 text-center">
                 <div>
-                  <div className="text-3xl font-bold text-green-400">$99</div>
-                  <div className="text-white/60">Monthly investment</div>
+                  <div className="text-3xl font-bold text-cyan-400">$99</div>
+                  <div className="text-white/60">Simple monthly fee</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-blue-400">10+</div>
-                  <div className="text-white/60">Hours saved weekly</div>
+                  <div className="text-3xl font-bold text-blue-400">Zero</div>
+                  <div className="text-white/60">Technical knowledge needed</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-purple-400">$5,000+</div>
-                  <div className="text-white/60">Additional revenue</div>
+                  <div className="text-3xl font-bold text-pink-400">24/7</div>
+                  <div className="text-white/60">Personal support</div>
                 </div>
               </div>
             </div>
@@ -575,18 +568,18 @@ export default function ForBusinessPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Perfect for Your Industry
+              Perfect for Traditional Businesses
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              TrueFlow understands your business type and creates content that resonates with your specific audience
+              We work with established businesses that serve their communities - just like yours
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {industries.map((industry, index) => (
-              <div key={index} className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 p-6 hover:bg-white/10 hover:border-blue-400/30 hover:shadow-xl transition-all duration-500 group">
+              <div key={index} className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 p-6 hover:bg-white/10 hover:border-cyan-400/30 hover:shadow-xl transition-all duration-500 group">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg">
+                  <div className="p-3 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-lg">
                     {industry.icon}
                   </div>
                   <h3 className="text-xl font-bold text-white">{industry.name}</h3>
@@ -605,18 +598,18 @@ export default function ForBusinessPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Success Stories from Real Business Owners
+              Real Stories from Business Owners Like You
             </h2>
             <p className="text-xl text-white/70 max-w-3xl mx-auto">
-              See how TrueFlow has transformed businesses just like yours
+              These established business owners had never used social media before TrueFlow
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 p-8 hover:bg-black/80 hover:border-blue-400/30 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 group">
+              <div key={index} className="bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 p-8 hover:bg-black/80 hover:border-cyan-400/30 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-500 group">
                 <div className="mb-6">
-                  <Quote className="h-8 w-8 text-blue-400 mb-4" />
+                  <Quote className="h-8 w-8 text-cyan-400 mb-4" />
                   <p className="text-white/80 text-lg italic mb-4 group-hover:text-white/95 transition-colors duration-300">
                     "{testimonial.quote}"
                   </p>
@@ -624,7 +617,7 @@ export default function ForBusinessPage() {
                 
                 <div className="border-t border-white/20 pt-6">
                   <div className="flex items-center space-x-4 mb-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full flex items-center justify-center">
                       <span className="text-white font-bold text-lg">
                         {testimonial.name.charAt(0)}
                       </span>
@@ -635,8 +628,8 @@ export default function ForBusinessPage() {
                     </div>
                   </div>
                   
-                  <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-3">
-                    <div className="text-green-400 font-semibold text-sm">RESULT:</div>
+                  <div className="bg-cyan-500/20 border border-cyan-500/30 rounded-lg p-3">
+                    <div className="text-cyan-400 font-semibold text-sm">RESULT:</div>
                     <div className="text-white font-bold">{testimonial.results}</div>
                   </div>
                 </div>
@@ -649,40 +642,40 @@ export default function ForBusinessPage() {
       {/* Final CTA Section */}
       <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="bg-gradient-to-r from-green-500/20 to-blue-600/20 backdrop-blur-md rounded-3xl border border-white/20 p-12 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
+          <div className="bg-gradient-to-r from-cyan-500/20 to-blue-600/20 backdrop-blur-md rounded-3xl border border-white/20 p-12 relative overflow-hidden group">
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl"></div>
             
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 relative z-10">
-              Stop Losing Customers to Competitors
+              Don't Let Customers Think You're Closed
             </h2>
             <p className="text-xl text-white/70 mb-10 max-w-3xl mx-auto relative z-10">
-              Every day you wait is another day your competitors are attracting YOUR potential customers. 
-              Start your TrueFlow journey today - no experience required.
+              When customers can't find you online, they assume you're not in business anymore. 
+              Let us help you show up professionally where your customers are looking.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 relative z-10 mb-8">
-              <Link href="/get-started" className="bg-gradient-to-r from-green-500 to-blue-600 text-white px-12 py-6 rounded-full text-2xl font-semibold hover:scale-110 hover:shadow-xl hover:shadow-green-500/30 transition-all duration-300 relative overflow-hidden group/btn">
-                <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-blue-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative z-10">Start My Free Trial</span>
+              <Link href="/get-started" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-12 py-6 rounded-full text-2xl font-semibold hover:scale-110 hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 relative overflow-hidden group/btn">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10">Start with Free Consultation</span>
               </Link>
               <div className="text-white/60 text-center">
-                <div className="text-sm">No setup fees • Cancel anytime</div>
-                <div className="text-sm">14-day money-back guarantee</div>
+                <div className="text-sm">No app downloads • Personal phone support</div>
+                <div className="text-sm">We set up everything for you</div>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-6 text-center relative z-10">
               <div>
-                <div className="text-2xl font-bold text-green-400">2 Minutes</div>
-                <div className="text-white/60 text-sm">To record content</div>
+                <div className="text-2xl font-bold text-cyan-400">5 Minutes</div>
+                <div className="text-white/60 text-sm">Phone consultation</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-blue-400">5 Minutes</div>
-                <div className="text-white/60 text-sm">To set up everything</div>
+                <div className="text-2xl font-bold text-blue-400">Zero</div>
+                <div className="text-white/60 text-sm">Technical work for you</div>
               </div>
               <div>
-                <div className="text-2xl font-bold text-purple-400">24/7</div>
-                <div className="text-white/60 text-sm">Automated posting</div>
+                <div className="text-2xl font-bold text-pink-400">Always</div>
+                <div className="text-white/60 text-sm">Human support available</div>
               </div>
             </div>
           </div>
@@ -704,7 +697,7 @@ export default function ForBusinessPage() {
                 />
               </div>
               <p className="text-white/70 mb-6 max-w-md">
-                The easiest way for business owners to create professional social media content that brings in real customers.
+                Simple social media for established businesses. No technical knowledge required - we handle everything for you.
               </p>
             </div>
             
