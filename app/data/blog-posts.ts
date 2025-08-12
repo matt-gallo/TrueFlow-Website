@@ -68,7 +68,10 @@ export const tags: Record<string, Tag> = {
   'api': { name: 'API', slug: 'api' },
   'integration': { name: 'Integration', slug: 'integration' },
   'security': { name: 'Security', slug: 'security' },
-  'compliance': { name: 'Compliance', slug: 'compliance' }
+  'compliance': { name: 'Compliance', slug: 'compliance' },
+  'ethics': { name: 'Ethics', slug: 'ethics' },
+  'job-market': { name: 'Job Market', slug: 'job-market' },
+  'future-of-work': { name: 'Future of Work', slug: 'future-of-work' }
 }
 
 // Tag color palette mapping
@@ -117,11 +120,164 @@ export const tagColorPalettes: Record<string, string> = {
   'api': 'from-gray-600 to-slate-800',
   'integration': 'from-amber-600 to-red-700',
   'security': 'from-red-700 to-gray-900',
-  'compliance': 'from-gray-700 to-blue-900'
+  'compliance': 'from-gray-700 to-blue-900',
+  'ethics': 'from-emerald-600 to-cyan-700',
+  'job-market': 'from-indigo-600 to-blue-700',
+  'future-of-work': 'from-violet-600 to-indigo-700'
 }
 
 // Blog Posts
 export const blogPosts: BlogPost[] = [
+  {
+    id: '6',
+    slug: 'ai-ethics-and-entry-level-jobs',
+    title: 'The AI Paradox: How We\'re Both Creating and Destroying Entry-Level Opportunities',
+    excerpt: 'A nuanced look at AI\'s dual impact on the job market - why we must embrace ethical AI practices while protecting human opportunity and growth.',
+    content: `
+# The AI Paradox: How We're Both Creating and Destroying Entry-Level Opportunities
+
+**Let's talk about the elephant in the server room.**
+
+AI is reshaping the job market faster than we can update our LinkedIn profiles. And if you're early in your career - or trying to break into tech - you're feeling it.
+
+I'm Griffin Rutherford, and I've spent the last few years deep in AI implementation. What I'm seeing keeps me up at night, but also gives me hope. Let me share both sides of this story.
+
+## The Uncomfortable Truth
+
+**We're automating away the ladder many of us climbed.**
+
+Those entry-level data entry jobs? Gone. Basic coding tasks? Automated. First-tier customer support? AI handles it now.
+
+I recently watched an AI system do in 30 seconds what took me 3 hours as a junior developer. That's progress, right? But it's also a 22-year-old's internship that no longer exists.
+
+### What We're Losing:
+
+**1. The Learning Ground**
+Entry-level jobs aren't just about the work - they're classrooms. Where do you learn office politics, client communication, and problem-solving if your first job requires 5 years of experience?
+
+**2. The Human Touch Points**
+Every customer service rep replaced by AI is one less person learning empathy, patience, and human connection in a professional setting.
+
+**3. The Experimentation Space**
+Junior roles let you fail safely. Make mistakes. Learn. Grow. AI doesn't need that space, but humans do.
+
+## The Hidden Opportunities
+
+**But here's what the doom-scrollers miss:**
+
+AI isn't just taking jobs - it's creating entirely new categories of work. And some of these favor newcomers over veterans.
+
+### The New Entry Points:
+
+**1. AI Translators**
+Companies need people who can bridge the gap between AI capabilities and human needs. You don't need 10 years of experience - you need curiosity and communication skills.
+
+**2. Ethical AI Auditors**
+Someone needs to ensure AI systems aren't biased, harmful, or creepy. Fresh perspectives from diverse backgrounds are invaluable here.
+
+**3. Human-AI Collaboration Specialists**
+Teaching others how to work WITH AI, not against it. The 23-year-old who grew up with technology might understand this better than the 50-year-old executive.
+
+**4. Prompt Engineers and AI Trainers**
+The ability to communicate with AI effectively is becoming a superpower. And guess what? It's a skill anyone can develop, regardless of traditional experience.
+
+## The Ethical Imperative
+
+**Here's where I get on my soapbox.**
+
+Those of us building and implementing AI have a responsibility. We're not just optimizing processes - we're shaping the future of work.
+
+### What Ethical AI Implementation Looks Like:
+
+**1. The 80/20 Rule**
+Automate 80% of repetitive tasks, but preserve 20% for human learning and development. Yes, it's less efficient. It's also more human.
+
+**2. Apprenticeship Integration**
+Every AI system should have a human apprentice component. Let juniors work alongside AI, learning from both the technology and senior team members.
+
+**3. Reskilling Before Replacing**
+Before automating a role, offer training for affected employees. Transform your receptionist into an AI coordinator. Evolution, not extinction.
+
+**4. Transparent Transition Periods**
+Give people time. "Your job will be automated in 18 months, here's your training budget and career counseling support." That's ethical AI.
+
+## The Path Forward for Job Seekers
+
+**If you're entering the job market, here's your playbook:**
+
+### 1. Become AI-Fluent, Not AI-Dependent
+Learn to use AI tools, but more importantly, understand their limitations. Be the human who knows when AI is wrong.
+
+### 2. Develop Uniquely Human Skills
+Creativity, emotional intelligence, ethical reasoning, complex problem-solving. These aren't just buzzwords - they're your competitive advantage.
+
+### 3. Create Your Own Entry Level
+Start a project. Build something. Use AI to amplify your capabilities, then showcase what YOU brought to the table.
+
+### 4. Focus on Judgment Over Execution
+AI can write code, but can it decide WHAT to build? AI can analyze data, but can it ask the right questions? That's where you come in.
+
+## The Responsibility We Share
+
+**To my fellow technologists:**
+Every line of code we write that automates a job is a decision about someone's livelihood. Code responsibly.
+
+**To business leaders:**
+Efficiency isn't everything. The junior employee you don't hire today is the senior leader you won't have tomorrow.
+
+**To educators:**
+The curriculum that worked for 20 years might be obsolete. Teach adaptation, not just information.
+
+**To job seekers:**
+Don't fight AI - dance with it. Your value isn't in competing with machines, it's in doing what they can't.
+
+## My Personal Commitment
+
+At TrueFlow, we're committed to ethical AI implementation. That means:
+
+- **Always maintaining human oversight roles**
+- **Creating apprenticeship opportunities within our AI systems**
+- **Being transparent about what we automate and why**
+- **Supporting reskilling initiatives for displaced workers**
+- **Building AI that amplifies human capability, not replaces it**
+
+## The Bottom Line
+
+AI is a tool. Like fire, it can cook your food or burn down your house. The difference is in how we wield it.
+
+We're at a crossroads. We can build AI that creates a two-tier society - those who own the algorithms and those displaced by them. Or we can build AI that elevates everyone, creating new opportunities while preserving human dignity and growth.
+
+The choice is ours. And we're making it right now, one implementation at a time.
+
+**The future isn't about humans versus AI. It's about humans with AI, building a world where technology serves humanity, not the other way around.**
+
+What side of history will you code for?
+
+---
+
+*Griffin Rutherford is the Lead AI Implementation Engineer at TrueFlow AI. When not wrestling with ethical AI dilemmas, he's trail running in the Rockies or hosting the Malestrum podcast, exploring what it means to be human in an increasingly automated world.*
+
+**Let's continue this conversation.** How is AI affecting your industry? What opportunities and challenges are you seeing? Drop me a line at griffin@trueflow.ai
+`,
+    date: '2025-08-11',
+    author: authors['griffin-rutherford'],
+    category: categories.growth,
+    tags: [tags['ai-tools'], tags['ethics'], tags['job-market'], tags['future-of-work'], tags['workflow-automation']],
+    primaryTag: tags['ethics'],
+    readTime: 8,
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&h=630&fit=crop',
+      alt: 'Human and AI hands reaching toward each other',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: 'The AI Paradox: Creating and Destroying Entry-Level Jobs | Griffin Rutherford',
+      metaDescription: 'A nuanced take on AI\'s impact on entry-level jobs. Learn how to implement AI ethically while preserving human opportunity and growth.',
+      keywords: ['AI ethics', 'job market', 'entry-level jobs', 'future of work', 'ethical AI', 'AI implementation', 'career advice', 'automation impact']
+    },
+    published: true
+  },
   {
     id: '5',
     slug: '3-overlooked-ai-workflows-your-business-needs',
