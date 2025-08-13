@@ -737,7 +737,7 @@ export default function LandingPage() {
             </h1>
             
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
-              Transform your voice into powerful content and automate your entire business. 
+              Automate your entire business. 
               AI-powered content creation, lead management, customer support, and compliance monitoring in one platform.
             </p>
 
