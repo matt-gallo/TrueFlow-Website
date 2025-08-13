@@ -138,7 +138,7 @@ export default function PrivacyPolicy() {
             </p>
             <div className="mt-4">
               <p><strong>TrueFlow AI</strong></p>
-              <p>Email: privacy@trueflow.ai</p>
+              <p>Email: matt@trueflow.ai</p>
               <p>Website: www.trueflow.ai</p>
             </div>
           </section>
@@ -177,7 +177,7 @@ export default function PrivacyPolicy() {
             <div>
               <h4 className="text-white font-semibold mb-4">Contact</h4>
               <ul className="space-y-2">
-                <li><a href="mailto:hello@trueflow.ai" className="text-white/60 hover:text-white text-sm">hello@trueflow.ai</a></li>
+                <li><a href="mailto:matt@trueflow.ai" className="text-white/60 hover:text-white text-sm">matt@trueflow.ai</a></li>
               </ul>
             </div>
           </div>
