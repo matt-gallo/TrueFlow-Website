@@ -670,7 +670,7 @@ export default function LandingPage() {
             <div className="hidden md:flex items-center space-x-6">
               <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Home</a>
               <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Content Engine</Link>
-              <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link>
+              {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link> */}
               <a href="#features" className="text-white/70 hover:text-white transition-colors text-sm">Features</a>
               <a href="#how-it-works" className="text-white/70 hover:text-white transition-colors text-sm">How it Works</a>
               <a href="#testimonials" className="text-white/70 hover:text-white transition-colors text-sm">Success Stories</a>
@@ -700,7 +700,7 @@ export default function LandingPage() {
             <div className="px-4 py-6 space-y-4">
               <a href="#" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Home</a>
               <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Content Engine</Link>
-              <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link>
+              {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
               <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Features</a>
               <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">How it Works</a>
               <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Success Stories</a>

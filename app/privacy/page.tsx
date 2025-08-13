@@ -1,27 +1,27 @@
-import { Header } from '../components/Header'
-import { Footer } from '../components/Footer'
+import Navigation from '../components/Navigation'
+import Link from 'next/link'
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-white">
-      <Header />
+    <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/20 to-black">
+      <Navigation />
       
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Privacy Policy</h1>
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
+        <h1 className="text-4xl font-bold text-white mb-8">Privacy Policy</h1>
         
-        <div className="prose prose-lg max-w-none text-gray-600">
-          <p className="text-sm text-gray-500 mb-8">Last updated: January 13, 2025</p>
+        <div className="prose prose-lg max-w-none text-white/80">
+          <p className="text-sm text-white/60 mb-8">Last updated: January 13, 2025</p>
           
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Introduction</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">1. Introduction</h2>
             <p>
               TrueFlow AI ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Information We Collect</h2>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Personal Information</h3>
+            <h2 className="text-2xl font-semibold text-white mb-4">2. Information We Collect</h2>
+            <h3 className="text-xl font-semibold text-white/90 mb-2">Personal Information</h3>
             <p>We may collect personal information that you provide directly to us, such as:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>Name and contact information (email address, phone number)</li>
@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
               <li>Communications you send to us</li>
             </ul>
             
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">Automatically Collected Information</h3>
+            <h3 className="text-xl font-semibold text-white/90 mb-2">Automatically Collected Information</h3>
             <p>When you use our services, we automatically collect certain information, including:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>IP address and device information</li>
@@ -43,7 +43,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. How We Use Your Information</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">3. How We Use Your Information</h2>
             <p>We use the information we collect to:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>Provide, maintain, and improve our services</li>
@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Information Sharing and Disclosure</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">4. Information Sharing and Disclosure</h2>
             <p>We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:</p>
             <ul className="list-disc ml-6 mb-4">
               <li><strong>Service Providers:</strong> With third-party vendors who perform services on our behalf</li>
@@ -70,21 +70,21 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Data Security</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">5. Data Security</h2>
             <p>
               We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Data Retention</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">6. Data Retention</h2>
             <p>
               We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Your Rights and Choices</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">7. Your Rights and Choices</h2>
             <p>You have the right to:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>Access and receive a copy of your personal information</li>
@@ -97,42 +97,42 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. Cookies and Tracking Technologies</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">8. Cookies and Tracking Technologies</h2>
             <p>
               We use cookies and similar tracking technologies to track activity on our website and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. Third-Party Links</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">9. Third-Party Links</h2>
             <p>
               Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">10. Children's Privacy</h2>
             <p>
               Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children under 18.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">11. International Data Transfers</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">11. International Data Transfers</h2>
             <p>
               Your information may be transferred to and maintained on servers located outside of your jurisdiction. By using our services, you consent to such transfers.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">12. Changes to This Privacy Policy</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">12. Changes to This Privacy Policy</h2>
             <p>
               We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">13. Contact Us</h2>
+            <h2 className="text-2xl font-semibold text-white mb-4">13. Contact Us</h2>
             <p>
               If you have any questions about this Privacy Policy, please contact us at:
             </p>
@@ -145,7 +145,48 @@ export default function PrivacyPolicy() {
         </div>
       </main>
       
-      <Footer />
+      {/* Footer */}
+      <footer className="bg-black/80 backdrop-blur-md border-t border-white/10 py-16 px-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <h4 className="text-white font-semibold mb-4">TrueFlow AI</h4>
+              <p className="text-white/60 text-sm">
+                Your AI-powered digital assistant for business growth.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Product</h4>
+              <ul className="space-y-2">
+                {/* <li><Link href="/for-business" className="text-white/60 hover:text-white text-sm">For Business</Link></li> */}
+                <li><Link href="/content-engine" className="text-white/60 hover:text-white text-sm">Content Engine</Link></li>
+                <li><Link href="/faq" className="text-white/60 hover:text-white text-sm">FAQ</Link></li>
+                <li><Link href="/blog" className="text-white/60 hover:text-white text-sm">Blog</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Legal</h4>
+              <ul className="space-y-2">
+                <li><Link href="/privacy" className="text-white/60 hover:text-white text-sm">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-white/60 hover:text-white text-sm">Terms of Service</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-white font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2">
+                <li><a href="mailto:hello@trueflow.ai" className="text-white/60 hover:text-white text-sm">hello@trueflow.ai</a></li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-12 pt-8 border-t border-white/10 text-center">
+            <p className="text-white/50 text-sm">&copy; 2025 TrueFlow AI. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
