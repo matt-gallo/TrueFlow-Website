@@ -5,20 +5,20 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'TrueFlow AI - Transform Your Voice Into Powerful Content',
-  description: 'The most intelligent content creation system available. Transform your voice into powerful email campaigns and blogs with AI-powered automation.',
-  keywords: 'AI content creation, voice to text, email campaigns, blog generation, content automation, TrueFlow',
+  title: 'TrueFlow AI - Streamline. Scale. Succeed.',
+  description: 'Your all-in-one business operations command center. One platform. Total control over content creation, lead management, customer support, and compliance monitoring.',
+  keywords: 'business automation, AI platform, operations center, content creation, lead management, customer support, compliance, TrueFlow',
   authors: [{ name: 'TrueFlow AI' }],
   openGraph: {
-    title: 'TrueFlow AI - Transform Your Voice Into Powerful Content',
-    description: 'The most intelligent content creation system available. Transform your voice into powerful email campaigns and blogs.',
+    title: 'TrueFlow AI - Streamline. Scale. Succeed.',
+    description: 'Your all-in-one business operations command center. One platform. Total control.',
     type: 'website',
     siteName: 'TrueFlow AI',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TrueFlow AI - Transform Your Voice Into Powerful Content',
-    description: 'The most intelligent content creation system available. Transform your voice into powerful email campaigns and blogs.',
+    title: 'TrueFlow AI - Streamline. Scale. Succeed.',
+    description: 'Your all-in-one business operations command center. One platform. Total control.',
   },
 }
 
