@@ -737,8 +737,8 @@ export default function LandingPage() {
             </h1>
             
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
-              Automate your entire business. 
-              AI-powered content creation, lead management, customer support, and compliance monitoring in one platform.
+              Streamline. Scale. Succeed. 
+              One platform. Total control.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
