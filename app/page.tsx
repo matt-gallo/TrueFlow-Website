@@ -2127,8 +2127,8 @@ export default function LandingPage() {
               © 2025 TrueFlow™️ AI, LLC. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link href="/coming-soon" className="text-white/40 hover:text-white/60 transition-colors text-sm">Terms</Link>
-              <Link href="/coming-soon" className="text-white/40 hover:text-white/60 transition-colors text-sm">Privacy Policy</Link>
+              <Link href="/terms" className="text-white/40 hover:text-white/60 transition-colors text-sm">Terms</Link>
+              <Link href="/privacy" className="text-white/40 hover:text-white/60 transition-colors text-sm">Privacy Policy</Link>
             </div>
           </div>
         </div>
