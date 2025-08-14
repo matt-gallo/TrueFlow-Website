@@ -8,13 +8,13 @@ interface AuthorBioProps {
 export default function AuthorBio({ author }: AuthorBioProps) {
   return (
     <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/10">
-      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-        <h3 className="text-xl font-semibold text-white mb-6">About the Author</h3>
+      <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl shadow-white/5">
+        <h3 className="text-xl font-semibold text-white mb-6 px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg inline-block">About the Author</h3>
         
         <div className="flex flex-col sm:flex-row gap-6">
           {/* Avatar */}
           <div className="flex-shrink-0">
-            <div className="w-24 h-24 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
+            <div className="w-24 h-24 rounded-full overflow-hidden bg-white/15 backdrop-blur-md border-2 border-white/25 flex items-center justify-center text-white text-2xl font-bold shadow-xl">
               {author.avatar ? (
                 <Image
                   src={author.avatar}
@@ -29,12 +29,12 @@ export default function AuthorBio({ author }: AuthorBioProps) {
             </div>
           </div>
           
-          {/* Bio */}
-          <div className="flex-1">
+          {/* Bio with enhanced frosted glass */}
+          <div className="flex-1 bg-white/5 backdrop-blur-lg border border-white/15 rounded-xl p-6">
             <h4 className="text-2xl font-semibold text-white mb-1">{author.name}</h4>
-            <p className="text-blue-400 mb-4">{author.role}</p>
+            <p className="text-blue-300 mb-4 font-medium">{author.role}</p>
             {author.bio && (
-              <p className="text-white/70 leading-relaxed">{author.bio}</p>
+              <p className="text-white/80 leading-relaxed">{author.bio}</p>
             )}
             
             {/* Social Links - Coming Soon */}

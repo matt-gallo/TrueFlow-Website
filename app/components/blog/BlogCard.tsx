@@ -42,11 +42,46 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
 
         {/* Content */}
         <div className={`p-6 ${featured ? 'lg:p-8' : ''}`}>
+          {/* Tags with frosted glass effect */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {post.tags.map((tag, index) => (
+              <span 
+                key={index}
+                className="px-3 py-1 text-xs font-medium text-white/90 bg-white/10 backdrop-blur-md border border-white/20 rounded-full"
+              >
+                #{tag.name}
+              </span>
+            ))}
+          </div>
+
+          {/* Title with enhanced frosted glass effect */}
+          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl p-4 mb-4">
+            <h3 className={`${featured ? 'text-2xl lg:text-3xl' : 'text-xl'} font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors`}>
+              {post.title}
+            </h3>
+            
+            {/* Author info */}
+            <div className="flex items-center gap-3 pt-2 border-t border-white/10">
+              <span className="text-sm font-medium text-white/80">
+                {post.author.name}
+              </span>
+              {post.author.role && (
+                <>
+                  <span className="text-white/30">•</span>
+                  <span className="text-xs text-white/60">
+                    {post.author.role}
+                  </span>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Date and read time */}
           <div className="flex items-center gap-4 text-sm text-white/60 mb-3">
             <span className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
               {new Date(post.date).toLocaleDateString('en-US', {
-                month: 'short',
+                month: 'long',
                 day: 'numeric',
                 year: 'numeric'
               })}
@@ -57,18 +92,11 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             </span>
           </div>
 
-          <h3 className={`${featured ? 'text-2xl lg:text-3xl' : 'text-xl'} font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors`}>
-            {post.title}
-          </h3>
-
           <p className={`text-white/70 mb-4 ${featured ? 'lg:text-lg' : ''} line-clamp-3`}>
             {post.excerpt}
           </p>
 
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-white/60">
-              By {post.author.name}
-            </span>
+          <div className="flex items-center justify-end">
             <span className="text-blue-400 group-hover:translate-x-1 transition-transform">
               <ArrowRight className="h-5 w-5" />
             </span>

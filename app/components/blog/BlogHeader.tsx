@@ -72,35 +72,33 @@ export default function BlogHeader({ post }: BlogHeaderProps) {
 
       {/* Content */}
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32">
-        <div className="bg-black/60 backdrop-blur-md rounded-2xl p-8 border border-white/10">
-          {/* Category & Tags */}
+        <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl shadow-white/5">
+          {/* Category & Tags with enhanced frosted glass */}
           <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span className="relative bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-1 rounded-full text-sm font-medium hover:shadow-neon-blue transition-all duration-300 hover:scale-105">
+            <span className="relative bg-white/15 backdrop-blur-md border border-white/25 text-white px-4 py-1.5 rounded-full text-sm font-medium hover:bg-white/20 transition-all duration-300 hover:scale-105 shadow-lg">
               {post.category.name}
             </span>
             {post.tags.slice(0, 3).map((tag, index) => (
               <span 
                 key={tag.slug} 
-                className={`relative px-3 py-1 rounded-full text-sm transition-all duration-300 hover:scale-105 ${
-                  index === 0 ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-300 hover:from-cyan-500/30 hover:to-blue-500/30 hover:shadow-neon-cyan' :
-                  index === 1 ? 'bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-purple-300 hover:from-purple-500/30 hover:to-pink-500/30 hover:shadow-neon-purple' :
-                  'bg-gradient-to-r from-orange-500/20 to-red-500/20 text-orange-300 hover:from-orange-500/30 hover:to-red-500/30 hover:shadow-neon-orange'
-                }`}
+                className="px-3 py-1.5 rounded-full text-sm transition-all duration-300 hover:scale-105 bg-white/10 backdrop-blur-md border border-white/20 text-white/90 hover:bg-white/15 shadow-md"
               >
                 #{tag.name}
               </span>
             ))}
           </div>
 
-          {/* Title with animated gradient */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent animate-gradient-x bg-300%">
-            {post.title}
-          </h1>
+          {/* Title with enhanced frosted glass container */}
+          <div className="bg-white/5 backdrop-blur-lg border border-white/15 rounded-xl p-6 mb-6 shadow-xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white">
+              {post.title}
+            </h1>
+          </div>
 
-          {/* Meta Info */}
-          <div className="flex flex-wrap items-center gap-6 text-white/70">
+          {/* Meta Info with frosted glass background */}
+          <div className="flex flex-wrap items-center gap-6 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg p-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center text-white text-xs font-bold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 transition-shadow duration-300">
+              <div className="w-10 h-10 rounded-full overflow-hidden bg-white/20 backdrop-blur-sm border border-white/30 flex items-center justify-center text-white text-xs font-bold shadow-lg">
                 {post.author.avatar ? (
                   <Image
                     src={post.author.avatar}
@@ -115,7 +113,7 @@ export default function BlogHeader({ post }: BlogHeaderProps) {
               </div>
               <div>
                 <p className="text-white font-medium">{post.author.name}</p>
-                <p className="text-sm">{post.author.role}</p>
+                <p className="text-sm text-white/70">{post.author.role}</p>
               </div>
             </div>
             
