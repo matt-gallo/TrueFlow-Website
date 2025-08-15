@@ -235,15 +235,19 @@ This late August launch is just the beginning. We're starting with blog posts an
 - Facebook updates
 
 **Phase 3 (Q1 2026):**
-- Full CRM integration
+- CRM foundation with contact management
 - Automated lead nurturing sequences
 - Dynamic content personalization
+- Pipeline tracking and deal management
 - Performance analytics and optimization
 
 **Phase 4 (Q2 2026):**
-- Complete marketing automation suite
-- Competitive with GoHighLevel and HubSpot
-- But powered by your voice, not templates
+- Complete CRM platform rivaling GoHighLevel and HubSpot
+- Full customer relationship management suite
+- Sales pipeline automation
+- Customer journey mapping
+- Multi-channel campaign orchestration
+- All powered by your voice, not generic templates
 
 ## Who This Is For
 
