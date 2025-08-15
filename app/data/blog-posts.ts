@@ -268,6 +268,8 @@ We're opening limited early access spots for the late August launch. Beta users 
 - Receive white-glove onboarding support
 - Access features before general release
 
+<a href="/get-started" style="display: inline-block; background: linear-gradient(to right, #3b82f6, #9333ea); color: white; padding: 10px 24px; border-radius: 9999px; font-weight: 600; text-decoration: none; margin-top: 16px;">Join Beta Program →</a>
+
 ## The Philosophy Behind It All
 
 At TrueFlow, we believe technology should amplify human potential, not replace it. The Content Engine doesn't write generic content - it extracts and amplifies YOUR unique value.
@@ -288,7 +290,7 @@ The Content Engine is our answer.
 
 Join our early access list and be among the first to experience the future of content creation. Limited spots available for our late August launch.
 
-[Get Early Access →]
+<a href="/get-started" style="display: inline-block; background: linear-gradient(to right, #3b82f6, #9333ea); color: white; padding: 12px 32px; border-radius: 9999px; font-weight: 600; text-decoration: none; margin-top: 16px;">Get Early Access →</a>
 
 ---
 
