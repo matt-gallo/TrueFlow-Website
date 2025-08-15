@@ -129,6 +129,210 @@ export const tagColorPalettes: Record<string, string> = {
 // Blog Posts
 export const blogPosts: BlogPost[] = [
   {
+    id: '7',
+    slug: 'introducing-trueflow-content-engine',
+    title: 'Introducing TrueFlow Content Engine: Your Voice-Powered Content Operating System',
+    excerpt: 'Transform conversations into 6-8 weeks of strategic content with our AI-powered engine that listens, learns, and creates authentic marketing materials from your unique voice.',
+    content: `
+# Introducing TrueFlow Content Engine: Your Voice-Powered Content Operating System
+
+**The future of content creation isn't typing - it's talking.**
+
+I'm Griffin Rutherford, Lead AI Implementation Engineer at TrueFlow, and I'm thrilled to share what we've been building behind the scenes. After months of development and testing, we're launching something that fundamentally changes how businesses create content.
+
+## The Problem We're Solving
+
+Let's be honest - content creation is broken for most businesses.
+
+You know you need to publish regularly. You know your audience wants to hear from you. But between running your business, serving clients, and managing operations, who has time to sit down and write?
+
+Even worse, when you finally do create content, it often feels forced. Generic. Like it could have been written by anyone, for anyone.
+
+**Your expertise is trapped in your head, and traditional content creation tools aren't designed to extract it.**
+
+## Enter the Content Engine
+
+The TrueFlow Content Engine is what we call a "voice-powered content operating system." But what does that actually mean?
+
+Imagine having a conversation with an AI that:
+- **Listens** to your natural speaking voice
+- **Learns** from your answers and expertise
+- **Remembers** context from previous responses
+- **Generates** 6-8 weeks of authentic content
+
+No typing. No staring at blank pages. Just talking about what you know best - your business.
+
+## How It Works
+
+### Phase 1: The Discovery Conversation
+
+We start with a guided conversation. Not a rigid questionnaire, but an adaptive dialogue that evolves based on your responses.
+
+Our AI asks about:
+- Your unique value proposition
+- Customer pain points you solve
+- Success stories and case studies
+- Industry insights and perspectives
+- Your company's mission and values
+
+But here's the magic - each answer influences the next question. If you mention a specific challenge your customers face, we dig deeper. If you share a unique methodology, we explore it further.
+
+**It's like having a skilled interviewer who actually understands your business.**
+
+### Phase 2: Content Generation
+
+From a single 30-45 minute conversation, our engine generates:
+
+**Blog Posts** - Full-length articles (1,500-2,500 words) that sound like you wrote them. Because in a way, you did.
+
+**Email Newsletters** - Weekly updates that nurture your list without feeling salesy or automated.
+
+Each piece is:
+- SEO-optimized without sacrificing readability
+- Structured for engagement and conversion
+- Infused with your unique voice and perspective
+- Ready to publish or easy to customize
+
+### Phase 3: Strategic Deployment
+
+Content without strategy is just noise. That's why every piece fits into a larger narrative:
+
+- **Week 1-2**: Establish authority with foundational content
+- **Week 3-4**: Address specific pain points and objections  
+- **Week 5-6**: Share transformation stories and case studies
+- **Week 7-8**: Drive action with clear next steps
+
+## What Makes This Different
+
+### 1. Voice-First Design
+
+We built this for people who think better out loud. If you can explain your business to a friend over coffee, you can create professional content with our engine.
+
+### 2. Contextual Intelligence
+
+Our AI doesn't just transcribe - it understands. It identifies themes, recognizes patterns, and maintains consistency across all content pieces.
+
+### 3. Authentic Output
+
+This isn't generic AI content. Every piece reflects your:
+- Industry expertise
+- Communication style
+- Business philosophy
+- Unique perspectives
+
+### 4. Efficiency at Scale
+
+One conversation. Dozens of content pieces. Weeks of marketing material. The math is simple, but the impact is transformative.
+
+## Coming Soon: The Full Ecosystem
+
+This late August launch is just the beginning. We're starting with blog posts and email newsletters because they're the foundation of content marketing. But our roadmap is ambitious:
+
+**Phase 2 (Q4 2025):**
+- LinkedIn posts and articles
+- Instagram captions and stories
+- Twitter/X threads
+- Facebook updates
+
+**Phase 3 (Q1 2026):**
+- Full CRM integration
+- Automated lead nurturing sequences
+- Dynamic content personalization
+- Performance analytics and optimization
+
+**Phase 4 (Q2 2026):**
+- Complete marketing automation suite
+- Competitive with GoHighLevel and HubSpot
+- But powered by your voice, not templates
+
+## Who This Is For
+
+The Content Engine is perfect for:
+
+**Consultants & Coaches** who have deep expertise but struggle to consistently share it
+
+**Service Professionals** who need to stay top-of-mind without becoming full-time marketers
+
+**Small Business Owners** who wear too many hats to add "content creator" to the list
+
+**Thought Leaders** who want to scale their message without losing authenticity
+
+**B2B Companies** that need to demonstrate expertise and build trust
+
+## Early Access & Beta Program
+
+We're opening limited early access spots for the late August launch. Beta users will:
+
+- Get 50% off for life
+- Shape product development with direct feedback
+- Receive white-glove onboarding support
+- Access features before general release
+
+## The Philosophy Behind It All
+
+At TrueFlow, we believe technology should amplify human potential, not replace it. The Content Engine doesn't write generic content - it extracts and amplifies YOUR unique value.
+
+Your voice. Your expertise. Your perspective. Just packaged and published at scale.
+
+Because in a world drowning in AI-generated noise, authentic expertise stands out more than ever.
+
+## What's Next?
+
+The marketing landscape is changing. Businesses that adapt will thrive. Those that don't will disappear into the noise.
+
+The question isn't whether to create content - it's how to create it efficiently while maintaining authenticity.
+
+The Content Engine is our answer.
+
+**Ready to transform how you create content?**
+
+Join our early access list and be among the first to experience the future of content creation. Limited spots available for our late August launch.
+
+[Get Early Access →]
+
+---
+
+*Griffin Rutherford is the Lead AI Implementation Engineer at TrueFlow. When he's not building the future of content creation, you'll find him trail running in the Rockies or exploring the intersection of technology and human potential on the Malestrum podcast.*
+`,
+    author: authors['griffin-rutherford'],
+    date: '2025-08-15',
+    readTime: '7 min read',
+    category: categories.automation,
+    tags: [
+      tags['voice-to-content'],
+      tags['content-strategy'],
+      tags['ai-tools'],
+      tags['email-marketing'],
+      tags['business-blogging'],
+      tags['workflow-automation'],
+      tags['productivity'],
+      tags['small-business'],
+      tags['saas']
+    ],
+    featuredImage: {
+      url: '/blog/content-engine-interface.png',
+      alt: 'TrueFlow Content Engine Voice-Powered Interface with customizable settings for content generation'
+    },
+    published: true,
+    featured: true,
+    seo: {
+      metaTitle: 'TrueFlow Content Engine: Voice-Powered Content Creation | Launch Announcement',
+      metaDescription: 'Discover how TrueFlow\'s Content Engine transforms conversations into 6-8 weeks of strategic content. Blog posts and newsletters from your voice. Launching late August 2025.',
+      keywords: [
+        'content engine',
+        'voice to content',
+        'AI content creation',
+        'content automation',
+        'blog automation',
+        'email marketing automation',
+        'TrueFlow',
+        'content operating system',
+        'marketing automation',
+        'voice powered content'
+      ]
+    }
+  },
+  {
     id: '6',
     slug: 'ai-ethics-and-entry-level-jobs',
     title: 'The AI Paradox: How We\'re Both Creating and Destroying Entry-Level Opportunities',

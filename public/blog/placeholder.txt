@@ -1,0 +1,4 @@
+This directory should contain:
+- content-engine-interface.png (the Content Engine UI screenshot)
+
+Please save your screenshot here with the filename: content-engine-interface.png
