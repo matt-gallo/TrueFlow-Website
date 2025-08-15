@@ -296,7 +296,7 @@ Join our early access list and be among the first to experience the future of co
 `,
     author: authors['griffin-rutherford'],
     date: '2025-08-15',
-    readTime: '7 min read',
+    readTime: 7,
     category: categories.automation,
     tags: [
       tags['voice-to-content'],
@@ -314,7 +314,6 @@ Join our early access list and be among the first to experience the future of co
       alt: 'TrueFlow Content Engine Voice-Powered Interface with customizable settings for content generation'
     },
     published: true,
-    featured: true,
     seo: {
       metaTitle: 'TrueFlow Content Engine: Voice-Powered Content Creation | Launch Announcement',
       metaDescription: 'Discover how TrueFlow\'s Content Engine transforms conversations into 6-8 weeks of strategic content. Blog posts and newsletters from your voice. Launching late August 2025.',
