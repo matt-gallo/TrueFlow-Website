@@ -8,6 +8,7 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { getPublishedPosts, tagColorPalettes } from '@/app/data/blog-posts'
 import type { BlogPost } from '@/app/types/blog'
 import './animations.css'
@@ -232,6 +233,13 @@ function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
 }
 
 export default function LandingPage() {
+  const router = useRouter()
+  
+  // TEMPORARY REDIRECT - Remove after weekend
+  useEffect(() => {
+    router.push('/get-started')
+  }, [router])
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [activeFeature, setActiveFeature] = useState(0)
