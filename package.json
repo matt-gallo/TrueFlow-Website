@@ -31,6 +31,8 @@
     "debug-fields": "tsx scripts/debug-field-mapping.ts"
   },
   "dependencies": {
+    "@supabase/auth-helpers-nextjs": "^0.10.0",
+    "@supabase/supabase-js": "^2.56.0",
     "axios": "^1.11.0",
     "colors": "^1.4.0",
     "dotenv": "^17.2.1",

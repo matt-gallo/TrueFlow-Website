@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
+import { authService } from '@/lib/services/auth-service'
 import { 
   ArrowLeft,
   ArrowRight,
@@ -66,6 +67,7 @@ interface ContactInfo {
   email: string
   phone?: string
   businessName?: string
+  password?: string
 }
 
 interface Plan {
@@ -170,7 +172,8 @@ const stepDefinitions = [
   { id: 2, name: 'Business Profile & Goals', description: 'Tell us about your business and content goals' },
   { id: 3, name: 'Current Practices', description: 'How you currently operate' },
   { id: 4, name: 'Resources', description: 'Your time and budget' },
-  { id: 5, name: 'Results & Plan', description: 'Your AI readiness score and plan selection' }
+  { id: 5, name: 'Results & Plan', description: 'Your AI readiness score and plan selection' },
+  { id: 6, name: 'Create Account', description: 'Set up your TrueFlow account' }
 ]
 
 export default function ReadinessAssessment() {
@@ -187,11 +190,13 @@ export default function ReadinessAssessment() {
     lastName: '',
     email: '',
     phone: '',
-    businessName: ''
+    businessName: '',
+    password: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [mounted, setMounted] = useState(false)
+  const [showVerificationMessage, setShowVerificationMessage] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [particles, setParticles] = useState<Particle[]>([])
@@ -653,7 +658,39 @@ export default function ReadinessAssessment() {
       return
     }
 
+    // Validate password
+    if (!contactInfo.password || contactInfo.password.length < 6) {
+      setSubmitError('Password must be at least 6 characters long')
+      setIsSubmitting(false)
+      return
+    }
+
     try {
+      // First, create the Supabase account
+      const signUpResult = await authService.signUp({
+        email: contactInfo.email,
+        password: contactInfo.password!,
+        fullName: `${contactInfo.firstName} ${contactInfo.lastName}`,
+        company: contactInfo.businessName,
+        phone: contactInfo.phone,
+        businessType: businessTypes.find(type => type.id === selectedBusinessType)?.title || selectedBusinessType,
+        contentGoals,
+        integrations,
+        selectedPlan: selectedPlan === 'not-sure' ? 'Not Sure Yet' : plans.find(plan => plan.id === selectedPlan)?.name || selectedPlan
+      })
+
+      if (!signUpResult.success) {
+        // Check if it's a user already exists error
+        if (signUpResult.error?.includes('already registered')) {
+          setSubmitError('An account with this email already exists. Please sign in or use a different email.')
+        } else {
+          setSubmitError(signUpResult.error || 'Failed to create account. Please try again.')
+        }
+        setIsSubmitting(false)
+        return
+      }
+
+      // Continue with existing GHL and email notification logic
       const score = calculateScore()
       const recommendation = getRecommendation(score)
       const businessType = businessTypes.find(type => type.id === selectedBusinessType)?.title || selectedBusinessType
@@ -869,15 +906,18 @@ export default function ReadinessAssessment() {
 
         <main className="pt-64 sm:pt-48 pb-20 px-4">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="w-24 h-24 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-8">
-              <CheckCircle className="h-12 w-12 text-white" />
+            <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
+              <Mail className="h-12 w-12 text-white" />
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Welcome to TrueFlow AI!
+              Check Your Email to Verify Your Account
             </h1>
-            <p className="text-xl text-white/70 mb-12 max-w-2xl mx-auto">
-              Your account is being set up. You'll receive an email with next steps and your first voice recording instructions.
+            <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+              We've sent a verification email to <strong className="text-white">{contactInfo.email}</strong>
+            </p>
+            <p className="text-lg text-white/60 mb-12 max-w-2xl mx-auto">
+              Please click the verification link in your email to activate your TrueFlow account. Once verified, you can sign in to access your dashboard and start creating AI-powered content.
             </p>
 
             <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 p-8 mb-12 max-w-2xl mx-auto">
@@ -914,12 +954,25 @@ export default function ReadinessAssessment() {
             </div>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-4 rounded-full text-lg font-semibold flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5" />
-                <span>Check Your Email for Next Steps</span>
-              </div>
-              <Link href="/" className="text-white/70 hover:text-white transition-colors underline text-sm">
-                Return to Home
+              <button
+                onClick={async () => {
+                  const result = await authService.resendVerificationEmail(contactInfo.email)
+                  if (result.success) {
+                    alert('Verification email resent! Please check your inbox.')
+                  } else {
+                    alert('Failed to resend email. Please try again.')
+                  }
+                }}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center space-x-2"
+              >
+                <Mail className="h-5 w-5" />
+                <span>Resend Verification Email</span>
+              </button>
+              <Link 
+                href={`${process.env.NEXT_PUBLIC_APP_URL}/auth/signin`}
+                className="text-white/70 hover:text-white transition-colors underline text-sm"
+              >
+                Already verified? Sign In
               </Link>
             </div>
 
@@ -1472,6 +1525,7 @@ export default function ReadinessAssessment() {
           )}
 
           {/* Step 5: Results & Plan Selection */}
+          {/* Step 5: Select Your Plan */}
           {currentStep === 5 && (
             <div className="space-y-8">
               <div className="text-center mb-8">
@@ -1655,26 +1709,151 @@ export default function ReadinessAssessment() {
                 </button>
 
                 <button
-                  onClick={handleSubmit}
-                  disabled={!selectedPlan || isSubmitting}
+                  onClick={handleNext}
+                  disabled={!selectedPlan}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
-                    selectedPlan && !isSubmitting
+                    selectedPlan
                       ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
-                  {isSubmitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
-                      <span>Submitting...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Complete Setup</span>
-                      <ArrowRight className="h-5 w-5" />
-                    </>
-                  )}
+                  <span>Continue to Create Account</span>
+                  <ArrowRight className="h-5 w-5" />
                 </button>
+              </div>
+            </div>
+          )}
+
+          {/* Step 6: Create Your Account */}
+          {currentStep === 6 && (
+            <div className="space-y-8">
+              <div className="text-center mb-8">
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                  Create Your TrueFlow Account
+                </h1>
+                <p className="text-white/70 text-lg">
+                  Confirm your information and set a password to complete your account setup
+                </p>
+              </div>
+
+              {/* Account Creation Form */}
+              <div className="max-w-2xl mx-auto">
+                <div className="bg-white/5 rounded-2xl p-8 border border-white/10 space-y-6">
+                  {/* Show selected plan */}
+                  <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-xl p-4 border border-blue-500/30">
+                    <p className="text-white/70 text-sm mb-1">Selected Plan</p>
+                    <p className="text-white font-semibold text-lg">
+                      {selectedPlan === 'not-sure' 
+                        ? 'Not Sure Yet - We\'ll help you decide' 
+                        : plans.find(p => p.id === selectedPlan)?.name || selectedPlan}
+                    </p>
+                  </div>
+
+                  {/* Editable Name Fields */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-left text-white/80 mb-2">First Name *</label>
+                      <input
+                        type="text"
+                        value={contactInfo.firstName}
+                        onChange={(e) => setContactInfo(prev => ({ ...prev, firstName: e.target.value }))}
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
+                        placeholder="Enter your first name"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-left text-white/80 mb-2">Last Name *</label>
+                      <input
+                        type="text"
+                        value={contactInfo.lastName}
+                        onChange={(e) => setContactInfo(prev => ({ ...prev, lastName: e.target.value }))}
+                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
+                        placeholder="Enter your last name"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Editable Email Field */}
+                  <div>
+                    <label className="block text-left text-white/80 mb-2">Email Address *</label>
+                    <input
+                      type="email"
+                      value={contactInfo.email}
+                      onChange={(e) => setContactInfo(prev => ({ ...prev, email: e.target.value }))}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
+                      placeholder="Enter your email address"
+                    />
+                  </div>
+
+                  {/* Password Field */}
+                  <div>
+                    <label className="block text-left text-white/80 mb-2">Create Password *</label>
+                    <input
+                      type="password"
+                      value={contactInfo.password}
+                      onChange={(e) => setContactInfo(prev => ({ ...prev, password: e.target.value }))}
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
+                      placeholder="Create a secure password (min 6 characters)"
+                      minLength={6}
+                    />
+                    <p className="text-white/50 text-sm mt-2">
+                      You'll use this password to sign in to your TrueFlow dashboard
+                    </p>
+                  </div>
+
+                  {/* Terms and Privacy */}
+                  <div className="text-white/60 text-sm">
+                    By creating an account, you agree to our{' '}
+                    <Link href="/terms" className="text-blue-400 hover:text-blue-300 underline">
+                      Terms of Service
+                    </Link>{' '}
+                    and{' '}
+                    <Link href="/privacy" className="text-blue-400 hover:text-blue-300 underline">
+                      Privacy Policy
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Error Message */}
+                {submitError && (
+                  <div className="mt-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+                    <p className="text-red-400">{submitError}</p>
+                  </div>
+                )}
+
+                {/* Action Buttons */}
+                <div className="flex justify-between items-center mt-8">
+                  <button
+                    onClick={handlePrevious}
+                    disabled={isSubmitting}
+                    className="flex items-center px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <ArrowLeft className="h-5 w-5 mr-2" />
+                    Back to Plans
+                  </button>
+
+                  <button
+                    onClick={handleSubmit}
+                    disabled={!contactInfo.firstName || !contactInfo.lastName || !contactInfo.email || !contactInfo.password || contactInfo.password.length < 6 || isSubmitting}
+                    className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
+                      contactInfo.firstName && contactInfo.lastName && contactInfo.email && contactInfo.password && contactInfo.password.length >= 6 && !isSubmitting
+                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
+                        : 'bg-white/10 text-white/50 cursor-not-allowed'
+                    }`}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                        <span>Creating Account...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Create Account & Continue</span>
+                        <ArrowRight className="h-5 w-5" />
+                      </>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
           )}
