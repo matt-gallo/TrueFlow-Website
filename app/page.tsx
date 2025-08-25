@@ -235,10 +235,6 @@ function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
 export default function LandingPage() {
   const router = useRouter()
   
-  // TEMPORARY REDIRECT - Remove after weekend
-  useEffect(() => {
-    router.push('/get-started')
-  }, [router])
   
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
