@@ -1,26 +1,15 @@
 'use client'
 
-import { Calendar, Clock, Share2, Twitter, Linkedin, Facebook } from 'lucide-react'
+import { Calendar, Clock } from 'lucide-react'
 import type { BlogPost } from '@/app/types/blog'
-import { useState } from 'react'
 import Image from 'next/image'
+import SocialShare from './SocialShare'
 
 interface BlogHeaderProps {
   post: BlogPost
 }
 
 export default function BlogHeader({ post }: BlogHeaderProps) {
-  const [showShareMenu, setShowShareMenu] = useState(false)
-
-  const shareUrl = typeof window !== 'undefined' ? window.location.href : ''
-  const shareTitle = post.title
-
-  const shareLinks = {
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareTitle)}&url=${encodeURIComponent(shareUrl)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`
-  }
-
   return (
     <header className="relative">
       {/* Hero Background */}
@@ -131,48 +120,12 @@ export default function BlogHeader({ post }: BlogHeaderProps) {
               {post.readTime} min read
             </span>
 
-            {/* Share Button - Coming Soon */}
-            {/* <div className="relative ml-auto">
-              <button
-                onClick={() => setShowShareMenu(!showShareMenu)}
-                className="flex items-center gap-2 text-white/70 hover:text-white transition-all duration-300 hover:scale-105 px-4 py-2 rounded-full hover:bg-white/10"
-              >
-                <Share2 className="h-4 w-4 hover:rotate-12 transition-transform duration-300" />
-                Share
-              </button>
-              
-              {showShareMenu && (
-                <div className="absolute right-0 mt-2 bg-black/90 backdrop-blur-md rounded-lg border border-white/20 p-2 z-10">
-                  <a
-                    href={shareLinks.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 rounded transition-colors"
-                  >
-                    <Twitter className="h-4 w-4" />
-                    Twitter
-                  </a>
-                  <a
-                    href={shareLinks.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 rounded transition-colors"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                    LinkedIn
-                  </a>
-                  <a
-                    href={shareLinks.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 hover:bg-white/10 rounded transition-colors"
-                  >
-                    <Facebook className="h-4 w-4" />
-                    Facebook
-                  </a>
-                </div>
-              )}
-            </div> */}
+            {/* Share Button */}
+            <SocialShare 
+              title={post.title}
+              excerpt={post.excerpt}
+              className="ml-auto"
+            />
           </div>
         </div>
       </div>

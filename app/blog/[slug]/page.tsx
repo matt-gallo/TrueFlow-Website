@@ -4,6 +4,7 @@ import BlogHeader from '@/app/components/blog/BlogHeader'
 import BlogContent from '@/app/components/blog/BlogContent'
 import AuthorBio from '@/app/components/blog/AuthorBio'
 import RelatedPosts from '@/app/components/blog/RelatedPosts'
+import SocialShare from '@/app/components/blog/SocialShare'
 import Link from 'next/link'
 import Image from 'next/image'
 import Navigation from '@/app/components/Navigation'
@@ -76,8 +77,33 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         <article>
           <BlogHeader post={post} />
           <BlogContent content={post.content} />
+          
+          {/* Share Section at Bottom of Article */}
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-6">
+              <div className="text-center mb-4">
+                <h3 className="text-lg font-semibold text-white mb-2">Enjoyed this article?</h3>
+                <p className="text-white/60 text-sm">Share it with your network</p>
+              </div>
+              <SocialShare 
+                title={post.title}
+                excerpt={post.excerpt}
+                variant="compact"
+                className="justify-center"
+              />
+            </div>
+          </div>
+          
           <AuthorBio author={post.author} />
         </article>
+
+        {/* Floating Share Buttons */}
+        <SocialShare 
+          title={post.title}
+          excerpt={post.excerpt}
+          variant="floating"
+          className="hidden lg:block"
+        />
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (

@@ -1,6 +1,9 @@
+'use client'
+
 import Link from 'next/link'
-import { Calendar, Clock, ArrowRight } from 'lucide-react'
+import { Calendar, Clock, ArrowRight, Share2 } from 'lucide-react'
 import type { BlogPost } from '@/app/types/blog'
+import SocialShare from './SocialShare'
 
 interface BlogCardProps {
   post: BlogPost
@@ -96,7 +99,16 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
             {post.excerpt}
           </p>
 
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-between">
+            <div onClick={(e) => e.preventDefault()}>
+              <SocialShare 
+                title={post.title}
+                url={`https://trueflow.ai/blog/${post.slug}`}
+                excerpt={post.excerpt}
+                variant="compact"
+                className="opacity-70 hover:opacity-100 transition-opacity"
+              />
+            </div>
             <span className="text-blue-400 group-hover:translate-x-1 transition-transform">
               <ArrowRight className="h-5 w-5" />
             </span>

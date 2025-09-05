@@ -26,6 +26,7 @@ export function Footer() {
             <ul className="space-y-2">
               {/* <li><Link href="/for-business" className="text-white/60 hover:text-white text-sm">For Business</Link></li> */}
               <li><Link href="/content-engine" className="text-white/60 hover:text-white text-sm">Content Engine</Link></li>
+              <li><Link href="/api-docs" className="text-white/60 hover:text-white text-sm">API Documentation</Link></li>
               <li><Link href="/faq" className="text-white/60 hover:text-white text-sm">FAQ</Link></li>
               <li><Link href="/blog" className="text-white/60 hover:text-white text-sm">Blog</Link></li>
             </ul>
