@@ -744,6 +744,19 @@ export default function ApiDocsPage() {
         </div>
       </header>
       
+      {/* Development Notice Banner */}
+      <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-y border-yellow-500/30">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex items-center gap-3">
+            <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
+            <p className="text-yellow-100 text-sm md:text-base">
+              <span className="font-semibold">Note:</span> The TrueFlow API is currently in development and not yet available for external use or private integrations. 
+              It is currently operational for backend services only. Full public API access is coming soon!
+            </p>
+          </div>
+        </div>
+      </div>
+      
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">

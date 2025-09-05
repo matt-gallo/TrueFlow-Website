@@ -2101,7 +2101,7 @@ export default function LandingPage() {
               <ul className="space-y-2">
                 <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Features</Link></li>
                 <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Pricing</Link></li>
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">API</Link></li>
+                <li><Link href="/api-docs" className="text-white/60 hover:text-white transition-colors text-sm">API</Link></li>
                 <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Integrations</Link></li>
               </ul>
             </div>

@@ -682,7 +682,7 @@ export default function FAQPage() {
               <div className="space-y-2">
                 <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Features</Link>
                 <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Pricing</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">API</Link>
+                <Link href="/api-docs" className="block text-white/70 hover:text-white transition-colors">API</Link>
                 <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Integrations</Link>
               </div>
             </div>
