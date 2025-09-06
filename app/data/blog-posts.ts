@@ -1443,7 +1443,7 @@ Ready to start training? Your Content Engine awaits.
 `,
     author: authors['griffin-rutherford'],
     date: '2025-01-10',
-    readingTime: '10 min read',
+    readTime: 10,
     category: categories.growth,
     tags: [
       tags['ai-tools'],
@@ -1453,45 +1453,24 @@ Ready to start training? Your Content Engine awaits.
       tags['scaling']
     ],
     primaryTag: tags['productivity'],
-    image: {
-      url: '/blog/fitness-software-parallels.jpg',
-      alt: 'Split image showing code on one side and gym equipment on the other, representing the parallels between fitness and software development'
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?w=1200&h=630&fit=crop',
+      alt: 'Split image showing code on one side and gym equipment on the other, representing the parallels between fitness and software development',
+      width: 1200,
+      height: 630
     },
-    featured: false,
     seo: {
       metaTitle: 'Building Strength, Building Software: Fitness Parallels in AI Development | TrueFlow',
       metaDescription: 'Discover how principles from weightlifting and running apply to building AI systems. Learn why progressive overload, consistency, and proper form matter in software development.',
-      ogImage: {
-        url: '/blog/fitness-software-parallels-og.jpg',
-        width: 1200,
-        height: 630
-      },
-      twitterCard: 'summary_large_image',
-      canonicalUrl: 'https://trueflow.ai/blog/building-strength-building-software-parallels',
-      schema: {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        headline: 'Building Strength, Building Software: The Unexpected Parallels Between Fitness and the TrueFlow Content Engine',
-        author: {
-          '@type': 'Person',
-          name: 'Griffin Rutherford'
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'TrueFlow AI'
-        },
-        datePublished: '2025-01-10',
-        description: 'An exploration of how fitness principles like progressive overload apply to building AI systems and content engines.',
-        keywords: [
-          'AI development',
-          'fitness and technology',
-          'progressive overload',
-          'content engine',
-          'software development philosophy',
-          'productivity',
-          'workflow automation'
-        ]
-      }
+      keywords: [
+        'AI development',
+        'fitness and technology',
+        'progressive overload',
+        'content engine',
+        'software development philosophy',
+        'productivity',
+        'workflow automation'
+      ]
     },
     published: true
   }
