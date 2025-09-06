@@ -1442,7 +1442,7 @@ Ready to start training? Your Content Engine awaits.
 *Griffin Rutherford is Lead AI Implementation Engineer at TrueFlow. When he's not building AI systems, you'll find him on Colorado trails or in the gym, always seeking that perfect balance between human potential and technological capability. Follow his journey at [@griffinrutherford](https://x.com/griffinrutherford) or tune into the Malestrum podcast where he explores the intersection of technology, fitness, and human optimization.*
 `,
     author: authors['griffin-rutherford'],
-    date: '2025-01-10',
+    date: '2025-09-05',
     readTime: 10,
     category: categories.growth,
     tags: [
