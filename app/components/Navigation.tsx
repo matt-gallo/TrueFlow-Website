@@ -56,6 +56,7 @@ export default function Navigation() {
                 <a href="#testimonials" className="text-white/70 hover:text-white transition-colors">Success Stories</a>
                 <a href="#blog" className="text-white/70 hover:text-white transition-colors">Blog</a>
                 <Link href="/faq" className="text-white/70 hover:text-white transition-colors">FAQs</Link>
+                {/* Changelog link */}
                 <a 
                   href="https://app.trueflow.ai/changelog" 
                   className="text-white/70 hover:text-white transition-colors"
