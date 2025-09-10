@@ -871,19 +871,19 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Content Engine Preview Section */}
+      {/* AI Application Preview Section */}
       <section className="py-16 sm:py-20 px-4 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
             <div className="inline-block bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-md rounded-full px-6 py-3 border border-purple-500/30 mb-6">
-              <span className="text-purple-300 text-sm font-medium">See It In Action</span>
+              <span className="text-purple-300 text-sm font-medium">Proprietary Technology</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              The Content Engine Interface
+              Our AI-Powered Business OS
             </h2>
             <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto">
-              Transform your voice into professional content across all platforms with our intuitive AI-powered system
+              Experience the future of business automation with our proprietary AI application that learns, adapts, and grows with your company
             </p>
           </div>
 
@@ -907,21 +907,21 @@ export default function LandingPage() {
               <div className="absolute top-1/4 left-4 sm:left-8 lg:left-16 bg-purple-500/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse">
                 <span className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-white rounded-full"></div>
-                  Voice-Powered Input
+                  AI-Driven Intelligence
                 </span>
               </div>
               
               <div className="absolute top-1/2 right-4 sm:right-8 lg:right-16 bg-blue-500/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse" style={{ animationDelay: '1s' }}>
                 <span className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-white rounded-full"></div>
-                  6-8 Weeks of Content
+                  Unified Dashboard
                 </span>
               </div>
               
               <div className="absolute bottom-1/4 left-4 sm:left-8 lg:left-16 bg-cyan-500/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse" style={{ animationDelay: '2s' }}>
                 <span className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-white rounded-full"></div>
-                  Multi-Platform Publishing
+                  Full Business Automation
                 </span>
               </div>
             </div>
@@ -930,36 +930,36 @@ export default function LandingPage() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
               <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-purple-500/30 transition-all">
                 <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-                  <Mic className="w-6 h-6 text-white" />
+                  <Brain className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">Speak Naturally</h3>
-                <p className="text-white/60 text-sm">Just talk about your business - no typing required</p>
+                <h3 className="text-white font-semibold mb-2">Intelligent Automation</h3>
+                <p className="text-white/60 text-sm">Proprietary AI that learns your business patterns and automates workflows</p>
               </div>
               
               <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-blue-500/30 transition-all">
                 <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
-                  <Brain className="w-6 h-6 text-white" />
+                  <Globe className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">AI Processing</h3>
-                <p className="text-white/60 text-sm">Our AI understands context and creates authentic content</p>
+                <h3 className="text-white font-semibold mb-2">Unified Platform</h3>
+                <p className="text-white/60 text-sm">All your business tools integrated in one powerful ecosystem</p>
               </div>
               
               <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-cyan-500/30 transition-all">
                 <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-green-500 rounded-lg flex items-center justify-center mb-4">
-                  <Calendar className="w-6 h-6 text-white" />
+                  <Zap className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">Content Calendar</h3>
-                <p className="text-white/60 text-sm">Get weeks of scheduled content from one conversation</p>
+                <h3 className="text-white font-semibold mb-2">Real-Time Insights</h3>
+                <p className="text-white/60 text-sm">Advanced analytics and predictive insights powered by machine learning</p>
               </div>
             </div>
 
             {/* CTA Button */}
             <div className="text-center mt-12">
               <Link 
-                href="/content-engine" 
+                href="/get-started" 
                 className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
               >
-                Explore Content Engine
+                Experience TrueFlow AI
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
