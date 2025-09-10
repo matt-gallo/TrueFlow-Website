@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Navigation from '../components/Navigation'
 import { 
   ChevronDown, 
   ChevronRight, 
@@ -718,34 +719,12 @@ export default function ApiDocsPage() {
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-900/20 via-gray-900 to-blue-900/20">
-      {/* Header */}
-      <header className="border-b border-white/10 backdrop-blur-xl bg-black/40">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-3">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-lg blur-md" />
-                <div className="relative bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-lg">
-                  <Globe className="w-5 h-5 text-white" />
-                </div>
-              </div>
-              <span className="text-xl font-semibold text-white">TrueFlow API</span>
-            </Link>
-            
-            <div className="flex items-center gap-4">
-              <Link href="https://app.trueflow.ai" className="text-white/60 hover:text-white">
-                Dashboard
-              </Link>
-              <Link href="/" className="text-white/60 hover:text-white">
-                Home
-              </Link>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Navigation />
       
-      {/* Development Notice Banner */}
-      <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-y border-yellow-500/30">
+      {/* Add padding to account for fixed navigation */}
+      <div className="pt-24">
+        {/* Development Notice Banner */}
+        <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border-y border-yellow-500/30">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center gap-3">
             <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
@@ -1007,6 +986,7 @@ widgets = client.widgets.list()`} />
           </p>
         </div>
       </footer>
+      </div>
     </div>
   )
 }
