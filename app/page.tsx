@@ -927,13 +927,13 @@ export default function LandingPage() {
 
             {/* CTA Button */}
             <div className="text-center mt-8">
-              <button 
-                onClick={() => window.open('https://app.trueflow.ai', '_blank')}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all cursor-pointer"
+              <Link 
+                href="/get-started"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
               >
-                See It Live
+                Get Started
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
