@@ -113,8 +113,34 @@ If errors occur:
 - It should always run independently on port 3001
 - Do not merge with the main app's dev server
 
+## Supabase SQL Instructions
+
+**IMPORTANT**: SQL code cannot be executed directly from this codebase.
+
+When working with database changes:
+
+1. **Creating SQL Files**: You can create .sql files in this project for documentation purposes
+2. **Manual Execution Required**: Any SQL code MUST be manually copied and executed in:
+   - Supabase Dashboard → SQL Editor
+   - Direct database connection tools
+3. **Documentation**: Always document SQL changes in a file like `supabase/migrations/` or `database/schema.sql`
+4. **User Instructions**: When SQL changes are needed, always inform the user:
+   - "This SQL code needs to be manually executed in your Supabase SQL Editor"
+   - Provide clear instructions on where to run the SQL
+   - Include any necessary order of execution
+
+Example workflow:
+```
+1. Claude creates: /supabase/migrations/001_create_tables.sql
+2. User copies the SQL content
+3. User pastes into Supabase Dashboard → SQL Editor
+4. User executes the SQL manually
+```
+
+**Note**: This codebase currently uses only Supabase Auth (auth.users table) with user_metadata storage. No custom tables are currently required.
+
 ---
 
-**Last Updated**: 2025-07-23
-**Version**: 1.0.0
+**Last Updated**: 2025-01-10
+**Version**: 1.1.0
 **Auto-read**: This file is automatically read by Claude Code at session start
