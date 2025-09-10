@@ -928,10 +928,8 @@ export default function LandingPage() {
             {/* CTA Button */}
             <div className="text-center mt-8">
               <a 
-                href="https://app.trueflow.ai/login" 
+                href="https://app.trueflow.ai" 
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 See It Live
                 <ArrowRight className="w-4 h-4" />
