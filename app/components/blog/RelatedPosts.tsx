@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Calendar, Clock, ArrowRight } from 'lucide-react'
+import { Calendar, Clock, ArrowRight, ArrowLeft } from 'lucide-react'
 import type { BlogPost } from '@/app/types/blog'
 import { tagColorPalettes } from '@/app/data/blog-posts'
 import Image from 'next/image'
@@ -128,6 +128,17 @@ export default function RelatedPosts({ posts, currentPostId }: RelatedPostsProps
             </Link>
           )
         })}
+      </div>
+      
+      {/* Back to Blog link */}
+      <div className="mt-12 text-center">
+        <Link 
+          href="/blog"
+          className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors group"
+        >
+          <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+          <span className="text-lg font-medium">Back to Blog Home</span>
+        </Link>
       </div>
     </section>
   )
