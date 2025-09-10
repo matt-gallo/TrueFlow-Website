@@ -56,16 +56,16 @@ export default function Navigation() {
                 <a href="#testimonials" className="text-white/70 hover:text-white transition-colors">Success Stories</a>
                 <a href="#blog" className="text-white/70 hover:text-white transition-colors">Blog</a>
                 <Link href="/faq" className="text-white/70 hover:text-white transition-colors">FAQs</Link>
+                <a 
+                  href="https://app.trueflow.ai/changelog" 
+                  className="text-white/70 hover:text-white transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Changelog
+                </a>
               </>
             )}
-            <a 
-              href="https://app.trueflow.ai/changelog" 
-              className="text-white/70 hover:text-white transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Changelog
-            </a>
             <a 
               href="https://app.trueflow.ai/login" 
               className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-sm font-semibold"
@@ -129,17 +129,17 @@ export default function Navigation() {
             >
               FAQs
             </Link>
-            <a 
-              href="https://app.trueflow.ai/changelog" 
-              onClick={handleLinkClick}
-              className="block text-white/70 hover:text-white transition-colors text-lg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Changelog
-            </a>
             {pathname === '/' && (
               <>
+                <a 
+                  href="https://app.trueflow.ai/changelog" 
+                  onClick={handleLinkClick}
+                  className="block text-white/70 hover:text-white transition-colors text-lg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Changelog
+                </a>
                 <a 
                   href="#features" 
                   onClick={handleLinkClick}
