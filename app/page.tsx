@@ -877,7 +877,7 @@ export default function LandingPage() {
           {/* Section Header - More Concise */}
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
-              Proprietary AI Technology
+              AI Business OS
             </h2>
             <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
               One platform. Total automation. AI that grows with you.
@@ -927,13 +927,15 @@ export default function LandingPage() {
 
             {/* CTA Button */}
             <div className="text-center mt-8">
-              <Link 
-                href="/get-started" 
+              <a 
+                href="https://app.trueflow.ai/login" 
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 See It Live
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
             </div>
           </div>
         </div>
