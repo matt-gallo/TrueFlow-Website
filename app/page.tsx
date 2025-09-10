@@ -687,6 +687,13 @@ export default function LandingPage() {
                 {isCoreSystemOpen && (
                   <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl overflow-hidden">
                     <a 
+                      href="#why-trueflow" 
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Why TrueFlow?
+                    </a>
+                    <a 
                       href="#features" 
                       onClick={() => setIsCoreSystemOpen(false)}
                       className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
@@ -740,6 +747,7 @@ export default function LandingPage() {
               {/* Core System Section */}
               <div className="space-y-2">
                 <div className="text-white font-semibold text-lg mb-2">Core System</div>
+                <a href="#why-trueflow" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Why TrueFlow?</a>
                 <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Features</a>
                 <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">How it Works</a>
                 <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
@@ -977,7 +985,7 @@ export default function LandingPage() {
       </section>
 
       {/* Problem Statement - Storytelling Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden">
+      <section id="why-trueflow" className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
           {/* Story Timeline */}
           <div className="space-y-20 sm:space-y-24 lg:space-y-32">
