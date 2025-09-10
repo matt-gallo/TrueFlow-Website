@@ -872,23 +872,20 @@ export default function LandingPage() {
       </section>
 
       {/* AI Application Preview Section */}
-      <section className="py-16 sm:py-20 px-4 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
+      <section className="py-12 px-4 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <div className="inline-block bg-gradient-to-r from-purple-500/20 to-blue-500/20 backdrop-blur-md rounded-full px-6 py-3 border border-purple-500/30 mb-6">
-              <span className="text-purple-300 text-sm font-medium">Proprietary Technology</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              Our AI-Powered Business OS
+          {/* Section Header - More Concise */}
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+              Proprietary AI Technology
             </h2>
-            <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto">
-              Experience the future of business automation with our proprietary AI application that learns, adapts, and grows with your company
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
+              One platform. Total automation. AI that grows with you.
             </p>
           </div>
 
-          {/* Device Mockup Container */}
-          <div className="relative max-w-4xl mx-auto">
+          {/* Device Mockup Container - Smaller */}
+          <div className="relative max-w-3xl mx-auto">
             {/* Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20 blur-3xl opacity-50"></div>
             
@@ -904,41 +901,38 @@ export default function LandingPage() {
               />
             </div>
 
-            {/* Key Features Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
-              <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-purple-500/30 transition-all">
-                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-4">
-                  <Brain className="w-6 h-6 text-white" />
+            {/* Key Features Grid - Compact */}
+            <div className="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <Brain className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">Intelligent Automation</h3>
-                <p className="text-white/60 text-sm">Proprietary AI that learns your business patterns and automates workflows</p>
+                <h3 className="text-white text-sm font-medium">Smart Automation</h3>
               </div>
               
-              <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-blue-500/30 transition-all">
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-4">
-                  <Globe className="w-6 h-6 text-white" />
+              <div className="text-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <Globe className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">Unified Platform</h3>
-                <p className="text-white/60 text-sm">All your business tools integrated in one powerful ecosystem</p>
+                <h3 className="text-white text-sm font-medium">Unified Platform</h3>
               </div>
               
-              <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10 hover:border-cyan-500/30 transition-all">
-                <div className="w-12 h-12 bg-gradient-to-r from-cyan-500 to-green-500 rounded-lg flex items-center justify-center mb-4">
-                  <Zap className="w-6 h-6 text-white" />
+              <div className="text-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-green-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <Zap className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-white font-semibold mb-2">Real-Time Insights</h3>
-                <p className="text-white/60 text-sm">Advanced analytics and predictive insights powered by machine learning</p>
+                <h3 className="text-white text-sm font-medium">Real-Time AI</h3>
               </div>
             </div>
 
             {/* CTA Button */}
-            <div className="text-center mt-12">
+            <div className="text-center mt-8">
               <Link 
                 href="/get-started" 
-                className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
               >
-                Experience TrueFlow AI
-                <ArrowRight className="w-5 h-5" />
+                See It Live
+                <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
