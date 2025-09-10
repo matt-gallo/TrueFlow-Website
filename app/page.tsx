@@ -714,6 +714,13 @@ export default function LandingPage() {
                     >
                       Success Stories
                     </a>
+                    <a 
+                      href="#integrations" 
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Integrations
+                    </a>
                   </div>
                 )}
               </div>
@@ -751,6 +758,7 @@ export default function LandingPage() {
                 <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Features</a>
                 <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">How it Works</a>
                 <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
+                <a href="#integrations" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Integrations</a>
               </div>
               <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Content Engine</Link>
               {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
@@ -1687,7 +1695,7 @@ export default function LandingPage() {
       </section>
 
       {/* Integrations Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4">
+      <section id="integrations" className="py-16 sm:py-24 lg:py-32 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8">
