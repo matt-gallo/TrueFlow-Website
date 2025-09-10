@@ -888,7 +888,7 @@ export default function LandingPage() {
           </div>
 
           {/* Device Mockup Container */}
-          <div className="relative max-w-6xl mx-auto">
+          <div className="relative max-w-4xl mx-auto">
             {/* Glow Effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20 blur-3xl opacity-50"></div>
             
@@ -896,34 +896,12 @@ export default function LandingPage() {
             <div className="relative">
               <Image
                 src="/content-engine-preview.png"
-                alt="TrueFlow Content Engine interface showing desktop and mobile views with voice recording, content planning modes, and AI-powered content generation"
+                alt="TrueFlow AI Business OS interface showing desktop and mobile views with AI-powered automation and unified dashboard"
                 width={1200}
                 height={675}
                 className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
                 priority
               />
-              
-              {/* Feature Callouts */}
-              <div className="absolute top-1/4 left-4 sm:left-8 lg:left-16 bg-purple-500/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse">
-                <span className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  AI-Driven Intelligence
-                </span>
-              </div>
-              
-              <div className="absolute top-1/2 right-4 sm:right-8 lg:right-16 bg-blue-500/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse" style={{ animationDelay: '1s' }}>
-                <span className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  Unified Dashboard
-                </span>
-              </div>
-              
-              <div className="absolute bottom-1/4 left-4 sm:left-8 lg:left-16 bg-cyan-500/90 backdrop-blur-md text-white px-4 py-2 rounded-full text-sm font-medium animate-pulse" style={{ animationDelay: '2s' }}>
-                <span className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-white rounded-full"></div>
-                  Full Business Automation
-                </span>
-              </div>
             </div>
 
             {/* Key Features Grid */}
