@@ -887,7 +887,7 @@ export default function LandingPage() {
           {/* Device Mockup Container - Smaller */}
           <div className="relative max-w-3xl mx-auto">
             {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20 blur-3xl opacity-50"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-blue-500/20 to-purple-500/20 blur-3xl opacity-50 pointer-events-none"></div>
             
             {/* Main Image Container */}
             <div className="relative">
@@ -926,7 +926,7 @@ export default function LandingPage() {
             </div>
 
             {/* CTA Button */}
-            <div className="text-center mt-8">
+            <div className="text-center mt-8 relative z-10">
               <Link 
                 href="/get-started"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
