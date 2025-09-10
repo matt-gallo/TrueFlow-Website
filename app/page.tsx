@@ -14,6 +14,7 @@ import type { BlogPost } from '@/app/types/blog'
 import './animations.css'
 import { 
   ChevronRight, 
+  ChevronDown,
   Play, 
   Sparkles, 
   Zap, 
@@ -237,6 +238,7 @@ export default function LandingPage() {
   
   
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isCoreSystemOpen, setIsCoreSystemOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [activeFeature, setActiveFeature] = useState(0)
   const [recentBlogPosts, setRecentBlogPosts] = useState<BlogPost[]>([])
@@ -672,12 +674,44 @@ export default function LandingPage() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">Home</a>
+              {/* Core System Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsCoreSystemOpen(!isCoreSystemOpen)}
+                  onBlur={() => setTimeout(() => setIsCoreSystemOpen(false), 200)}
+                  className="flex items-center gap-1 text-white/70 hover:text-white transition-colors text-sm"
+                >
+                  Core System
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isCoreSystemOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isCoreSystemOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl overflow-hidden">
+                    <a 
+                      href="#features" 
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Features
+                    </a>
+                    <a 
+                      href="#how-it-works" 
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      How it Works
+                    </a>
+                    <a 
+                      href="#testimonials" 
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Success Stories
+                    </a>
+                  </div>
+                )}
+              </div>
               <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Content Engine</Link>
               {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link> */}
-              <a href="#features" className="text-white/70 hover:text-white transition-colors text-sm">Features</a>
-              <a href="#how-it-works" className="text-white/70 hover:text-white transition-colors text-sm">How it Works</a>
-              <a href="#testimonials" className="text-white/70 hover:text-white transition-colors text-sm">Success Stories</a>
               <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
               <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">FAQs</Link>
               <a href="https://app.trueflow.ai/changelog" className="text-white/70 hover:text-white transition-colors text-sm" target="_blank" rel="noopener noreferrer">Recent Updates</a>
@@ -703,12 +737,15 @@ export default function LandingPage() {
         {isMenuOpen && (
           <div className="md:hidden bg-black/90 backdrop-blur-xl border-t border-white/10">
             <div className="px-4 py-6 space-y-4">
-              <a href="#" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Home</a>
+              {/* Core System Section */}
+              <div className="space-y-2">
+                <div className="text-white font-semibold text-lg mb-2">Core System</div>
+                <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Features</a>
+                <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">How it Works</a>
+                <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
+              </div>
               <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Content Engine</Link>
               {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
-              <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Features</a>
-              <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">How it Works</a>
-              <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Success Stories</a>
               <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
               <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
               <a href="https://app.trueflow.ai/changelog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg" target="_blank" rel="noopener noreferrer">Recent Updates</a>
