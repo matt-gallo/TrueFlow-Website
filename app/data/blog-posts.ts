@@ -226,7 +226,7 @@ One conversation. Dozens of content pieces. Weeks of marketing material. The mat
 
 ## Coming Soon: The Full Ecosystem
 
-This late August launch is just the beginning. We're starting with blog posts and email newsletters because they're the foundation of content marketing. But our roadmap is ambitious:
+This mid October launch is just the beginning. We're starting with blog posts and email newsletters because they're the foundation of content marketing. But our roadmap is ambitious:
 
 **Phase 2 (Q4 2025):**
 - LinkedIn posts and articles
@@ -263,7 +263,7 @@ The Content Engine is perfect for:
 
 ## Early Access & Beta Program
 
-We're opening limited early access spots for the late August launch. Beta users will:
+We're opening limited early access spots for the mid October launch. Beta users will:
 
 - Get 50% off for life
 - Shape product development with direct feedback
@@ -290,7 +290,7 @@ The Content Engine is our answer.
 
 **Ready to transform how you create content?**
 
-Join our early access list and be among the first to experience the future of content creation. Limited spots available for our late August launch.
+Join our early access list and be among the first to experience the future of content creation. Limited spots available for our mid October launch.
 
 <a href="/get-started" style="display: inline-block; background: linear-gradient(to right, #3b82f6, #9333ea); color: white; padding: 12px 32px; border-radius: 9999px; font-weight: 600; text-decoration: none; margin-top: 16px;">Get Early Access →</a>
 
@@ -320,7 +320,7 @@ Join our early access list and be among the first to experience the future of co
     published: true,
     seo: {
       metaTitle: 'TrueFlow Content Engine: Voice-Powered Content Creation | Launch Announcement',
-      metaDescription: 'Discover how TrueFlow\'s Content Engine transforms conversations into 6-8 weeks of strategic content. Blog posts and newsletters from your voice. Launching late August 2025.',
+      metaDescription: 'Discover how TrueFlow\'s Content Engine transforms conversations into 6-8 weeks of strategic content. Blog posts and newsletters from your voice. Launching mid October 2025.',
       keywords: [
         'content engine',
         'voice to content',
