@@ -43,17 +43,18 @@ export default function BlogContent({ content }: BlogContentProps) {
             return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="relative text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 hover:from-blue-300 hover:to-purple-300">${linkText}</a>`
           }
         })
-        // Headers with gradient text
-        .replace(/^### (.*$)/gim, '<h3 class="text-2xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mt-8 mb-4 hover:from-cyan-300 hover:to-blue-400 transition-all duration-300">$1</h3>')
-        .replace(/^## (.*$)/gim, '<h2 class="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent mt-12 mb-6 hover:from-purple-300 hover:via-pink-400 hover:to-red-400 transition-all duration-300">$1</h2>')
-        .replace(/^# (.*$)/gim, '<h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mt-12 mb-6 animate-gradient-x">$1</h1>')
+        // Headers with gradient text - handle various levels
+        .replace(/^#{4,}\s+(.*$)/gim, '<h4 class="text-xl font-semibold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent mt-6 mb-3 hover:from-green-300 hover:to-blue-400 transition-all duration-300">$1</h4>')
+        .replace(/^###\s+(.*$)/gim, '<h3 class="text-2xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mt-8 mb-4 hover:from-cyan-300 hover:to-blue-400 transition-all duration-300">$1</h3>')
+        .replace(/^##\s+(.*$)/gim, '<h2 class="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent mt-12 mb-6 hover:from-purple-300 hover:via-pink-400 hover:to-red-400 transition-all duration-300">$1</h2>')
+        .replace(/^#\s+(.*$)/gim, '<h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mt-12 mb-6 animate-gradient-x">$1</h1>')
         // Bold with glow effect
         .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-white relative inline-block hover:text-yellow-300 transition-colors duration-200">$1</strong>')
         // Italic
         .replace(/\*([^*]+)\*/g, '<em class="italic text-transparent bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text">$1</em>')
-        // Lists with colorful markers
-        .replace(/^\d+\. (.+)$/gim, '<li class="ml-6 mb-2 list-decimal marker:text-purple-400 hover:marker:text-purple-300 transition-all duration-200">$1</li>')
-        .replace(/^- (.+)$/gim, '<li class="ml-6 mb-2 list-disc marker:text-cyan-400 hover:marker:text-cyan-300 transition-all duration-200">$1</li>')
+        // Lists with colorful markers - process correctly regardless of number
+        .replace(/^\d+\.\s+(.+)$/gim, '<li class="ml-6 mb-2 list-decimal marker:text-purple-400 hover:marker:text-purple-300 transition-all duration-200">$1</li>')
+        .replace(/^-\s+(.+)$/gim, '<li class="ml-6 mb-2 list-disc marker:text-cyan-400 hover:marker:text-cyan-300 transition-all duration-200">$1</li>')
         // Paragraphs
         .replace(/\n\n/g, '</p><p class="text-white/80 leading-relaxed mb-6 hover:text-white/90 transition-colors duration-200">')
         // Code blocks with gradient border
@@ -67,11 +68,13 @@ export default function BlogContent({ content }: BlogContentProps) {
       html = `<p class="text-white/80 leading-relaxed mb-6">${html}</p>`
 
       // Clean up list items by wrapping consecutive ones in ul/ol tags
-      html = html.replace(/(<li class="ml-6 mb-2 list-disc">[\s\S]*?<\/li>\s*)+/g, (match) => {
+      html = html.replace(/(<li class="ml-6 mb-2 list-disc[^>]*>[\s\S]*?<\/li>\s*)+/g, (match) => {
         return `<ul class="mb-6 space-y-2">${match}</ul>`
       })
-      html = html.replace(/(<li class="ml-6 mb-2 list-decimal">[\s\S]*?<\/li>\s*)+/g, (match) => {
-        return `<ol class="mb-6 space-y-2" style="list-style-type: decimal; counter-reset: item;">${match}</ol>`
+      
+      // Handle numbered lists properly
+      html = html.replace(/(<li class="ml-6 mb-2 list-decimal[^>]*>[\s\S]*?<\/li>\s*)+/g, (match) => {
+        return `<ol class="mb-6 space-y-2 list-decimal" style="list-style-type: decimal;">${match}</ol>`
       })
 
       return html
