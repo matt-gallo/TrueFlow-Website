@@ -27,7 +27,7 @@ const tabs = [
         'AI learns your voice and style from the start',
         'Smart templates for different business types'
       ],
-      videoPlaceholder: '/videos/content-engine-step1.mov' // Placeholder path
+      videoPlaceholder: '/videos/step1.mov' // Placeholder path
     }
   },
   {
@@ -44,7 +44,7 @@ const tabs = [
         'AI-generated follow-up questions',
         'Captures expertise and nuance automatically'
       ],
-      videoPlaceholder: '/videos/content-engine-step2.mov'
+      videoPlaceholder: '/videos/step2.mov'
     }
   },
   {
@@ -61,7 +61,7 @@ const tabs = [
         'Highlight key talking points',
         'Save multiple versions'
       ],
-      videoPlaceholder: '/videos/content-engine-step3.mov'
+      videoPlaceholder: '/videos/step3.mov'
     }
   },
   {
@@ -78,7 +78,7 @@ const tabs = [
         'SEO optimization tools',
         'Custom styling and themes'
       ],
-      videoPlaceholder: '/videos/content-engine-step4.mov'
+      videoPlaceholder: '/videos/step4.mov'
     }
   },
   {
@@ -95,7 +95,7 @@ const tabs = [
         'Content category balancing',
         'Campaign planning tools'
       ],
-      videoPlaceholder: '/videos/content-engine-step5.mov'
+      videoPlaceholder: '/videos/step5.mov'
     }
   },
   {
@@ -112,7 +112,7 @@ const tabs = [
         'Bulk scheduling tools',
         'Performance tracking integration'
       ],
-      videoPlaceholder: '/videos/content-engine-step6.mov'
+      videoPlaceholder: '/videos/step6.mov'
     }
   }
 ]
