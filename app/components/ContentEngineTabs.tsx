@@ -265,10 +265,7 @@ export default function ContentEngineTabs() {
                             Step {currentTab.id}: {currentTab.title}
                           </p>
                           <p className="text-white/40 text-xs mt-2">
-                            Interactive demo available in Safari
-                          </p>
-                          <p className="text-white/30 text-xs mt-1">
-                            (MP4 version coming soon for other browsers)
+                            Interactive demo
                           </p>
                         </div>
                       </div>
@@ -294,8 +291,8 @@ export default function ContentEngineTabs() {
                             e.currentTarget.style.display = 'none'
                           }}
                         >
-                          <source src={currentTab.content.videoPlaceholder} type="video/quicktime" />
                           <source src={currentTab.content.videoPlaceholder.replace('.mov', '.mp4')} type="video/mp4" />
+                          <source src={currentTab.content.videoPlaceholder} type="video/quicktime" />
                           <source src={currentTab.content.videoPlaceholder.replace('.mov', '.webm')} type="video/webm" />
                         </video>
                       )}
