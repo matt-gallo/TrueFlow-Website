@@ -124,9 +124,8 @@ export default function ContentEngineTabs() {
   
   // Check if we're in production (Railway) or development
   useEffect(() => {
-    // In production, we'll show animated placeholders for now
-    // Set this to true when you have external video URLs
-    setVideosAvailable(false)
+    // Enable videos - they should work if properly deployed
+    setVideosAvailable(true)
   }, [])
 
   return (
