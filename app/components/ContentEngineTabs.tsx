@@ -243,39 +243,45 @@ export default function ContentEngineTabs() {
                   <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-white/10">
                     {/* Video Player for .mov files */}
                     <div className="aspect-video relative">
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover"
-                        onError={(e) => {
-                          // If video fails to load, show placeholder
-                          e.currentTarget.style.display = 'none'
-                          const placeholder = e.currentTarget.nextElementSibling
-                          if (placeholder) {
-                            placeholder.classList.remove('hidden')
-                          }
-                        }}
-                      >
-                        <source src={currentTab.content.videoPlaceholder} type="video/quicktime" />
-                        <source src={currentTab.content.videoPlaceholder.replace('.mov', '.mp4')} type="video/mp4" />
-                      </video>
-                      
-                      {/* Fallback placeholder if video doesn't exist */}
-                      <div className="hidden absolute inset-0 flex items-center justify-center">
+                      {/* Always show placeholder initially, hide when video loads */}
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-blue-900/30" id={`placeholder-${currentTab.id}`}>
                         <div className="text-center p-8">
                           <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                             <currentTab.icon className="w-10 h-10 text-white" />
                           </div>
                           <p className="text-white/50 text-sm">
-                            Video Preview Coming Soon
+                            Loading Video...
                           </p>
                           <p className="text-white/30 text-xs mt-2">
                             {currentTab.content.videoPlaceholder}
                           </p>
                         </div>
                       </div>
+                      
+                      <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        controls={false}
+                        className="w-full h-full object-cover relative z-10"
+                        onLoadedData={(e) => {
+                          // Hide placeholder when video loads successfully
+                          const placeholder = document.getElementById(`placeholder-${currentTab.id}`)
+                          if (placeholder) {
+                            placeholder.style.display = 'none'
+                          }
+                        }}
+                        onError={(e) => {
+                          // Keep showing placeholder if video fails
+                          console.log('Video failed to load:', currentTab.content.videoPlaceholder)
+                          e.currentTarget.style.display = 'none'
+                        }}
+                      >
+                        <source src={currentTab.content.videoPlaceholder} type="video/quicktime" />
+                        <source src={currentTab.content.videoPlaceholder.replace('.mov', '.mp4')} type="video/mp4" />
+                        <source src={currentTab.content.videoPlaceholder.replace('.mov', '.webm')} type="video/webm" />
+                      </video>
                     </div>
                     
                     {/* Decorative elements */}
