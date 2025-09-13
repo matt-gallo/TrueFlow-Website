@@ -9,6 +9,7 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
+import ContentEngineTabs from '../components/ContentEngineTabs'
 import { 
   ArrowLeft,
   ArrowRight,
@@ -594,6 +595,9 @@ export default function ContentEnginePage() {
           </div>
         </div>
       </section>
+
+      {/* Content Engine Workflow Tabs */}
+      <ContentEngineTabs />
 
       {/* Enhanced AI Workflows Section */}
       <section className="py-20 px-4 bg-white/5" ref={featuresRef}>
