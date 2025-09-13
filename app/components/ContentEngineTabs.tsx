@@ -123,18 +123,18 @@ export default function ContentEngineTabs() {
   const currentTab = tabs.find(tab => tab.id === activeTab)
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section className="py-12 md:py-20 px-4 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black to-black" />
       
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-2"
           >
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Experience the Content Engine Workflow
@@ -144,15 +144,15 @@ export default function ContentEngineTabs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-xl text-white/70 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto px-2"
           >
             Transform your expertise into weeks of content in just 6 simple steps
           </motion.p>
         </div>
 
         {/* Tab Navigation */}
-        <div className="mb-8">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+        <div className="mb-6 md:mb-8 overflow-x-auto">
+          <div className="flex flex-nowrap md:flex-wrap justify-start md:justify-center gap-2 md:gap-4 px-2 md:px-0 min-w-max md:min-w-0">
             {tabs.map((tab, index) => {
               const Icon = tab.icon
               return (
@@ -160,7 +160,7 @@ export default function ContentEngineTabs() {
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={`
-                    relative px-4 py-3 rounded-lg font-medium transition-all duration-300
+                    relative px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium transition-all duration-300 text-sm md:text-base whitespace-nowrap
                     ${activeTab === tab.id 
                       ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/25' 
                       : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white/80'
@@ -169,10 +169,10 @@ export default function ContentEngineTabs() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <div className="flex items-center gap-2">
-                    <Icon className="w-5 h-5" />
-                    <span className="hidden md:inline">{tab.title}</span>
-                    <span className="md:hidden">{tab.shortTitle}</span>
+                  <div className="flex items-center gap-1 md:gap-2">
+                    <Icon className="w-4 h-4 md:w-5 md:h-5" />
+                    <span className="hidden sm:inline md:hidden lg:inline">{tab.title}</span>
+                    <span className="sm:hidden md:inline lg:hidden">{tab.shortTitle}</span>
                   </div>
                   {activeTab === tab.id && (
                     <motion.div
@@ -199,56 +199,56 @@ export default function ContentEngineTabs() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-2xl p-8 md:p-12 border border-white/10"
+              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 border border-white/10"
             >
-              <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
                 {/* Left: Content */}
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-lg">
-                      <currentTab.icon className="w-6 h-6 text-white" />
+                <div className="order-2 md:order-1">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-1.5 sm:p-2 rounded-lg">
+                      <currentTab.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                     </div>
-                    <span className="text-sm font-semibold text-purple-400">
+                    <span className="text-xs sm:text-sm font-semibold text-purple-400">
                       STEP {currentTab.id} OF 6
                     </span>
                   </div>
                   
-                  <h3 className="text-3xl font-bold text-white mb-4">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
                     {currentTab.content.heading}
                   </h3>
                   
-                  <p className="text-white/70 mb-6 text-lg">
+                  <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
                     {currentTab.content.description}
                   </p>
                   
-                  <ul className="space-y-3">
+                  <ul className="space-y-2 sm:space-y-3">
                     {currentTab.content.features.map((feature, index) => (
                       <motion.li
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className="flex items-start gap-3"
+                        className="flex items-start gap-2 sm:gap-3"
                       >
-                        <div className="mt-1">
-                          <div className="w-2 h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
+                        <div className="mt-0.5 sm:mt-1 flex-shrink-0">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
                         </div>
-                        <span className="text-white/80">{feature}</span>
+                        <span className="text-white/80 text-sm sm:text-base">{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
                 </div>
 
                 {/* Right: Video Placeholder */}
-                <div className="relative">
-                  <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-white/10">
+                <div className="relative order-1 md:order-2">
+                  <div className="relative rounded-lg sm:rounded-xl overflow-hidden bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-white/10">
                     {/* Video Player for .mov files */}
                     <div className="aspect-video relative">
                       {/* Always show placeholder - will be hidden if video loads */}
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-blue-900/30" id={`placeholder-${currentTab.id}`}>
                         <div className="text-center p-8">
                           <motion.div 
-                            className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
+                            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-2 sm:mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
                             animate={{ 
                               scale: [1, 1.1, 1],
                               rotate: [0, 5, -5, 0]
@@ -259,12 +259,12 @@ export default function ContentEngineTabs() {
                               repeatType: "reverse"
                             }}
                           >
-                            <currentTab.icon className="w-10 h-10 text-white" />
+                            <currentTab.icon className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
                           </motion.div>
-                          <p className="text-white/60 text-sm font-medium">
+                          <p className="text-white/60 text-xs sm:text-sm font-medium">
                             Step {currentTab.id}: {currentTab.title}
                           </p>
-                          <p className="text-white/40 text-xs mt-2">
+                          <p className="text-white/40 text-xs mt-1 sm:mt-2">
                             Interactive demo
                           </p>
                         </div>
@@ -310,13 +310,13 @@ export default function ContentEngineTabs() {
               </div>
 
               {/* Progress indicator */}
-              <div className="mt-8 pt-8 border-t border-white/10">
-                <div className="flex items-center justify-between">
-                  <div className="flex gap-2">
+              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="flex gap-1 sm:gap-2">
                     {tabs.map((tab) => (
                       <div
                         key={tab.id}
-                        className={`h-1 w-12 rounded-full transition-all duration-300 ${
+                        className={`h-1 w-8 sm:w-10 md:w-12 rounded-full transition-all duration-300 ${
                           tab.id <= activeTab 
                             ? 'bg-gradient-to-r from-blue-400 to-purple-400' 
                             : 'bg-white/20'
@@ -329,10 +329,10 @@ export default function ContentEngineTabs() {
                       if (activeTab < 6) setActiveTab(activeTab + 1)
                       else setActiveTab(1)
                     }}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center gap-2"
+                    className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg text-sm sm:text-base font-medium hover:opacity-90 transition-opacity flex items-center gap-1 sm:gap-2"
                   >
                     {activeTab < 6 ? 'Next Step' : 'Start Over'}
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
                   </button>
                 </div>
               </div>
