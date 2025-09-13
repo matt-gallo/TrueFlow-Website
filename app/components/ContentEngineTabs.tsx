@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ChevronRight, 
@@ -119,7 +119,15 @@ const tabs = [
 
 export default function ContentEngineTabs() {
   const [activeTab, setActiveTab] = useState(1)
+  const [videosAvailable, setVideosAvailable] = useState(false)
   const currentTab = tabs.find(tab => tab.id === activeTab)
+  
+  // Check if we're in production (Railway) or development
+  useEffect(() => {
+    // In production, we'll show animated placeholders for now
+    // Set this to true when you have external video URLs
+    setVideosAvailable(false)
+  }, [])
 
   return (
     <section className="py-20 px-4 relative overflow-hidden">
@@ -246,42 +254,55 @@ export default function ContentEngineTabs() {
                       {/* Always show placeholder initially, hide when video loads */}
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-blue-900/30" id={`placeholder-${currentTab.id}`}>
                         <div className="text-center p-8">
-                          <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                          <motion.div 
+                            className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
+                            animate={{ 
+                              scale: [1, 1.1, 1],
+                              rotate: [0, 5, -5, 0]
+                            }}
+                            transition={{ 
+                              duration: 3,
+                              repeat: Infinity,
+                              repeatType: "reverse"
+                            }}
+                          >
                             <currentTab.icon className="w-10 h-10 text-white" />
-                          </div>
-                          <p className="text-white/50 text-sm">
-                            Loading Video...
+                          </motion.div>
+                          <p className="text-white/60 text-sm font-medium">
+                            Interactive Demo
                           </p>
-                          <p className="text-white/30 text-xs mt-2">
-                            {currentTab.content.videoPlaceholder}
+                          <p className="text-white/40 text-xs mt-2">
+                            Video preview coming soon
                           </p>
                         </div>
                       </div>
                       
-                      <video
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        controls={false}
-                        className="w-full h-full object-cover relative z-10"
-                        onLoadedData={(e) => {
-                          // Hide placeholder when video loads successfully
-                          const placeholder = document.getElementById(`placeholder-${currentTab.id}`)
-                          if (placeholder) {
-                            placeholder.style.display = 'none'
-                          }
-                        }}
-                        onError={(e) => {
-                          // Keep showing placeholder if video fails
-                          console.log('Video failed to load:', currentTab.content.videoPlaceholder)
-                          e.currentTarget.style.display = 'none'
-                        }}
-                      >
-                        <source src={currentTab.content.videoPlaceholder} type="video/quicktime" />
-                        <source src={currentTab.content.videoPlaceholder.replace('.mov', '.mp4')} type="video/mp4" />
-                        <source src={currentTab.content.videoPlaceholder.replace('.mov', '.webm')} type="video/webm" />
-                      </video>
+                      {videosAvailable && (
+                        <video
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          controls={false}
+                          className="w-full h-full object-cover relative z-10"
+                          onLoadedData={(e) => {
+                            // Hide placeholder when video loads successfully
+                            const placeholder = document.getElementById(`placeholder-${currentTab.id}`)
+                            if (placeholder) {
+                              placeholder.style.display = 'none'
+                            }
+                          }}
+                          onError={(e) => {
+                            // Keep showing placeholder if video fails
+                            console.log('Video failed to load:', currentTab.content.videoPlaceholder)
+                            e.currentTarget.style.display = 'none'
+                          }}
+                        >
+                          <source src={currentTab.content.videoPlaceholder} type="video/quicktime" />
+                          <source src={currentTab.content.videoPlaceholder.replace('.mov', '.mp4')} type="video/mp4" />
+                          <source src={currentTab.content.videoPlaceholder.replace('.mov', '.webm')} type="video/webm" />
+                        </video>
+                      )}
                     </div>
                     
                     {/* Decorative elements */}
