@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ChevronRight, 
@@ -119,14 +119,8 @@ const tabs = [
 
 export default function ContentEngineTabs() {
   const [activeTab, setActiveTab] = useState(1)
-  const [videosAvailable, setVideosAvailable] = useState(false)
+  const [videosAvailable, setVideosAvailable] = useState(true) // Start with true since videos are available
   const currentTab = tabs.find(tab => tab.id === activeTab)
-  
-  // Check if we're in production (Railway) or development
-  useEffect(() => {
-    // Enable videos - they should work if properly deployed
-    setVideosAvailable(true)
-  }, [])
 
   return (
     <section className="py-20 px-4 relative overflow-hidden">
@@ -250,7 +244,7 @@ export default function ContentEngineTabs() {
                   <div className="relative rounded-xl overflow-hidden bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-white/10">
                     {/* Video Player for .mov files */}
                     <div className="aspect-video relative">
-                      {/* Always show placeholder initially, hide when video loads */}
+                      {/* Always show placeholder - will be hidden if video loads */}
                       <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-blue-900/30" id={`placeholder-${currentTab.id}`}>
                         <div className="text-center p-8">
                           <motion.div 
@@ -268,10 +262,13 @@ export default function ContentEngineTabs() {
                             <currentTab.icon className="w-10 h-10 text-white" />
                           </motion.div>
                           <p className="text-white/60 text-sm font-medium">
-                            Interactive Demo
+                            Step {currentTab.id}: {currentTab.title}
                           </p>
                           <p className="text-white/40 text-xs mt-2">
-                            Video preview coming soon
+                            Interactive demo available in Safari
+                          </p>
+                          <p className="text-white/30 text-xs mt-1">
+                            (MP4 version coming soon for other browsers)
                           </p>
                         </div>
                       </div>
