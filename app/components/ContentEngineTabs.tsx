@@ -61,7 +61,7 @@ const tabs = [
         'Highlight key talking points',
         'Save multiple versions'
       ],
-      videoPlaceholder: '/videos/step3.mov'
+      videoPlaceholder: '/videos/step3.mp4'
     }
   },
   {
@@ -78,7 +78,7 @@ const tabs = [
         'SEO optimization tools',
         'Custom styling and themes'
       ],
-      videoPlaceholder: '/videos/step4.mov'
+      videoPlaceholder: '/videos/step4.mp4'
     }
   },
   {
