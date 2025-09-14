@@ -25,7 +25,6 @@ import {
   Clock,
   Users,
   Target,
-  Sparkles,
   Upload,
   Download,
   Edit3,
@@ -37,6 +36,7 @@ import {
   Layers,
   MessageSquare
 } from 'lucide-react'
+import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
 
 interface Particle {
   id: number
@@ -420,7 +420,7 @@ export default function ContentEnginePage() {
           <div className={`inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-8 border border-white/20 transition-all duration-1000 ${
             ''
           }`}>
-            <Sparkles className="h-5 w-5 text-blue-400 animate-pulse" />
+            <TrueFlowLogoIcon size={20} className="animate-pulse" />
             <span className="text-white/90 text-lg">TrueFlow AI Content Engine</span>
           </div>
           

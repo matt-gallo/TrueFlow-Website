@@ -11,7 +11,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { 
   ChevronRight,
-  Sparkles,
   Brain,
   TrendingUp,
   CheckCircle,
@@ -27,6 +26,7 @@ import {
   Menu,
   X
 } from 'lucide-react'
+import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
 
 // Animated counter component
 function AnimatedCounter({ endValue, duration = 2000, prefix = '', suffix = '', shouldStart = false }: {
@@ -363,7 +363,7 @@ export default function ContentOfferLanding() {
                 { icon: <FileText />, title: "Weekly Blog Publishing", desc: "SEO-optimized posts published directly to your site" },
                 { icon: <Mail />, title: "Daily Newsletter Drafts", desc: "Monday-Friday drafts delivered to your inbox" },
                 { icon: <BarChart3 />, title: "SEO Optimization", desc: "Keywords, meta descriptions, and proper structure" },
-                { icon: <Sparkles />, title: "Voice Matching", desc: "AI learns and writes in your unique style" },
+                { icon: <TrueFlowLogoIcon size={24} />, title: "Voice Matching", desc: "AI learns and writes in your unique style" },
                 { icon: <Calendar />, title: "Content Calendar", desc: "Plan and schedule content months ahead" },
                 { icon: <CheckCircle />, title: "Full Automation", desc: "Set once and forget - runs on autopilot" }
               ].map((feature, index) => (

@@ -13,9 +13,9 @@ import {
   ArrowLeft,
   Clock,
   Bell,
-  CheckCircle,
-  Sparkles
+  CheckCircle
 } from 'lucide-react'
+import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
 
 interface Particle {
   id: number
@@ -293,7 +293,7 @@ export default function ComingSoonPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Sparkles className="h-8 w-8 text-white" />
+                  <TrueFlowLogoIcon size={32} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Enhanced Features</h3>
                 <p className="text-white/70">More powerful AI capabilities and automation tools</p>

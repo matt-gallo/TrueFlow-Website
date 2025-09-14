@@ -23,7 +23,6 @@ import {
   Clock,
   Users,
   Target,
-  Sparkles,
   TrendingUp,
   Globe,
   Shield,
@@ -44,6 +43,7 @@ import {
   Star,
   Quote
 } from 'lucide-react'
+import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
 
 interface Particle {
   id: number
@@ -245,7 +245,7 @@ export default function ForBusinessPage() {
       step: 2,
       title: "AI Creates Your Content",
       description: "It writes posts, takes your ideas, and creates professional content that sounds like you - but polished and engaging.",
-      icon: <Sparkles className="h-12 w-12" />
+      icon: <TrueFlowLogoIcon size={48} />
     },
     {
       step: 3,

@@ -16,7 +16,6 @@ import {
   ChevronRight, 
   ChevronDown,
   Play, 
-  Sparkles, 
   Zap, 
   Brain, 
   Mail, 
@@ -47,6 +46,7 @@ import {
   MessageCircle,
   Youtube
 } from 'lucide-react'
+import TrueFlowLogoIcon from './components/TrueFlowLogoIcon'
 
 interface Particle {
   id: number
@@ -784,7 +784,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
             <Link href="/content-engine" className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-12 border border-white/20 mt-16 hover:bg-white/20 transition-colors">
-              <Sparkles className="h-5 w-5 text-blue-400" />
+              <TrueFlowLogoIcon size={20} className="text-blue-400" />
               <span className="text-white/90 text-lg">Introducing TrueFlow AI Content Engine</span>
             </Link>
             
@@ -1157,8 +1157,8 @@ export default function LandingPage() {
                 <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-500/50"></div>
                 <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse shadow-lg shadow-blue-500/50"></div>
                 <div className="w-20 h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>
-                <div className="w-5 h-5 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse shadow-lg shadow-purple-500/50" style={{ animationDelay: '0.3s' }}>
-                  <Sparkles className="h-3 w-3 text-white m-auto mt-1" />
+                <div className="w-5 h-5 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse shadow-lg shadow-purple-500/50 flex items-center justify-center" style={{ animationDelay: '0.3s' }}>
+                  <TrueFlowLogoIcon size={12} />
                 </div>
                 <div className="w-20 h-0.5 bg-gradient-to-r from-purple-500/50 to-blue-500/50"></div>
                 <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse shadow-lg shadow-purple-500/50" style={{ animationDelay: '0.6s' }}></div>
@@ -1187,7 +1187,7 @@ export default function LandingPage() {
                       {/* Central TrueFlow logo */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse">
-                          <Sparkles className="h-8 w-8 text-white" />
+                          <TrueFlowLogoIcon size={32} />
                         </div>
                       </div>
                       

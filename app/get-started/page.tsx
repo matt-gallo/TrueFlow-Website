@@ -27,7 +27,6 @@ import {
   Shield,
   Clock,
   CheckCircle,
-  Sparkles,
   MessageSquare,
   TrendingUp,
   AlertCircle,
@@ -41,6 +40,7 @@ import {
   Settings,
   HelpCircle
 } from 'lucide-react'
+import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
 
 interface Question {
   id: string
@@ -246,7 +246,7 @@ export default function ReadinessAssessment() {
       id: 'other',
       title: 'Other Professional',
       description: 'Any professional with expertise to share',
-      icon: <Sparkles className="h-8 w-8" />,
+      icon: <TrueFlowLogoIcon size={32} />,
       features: ['Custom content strategy', 'Industry-specific messaging', 'Flexible workflows', 'Personal branding']
     }
   ]
@@ -1600,7 +1600,7 @@ export default function ReadinessAssessment() {
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0">
                         <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                          <Sparkles className="h-6 w-6 text-white" />
+                          <TrueFlowLogoIcon size={24} />
                         </div>
                       </div>
                       <div className="flex-1">
