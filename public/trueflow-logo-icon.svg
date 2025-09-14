@@ -1,0 +1,38 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A78BFA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F472B6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- TrueFlow T-shaped flow icon -->
+  <g transform="translate(24, 24)">
+    <!-- Horizontal top bar of T -->
+    <rect x="-16" y="-12" width="32" height="6" rx="3" fill="url(#logoGradient)" opacity="0.9"/>
+    
+    <!-- Vertical stem with flow effect -->
+    <rect x="-4" y="-12" width="8" height="28" rx="4" fill="url(#logoGradient)"/>
+    
+    <!-- Flow dots representing data flow -->
+    <circle cx="0" cy="-2" r="2" fill="url(#logoGradient)" opacity="0.7">
+      <animate attributeName="cy" values="-2;8;-2" dur="3s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.7;1;0.7" dur="3s" repeatCount="indefinite"/>
+    </circle>
+    
+    <circle cx="0" cy="4" r="2" fill="url(#logoGradient)" opacity="0.5">
+      <animate attributeName="cy" values="4;14;4" dur="3s" begin="1s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.9;0.5" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Side flow elements -->
+    <rect x="-14" y="-8" width="4" height="4" rx="2" fill="url(#logoGradient)" opacity="0.6">
+      <animate attributeName="x" values="-14;-10;-14" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <rect x="10" y="-8" width="4" height="4" rx="2" fill="url(#logoGradient)" opacity="0.6">
+      <animate attributeName="x" values="10;6;10" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>
