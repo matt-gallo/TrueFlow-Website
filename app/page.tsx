@@ -618,7 +618,7 @@ export default function LandingPage() {
       ))}
 
       {/* Cursor Trail */}
-      <div className="cursor-trail">
+      <div className="cursor-trail" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999 }}>
         {cursorTrail.map((point, index) => {
           const age = Date.now() - point.timestamp
           const opacity = Math.max(0, 1 - age / 500)
@@ -627,7 +627,7 @@ export default function LandingPage() {
             <div
               key={index}
               style={{
-                position: 'absolute',
+                position: 'fixed',
                 left: point.x - size / 2,
                 top: point.y - size / 2,
                 width: size,
