@@ -1,28 +1,11 @@
 <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="infinityGradient" x1="0%" y1="50%" x2="100%" y2="50%">
-      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#A78BFA;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#F472B6;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  
-  <!-- Proper infinity symbol using cubic bezier curves -->
+  <!-- White infinity symbol -->
   <g transform="translate(24, 24)">
     <path d="M -12,0 C -12,-5 -9,-8 -6,-8 C -3,-8 0,-5 0,0 C 0,5 3,8 6,8 C 9,8 12,5 12,0 C 12,-5 9,-8 6,-8 C 3,-8 0,-5 0,0 C 0,5 -3,8 -6,8 C -9,8 -12,5 -12,0 Z" 
-          stroke="url(#infinityGradient)" 
+          stroke="white" 
           stroke-width="3" 
           fill="none"
           stroke-linecap="round"
           stroke-linejoin="round"/>
-    
-    <!-- Subtle glow for depth -->
-    <path d="M -12,0 C -12,-5 -9,-8 -6,-8 C -3,-8 0,-5 0,0 C 0,5 3,8 6,8 C 9,8 12,5 12,0 C 12,-5 9,-8 6,-8 C 3,-8 0,-5 0,0 C 0,5 -3,8 -6,8 C -9,8 -12,5 -12,0 Z" 
-          stroke="url(#infinityGradient)" 
-          stroke-width="5" 
-          fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          opacity="0.2"/>
   </g>
 </svg>

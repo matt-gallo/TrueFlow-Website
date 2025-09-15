@@ -8,7 +8,7 @@ interface TrueFlowLogoIconProps {
 export default function TrueFlowLogoIcon({ className = '', size = 24 }: TrueFlowLogoIconProps) {
   return (
     <Image
-      src="/true-flow-icon.png"
+      src="/trueflow-logo-icon.svg"
       alt="TrueFlow"
       width={size}
       height={size}
