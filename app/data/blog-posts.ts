@@ -205,7 +205,7 @@ Your lead magnets should:
 - Be easily consumable
 - Lead naturally to your paid offerings
 
-## The Content Engine Solution
+## The Constant Constant Content Engine™™ Solution
 
 To address these common content marketing challenges, we've developed a comprehensive approach that includes:
 
@@ -298,10 +298,10 @@ Remember: Content marketing isn't just about showing up - it's about showing up 
   {
     id: '7',
     slug: 'introducing-trueflow-content-engine',
-    title: 'Introducing TrueFlow Content Engine: Your Voice-Powered Content Operating System',
+    title: 'Introducing TrueFlow Constant Content Engine™: Your Voice-Powered Content Operating System',
     excerpt: 'Transform conversations into 6-8 weeks of strategic content with our AI-powered engine that listens, learns, and creates authentic marketing materials from your unique voice.',
     content: `
-# Introducing TrueFlow Content Engine: Your Voice-Powered Content Operating System
+# Introducing TrueFlow Constant Content Engine™: Your Voice-Powered Content Operating System
 
 **The future of content creation isn't typing - it's talking.**
 
@@ -317,9 +317,9 @@ Even worse, when you finally do create content, it often feels forced. Generic. 
 
 **Your expertise is trapped in your head, and traditional content creation tools aren't designed to extract it.**
 
-## Enter the Content Engine
+## Enter the Constant Content Engine™
 
-The TrueFlow Content Engine is what we call a "voice-powered content operating system." But what does that actually mean?
+The TrueFlow Constant Content Engine™ is what we call a "voice-powered content operating system." But what does that actually mean?
 
 Imagine having a conversation with an AI that:
 - **Listens** to your natural speaking voice
@@ -416,7 +416,7 @@ This mid October launch is just the beginning. We're starting with blog posts an
 
 ## Who This Is For
 
-The Content Engine is perfect for:
+The Constant Content Engine™ is perfect for:
 
 **Consultants & Coaches** who have deep expertise but struggle to consistently share it
 
@@ -441,7 +441,7 @@ We're opening limited early access spots for the mid October launch. Beta users 
 
 ## The Philosophy Behind It All
 
-At TrueFlow, we believe technology should amplify human potential, not replace it. The Content Engine doesn't write generic content - it extracts and amplifies YOUR unique value.
+At TrueFlow, we believe technology should amplify human potential, not replace it. The Constant Content Engine™ doesn't write generic content - it extracts and amplifies YOUR unique value.
 
 Your voice. Your expertise. Your perspective. Just packaged and published at scale.
 
@@ -453,7 +453,7 @@ The marketing landscape is changing. Businesses that adapt will thrive. Those th
 
 The question isn't whether to create content - it's how to create it efficiently while maintaining authenticity.
 
-The Content Engine is our answer.
+The Constant Content Engine™ is our answer.
 
 **Ready to transform how you create content?**
 
@@ -482,12 +482,12 @@ Join our early access list and be among the first to experience the future of co
     ],
     featuredImage: {
       url: '/blog/content-engine-interface.png',
-      alt: 'TrueFlow Content Engine Voice-Powered Interface with customizable settings for content generation'
+      alt: 'TrueFlow Constant Content Engine™ Voice-Powered Interface with customizable settings for content generation'
     },
     published: true,
     seo: {
-      metaTitle: 'TrueFlow Content Engine: Voice-Powered Content Creation | Launch Announcement',
-      metaDescription: 'Discover how TrueFlow\'s Content Engine transforms conversations into 6-8 weeks of strategic content. Blog posts and newsletters from your voice. Launching mid October 2025.',
+      metaTitle: 'TrueFlow Constant Content Engine™: Voice-Powered Content Creation | Launch Announcement',
+      metaDescription: 'Discover how TrueFlow\'s Constant Content Engine™ transforms conversations into 6-8 weeks of strategic content. Blog posts and newsletters from your voice. Launching mid October 2025.',
       keywords: [
         'content engine',
         'voice to content',
@@ -1441,20 +1441,20 @@ TrueFlow AI transforms your data chaos into clarity:
   {
     id: '8',
     slug: 'building-strength-building-software-parallels',
-    title: 'Building Strength, Building Software: The Unexpected Parallels Between Fitness and the TrueFlow Content Engine',
+    title: 'Building Strength, Building Software: The Unexpected Parallels Between Fitness and the TrueFlow Constant Content Engine™',
     excerpt: 'As a developer who splits time between the gym and the IDE, I\'ve discovered that the principles of progressive overload apply just as powerfully to building AI systems as they do to building muscle.',
     content: `
-# Building Strength, Building Software: The Unexpected Parallels Between Fitness and the TrueFlow Content Engine
+# Building Strength, Building Software: The Unexpected Parallels Between Fitness and the TrueFlow Constant Content Engine™
 
 **The best software, like the best physiques, isn't built overnight—it's forged through consistent, progressive effort and an unwavering commitment to the fundamentals.**
 
-Hey, I'm Griffin Rutherford, Lead AI Implementation Engineer at TrueFlow. When I'm not architecting our Content Engine, you'll find me trail running through the Colorado Rockies or pushing iron in the gym. And here's what I've realized: the parallels between building physical strength and building powerful software are uncanny.
+Hey, I'm Griffin Rutherford, Lead AI Implementation Engineer at TrueFlow. When I'm not architecting our Constant Content Engine™, you'll find me trail running through the Colorado Rockies or pushing iron in the gym. And here's what I've realized: the parallels between building physical strength and building powerful software are uncanny.
 
 ## The Progressive Overload Principle
 
 In weightlifting, progressive overload is sacred. You don't bench 225 on day one—you start with the bar, perfect your form, and gradually add weight. Each session builds on the last. Skip steps, and you plateau or worse, get injured.
 
-**Our Content Engine follows the same principle.**
+**Our Constant Content Engine™ follows the same principle.**
 
 We didn't start by trying to generate perfect marketing campaigns from day one. We began with simple text generation, perfected that foundation, then progressively added:
 - Voice recognition
@@ -1471,7 +1471,7 @@ Ask any serious lifter about the mind-muscle connection, and they'll tell you it
 
 **In AI development, we call this the human-AI connection.**
 
-Our Content Engine doesn't just process your words—it needs to understand your intent, your expertise, your unique perspective. That's why we built our adaptive conversation system. It's not just recording; it's actively listening, learning, establishing that crucial connection between human expertise and AI capability.
+Our Constant Content Engine™ doesn't just process your words—it needs to understand your intent, your expertise, your unique perspective. That's why we built our adaptive conversation system. It's not just recording; it's actively listening, learning, establishing that crucial connection between human expertise and AI capability.
 
 When you speak to our engine, you're not just inputting data. You're training it, like training a muscle group, to understand and amplify your unique business voice.
 
@@ -1479,7 +1479,7 @@ When you speak to our engine, you're not just inputting data. You're training it
 
 In the gym, compound movements like squats and deadlifts work multiple muscle groups simultaneously. They're efficient, functional, and produce the best overall results. Isolation exercises have their place, but compounds are king.
 
-**The Content Engine is our compound movement for marketing.**
+**The Constant Content Engine™ is our compound movement for marketing.**
 
 Instead of isolated tools that handle one task—a blog writer here, an email generator there—we built a system that works everything at once:
 - **Content creation** (the squat of marketing)
@@ -1495,7 +1495,7 @@ Here's what non-lifters don't understand: muscles don't grow in the gym. They gr
 
 **Software needs recovery too—we call it iteration cycles.**
 
-After each major Content Engine release, we don't immediately pile on new features. We observe, we listen to user feedback, we let the system "recover" while we analyze performance data. This recovery period is when the real improvements happen:
+After each major Constant Content Engine™ release, we don't immediately pile on new features. We observe, we listen to user feedback, we let the system "recover" while we analyze performance data. This recovery period is when the real improvements happen:
 - User patterns emerge
 - Edge cases surface
 - Optimization opportunities become clear
@@ -1518,7 +1518,7 @@ The result? Like breaking through a strength plateau, our content quality jumped
 
 In both lifting and running, consistency beats intensity every time. The person who trains moderately 5 days a week will outlast and outperform the person who goes all-out once a week.
 
-**The Content Engine embodies this philosophy.**
+**The Constant Content Engine™ embodies this philosophy.**
 
 We don't ask users for marathon content sessions. Instead:
 - 30-45 minute voice conversations
@@ -1546,7 +1546,7 @@ Like a good spotter helping you maintain form, our system guides you to provide 
 
 Serious athletes track everything. Sets, reps, weight, rest periods, RPE (rate of perceived exertion). Data drives progress.
 
-**The Content Engine is your marketing training log.**
+**The Constant Content Engine™ is your marketing training log.**
 
 Every conversation is recorded, analyzed, optimized. We track:
 - Which topics resonate with your audience
@@ -1560,7 +1560,7 @@ This isn't just analytics—it's your progressive overload map for content marke
 
 As a trail runner, I chase that runner's high—when miles feel effortless, when you're in perfect flow with the trail. As a developer, I chase flow state—when code flows effortlessly, when solutions appear naturally.
 
-**Our Content Engine creates content flow state.**
+**Our Constant Content Engine™ creates content flow state.**
 
 When you're speaking naturally about your expertise, not worrying about writing or editing, just sharing knowledge—that's content flow state. The AI handles the technical heavy lifting while you stay in your zone of genius.
 
@@ -1570,7 +1570,7 @@ It's like having the perfect running partner who matches your pace, or a lifting
 
 Neither Rome nor muscle was built in a day. Real strength—physical or business—comes from playing the long game. Quick fixes don't last. Shortcuts lead to injury.
 
-**The Content Engine is built for the long game.**
+**The Constant Content Engine™ is built for the long game.**
 
 We're not promising overnight viral content. We're building:
 - Sustainable content systems
@@ -1588,7 +1588,7 @@ Here's what five years of lifting and running alongside building AI systems has 
 
 Progressive overload. Consistency over intensity. Form over weight. Recovery and adaptation. These aren't just fitness concepts—they're life concepts, business concepts, software concepts.
 
-The TrueFlow Content Engine isn't just another AI tool. It's a training program for your business communication. Every conversation is a rep. Every piece of content is a set. Every campaign is a training cycle.
+The TrueFlow Constant Content Engine™ isn't just another AI tool. It's a training program for your business communication. Every conversation is a rep. Every piece of content is a set. Every campaign is a training cycle.
 
 And just like in the gym, the results compound. The business that "trains" consistently with quality content will always outperform the business that relies on sporadic bursts of marketing intensity.
 
@@ -1598,11 +1598,11 @@ Whether you're deadlifting 500 pounds or just starting with the bar, whether you
 
 Start where you are. Be consistent. Focus on form. Trust the process.
 
-The Content Engine is your training partner, your spotter, your coach. It won't do the work for you—nothing can—but it will make your work exponentially more effective.
+The Constant Content Engine™ is your training partner, your spotter, your coach. It won't do the work for you—nothing can—but it will make your work exponentially more effective.
 
 **Because in the end, building a business is just like building strength: it's not about perfection, it's about progression.**
 
-Ready to start training? Your Content Engine awaits.
+Ready to start training? Your Constant Content Engine™ awaits.
 
 ---
 

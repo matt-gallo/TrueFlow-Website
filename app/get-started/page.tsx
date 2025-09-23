@@ -369,7 +369,7 @@ export default function ReadinessAssessment() {
   const plans: Plan[] = [
     {
       id: 'content-engine',
-      name: 'Content Engine',
+      name: 'Constant Content Engine™',
       price: '$150',
       period: '/week',
       description: 'AI-powered content creation system',
@@ -391,7 +391,7 @@ export default function ReadinessAssessment() {
       period: '/week',
       description: 'Full automation suite with CRM',
       features: [
-        'Everything in Content Engine',
+        'Everything in Constant Content Engine™',
         'Full CRM system',
         'Lead capture & tracking',
         'Automated follow-ups',
@@ -501,13 +501,13 @@ export default function ReadinessAssessment() {
       recommendationReason = 'Your medium content needs and existing systems position you perfectly for our Complete System to streamline both content and customer management.'
     } else if (contentEngineIndicators >= 3 || score < 50) {
       recommendedPlan = 'content-engine'
-      recommendationReason = 'Starting with our Content Engine will help you establish efficient content workflows and see immediate time savings.'
+      recommendationReason = 'Starting with our Constant Content Engine™ will help you establish efficient content workflows and see immediate time savings.'
     } else if (score >= 50) {
       recommendedPlan = 'complete-system'
       recommendationReason = 'Your readiness score indicates you\'re prepared for full automation with our Complete System.'
     } else {
       recommendedPlan = 'content-engine'
-      recommendationReason = 'Our Content Engine is the perfect starting point for your AI automation journey.'
+      recommendationReason = 'Our Constant Content Engine™ is the perfect starting point for your AI automation journey.'
     }
     
     return {
@@ -542,7 +542,7 @@ export default function ReadinessAssessment() {
         bgColor: 'bg-yellow-500/20',
         borderColor: 'border-yellow-500',
         message: 'You have room to grow. Start with content automation to see immediate improvements.',
-        recommendation: 'Content Engine'
+        recommendation: 'Constant Content Engine™'
       }
     } else {
       return {
@@ -550,8 +550,8 @@ export default function ReadinessAssessment() {
         color: 'text-orange-500',
         bgColor: 'bg-orange-500/20',
         borderColor: 'border-orange-500',
-        message: 'Begin your AI journey with our Content Engine to establish efficient workflows.',
-        recommendation: 'Content Engine'
+        message: 'Begin your AI journey with our Constant Content Engine™ to establish efficient workflows.',
+        recommendation: 'Constant Content Engine™'
       }
     }
   }

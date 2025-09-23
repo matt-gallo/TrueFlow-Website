@@ -383,15 +383,15 @@ export default function FAQPage() {
     // Pricing & Plans
     {
       id: 'pricing-1',
-      question: 'What\'s included in the $150/week Content Engine plan?',
-      answer: 'The Content Engine plan includes AI-powered content creation, voice-to-content transformation, SEO-optimized blog posts, email sequences, social media posts, content dashboard access, and basic analytics. Perfect for solopreneurs and content creators who need powerful content tools.',
+      question: 'What\'s included in the $150/week Constant Content Engine™ plan?',
+      answer: 'The Constant Content Engine™ plan includes AI-powered content creation, voice-to-content transformation, SEO-optimized blog posts, email sequences, social media posts, content dashboard access, and basic analytics. Perfect for solopreneurs and content creators who need powerful content tools.',
       category: 'business',
       icon: <Zap className="h-5 w-5" />
     },
     {
       id: 'pricing-2',
       question: 'What additional features come with the $300/week Complete System?',
-      answer: 'The Complete System includes everything in Content Engine plus full CRM functionality, lead tracking, automated follow-ups, sales pipeline management, advanced analytics, customer communication hub, and a dedicated success manager. It\'s ideal for growing businesses that need comprehensive automation.',
+      answer: 'The Complete System includes everything in Constant Content Engine™ plus full CRM functionality, lead tracking, automated follow-ups, sales pipeline management, advanced analytics, customer communication hub, and a dedicated success manager. It\'s ideal for growing businesses that need comprehensive automation.',
       category: 'business',
       icon: <CheckCircle className="h-5 w-5" />
     },

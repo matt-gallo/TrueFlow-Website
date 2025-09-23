@@ -1,5 +1,5 @@
 /**
- * TrueFlow AI Content Engine Offer Page
+ * TrueFlow AI Constant Content Engine™ Offer Page
  * Hidden secondary landing page for ad campaigns
  * Follows homepage design language with Apple-inspired dark theme
  */
@@ -200,7 +200,7 @@ export default function ContentOfferLanding() {
               href="/get-started" 
               className="group px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center gap-2"
             >
-              Get My Free Content Engine
+              Get My Free Constant Content Engine™
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a 
@@ -283,7 +283,7 @@ export default function ContentOfferLanding() {
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                TrueFlow Content Engine
+                TrueFlow Constant Content Engine™
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto">
@@ -541,7 +541,7 @@ export default function ContentOfferLanding() {
             href="/get-started" 
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group"
           >
-            Start My Free Content Engine
+            Start My Free Constant Content Engine™
             <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Link>
 

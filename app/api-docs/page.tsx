@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
 import { 
@@ -35,9 +35,9 @@ function MethodBadge({ method }: { method: string }) {
     DELETE: 'bg-red-500/10 text-red-500 border-red-500/20',
     PATCH: 'bg-purple-500/10 text-purple-500 border-purple-500/20'
   }
-  
+
   return (
-    <span className={`px-2 py-1 rounded-md border text-xs font-bold ${colors[method as keyof typeof colors] || 'bg-gray-500/10 text-gray-500'}`}>
+    <span className={`px-1.5 py-0.5 md:px-2 md:py-1 rounded-md border text-[10px] md:text-xs font-bold ${colors[method as keyof typeof colors] || 'bg-gray-500/10 text-gray-500'}`}>
       {method}
     </span>
   )
@@ -96,20 +96,20 @@ function StatusCodeGuide() {
       </button>
       
       {isOpen && (
-        <div className="border-t border-white/10 p-6 space-y-6">
+        <div className="border-t border-white/10 p-4 md:p-6 space-y-4 md:space-y-6">
           {statusCategories.map((category) => (
             <div key={category.range}>
-              <div className={`flex items-center gap-2 mb-3 ${category.color}`}>
+              <div className={`flex items-center gap-2 mb-2 md:mb-3 ${category.color}`}>
                 {category.icon}
-                <h4 className="font-semibold">{category.range}</h4>
+                <h4 className="font-semibold text-sm md:text-base">{category.range}</h4>
               </div>
               <div className="space-y-2">
                 {category.codes.map((status) => (
-                  <div key={status.code} className="flex gap-4 p-3 rounded-lg bg-white/5">
-                    <span className="text-white font-mono font-bold min-w-[50px]">{status.code}</span>
+                  <div key={status.code} className="flex flex-col sm:flex-row gap-2 sm:gap-4 p-2 md:p-3 rounded-lg bg-white/5">
+                    <span className="text-white font-mono font-bold text-sm md:text-base min-w-[45px] sm:min-w-[50px]">{status.code}</span>
                     <div className="flex-1">
-                      <span className="text-white font-medium">{status.name}</span>
-                      <p className="text-white/60 text-sm mt-1">{status.description}</p>
+                      <span className="text-white font-medium text-sm md:text-base">{status.name}</span>
+                      <p className="text-white/60 text-xs md:text-sm mt-0.5 md:mt-1">{status.description}</p>
                     </div>
                   </div>
                 ))}
@@ -125,23 +125,23 @@ function StatusCodeGuide() {
 // Code Example Component
 function CodeExample({ code, language = 'javascript' }: { code: string; language?: string }) {
   const [copied, setCopied] = useState(false)
-  
+
   const handleCopy = () => {
     navigator.clipboard.writeText(code)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
-  
+
   return (
     <div className="relative group">
-      <pre className="bg-black/50 rounded-lg p-4 overflow-x-auto">
-        <code className="text-sm text-white/80 font-mono">{code}</code>
+      <pre className="bg-black/50 rounded-lg p-2 md:p-4 overflow-x-auto max-w-full">
+        <code className="text-xs md:text-sm text-white/80 font-mono whitespace-pre-wrap break-all">{code}</code>
       </pre>
       <button
         onClick={handleCopy}
-        className="absolute top-2 right-2 p-2 rounded-lg bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"
+        className="absolute top-1 right-1 md:top-2 md:right-2 p-1.5 md:p-2 rounded-lg bg-white/10 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity"
       >
-        {copied ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-white/60" />}
+        {copied ? <Check className="w-3 h-3 md:w-4 md:h-4 text-green-400" /> : <Copy className="w-3 h-3 md:w-4 md:h-4 text-white/60" />}
       </button>
     </div>
   )
@@ -155,21 +155,21 @@ function EndpointCard({ endpoint, category }: { endpoint: any; category: string 
     <div className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 rounded-lg border border-white/10 overflow-hidden hover:border-purple-500/30 transition-colors">
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full p-4 flex items-center justify-between hover:bg-white/5 transition-colors"
+        className="w-full p-3 md:p-4 flex items-start md:items-center justify-between hover:bg-white/5 transition-colors"
       >
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-left flex-1">
           <MethodBadge method={endpoint.method} />
-          <div className="text-left">
-            <h4 className="text-white font-medium">{endpoint.name}</h4>
-            <code className="text-purple-400 text-sm">{endpoint.endpoint}</code>
+          <div className="flex-1 min-w-0">
+            <h4 className="text-white font-medium text-sm md:text-base truncate">{endpoint.name}</h4>
+            <code className="text-purple-400 text-xs md:text-sm break-all">{endpoint.endpoint}</code>
           </div>
         </div>
-        <ChevronRight className={`w-5 h-5 text-white/60 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+        <ChevronRight className={`w-4 h-4 md:w-5 md:h-5 text-white/60 transition-transform flex-shrink-0 ml-2 ${isExpanded ? 'rotate-90' : ''}`} />
       </button>
       
       {isExpanded && (
-        <div className="border-t border-white/10 p-4 space-y-4">
-          <p className="text-white/80 text-sm">{endpoint.description}</p>
+        <div className="border-t border-white/10 p-3 md:p-4 space-y-3 md:space-y-4">
+          <p className="text-white/80 text-xs md:text-sm">{endpoint.description}</p>
           
           {endpoint.authentication && (
             <div className="flex items-center gap-2 text-yellow-400 text-sm">
@@ -183,20 +183,20 @@ function EndpointCard({ endpoint, category }: { endpoint: any; category: string 
               <h5 className="text-white font-medium mb-2">Parameters</h5>
               <div className="space-y-2">
                 {endpoint.parameters.map((param: any, idx: number) => (
-                  <div key={idx} className="bg-black/30 rounded-lg p-3">
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <code className="text-purple-400">{param.name}</code>
-                        <span className="ml-2 text-white/60 text-sm">{param.type}</span>
-                        {param.required && <span className="ml-2 text-red-400 text-xs">Required</span>}
+                  <div key={idx} className="bg-black/30 rounded-lg p-2 md:p-3">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
+                      <div className="flex flex-wrap items-center gap-1">
+                        <code className="text-purple-400 text-xs md:text-sm">{param.name}</code>
+                        <span className="text-white/60 text-xs md:text-sm">{param.type}</span>
+                        {param.required && <span className="text-red-400 text-[10px] md:text-xs">Required</span>}
                       </div>
                       {param.default && (
-                        <span className="text-white/40 text-sm">Default: {param.default}</span>
+                        <span className="text-white/40 text-xs md:text-sm">Default: {param.default}</span>
                       )}
                     </div>
-                    <p className="text-white/60 text-sm mt-1">{param.description}</p>
+                    <p className="text-white/60 text-xs md:text-sm mt-0.5 md:mt-1">{param.description}</p>
                     {param.in && (
-                      <p className="text-white/40 text-xs mt-1">Location: {param.in}</p>
+                      <p className="text-white/40 text-[10px] md:text-xs mt-0.5 md:mt-1">Location: {param.in}</p>
                     )}
                   </div>
                 ))}
@@ -220,6 +220,24 @@ export default function ApiDocsPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [copiedToken, setCopiedToken] = useState(false)
+
+  // Add custom CSS for hiding scrollbar on mobile
+  useEffect(() => {
+    const style = document.createElement('style')
+    style.innerHTML = `
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+    `
+    if (!document.querySelector('[data-scrollbar-style]')) {
+      style.setAttribute('data-scrollbar-style', 'true')
+      document.head.appendChild(style)
+    }
+  }, [])
   
   // API Data (from the JSON provided)
   const apiData = {
@@ -737,26 +755,26 @@ export default function ApiDocsPage() {
       </div>
       
       {/* Hero Section */}
-      <section className="py-20 px-4">
+      <section className="py-12 md:py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-purple-500/10 rounded-full px-4 py-2 mb-6">
-            <Code className="w-4 h-4 text-purple-400" />
-            <span className="text-purple-400 text-sm">API Version 1.0.0</span>
+          <div className="inline-flex items-center gap-2 bg-purple-500/10 rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-4 md:mb-6">
+            <Code className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
+            <span className="text-purple-400 text-xs md:text-sm">API Version 1.0.0</span>
           </div>
-          
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-white to-purple-400 bg-clip-text text-transparent">
             TrueFlow API Documentation
           </h1>
-          
-          <p className="text-xl text-white/60 mb-8 max-w-3xl mx-auto">
+
+          <p className="text-sm sm:text-base md:text-xl text-white/60 mb-6 md:mb-8 max-w-3xl mx-auto px-4">
             Build powerful integrations with our comprehensive REST API. Access CRM, AI chat, content generation, and automation features.
           </p>
-          
-          <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-6 py-3 rounded-lg font-medium hover:shadow-xl transition-shadow">
+
+          <div className="flex flex-col sm:flex-row sm:justify-center gap-3 sm:gap-4 px-4">
+            <button className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-lg font-medium text-sm md:text-base hover:shadow-xl transition-shadow">
               Get API Key
             </button>
-            <button className="bg-white/10 backdrop-blur-md text-white px-6 py-3 rounded-lg font-medium hover:bg-white/20 transition-colors">
+            <button className="bg-white/10 backdrop-blur-md text-white px-4 py-2.5 md:px-6 md:py-3 rounded-lg font-medium text-sm md:text-base hover:bg-white/20 transition-colors">
               View SDKs
             </button>
           </div>
@@ -764,27 +782,27 @@ export default function ApiDocsPage() {
       </section>
       
       {/* Quick Start */}
-      <section className="py-12 px-4">
+      <section className="py-8 md:py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 backdrop-blur-xl rounded-2xl border border-white/10 p-8">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-              <Zap className="w-6 h-6 text-yellow-400" />
+          <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 backdrop-blur-xl rounded-xl md:rounded-2xl border border-white/10 p-4 md:p-8">
+            <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
+              <Zap className="w-5 h-5 md:w-6 md:h-6 text-yellow-400" />
               Quick Start
             </h2>
-            
-            <div className="grid md:grid-cols-2 gap-6">
+
+            <div className="grid md:grid-cols-2 gap-4 md:gap-6">
               <div>
                 <h3 className="text-white font-medium mb-3">1. Authentication</h3>
                 <p className="text-white/60 text-sm mb-3">
                   All API requests require a Bearer token in the Authorization header:
                 </p>
-                <div className="bg-black/50 rounded-lg p-4 flex items-center justify-between">
-                  <code className="text-purple-400 text-sm">Authorization: Bearer your_api_token_here</code>
+                <div className="bg-black/50 rounded-lg p-2 md:p-4 flex items-start md:items-center justify-between gap-2">
+                  <code className="text-purple-400 text-xs md:text-sm break-all">Authorization: Bearer your_api_token_here</code>
                   <button
                     onClick={handleCopyToken}
-                    className="p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors"
+                    className="p-1.5 md:p-2 rounded-lg bg-white/10 hover:bg-white/20 transition-colors flex-shrink-0"
                   >
-                    {copiedToken ? <Check className="w-4 h-4 text-green-400" /> : <Copy className="w-4 h-4 text-white/60" />}
+                    {copiedToken ? <Check className="w-3 h-3 md:w-4 md:h-4 text-green-400" /> : <Copy className="w-3 h-3 md:w-4 md:h-4 text-white/60" />}
                   </button>
                 </div>
               </div>
@@ -794,26 +812,26 @@ export default function ApiDocsPage() {
                 <p className="text-white/60 text-sm mb-3">
                   All API endpoints are relative to:
                 </p>
-                <div className="bg-black/50 rounded-lg p-4">
-                  <code className="text-purple-400 text-sm">https://app.trueflow.ai/api</code>
+                <div className="bg-black/50 rounded-lg p-2 md:p-4">
+                  <code className="text-purple-400 text-xs md:text-sm break-all">https://app.trueflow.ai/api</code>
                 </div>
               </div>
             </div>
             
-            <div className="mt-6">
-              <h3 className="text-white font-medium mb-3">3. Rate Limiting</h3>
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="bg-black/30 rounded-lg p-3">
-                  <p className="text-white/60 text-xs mb-1">Default Limit</p>
-                  <p className="text-white font-medium">1000 req/hour</p>
+            <div className="mt-4 md:mt-6">
+              <h3 className="text-white font-medium mb-2 md:mb-3 text-sm md:text-base">3. Rate Limiting</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 md:gap-4">
+                <div className="bg-black/30 rounded-lg p-2 md:p-3">
+                  <p className="text-white/60 text-[10px] md:text-xs mb-0.5 md:mb-1">Default Limit</p>
+                  <p className="text-white font-medium text-sm md:text-base">1000 req/hour</p>
                 </div>
-                <div className="bg-black/30 rounded-lg p-3">
-                  <p className="text-white/60 text-xs mb-1">Burst Limit</p>
-                  <p className="text-white font-medium">50 req/minute</p>
+                <div className="bg-black/30 rounded-lg p-2 md:p-3">
+                  <p className="text-white/60 text-[10px] md:text-xs mb-0.5 md:mb-1">Burst Limit</p>
+                  <p className="text-white font-medium text-sm md:text-base">50 req/minute</p>
                 </div>
-                <div className="bg-black/30 rounded-lg p-3">
-                  <p className="text-white/60 text-xs mb-1">Reset Header</p>
-                  <p className="text-white font-medium">X-RateLimit-Reset</p>
+                <div className="bg-black/30 rounded-lg p-2 md:p-3">
+                  <p className="text-white/60 text-[10px] md:text-xs mb-0.5 md:mb-1">Reset Header</p>
+                  <p className="text-white font-medium text-xs md:text-base break-all">X-RateLimit-Reset</p>
                 </div>
               </div>
             </div>
@@ -829,37 +847,38 @@ export default function ApiDocsPage() {
       </section>
       
       {/* API Endpoints */}
-      <section className="py-12 px-4">
+      <section className="py-8 md:py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-8">
-            <h2 className="text-3xl font-bold text-white mb-6">API Endpoints</h2>
-            
+          <div className="mb-6 md:mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">API Endpoints</h2>
+
             {/* Search and Filter */}
-            <div className="flex flex-col md:flex-row gap-4 mb-6">
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/40" />
+            <div className="flex flex-col gap-3 md:gap-4 mb-4 md:mb-6">
+              <div className="relative">
+                <Search className="absolute left-2.5 md:left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-white/40" />
                 <input
                   type="text"
                   placeholder="Search endpoints..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white/10 backdrop-blur-md rounded-lg px-10 py-3 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className="w-full bg-white/10 backdrop-blur-md rounded-lg px-8 md:px-10 py-2 md:py-3 text-sm md:text-base text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500"
                 />
               </div>
-              
-              <div className="flex gap-2 overflow-x-auto pb-2">
+
+              <div className="flex gap-1.5 md:gap-2 overflow-x-auto pb-2 scrollbar-hide">
                 {categories.map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${
+                    className={`flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 rounded-lg whitespace-nowrap transition-colors text-xs md:text-sm ${
                       selectedCategory === cat.id
                         ? 'bg-purple-500 text-white'
                         : 'bg-white/10 text-white/60 hover:bg-white/20'
                     }`}
                   >
-                    {cat.icon}
-                    {cat.name}
+                    <span className="w-3 h-3 md:w-4 md:h-4">{cat.icon}</span>
+                    <span className="hidden sm:inline">{cat.name}</span>
+                    <span className="sm:hidden">{cat.name.split(' ')[0]}</span>
                   </button>
                 ))}
               </div>
@@ -867,14 +886,14 @@ export default function ApiDocsPage() {
           </div>
           
           {/* Endpoints List */}
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             {filteredEndpoints.map(([key, categoryData]) => (
               <div key={key}>
-                <div className="flex items-center gap-3 mb-4">
-                  {categoryData.icon}
-                  <h3 className="text-xl font-bold text-white">{categoryData.category}</h3>
+                <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                  <span className="w-4 h-4 md:w-5 md:h-5">{categoryData.icon}</span>
+                  <h3 className="text-lg md:text-xl font-bold text-white">{categoryData.category}</h3>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-2 md:space-y-3">
                   {categoryData.endpoints.map((endpoint: any, idx: number) => (
                     <EndpointCard key={idx} endpoint={endpoint} category={categoryData.category} />
                   ))}
@@ -892,19 +911,19 @@ export default function ApiDocsPage() {
       </section>
       
       {/* SDKs Section */}
-      <section className="py-12 px-4 border-t border-white/10">
+      <section className="py-8 md:py-12 px-4 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-8">SDKs & Libraries</h2>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-yellow-500/10 p-2 rounded-lg">
-                  <Code className="w-5 h-5 text-yellow-400" />
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">SDKs & Libraries</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-4 md:p-6">
+              <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                <div className="bg-yellow-500/10 p-1.5 md:p-2 rounded-lg">
+                  <Code className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
                 </div>
-                <h3 className="text-white font-bold">JavaScript/TypeScript</h3>
+                <h3 className="text-white font-bold text-sm md:text-base">JavaScript/TypeScript</h3>
               </div>
-              <p className="text-white/60 text-sm mb-4">Official SDK for Node.js and browser environments</p>
+              <p className="text-white/60 text-xs md:text-sm mb-3 md:mb-4">Official SDK for Node.js and browser environments</p>
               <CodeExample code="npm install @trueflow/sdk" language="bash" />
               <div className="mt-4">
                 <CodeExample code={`import { TrueFlow } from '@trueflow/sdk'
@@ -914,14 +933,14 @@ const widgets = await client.widgets.list()`} />
               </div>
             </div>
             
-            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-blue-500/10 p-2 rounded-lg">
-                  <Code className="w-5 h-5 text-blue-400" />
+            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-4 md:p-6">
+              <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                <div className="bg-blue-500/10 p-1.5 md:p-2 rounded-lg">
+                  <Code className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />
                 </div>
-                <h3 className="text-white font-bold">Python</h3>
+                <h3 className="text-white font-bold text-sm md:text-base">Python</h3>
               </div>
-              <p className="text-white/60 text-sm mb-4">Python SDK for server-side integrations</p>
+              <p className="text-white/60 text-xs md:text-sm mb-3 md:mb-4">Python SDK for server-side integrations</p>
               <CodeExample code="pip install trueflow" language="bash" />
               <div className="mt-4">
                 <CodeExample code={`from trueflow import TrueFlow
@@ -931,14 +950,14 @@ widgets = client.widgets.list()`} />
               </div>
             </div>
             
-            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="bg-purple-500/10 p-2 rounded-lg">
-                  <Globe className="w-5 h-5 text-purple-400" />
+            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-4 md:p-6">
+              <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                <div className="bg-purple-500/10 p-1.5 md:p-2 rounded-lg">
+                  <Globe className="w-4 h-4 md:w-5 md:h-5 text-purple-400" />
                 </div>
-                <h3 className="text-white font-bold">REST API</h3>
+                <h3 className="text-white font-bold text-sm md:text-base">REST API</h3>
               </div>
-              <p className="text-white/60 text-sm mb-4">Direct HTTP requests to our endpoints</p>
+              <p className="text-white/60 text-xs md:text-sm mb-3 md:mb-4">Direct HTTP requests to our endpoints</p>
               <CodeExample code={`curl -H 'Authorization: Bearer your_token' \\
   https://app.trueflow.ai/api/widgets`} language="bash" />
             </div>
@@ -947,14 +966,14 @@ widgets = client.widgets.list()`} />
       </section>
       
       {/* Webhook Events */}
-      <section className="py-12 px-4 border-t border-white/10">
+      <section className="py-8 md:py-12 px-4 border-t border-white/10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-white mb-8">Webhook Events</h2>
-          
-          <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-6">
-            <p className="text-white/60 mb-6">Subscribe to these events for real-time updates:</p>
-            
-            <div className="grid md:grid-cols-3 gap-3">
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Webhook Events</h2>
+
+          <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-4 md:p-6">
+            <p className="text-white/60 text-sm md:text-base mb-4 md:mb-6">Subscribe to these events for real-time updates:</p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
               {[
                 'conversation.created',
                 'conversation.updated',
@@ -966,8 +985,8 @@ widgets = client.widgets.list()`} />
                 'widget.interaction',
                 'content.generated'
               ].map((event) => (
-                <div key={event} className="bg-black/30 rounded-lg px-4 py-2">
-                  <code className="text-purple-400 text-sm">{event}</code>
+                <div key={event} className="bg-black/30 rounded-lg px-3 py-1.5 md:px-4 md:py-2">
+                  <code className="text-purple-400 text-xs md:text-sm">{event}</code>
                 </div>
               ))}
             </div>

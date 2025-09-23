@@ -49,7 +49,7 @@ export default function Navigation() {
             )}
             {pathname === '/' && (
               <>
-                <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors">Content Engine</Link>
+                <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors">Constant Content Engine™</Link>
                 {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors">For Business</Link> */}
                 <a href="#features" className="text-white/70 hover:text-white transition-colors">Features</a>
                 <a href="#how-it-works" className="text-white/70 hover:text-white transition-colors">How it Works</a>
@@ -107,7 +107,7 @@ export default function Navigation() {
               onClick={handleLinkClick}
               className={`block hover:text-white transition-colors text-lg ${pathname === '/content-engine' ? 'text-white font-semibold' : 'text-white/70'}`}
             >
-              Content Engine
+              Constant Content Engine™
             </Link>
             {/* <Link 
               href="/for-business" 

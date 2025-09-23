@@ -299,7 +299,7 @@ export default function LandingPage() {
     },
     {
       icon: <Zap className="h-16 w-16" />,
-      title: "AI-Powered Content Engine",
+      title: "AI-Powered Constant Content Engine™",
       description: "Transform your voice into engaging content. Create blogs, newsletters, and social media posts automatically from simple voice recordings.",
       gradient: "from-orange-500 to-red-500",
       delay: 300
@@ -724,7 +724,7 @@ export default function LandingPage() {
                   </div>
                 )}
               </div>
-              <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Content Engine</Link>
+              <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Constant Content Engine™</Link>
               {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link> */}
               <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
               <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">FAQs</Link>
@@ -760,7 +760,7 @@ export default function LandingPage() {
                 <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
                 <a href="#integrations" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Integrations</a>
               </div>
-              <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Content Engine</Link>
+              <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Constant Content Engine™</Link>
               {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
               <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
               <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
@@ -785,7 +785,7 @@ export default function LandingPage() {
           <div className="mb-8">
             <Link href="/content-engine" className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-12 border border-white/20 mt-16 hover:bg-white/20 transition-colors">
               <TrueFlowLogoIcon size={20} className="text-blue-400" />
-              <span className="text-white/90 text-lg">Introducing TrueFlow AI Content Engine</span>
+              <span className="text-white/90 text-lg">Introducing TrueFlow AI Constant Content Engine™</span>
             </Link>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2">
@@ -2083,7 +2083,7 @@ export default function LandingPage() {
                 {/* Plan 1: Content Engine Only */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Content Engine</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Constant Content Engine™</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
                       <span className="text-4xl font-bold text-white">$150</span>
                       <span className="text-white/70">/week</span>
@@ -2128,12 +2128,12 @@ export default function LandingPage() {
                       <span className="text-4xl font-bold text-white">$300</span>
                       <span className="text-white/70">/week</span>
                     </div>
-                    <p className="text-white/70">Everything in Content Engine plus full CRM</p>
+                    <p className="text-white/70">Everything in Constant Content Engine™ plus full CRM</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Everything in Content Engine',
+                      'Everything in Constant Content Engine™',
                       'Full CRM system',
                       'Lead capture & tracking',
                       'Automated follow-ups',

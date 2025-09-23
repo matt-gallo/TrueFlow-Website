@@ -137,7 +137,7 @@ export default function ContentEngineTabs() {
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-2"
           >
             <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              Experience the Content Engine Workflow
+              Experience the Constant Content Engine™ Workflow
             </span>
           </motion.h2>
           <motion.p 
