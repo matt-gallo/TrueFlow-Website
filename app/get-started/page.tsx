@@ -9,6 +9,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
+import { createLead } from '@/lib/supabase-client'
 import { 
   ArrowLeft,
   ArrowRight,
@@ -615,11 +616,10 @@ export default function ReadinessAssessment() {
 
 
     try {
-      // Note: Account creation will happen on the app side after redirect
-
-      // Continue with existing GHL and email notification logic
+      // Calculate scores and recommendations
       const score = calculateScore()
       const recommendation = getRecommendation(score)
+      const smartRecommendation = getSmartPlanRecommendation()
       const businessType = businessTypes.find(type => type.id === selectedBusinessType)?.title || selectedBusinessType
       const planName = selectedPlan === 'not-sure' 
         ? 'Not Sure Yet' 
@@ -637,15 +637,55 @@ export default function ReadinessAssessment() {
         }
       })
 
-      // Prepare comprehensive lead data with all assessment details
+      // Save lead to Supabase first
+      console.log('[Form Submit] Saving lead to Supabase...')
+
+      const supabaseLeadData = {
+        email: contactInfo.email,
+        first_name: contactInfo.firstName,
+        last_name: contactInfo.lastName,
+        phone: contactInfo.phone || undefined,
+        business_name: contactInfo.businessName || undefined,
+        business_type: businessType,
+        content_goals: contentGoals,
+        integrations,
+        assessment_answers: {
+          questions: Object.entries(answers).map(([questionId, answer]) => {
+            const question = questions.find(q => q.id === questionId)
+            return {
+              questionId,
+              category: question?.category || 'Unknown',
+              question: question?.question || 'Unknown question',
+              answer: question?.options.find(opt => opt.value === answer)?.label || answer,
+              score: question?.options.find(opt => opt.value === answer)?.score || 0
+            }
+          }),
+          raw_answers: answers
+        },
+        readiness_score: score,
+        selected_plan: selectedPlan,
+        plan_recommendation: smartRecommendation.reason,
+        source: 'get-started-form'
+      }
+
+      const leadResult = await createLead(supabaseLeadData)
+
+      if (leadResult.success) {
+        console.log('[Form Submit] Lead saved to Supabase:', leadResult.data)
+      } else {
+        console.error('[Form Submit] Failed to save lead to Supabase:', leadResult.error)
+        // Continue anyway - don't block the form submission
+      }
+
+      // Prepare comprehensive lead data for GHL (existing code)
       const leadData = {
         // Contact information
         ...contactInfo,
-        
+
         // Business profile
         businessType,
         contentGoals,
-        
+
         // Assessment answers with questions for context
         assessmentAnswers: Object.entries(answers).map(([questionId, answer]) => {
           const question = questions.find(q => q.id === questionId)
@@ -657,21 +697,21 @@ export default function ReadinessAssessment() {
             score: question?.options.find(opt => opt.value === answer)?.score || 0
           }
         }),
-        
+
         // Raw answers for backup
         answers,
-        
+
         // Scoring and recommendations
         totalScore: rawTotalScore,
         maxPossibleScore: questions.length * 4, // 4 is max score per question
         scorePercentage: score, // score is already a percentage
         recommendation: recommendation.recommendation,
         readinessLevel: recommendation.level,
-        
+
         // Preferences
         integrations,
         selectedPlan: planName,
-        
+
         // Metadata
         timestamp: new Date().toISOString(),
         assessmentVersion: '2.0',
@@ -745,6 +785,11 @@ export default function ReadinessAssessment() {
         integrations: integrations.join(','),
         readinessScore: calculateScore().toString()
       })
+
+      // Add lead ID if available
+      if (leadResult.success && leadResult.data?.id) {
+        params.append('leadId', leadResult.data.id)
+      }
 
       // Redirect to TrueFlow app signup page with all data
       window.location.href = `https://app.trueflow.ai/auth/signup?${params.toString()}`
