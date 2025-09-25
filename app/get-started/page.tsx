@@ -1204,8 +1204,9 @@ export default function ReadinessAssessment() {
                     : "Select the plan that best fits your business needs"}
                 </p>
               </div>
-              
-              {/* Score Display */}
+
+              {/* Score Display - Only show if questions were answered */}
+              {hasAnsweredQuestions() && (
               <div className={`${getRecommendation(calculateScore()).bgColor} ${getRecommendation(calculateScore()).borderColor} border-2 rounded-2xl p-8 text-center`}>
                 <div className="text-6xl font-bold mb-4">
                   {calculateScore()}%
