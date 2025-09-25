@@ -9,8 +9,8 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-3 mb-4">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/30 to-purple-400/30 rounded-lg blur-md" />
-                <div className="relative bg-gradient-to-r from-blue-500 to-purple-500 p-2 rounded-lg">
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-400/30 to-rose-400/30 rounded-lg blur-md" />
+                <div className="relative bg-gradient-to-r from-amber-500 to-rose-500 p-2 rounded-lg">
                   <Globe className="w-5 h-5 text-white" />
                 </div>
               </div>

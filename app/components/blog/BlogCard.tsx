@@ -28,7 +28,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           ) : (
             <div className={`h-full bg-gradient-to-br ${
               post.id === '1' ? 'from-sky-500 to-blue-600' :
-              post.id === '2' ? 'from-purple-500 to-pink-600' :
+              post.id === '2' ? 'from-rose-500 to-amber-500' :
               post.id === '3' ? 'from-green-500 to-teal-600' :
               post.id === '4' ? 'from-orange-500 to-pink-600' :
               'from-indigo-500 to-purple-600'

@@ -321,7 +321,7 @@ export default function ReadinessAssessment() {
             <Link href="/#how-it-works" className="text-white/70 hover:text-white transition-colors text-lg">How it Works</Link>
             <Link href="/#testimonials" className="text-white/70 hover:text-white transition-colors text-lg">Success Stories</Link>
             <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-            <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
+            <Link href="/readiness-assessment" className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
               Get Started
             </Link>
           </div>
@@ -346,7 +346,7 @@ export default function ReadinessAssessment() {
             <Link href="/#how-it-works" className="block text-white/70 hover:text-white transition-colors text-lg">How it Works</Link>
             <Link href="/#testimonials" className="block text-white/70 hover:text-white transition-colors text-lg">Success Stories</Link>
             <Link href="/faq" className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-            <Link href="/readiness-assessment" className="block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold text-center">
+            <Link href="/readiness-assessment" className="block bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold text-center">
               Get Started
             </Link>
           </div>
@@ -389,7 +389,7 @@ export default function ReadinessAssessment() {
                 <Link href="/#how-it-works" className="text-white/70 hover:text-white transition-colors text-lg">How it Works</Link>
                 <Link href="/#testimonials" className="text-white/70 hover:text-white transition-colors text-lg">Success Stories</Link>
                 <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-                <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
+                <Link href="/readiness-assessment" className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
                   Get Started
                 </Link>
               </div>
@@ -414,7 +414,7 @@ export default function ReadinessAssessment() {
                 <Link href="/#how-it-works" className="block text-white/70 hover:text-white transition-colors text-lg">How it Works</Link>
                 <Link href="/#testimonials" className="block text-white/70 hover:text-white transition-colors text-lg">Success Stories</Link>
                 <Link href="/faq" className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-                <Link href="/readiness-assessment" className="block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold text-center">
+                <Link href="/readiness-assessment" className="block bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold text-center">
                   Get Started
                 </Link>
               </div>
@@ -548,7 +548,7 @@ export default function ReadinessAssessment() {
                   className={`flex items-center px-8 py-3 rounded-full transition-all duration-300 ${
                     isSubmitting
                       ? 'bg-white/5 text-white/30 cursor-not-allowed'
-                      : 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
+                      : 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
                   }`}
                 >
                   {isSubmitting ? (
@@ -682,7 +682,7 @@ export default function ReadinessAssessment() {
             <div className="flex flex-col sm:flex-row gap-4 relative z-20">
               <Link 
                 href="/get-started"
-                className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 text-center"
+                className="flex-1 bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-rose-500/25 transition-all duration-300 text-center"
               >
                 Get Started with TrueFlow
               </Link>
@@ -725,7 +725,7 @@ export default function ReadinessAssessment() {
             </div>
             <div className="h-2 bg-white/10 rounded-full overflow-hidden">
               <div 
-                className="h-full bg-gradient-to-r from-blue-500 to-purple-600 transition-all duration-300"
+                className="h-full bg-gradient-to-r from-amber-500 to-rose-500 transition-all duration-300"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -780,7 +780,7 @@ export default function ReadinessAssessment() {
               disabled={!isAnswered}
               className={`flex items-center px-6 py-3 rounded-full transition-all duration-300 ${
                 isAnswered
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
+                  ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
                   : 'bg-white/5 text-white/30 cursor-not-allowed'
               }`}
             >

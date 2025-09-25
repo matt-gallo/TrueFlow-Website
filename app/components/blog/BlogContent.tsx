@@ -38,16 +38,16 @@ export default function BlogContent({ content }: BlogContentProps) {
         .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
           // Check if it's an internal link
           if (url.startsWith('/') || url.startsWith('#')) {
-            return `<a href="${url}" class="internal-link relative text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 hover:from-blue-300 hover:to-purple-300">${linkText}</a>`
+            return `<a href="${url}" class="internal-link relative text-transparent bg-gradient-to-r from-amber-400 to-rose-400 bg-clip-text font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-amber-400 after:to-rose-400 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 hover:from-amber-300 hover:to-rose-300">${linkText}</a>`
           } else {
-            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="relative text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 hover:from-blue-300 hover:to-purple-300">${linkText}</a>`
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="relative text-transparent bg-gradient-to-r from-amber-400 to-rose-400 bg-clip-text font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-amber-400 after:to-rose-400 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 hover:from-amber-300 hover:to-rose-300">${linkText}</a>`
           }
         })
         // Headers with gradient text - handle various levels
-        .replace(/^#{4,}\s+(.*$)/gim, '<h4 class="text-xl font-semibold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent mt-6 mb-3 hover:from-green-300 hover:to-blue-400 transition-all duration-300">$1</h4>')
-        .replace(/^###\s+(.*$)/gim, '<h3 class="text-2xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mt-8 mb-4 hover:from-cyan-300 hover:to-blue-400 transition-all duration-300">$1</h3>')
-        .replace(/^##\s+(.*$)/gim, '<h2 class="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent mt-12 mb-6 hover:from-purple-300 hover:via-pink-400 hover:to-red-400 transition-all duration-300">$1</h2>')
-        .replace(/^#\s+(.*$)/gim, '<h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mt-12 mb-6 animate-gradient-x">$1</h1>')
+        .replace(/^#{4,}\s+(.*$)/gim, '<h4 class="text-xl font-semibold bg-gradient-to-r from-green-400 to-amber-500 bg-clip-text text-transparent mt-6 mb-3 hover:from-green-300 hover:to-emerald-400 transition-all duration-300">$1</h4>')
+        .replace(/^###\s+(.*$)/gim, '<h3 class="text-2xl font-semibold bg-gradient-to-r from-cyan-400 to-amber-500 bg-clip-text text-transparent mt-8 mb-4 hover:from-cyan-300 hover:to-emerald-400 transition-all duration-300">$1</h3>')
+        .replace(/^##\s+(.*$)/gim, '<h2 class="text-3xl font-bold bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 bg-clip-text text-transparent mt-12 mb-6 hover:from-amber-300 hover:via-orange-400 hover:to-rose-400 transition-all duration-300">$1</h2>')
+        .replace(/^#\s+(.*$)/gim, '<h1 class="text-4xl font-bold bg-gradient-to-r from-amber-300 via-orange-400 to-rose-500 bg-clip-text text-transparent mt-12 mb-6 animate-gradient-x">$1</h1>')
         // Bold with glow effect
         .replace(/\*\*(.+?)\*\*/g, '<strong class="font-semibold text-white relative inline-block hover:text-yellow-300 transition-colors duration-200">$1</strong>')
         // Italic
@@ -58,11 +58,11 @@ export default function BlogContent({ content }: BlogContentProps) {
         // Paragraphs
         .replace(/\n\n/g, '</p><p class="text-white/80 leading-relaxed mb-6 hover:text-white/90 transition-colors duration-200">')
         // Code blocks with gradient border
-        .replace(/```([\s\S]+?)```/g, '<pre class="bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-transparent bg-clip-padding rounded-lg p-4 mb-6 overflow-x-auto relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-purple-500 before:to-blue-500 before:rounded-lg before:-z-10 before:p-[1px] hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300"><code class="text-sm text-transparent bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text font-mono">$1</code></pre>')
+        .replace(/```([\s\S]+?)```/g, '<pre class="bg-gradient-to-br from-rose-900/20 to-amber-900/20 border border-transparent bg-clip-padding rounded-lg p-4 mb-6 overflow-x-auto relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-rose-500 before:to-amber-500 before:rounded-lg before:-z-10 before:p-[1px] hover:from-rose-900/30 hover:to-amber-900/30 transition-all duration-300"><code class="text-sm text-transparent bg-gradient-to-r from-teal-300 to-emerald-300 bg-clip-text font-mono">$1</code></pre>')
         // Inline code with hover effect
-        .replace(/`(.+?)`/g, '<code class="bg-gradient-to-r from-purple-500/20 to-blue-500/20 px-2 py-1 rounded text-sm text-cyan-300 hover:from-purple-500/30 hover:to-blue-500/30 hover:text-cyan-200 transition-all duration-200 font-mono">$1</code>')
+        .replace(/`(.+?)`/g, '<code class="bg-gradient-to-r from-rose-500/20 to-amber-400/20 px-2 py-1 rounded text-sm text-cyan-300 hover:from-rose-500/30 hover:to-amber-400/30 hover:text-cyan-200 transition-all duration-200 font-mono">$1</code>')
         // Blockquotes with colorful styling
-        .replace(/^> (.+)$/gim, '<blockquote class="my-6"><span class="text-transparent bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text italic">$1</span></blockquote>')
+        .replace(/^> (.+)$/gim, '<blockquote class="my-6"><span class="text-transparent bg-gradient-to-r from-rose-300 to-amber-300 bg-clip-text italic">$1</span></blockquote>')
 
       // Wrap in paragraph tags
       html = `<p class="text-white/80 leading-relaxed mb-6">${html}</p>`
@@ -119,9 +119,9 @@ export default function BlogContent({ content }: BlogContentProps) {
                      [&>p]:text-white/80 [&>p]:leading-relaxed [&>p]:mb-6
                      [&>ul]:mb-6 [&>ul]:space-y-2 [&>ul>li]:ml-6 [&>ul>li]:list-disc [&>ul>li]:text-white/80 [&>ul>li]:hover:text-white [&>ul>li]:transition-colors
                      [&>ol]:mb-6 [&>ol]:space-y-2 [&>ol]:list-decimal [&>ol]:list-inside [&>ol>li]:ml-6 [&>ol>li]:text-white/80 [&>ol>li]:hover:text-white [&>ol>li]:transition-colors
-                     [&>blockquote]:border-l-4 [&>blockquote]:border-gradient-to-b [&>blockquote]:from-purple-500 [&>blockquote]:to-blue-500 [&>blockquote]:pl-6 [&>blockquote]:pr-4 [&>blockquote]:py-4 [&>blockquote]:italic [&>blockquote]:text-white/70 [&>blockquote]:bg-gradient-to-r [&>blockquote]:from-purple-500/10 [&>blockquote]:to-blue-500/10 [&>blockquote]:rounded-r-lg [&>blockquote]:hover:from-purple-500/20 [&>blockquote]:hover:to-blue-500/20 [&>blockquote]:transition-all [&>blockquote]:duration-300
+                     [&>blockquote]:border-l-4 [&>blockquote]:border-gradient-to-b [&>blockquote]:from-rose-500 [&>blockquote]:to-amber-500 [&>blockquote]:pl-6 [&>blockquote]:pr-4 [&>blockquote]:py-4 [&>blockquote]:italic [&>blockquote]:text-white/70 [&>blockquote]:bg-gradient-to-r [&>blockquote]:from-rose-500/10 [&>blockquote]:to-amber-500/10 [&>blockquote]:rounded-r-lg [&>blockquote]:hover:from-rose-500/20 [&>blockquote]:hover:to-amber-500/20 [&>blockquote]:transition-all [&>blockquote]:duration-300
                      [&>pre]:mb-6 [&>pre]:overflow-x-auto
-                     [&_a]:relative [&_a]:text-transparent [&_a]:bg-gradient-to-r [&_a]:from-blue-400 [&_a]:to-purple-400 [&_a]:bg-clip-text [&_a]:font-medium [&_a]:after:content-[''] [&_a]:after:absolute [&_a]:after:left-0 [&_a]:after:bottom-0 [&_a]:after:w-full [&_a]:after:h-0.5 [&_a]:after:bg-gradient-to-r [&_a]:after:from-blue-400 [&_a]:after:to-purple-400 [&_a]:after:transform [&_a]:after:scale-x-0 [&_a]:after:transition-transform [&_a]:after:duration-300 [&_a:hover]:after:scale-x-100 [&_a:hover]:from-blue-300 [&_a:hover]:to-purple-300
+                     [&_a]:relative [&_a]:text-transparent [&_a]:bg-gradient-to-r [&_a]:from-amber-400 [&_a]:to-rose-400 [&_a]:bg-clip-text [&_a]:font-medium [&_a]:after:content-[''] [&_a]:after:absolute [&_a]:after:left-0 [&_a]:after:bottom-0 [&_a]:after:w-full [&_a]:after:h-0.5 [&_a]:after:bg-gradient-to-r [&_a]:after:from-amber-400 [&_a]:after:to-rose-400 [&_a]:after:transform [&_a]:after:scale-x-0 [&_a]:after:transition-transform [&_a]:after:duration-300 [&_a:hover]:after:scale-x-100 [&_a:hover]:from-amber-300 [&_a:hover]:to-rose-300
                      [&_strong]:font-semibold [&_strong]:text-white
                      [&_em]:italic [&_em]:text-transparent [&_em]:bg-gradient-to-r [&_em]:from-yellow-300 [&_em]:to-orange-400 [&_em]:bg-clip-text"
         />

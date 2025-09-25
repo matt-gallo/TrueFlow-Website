@@ -708,7 +708,7 @@ export default function ForBusinessPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-2xl border border-white/30 p-8 text-center">
+          <div className="bg-gradient-to-r from-amber-500/20 to-rose-500/20 backdrop-blur-md rounded-2xl border border-white/30 p-8 text-center">
             <p className="text-2xl text-white font-semibold mb-4">
               "AI isn't here to replace you - it's here to help you compete"
             </p>
