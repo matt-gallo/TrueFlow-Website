@@ -204,7 +204,7 @@ export default function ReadinessAssessment() {
       id: 'other',
       title: 'Other Professional',
       description: 'Any professional with expertise to share',
-      icon: <TrueFlowLogoIcon size={32} />,
+      icon: <TrueFlowLogoIcon size={20} />,
       features: ['Custom content strategy', 'Industry-specific messaging', 'Flexible workflows', 'Personal branding']
     }
   ]
@@ -1084,7 +1084,9 @@ export default function ReadinessAssessment() {
                         selectedBusinessType === type.id ? 'bg-blue-500/30' : 'bg-white/10'
                       }`}>
                         <div className="w-5 h-5 flex items-center justify-center">
-                          {React.cloneElement(type.icon as React.ReactElement, { className: "w-full h-full" })}
+                          {type.id === 'other'
+                            ? <TrueFlowLogoIcon size={20} />
+                            : React.cloneElement(type.icon as React.ReactElement, { className: "w-full h-full" })}
                         </div>
                       </div>
                       <h3 className="text-xs font-semibold text-white">{type.title}</h3>
