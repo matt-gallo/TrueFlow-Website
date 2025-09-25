@@ -5,7 +5,7 @@
 
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
@@ -1085,48 +1085,40 @@ export default function ReadinessAssessment() {
 
           {/* Step 2: Business Assessment */}
           {currentStep === 2 && (
-            <div className="space-y-8">
-              <div className="text-center mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <div className="space-y-6">
+              <div className="text-center mb-6">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
                   Business Assessment
                 </h1>
-                <p className="text-xl text-white/70">
-                  Tell us about your business needs and goals
+                <p className="text-lg text-white/70">
+                  Tell us about your business in 30 seconds
                 </p>
               </div>
 
               {/* Business Type Section */}
-              <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                <div className="flex items-center mb-4">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white font-bold text-sm">1</span>
-                  </div>
-                  <h2 className="text-xl font-bold">Select Your Business Type</h2>
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <h2 className="text-lg font-bold mb-3">I am a...</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {businessTypes.map((type) => (
                     <button
                       key={type.id}
                       onClick={() => setSelectedBusinessType(type.id)}
-                      className={`p-4 rounded-xl border text-left transition-all duration-300 ${
+                      className={`relative p-3 rounded-lg border text-center transition-all duration-300 ${
                         selectedBusinessType === type.id
-                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 shadow-lg'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                     >
-                      <div className="flex items-center space-x-3 mb-2">
-                        <div className={`p-2 rounded-lg ${
-                          selectedBusinessType === type.id ? 'bg-blue-500' : 'bg-white/10'
-                        }`}>
-                          <div className="h-5 w-5">{type.icon}</div>
-                        </div>
-                        <div>
-                          <h3 className="text-sm font-semibold text-white">{type.title}</h3>
+                      <div className={`w-8 h-8 mx-auto mb-1 flex items-center justify-center rounded-lg ${
+                        selectedBusinessType === type.id ? 'bg-blue-500/30' : 'bg-white/10'
+                      }`}>
+                        <div className="w-5 h-5 flex items-center justify-center">
+                          {React.cloneElement(type.icon as React.ReactElement, { className: "w-full h-full" })}
                         </div>
                       </div>
+                      <h3 className="text-xs font-semibold text-white">{type.title}</h3>
                       {selectedBusinessType === type.id && (
-                        <CheckCircle className="h-4 w-4 text-green-400 ml-auto" />
+                        <CheckCircle className="absolute top-1 right-1 h-3 w-3 text-green-400" />
                       )}
                     </button>
                   ))}
@@ -1134,35 +1126,29 @@ export default function ReadinessAssessment() {
               </div>
 
               {/* Content Goals Section */}
-              <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                <div className="flex items-center mb-4">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white font-bold text-sm">2</span>
-                  </div>
-                  <h2 className="text-xl font-bold">What Content Do You Want to Create?</h2>
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <h2 className="text-lg font-bold mb-3">I want to create...</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {contentGoalOptions.map((goal) => (
                     <button
                       key={goal.id}
                       onClick={() => toggleContentGoal(goal.id)}
-                      className={`p-3 rounded-xl border transition-all duration-300 ${
+                      className={`relative flex items-center p-3 rounded-lg border transition-all duration-300 ${
                         contentGoals.includes(goal.id)
                           ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                     >
-                      <div className="flex items-center space-x-2">
-                        <div className={`p-2 rounded-lg ${
-                          contentGoals.includes(goal.id) ? 'bg-blue-500' : 'bg-white/10'
-                        }`}>
-                          <div className="h-4 w-4">{goal.icon}</div>
+                      <div className={`w-6 h-6 mr-2 flex items-center justify-center rounded ${
+                        contentGoals.includes(goal.id) ? 'bg-blue-500/30' : 'bg-white/10'
+                      }`}>
+                        <div className="w-4 h-4 flex items-center justify-center">
+                          {React.cloneElement(goal.icon as React.ReactElement, { className: "w-full h-full" })}
                         </div>
-                        <h3 className="text-sm font-semibold text-white">{goal.label}</h3>
                       </div>
+                      <h3 className="text-xs font-semibold text-white">{goal.label}</h3>
                       {contentGoals.includes(goal.id) && (
-                        <CheckCircle className="h-3 w-3 text-green-400 ml-auto mt-1" />
+                        <CheckCircle className="absolute top-1 right-1 h-3 w-3 text-green-400" />
                       )}
                     </button>
                   ))}
@@ -1170,24 +1156,19 @@ export default function ReadinessAssessment() {
               </div>
 
               {/* Key Questions Section */}
-              <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                <div className="flex items-center mb-4">
-                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white font-bold text-sm">3</span>
-                  </div>
-                  <h2 className="text-xl font-bold">Quick Assessment</h2>
-                </div>
+              <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
+                <h2 className="text-lg font-bold mb-3">Quick Assessment</h2>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {questions.map((question, index) => (
-                    <div key={question.id} className="space-y-3">
-                      <h3 className="text-base font-semibold text-white/90">{question.question}</h3>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                    <div key={question.id} className="space-y-2">
+                      <h3 className="text-sm font-semibold text-white/90">{question.question}</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
                         {question.options.map((option) => (
                           <button
                             key={option.value}
                             onClick={() => handleAnswer(question.id, option.value)}
-                            className={`p-3 rounded-lg border text-left transition-all duration-300 text-sm ${
+                            className={`p-2 rounded-lg border text-left transition-all duration-300 text-xs ${
                               answers[question.id] === option.value
                                 ? 'bg-white/10 border-blue-500'
                                 : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
@@ -1196,7 +1177,7 @@ export default function ReadinessAssessment() {
                             <div className="flex items-center justify-between">
                               <span className="text-white/80">{option.label}</span>
                               {answers[question.id] === option.value && (
-                                <CheckCircle className="h-4 w-4 text-blue-500 flex-shrink-0 ml-2" />
+                                <CheckCircle className="h-3 w-3 text-blue-500 flex-shrink-0 ml-2" />
                               )}
                             </div>
                           </button>
