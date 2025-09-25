@@ -2251,7 +2251,7 @@ export default function LandingPage() {
           {/* Bottom Bar */}
           <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-white/40 text-sm">
-              © 2025 TrueFlow™️ AI, LLC. All rights reserved.
+              © 2025 TrueFlow™ AI, LLC. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link href="/terms" className="text-white/40 hover:text-white/60 transition-colors text-sm">Terms</Link>

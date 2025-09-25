@@ -699,7 +699,7 @@ export default function FAQPage() {
           </div>
           
           <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between text-white/50">
-            <p>&copy; 2025 TrueFlow™️ AI, LLC. All rights reserved.</p>
+            <p>&copy; 2025 TrueFlow™ AI, LLC. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="#" className="hover:text-white transition-colors">Terms</Link>
               <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
