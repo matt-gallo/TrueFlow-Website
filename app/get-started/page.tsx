@@ -444,41 +444,30 @@ export default function ReadinessAssessment() {
 
   const getSmartPlanRecommendation = () => {
     const score = calculateScore()
-    
+
     // Get individual answer values for detailed analysis
     const contentVolume = answers['content-volume']
-    const currentContent = answers['current-content']
-    const crmUsage = answers['crm-usage']
-    const leadResponse = answers['lead-response']
+    const timeSpent = answers['time-spent']
     const budget = answers['budget']
-    
+
     // Count key indicators
     let contentEngineIndicators = 0
     let completeSystemIndicators = 0
     let enterpriseIndicators = 0
-    
+
     // Content volume analysis
     if (contentVolume === 'minimal') contentEngineIndicators++
     else if (contentVolume === 'moderate') completeSystemIndicators++
     else if (contentVolume === 'high' || contentVolume === 'very-high') enterpriseIndicators++
-    
-    // Current content creation method
-    if (currentContent === 'manual' || currentContent === 'outsource') contentEngineIndicators++
-    else if (currentContent === 'mixed') completeSystemIndicators++
-    else if (currentContent === 'team') enterpriseIndicators++
-    
-    // CRM usage
-    if (crmUsage === 'spreadsheets') contentEngineIndicators++
-    else if (crmUsage === 'basic-crm') completeSystemIndicators++
-    else if (crmUsage === 'advanced-crm' || crmUsage === 'integrated') enterpriseIndicators++
-    
-    // Lead response time
-    if (leadResponse === 'days') contentEngineIndicators++
-    else if (leadResponse === 'hours' || leadResponse === 'quick') completeSystemIndicators++
-    else if (leadResponse === 'instant') enterpriseIndicators++
-    
+
+    // Time spent analysis (inverted scoring)
+    if (timeSpent === 'very-high' || timeSpent === 'high') completeSystemIndicators++ // Need more automation
+    else if (timeSpent === 'moderate') contentEngineIndicators++
+    else if (timeSpent === 'minimal') enterpriseIndicators++ // Already optimized, might need enterprise
+
     // Budget analysis
-    if (budget === 'low' || budget === 'moderate') contentEngineIndicators++
+    if (budget === 'low') contentEngineIndicators++
+    else if (budget === 'moderate') contentEngineIndicators++
     else if (budget === 'high') completeSystemIndicators++
     else if (budget === 'enterprise') enterpriseIndicators++
     
@@ -1218,119 +1207,126 @@ export default function ReadinessAssessment() {
             </div>
           )}
 
-          {/* Step 2: Business Profile & Goals */}
+          {/* Step 2: Business Assessment */}
           {currentStep === 2 && (
             <div className="space-y-8">
               <div className="text-center mb-8">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  Business Profile & Goals
+                  Business Assessment
                 </h1>
                 <p className="text-xl text-white/70">
-                  Tell us about your business and what content you want to create
+                  Tell us about your business needs and goals
                 </p>
               </div>
 
               {/* Business Type Section */}
-              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
-                <div className="flex items-center mb-6">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white font-bold">1</span>
+              <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+                <div className="flex items-center mb-4">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-white font-bold text-sm">1</span>
                   </div>
-                  <h2 className="text-2xl font-bold">Select Your Business Type</h2>
+                  <h2 className="text-xl font-bold">Select Your Business Type</h2>
                 </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {businessTypes.map((type) => (
                     <button
                       key={type.id}
                       onClick={() => setSelectedBusinessType(type.id)}
-                      className={`p-6 rounded-xl border text-left transition-all duration-500 transform-gpu ${
+                      className={`p-4 rounded-xl border text-left transition-all duration-300 ${
                         selectedBusinessType === type.id
                           ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 shadow-lg'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
-                      style={{
-                        transformStyle: 'preserve-3d',
-                        transition: 'transform 0.4s cubic-bezier(0.23, 1, 0.320, 1)'
-                      }}
-                      onMouseEnter={(e) => {
-                        const rect = e.currentTarget.getBoundingClientRect()
-                        const centerX = rect.left + rect.width / 2
-                        const centerY = rect.top + rect.height / 2
-                        const mouseX = e.clientX - centerX
-                        const mouseY = e.clientY - centerY
-                        const rotateX = (mouseY / rect.height) * -10
-                        const rotateY = (mouseX / rect.width) * 10
-                        e.currentTarget.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px) scale(1.02)`
-                      }}
-                      onMouseMove={(e) => {
-                        const rect = e.currentTarget.getBoundingClientRect()
-                        const centerX = rect.left + rect.width / 2
-                        const centerY = rect.top + rect.height / 2
-                        const mouseX = e.clientX - centerX
-                        const mouseY = e.clientY - centerY
-                        const rotateX = (mouseY / rect.height) * -10
-                        const rotateY = (mouseX / rect.width) * 10
-                        e.currentTarget.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px) scale(1.02)`
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
-                      }}
                     >
-                      <div className="flex items-center space-x-4 mb-4">
-                        <div className={`p-3 rounded-lg ${
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className={`p-2 rounded-lg ${
                           selectedBusinessType === type.id ? 'bg-blue-500' : 'bg-white/10'
                         }`}>
-                          {type.icon}
+                          <div className="h-5 w-5">{type.icon}</div>
                         </div>
                         <div>
-                          <h3 className="text-lg font-semibold text-white">{type.title}</h3>
-                          <p className="text-white/70 text-sm">{type.description}</p>
+                          <h3 className="text-sm font-semibold text-white">{type.title}</h3>
                         </div>
                       </div>
-                      <div className="space-y-2">
-                        {type.features.map((feature, index) => (
-                          <div key={index} className="flex items-center space-x-2">
-                            <CheckCircle className="h-4 w-4 text-green-400" />
-                            <span className="text-white/80 text-sm">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
+                      {selectedBusinessType === type.id && (
+                        <CheckCircle className="h-4 w-4 text-green-400 ml-auto" />
+                      )}
                     </button>
                   ))}
                 </div>
               </div>
 
               {/* Content Goals Section */}
-              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
-                <div className="flex items-center mb-6">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white font-bold">2</span>
+              <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+                <div className="flex items-center mb-4">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-white font-bold text-sm">2</span>
                   </div>
-                  <h2 className="text-2xl font-bold">What Content Do You Want to Create?</h2>
+                  <h2 className="text-xl font-bold">What Content Do You Want to Create?</h2>
                 </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {contentGoalOptions.map((goal) => (
                     <button
                       key={goal.id}
                       onClick={() => toggleContentGoal(goal.id)}
-                      className={`p-4 rounded-xl border transition-all duration-300 hover:scale-105 ${
+                      className={`p-3 rounded-xl border transition-all duration-300 ${
                         contentGoals.includes(goal.id)
                           ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                     >
-                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-2 ${
-                        contentGoals.includes(goal.id) ? 'bg-blue-500' : 'bg-white/10'
-                      }`}>
-                        {goal.icon}
+                      <div className="flex items-center space-x-2">
+                        <div className={`p-2 rounded-lg ${
+                          contentGoals.includes(goal.id) ? 'bg-blue-500' : 'bg-white/10'
+                        }`}>
+                          <div className="h-4 w-4">{goal.icon}</div>
+                        </div>
+                        <h3 className="text-sm font-semibold text-white">{goal.label}</h3>
                       </div>
-                      <h3 className="text-sm font-semibold text-white">{goal.label}</h3>
                       {contentGoals.includes(goal.id) && (
-                        <CheckCircle className="h-4 w-4 text-green-400 mx-auto mt-1" />
+                        <CheckCircle className="h-3 w-3 text-green-400 ml-auto mt-1" />
                       )}
                     </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Key Questions Section */}
+              <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+                <div className="flex items-center mb-4">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-white font-bold text-sm">3</span>
+                  </div>
+                  <h2 className="text-xl font-bold">Quick Assessment</h2>
+                </div>
+
+                <div className="space-y-6">
+                  {questions.map((question, index) => (
+                    <div key={question.id} className="space-y-3">
+                      <h3 className="text-base font-semibold text-white/90">{question.question}</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                        {question.options.map((option) => (
+                          <button
+                            key={option.value}
+                            onClick={() => handleAnswer(question.id, option.value)}
+                            className={`p-3 rounded-lg border text-left transition-all duration-300 text-sm ${
+                              answers[question.id] === option.value
+                                ? 'bg-white/10 border-blue-500'
+                                : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
+                            }`}
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className="text-white/80">{option.label}</span>
+                              {answers[question.id] === option.value && (
+                                <CheckCircle className="h-4 w-4 text-blue-500 flex-shrink-0 ml-2" />
+                              )}
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -1353,162 +1349,16 @@ export default function ReadinessAssessment() {
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
-                  <span>Continue</span>
+                  <span>Continue to Results</span>
                   <ArrowRight className="h-5 w-5" />
                 </button>
               </div>
             </div>
           )}
 
-          {/* Step 3: Current Practices */}
+{/* Step 3: Results & Plan Selection */}
+          {/* Step 3: Select Your Plan */}
           {currentStep === 3 && (
-            <div className="space-y-8">
-              <div className="text-center mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  Current Practices Assessment
-                </h1>
-                <p className="text-xl text-white/70">
-                  Help us understand how you currently operate
-                </p>
-              </div>
-
-              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {questions.slice(0, 4).map((question, index) => (
-                    <div key={question.id} className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                          <span className="text-white text-sm font-bold">{index + 1}</span>
-                        </div>
-                        <h3 className="text-lg font-semibold">{question.question}</h3>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        {question.options.map((option) => (
-                          <button
-                            key={option.value}
-                            onClick={() => handleAnswer(question.id, option.value)}
-                            className={`w-full p-3 rounded-lg border text-left transition-all duration-300 text-sm ${
-                              answers[question.id] === option.value
-                                ? 'bg-white/10 border-blue-500'
-                                : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
-                            }`}
-                          >
-                            <div className="flex items-center justify-between">
-                              <span>{option.label}</span>
-                              {answers[question.id] === option.value && (
-                                <CheckCircle className="h-4 w-4 text-blue-500" />
-                              )}
-                            </div>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <button
-                  onClick={handlePrevious}
-                  className="flex items-center px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  <ArrowLeft className="h-5 w-5 mr-2" />
-                  Previous
-                </button>
-
-                <button
-                  onClick={handleNext}
-                  disabled={!canProceedStep3}
-                  className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
-                    canProceedStep3
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
-                      : 'bg-white/10 text-white/50 cursor-not-allowed'
-                  }`}
-                >
-                  <span>Continue</span>
-                  <ArrowRight className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Step 4: Resources */}
-          {currentStep === 4 && (
-            <div className="space-y-8">
-              <div className="text-center mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  Your Resources
-                </h1>
-                <p className="text-xl text-white/70">
-                  Tell us about your available time and budget
-                </p>
-              </div>
-
-              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {questions.slice(4, 6).map((question, index) => (
-                    <div key={question.id} className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                          <span className="text-white text-sm font-bold">{index + 1}</span>
-                        </div>
-                        <h3 className="text-lg font-semibold">{question.question}</h3>
-                      </div>
-                      
-                      <div className="space-y-2">
-                        {question.options.map((option) => (
-                          <button
-                            key={option.value}
-                            onClick={() => handleAnswer(question.id, option.value)}
-                            className={`w-full p-3 rounded-lg border text-left transition-all duration-300 text-sm ${
-                              answers[question.id] === option.value
-                                ? 'bg-white/10 border-blue-500'
-                                : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20'
-                            }`}
-                          >
-                            <div className="flex items-center justify-between">
-                              <span>{option.label}</span>
-                              {answers[question.id] === option.value && (
-                                <CheckCircle className="h-4 w-4 text-blue-500" />
-                              )}
-                            </div>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center">
-                <button
-                  onClick={handlePrevious}
-                  className="flex items-center px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300"
-                >
-                  <ArrowLeft className="h-5 w-5 mr-2" />
-                  Previous
-                </button>
-
-                <button
-                  onClick={handleNext}
-                  disabled={!canProceedStep4}
-                  className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
-                    canProceedStep4
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
-                      : 'bg-white/10 text-white/50 cursor-not-allowed'
-                  }`}
-                >
-                  <span>Continue</span>
-                  <ArrowRight className="h-5 w-5" />
-                </button>
-              </div>
-            </div>
-          )}
-
-          {/* Step 5: Results & Plan Selection */}
-          {/* Step 5: Select Your Plan */}
-          {currentStep === 5 && (
             <div className="space-y-8">
               <div className="text-center mb-8">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
