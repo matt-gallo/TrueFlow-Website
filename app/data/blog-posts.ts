@@ -76,7 +76,11 @@ export const tags: Record<string, Tag> = {
   'compliance': { name: 'Compliance', slug: 'compliance' },
   'ethics': { name: 'Ethics', slug: 'ethics' },
   'job-market': { name: 'Job Market', slug: 'job-market' },
-  'future-of-work': { name: 'Future of Work', slug: 'future-of-work' }
+  'future-of-work': { name: 'Future of Work', slug: 'future-of-work' },
+  'events': { name: 'Events', slug: 'events' },
+  'gohighlevel': { name: 'GoHighLevel', slug: 'gohighlevel' },
+  'product-launch': { name: 'Product Launch', slug: 'product-launch' },
+  'networking': { name: 'Networking', slug: 'networking' }
 }
 
 // Tag color palette mapping
@@ -128,7 +132,11 @@ export const tagColorPalettes: Record<string, string> = {
   'compliance': 'from-gray-700 to-blue-900',
   'ethics': 'from-emerald-600 to-cyan-700',
   'job-market': 'from-indigo-600 to-blue-700',
-  'future-of-work': 'from-violet-600 to-indigo-700'
+  'future-of-work': 'from-violet-600 to-indigo-700',
+  'events': 'from-purple-600 to-pink-700',
+  'gohighlevel': 'from-green-600 to-teal-700',
+  'product-launch': 'from-orange-600 to-red-700',
+  'networking': 'from-blue-600 to-indigo-700'
 }
 
 // Blog Posts
@@ -1741,33 +1749,31 @@ See you in Dallas! Let's level up together.
       bio: 'Lead AI Implementation Engineer at TrueFlow. When not architecting cutting-edge AI solutions for content creation, you\'ll find me connecting with entrepreneurs and helping them leverage technology to scale their businesses.'
     },
     date: '2025-09-25',
-    readingTime: '4 min read',
-    coverImage: '/blog/levelup-event.jpg',
-    category: 'events',
-    tags: ['Events', 'GoHighLevel', 'Product Launch', 'Networking'],
-    metadata: {
-      featured: true,
-      trending: false,
-      views: 0,
-      likes: 0,
-      shares: {
-        twitter: 0,
-        linkedin: 0,
-        facebook: 0
-      },
-      seo: {
-        title: 'Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch',
-        description: 'TrueFlow is heading to Dallas for GoHighLevel\'s LevelUp event! Join us for an exclusive afterparty celebrating our production launch.',
-        keywords: [
-          'LevelUp 2025',
-          'GoHighLevel',
-          'TrueFlow afterparty',
-          'Dallas tech events',
-          'platform launch',
-          'AI content creation',
-          'networking event'
-        ]
-      }
+    readTime: 4,
+    category: categories.events,
+    tags: [
+      tags['events'],
+      tags['gohighlevel'],
+      tags['product-launch'],
+      tags['networking']
+    ],
+    primaryTag: tags['events'],
+    featuredImage: {
+      url: '/blog/levelup-event.jpg',
+      alt: 'TrueFlow team at GoHighLevel LevelUp 2025 event'
+    },
+    seo: {
+      metaTitle: 'Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch',
+      metaDescription: 'TrueFlow is heading to Dallas for GoHighLevel\'s LevelUp event! Join us for an exclusive afterparty celebrating our production launch.',
+      keywords: [
+        'LevelUp 2025',
+        'GoHighLevel',
+        'TrueFlow afterparty',
+        'Dallas tech events',
+        'platform launch',
+        'AI content creation',
+        'networking event'
+      ]
     },
     published: true
   }

@@ -1349,7 +1349,7 @@ export default function LandingPage() {
                     style={{
                       background: `linear-gradient(135deg, ${
                         feature.gradient.includes('from-blue-500') && feature.gradient.includes('to-cyan-500') ? '#3b82f6, #06b6d4' :
-                        feature.gradient.includes('from-purple-500') && feature.gradient.includes('to-pink-500') ? '#8b5cf6, #ec4899' :
+                        feature.gradient.includes('from-amber-400') && feature.gradient.includes('to-rose-500') ? '#f59e0b, #f43f5e' :
                         feature.gradient.includes('from-green-500') && feature.gradient.includes('to-emerald-500') ? '#10b981, #059669' :
                         feature.gradient.includes('from-orange-500') && feature.gradient.includes('to-red-500') ? '#f97316, #ef4444' :
                         '#3b82f6, #06b6d4'
