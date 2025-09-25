@@ -805,8 +805,8 @@ export default function ReadinessAssessment() {
         // Don't throw - email is backup, main submission succeeded
       }
 
-      // Show success page
-      setShowSuccess(true)
+      // Redirect to TrueFlow app signup page with email pre-filled
+      window.location.href = `https://app.trueflow.ai/auth/signup?email=${encodeURIComponent(contactInfo.email)}`
     } catch (error) {
       console.error('[Form Submit] Submission failed:', error)
       console.error('[Form Submit] Error type:', error instanceof Error ? error.constructor.name : typeof error)
