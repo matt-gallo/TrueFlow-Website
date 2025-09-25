@@ -139,8 +139,24 @@ Example workflow:
 
 **Note**: This codebase currently uses only Supabase Auth (auth.users table) with user_metadata storage. No custom tables are currently required.
 
+## Git Deployment Instructions
+
+**IMPORTANT**: After making changes to the codebase:
+
+1. **Always push to production immediately** after changes are verified working
+2. Use the following commands:
+   ```bash
+   git add -A
+   git commit -m "Clear, descriptive commit message"
+   git push origin main
+   ```
+3. Production deployment happens automatically via Railway when pushed to main branch
+4. This will change to staging/production branches once staging environment is created
+
+**Auto-deploy**: Railway automatically deploys changes pushed to the main branch to production.
+
 ---
 
 **Last Updated**: 2025-01-10
-**Version**: 1.1.0
+**Version**: 1.2.0
 **Auto-read**: This file is automatically read by Claude Code at session start
