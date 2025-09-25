@@ -97,69 +97,36 @@ interface CursorTrailPoint {
 
 const questions: Question[] = [
   {
-    id: 'current-content',
-    category: 'Content Creation',
-    question: 'How do you currently create content for your business?',
-    options: [
-      { value: 'manual', label: 'Manually write everything', score: 1 },
-      { value: 'outsource', label: 'Outsource to freelancers/agencies', score: 2 },
-      { value: 'team', label: 'Have an in-house content team', score: 3 },
-      { value: 'mixed', label: 'Mix of manual and automated tools', score: 4 }
-    ]
-  },
-  {
     id: 'content-volume',
-    category: 'Content Creation',
-    question: 'How much content do you need to produce monthly?',
+    category: 'Content Needs',
+    question: 'How much content do you need monthly?',
     options: [
-      { value: 'minimal', label: '1-5 pieces', score: 1 },
-      { value: 'moderate', label: '6-20 pieces', score: 2 },
-      { value: 'high', label: '21-50 pieces', score: 3 },
-      { value: 'very-high', label: '50+ pieces', score: 4 }
-    ]
-  },
-  {
-    id: 'crm-usage',
-    category: 'Customer Management',
-    question: 'How do you currently manage customer relationships?',
-    options: [
-      { value: 'spreadsheets', label: 'Spreadsheets or manual tracking', score: 1 },
-      { value: 'basic-crm', label: 'Basic CRM system', score: 2 },
-      { value: 'advanced-crm', label: 'Advanced CRM with automation', score: 3 },
-      { value: 'integrated', label: 'Fully integrated systems', score: 4 }
-    ]
-  },
-  {
-    id: 'lead-response',
-    category: 'Customer Management',
-    question: 'How quickly do you typically respond to new leads?',
-    options: [
-      { value: 'days', label: 'Within a few days', score: 1 },
-      { value: 'hours', label: 'Within 24 hours', score: 2 },
-      { value: 'quick', label: 'Within a few hours', score: 3 },
-      { value: 'instant', label: 'Almost instantly', score: 4 }
+      { value: 'minimal', label: '1-10 pieces (emails, posts, blogs)', score: 1 },
+      { value: 'moderate', label: '11-30 pieces across channels', score: 2 },
+      { value: 'high', label: '31-60 pieces with regular publishing', score: 3 },
+      { value: 'very-high', label: '60+ pieces with daily content needs', score: 4 }
     ]
   },
   {
     id: 'time-spent',
-    category: 'Time Management',
-    question: 'How much time do you spend on repetitive tasks weekly?',
+    category: 'Time Investment',
+    question: 'How much time do you spend weekly on content creation and customer management?',
     options: [
-      { value: 'minimal', label: 'Less than 5 hours', score: 4 },
-      { value: 'moderate', label: '5-15 hours', score: 3 },
-      { value: 'high', label: '15-30 hours', score: 2 },
-      { value: 'very-high', label: 'More than 30 hours', score: 1 }
+      { value: 'very-high', label: '30+ hours (it\'s overwhelming)', score: 1 },
+      { value: 'high', label: '15-30 hours (takes most of my time)', score: 2 },
+      { value: 'moderate', label: '5-15 hours (manageable but limiting)', score: 3 },
+      { value: 'minimal', label: 'Less than 5 hours (well optimized)', score: 4 }
     ]
   },
   {
     id: 'budget',
-    category: 'Investment',
-    question: 'What\'s your monthly budget for content and customer management?',
+    category: 'Investment Ready',
+    question: 'What\'s your monthly budget for automation and content tools?',
     options: [
-      { value: 'low', label: 'Less than $500', score: 1 },
-      { value: 'moderate', label: '$500 - $2,000', score: 2 },
-      { value: 'high', label: '$2,000 - $5,000', score: 3 },
-      { value: 'enterprise', label: 'More than $5,000', score: 4 }
+      { value: 'low', label: 'Under $500/month', score: 1 },
+      { value: 'moderate', label: '$500 - $2,000/month', score: 2 },
+      { value: 'high', label: '$2,000 - $5,000/month', score: 3 },
+      { value: 'enterprise', label: 'Over $5,000/month', score: 4 }
     ]
   }
 ]
@@ -167,10 +134,8 @@ const questions: Question[] = [
 // Step definitions for the combined flow
 const stepDefinitions = [
   { id: 1, name: 'Setup', description: 'Contact and integration preferences' },
-  { id: 2, name: 'Business Profile & Goals', description: 'Tell us about your business and content goals' },
-  { id: 3, name: 'Current Practices', description: 'How you currently operate' },
-  { id: 4, name: 'Resources', description: 'Your time and budget' },
-  { id: 5, name: 'Results & Plan', description: 'Your AI readiness score and plan selection' }
+  { id: 2, name: 'Business Assessment', description: 'Tell us about your business needs' },
+  { id: 3, name: 'Results & Plan', description: 'Your AI readiness score and plan selection' }
 ]
 
 export default function ReadinessAssessment() {
@@ -419,9 +384,15 @@ export default function ReadinessAssessment() {
     setAnswers(prev => ({ ...prev, [questionId]: value }))
   }
 
+  const hasAnsweredQuestions = () => {
+    return Object.keys(answers).length > 0
+  }
+
   const calculateScore = () => {
+    if (!hasAnsweredQuestions()) return 0
+
     let totalScore = 0
-    let maxScore = 0
+    let answeredQuestions = 0
 
     questions.forEach(q => {
       const answer = answers[q.id]
@@ -429,13 +400,15 @@ export default function ReadinessAssessment() {
         const option = q.options.find(o => o.value === answer)
         if (option) {
           totalScore += option.score
+          answeredQuestions++
         }
       }
-      maxScore += 4 // Maximum score per question
     })
 
+    if (answeredQuestions === 0) return 0
+
+    const maxScore = answeredQuestions * 4 // Maximum score per answered question
     const percentage = Math.round((totalScore / maxScore) * 100)
-    // Cap the score at 100% in case of any calculation issues
     return Math.min(percentage, 100)
   }
 
@@ -808,14 +781,12 @@ export default function ReadinessAssessment() {
 
   const canProceedStep1 = contactInfo.firstName && contactInfo.lastName && contactInfo.email && contactInfo.businessName
   const canProceedStep2 = selectedBusinessType && contentGoals.length > 0
-  const canProceedStep3 = answers['current-content'] && answers['content-volume'] && answers['crm-usage'] && answers['lead-response']
-  const canProceedStep4 = answers['time-spent'] && answers['budget']
 
   const handleNext = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
     if (currentStep < stepDefinitions.length) {
-      // Calculate plan recommendation when moving to Step 5
-      if (currentStep === 4) {
+      // Calculate plan recommendation when moving to Step 3 (Results)
+      if (currentStep === 2) {
         const recommendation = getSmartPlanRecommendation()
         setPlanRecommendation(recommendation)
         setSelectedPlan(recommendation.planId)
@@ -1157,7 +1128,11 @@ export default function ReadinessAssessment() {
 
               {/* Key Questions Section */}
               <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                <h2 className="text-lg font-bold mb-3">Quick Assessment</h2>
+                <div className="flex items-center justify-between mb-3">
+                  <h2 className="text-lg font-bold">Quick Assessment</h2>
+                  <span className="text-xs text-white/50 bg-white/10 px-2 py-1 rounded">Optional</span>
+                </div>
+                <p className="text-xs text-white/60 mb-3">Answer these questions for a personalized readiness score, or skip for a general recommendation.</p>
 
                 <div className="space-y-4">
                   {questions.map((question, index) => (
@@ -1219,10 +1194,12 @@ export default function ReadinessAssessment() {
             <div className="space-y-8">
               <div className="text-center mb-8">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  Your AI Readiness Score
+                  {hasAnsweredQuestions() ? 'Your AI Readiness Score' : 'Choose Your Plan'}
                 </h1>
                 <p className="text-xl text-white/70">
-                  Based on your assessment, here's your personalized recommendation
+                  {hasAnsweredQuestions()
+                    ? "Based on your assessment, here's your personalized recommendation"
+                    : "Select the plan that best fits your business needs"}
                 </p>
               </div>
               
@@ -1276,6 +1253,7 @@ export default function ReadinessAssessment() {
                   </div>
                 </div>
               </div>
+              )}
 
               {/* Plan Selection */}
               <div>
