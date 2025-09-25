@@ -9,7 +9,6 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
-import { authService } from '@/lib/services/auth-service'
 import { 
   ArrowLeft,
   ArrowRight,
@@ -67,7 +66,6 @@ interface ContactInfo {
   email: string
   phone?: string
   businessName?: string
-  password?: string
 }
 
 interface Plan {
@@ -172,8 +170,7 @@ const stepDefinitions = [
   { id: 2, name: 'Business Profile & Goals', description: 'Tell us about your business and content goals' },
   { id: 3, name: 'Current Practices', description: 'How you currently operate' },
   { id: 4, name: 'Resources', description: 'Your time and budget' },
-  { id: 5, name: 'Results & Plan', description: 'Your AI readiness score and plan selection' },
-  { id: 6, name: 'Create Account', description: 'Set up your TrueFlow account' }
+  { id: 5, name: 'Results & Plan', description: 'Your AI readiness score and plan selection' }
 ]
 
 export default function ReadinessAssessment() {
@@ -190,8 +187,7 @@ export default function ReadinessAssessment() {
     lastName: '',
     email: '',
     phone: '',
-    businessName: '',
-    password: ''
+    businessName: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
@@ -658,37 +654,9 @@ export default function ReadinessAssessment() {
       return
     }
 
-    // Validate password
-    if (!contactInfo.password || contactInfo.password.length < 6) {
-      setSubmitError('Password must be at least 6 characters long')
-      setIsSubmitting(false)
-      return
-    }
 
     try {
-      // First, create the Supabase account
-      const signUpResult = await authService.signUp({
-        email: contactInfo.email,
-        password: contactInfo.password!,
-        fullName: `${contactInfo.firstName} ${contactInfo.lastName}`,
-        company: contactInfo.businessName,
-        phone: contactInfo.phone,
-        businessType: businessTypes.find(type => type.id === selectedBusinessType)?.title || selectedBusinessType,
-        contentGoals,
-        integrations,
-        selectedPlan: selectedPlan === 'not-sure' ? 'Not Sure Yet' : plans.find(plan => plan.id === selectedPlan)?.name || selectedPlan
-      })
-
-      if (!signUpResult.success) {
-        // Check if it's a user already exists error
-        if (signUpResult.error?.includes('already registered')) {
-          setSubmitError('An account with this email already exists. Please sign in or use a different email.')
-        } else {
-          setSubmitError(signUpResult.error || 'Failed to create account. Please try again.')
-        }
-        setIsSubmitting(false)
-        return
-      }
+      // Note: Account creation will happen on the app side after redirect
 
       // Continue with existing GHL and email notification logic
       const score = calculateScore()
@@ -805,8 +773,22 @@ export default function ReadinessAssessment() {
         // Don't throw - email is backup, main submission succeeded
       }
 
-      // Redirect to TrueFlow app signup page with email pre-filled
-      window.location.href = `https://app.trueflow.ai/auth/signup?email=${encodeURIComponent(contactInfo.email)}`
+      // Build query parameters for the signup page
+      const params = new URLSearchParams({
+        email: contactInfo.email,
+        firstName: contactInfo.firstName,
+        lastName: contactInfo.lastName,
+        businessName: contactInfo.businessName || '',
+        phone: contactInfo.phone || '',
+        plan: selectedPlan === 'not-sure' ? 'Not Sure Yet' : plans.find(plan => plan.id === selectedPlan)?.name || selectedPlan,
+        businessType: businessTypes.find(type => type.id === selectedBusinessType)?.title || selectedBusinessType,
+        contentGoals: contentGoals.join(','),
+        integrations: integrations.join(','),
+        readinessScore: calculateScore().toString()
+      })
+
+      // Redirect to TrueFlow app signup page with all data
+      window.location.href = `https://app.trueflow.ai/auth/signup?${params.toString()}`
     } catch (error) {
       console.error('[Form Submit] Submission failed:', error)
       console.error('[Form Submit] Error type:', error instanceof Error ? error.constructor.name : typeof error)
@@ -1709,154 +1691,30 @@ export default function ReadinessAssessment() {
                 </button>
 
                 <button
-                  onClick={handleNext}
-                  disabled={!selectedPlan}
+                  onClick={handleSubmit}
+                  disabled={!selectedPlan || isSubmitting}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
-                    selectedPlan
+                    selectedPlan && !isSubmitting
                       ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
-                  <span>Continue to Create Account</span>
-                  <ArrowRight className="h-5 w-5" />
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
+                      <span>Processing...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Continue to Create Account</span>
+                      <ArrowRight className="h-5 w-5" />
+                    </>
+                  )}
                 </button>
               </div>
             </div>
           )}
 
-          {/* Step 6: Create Your Account */}
-          {currentStep === 6 && (
-            <div className="space-y-8">
-              <div className="text-center mb-8">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                  Create Your TrueFlow Account
-                </h1>
-                <p className="text-white/70 text-lg">
-                  Confirm your information and set a password to complete your account setup
-                </p>
-              </div>
-
-              {/* Account Creation Form */}
-              <div className="max-w-2xl mx-auto">
-                <div className="bg-white/5 rounded-2xl p-8 border border-white/10 space-y-6">
-                  {/* Show selected plan */}
-                  <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-xl p-4 border border-blue-500/30">
-                    <p className="text-white/70 text-sm mb-1">Selected Plan</p>
-                    <p className="text-white font-semibold text-lg">
-                      {selectedPlan === 'not-sure' 
-                        ? 'Not Sure Yet - We\'ll help you decide' 
-                        : plans.find(p => p.id === selectedPlan)?.name || selectedPlan}
-                    </p>
-                  </div>
-
-                  {/* Editable Name Fields */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-left text-white/80 mb-2">First Name *</label>
-                      <input
-                        type="text"
-                        value={contactInfo.firstName}
-                        onChange={(e) => setContactInfo(prev => ({ ...prev, firstName: e.target.value }))}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
-                        placeholder="Enter your first name"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-left text-white/80 mb-2">Last Name *</label>
-                      <input
-                        type="text"
-                        value={contactInfo.lastName}
-                        onChange={(e) => setContactInfo(prev => ({ ...prev, lastName: e.target.value }))}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
-                        placeholder="Enter your last name"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Editable Email Field */}
-                  <div>
-                    <label className="block text-left text-white/80 mb-2">Email Address *</label>
-                    <input
-                      type="email"
-                      value={contactInfo.email}
-                      onChange={(e) => setContactInfo(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder="Enter your email address"
-                    />
-                  </div>
-
-                  {/* Password Field */}
-                  <div>
-                    <label className="block text-left text-white/80 mb-2">Create Password *</label>
-                    <input
-                      type="password"
-                      value={contactInfo.password}
-                      onChange={(e) => setContactInfo(prev => ({ ...prev, password: e.target.value }))}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
-                      placeholder="Create a secure password (min 6 characters)"
-                      minLength={6}
-                    />
-                    <p className="text-white/50 text-sm mt-2">
-                      You'll use this password to sign in to your TrueFlow dashboard
-                    </p>
-                  </div>
-
-                  {/* Terms and Privacy */}
-                  <div className="text-white/60 text-sm">
-                    By creating an account, you agree to our{' '}
-                    <Link href="/terms" className="text-blue-400 hover:text-blue-300 underline">
-                      Terms of Service
-                    </Link>{' '}
-                    and{' '}
-                    <Link href="/privacy" className="text-blue-400 hover:text-blue-300 underline">
-                      Privacy Policy
-                    </Link>
-                  </div>
-                </div>
-
-                {/* Error Message */}
-                {submitError && (
-                  <div className="mt-4 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-                    <p className="text-red-400">{submitError}</p>
-                  </div>
-                )}
-
-                {/* Action Buttons */}
-                <div className="flex justify-between items-center mt-8">
-                  <button
-                    onClick={handlePrevious}
-                    disabled={isSubmitting}
-                    className="flex items-center px-6 py-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <ArrowLeft className="h-5 w-5 mr-2" />
-                    Back to Plans
-                  </button>
-
-                  <button
-                    onClick={handleSubmit}
-                    disabled={!contactInfo.firstName || !contactInfo.lastName || !contactInfo.email || !contactInfo.password || contactInfo.password.length < 6 || isSubmitting}
-                    className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
-                      contactInfo.firstName && contactInfo.lastName && contactInfo.email && contactInfo.password && contactInfo.password.length >= 6 && !isSubmitting
-                        ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
-                        : 'bg-white/10 text-white/50 cursor-not-allowed'
-                    }`}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white" />
-                        <span>Creating Account...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>Create Account & Continue</span>
-                        <ArrowRight className="h-5 w-5" />
-                      </>
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
 
         </div>
       </main>
