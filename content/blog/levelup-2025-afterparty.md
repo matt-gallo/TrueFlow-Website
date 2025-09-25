@@ -12,7 +12,7 @@ tags: ["Events", "GoHighLevel", "Product Launch", "Networking"]
 
 # Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch
 
-*September 25, 2025* • By Griffin Rutherford, Co-Founder & CEO
+*September 25, 2025* • By Griffin Rutherford, Lead AI Implementation Engineer
 
 Team TrueFlow is thrilled to announce that we'll be attending the **GoHighLevel LevelUp Summit** in Dallas, TX from October 13-16, 2025! This isn't just another conference for us—it's a milestone moment as we prepare to unveil our first fully production-ready platform.
 
@@ -94,6 +94,6 @@ See you in Dallas! Let's level up together.
 
 ---
 
-*Griffin Rutherford is the Co-Founder and CEO of TrueFlow. When he's not building the future of AI content creation, you'll find him connecting with entrepreneurs who refuse to accept the status quo.*
+*Griffin Rutherford is the Lead AI Implementation Engineer at TrueFlow. When he's not architecting cutting-edge AI solutions for content creation, you'll find him connecting with entrepreneurs and helping them leverage technology to scale their businesses.*
 
 **P.S.** - Can't make it to Dallas? Don't worry—we'll be sharing highlights, insights, and special offers for our extended community. Follow our journey as we officially launch into production!
