@@ -181,7 +181,6 @@ export default function ReadinessAssessment() {
   const [contentGoals, setContentGoals] = useState<string[]>([])
   const [integrations, setIntegrations] = useState<string[]>([])
   const [selectedPlan, setSelectedPlan] = useState<string>('')
-  const [showSuccess, setShowSuccess] = useState(false)
   const [contactInfo, setContactInfo] = useState<ContactInfo>({
     firstName: '',
     lastName: '',
@@ -192,8 +191,6 @@ export default function ReadinessAssessment() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
   const [mounted, setMounted] = useState(false)
-  const [showVerificationMessage, setShowVerificationMessage] = useState(false)
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [particles, setParticles] = useState<Particle[]>([])
   const [cursorTrail, setCursorTrail] = useState<CursorTrailPoint[]>([])
@@ -834,128 +831,7 @@ export default function ReadinessAssessment() {
     }
   }
 
-  // Reusable header component matching FAQ/content-engine style
-
-  // Success Page
-  if (showSuccess) {
-    return (
-      <div className="min-h-screen bg-black text-white overflow-x-hidden">
-        <style jsx>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(180deg); }
-          }
-          .particle {
-            position: fixed;
-            pointer-events: none;
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-          }
-        `}</style>
-
-        {/* Floating Particles */}
-        {particles.map((particle) => (
-          <div
-            key={particle.id}
-            className="particle"
-            style={{
-              left: particle.x,
-              top: particle.y,
-              width: particle.size,
-              height: particle.size,
-              backgroundColor: particle.color,
-              opacity: particle.opacity,
-              animationDelay: `${particle.id * 0.1}s`,
-              filter: 'blur(1px)',
-              boxShadow: `0 0 ${particle.size * 2}px ${particle.color}`,
-            }}
-          />
-        ))}
-
-        {/* Header */}
-        <Navigation />
-
-        <main className="pt-64 sm:pt-48 pb-20 px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-8 animate-pulse">
-              <Mail className="h-12 w-12 text-white" />
-            </div>
-
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Check Your Email to Verify Your Account
-            </h1>
-            <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
-              We've sent a verification email to <strong className="text-white">{contactInfo.email}</strong>
-            </p>
-            <p className="text-lg text-white/60 mb-12 max-w-2xl mx-auto">
-              Please click the verification link in your email to activate your TrueFlow account. Once verified, you can sign in to access your dashboard and start creating AI-powered content.
-            </p>
-
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 p-8 mb-12 max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-white mb-6">What happens next?</h3>
-              <div className="space-y-4 text-left">
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">1</span>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">Welcome Email</h4>
-                    <p className="text-white/70">Check your email for personalized setup instructions and next steps</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">2</span>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">First Voice Recording</h4>
-                    <p className="text-white/70">Record your first 30-60 second voice note about your business</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                    <span className="text-white font-bold text-sm">3</span>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-semibold">AI Content Generation</h4>
-                    <p className="text-white/70">Watch as TrueFlow transforms your voice into professional content</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-              <button
-                onClick={async () => {
-                  const result = await authService.resendVerificationEmail(contactInfo.email)
-                  if (result.success) {
-                    alert('Verification email resent! Please check your inbox.')
-                  } else {
-                    alert('Failed to resend email. Please try again.')
-                  }
-                }}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all duration-300 flex items-center space-x-2"
-              >
-                <Mail className="h-5 w-5" />
-                <span>Resend Verification Email</span>
-              </button>
-              <Link 
-                href={`${process.env.NEXT_PUBLIC_APP_URL}/auth/signin`}
-                className="text-white/70 hover:text-white transition-colors underline text-sm"
-              >
-                Already verified? Sign In
-              </Link>
-            </div>
-
-            <div className="mt-12 text-center text-white/50">
-              <p>Need help getting started? <a href="mailto:griffin@trueflow.ai" className="text-blue-400 hover:text-blue-300">Contact our support team</a></p>
-            </div>
-          </div>
-        </main>
-      </div>
-    )
-  }
-
+  // Main render
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
       <style jsx>{`
