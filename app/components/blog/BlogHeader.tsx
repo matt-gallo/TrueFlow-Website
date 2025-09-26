@@ -27,11 +27,11 @@ export default function BlogHeader({ post }: BlogHeaderProps) {
           </>
         ) : (
           <div className={`h-full bg-gradient-to-br ${
-            post.id === '1' ? 'from-teal-500 via-emerald-600 to-lime-500' :
-            post.id === '2' ? 'from-rose-500 via-amber-500 to-orange-500' :
-            post.id === '3' ? 'from-green-500 via-emerald-600 to-teal-600' :
-            post.id === '4' ? 'from-orange-500 via-amber-500 to-rose-500' :
-            'from-violet-500 via-rose-500 to-amber-500'
+            post.id === '1' ? 'from-sky-500 via-blue-600 to-purple-600' :
+            post.id === '2' ? 'from-purple-500 via-pink-600 to-red-500' :
+            post.id === '3' ? 'from-green-500 via-teal-600 to-blue-600' :
+            post.id === '4' ? 'from-orange-500 via-pink-500 to-purple-600' :
+            'from-indigo-500 via-purple-600 to-pink-600'
           } animate-gradient-xy`}>
             <div className="absolute inset-0 bg-black/30"></div>
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>

@@ -287,7 +287,7 @@ export default function LandingPage() {
       icon: <Mail className="h-16 w-16" />,
       title: "Automated Follow-Up",
       description: "Never miss a follow-up again. Smart automation sends personalized messages at the perfect moment to nurture leads and close deals.",
-      gradient: "from-amber-400 to-rose-500",
+      gradient: "from-purple-500 to-pink-500",
       delay: 100
     },
     {
@@ -729,7 +729,7 @@ export default function LandingPage() {
               <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
               <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">FAQs</Link>
               <a href="https://app.trueflow.ai/changelog" className="text-white/70 hover:text-white transition-colors text-sm" target="_blank" rel="noopener noreferrer">Recent Updates</a>
-              <a href="https://app.trueflow.ai/login" className="bg-gradient-to-r from-rose-500 to-amber-500 text-white px-5 py-2 rounded-lg hover:from-rose-600 hover:to-amber-600 transition-all text-sm font-semibold">
+              <a href="https://app.trueflow.ai/login" className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-sm font-semibold">
                 Log In
               </a>
               <Link href="/get-started" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
@@ -765,7 +765,7 @@ export default function LandingPage() {
               <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
               <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
               <a href="https://app.trueflow.ai/changelog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg" target="_blank" rel="noopener noreferrer">Recent Updates</a>
-              <a href="https://app.trueflow.ai/login" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-rose-500 to-amber-500 text-white px-8 py-3 rounded-lg hover:from-rose-600 hover:to-amber-600 transition-all text-lg font-semibold block text-center mt-6">
+              <a href="https://app.trueflow.ai/login" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-lg font-semibold block text-center mt-6">
                 Log In
               </a>
               <Link href="/get-started" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
@@ -803,9 +803,9 @@ export default function LandingPage() {
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
               <Link 
                 href="/get-started" 
-                className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-rose-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-rose-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative z-10">Discover TrueFlow</span>
                 <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
@@ -825,7 +825,7 @@ export default function LandingPage() {
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className={`bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 text-center hover:bg-white/10 hover:border-blue-400/30 hover:shadow-xl hover:shadow-rose-500/10 transition-all duration-500 group relative overflow-hidden transform-gpu ${
+                className={`bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 text-center hover:bg-white/10 hover:border-blue-400/30 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 group relative overflow-hidden transform-gpu ${
                   ''
                 }`}
                 style={{
@@ -861,7 +861,7 @@ export default function LandingPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_ease-in-out_infinite] -skew-x-12"></div>
                 
                 {/* Dynamic gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-rose-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                 
                 {/* Floating particles on hover */}
                 <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -940,7 +940,7 @@ export default function LandingPage() {
           {/* Device Mockup Container - Smaller */}
           <div className="relative max-w-3xl mx-auto">
             {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-rose-500/20 via-amber-400/20 to-rose-500/20 blur-3xl opacity-50 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20 blur-3xl opacity-50 pointer-events-none"></div>
             
             {/* Main Image Container */}
             <div className="relative">
@@ -957,7 +957,7 @@ export default function LandingPage() {
             {/* Key Features Grid - Compact */}
             <div className="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
               <div className="text-center">
-                <div className="w-10 h-10 bg-gradient-to-r from-rose-500 to-amber-400 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
                   <Brain className="w-5 h-5 text-white" />
                 </div>
                 <h3 className="text-white text-sm font-medium">Smart Automation</h3>
@@ -982,7 +982,7 @@ export default function LandingPage() {
             <div className="text-center mt-8 relative z-10">
               <Link 
                 href="/get-started"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-rose-500 to-amber-400 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
               >
                 Get Started
                 <ArrowRight className="w-4 h-4" />
@@ -1155,12 +1155,12 @@ export default function LandingPage() {
             <div className="flex items-center justify-center py-8">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-500/50"></div>
-                <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse shadow-lg shadow-rose-500/50"></div>
-                <div className="w-20 h-0.5 bg-gradient-to-r from-amber-500/50 to-rose-500/50"></div>
-                <div className="w-5 h-5 bg-gradient-to-br from-amber-500 to-rose-500 rounded-full animate-pulse shadow-lg shadow-purple-500/50 flex items-center justify-center" style={{ animationDelay: '0.3s' }}>
+                <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse shadow-lg shadow-blue-500/50"></div>
+                <div className="w-20 h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>
+                <div className="w-5 h-5 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse shadow-lg shadow-purple-500/50 flex items-center justify-center" style={{ animationDelay: '0.3s' }}>
                   <TrueFlowLogoIcon size={12} />
                 </div>
-                <div className="w-20 h-0.5 bg-gradient-to-r from-rose-500/50 to-amber-400/50"></div>
+                <div className="w-20 h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>
                 <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse shadow-lg shadow-purple-500/50" style={{ animationDelay: '0.6s' }}></div>
                 <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent"></div>
               </div>
@@ -1168,7 +1168,7 @@ export default function LandingPage() {
 
             {/* Chapter 3: Now */}
             <div className="text-center relative">
-              <div className="inline-block bg-gradient-to-r from-amber-500 to-rose-500 rounded-full px-6 py-3 border-2 border-blue-400/50 mb-8 shadow-lg shadow-rose-500/25">
+              <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 rounded-full px-6 py-3 border-2 border-blue-400/50 mb-8 shadow-lg shadow-blue-500/25">
                 <span className="text-white text-lg font-bold">Chapter 3</span>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
@@ -1180,13 +1180,13 @@ export default function LandingPage() {
                 </p>
                 
                 {/* Dynamic unification visual */}
-                <div className="relative bg-gradient-to-r from-amber-500/20 to-rose-500/20 backdrop-blur-md rounded-2xl p-12 border border-white/20 mx-auto max-w-lg overflow-hidden">
+                <div className="relative bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-2xl p-12 border border-white/20 mx-auto max-w-lg overflow-hidden">
                   <div className="flex flex-col items-center space-y-6">
                     {/* Central TrueFlow hub with converging elements */}
                     <div className="relative w-40 h-40">
                       {/* Central TrueFlow logo */}
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-rose-500 rounded-full flex items-center justify-center shadow-2xl shadow-rose-500/50 animate-pulse">
+                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse">
                           <TrueFlowLogoIcon size={32} />
                         </div>
                       </div>
@@ -1259,7 +1259,7 @@ export default function LandingPage() {
                       </div>
                     </div>
                     
-                    <p className="text-white/90 text-center font-bold text-lg bg-gradient-to-r from-amber-400 to-rose-400 bg-clip-text text-transparent">
+                    <p className="text-white/90 text-center font-bold text-lg bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                       Your business. Unified.
                     </p>
                     
@@ -1349,7 +1349,7 @@ export default function LandingPage() {
                     style={{
                       background: `linear-gradient(135deg, ${
                         feature.gradient.includes('from-blue-500') && feature.gradient.includes('to-cyan-500') ? '#3b82f6, #06b6d4' :
-                        feature.gradient.includes('from-amber-400') && feature.gradient.includes('to-rose-500') ? '#f59e0b, #f43f5e' :
+                        feature.gradient.includes('from-purple-500') && feature.gradient.includes('to-pink-500') ? '#8b5cf6, #ec4899' :
                         feature.gradient.includes('from-green-500') && feature.gradient.includes('to-emerald-500') ? '#10b981, #059669' :
                         feature.gradient.includes('from-orange-500') && feature.gradient.includes('to-red-500') ? '#f97316, #ef4444' :
                         '#3b82f6, #06b6d4'
@@ -1422,7 +1422,7 @@ export default function LandingPage() {
           {/* Animated Progress Line */}
           <div className="relative mb-20">
             <div className="hidden md:block absolute top-16 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-white/20 rounded-full">
-              <div className={`h-full bg-gradient-to-r from-green-500 via-lime-500 to-emerald-600 rounded-full transition-all duration-2000 ${
+              <div className={`h-full bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 rounded-full transition-all duration-2000 ${
                 'w-full'
               }`}></div>
             </div>
@@ -1443,7 +1443,7 @@ export default function LandingPage() {
                 title: "AI Transforms Content",
                 description: "Our advanced AI analyzes your transcript and creates engaging newsletters and blog posts that sound authentically you.",
                 icon: <Brain className="h-16 w-16" strokeWidth={1.5} />,
-                color: "from-amber-500 to-rose-500",
+                color: "from-blue-500 to-purple-600",
                 animation: "slide-in-up"
               },
               {
@@ -1451,7 +1451,7 @@ export default function LandingPage() {
                 title: "Automated Publishing",
                 description: "Content is automatically scheduled and sent to your audience at optimal times for maximum engagement and results.",
                 icon: <Send className="h-16 w-16" strokeWidth={1.5} />,
-                color: "from-rose-500 to-amber-500",
+                color: "from-purple-500 to-pink-600",
                 animation: "slide-in-right"
               }
             ].map((step, index) => (
@@ -1569,7 +1569,7 @@ export default function LandingPage() {
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className={`flex-none w-80 sm:w-88 lg:w-96 bg-black/60 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 scroll-snap-align-start hover:bg-black/80 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-rose-500/20 transition-all duration-700 group relative overflow-hidden transform-gpu ${
+                  className={`flex-none w-80 sm:w-88 lg:w-96 bg-black/60 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 scroll-snap-align-start hover:bg-black/80 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-700 group relative overflow-hidden transform-gpu ${
                     ''
                   }`}
                   style={{ 
@@ -1602,7 +1602,7 @@ export default function LandingPage() {
                   }}
                 >
                   {/* Animated background gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-rose-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                   
                   {/* Shimmer effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_2s_ease-in-out_infinite] -skew-x-12"></div>
@@ -1616,7 +1616,7 @@ export default function LandingPage() {
                       <img 
                         src={testimonial.image} 
                         alt={testimonial.name}
-                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-rose-500/30"
+                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-blue-500/30"
                       />
                       {/* Animated ring around profile */}
                       <div className="absolute inset-0 rounded-full border-2 border-blue-400/0 group-hover:border-blue-400/50 transition-all duration-500 "></div>
@@ -2054,7 +2054,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <Link 
               href="/blog" 
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-amber-500 to-rose-500 hover:from-amber-600 hover:to-rose-600 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-rose-500/25"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
             >
               View All Posts
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2115,9 +2115,9 @@ export default function LandingPage() {
                 </div>
 
                 {/* Plan 2: Complete System with CRM */}
-                <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-rose-500 scale-105 ring-2 ring-rose-500">
+                <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 scale-105 ring-2 ring-purple-500">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-amber-400 to-rose-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                       Most Popular
                     </span>
                   </div>
@@ -2149,7 +2149,7 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <Link href="/get-started" className="bg-gradient-to-r from-amber-600 to-rose-600 text-white px-8 py-4 rounded-full font-bold hover:from-amber-700 hover:to-rose-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-rose-500 text-lg relative overflow-hidden group">
+                  <Link href="/get-started" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group">
                     <span className="relative z-10">Get Complete System</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
@@ -2242,7 +2242,7 @@ export default function LandingPage() {
             
             {/* CTA */}
             <div>
-              <Link href="/get-started" className="bg-gradient-to-r from-amber-600 to-rose-600 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
+              <Link href="/get-started" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
                 Get Started
               </Link>
             </div>

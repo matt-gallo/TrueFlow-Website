@@ -1745,7 +1745,7 @@ See you in Dallas! Let's level up together.
     author: {
       name: 'Griffin Rutherford',
       role: 'Lead AI Implementation Engineer',
-      avatar: '/team/griffin.jpg',
+      avatar: '/avatars/griffin-rutherford.jpg',
       bio: 'Lead AI Implementation Engineer at TrueFlow. When not architecting cutting-edge AI solutions for content creation, you\'ll find me connecting with entrepreneurs and helping them leverage technology to scale their businesses.'
     },
     date: '2025-09-25',
