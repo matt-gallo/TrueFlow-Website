@@ -1728,9 +1728,7 @@ If you've been waiting for the right time to revolutionize your content creation
 
 Don't miss updates about the afterparty venue, timing, and special announcements:
 
-- Follow us on Twitter
-- Join our LinkedIn community
-- Subscribe to our newsletter for exclusive updates
+Fill out the form at [trueflow.ai/get-started](https://trueflow.ai/get-started) to be notified about event details and exclusive updates.
 
 ## Final Thoughts
 
