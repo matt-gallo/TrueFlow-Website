@@ -1658,11 +1658,11 @@ Ready to start training? Your Constant Content Engine™ awaits.
     id: 'levelup-2025-afterparty',
     title: 'Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch',
     slug: 'levelup-2025-afterparty',
-    excerpt: 'TrueFlow is heading to Dallas for GoHighLevel\'s LevelUp event! Join us for an exclusive afterparty celebrating our production launch with free drinks, appetizers, and live demos.',
+    excerpt: 'TrueFlow is heading to Dallas during GoHighLevel\'s LevelUp week—join our independent afterparty celebrating the production launch with free drinks, appetizers, and live demos.',
     content: `
 # Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch
 
-Team TrueFlow is thrilled to announce that we'll be attending the **GoHighLevel LevelUp Summit** in Dallas, TX from October 13-16, 2025! This isn't just another conference for us—it's a milestone moment as we prepare to unveil our first fully production-ready platform.
+Team TrueFlow is thrilled to be in Dallas during the **GoHighLevel LevelUp Summit** week from October 13-16, 2025! While we plan to soak up the energy of the community and attend sessions as participants, this milestone is all about unveiling our first fully production-ready platform—on our own terms and at our own venue.
 
 ## Why LevelUp Matters
 
@@ -1674,7 +1674,7 @@ As one attendee put it: *"If you're on the fence about coming to the HighLevel S
 
 ### Mark Your Calendars!
 
-We're hosting an **exclusive afterparty on Thursday, October 16th** to celebrate not just the end of an incredible conference, but the official production launch of TrueFlow's Constant Content Engine™!
+We're hosting an **exclusive afterparty on Thursday, October 16th** to celebrate not just the energy of the week, but the official production launch of TrueFlow's Constant Content Engine™—at a venue separate from the conference.
 
 ### What to Expect:
 
@@ -1693,17 +1693,19 @@ This isn't just a party; it's a celebration of:
 - **Connection**: Sharing experiences and strategies that actually work
 - **Innovation**: Witnessing the future of content creation firsthand
 
-## The TrueFlow x GoHighLevel Synergy
+> **Important:** This celebration is independently hosted by TrueFlow and is not affiliated with or endorsed by GoHighLevel or the official LevelUp conference.
 
-Our integration with GoHighLevel isn't coincidental—it's strategic. While HighLevel provides the ultimate marketing and CRM platform, TrueFlow supplies the content engine that keeps it running. Together, we're helping agencies and businesses create consistent, high-quality content without the usual time investment.
+## How TrueFlow Fits Into LevelUp Week
 
-As another LevelUp attendee shared: *"Everything with HighLevel is always leveling up."* We're proud to be part of that ecosystem, helping businesses level up their content game.
+Even without an official collaboration, LevelUp attracts the exact type of builders and agency owners we love serving. Many of them pair GoHighLevel with additional tools, and we're showing how TrueFlow can slot into that tech stack as an independent content engine.
+
+As another LevelUp attendee shared: *"Everything with HighLevel is always leveling up."* We share the same drive to improve, even if we're operating on parallel tracks.
 
 ## What We're Most Excited About
 
 Beyond our afterparty, we're looking forward to:
 
-- **The 300+ Feature Reveals**: Understanding how HighLevel's roadmap aligns with our integration plans
+- **The 300+ Feature Reveals**: Listening for roadmap updates so we know how customers might connect TrueFlow alongside HighLevel
 - **Networking Opportunities**: Meeting agency owners who need exactly what we've built
 - **Learning from the Best**: With speakers like Mike Michalowicz and Roland Frasier, the insights will be invaluable
 - **The Energy**: There's something special about being surrounded by people who think bigger
@@ -1716,7 +1718,7 @@ Whether you're already attending LevelUp or still on the fence, we'd love to mee
 
 - **Date**: Thursday, October 16th, 2025
 - **Time**: Details coming soon (follow us for updates!)
-- **Location**: Dallas, TX (venue announcement coming)
+- **Location**: Dallas, TX (venue announcement coming — independent from the LevelUp conference site)
 - **RSVP**: Watch our social channels for the registration link
 - **Capacity**: Limited space—first come, first served
 
@@ -1736,7 +1738,7 @@ Don't miss updates about the afterparty venue, timing, and special announcements
 
 ## Final Thoughts
 
-As the HighLevel community says: *"This has changed our life!"* We believe the combination of HighLevel's platform and TrueFlow's content engine will change yours too.
+As the HighLevel community says: *"This has changed our life!"* We believe TrueFlow can complement platforms like GoHighLevel—no partnership required—to help you change yours too.
 
 See you in Dallas! Let's level up together.
 
@@ -1760,11 +1762,11 @@ See you in Dallas! Let's level up together.
     primaryTag: tags['events'],
     featuredImage: {
       url: '/blog/levelup-event.jpg',
-      alt: 'TrueFlow team at GoHighLevel LevelUp 2025 event'
+      alt: 'TrueFlow team hosting an independent afterparty in Dallas during LevelUp 2025 week'
     },
     seo: {
       metaTitle: 'Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch',
-      metaDescription: 'TrueFlow is heading to Dallas for GoHighLevel\'s LevelUp event! Join us for an exclusive afterparty celebrating our production launch.',
+      metaDescription: 'TrueFlow is in Dallas during GoHighLevel\'s LevelUp week—join our independent afterparty celebrating the production launch of the Constant Content Engine™.',
       keywords: [
         'LevelUp 2025',
         'GoHighLevel',

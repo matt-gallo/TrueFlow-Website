@@ -802,7 +802,7 @@ export default function ReadinessAssessment() {
             <Link href="/" className="text-white/70 hover:text-white transition-colors text-sm">
               ← Back to Home
             </Link>
-            <Link href="/get-started" className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
+            <Link href="/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
               Get Started
             </Link>
           </div>
@@ -1004,7 +1004,7 @@ export default function ReadinessAssessment() {
                 {/* Step circle */}
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-all ${
                   currentStep >= step.id 
-                    ? 'bg-blue-500 text-white shadow-lg shadow-rose-500/50' 
+                    ? 'bg-blue-500 text-white shadow-lg shadow-blue-500/50' 
                     : 'bg-white/10 text-white/50 border border-white/20'
                 }`}>
                   {currentStep > step.id ? <Check className="h-5 w-5" /> : step.id}
@@ -1128,7 +1128,7 @@ export default function ReadinessAssessment() {
                       onClick={() => toggleIntegration(integration.id)}
                       className={`p-4 rounded-xl border transition-all duration-300 hover:scale-105 ${
                         integrations.includes(integration.id)
-                          ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                     >
@@ -1155,7 +1155,7 @@ export default function ReadinessAssessment() {
                   disabled={!canProceedStep1}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     canProceedStep1
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
@@ -1194,7 +1194,7 @@ export default function ReadinessAssessment() {
                       onClick={() => setSelectedBusinessType(type.id)}
                       className={`p-6 rounded-xl border text-left transition-all duration-500 transform-gpu ${
                         selectedBusinessType === type.id
-                          ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500 shadow-lg'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 shadow-lg'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                       style={{
@@ -1265,7 +1265,7 @@ export default function ReadinessAssessment() {
                       onClick={() => toggleContentGoal(goal.id)}
                       className={`p-4 rounded-xl border transition-all duration-300 hover:scale-105 ${
                         contentGoals.includes(goal.id)
-                          ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                     >
@@ -1297,7 +1297,7 @@ export default function ReadinessAssessment() {
                   disabled={!canProceedStep2}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     canProceedStep2
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
@@ -1370,7 +1370,7 @@ export default function ReadinessAssessment() {
                   disabled={!canProceedStep3}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     canProceedStep3
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
@@ -1443,7 +1443,7 @@ export default function ReadinessAssessment() {
                   disabled={!canProceedStep4}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     canProceedStep4
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
@@ -1525,10 +1525,10 @@ export default function ReadinessAssessment() {
                 
                 {/* Smart Recommendation Display */}
                 {planRecommendation && (
-                  <div className="mb-8 p-6 bg-gradient-to-r from-amber-500/10 to-rose-500/10 border border-blue-500/50 rounded-2xl">
+                  <div className="mb-8 p-6 bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/50 rounded-2xl">
                     <div className="flex items-start space-x-4">
                       <div className="flex-shrink-0">
-                        <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-rose-500 rounded-full flex items-center justify-center">
+                        <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
                           <TrueFlowLogoIcon size={24} />
                         </div>
                       </div>
@@ -1556,14 +1556,14 @@ export default function ReadinessAssessment() {
                       key={plan.id}
                       className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu ${
                         selectedPlan === plan.id
-                          ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500 scale-105'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 scale-105'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       } ${plan.popular ? 'ring-2 ring-purple-500' : ''}`}
                       onClick={() => setSelectedPlan(plan.id)}
                     >
                       {plan.popular && (
                         <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                          <span className="bg-gradient-to-r from-amber-400 to-rose-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                          <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                             Most Popular
                           </span>
                         </div>
@@ -1642,7 +1642,7 @@ export default function ReadinessAssessment() {
                   disabled={!selectedPlan || isSubmitting}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     selectedPlan && !isSubmitting
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >

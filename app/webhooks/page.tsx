@@ -204,7 +204,7 @@ export default function WebhooksPage() {
               <button
                 onClick={() => sendTestWebhook('custom')}
                 disabled={testLoading}
-                className="bg-gradient-to-r from-rose-500 to-amber-500 px-6 py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
               >
                 Test Custom Event
               </button>

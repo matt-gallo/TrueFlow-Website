@@ -697,7 +697,7 @@ export default function GetStartedPage() {
           </div>
           <div className="w-full bg-white/10 rounded-full h-2">
             <div 
-              className="bg-gradient-to-r from-amber-500 to-rose-500 h-2 rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-500"
               style={{ width: `${(currentStep / 5) * 100}%` }}
             />
           </div>
@@ -775,7 +775,7 @@ export default function GetStartedPage() {
                 disabled={!formData.fullName || !formData.email || !formData.phone}
                 className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 mx-auto ${
                   formData.fullName && formData.email && formData.phone
-                    ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                     : 'bg-white/10 text-white/50 cursor-not-allowed'
                 }`}
               >
@@ -802,7 +802,7 @@ export default function GetStartedPage() {
                     onClick={() => setSelectedBusinessType(type.id)}
                     className={`p-6 rounded-2xl border text-left transition-all duration-500 transform-gpu ${
                       selectedBusinessType === type.id
-                        ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500 shadow-lg'
+                        ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 shadow-lg'
                         : 'bg-white/5 border-white/20 hover:bg-white/10'
                     }`}
                     style={{
@@ -861,7 +861,7 @@ export default function GetStartedPage() {
                 disabled={!selectedBusinessType}
                 className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 mx-auto ${
                   selectedBusinessType
-                    ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                     : 'bg-white/10 text-white/50 cursor-not-allowed'
                 }`}
               >
@@ -906,7 +906,7 @@ export default function GetStartedPage() {
                   disabled={!formData.businessName}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     formData.businessName
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
@@ -934,7 +934,7 @@ export default function GetStartedPage() {
                     onClick={() => toggleContentGoal(goal.id)}
                     className={`p-6 rounded-2xl border transition-all duration-300 hover:scale-105 ${
                       formData.contentGoals.includes(goal.id)
-                        ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500'
+                        ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                         : 'bg-white/5 border-white/20 hover:bg-white/10'
                     }`}
                   >
@@ -963,7 +963,7 @@ export default function GetStartedPage() {
                   disabled={formData.contentGoals.length === 0}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     formData.contentGoals.length > 0
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
@@ -990,7 +990,7 @@ export default function GetStartedPage() {
                 const recommendedPlan = plans.find(p => p.id === recommendation.id)
                 return (
                   <div className="mb-12 max-w-4xl mx-auto">
-                    <div className="bg-gradient-to-r from-amber-500/10 to-rose-500/10 border border-blue-500/30 rounded-2xl p-6">
+                    <div className="bg-gradient-to-r from-blue-500/10 to-purple-600/10 border border-blue-500/30 rounded-2xl p-6">
                       <div className="flex items-center justify-center mb-3">
                         <Sparkles className="h-6 w-6 text-blue-400 mr-2" />
                         <h3 className="text-lg font-semibold text-white">Recommended for You</h3>
@@ -1027,9 +1027,9 @@ export default function GetStartedPage() {
                       key={plan.id}
                       className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu ${
                         selectedPlan === plan.id
-                          ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500 scale-105'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 scale-105'
                           : isRecommended
-                          ? 'bg-gradient-to-r from-amber-500/10 to-rose-500/10 border-blue-500/50 hover:border-blue-500'
+                          ? 'bg-gradient-to-r from-blue-500/10 to-purple-600/10 border-blue-500/50 hover:border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       } ${plan.popular ? 'ring-2 ring-purple-500' : ''}`}
                     style={{
@@ -1065,7 +1065,7 @@ export default function GetStartedPage() {
                   >
                     {plan.popular && (
                       <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span className="bg-gradient-to-r from-amber-400 to-rose-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                           Most Popular
                         </span>
                       </div>
@@ -1152,7 +1152,7 @@ export default function GetStartedPage() {
                   disabled={!selectedPlan || isSubmitting}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     selectedPlan && !isSubmitting
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >

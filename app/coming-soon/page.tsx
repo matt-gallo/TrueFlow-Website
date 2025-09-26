@@ -244,7 +244,7 @@ export default function ComingSoonPage() {
             
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
               We're Building Something{" "}
-              <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-rose-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 Amazing
               </span>
             </h1>
@@ -300,7 +300,7 @@ export default function ComingSoonPage() {
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-gradient-to-r from-amber-400 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="h-8 w-8 text-white" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Better Integration</h3>
@@ -319,7 +319,7 @@ export default function ComingSoonPage() {
 
           {/* Email Signup */}
           <div 
-            className="bg-gradient-to-r from-amber-500/20 to-rose-500/20 backdrop-blur-md rounded-3xl border border-white/20 p-12 transform-gpu"
+            className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-3xl border border-white/20 p-12 transform-gpu"
             style={{
               transformStyle: 'preserve-3d',
               transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)'
@@ -369,7 +369,7 @@ export default function ComingSoonPage() {
                   />
                   <button
                     type="submit"
-                    className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-4 rounded-full hover:opacity-90 transition-opacity font-semibold"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full hover:opacity-90 transition-opacity font-semibold"
                   >
                     Notify Me
                   </button>
@@ -401,7 +401,7 @@ export default function ComingSoonPage() {
             <p className="text-white/60 mb-6">
               Ready to get started with our current features?
             </p>
-            <Link href="/get-started" className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-10 py-5 rounded-full text-xl font-semibold hover:opacity-90 transition-opacity inline-flex items-center space-x-3">
+            <Link href="/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:opacity-90 transition-opacity inline-flex items-center space-x-3">
               <span>Explore TrueFlow Now</span>
               <ArrowLeft className="h-6 w-6 rotate-180" />
             </Link>

@@ -136,7 +136,7 @@ export default function ContentEngineTabs() {
             transition={{ duration: 0.6 }}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-2"
           >
-            <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-rose-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               Experience the Constant Content Engine™ Workflow
             </span>
           </motion.h2>
@@ -162,7 +162,7 @@ export default function ContentEngineTabs() {
                   className={`
                     relative px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium transition-all duration-300 text-sm md:text-base whitespace-nowrap
                     ${activeTab === tab.id 
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white shadow-lg shadow-orange-500/25' 
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/25' 
                       : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white/80'
                     }
                   `}
@@ -177,7 +177,7 @@ export default function ContentEngineTabs() {
                   {activeTab === tab.id && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-gradient-to-r from-amber-500 to-rose-500 rounded-lg -z-10"
+                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg -z-10"
                       transition={{ type: "spring", duration: 0.5 }}
                     />
                   )}
@@ -205,10 +205,10 @@ export default function ContentEngineTabs() {
                 {/* Left: Content */}
                 <div className="order-2 md:order-1">
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="bg-gradient-to-r from-amber-500 to-rose-500 p-1.5 sm:p-2 rounded-lg">
+                    <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-1.5 sm:p-2 rounded-lg">
                       <currentTab.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold text-amber-300">
+                    <span className="text-xs sm:text-sm font-semibold text-purple-400">
                       STEP {currentTab.id} OF 6
                     </span>
                   </div>
@@ -231,7 +231,7 @@ export default function ContentEngineTabs() {
                         className="flex items-start gap-2 sm:gap-3"
                       >
                         <div className="mt-0.5 sm:mt-1 flex-shrink-0">
-                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-amber-300 to-rose-400 rounded-full" />
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
                         </div>
                         <span className="text-white/80 text-sm sm:text-base">{feature}</span>
                       </motion.li>
@@ -241,14 +241,14 @@ export default function ContentEngineTabs() {
 
                 {/* Right: Video Placeholder */}
                 <div className="relative order-1 md:order-2">
-                  <div className="relative rounded-lg sm:rounded-xl overflow-hidden bg-gradient-to-br from-rose-900/30 to-amber-900/30 border border-white/10">
+                  <div className="relative rounded-lg sm:rounded-xl overflow-hidden bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-white/10">
                     {/* Video Player for .mov files */}
                     <div className="aspect-video relative">
                       {/* Always show placeholder - will be hidden if video loads */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-rose-900/30 to-amber-900/30" id={`placeholder-${currentTab.id}`}>
+                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-blue-900/30" id={`placeholder-${currentTab.id}`}>
                         <div className="text-center p-8">
                           <motion.div 
-                            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-2 sm:mb-4 bg-gradient-to-r from-amber-500 to-rose-500 rounded-full flex items-center justify-center"
+                            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-2 sm:mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
                             animate={{ 
                               scale: [1, 1.1, 1],
                               rotate: [0, 5, -5, 0]
@@ -300,10 +300,10 @@ export default function ContentEngineTabs() {
                     
                     {/* Decorative elements */}
                     <div className="absolute top-4 right-4">
-                      <div className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
+                      <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
                     </div>
                     <div className="absolute bottom-4 left-4">
-                      <div className="w-2 h-2 bg-rose-400 rounded-full animate-pulse animation-delay-1000" />
+                      <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse animation-delay-1000" />
                     </div>
                   </div>
                 </div>
@@ -318,7 +318,7 @@ export default function ContentEngineTabs() {
                         key={tab.id}
                         className={`h-1 w-8 sm:w-10 md:w-12 rounded-full transition-all duration-300 ${
                           tab.id <= activeTab 
-                            ? 'bg-gradient-to-r from-amber-300 to-rose-400' 
+                            ? 'bg-gradient-to-r from-blue-400 to-purple-400' 
                             : 'bg-white/20'
                         }`}
                       />
@@ -329,7 +329,7 @@ export default function ContentEngineTabs() {
                       if (activeTab < 6) setActiveTab(activeTab + 1)
                       else setActiveTab(1)
                     }}
-                    className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-amber-500 to-rose-500 text-white rounded-lg text-sm sm:text-base font-medium hover:opacity-90 transition-opacity flex items-center gap-1 sm:gap-2"
+                    className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg text-sm sm:text-base font-medium hover:opacity-90 transition-opacity flex items-center gap-1 sm:gap-2"
                   >
                     {activeTab < 6 ? 'Next Step' : 'Start Over'}
                     <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />

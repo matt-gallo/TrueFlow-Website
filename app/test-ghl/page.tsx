@@ -106,7 +106,7 @@ export default function TestGHLPage() {
                   <button
                     onClick={testScenario}
                     disabled={loading}
-                    className="w-full bg-gradient-to-r from-amber-500 to-rose-500 text-white px-6 py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                    className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
                   >
                     {loading ? 'Testing...' : 'Run Test'}
                   </button>
@@ -124,7 +124,7 @@ export default function TestGHLPage() {
                     <button
                       onClick={testCustomData}
                       disabled={loading}
-                      className="w-full bg-gradient-to-r from-amber-500 to-rose-500 text-white px-6 py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
+                      className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg hover:opacity-90 transition-opacity disabled:opacity-50"
                     >
                       {loading ? 'Testing...' : 'Test Custom Data'}
                     </button>

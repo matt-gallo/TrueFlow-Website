@@ -548,7 +548,7 @@ export default function FAQPage() {
                 onClick={() => setActiveCategory(category.id)}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-200 ${
                   activeCategory === category.id
-                    ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white'
+                    ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
                     : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
                 }`}
               >
@@ -626,7 +626,7 @@ export default function FAQPage() {
 
           {/* CTA Section */}
           <div className="mt-20 text-center">
-            <div className="bg-gradient-to-r from-amber-500/20 to-rose-500/20 backdrop-blur-md rounded-3xl border border-white/20 p-12">
+            <div className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-3xl border border-white/20 p-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 Still Have Questions?
               </h2>
@@ -635,7 +635,7 @@ export default function FAQPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <Link href="/get-started" className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity">
+                <Link href="/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity">
                   Get Started
                 </Link>
                 <Link href="/" className="text-white/70 hover:text-white transition-colors underline text-sm">

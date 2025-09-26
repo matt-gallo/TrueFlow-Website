@@ -736,7 +736,7 @@ export default function ApiDocsPage() {
   }
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-900/20 via-gray-900 to-amber-900/20">
+    <div className="min-h-screen bg-gradient-to-br from-purple-900/20 via-gray-900 to-blue-900/20">
       <Navigation />
       
       {/* Add padding to account for fixed navigation */}
@@ -771,7 +771,7 @@ export default function ApiDocsPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row sm:justify-center gap-3 sm:gap-4 px-4">
-            <button className="bg-gradient-to-r from-rose-500 to-amber-400 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-lg font-medium text-sm md:text-base hover:shadow-xl transition-shadow">
+            <button className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2.5 md:px-6 md:py-3 rounded-lg font-medium text-sm md:text-base hover:shadow-xl transition-shadow">
               Get API Key
             </button>
             <button className="bg-white/10 backdrop-blur-md text-white px-4 py-2.5 md:px-6 md:py-3 rounded-lg font-medium text-sm md:text-base hover:bg-white/20 transition-colors">
@@ -784,7 +784,7 @@ export default function ApiDocsPage() {
       {/* Quick Start */}
       <section className="py-8 md:py-12 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-br from-rose-900/30 to-amber-900/30 backdrop-blur-xl rounded-xl md:rounded-2xl border border-white/10 p-4 md:p-8">
+          <div className="bg-gradient-to-br from-purple-900/30 to-blue-900/30 backdrop-blur-xl rounded-xl md:rounded-2xl border border-white/10 p-4 md:p-8">
             <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6 flex items-center gap-2 md:gap-3">
               <Zap className="w-5 h-5 md:w-6 md:h-6 text-yellow-400" />
               Quick Start

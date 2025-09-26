@@ -638,7 +638,7 @@ export default function ReadinessAssessment() {
             <Link href="/" className="text-white/70 hover:text-white transition-colors text-lg">
               ← Back to Home
             </Link>
-            <Link href="/get-started" className="bg-gradient-to-r from-amber-500 to-rose-500 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
+            <Link href="/get-started" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
               Get Started
             </Link>
           </div>
@@ -840,7 +840,7 @@ export default function ReadinessAssessment() {
           </div>
           <div className="w-full bg-white/10 rounded-full h-2">
             <div 
-              className="bg-gradient-to-r from-amber-500 to-rose-500 h-2 rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all duration-500"
               style={{ width: `${getProgress()}%` }}
             />
           </div>
@@ -862,7 +862,7 @@ export default function ReadinessAssessment() {
                     <div
                       className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold transition-all duration-300 ${
                         isActive
-                          ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white scale-110'
+                          ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white scale-110'
                           : isCompleted
                           ? 'bg-green-500 text-white'
                           : 'bg-white/10 text-white/50'
@@ -932,7 +932,7 @@ export default function ReadinessAssessment() {
                       onClick={() => setSelectedBusinessType(type.id)}
                       className={`p-4 rounded-xl border text-left transition-all duration-300 ${
                         selectedBusinessType === type.id
-                          ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                     >
@@ -970,7 +970,7 @@ export default function ReadinessAssessment() {
                       onClick={() => toggleContentGoal(goal.id)}
                       className={`p-4 rounded-xl border transition-all duration-200 ${
                         contentGoals.includes(goal.id)
-                          ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                     >
@@ -994,7 +994,7 @@ export default function ReadinessAssessment() {
                   disabled={!selectedBusinessType || contentGoals.length === 0}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     selectedBusinessType && contentGoals.length > 0
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
@@ -1032,7 +1032,7 @@ export default function ReadinessAssessment() {
                           onClick={() => handleAnswer(question.id, option.value)}
                           className={`w-full p-3 rounded-xl border transition-all duration-200 text-left ${
                             answers[question.id] === option.value
-                              ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500'
+                              ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                               : 'bg-white/5 border-white/20 hover:bg-white/10'
                           }`}
                         >
@@ -1070,7 +1070,7 @@ export default function ReadinessAssessment() {
                   disabled={questions.slice(0, 4).filter(q => answers[q.id]).length < 4}
                   className={`flex items-center px-6 py-3 rounded-full transition-all duration-300 ${
                     questions.slice(0, 4).filter(q => answers[q.id]).length === 4
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/5 text-white/30 cursor-not-allowed'
                   }`}
                 >
@@ -1108,7 +1108,7 @@ export default function ReadinessAssessment() {
                           onClick={() => handleAnswer(question.id, option.value)}
                           className={`w-full p-3 rounded-xl border transition-all duration-200 text-left ${
                             answers[question.id] === option.value
-                              ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500'
+                              ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                               : 'bg-white/5 border-white/20 hover:bg-white/10'
                           }`}
                         >
@@ -1146,7 +1146,7 @@ export default function ReadinessAssessment() {
                   disabled={questions.slice(4, 6).filter(q => answers[q.id]).length < 2}
                   className={`flex items-center px-6 py-3 rounded-full transition-all duration-300 ${
                     questions.slice(4, 6).filter(q => answers[q.id]).length === 2
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/5 text-white/30 cursor-not-allowed'
                   }`}
                 >
@@ -1257,7 +1257,7 @@ export default function ReadinessAssessment() {
                       onClick={() => toggleIntegration(integration.id)}
                       className={`p-4 rounded-xl border transition-all duration-200 ${
                         integrations.includes(integration.id)
-                          ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500'
+                          ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500'
                           : 'bg-white/5 border-white/20 hover:bg-white/10'
                       }`}
                     >
@@ -1289,7 +1289,7 @@ export default function ReadinessAssessment() {
                   disabled={!contactInfo.firstName || !contactInfo.lastName || !contactInfo.businessName || !contactInfo.email}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     contactInfo.firstName && contactInfo.lastName && contactInfo.businessName && contactInfo.email
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
@@ -1337,7 +1337,7 @@ export default function ReadinessAssessment() {
                     key={plan.id}
                     className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu ${
                       selectedPlan === plan.id
-                        ? 'bg-gradient-to-r from-amber-500/20 to-rose-500/20 border-blue-500 scale-105'
+                        ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 scale-105'
                         : 'bg-white/5 border-white/20 hover:bg-white/10'
                     } ${plan.popular ? 'ring-2 ring-purple-500' : ''}`}
                     style={{
@@ -1373,7 +1373,7 @@ export default function ReadinessAssessment() {
                   >
                     {plan.popular && (
                       <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <span className="bg-gradient-to-r from-amber-400 to-rose-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
+                        <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
                           Most Popular
                         </span>
                       </div>
@@ -1429,7 +1429,7 @@ export default function ReadinessAssessment() {
                   disabled={!selectedPlan || isSubmitting}
                   className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 flex items-center space-x-2 ${
                     selectedPlan && !isSubmitting
-                      ? 'bg-gradient-to-r from-amber-500 to-rose-500 text-white hover:opacity-90'
+                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90'
                       : 'bg-white/10 text-white/50 cursor-not-allowed'
                   }`}
                 >
