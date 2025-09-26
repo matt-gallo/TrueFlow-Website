@@ -1757,8 +1757,10 @@ See you in Dallas! Let's level up together.
     ],
     primaryTag: tags['events'],
     featuredImage: {
-      url: '/blog/levelup-event.jpg',
-      alt: 'TrueFlow team hosting an independent afterparty in Dallas during LevelUp 2025 week'
+      url: '/blog/levelup-invitation.jpg',
+      alt: 'Exclusive invitation card for TrueFlow\'s LevelUp 2025 afterparty featuring gold foil details',
+      width: 1200,
+      height: 630
     },
     seo: {
       metaTitle: 'Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch',
