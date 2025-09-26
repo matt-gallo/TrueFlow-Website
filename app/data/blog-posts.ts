@@ -1734,8 +1734,6 @@ Don't miss updates about the afterparty venue, timing, and special announcements
 
 ## Final Thoughts
 
-We believe TrueFlow can complement platforms like GoHighLevel—no partnership required—to help you change yours too.
-
 See you in Dallas! Let's level up together.
 
 **P.S.** - Can't make it to Dallas? Don't worry—we'll be sharing highlights, insights, and special offers for our extended community. Follow our journey as we officially launch into production!
