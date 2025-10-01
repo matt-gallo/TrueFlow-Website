@@ -383,15 +383,29 @@ export default function FAQPage() {
     // Pricing & Plans
     {
       id: 'pricing-1',
-      question: 'What\'s included in the $150/week Constant Content Engine™ plan?',
-      answer: 'The Constant Content Engine™ plan includes AI-powered content creation, voice-to-content transformation, SEO-optimized blog posts, email sequences, social media posts, content dashboard access, and basic analytics. Perfect for solopreneurs and content creators who need powerful content tools.',
+      question: 'What\'s the difference between Platform and Enterprise tiers?',
+      answer: 'Platform tiers give you self-service access to our AI tools (Flow Mode, Content Engine, Chat Widgets). Enterprise includes full done-for-you implementation with CRM, automated workflows, and a dedicated success manager. Think DIY vs. Done-For-You.',
       category: 'business',
       icon: <Zap className="h-5 w-5" />
     },
     {
       id: 'pricing-2',
-      question: 'What additional features come with the $300/week Complete System?',
-      answer: 'The Complete System includes everything in Constant Content Engine™ plus full CRM functionality, lead tracking, automated follow-ups, sales pipeline management, advanced analytics, customer communication hub, and a dedicated success manager. It\'s ideal for growing businesses that need comprehensive automation.',
+      question: 'Do Platform tiers include CRM features?',
+      answer: 'Full CRM capabilities (lead tracking, automated follow-ups, sales pipeline) are currently available only in our Enterprise tier. We\'re building these features into the platform for all users—coming Q1 2026.',
+      category: 'business',
+      icon: <CheckCircle className="h-5 w-5" />
+    },
+    {
+      id: 'pricing-3',
+      question: 'What\'s included in Enterprise "full-service implementation"?',
+      answer: 'Everything. We build your sales funnels, set up lead capture, create automated sequences, integrate with your tools, and provide ongoing optimization. You get a dedicated success manager and white-labeled system.',
+      category: 'business',
+      icon: <CheckCircle className="h-5 w-5" />
+    },
+    {
+      id: 'pricing-4',
+      question: 'Can I upgrade from Platform to Enterprise later?',
+      answer: 'Absolutely. Many clients start with Platform Access to test our AI tools, then upgrade to Enterprise when they\'re ready to automate their entire operation.',
       category: 'business',
       icon: <CheckCircle className="h-5 w-5" />
     },

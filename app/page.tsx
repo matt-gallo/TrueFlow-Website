@@ -12,16 +12,16 @@ import { useRouter } from 'next/navigation'
 import { getPublishedPosts, tagColorPalettes } from '@/app/data/blog-posts'
 import type { BlogPost } from '@/app/types/blog'
 import './animations.css'
-import { 
-  ChevronRight, 
+import {
+  ChevronRight,
   ChevronDown,
-  Play, 
-  Zap, 
-  Brain, 
-  Mail, 
-  Calendar, 
-  TrendingUp, 
-  Users, 
+  Play,
+  Zap,
+  Brain,
+  Mail,
+  Calendar,
+  TrendingUp,
+  Users,
   MessageSquare,
   ArrowRight,
   Star,
@@ -44,7 +44,8 @@ import {
   Instagram,
   Facebook,
   MessageCircle,
-  Youtube
+  Youtube,
+  Sparkles
 } from 'lucide-react'
 import TrueFlowLogoIcon from './components/TrueFlowLogoIcon'
 
@@ -278,17 +279,19 @@ export default function LandingPage() {
   const features = [
     {
       icon: <Users className="h-16 w-16" />,
-      title: "Lead Capture & Tracking",
-      description: "Seamlessly capture leads from multiple channels and track their journey through your sales funnel with real-time analytics and automated scoring.",
+      title: "Smart Lead Management",
+      description: "Coming Q1 2026 for all users • Available now in Enterprise tier with full CRM, lead tracking, automated scoring, and done-for-you implementation.",
       gradient: "from-blue-500 to-cyan-500",
-      delay: 0
+      delay: 0,
+      badge: "Q1 2026"
     },
     {
-      icon: <Mail className="h-16 w-16" />,
-      title: "Automated Follow-Up",
-      description: "Never miss a follow-up again. Smart automation sends personalized messages at the perfect moment to nurture leads and close deals.",
+      icon: <Sparkles className="h-16 w-16" />,
+      title: "Flow Mode: AI Productivity",
+      description: "Turn brain dumps into organized action. Record your thoughts and watch AI extract tasks, prioritize your day, and keep you focused on what matters most.",
       gradient: "from-purple-500 to-pink-500",
-      delay: 100
+      delay: 100,
+      badge: "Available Now"
     },
     {
       icon: <Shield className="h-16 w-16" />,
@@ -526,22 +529,25 @@ export default function LandingPage() {
       name: "Chris",
       role: "Online Fitness Coach",
       company: "",
+      tier: "Enterprise",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       quote: "Before TrueFlow, I was manually replying to DMs with no follow-up system and feeling overwhelmed with content creation. Now I have automated DM flows and AI-driven content with a clear pipeline. This changed how I run my business.",
       results: ["50% more client inquiries", "Automated DM workflows", "Clear sales pipeline"]
     },
     {
-      name: "Melisa", 
+      name: "Melisa",
       role: "Women's Coaching Program",
       company: "",
+      tier: "Enterprise",
       image: "https://images.unsplash.com/photo-1494790108755-2616b9fc6ad1?w=150&h=150&fit=crop&crop=face",
       quote: "I had scattered offers, inconsistent follow-up, and time-consuming planning. TrueFlow gave me clarity in my offer, a structured funnel, and automated lead tracking and scheduling. Now I can focus on coaching.",
       results: ["Waitlist launch in days", "Structured funnel built", "Streamlined operations"]
     },
     {
       name: "Andrew",
-      role: "Chiropractic Clinic", 
+      role: "Chiropractic Clinic",
       company: "",
+      tier: "Enterprise",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       quote: "I struggled to follow up with leads, track appointments, and manage forms. With TrueFlow's AI-driven lead capture, integrated scheduling, and automatic form tracking system, more calls get booked and intake is smoother. The backend now works like it should.",
       results: ["More calls booked", "Smoother intake process", "Automated form tracking"]
@@ -1547,6 +1553,197 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Flow Mode Feature Spotlight */}
+      <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-black"></div>
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Content */}
+            <div className="space-y-6">
+              <div className="inline-block px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full">
+                <span className="text-purple-300 text-sm font-semibold">✨ Available Now</span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+                Introducing <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Flow Mode</span>
+              </h2>
+
+              <p className="text-xl text-white/80 leading-relaxed">
+                The AI productivity system that turns scattered thoughts into organized action.
+                Stop using 5 different apps to plan your day.
+              </p>
+
+              <div className="space-y-4 pt-4">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <Mic className="h-4 w-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">1. Brain Dump</h4>
+                    <p className="text-white/70">Record everything on your mind in one voice memo</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <Brain className="h-4 w-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">2. AI Extraction</h4>
+                    <p className="text-white/70">Watch AI extract tasks and prioritize your day</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <Target className="h-4 w-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">3. Execute with Focus</h4>
+                    <p className="text-white/70">One task at a time, zero distractions</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link href="/get-started" className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold hover:from-purple-700 hover:to-pink-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <span>Try Flow Mode Free</span>
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: Visual */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl p-8 border border-purple-500/30 backdrop-blur-md">
+                <div className="space-y-4">
+                  <div className="bg-black/40 rounded-lg p-4">
+                    <p className="text-white/60 text-sm mb-2">🎤 Voice Input</p>
+                    <p className="text-white/90">&quot;I need to finish the client proposal, schedule team meeting, and respond to that urgent email...&quot;</p>
+                  </div>
+
+                  <div className="flex items-center justify-center py-2">
+                    <ArrowRight className="h-6 w-6 text-purple-400" />
+                  </div>
+
+                  <div className="bg-black/40 rounded-lg p-4 space-y-2">
+                    <p className="text-white/60 text-sm mb-2">✨ AI Extracted Tasks</p>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-red-500/30 border border-red-500 rounded"></div>
+                      <span className="text-white/90 text-sm">Finish client proposal (High Priority)</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-yellow-500/30 border border-yellow-500 rounded"></div>
+                      <span className="text-white/90 text-sm">Schedule team meeting (Medium)</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-green-500/30 border border-green-500 rounded"></div>
+                      <span className="text-white/90 text-sm">Respond to urgent email (Low)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Chat Widget Feature Spotlight */}
+      <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-black"></div>
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Visual */}
+            <div className="order-2 lg:order-1 relative">
+              <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl p-8 border border-blue-500/30 backdrop-blur-md">
+                {/* Mockup of website with chat widget */}
+                <div className="bg-black/60 rounded-lg p-6 space-y-4 relative min-h-[400px]">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1">
+                      <div className="h-3 w-32 bg-white/20 rounded"></div>
+                      <div className="h-2 w-48 bg-white/10 rounded"></div>
+                    </div>
+                  </div>
+
+                  {/* Chat widget mockup */}
+                  <div className="absolute bottom-8 right-8">
+                    <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse">
+                      <MessageCircle className="h-8 w-8 text-white" />
+                    </div>
+
+                    {/* Chat window */}
+                    <div className="absolute bottom-20 right-0 bg-black/90 backdrop-blur-md rounded-2xl border border-blue-500/30 p-4 w-80 shadow-2xl">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-white font-semibold">TrueFlow Assistant</span>
+                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="bg-blue-500/20 rounded-lg p-3">
+                          <p className="text-white/90 text-sm">Hi! How can I help you today?</p>
+                        </div>
+                        <div className="bg-white/10 rounded-lg p-3">
+                          <p className="text-white/70 text-sm">Tell me about your services</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Content */}
+            <div className="order-1 lg:order-2 space-y-6">
+              <div className="inline-block px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full">
+                <span className="text-blue-300 text-sm font-semibold">✨ Available Now</span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+                AI Chat Widgets
+              </h2>
+
+              <p className="text-xl text-white/80 leading-relaxed">
+                Turn website visitors into conversations. Add intelligent AI assistants to any site
+                in 60 seconds. Capture leads, answer questions, and engage 24/7.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-white/90">Fully customizable</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-white/90">Unlimited websites</span>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-white/90">Lead capture</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-white/90">Real-time analytics</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link href="/get-started" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-cyan-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <span>Create Your Widget</span>
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Enhanced Testimonials Section */}
       <section id="testimonials" className="py-16 sm:py-24 lg:py-32 px-4" ref={testimonialsScrollRef}>
         <div className="max-w-7xl mx-auto">
@@ -1625,6 +1822,11 @@ export default function LandingPage() {
                     <div>
                       <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-blue-100 transition-colors duration-300">{testimonial.name}</h4>
                       <p className="text-sm sm:text-base text-white/70 group-hover:text-white/90 transition-colors duration-300">{testimonial.role}</p>
+                      {testimonial.tier && (
+                        <span className="inline-block mt-1 px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                          {testimonial.tier} Client
+                        </span>
+                      )}
                       <p className="text-white/50 text-xs sm:text-sm group-hover:text-white/70 transition-colors duration-300">{testimonial.company}</p>
                     </div>
                   </div>
@@ -2080,24 +2282,24 @@ export default function LandingPage() {
 
               {/* Pricing Options */}
               <div ref={pricingRef} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
-                {/* Plan 1: Content Engine Only */}
+                {/* Plan 1: Platform Access */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Constant Content Engine™</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Platform Access</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
                       <span className="text-4xl font-bold text-white">$150</span>
                       <span className="text-white/70">/week</span>
                     </div>
-                    <p className="text-white/70">Access to our powerful AI content creation system</p>
+                    <p className="text-white/70">Self-service access to AI productivity and content tools</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
+                      'Flow Mode AI productivity system',
                       'AI-powered content creation',
                       'Transform voice to content',
                       'SEO-optimized blog posts',
-                      'Email sequences',
-                      'Social media posts',
+                      'Unlimited AI chat widgets',
                       'Content dashboard access',
                       'Basic analytics'
                     ].map((feature, index) => (
@@ -2114,7 +2316,7 @@ export default function LandingPage() {
                   </Link>
                 </div>
 
-                {/* Plan 2: Complete System with CRM */}
+                {/* Plan 2: Business Operating System */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 scale-105 ring-2 ring-purple-500">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -2123,24 +2325,24 @@ export default function LandingPage() {
                   </div>
 
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Complete System</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Business Operating System</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
                       <span className="text-4xl font-bold text-white">$300</span>
                       <span className="text-white/70">/week</span>
                     </div>
-                    <p className="text-white/70">Everything in Constant Content Engine™ plus full CRM</p>
+                    <p className="text-white/70">Everything in Platform plus advanced features</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Everything in Constant Content Engine™',
-                      'Full CRM system',
-                      'Lead capture & tracking',
-                      'Automated follow-ups',
-                      'Sales pipeline management',
-                      'Customer communication hub',
+                      'Everything in Platform Access',
                       'Advanced analytics & reporting',
-                      'Dedicated success manager'
+                      'Multi-brand content management',
+                      'Priority support',
+                      'Team collaboration tools',
+                      'API access (beta)',
+                      'Early access to new features',
+                      'CRM coming Q1 2026'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
@@ -2155,7 +2357,7 @@ export default function LandingPage() {
                   </Link>
                 </div>
 
-                {/* Plan 3: Custom Enterprise */}
+                {/* Plan 3: Enterprise (Full Service) */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-purple-500/20 text-purple-400 px-4 py-1 rounded-full text-sm font-semibold border border-purple-500/30">
@@ -2164,23 +2366,25 @@ export default function LandingPage() {
                   </div>
 
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Custom Enterprise</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Enterprise (Full Service)</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className="text-2xl font-bold text-white">Contact us</span>
-                      <span className="text-white/70">for pricing</span>
+                      <span className="text-2xl font-bold text-white">Starting at $2,000</span>
+                      <span className="text-white/70">/month</span>
                     </div>
-                    <p className="text-white/70">Large-scale content operations for agencies & enterprises</p>
+                    <p className="text-white/70">Complete business automation with white-glove service</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Multiple brand management',
-                      'White-label content solutions',
-                      'Custom workflow development',
-                      'Dedicated account manager',
-                      'API access & integrations',
-                      'Team collaboration tools',
-                      'Advanced analytics & reporting',
+                      'Everything in Business OS',
+                      'Full CRM system (available now)',
+                      'Lead capture & tracking',
+                      'Automated follow-up sequences',
+                      'Sales pipeline management',
+                      'Done-for-you implementation',
+                      'Dedicated success manager',
+                      'Custom workflow automation',
+                      'White-label solutions',
                       'Priority support & training'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
