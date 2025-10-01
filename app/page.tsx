@@ -1017,24 +1017,33 @@ export default function LandingPage() {
       {/* Problem Statement - Storytelling Section */}
       <section id="why-trueflow" className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          {/* Story Timeline */}
-          <div className="space-y-20 sm:space-y-24 lg:space-y-32">
+          {/* Business Evolution: Side-by-Side Comparison */}
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                The Evolution of Business Operations
+              </h2>
+              <p className="text-xl text-white/70">See how business has transformed—and where you stand today</p>
+            </div>
+
+            {/* 3-Column Comparison */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
             
             {/* Chapter 1: Once Upon A Time */}
-            <div className="text-center relative">
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-red-500/30 transition-all duration-300">
               <div className="inline-block bg-white/5 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 mb-8">
                 <span className="text-white/70 text-lg font-medium">Chapter 1</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
                 Once Upon A Time...
-              </h2>
-              <div className="max-w-4xl mx-auto">
-                <p className="text-lg sm:text-xl lg:text-2xl text-white/70 mb-8 leading-relaxed">
+              </h3>
+              <div>
+                <p className="text-base text-white/70 mb-6 leading-relaxed">
                   Manual everything. Growth = more hires = less profit.
                 </p>
-                
+
                 {/* Dynamic visual - Person overwhelmed with tasks */}
-                <div className="relative bg-white/5 backdrop-blur-md rounded-2xl p-12 border border-white/20 mx-auto max-w-lg overflow-hidden">
+                <div className="relative bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/20 overflow-hidden">
                   <div className="flex flex-col items-center space-y-6">
                     {/* Central person icon with stress animation */}
                     <div className="relative">
@@ -1105,33 +1114,22 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Transition from Chapter 1 to Chapter 2 */}
-            <div className="flex items-center justify-center py-8">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-orange-500/50"></div>
-                <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
-                <div className="w-16 h-0.5 bg-gradient-to-r from-orange-500/50 to-red-500/50"></div>
-                <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="w-12 h-0.5 bg-gradient-to-r from-red-500/50 to-transparent"></div>
-              </div>
-            </div>
-
             {/* Chapter 2: Then Came Automation */}
-            <div className="text-center relative">
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-orange-500/30 transition-all duration-300">
               <div className="inline-block bg-white/5 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 mb-8">
                 <span className="text-white/70 text-lg font-medium">Chapter 2</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
                 Then Came Automation & Intelligence
-              </h2>
-              
-              <div className="max-w-4xl mx-auto mb-16">
-                <p className="text-xl text-white/80 mb-8">
+              </h3>
+
+              <div>
+                <p className="text-base text-white/80 mb-6">
                   More tools. Better results. Higher costs.
                 </p>
                 
                 {/* Simple Tools Grid */}
-                <div className="grid grid-cols-3 gap-3 mb-8 max-w-2xl mx-auto">
+                <div className="grid grid-cols-3 gap-2 mb-6">
                   {[
                     { 
                       name: 'CRMs', 
@@ -1151,58 +1149,43 @@ export default function LandingPage() {
                   ].map((tool, index) => (
                     <div
                       key={tool.name}
-                      className={`bg-gradient-to-r ${tool.color} p-4 rounded-lg text-center flex flex-col items-center justify-center`}
+                      className={`bg-gradient-to-r ${tool.color} p-3 rounded-lg text-center flex flex-col items-center justify-center`}
                     >
-                      <tool.icon className="w-8 h-8 text-white mb-2" />
+                      <tool.icon className="w-6 h-6 text-white mb-1" />
                       <span className="text-white font-medium text-xs">{tool.name}</span>
                     </div>
                   ))}
                 </div>
 
-                <p className="text-2xl text-white/90 font-semibold mb-6">
+                <p className="text-lg text-white/90 font-semibold mb-4">
                   But then reality hit...
                 </p>
-                
-                {/* Simple Problem Statement */}
-                <div className="bg-red-500/10 rounded-xl p-6 border border-red-500/20 max-w-xl mx-auto">
-                  <p className="text-red-400 font-semibold text-lg mb-2">$1500+/month. Data everywhere.</p>
-                  <p className="text-red-400 font-semibold text-lg mb-2">$10,000+ per month for employees to manage those tools...</p>
-                  <p className="text-white/70 text-sm">Think systems administrators, social media managers, virtual assistants...</p>
-                  <p className="text-white/70 mt-2">Fragmented & Disconnected</p>
-                </div>
-              </div>
-            </div>
 
-            {/* Transition from Chapter 2 to Chapter 3 */}
-            <div className="flex items-center justify-center py-8">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-500/50"></div>
-                <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse shadow-lg shadow-blue-500/50"></div>
-                <div className="w-20 h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>
-                <div className="w-5 h-5 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse shadow-lg shadow-purple-500/50 flex items-center justify-center" style={{ animationDelay: '0.3s' }}>
-                  <TrueFlowLogoIcon size={12} />
+                {/* Simple Problem Statement */}
+                <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
+                  <p className="text-red-400 font-semibold text-sm mb-1">$1500+/month. Data everywhere.</p>
+                  <p className="text-red-400 font-semibold text-sm mb-1">$10,000+ per month for employees to manage those tools...</p>
+                  <p className="text-white/70 text-xs">Think systems administrators, social media managers, virtual assistants...</p>
+                  <p className="text-white/70 mt-2 text-xs font-semibold">Fragmented & Disconnected</p>
                 </div>
-                <div className="w-20 h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>
-                <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse shadow-lg shadow-purple-500/50" style={{ animationDelay: '0.6s' }}></div>
-                <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent"></div>
               </div>
             </div>
 
             {/* Chapter 3: Now */}
-            <div className="text-center relative">
+            <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 border-blue-500/30 hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-blue-500/10">
               <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 rounded-full px-6 py-3 border-2 border-blue-400/50 mb-8 shadow-lg shadow-blue-500/25">
                 <span className="text-white text-lg font-bold">Chapter 3</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
                 Now... TrueFlow
-              </h2>
-              <div className="max-w-4xl mx-auto">
-                <p className="text-lg sm:text-xl lg:text-2xl text-white/70 mb-8 leading-relaxed">
+              </h3>
+              <div>
+                <p className="text-base text-white/70 mb-6 leading-relaxed">
                   Everything in one place. One subscription. One system that works.
                 </p>
                 
                 {/* Dynamic unification visual */}
-                <div className="relative bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-2xl p-12 border border-white/20 mx-auto max-w-lg overflow-hidden">
+                <div className="relative bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-xl p-8 border border-white/20 overflow-hidden">
                   <div className="flex flex-col items-center space-y-6">
                     {/* Central TrueFlow hub with converging elements */}
                     <div className="relative w-40 h-40">
@@ -1322,16 +1305,17 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Transition element to next section */}
-          <div className="text-center mt-16 sm:mt-20 lg:mt-24">
-            <div className="w-1 h-16 bg-gradient-to-b from-white/50 to-transparent mx-auto mb-8"></div>
-            <p className="text-white/50 text-lg">Discover how TrueFlow transforms your business</p>
-            <button 
-              onClick={() => featuresRef.current?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-12 h-12 border-2 border-white/30 rounded-full flex items-center justify-center mx-auto mt-6 animate-bounce hover:border-white/50 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-            >
-              <ChevronRight className="h-6 w-6 text-white/50 rotate-90" />
-            </button>
+            {/* Transition element to next section */}
+            <div className="text-center mt-16 sm:mt-20 lg:mt-24">
+              <div className="w-1 h-16 bg-gradient-to-b from-white/50 to-transparent mx-auto mb-8"></div>
+              <p className="text-white/50 text-lg">Discover how TrueFlow transforms your business</p>
+              <button
+                onClick={() => featuresRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                className="w-12 h-12 border-2 border-white/30 rounded-full flex items-center justify-center mx-auto mt-6 animate-bounce hover:border-white/50 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+              >
+                <ChevronRight className="h-6 w-6 text-white/50 rotate-90" />
+              </button>
+            </div>
           </div>
         </div>
       </section>
