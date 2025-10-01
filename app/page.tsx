@@ -2383,7 +2383,6 @@ export default function LandingPage() {
                       'Done-for-you implementation',
                       'Dedicated success manager',
                       'Custom workflow automation',
-                      'White-label solutions',
                       'Priority support & training'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">

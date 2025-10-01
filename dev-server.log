@@ -7,8 +7,9 @@
   - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 1543ms
+ ✓ Ready in 1775ms
  ○ Compiling / ...
- ✓ Compiled / in 1709ms (607 modules)
- HEAD / 200 in 1838ms
- ✓ Compiled in 226ms (313 modules)
+ ✓ Compiled / in 1628ms (607 modules)
+ HEAD / 200 in 1756ms
+ ✓ Compiled /cloudflare-guide in 477ms (597 modules)
+ HEAD /cloudflare-guide 200 in 269ms
