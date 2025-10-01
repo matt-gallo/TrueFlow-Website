@@ -2281,7 +2281,7 @@ export default function LandingPage() {
           </div>
 
               {/* Pricing Options */}
-              <div ref={pricingRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 max-w-5xl mx-auto">
+              <div ref={pricingRef} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
                 {/* Plan 1: Platform Access */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="text-center mb-6">
@@ -2355,6 +2355,47 @@ export default function LandingPage() {
                     <span className="relative z-10">Get Complete System</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
+                </div>
+
+                {/* Plan 3: Enterprise (Full Service) */}
+                <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <span className="bg-purple-500/20 text-purple-400 px-4 py-1 rounded-full text-sm font-semibold border border-purple-500/30">
+                      Premium
+                    </span>
+                  </div>
+
+                  <div className="text-center mb-6">
+                    <h3 className="text-2xl font-bold text-white mb-2">Enterprise (Full Service)</h3>
+                    <div className="flex items-center justify-center space-x-1 mb-4">
+                      <span className="text-2xl font-bold text-white">Contact for Pricing</span>
+                    </div>
+                    <p className="text-white/70">Complete business automation with white-glove service</p>
+                  </div>
+
+                  <div className="space-y-3 mb-6">
+                    {[
+                      'Everything in Business OS',
+                      'Full CRM system (available now)',
+                      'Lead capture & tracking',
+                      'Automated follow-up sequences',
+                      'Sales pipeline management',
+                      'Done-for-you implementation',
+                      'Dedicated success manager',
+                      'Custom workflow automation',
+                      'White-label solutions',
+                      'Priority support & training'
+                    ].map((feature, index) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
+                        <span className="text-white/80">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <a href="mailto:matt@trueflow.ai" className="w-full py-3 px-6 rounded-lg font-semibold transition-all bg-white/10 text-white hover:bg-white/20 border border-white/20 block text-center">
+                    Contact Sales
+                  </a>
                 </div>
 
               </div>
