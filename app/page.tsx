@@ -706,15 +706,29 @@ export default function LandingPage() {
                     >
                       Features
                     </a>
-                    <a 
-                      href="#how-it-works" 
+                    <a
+                      href="#how-it-works"
                       onClick={() => setIsCoreSystemOpen(false)}
                       className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
                     >
                       How it Works
                     </a>
-                    <a 
-                      href="#testimonials" 
+                    <a
+                      href="#flow-mode"
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Flow Mode
+                    </a>
+                    <a
+                      href="#chat-widgets"
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      AI Chat Widgets
+                    </a>
+                    <a
+                      href="#testimonials"
                       onClick={() => setIsCoreSystemOpen(false)}
                       className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
                     >
@@ -763,6 +777,8 @@ export default function LandingPage() {
                 <a href="#why-trueflow" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Why TrueFlow?</a>
                 <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Features</a>
                 <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">How it Works</a>
+                <a href="#flow-mode" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Flow Mode</a>
+                <a href="#chat-widgets" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">AI Chat Widgets</a>
                 <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
                 <a href="#integrations" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Integrations</a>
               </div>
@@ -1554,7 +1570,7 @@ export default function LandingPage() {
       </section>
 
       {/* Flow Mode Feature Spotlight */}
-      <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+      <section id="flow-mode" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
         {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-black"></div>
 
@@ -1651,7 +1667,7 @@ export default function LandingPage() {
       </section>
 
       {/* Chat Widget Feature Spotlight */}
-      <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+      <section id="chat-widgets" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
         {/* Gradient background */}
         <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-black"></div>
 
