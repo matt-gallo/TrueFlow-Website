@@ -327,54 +327,55 @@ export default function ReadinessAssessment() {
 
   const plans: Plan[] = [
     {
-      id: 'content-engine',
-      name: 'Constant Content Engine™',
+      id: 'platform-access',
+      name: 'Platform Access',
       price: '$150',
       period: '/week',
-      description: 'AI-powered content creation system',
+      description: 'Self-service access to AI productivity and content tools',
       features: [
+        'Flow Mode AI productivity system',
         'AI-powered content creation',
         'Transform voice to content',
         'SEO-optimized blog posts',
-        'Email newsletter generation',
-        'Multi-platform publishing',
-        'Content calendar & planning',
-        'Analytics dashboard',
-        'Basic integrations'
+        'Unlimited AI chat widgets',
+        'Content dashboard access',
+        'Basic analytics'
       ]
     },
     {
-      id: 'complete-system',
-      name: 'Complete System',
+      id: 'business-os',
+      name: 'Business Operating System',
       price: '$300',
       period: '/week',
-      description: 'Full automation suite with CRM',
+      description: 'Everything in Platform plus advanced features',
       features: [
-        'Everything in Constant Content Engine™',
-        'Full CRM system',
-        'Lead capture & tracking',
-        'Automated follow-ups',
-        'Sales pipeline management',
-        'Customer communication hub',
+        'Everything in Platform Access',
         'Advanced analytics & reporting',
-        'Dedicated success manager'
+        'Multi-brand content management',
+        'Priority support',
+        'Team collaboration tools',
+        'API access (beta)',
+        'Early access to new features',
+        'CRM coming Q1 2026'
       ],
       popular: true
     },
     {
-      id: 'custom',
-      name: 'Custom Enterprise',
-      price: 'Contact us',
-      period: 'for pricing',
-      description: 'Tailored solutions for large organizations',
+      id: 'enterprise',
+      name: 'Enterprise (Full Service)',
+      price: 'Starting at $2,000',
+      period: '/month',
+      description: 'Complete business automation with white-glove service',
       features: [
-        'Multiple brand management',
-        'White-label content solutions',
-        'Custom workflow development',
-        'Dedicated account manager',
-        'API access & integrations',
-        'Team collaboration tools',
-        'Advanced analytics & reporting',
+        'Everything in Business OS',
+        'Full CRM system (available now)',
+        'Lead capture & tracking',
+        'Automated follow-up sequences',
+        'Sales pipeline management',
+        'Done-for-you implementation',
+        'Dedicated success manager',
+        'Custom workflow automation',
+        'White-label solutions',
         'Priority support & training'
       ]
     },
@@ -445,25 +446,25 @@ export default function ReadinessAssessment() {
     // Determine recommendation based on indicators and score
     let recommendedPlan = 'not-sure'
     let recommendationReason = ''
-    
+
     if (score < 25) {
       recommendedPlan = 'not-sure'
       recommendationReason = 'Based on your assessment, we recommend scheduling a consultation to better understand your needs and create a custom solution.'
     } else if (enterpriseIndicators >= 3 && score >= 75) {
-      recommendedPlan = 'custom'
-      recommendationReason = 'Your high content volume, advanced systems, and substantial budget make you ideal for our Custom Enterprise solution with dedicated support.'
+      recommendedPlan = 'enterprise'
+      recommendationReason = 'Your high content volume, advanced systems, and substantial budget make you ideal for our Enterprise (Full Service) solution with dedicated support.'
     } else if (completeSystemIndicators >= 2 && score >= 50) {
-      recommendedPlan = 'complete-system'
-      recommendationReason = 'Your medium content needs and existing systems position you perfectly for our Complete System to streamline both content and customer management.'
+      recommendedPlan = 'business-os'
+      recommendationReason = 'Your medium content needs and existing systems position you perfectly for our Business Operating System to streamline both content and operations.'
     } else if (contentEngineIndicators >= 3 || score < 50) {
-      recommendedPlan = 'content-engine'
-      recommendationReason = 'Starting with our Constant Content Engine™ will help you establish efficient content workflows and see immediate time savings.'
+      recommendedPlan = 'platform-access'
+      recommendationReason = 'Starting with our Platform Access will help you establish efficient content workflows and see immediate time savings.'
     } else if (score >= 50) {
-      recommendedPlan = 'complete-system'
-      recommendationReason = 'Your readiness score indicates you\'re prepared for full automation with our Complete System.'
+      recommendedPlan = 'business-os'
+      recommendationReason = 'Your readiness score indicates you\'re prepared for full automation with our Business Operating System.'
     } else {
-      recommendedPlan = 'content-engine'
-      recommendationReason = 'Our Constant Content Engine™ is the perfect starting point for your AI automation journey.'
+      recommendedPlan = 'platform-access'
+      recommendationReason = 'Our Platform Access is the perfect starting point for your AI automation journey.'
     }
     
     return {
@@ -480,7 +481,7 @@ export default function ReadinessAssessment() {
         bgColor: 'bg-green-500/20',
         borderColor: 'border-green-500',
         message: 'Your business is perfectly positioned to leverage AI automation. TrueFlow can help you maximize your potential.',
-        recommendation: 'Complete System'
+        recommendation: 'Business Operating System'
       }
     } else if (score >= 50) {
       return {
@@ -489,7 +490,7 @@ export default function ReadinessAssessment() {
         bgColor: 'bg-blue-500/20',
         borderColor: 'border-blue-500',
         message: 'You\'re ready to start automating and scaling with AI. TrueFlow can transform your operations.',
-        recommendation: 'Complete System'
+        recommendation: 'Business Operating System'
       }
     } else if (score >= 25) {
       return {
@@ -498,7 +499,7 @@ export default function ReadinessAssessment() {
         bgColor: 'bg-yellow-500/20',
         borderColor: 'border-yellow-500',
         message: 'You have room to grow. Start with content automation to see immediate improvements.',
-        recommendation: 'Constant Content Engine™'
+        recommendation: 'Platform Access'
       }
     } else {
       return {

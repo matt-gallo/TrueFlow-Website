@@ -683,67 +683,6 @@ export default function ContentEnginePage() {
               </div>
             </div>
 
-            {/* Lead Management Workflow */}
-            <div 
-              className={`bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 p-8 hover:bg-black/80 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 group relative overflow-hidden transform-gpu ${
-                ''
-              }`} 
-              style={{ 
-                animationDelay: '700ms',
-                transformStyle: 'preserve-3d',
-                transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)'
-              }}
-              onMouseEnter={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect()
-                const centerX = rect.left + rect.width / 2
-                const centerY = rect.top + rect.height / 2
-                const mouseX = e.clientX - centerX
-                const mouseY = e.clientY - centerY
-                const rotateX = (mouseY / rect.height) * -12
-                const rotateY = (mouseX / rect.width) * 12
-                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(15px) scale(1.03)`
-              }}
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect()
-                const centerX = rect.left + rect.width / 2
-                const centerY = rect.top + rect.height / 2
-                const mouseX = e.clientX - centerX
-                const mouseY = e.clientY - centerY
-                const rotateX = (mouseY / rect.height) * -12
-                const rotateY = (mouseX / rect.width) * 12
-                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(15px) scale(1.03)`
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
-              }}
-            >
-              {/* Shimmer effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100  -skew-x-12"></div>
-              
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg group-hover:scale-105 transition-transform duration-300">
-                  <Users className="h-8 w-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-white group-hover:text-purple-100 transition-colors duration-300">Lead Management</h3>
-              </div>
-              
-              <p className="text-white/70 mb-6 group-hover:text-white/90 transition-colors duration-300">Automated lead scoring, follow-ups, and nurturing sequences that convert prospects into customers</p>
-              
-              <div className="space-y-3 mb-6">
-                {['Behavioral lead scoring', 'Automated follow-up sequences', 'Personalized outreach', 'CRM integration'].map((feature, idx) => (
-                  <div key={idx} className={`flex items-center space-x-2 transition-all duration-500 ${
-                    'translate-x-0 opacity-100'
-                  }`} style={{ transitionDelay: `${700 + idx * 100}ms` }}>
-                    <CheckCircle className="h-4 w-4 text-green-400 group-hover:scale-105 group-hover:text-green-300 transition-all duration-300" />
-                    <span className="text-white/80 text-sm group-hover:text-white/95 transition-colors duration-300">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg p-4 border border-purple-500/30 group-hover:border-purple-400/50 transition-colors duration-300">
-                <p className="text-white/90 italic group-hover:text-white transition-colors duration-300">Never lose a lead again. AI tracks every interaction and automatically nurtures prospects with personalized content.</p>
-              </div>
-            </div>
 
             {/* Customer Support Workflow */}
             <div 
