@@ -103,7 +103,7 @@ export default function EventPopup({ onClose }: EventPopupProps) {
                   <div>
                     <p className="text-sm text-gray-400 mb-1">When</p>
                     <p className="text-white font-medium">Thursday, October 16th</p>
-                    <p className="text-gray-300 text-sm">6:00 PM - 8:00 PM CST</p>
+                    <p className="text-gray-300 text-sm">7:00 PM CST</p>
                   </div>
                 </div>
               </div>
