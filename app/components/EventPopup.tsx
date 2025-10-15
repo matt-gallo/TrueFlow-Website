@@ -130,10 +130,10 @@ export default function EventPopup({ onClose }: EventPopupProps) {
                 <p className="text-center text-gray-400 text-sm mb-4">
                   Fill out the form below to get your perks
                 </p>
-                <div className="rounded-lg overflow-hidden bg-white">
+                <div className="rounded-lg overflow-hidden bg-transparent">
                   <iframe
                     src="https://api.leadconnectorhq.com/widget/form/qR5oj4f5LkzxrjN1PbYh"
-                    style={{ width: '100%', height: '460px', border: 'none', borderRadius: '4px' }}
+                    style={{ width: '100%', height: '460px', border: 'none', borderRadius: '4px', background: 'transparent' }}
                     id="inline-qR5oj4f5LkzxrjN1PbYh"
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
