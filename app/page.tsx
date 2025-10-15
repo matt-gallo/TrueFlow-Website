@@ -324,19 +324,17 @@ export default function LandingPage() {
 
   // Show event popup after a delay
   useEffect(() => {
-    const hasSeenPopup = localStorage.getItem('eventPopupSeen')
-    if (!hasSeenPopup) {
-      const timer = setTimeout(() => {
-        setShowEventPopup(true)
-      }, 500) // Show after 0.5 seconds
+    const timer = setTimeout(() => {
+      setShowEventPopup(true)
+    }, 500) // Show after 0.5 seconds
 
-      return () => clearTimeout(timer)
-    }
+    return () => clearTimeout(timer)
   }, [])
 
   const handleClosePopup = () => {
     setShowEventPopup(false)
-    localStorage.setItem('eventPopupSeen', 'true')
+    // Temporarily disabled localStorage so popup shows on every refresh
+    // localStorage.setItem('eventPopupSeen', 'true')
   }
 
   // Generate floating particles
