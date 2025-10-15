@@ -328,7 +328,7 @@ export default function LandingPage() {
     if (!hasSeenPopup) {
       const timer = setTimeout(() => {
         setShowEventPopup(true)
-      }, 3000) // Show after 3 seconds
+      }, 500) // Show after 0.5 seconds
 
       return () => clearTimeout(timer)
     }
