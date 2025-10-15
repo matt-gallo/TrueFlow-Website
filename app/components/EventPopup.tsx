@@ -35,7 +35,7 @@ export default function EventPopup({ onClose }: EventPopupProps) {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex items-center justify-center px-4 py-8 transition-all duration-300 ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center px-2 py-2 sm:px-4 sm:py-4 transition-all duration-300 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}
     >
@@ -47,11 +47,11 @@ export default function EventPopup({ onClose }: EventPopupProps) {
 
         {/* Modal */}
         <div
-          className={`relative w-full max-w-4xl max-h-[90vh] overflow-y-auto transform transition-all duration-300 ${
+          className={`relative w-full max-w-4xl max-h-[98vh] overflow-y-auto transform transition-all duration-300 ${
             isVisible ? 'scale-100 opacity-100' : 'scale-95 opacity-0'
           }`}
         >
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-8 shadow-2xl border border-gray-700/50">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-4 sm:p-6 shadow-2xl border border-gray-700/50">
             {/* Close button */}
             <button
               onClick={handleClose}
@@ -68,20 +68,20 @@ export default function EventPopup({ onClose }: EventPopupProps) {
             {/* Content */}
             <div className="relative">
               {/* Header */}
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 mb-4">
-                  <Gift className="w-8 h-8 text-white" />
+              <div className="text-center mb-3 sm:mb-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 mb-2 sm:mb-3">
+                  <Gift className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                 </div>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                <h2 className="text-xl sm:text-2xl font-bold text-white mb-1">
                   Hey HighLevelers!
                 </h2>
-                <p className="text-gray-300 text-lg">
+                <p className="text-gray-300 text-sm sm:text-base">
                   Join TrueFlow for drinks & appetizers
                 </p>
               </div>
 
               {/* Event Details */}
-              <div className="grid md:grid-cols-2 gap-4 mb-6">
+              <div className="grid md:grid-cols-2 gap-3 mb-3 sm:mb-4">
                 {/* Location */}
                 <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/50 backdrop-blur-sm border border-gray-700/50">
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
@@ -109,31 +109,31 @@ export default function EventPopup({ onClose }: EventPopupProps) {
               </div>
 
               {/* Perks */}
-              <div className="p-4 rounded-lg bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 mb-6">
-                <div className="flex items-center gap-2 mb-2">
-                  <Gift className="w-5 h-5 text-purple-400" />
-                  <p className="text-white font-semibold">What's Included:</p>
+              <div className="p-3 rounded-lg bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 mb-3 sm:mb-4">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Gift className="w-4 h-4 text-purple-400" />
+                  <p className="text-white font-semibold text-sm">What's Included:</p>
                 </div>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-300 text-sm">
-                  <li>• Free first drink on us</li>
-                  <li>• Complimentary appetizers</li>
-                  <li>• 1 month free TrueFlow</li>
-                  <li>• No RSVP required</li>
+                <ul className="grid grid-cols-2 gap-1.5 text-gray-300 text-xs sm:text-sm">
+                  <li>• Free drink</li>
+                  <li>• Appetizers</li>
+                  <li>• 1 mo. free</li>
+                  <li>• No RSVP</li>
                 </ul>
               </div>
 
               {/* Embedded Form */}
-              <div className="mt-6">
-                <h3 className="text-white text-lg font-semibold mb-3 text-center">
+              <div className="mt-3 sm:mt-4">
+                <h3 className="text-white text-base sm:text-lg font-semibold mb-2 text-center">
                   Claim Your Free Drink & Month Free
                 </h3>
-                <p className="text-center text-gray-400 text-sm mb-4">
+                <p className="text-center text-gray-400 text-xs sm:text-sm mb-2">
                   Fill out the form below to get your perks
                 </p>
                 <div className="rounded-lg overflow-hidden bg-transparent">
                   <iframe
                     src="https://api.leadconnectorhq.com/widget/form/qR5oj4f5LkzxrjN1PbYh"
-                    style={{ width: '100%', height: '460px', border: 'none', borderRadius: '4px', background: 'transparent' }}
+                    style={{ width: '100%', height: '400px', border: 'none', borderRadius: '4px', background: 'transparent' }}
                     id="inline-qR5oj4f5LkzxrjN1PbYh"
                     data-layout="{'id':'INLINE'}"
                     data-trigger-type="alwaysShow"
