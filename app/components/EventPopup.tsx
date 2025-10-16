@@ -68,68 +68,67 @@ export default function EventPopup({ onClose }: EventPopupProps) {
             {/* Content */}
             <div className="relative">
               {/* Header */}
-              <div className="text-center mb-3 sm:mb-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 mb-2 sm:mb-3">
-                  <Gift className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                </div>
-                <h2 className="text-xl sm:text-2xl font-bold text-white mb-1">
-                  Hey HighLevelers!
+              <div className="text-center mb-4 sm:mb-6">
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6 italic tracking-wide">
+                  An Invitation to Flow
                 </h2>
-                <p className="text-gray-300 text-sm sm:text-base">
-                  Join TrueFlow for drinks & appetizers
-                </p>
+
+                {/* Body Copy */}
+                <div className="space-y-3 sm:space-y-4 text-gray-200 leading-relaxed max-w-xl mx-auto">
+                  <p className="text-sm sm:text-base">
+                    Something's happening tonight at the <span className="text-white font-semibold">Rodeo GOAT</span>
+                    <br />
+                    <span className="text-white font-semibold">7pm sharp.</span>
+                    <br />
+                    <span className="text-xs sm:text-sm text-gray-400">(Across the street from the Hilton Anatole)</span>
+                  </p>
+
+                  <p className="text-sm sm:text-base">
+                    It's not a conference.
+                    <br />
+                    It's not a pitch.
+                    <br />
+                    <span className="text-white font-medium">It's an experience.</span>
+                  </p>
+
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
+                    A small circle of creators, builders, and innovators coming together for one night — no name tags, no agendas, just conversation, connection, and flow.
+                  </p>
+
+                  <div className="text-sm sm:text-base space-y-1 py-2">
+                    <p className="text-white">First drinks + apps are on us.</p>
+                    <p className="text-white">Access is limited.</p>
+                    <p className="text-white">Gifts and surprises included.</p>
+                  </div>
+
+                  <p className="text-sm sm:text-base text-purple-300 italic">
+                    If you know, you know.
+                  </p>
+                </div>
               </div>
 
-              {/* Event Details */}
-              <div className="grid md:grid-cols-2 gap-3 mb-3 sm:mb-4">
-                {/* Location */}
-                <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/50 backdrop-blur-sm border border-gray-700/50">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-purple-400" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400 mb-1">Location</p>
-                    <p className="text-white font-medium">Rodeo Goat</p>
-                    <p className="text-gray-300 text-sm">1926 Market Center Blvd</p>
-                    <p className="text-gray-300 text-sm">Outdoor Patio</p>
-                  </div>
+              {/* CTA Section */}
+              <div className="mt-6 sm:mt-8 space-y-6">
+                {/* CTA Button */}
+                <div className="text-center space-y-3">
+                  <button
+                    onClick={() => {
+                      const iframe = document.getElementById('inline-qR5oj4f5LkzxrjN1PbYh')
+                      if (iframe) {
+                        iframe.scrollIntoView({ behavior: 'smooth', block: 'center' })
+                      }
+                    }}
+                    className="inline-block px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white font-semibold rounded-lg shadow-lg transition-all duration-200 transform hover:scale-105"
+                  >
+                    Reserve Your Spot
+                  </button>
+
+                  <p className="text-sm text-gray-400">
+                    Rodeo GOAT · Oct 16 · 7pm / Hosted by TrueFlow.AI
+                  </p>
                 </div>
 
-                {/* Date & Time - UPDATE THESE */}
-                <div className="flex items-start gap-3 p-3 rounded-lg bg-gray-800/50 backdrop-blur-sm border border-gray-700/50">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
-                    <Calendar className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-400 mb-1">When</p>
-                    <p className="text-white font-medium">Thursday, October 16th</p>
-                    <p className="text-gray-300 text-sm">7:00 PM CST</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Perks */}
-              <div className="p-3 rounded-lg bg-gradient-to-r from-purple-500/10 to-blue-500/10 border border-purple-500/30 mb-3 sm:mb-4">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <Gift className="w-4 h-4 text-purple-400" />
-                  <p className="text-white font-semibold text-sm">What's Included:</p>
-                </div>
-                <ul className="grid grid-cols-2 gap-1.5 text-gray-300 text-xs sm:text-sm">
-                  <li>• Free drink</li>
-                  <li>• Appetizers</li>
-                  <li>• 1 mo. free</li>
-                  <li>• No RSVP</li>
-                </ul>
-              </div>
-
-              {/* Embedded Form */}
-              <div className="mt-3 sm:mt-4">
-                <h3 className="text-white text-base sm:text-lg font-semibold mb-2 text-center">
-                  Claim Your Free Drink & Month Free
-                </h3>
-                <p className="text-center text-gray-400 text-xs sm:text-sm mb-2">
-                  Fill out the form below to get your perks
-                </p>
+                {/* Form Embed */}
                 <div className="rounded-lg overflow-hidden bg-transparent">
                   <iframe
                     src="https://api.leadconnectorhq.com/widget/form/qR5oj4f5LkzxrjN1PbYh"
