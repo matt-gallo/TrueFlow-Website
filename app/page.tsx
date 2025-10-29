@@ -48,7 +48,6 @@ import {
   Sparkles
 } from 'lucide-react'
 import TrueFlowLogoIcon from './components/TrueFlowLogoIcon'
-import EventPopup from './components/EventPopup'
 
 interface Particle {
   id: number
@@ -277,9 +276,6 @@ export default function LandingPage() {
   const [pricingVisible, setPricingVisible] = useState(false)
   const pricingRef = useRef<HTMLDivElement>(null)
 
-  // Event popup state
-  const [showEventPopup, setShowEventPopup] = useState(false)
-
   const features = [
     {
       icon: <Users className="h-16 w-16" />,
@@ -321,21 +317,6 @@ export default function LandingPage() {
   //
   //   return () => clearInterval(interval)
   // }, [features.length])
-
-  // Show event popup after a delay
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowEventPopup(true)
-    }, 500) // Show after 0.5 seconds
-
-    return () => clearTimeout(timer)
-  }, [])
-
-  const handleClosePopup = () => {
-    setShowEventPopup(false)
-    // Temporarily disabled localStorage so popup shows on every refresh
-    // localStorage.setItem('eventPopupSeen', 'true')
-  }
 
   // Generate floating particles
   const generateParticles = () => {
@@ -2496,9 +2477,6 @@ export default function LandingPage() {
           </button>
         </div>
       )}
-
-      {/* Event Popup */}
-      {showEventPopup && <EventPopup onClose={handleClosePopup} />}
     </div>
   )
 }
