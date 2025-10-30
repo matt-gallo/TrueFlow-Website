@@ -10,6 +10,20 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/get-started',
+        destination: '/ai-readiness-assessment',
+        permanent: true,
+      },
+      {
+        source: '/readiness-assessment',
+        destination: '/ai-readiness-assessment',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

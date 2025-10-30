@@ -1035,11 +1035,11 @@ export default function LandingPage() {
                 <span className="text-white/70 text-lg font-medium">Chapter 1</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
-                Doing Everything Yourself
+                You're Wearing Every Hat
               </h3>
               <div>
                 <p className="text-base text-white/70 mb-6 leading-relaxed">
-                  Answering calls, returning texts, following up, posting on social media... it never ends.
+                  You're great at what you do. But between patient calls, property showings, coaching clients, film edits, and marketing campaigns... you're drowning in tasks that have nothing to do with your expertise. Meanwhile, leads slip through the cracks, follow-ups get forgotten, and potential revenue disappears.
                 </p>
 
                 {/* Dynamic visual - Person overwhelmed with tasks */}
@@ -1120,12 +1120,12 @@ export default function LandingPage() {
                 <span className="text-white/70 text-lg font-medium">Chapter 2</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
-                So You Try Different Apps
+                So You Try DIY Solutions
               </h3>
 
               <div>
                 <p className="text-base text-white/80 mb-6">
-                  Everyone says you need apps and software to "scale." So you sign up for a bunch of them.
+                  "Just get some software," they said. "It's easy," they said. So you sign up for CRMs, schedulers, email tools, social media managers... and now you're paying hundreds per month for tools that don't talk to each other, and you STILL have to do most of the work manually.
                 </p>
                 
                 {/* Simple Tools Grid */}
@@ -1177,11 +1177,11 @@ export default function LandingPage() {
                 <span className="text-white text-lg font-bold">Chapter 3</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
-                That's Where We Come In
+                We Build It. We Run It. You Reap The Benefits.
               </h3>
               <div>
                 <p className="text-base text-white/70 mb-6 leading-relaxed">
-                  We build and manage everything for you. No apps to figure out. No monthly subscriptions to juggle.
+                  We build custom automation systems that capture leads, follow up automatically, schedule appointments, send messages, and keep your business running 24/7 - while you focus on what you actually do best. No apps to learn. No tech headaches. Just results.
                 </p>
                 
                 {/* Dynamic unification visual */}
@@ -1305,16 +1305,45 @@ export default function LandingPage() {
             </div>
           </div>
 
-            {/* Transition element to next section */}
-            <div className="text-center mt-16 sm:mt-20 lg:mt-24">
-              <div className="w-1 h-16 bg-gradient-to-b from-white/50 to-transparent mx-auto mb-8"></div>
-              <p className="text-white/50 text-lg">Discover how TrueFlow transforms your business</p>
-              <button
-                onClick={() => featuresRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                className="w-12 h-12 border-2 border-white/30 rounded-full flex items-center justify-center mx-auto mt-6 animate-bounce hover:border-white/50 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-              >
-                <ChevronRight className="h-6 w-6 text-white/50 rotate-90" />
-              </button>
+            {/* USP and Clear Offer */}
+            <div className="text-center mt-16 sm:mt-20 lg:mt-24 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-3xl p-8 sm:p-12 border-2 border-blue-500/40 shadow-2xl shadow-blue-500/20">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                  Our Promise: More Leads. Less Work. Real Results.
+                </h3>
+                <p className="text-xl text-white/80 mb-8 leading-relaxed">
+                  We build custom automation that works 24/7 to capture leads, follow up instantly, schedule appointments, and keep your pipeline full - so you can focus on serving your clients, not chasing them.
+                </p>
+
+                {/* Key Benefits */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                    <CheckCircle className="h-10 w-10 text-green-400 mb-3 mx-auto" />
+                    <h4 className="text-white font-bold mb-2">Done For You</h4>
+                    <p className="text-white/70 text-sm">We build it, manage it, and optimize it</p>
+                  </div>
+                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                    <Clock className="h-10 w-10 text-blue-400 mb-3 mx-auto" />
+                    <h4 className="text-white font-bold mb-2">Works 24/7</h4>
+                    <p className="text-white/70 text-sm">Never miss a lead, even while you sleep</p>
+                  </div>
+                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                    <Target className="h-10 w-10 text-purple-400 mb-3 mx-auto" />
+                    <h4 className="text-white font-bold mb-2">Custom Built</h4>
+                    <p className="text-white/70 text-sm">Tailored to your business, not one-size-fits-all</p>
+                  </div>
+                </div>
+
+                {/* Strong CTA */}
+                <Link
+                  href="/ai-readiness-assessment"
+                  className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
+                >
+                  <span>Start Your Free Assessment</span>
+                  <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+                </Link>
+                <p className="text-white/50 text-sm mt-4">No commitment. No credit card. Just honest advice about what automation can do for your business.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1325,10 +1354,10 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8">
-              TrueFlow Core System
+              What Makes TrueFlow Different
             </h2>
             <p className="text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
-              Everything you need. Nothing you don't. Built for speed, clarity, and scale.
+              We don't just sell you software. We build, manage, and optimize your entire automation system - so you can focus on running your business.
             </p>
           </div>
 
@@ -1740,6 +1769,27 @@ export default function LandingPage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mid-page CTA Section */}
+      <section className="py-16 sm:py-24 px-4 bg-gradient-to-b from-black to-gray-900">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-blue-500/30 shadow-2xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Stop Losing Leads?
+            </h2>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              Get a free assessment and discover exactly how automation can save you time, capture more leads, and grow your revenue.
+            </p>
+            <Link
+              href="/ai-readiness-assessment"
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
+            >
+              <span>Get Your Free Assessment</span>
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+            </Link>
           </div>
         </div>
       </section>
@@ -2404,10 +2454,10 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Frequently Asked Questions
+              "But What About..."
             </h2>
             <p className="text-lg sm:text-xl text-white/80">
-              Get answers to common questions about our automation services
+              We get it. You have questions. Here are the honest answers.
             </p>
           </div>
 
