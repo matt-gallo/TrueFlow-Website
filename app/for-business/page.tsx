@@ -394,7 +394,7 @@ export default function ForBusinessPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 mb-12">
-            <Link href="/get-started" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
+            <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative z-10">Start with Free Consultation</span>
               <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
@@ -734,7 +734,7 @@ export default function ForBusinessPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 relative z-10 mb-8">
-              <Link href="/get-started" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-12 py-6 rounded-full text-2xl font-semibold hover:scale-110 hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 relative overflow-hidden group/btn">
+              <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-12 py-6 rounded-full text-2xl font-semibold hover:scale-110 hover:shadow-xl hover:shadow-cyan-500/30 transition-all duration-300 relative overflow-hidden group/btn">
                 <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative z-10">Start with Free Consultation</span>
               </Link>
@@ -785,7 +785,7 @@ export default function ForBusinessPage() {
               <h4 className="text-white font-semibold mb-4">For Business</h4>
               <div className="space-y-2">
                 <Link href="/for-business" className="block text-white/70 hover:text-white transition-colors">Business Overview</Link>
-                <Link href="/get-started" className="block text-white/70 hover:text-white transition-colors">Start Free Trial</Link>
+                <Link href="/ai-readiness-assessment" className="block text-white/70 hover:text-white transition-colors">Start Free Trial</Link>
                 <Link href="/faq" className="block text-white/70 hover:text-white transition-colors">FAQs</Link>
               </div>
             </div>

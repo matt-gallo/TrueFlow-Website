@@ -117,7 +117,7 @@ export default function ContentOfferLanding() {
                 FAQ
               </Link>
               <Link 
-                href="/get-started" 
+                href="/ai-readiness-assessment" 
                 className="px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300"
               >
                 Get Started
@@ -153,7 +153,7 @@ export default function ContentOfferLanding() {
                 FAQ
               </Link>
               <Link 
-                href="/get-started" 
+                href="/ai-readiness-assessment" 
                 className="block w-full text-center px-6 py-3 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full"
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -197,7 +197,7 @@ export default function ContentOfferLanding() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link 
-              href="/get-started" 
+              href="/ai-readiness-assessment" 
               className="group px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 flex items-center gap-2"
             >
               Get My Free Constant Content Engine™
@@ -467,7 +467,7 @@ export default function ContentOfferLanding() {
 
             {/* CTA */}
             <Link 
-              href="/get-started" 
+              href="/ai-readiness-assessment" 
               className="block w-full text-center px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group"
             >
               Start Getting Weekly Blogs + Daily Newsletters
@@ -538,7 +538,7 @@ export default function ContentOfferLanding() {
           </p>
 
           <Link 
-            href="/get-started" 
+            href="/ai-readiness-assessment" 
             className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-400 to-blue-500 text-white rounded-full text-lg font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 group"
           >
             Start My Free Constant Content Engine™

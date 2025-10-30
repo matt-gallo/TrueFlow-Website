@@ -554,46 +554,47 @@ export default function LandingPage() {
   ]
 
   const stats = [
-    { value: "10x", label: "Faster Content Creation", icon: <Clock className="h-12 w-12" /> },
-    { value: "85%", label: "Average Open Rate", icon: <Mail className="h-12 w-12" /> },
-    { value: "300%", label: "Engagement Increase", icon: <TrendingUp className="h-12 w-12" /> },
-    { value: "500+", label: "Hours Saved Monthly", icon: <Zap className="h-12 w-12" /> }
+    { value: "1000s", label: "Hours Saved", icon: <Clock className="h-12 w-12" /> },
+    { value: "$100k+", label: "Lost Revenue Recovered", icon: <TrendingUp className="h-12 w-12" /> },
+    { value: "0", label: "Leads Slipping Through", icon: <Target className="h-12 w-12" /> },
+    { value: "24/7", label: "Working For You", icon: <Zap className="h-12 w-12" /> }
   ]
 
   // Animate stats when they come into view
   const animateStats = () => {
     // Reset values to 0 before animating
     setAnimatedValues({
-      "10x": "0x",
-      "85%": "0%",
-      "300%": "0%",
-      "500+": "0+"
+      "1000s": "0",
+      "$100k+": "$0",
+      "0": "100+",
+      "24/7": "0"
     })
     
     const targets = {
-      "10x": 10,
-      "85%": 85,
-      "300%": 300,
-      "500+": 500
+      "1000s": 1000,
+      "$100k+": 100,
+      "0": 0,
+      "24/7": 24
     }
 
     Object.keys(targets).forEach((key, index) => {
       setTimeout(() => {
-        let current = 0
+        let current = key === "0" ? 100 : 0
         const target = targets[key as keyof typeof targets]
-        const increment = target / 50 // 50 steps
+        const increment = key === "0" ? -2 : target / 50 // 50 steps (count down for "0")
         const interval = setInterval(() => {
           current += increment
-          if (current >= target) {
+          if (key === "0" ? current <= target : current >= target) {
             current = target
             clearInterval(interval)
           }
-          
+
           setAnimatedValues(prev => ({
             ...prev,
-            [key]: key.includes('%') ? `${Math.round(current)}%` : 
-                   key.includes('+') ? `${Math.round(current)}+` :
-                   key.includes('x') ? `${Math.round(current)}x` : Math.round(current)
+            [key]: key === "1000s" ? `${Math.round(current)}+` :
+                   key === "$100k+" ? `$${Math.round(current)}k+` :
+                   key === "0" ? Math.round(current).toString() :
+                   key === "24/7" ? `${Math.round(current)}/7` : Math.round(current)
           }))
         }, 20) // 20ms intervals for smooth animation
       }, index * 200) // Stagger animations
@@ -751,7 +752,7 @@ export default function LandingPage() {
               <a href="https://app.trueflow.ai/login" className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-sm font-semibold">
                 Log In
               </a>
-              <Link href="/get-started" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
+              <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
                 Free Assessment
               </Link>
             </div>
@@ -789,7 +790,7 @@ export default function LandingPage() {
               <a href="https://app.trueflow.ai/login" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-lg font-semibold block text-center mt-6">
                 Log In
               </a>
-              <Link href="/get-started" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
+              <Link href="/ai-readiness-assessment" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
                 Free Assessment
               </Link>
             </div>
@@ -817,13 +818,13 @@ export default function LandingPage() {
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
-              Done-for-you automation services built by experts.<br/>
-              No tech skills needed. Just results.
+              We build automations for doctors, real estate agents, online coaches,<br className="hidden sm:block" />
+              filmmakers, marketers, and more.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
               <Link
-                href="/get-started"
+                href="/ai-readiness-assessment"
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -1002,7 +1003,7 @@ export default function LandingPage() {
             {/* CTA Button */}
             <div className="text-center mt-8 relative z-10">
               <Link
-                href="/get-started"
+                href="/ai-readiness-assessment"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
               >
                 Get Your Free Assessment
@@ -1020,9 +1021,9 @@ export default function LandingPage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                Running A Small Business Is Hard
+                Who Needs Automation? Why Is It Helpful?
               </h2>
-              <p className="text-xl text-white/70">Here's how we help you work smarter, not harder</p>
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">If you're losing sleep over missed leads, spending hours on repetitive tasks, or watching revenue slip through the cracks... this is for you.</p>
             </div>
 
             {/* Vertical Stacked Chapters */}
@@ -1607,7 +1608,7 @@ export default function LandingPage() {
               </div>
 
               <div className="pt-4">
-                <Link href="/get-started" className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold hover:from-purple-700 hover:to-pink-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold hover:from-purple-700 hover:to-pink-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <span>Try Flow Mode Free</span>
                   <ArrowRight className="h-5 w-5" />
                 </Link>
@@ -1733,7 +1734,7 @@ export default function LandingPage() {
               </div>
 
               <div className="pt-4">
-                <Link href="/get-started" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-cyan-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-cyan-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
                   <span>Create Your Widget</span>
                   <ArrowRight className="h-5 w-5" />
                 </Link>
@@ -2308,7 +2309,7 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <Link href="/get-started" className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group">
+                  <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group">
                     <span className="relative z-10">Get Free Assessment</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
@@ -2348,7 +2349,7 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <Link href="/get-started" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group">
+                  <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group">
                     <span className="relative z-10">Get Free Assessment</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
@@ -2389,7 +2390,7 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <Link href="/get-started" className="w-full py-4 px-6 rounded-full font-semibold transition-all bg-white/10 text-white hover:bg-white/20 border border-white/20 block text-center">
+                  <Link href="/ai-readiness-assessment" className="w-full py-4 px-6 rounded-full font-semibold transition-all bg-white/10 text-white hover:bg-white/20 border border-white/20 block text-center">
                     Get Free Assessment
                   </Link>
                 </div>
@@ -2454,7 +2455,7 @@ export default function LandingPage() {
 
           <div className="text-center mt-12">
             <p className="text-white/70 text-lg mb-6">Still have questions?</p>
-            <Link href="/get-started" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
+            <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
               <span>Get Your Free Assessment</span>
               <ChevronRight className="h-5 w-5" />
             </Link>
@@ -2506,7 +2507,7 @@ export default function LandingPage() {
             
             {/* CTA */}
             <div>
-              <Link href="/get-started" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
+              <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
                 Get Your Free Assessment
               </Link>
             </div>
