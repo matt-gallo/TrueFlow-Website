@@ -1020,9 +1020,9 @@ export default function LandingPage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                The Evolution of Business Operations
+                Running A Small Business Is Hard
               </h2>
-              <p className="text-xl text-white/70">See how business has transformed—and where you stand today</p>
+              <p className="text-xl text-white/70">Here's how we help you work smarter, not harder</p>
             </div>
 
             {/* 3-Column Comparison */}
@@ -1034,11 +1034,11 @@ export default function LandingPage() {
                 <span className="text-white/70 text-lg font-medium">Chapter 1</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
-                Once Upon A Time...
+                Doing Everything Yourself
               </h3>
               <div>
                 <p className="text-base text-white/70 mb-6 leading-relaxed">
-                  Manual everything. Growth = more hires = less profit.
+                  Answering calls, returning texts, following up, posting on social media... it never ends.
                 </p>
 
                 {/* Dynamic visual - Person overwhelmed with tasks */}
@@ -1090,7 +1090,7 @@ export default function LandingPage() {
                     </div>
                     
                     <p className="text-white/80 text-center font-medium animate-bounce">
-                      One person, infinite responsibilities
+                      Drowning in daily tasks
                     </p>
                   </div>
                   
@@ -1119,31 +1119,31 @@ export default function LandingPage() {
                 <span className="text-white/70 text-lg font-medium">Chapter 2</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
-                Then Came Automation & Intelligence
+                So You Try Different Apps
               </h3>
 
               <div>
                 <p className="text-base text-white/80 mb-6">
-                  More tools. Better results. Higher costs.
+                  Everyone says you need apps and software to "scale." So you sign up for a bunch of them.
                 </p>
                 
                 {/* Simple Tools Grid */}
                 <div className="grid grid-cols-3 gap-2 mb-6">
                   {[
-                    { 
-                      name: 'CRMs', 
+                    {
+                      name: 'Lead App',
                       color: 'from-blue-500 to-blue-600',
                       icon: Users
                     },
-                    { 
-                      name: 'Zapier', 
+                    {
+                      name: 'Scheduler',
                       color: 'from-orange-500 to-red-500',
-                      icon: Zap
+                      icon: Calendar
                     },
-                    { 
-                      name: 'AI Tools', 
+                    {
+                      name: 'Messenger',
                       color: 'from-cyan-500 to-blue-500',
-                      icon: Brain
+                      icon: MessageSquare
                     },
                   ].map((tool, index) => (
                     <div
@@ -1157,15 +1157,15 @@ export default function LandingPage() {
                 </div>
 
                 <p className="text-lg text-white/90 font-semibold mb-4">
-                  But then reality hit...
+                  But here's the problem...
                 </p>
 
                 {/* Simple Problem Statement */}
                 <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
-                  <p className="text-red-400 font-semibold text-sm mb-1">$1500+/month. Data everywhere.</p>
-                  <p className="text-red-400 font-semibold text-sm mb-1">$10,000+ per month for employees to manage those tools...</p>
-                  <p className="text-white/70 text-xs">Think systems administrators, social media managers, virtual assistants...</p>
-                  <p className="text-white/70 mt-2 text-xs font-semibold">Fragmented & Disconnected</p>
+                  <p className="text-red-400 font-semibold text-sm mb-2">Each app costs $50-$200/month</p>
+                  <p className="text-red-400 font-semibold text-sm mb-2">They don't talk to each other</p>
+                  <p className="text-red-400 font-semibold text-sm mb-2">You still do most of the work</p>
+                  <p className="text-white/70 mt-3 text-xs font-semibold">Expensive, confusing, and frustrating</p>
                 </div>
               </div>
             </div>
@@ -1176,11 +1176,11 @@ export default function LandingPage() {
                 <span className="text-white text-lg font-bold">Chapter 3</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
-                Now... TrueFlow
+                That's Where We Come In
               </h3>
               <div>
                 <p className="text-base text-white/70 mb-6 leading-relaxed">
-                  Everything in one place. One subscription. One system that works.
+                  We build and manage everything for you. No apps to figure out. No monthly subscriptions to juggle.
                 </p>
                 
                 {/* Dynamic unification visual */}
@@ -1198,11 +1198,11 @@ export default function LandingPage() {
                       {/* Static positioned elements attached to lines */}
                       {[
                         { icon: Mail, angle: 0, name: 'Email' },
-                        { icon: Calendar, angle: 60, name: 'Calendar' },
-                        { icon: BarChart3, angle: 120, name: 'Analytics' },
-                        { icon: MessageSquare, angle: 180, name: 'Chat' },
-                        { icon: Target, angle: 240, name: 'CRM' },
-                        { icon: FileText, angle: 300, name: 'Content' }
+                        { icon: Calendar, angle: 60, name: 'Scheduling' },
+                        { icon: MessageSquare, angle: 120, name: 'Texts' },
+                        { icon: Users, angle: 180, name: 'Leads' },
+                        { icon: Globe, angle: 240, name: 'Website' },
+                        { icon: Instagram, angle: 300, name: 'Social' }
                       ].map((tool, index) => {
                         const radians = (tool.angle - 90) * Math.PI / 180;
                         const x = 80 + 60 * Math.cos(radians);
@@ -1264,22 +1264,22 @@ export default function LandingPage() {
                     </div>
                     
                     <p className="text-white/90 text-center font-bold text-lg bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                      Your business. Unified.
+                      We handle the tech. You run your business.
                     </p>
                     
                     {/* Success indicators */}
                     <div className="flex items-center justify-center space-x-6 text-green-400">
                       <div className="flex items-center space-x-2">
                         <CheckCircle className="h-5 w-5 animate-pulse" />
-                        <span className="text-sm font-medium">One Platform</span>
+                        <span className="text-sm font-medium">Done For You</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <CheckCircle className="h-5 w-5 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                        <span className="text-sm font-medium">One Price</span>
+                        <span className="text-sm font-medium">Simple Pricing</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <CheckCircle className="h-5 w-5 animate-pulse" style={{ animationDelay: '1s' }} />
-                        <span className="text-sm font-medium">One Solution</span>
+                        <span className="text-sm font-medium">Real Results</span>
                       </div>
                     </div>
                   </div>
