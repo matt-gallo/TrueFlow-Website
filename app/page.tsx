@@ -1025,8 +1025,8 @@ export default function LandingPage() {
               <p className="text-xl text-white/70">Here's how we help you work smarter, not harder</p>
             </div>
 
-            {/* 3-Column Comparison */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16">
+            {/* Vertical Stacked Chapters */}
+            <div className="flex flex-col gap-12 mt-16 max-w-4xl mx-auto">
             
             {/* Chapter 1: Once Upon A Time */}
             <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-red-500/30 transition-all duration-300">
