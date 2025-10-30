@@ -127,7 +127,7 @@ function AnimatedValue({ endValue, duration, prefix = '', suffix = '', visible }
 
 // TypewriterText component for the hero section
 function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
-  const phrases = ['think', 'adapt', 'scale', 'grow', 'respond', 'learn', 'optimize', 'automate']
+  const phrases = ['capture leads', 'follow up', 'answer customers', 'save you time', 'send messages', 'schedule calls', 'grow your business', 'work for you']
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -279,31 +279,31 @@ export default function LandingPage() {
   const features = [
     {
       icon: <Users className="h-16 w-16" />,
-      title: "Smart Lead Management",
-      description: "Coming Q1 2026 for all users • Available now in Enterprise tier with full CRM, lead tracking, automated scoring, and done-for-you implementation.",
+      title: "Never Miss a Lead Again",
+      description: "We build systems that capture every lead and follow up automatically. Text, email, or call - your customers hear back fast, even when you're busy.",
       gradient: "from-blue-500 to-cyan-500",
       delay: 0,
-      badge: "Q1 2026"
+      badge: "Most Popular"
     },
     {
-      icon: <Sparkles className="h-16 w-16" />,
-      title: "Flow Mode: AI Productivity",
-      description: "Turn brain dumps into organized action. Record your thoughts and watch AI extract tasks, prioritize your day, and keep you focused on what matters most.",
+      icon: <MessageSquare className="h-16 w-16" />,
+      title: "24/7 Customer Communication",
+      description: "Answer common questions, schedule appointments, and update customers automatically. Give great service without lifting a finger.",
       gradient: "from-purple-500 to-pink-500",
       delay: 100,
-      badge: "Available Now"
+      badge: "Time Saver"
     },
     {
-      icon: <Shield className="h-16 w-16" />,
-      title: "Command Dashboard",
-      description: "Get a bird's-eye view of your entire operation. Monitor performance, track KPIs, and make data-driven decisions from one central hub.",
+      icon: <Calendar className="h-16 w-16" />,
+      title: "Smart Scheduling & Reminders",
+      description: "Automatic appointment scheduling, confirmations, and reminders reduce no-shows. Keep your calendar full without the back-and-forth.",
       gradient: "from-green-500 to-emerald-500",
       delay: 200
     },
     {
-      icon: <Zap className="h-16 w-16" />,
-      title: "AI-Powered Constant Content Engine™",
-      description: "Transform your voice into engaging content. Create blogs, newsletters, and social media posts automatically from simple voice recordings.",
+      icon: <Sparkles className="h-16 w-16" />,
+      title: "Social Media That Works",
+      description: "We create and post content that brings in customers. Stay top-of-mind without spending hours on Facebook and Instagram.",
       gradient: "from-orange-500 to-red-500",
       delay: 300
     }
@@ -752,7 +752,7 @@ export default function LandingPage() {
                 Log In
               </a>
               <Link href="/get-started" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
-                Get Started
+                Free Assessment
               </Link>
             </div>
 
@@ -790,7 +790,7 @@ export default function LandingPage() {
                 Log In
               </a>
               <Link href="/get-started" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
-                Get Started
+                Free Assessment
               </Link>
             </div>
           </div>
@@ -806,37 +806,37 @@ export default function LandingPage() {
           <div className="mb-8">
             <Link href="/content-engine" className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-12 border border-white/20 mt-16 hover:bg-white/20 transition-colors">
               <TrueFlowLogoIcon size={20} className="text-blue-400" />
-              <span className="text-white/90 text-lg">Introducing TrueFlow AI Constant Content Engine™</span>
+              <span className="text-white/90 text-lg">Done-For-You Automation Services</span>
             </Link>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2">
-              We build AI systems that<br />
+              We build automations that<br />
               <span className="inline-block min-h-[1.2em]">
                 <TypewriterText gradientOffset={gradientOffset} />
               </span>
             </h1>
-            
+
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
-              Streamline. Scale. Succeed. 
-              One platform. Total control.
+              Done-for-you automation services built by experts.<br/>
+              No tech skills needed. Just results.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
-              <Link 
-                href="/get-started" 
+              <Link
+                href="/get-started"
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative z-10">Discover TrueFlow</span>
+                <span className="relative z-10">Get Your Free Assessment</span>
                 <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </Link>
-              
+
               <Link href="/coming-soon" className="flex items-center space-x-3 sm:space-x-4 text-white/70 hover:text-white transition-all duration-300 group">
                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative">
                   <div className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
                   <Play className="h-4 w-4 sm:h-6 sm:w-6 ml-1 relative z-10 group-hover:text-blue-400 transition-colors duration-300" />
                 </div>
-                <span className="text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">Watch Demo</span>
+                <span className="text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">See How It Works</span>
               </Link>
             </div>
           </div>
@@ -1001,11 +1001,11 @@ export default function LandingPage() {
 
             {/* CTA Button */}
             <div className="text-center mt-8 relative z-10">
-              <Link 
+              <Link
                 href="/get-started"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
               >
-                Get Started
+                Get Your Free Assessment
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -1420,7 +1420,7 @@ export default function LandingPage() {
             <p className={`text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto px-4 transition-all duration-1000 ${
               ''
             }`}>
-              Transform your ideas into powerful content in three simple steps
+              We handle the tech stuff. You focus on your business.
             </p>
           </div>
 
@@ -1437,25 +1437,25 @@ export default function LandingPage() {
             {[
               {
                 step: 1,
-                title: "Record Your Ideas",
-                description: "Simply speak your thoughts, insights, or topics you want to share. Our AI captures every nuance of your voice and style.",
-                icon: <Mic className="h-16 w-16" strokeWidth={1.5} />,
+                title: "Free Assessment",
+                description: "Tell us about your business and the challenges you face. We'll identify where automation can save you time and make you money.",
+                icon: <MessageSquare className="h-16 w-16" strokeWidth={1.5} />,
                 color: "from-green-500 to-emerald-600",
                 animation: "slide-in-left"
               },
               {
-                step: 2, 
-                title: "AI Transforms Content",
-                description: "Our advanced AI analyzes your transcript and creates engaging newsletters and blog posts that sound authentically you.",
+                step: 2,
+                title: "We Build Your System",
+                description: "Our team creates custom automations tailored to your business. Lead capture, follow-ups, scheduling, messaging - whatever you need.",
                 icon: <Brain className="h-16 w-16" strokeWidth={1.5} />,
                 color: "from-blue-500 to-purple-600",
                 animation: "slide-in-up"
               },
               {
                 step: 3,
-                title: "Automated Publishing",
-                description: "Content is automatically scheduled and sent to your audience at optimal times for maximum engagement and results.",
-                icon: <Send className="h-16 w-16" strokeWidth={1.5} />,
+                title: "You Get Results",
+                description: "Your automations start working immediately. More leads captured, faster follow-ups, happier customers. Plus you get beta access to our software.",
+                icon: <TrendingUp className="h-16 w-16" strokeWidth={1.5} />,
                 color: "from-purple-500 to-pink-600",
                 animation: "slide-in-right"
               }
@@ -2272,35 +2272,34 @@ export default function LandingPage() {
           {/* Pricing Section Header */}
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Simple, Transparent Pricing
+              Custom Packages for Your Business
             </h2>
             <p className="text-lg sm:text-xl text-white/80">
-              Choose the plan that fits your business needs
+              Every business is different. We build automation packages tailored to your specific needs and budget.
             </p>
           </div>
 
               {/* Pricing Options */}
               <div ref={pricingRef} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
-                {/* Plan 1: Platform Access */}
+                {/* Plan 1: Starter */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Platform Access</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Starter Package</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className="text-4xl font-bold text-white">$150</span>
-                      <span className="text-white/70">/week</span>
+                      <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
-                    <p className="text-white/70">Self-service access to AI productivity and content tools</p>
+                    <p className="text-white/70">Perfect for small businesses just getting started with automation</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Flow Mode AI productivity system',
-                      'AI-powered content creation',
-                      'Transform voice to content',
-                      'SEO-optimized blog posts',
-                      'Unlimited AI chat widgets',
-                      'Content dashboard access',
-                      'Basic analytics'
+                      'Basic lead capture setup',
+                      'Automated follow-up messages',
+                      'Simple scheduling system',
+                      'Email & SMS notifications',
+                      'Beta software access',
+                      'Email support',
+                      'Monthly check-ins'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
@@ -2310,12 +2309,12 @@ export default function LandingPage() {
                   </div>
 
                   <Link href="/get-started" className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group">
-                    <span className="relative z-10">Get Started</span>
+                    <span className="relative z-10">Get Free Assessment</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
                 </div>
 
-                {/* Plan 2: Business Operating System */}
+                {/* Plan 2: Growth Package */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 scale-105 ring-2 ring-purple-500">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -2324,24 +2323,23 @@ export default function LandingPage() {
                   </div>
 
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Business Operating System</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Growth Package</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className="text-4xl font-bold text-white">$300</span>
-                      <span className="text-white/70">/week</span>
+                      <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
-                    <p className="text-white/70">Everything in Platform plus advanced features</p>
+                    <p className="text-white/70">For established businesses ready to scale</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Everything in Platform Access',
-                      'Advanced analytics & reporting',
-                      'Multi-brand content management',
-                      'Priority support',
-                      'Team collaboration tools',
-                      'API access (beta)',
-                      'Early access to new features',
-                      'CRM coming Q1 2026'
+                      'Everything in Starter',
+                      'Advanced lead nurturing workflows',
+                      'Multi-channel communication',
+                      'Social media automation',
+                      'Review request automation',
+                      'Beta software access',
+                      'Priority phone support',
+                      'Bi-weekly optimization calls'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
@@ -2351,38 +2349,38 @@ export default function LandingPage() {
                   </div>
 
                   <Link href="/get-started" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group">
-                    <span className="relative z-10">Get Complete System</span>
+                    <span className="relative z-10">Get Free Assessment</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
                 </div>
 
-                {/* Plan 3: Enterprise (Full Service) */}
+                {/* Plan 3: Enterprise Package */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-purple-500/20 text-purple-400 px-4 py-1 rounded-full text-sm font-semibold border border-purple-500/30">
-                      Premium
+                      White Glove
                     </span>
                   </div>
 
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Enterprise (Full Service)</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Enterprise Package</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className="text-2xl font-bold text-white">Contact for Pricing</span>
+                      <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
-                    <p className="text-white/70">Complete business automation with white-glove service</p>
+                    <p className="text-white/70">Complete automation with dedicated support</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Everything in Business OS',
-                      'Full CRM system (available now)',
-                      'Lead capture & tracking',
-                      'Automated follow-up sequences',
-                      'Sales pipeline management',
-                      'Done-for-you implementation',
-                      'Dedicated success manager',
-                      'Custom workflow automation',
-                      'Priority support & training'
+                      'Everything in Growth',
+                      'Custom integrations',
+                      'Advanced CRM workflows',
+                      'Full sales pipeline automation',
+                      'Marketing campaign automation',
+                      'Beta software access',
+                      'Dedicated account manager',
+                      'Weekly strategy calls',
+                      'Unlimited support & revisions'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
@@ -2391,12 +2389,76 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <a href="mailto:matt@trueflow.ai" className="w-full py-3 px-6 rounded-lg font-semibold transition-all bg-white/10 text-white hover:bg-white/20 border border-white/20 block text-center">
-                    Contact Sales
-                  </a>
+                  <Link href="/get-started" className="w-full py-4 px-6 rounded-full font-semibold transition-all bg-white/10 text-white hover:bg-white/20 border border-white/20 block text-center">
+                    Get Free Assessment
+                  </Link>
                 </div>
 
               </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 sm:py-24 lg:py-32 px-4 bg-black/40">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg sm:text-xl text-white/80">
+              Get answers to common questions about our automation services
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              {
+                question: "Do I need to know anything about technology?",
+                answer: "Not at all! That's the whole point. We handle all the technical setup and maintenance. You just tell us what you want to accomplish, and we make it happen."
+              },
+              {
+                question: "How long does it take to get set up?",
+                answer: "Most basic automations are up and running within 1-2 weeks. More complex setups may take 3-4 weeks. We'll give you a clear timeline after your free assessment."
+              },
+              {
+                question: "What if I need changes or want to add something new?",
+                answer: "That's included! We're not a set-it-and-forget-it service. As your needs change, we adjust your automations. All packages include ongoing support and updates."
+              },
+              {
+                question: "Will this work with my existing tools?",
+                answer: "Almost always, yes. We build automations that connect with whatever you're already using - your phone, email, calendar, website, CRM, or any other software. If you have something specific, ask us during your free assessment."
+              },
+              {
+                question: "What's included in 'beta software access'?",
+                answer: "As we build automation for your business, you'll also get early access to our TrueFlow platform. Think of it as a bonus - you can use it to manage tasks, create content, and see your business metrics in one place."
+              },
+              {
+                question: "How much does it really cost?",
+                answer: "It depends on what you need. A simple lead capture and follow-up system might be a few hundred dollars a month. A complete automation package with scheduling, messaging, and social media could be more. The best way to find out is to get your free assessment - we'll give you an exact price based on your needs."
+              },
+              {
+                question: "What if it doesn't work for my business?",
+                answer: "We're confident it will, but we include a satisfaction guarantee in all our packages. If you're not happy with the results, we'll work with you to make it right or part ways on good terms."
+              },
+              {
+                question: "Can I cancel anytime?",
+                answer: "Yes. We typically recommend staying for at least 90 days to see the full impact, but there are no long-term contracts or cancellation fees."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-white/5 backdrop-blur-md rounded-xl border border-white/20 p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">{faq.question}</h3>
+                <p className="text-white/70 leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-white/70 text-lg mb-6">Still have questions?</p>
+            <Link href="/get-started" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
+              <span>Get Your Free Assessment</span>
+              <ChevronRight className="h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -2416,7 +2478,7 @@ export default function LandingPage() {
                 />
               </div>
               <p className="text-white/60 text-sm">
-                The most powerful AI-driven Business Operating System for content creation and audience engagement.
+                We build the automations that help small businesses capture more leads, save time, and grow.
               </p>
             </div>
             
@@ -2445,7 +2507,7 @@ export default function LandingPage() {
             {/* CTA */}
             <div>
               <Link href="/get-started" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
-                Get Started
+                Get Your Free Assessment
               </Link>
             </div>
           </div>
