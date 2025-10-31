@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
 import {
   ArrowRight,
   BadgeCheck,
@@ -132,6 +133,18 @@ const pricingPlans = [
 
 export default function LeadMachinePage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+
+  useEffect(() => {
+    if (isDemoModalOpen) {
+      const originalOverflow = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = originalOverflow
+      }
+    }
+    document.body.style.overflow = ''
+  }, [isDemoModalOpen])
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -209,13 +222,14 @@ export default function LeadMachinePage() {
                   We monitor live intent signals, pull verified contact data, launch human-sounding outreach, and keep nurturing until a qualified prospect is on your calendar.
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <Link
-                    href="/get-started"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
-                  >
-                    Book a Demo
-                    <ArrowRight className="h-5 w-5" />
-                  </Link>
+                <button
+                  type="button"
+                  onClick={() => setIsDemoModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
+                >
+                  Book a Demo
+                  <ArrowRight className="h-5 w-5" />
+                </button>
                   <Link
                     href="/get-started"
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 text-lg font-semibold text-white/80 hover:text-white hover:border-white/60 transition"
@@ -438,13 +452,14 @@ export default function LeadMachinePage() {
               Activate the TrueFlow Lead Machine&trade; and see your first qualified leads land in your inbox within days.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/get-started"
+              <button
+                type="button"
+                onClick={() => setIsDemoModalOpen(true)}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
               >
                 Book a Demo
                 <ArrowRight className="h-5 w-5" />
-              </Link>
+              </button>
               <Link
                 href="/get-started"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/40 text-lg font-semibold text-white/80 hover:text-white hover:border-white transition"
@@ -455,6 +470,45 @@ export default function LeadMachinePage() {
           </div>
         </section>
       </main>
+
+      {isDemoModalOpen && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          role="dialog"
+          aria-modal="true"
+          onClick={() => setIsDemoModalOpen(false)}
+        >
+          <div
+            className="relative w-full max-w-4xl rounded-3xl border border-white/15 bg-black/90 p-6 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setIsDemoModalOpen(false)}
+              className="absolute right-4 top-4 rounded-full border border-white/20 bg-white/10 p-2 text-white/70 hover:text-white"
+              aria-label="Close demo booking"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            <div className="space-y-4 text-center">
+              <h3 className="text-2xl font-semibold text-white">Lock in Your Demo</h3>
+              <p className="text-white/70">
+                Spots for this week are limited—choose a time below to secure your Lead Machine&trade; walkthrough.
+              </p>
+            </div>
+            <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
+                id="msgsndr-calendar"
+                scrolling="no"
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '650px' }}
+                title="Book a demo with TrueFlow"
+              />
+            </div>
+            <Script src="https://link.msgsndr.com/js/embed.js" strategy="lazyOnload" />
+          </div>
+        </div>
+      )}
     </div>
   )
 }
