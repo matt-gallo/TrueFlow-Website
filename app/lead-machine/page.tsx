@@ -213,13 +213,13 @@ export default function LeadMachinePage() {
                   <CircleDashed className="h-4 w-4" /> Lead Machine&trade;
                 </span>
                 <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
-                  Done-for-you Lead Machine&trade;. Find. Engage. Qualify. Automatically.
+                  Find. Engage. Qualify. Automatically.
                 </h1>
                 <p className="mt-6 text-xl sm:text-2xl text-white/80">
-                  TrueFlow Lead Machine&trade; is a done-for-you AI prospecting system built for coaches, consultants, agencies, and B2B service founders. It identifies ready-to-buy customers, starts real conversations, and fills your pipeline — all before you log in. Custom-built for your business, we assemble it around your stack.
+                  TrueFlow Lead Machine&trade; is a done-for-you AI prospecting system for coaches, agencies, and service founders.
                 </p>
                 <p className="mt-6 text-lg text-white/70">
-                  Tired of waking up to an empty calendar and a cold inbox? We monitor live intent signals, pull verified contact data, launch human-sounding outreach, and keep nurturing until a qualified prospect lands on your schedule.
+                  We track live intent, start human conversations, and hand you booked calls before you log in.
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <button
