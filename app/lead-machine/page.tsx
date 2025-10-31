@@ -213,7 +213,7 @@ export default function LeadMachinePage() {
                   <CircleDashed className="h-4 w-4" /> Lead Machine&trade;
                 </span>
                 <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
-                  Find. Engage. Qualify. Automatically.
+                  Done-for-you Lead Machine&trade;. Find. Engage. Qualify. Automatically.
                 </h1>
                 <p className="mt-6 text-xl sm:text-2xl text-white/80">
                   The TrueFlow Lead Machine&trade; identifies ready-to-buy customers, starts real conversations, and fills your pipeline — all before you wake up. Custom-built for your business, we assemble it around your stack.
