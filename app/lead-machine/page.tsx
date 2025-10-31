@@ -222,20 +222,14 @@ export default function LeadMachinePage() {
                   We monitor live intent signals, pull verified contact data, launch human-sounding outreach, and keep nurturing until a qualified prospect is on your calendar.
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button
-                  type="button"
-                  onClick={() => setIsDemoModalOpen(true)}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
-                >
-                  Book a Demo
-                  <ArrowRight className="h-5 w-5" />
-                </button>
-                  <Link
-                    href="/get-started"
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 text-lg font-semibold text-white/80 hover:text-white hover:border-white/60 transition"
+                  <button
+                    type="button"
+                    onClick={() => setIsDemoModalOpen(true)}
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
                   >
-                    Join the Next Cohort
-                  </Link>
+                    Book a Demo
+                    <ArrowRight className="h-5 w-5" />
+                  </button>
                 </div>
                 <p className="mt-4 text-sm text-white/60">
                   <ShieldCheck className="inline h-4 w-4 mr-1 text-blue-300 align-text-bottom" /> ROI Assurance: if you don’t recoup your setup fee in 90 days, we keep the machine running at no service cost until you do.
@@ -460,12 +454,6 @@ export default function LeadMachinePage() {
                 Book a Demo
                 <ArrowRight className="h-5 w-5" />
               </button>
-              <Link
-                href="/get-started"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/40 text-lg font-semibold text-white/80 hover:text-white hover:border-white transition"
-              >
-                Join the Next Cohort
-              </Link>
             </div>
           </div>
         </section>
