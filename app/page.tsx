@@ -744,6 +744,7 @@ export default function LandingPage() {
                   </div>
                 )}
               </div>
+              <Link href="/coming-soon" className="text-white/70 hover:text-white transition-colors text-sm">The Lead Machine</Link>
               <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Constant Content Engine™</Link>
               {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link> */}
               <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
@@ -782,6 +783,7 @@ export default function LandingPage() {
                 <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
                 <a href="#integrations" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Integrations</a>
               </div>
+              <Link href="/coming-soon" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">The Lead Machine</Link>
               <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Constant Content Engine™</Link>
               {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
               <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
