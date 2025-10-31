@@ -479,7 +479,7 @@ export default function LeadMachinePage() {
           onClick={() => setIsDemoModalOpen(false)}
         >
           <div
-            className="relative w-full max-w-4xl rounded-3xl border border-white/15 bg-black/90 p-6 shadow-2xl"
+            className="relative w-full max-w-3xl rounded-3xl border border-white/15 bg-black/90 p-5 shadow-2xl"
             onClick={(event) => event.stopPropagation()}
           >
             <button
@@ -501,7 +501,7 @@ export default function LeadMachinePage() {
                 src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
                 id="msgsndr-calendar"
                 scrolling="no"
-                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '650px' }}
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '520px' }}
                 title="Book a demo with TrueFlow"
               />
             </div>
