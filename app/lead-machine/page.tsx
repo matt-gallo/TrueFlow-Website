@@ -203,7 +203,7 @@ export default function LeadMachinePage() {
                   Find. Engage. Qualify. Automatically.
                 </h1>
                 <p className="mt-6 text-xl sm:text-2xl text-white/80">
-                  The custom-built TrueFlow Lead Machine hunts down ready-to-buy customers, starts real conversations, and fills your pipeline — all before you wake up. It isn’t something you can grab off the shelf — we assemble it around your stack.
+                  The custom-built TrueFlow Lead Machine surfaces ready-to-buy customers, starts real conversations, and fills your pipeline — all before you wake up. Custom-built for your business, we assemble it around your stack.
                 </p>
                 <p className="mt-6 text-lg text-white/70">
                   We monitor live intent signals, pull verified contact data, launch human-sounding outreach, and keep nurturing until a qualified prospect is on your calendar.
