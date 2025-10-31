@@ -39,53 +39,53 @@ const propositionSteps = [
 
 const features = [
   {
-    title: 'AI Lead Hacker',
+    title: 'AI Lead Hunter: Find buyers before your competitors do',
     description: 'Scrapes live intent data from search, directories, and social to surface buyers who raised their hand in the last seven days — filtered by industry, revenue, tech stack, and geography.',
     icon: Search
   },
   {
-    title: 'Cold Email Engine',
+    title: 'Cold Email Engine: Spark 1:1 conversations that turn into calls',
     description: 'Human-tone outreach sequence crafted to sound personal and spark real replies — never robotic.',
     icon: Mail
   },
   {
-    title: 'Conversation AI',
+    title: 'Conversation AI: Responds like a human and keeps momentum',
     description: 'Handles replies, filters interest, and guides serious prospects to your Readiness Assessment or booking flow automatically.',
     icon: MessageSquare
   },
   {
-    title: 'AI Readiness Assessment',
+    title: 'AI Readiness Assessment: Qualify and roadmap every reply',
     description: 'Optional interactive diagnostic that scores each lead and builds a personalized roadmap instantly.',
     icon: Brain
   },
   {
-    title: '7-Day Nurture Workflow',
+    title: '7-Day Nurture Workflow: Turn curiosity into conversions',
     description: 'Turns “curious” into “committed” with pre-built follow-up that builds belief and momentum.',
     icon: RefreshCw
   },
   {
-    title: 'Reporting Dashboard',
+    title: 'Live Performance Dashboard: See what’s working in real time',
     description: 'Live view of opens, replies, conversions, and ROI so you always know what’s working.',
     icon: BarChart3
   },
   {
-    title: 'GoHighLevel Integration',
+    title: 'Native CRM Integration: Tag, track, and trigger inside your system',
     description: 'Full automation, tagging, and pipeline tracking built right inside your existing instance.',
     icon: Workflow
   },
   {
-    title: 'Optional Ad Sync (Advanced)',
+    title: 'Ad Sync (Advanced): Retarget new leads with Meta and Google',
     description: 'Syncs new leads to Meta or Google audiences for remarketing and lookalike amplification.',
     icon: Target
   }
 ]
 
 const benefits = [
-  'Never worry about where your next lead comes from',
-  'Fill your calendar with qualified, pre-warmed prospects',
-  'Get back hours of your week — the machine runs 24/7',
-  'See real-time data on outreach, replies, and booked calls',
-  'Scale with a system that adapts to new offers and industries'
+  'Stop guessing where tomorrow’s opportunities come from — the pipeline stays full.',
+  'Start your day with qualified, pre-warmed prospects already on the calendar.',
+  'Get back hours of focus time each week while the machine runs 24/7.',
+  'Know exactly what’s working with live data on outreach, replies, and bookings.',
+  'Scale into new offers or markets without rebuilding your lead engine from scratch.'
 ]
 
 const offerStack = [
@@ -216,10 +216,10 @@ export default function LeadMachinePage() {
                   Done-for-you Lead Machine&trade;. Find. Engage. Qualify. Automatically.
                 </h1>
                 <p className="mt-6 text-xl sm:text-2xl text-white/80">
-                  The TrueFlow Lead Machine&trade; identifies ready-to-buy customers, starts real conversations, and fills your pipeline — all before you wake up. Custom-built for your business, we assemble it around your stack.
+                  TrueFlow Lead Machine&trade; is a done-for-you AI prospecting system built for coaches, consultants, agencies, and B2B service founders. It identifies ready-to-buy customers, starts real conversations, and fills your pipeline — all before you log in. Custom-built for your business, we assemble it around your stack.
                 </p>
                 <p className="mt-6 text-lg text-white/70">
-                  We monitor live intent signals, pull verified contact data, launch human-sounding outreach, and keep nurturing until a qualified prospect is on your calendar.
+                  Tired of waking up to an empty calendar and a cold inbox? We monitor live intent signals, pull verified contact data, launch human-sounding outreach, and keep nurturing until a qualified prospect lands on your schedule.
                 </p>
                 <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <button
@@ -257,8 +257,9 @@ export default function LeadMachinePage() {
           <h2 className="text-3xl sm:text-4xl font-semibold">Why Most Pipelines Leak</h2>
           <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_1fr] items-start">
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
-              <h3 className="text-2xl font-medium text-white">Leads aren’t the issue — the engine behind them is.</h3>
-              <p className="mt-3 text-white/70">The most common lead breakdowns look like this:</p>
+              <p className="text-white font-semibold uppercase tracking-[0.3em] text-xs sm:text-sm">You don’t have a leads problem—you have a leak problem.</p>
+              <h3 className="mt-3 text-2xl font-medium text-white">The issue isn’t traffic — it’s traction.</h3>
+              <p className="mt-3 text-white/70">Here’s where good leads quietly fall through the cracks:</p>
               <ul className="mt-6 space-y-3 text-white/70">
                 {problems.map((problem) => (
                   <li key={problem} className="flex items-start gap-3">
@@ -302,11 +303,11 @@ export default function LeadMachinePage() {
             <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-6">
               <h3 className="text-lg font-semibold text-white">In plain language:</h3>
               <ul className="mt-4 space-y-3 text-white/75">
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>Your buyers search Google or industry directories for exactly what you sell.</span></li>
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>The Lead Machine&trade; scrapes, verifies, and enriches those names within hours.</span></li>
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>We drop them into GoHighLevel (or Salesforce, HubSpot, etc.) with tags, notes, and triggers.</span></li>
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>Our conversation AI responds like a human, keeps the thread alive, and overcomes stalls.</span></li>
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>Once they say “I’m interested,” we route, score, and get them booked automatically.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No manual prospecting. The Lead Machine&trade; pinpoints people searching for what you sell right now.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No messy spreadsheets. We enrich every record with contact info, revenue, tech stack, and buying signals.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No disconnected tools. Leads drop straight into GoHighLevel, Salesforce, HubSpot—wherever you already work.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No cold, spammy campaigns. Conversations sound human, stay active, and escalate interest automatically.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No chasing. Once they raise their hand, the system routes, scores, and books them onto your calendar.</span></li>
               </ul>
             </div>
           </div>
@@ -316,7 +317,7 @@ export default function LeadMachinePage() {
           <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-gray-900/40 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why it’s Different</h2>
             <p className="mt-6 text-lg text-white/80 max-w-3xl">
-              Unlike list-buying services or cold-email agencies, we install the machine inside <span className="text-white font-medium">your</span> infrastructure. You own every workflow, dataset, audience, and result. We keep it running on flow, not friction.
+              Unlike list-buying services or cold-email agencies, we integrate the Lead Machine&trade; directly into <span className="text-white font-medium">your</span> CRM, inbox, and automations. Every conversation, tag, and follow-up lives inside your environment—not someone else’s portal—and we keep it running on flow, not friction.
             </p>
           </div>
         </section>
@@ -363,13 +364,13 @@ export default function LeadMachinePage() {
           <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-purple-600/40 via-blue-600/30 to-slate-900/50 p-8 sm:p-12 text-center">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why You Can’t Wait</h2>
             <p className="mt-6 text-lg text-white/80">
-              You can’t keep relying on referrals and bursts of hustle forever. Your competitors are already using AI to do the work you’re avoiding.
+              Every day your competitors’ inboxes fill with conversations yours should have started. Waiting another week means another week of lost opportunities.
             </p>
             <p className="mt-6 text-lg text-white/80">
-              We built the bridge between old-school relationship building and new-school automation. No gimmicks. No spam. Just intelligent outreach that respects your brand and multiplies your time.
+              The Lead Machine&trade; blends relationship-first selling with automation at scale—no gimmicks, no spray-and-pray, just intelligent outreach that respects your brand and multiplies your time.
             </p>
             <p className="mt-6 text-lg text-white/90 font-medium">
-              When your inbox fills with replies saying, “Interested — tell me more,” you’ll know you’ve stepped into Flow.
+              When you see your calendar filling back up, you’ll know we’ve taken their spot.
             </p>
           </div>
         </section>
@@ -385,6 +386,9 @@ export default function LeadMachinePage() {
                 </li>
               ))}
             </ol>
+            <p className="mt-6 text-white/70 font-medium">
+              Activate today → expect your first qualified conversations within 14 days.
+            </p>
           </div>
         </section>
 
@@ -392,9 +396,9 @@ export default function LeadMachinePage() {
           <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-900/40 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why Believe Us</h2>
             <p className="mt-6 text-lg text-white/80">
-              TrueFlow runs Lead Machine&trade; systems across multiple industries — from chiropractors to coaches, real estate to e-commerce. We’ve watched cold lists turn into booked calendars in under two weeks.
+              TrueFlow deploys Lead Machine&trade; systems for coaches, agencies, real estate teams, and local services—turning cold lists into booked calendars in under two weeks.
             </p>
-            <p className="mt-4 text-lg text-white/80">We don’t talk theory. We install results.</p>
+            <p className="mt-4 text-lg text-white/80">No playbooks. No templates. Just proven installs that produce pipeline.</p>
           </div>
         </section>
 
@@ -418,6 +422,7 @@ export default function LeadMachinePage() {
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold text-center">Pricing & Tiers</h2>
+            <p className="mt-4 text-center text-white/70 max-w-3xl mx-auto">Every tier includes the full setup, CRM integration, and hands-on onboarding—choose the pace that matches your pipeline goals.</p>
             <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
               {pricingPlans.map((plan) => (
                 <div
@@ -455,6 +460,7 @@ export default function LeadMachinePage() {
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>
+            <p className="mt-4 text-sm text-white/60">You’re one demo away from a self-filling pipeline.</p>
           </div>
         </section>
       </main>
