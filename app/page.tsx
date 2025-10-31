@@ -127,7 +127,7 @@ function AnimatedValue({ endValue, duration, prefix = '', suffix = '', visible }
 
 // TypewriterText component for the hero section
 function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
-  const phrases = ['capture leads', 'follow up', 'answer customers', 'save you time', 'send messages', 'schedule calls', 'grow your business', 'work for you']
+  const phrases = ['doctors', 'real estate agents', 'online coaches', 'filmmakers', 'marketers', 'agencies', 'teams like yours']
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -811,15 +811,14 @@ export default function LandingPage() {
             </Link>
             
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2">
-              We build automations that<br />
+              We build automations for<br />
               <span className="inline-block min-h-[1.2em]">
                 <TypewriterText gradientOffset={gradientOffset} />
               </span>
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
-              We build automations for doctors, real estate agents, online coaches,<br className="hidden sm:block" />
-              filmmakers, marketers, and more.
+              Tailored systems that capture leads, follow up instantly, and keep your business running 24/7—no matter your industry.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
