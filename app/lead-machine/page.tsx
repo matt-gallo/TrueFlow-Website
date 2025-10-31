@@ -17,28 +17,29 @@ import {
   Target,
   Workflow,
   BarChart3,
+  ShieldCheck,
   X
 } from 'lucide-react'
 
 const problems = [
-  'Rely on referrals and luck instead of predictable flow',
-  'Waste hours chasing bad leads or ghosted DMs',
-  "Piece together tools that don’t talk to each other",
-  'Don’t track where prospects fall off or why',
-  'Stay stuck reacting instead of scaling'
+  'Rely on referrals or luck instead of a daily stream of new conversations',
+  'Spend hours chasing dead leads, ghosted DMs, or low-intent lists',
+  "Piece together tools that don’t sync — data lives everywhere except the CRM",
+  'Lose prospects after the first reply because follow-up isn’t automated',
+  'Stay in constant catch-up mode instead of scaling what already works'
 ]
 
 const propositionSteps = [
-  'Finds your perfect leads',
-  'Starts conversations automatically',
-  'Qualifies real interest',
-  'Books them into your pipeline'
+  'Pinpoints buyers searching for your offer within the last 7 days',
+  'Drops enriched contact data directly into your CRM or pipeline',
+  'Starts natural email and SMS conversations instantly',
+  'Qualifies intent, routes hot leads, and books time on your calendar'
 ]
 
 const features = [
   {
     title: 'AI Lead Hacker',
-    description: 'Searches web & directories by keyword, niche, or city and sends verified contacts straight into your CRM.',
+    description: 'Scrapes live intent data from search, directories, and social to surface buyers who raised their hand in the last seven days — filtered by industry, revenue, tech stack, and geography.',
     icon: Search
   },
   {
@@ -48,12 +49,12 @@ const features = [
   },
   {
     title: 'Conversation AI',
-    description: 'Handles replies, filters interest, and guides serious prospects to your Readiness Assessment automatically.',
+    description: 'Handles replies, filters interest, and guides serious prospects to your Readiness Assessment or booking flow automatically.',
     icon: MessageSquare
   },
   {
     title: 'AI Readiness Assessment',
-    description: 'Interactive two-minute diagnostic that scores each lead and builds a personalized roadmap instantly.',
+    description: 'Optional interactive diagnostic that scores each lead and builds a personalized roadmap instantly.',
     icon: Brain
   },
   {
@@ -191,44 +192,65 @@ export default function LeadMachinePage() {
 
       <main className="pt-28 pb-24">
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-600/10 to-pink-500/5 blur-3xl" aria-hidden />
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/80 text-sm uppercase tracking-[0.3em]">
-              <CircleDashed className="h-4 w-4" /> Lead Machine
-            </span>
-            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
-              Find. Engage. Qualify. Automatically.
-            </h1>
-            <p className="mt-6 text-xl sm:text-2xl text-white/70">
-              We build you a 24/7 AI prospecting system that finds real leads, starts real conversations, and books real opportunities — without lifting a finger.
-            </p>
-            <p className="mt-6 text-lg text-white/60 max-w-3xl mx-auto">
-              Wake up to an inbox full of “Hey, I’m interested” replies from people who fit your target profile. Keep your pipeline warm even when you're off the clock.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/ai-readiness-assessment"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
-              >
-                Book a Demo
-                <ArrowRight className="h-5 w-5" />
-              </Link>
-              <Link
-                href="/ai-readiness-assessment"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 text-lg font-semibold text-white/80 hover:text-white hover:border-white/60 transition"
-              >
-                Join the Next Cohort
-              </Link>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-purple-600/12 to-cyan-500/8 blur-3xl" aria-hidden />
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
+              <div className="text-center lg:text-left">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/80 text-xs sm:text-sm uppercase tracking-[0.32em]">
+                  <CircleDashed className="h-4 w-4" /> Lead Machine
+                </span>
+                <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
+                  Find. Engage. Qualify. Automatically.
+                </h1>
+                <p className="mt-6 text-xl sm:text-2xl text-white/80">
+                  The proprietary TrueFlow Lead Machine hunts down ready-to-buy customers, starts real conversations, and fills your pipeline — all before you wake up.
+                </p>
+                <p className="mt-6 text-lg text-white/70">
+                  We monitor live intent signals, pull verified contact data, launch human-sounding outreach, and keep nurturing until a qualified prospect is on your calendar.
+                </p>
+                <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link
+                    href="/get-started"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
+                  >
+                    Book a Demo
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                  <Link
+                    href="/get-started"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/30 text-lg font-semibold text-white/80 hover:text-white hover:border-white/60 transition"
+                  >
+                    Join the Next Cohort
+                  </Link>
+                </div>
+                <p className="mt-4 text-sm text-white/60">
+                  <ShieldCheck className="inline h-4 w-4 mr-1 text-blue-300 align-text-bottom" /> ROI Assurance: if you don’t recoup your setup fee in 90 days, we keep the machine running at no service cost until you do.
+                </p>
+              </div>
+              <div className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                <div className="rounded-2xl border border-white/10 bg-black/40 p-6">
+                  <h3 className="text-lg font-semibold text-white">Inside the Machine</h3>
+                  <ul className="mt-4 space-y-3 text-white/70 text-sm sm:text-base">
+                    <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Daily scrape of buyers who searched your keywords within the last 7 days.</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Enriched firmographic filters — revenue, location, tech stack, job role, and more.</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Natural conversation starters tuned to your voice so replies feel human, not scripted.</span></li>
+                    <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Automated routing into GoHighLevel (or your CRM) with stages, tasks, and alerts.</span></li>
+                  </ul>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 p-6">
+                  <p className="text-sm text-white/80">“Wake up to inboxes full of <span className="text-white">Interested — tell me more</span> replies. That’s when you know the machine is doing its job.”</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-semibold">The Reality</h2>
+          <h2 className="text-3xl sm:text-4xl font-semibold">Why Most Pipelines Leak</h2>
           <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_1fr] items-start">
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
-              <h3 className="text-2xl font-medium text-white">Most business owners don’t have a lead problem.</h3>
-              <p className="mt-3 text-white/70">They have a <span className="text-white">system</span> problem.</p>
+              <h3 className="text-2xl font-medium text-white">Leads aren’t the issue — the engine behind them is.</h3>
+              <p className="mt-3 text-white/70">The most common lead breakdowns look like this:</p>
               <ul className="mt-6 space-y-3 text-white/70">
                 {problems.map((problem) => (
                   <li key={problem} className="flex items-start gap-3">
@@ -238,13 +260,13 @@ export default function LeadMachinePage() {
                 ))}
               </ul>
               <p className="mt-6 text-white/60">
-                And when they finally try automation, it’s either too complicated, too expensive, or too robotic to get results.
+                DIY automations or list-buying rarely fix this. They add more tools, more manual effort, and still no predictable flow.
               </p>
             </div>
             <div className="bg-gradient-to-br from-blue-500/20 via-purple-600/20 to-pink-500/10 border border-white/20 rounded-3xl p-8">
               <h3 className="text-xl font-semibold">Our Promise</h3>
               <p className="mt-4 text-white/80">
-                We build a machine that keeps your pipeline full so you can stay focused on delivery.
+                We build the machine inside your business — tailored targeting, live intent data, outreach, nurture, and reporting — so your calendar fills itself while you focus on delivery.
               </p>
             </div>
           </div>
@@ -254,14 +276,14 @@ export default function LeadMachinePage() {
           <div className="bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-12">
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-semibold">What the Lead Machine Does</h2>
-                <p className="mt-3 text-white/70">TrueFlow Lead Machine handles the first 90% of your sales process:</p>
+                <h2 className="text-3xl sm:text-4xl font-semibold">How the Machine Runs</h2>
+                <p className="mt-3 text-white/70">TrueFlow handles the first 90% of your sales process, then hands you intent-qualified conversations:</p>
               </div>
               <BadgeCheck className="h-12 w-12 text-blue-400" />
             </div>
             <ol className="mt-8 grid gap-4 sm:grid-cols-2">
               {propositionSteps.map((step, index) => (
-                <li key={step} className="flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
+                <li key={step} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
                   <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/20 text-lg font-semibold text-blue-300">
                     {index + 1}
                   </span>
@@ -269,6 +291,16 @@ export default function LeadMachinePage() {
                 </li>
               ))}
             </ol>
+            <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-6">
+              <h3 className="text-lg font-semibold text-white">In plain language:</h3>
+              <ul className="mt-4 space-y-3 text-white/75">
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>Your buyers search Google or industry directories for exactly what you sell.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>The Lead Machine scrapes, verifies, and enriches those names within hours.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>We drop them into GoHighLevel (or Salesforce, HubSpot, etc.) with tags, notes, and triggers.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>Our conversation AI responds like a human, keeps the thread alive, and overcomes stalls.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>Once they say “I’m interested,” we route, score, and get them booked automatically.</span></li>
+              </ul>
+            </div>
           </div>
         </section>
 
@@ -276,7 +308,7 @@ export default function LeadMachinePage() {
           <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-gray-900/40 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why it’s Different</h2>
             <p className="mt-6 text-lg text-white/80 max-w-3xl">
-              Unlike list-buying services or cold-email agencies, we build the machine inside <span className="text-white font-medium">your</span> business — not ours. You own the automations, data, and results. We make sure it runs on flow, not friction.
+              Unlike list-buying services or cold-email agencies, we install the machine inside <span className="text-white font-medium">your</span> infrastructure. You own every workflow, dataset, audience, and result. We keep it running on flow, not friction.
             </p>
           </div>
         </section>
@@ -291,7 +323,7 @@ export default function LeadMachinePage() {
             </div>
             <div className="grid gap-6 md:grid-cols-2">
               {features.map(({ title, description, icon: Icon }) => (
-                <div key={title} className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                <div key={title} className="rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-blue-400/40">
                   <div className="flex items-center gap-4">
                     <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/20 text-blue-300">
                       <Icon className="h-6 w-6" />
@@ -407,14 +439,14 @@ export default function LeadMachinePage() {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/ai-readiness-assessment"
+                href="/get-started"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
               >
                 Book a Demo
                 <ArrowRight className="h-5 w-5" />
               </Link>
               <Link
-                href="/ai-readiness-assessment"
+                href="/get-started"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border border-white/40 text-lg font-semibold text-white/80 hover:text-white hover:border-white transition"
               >
                 Join the Next Cohort
