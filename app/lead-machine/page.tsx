@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
+import Navigation from '../components/Navigation'
 import {
   ArrowRight,
   BadgeCheck,
@@ -12,7 +13,6 @@ import {
   CircleDashed,
   Mail,
   MessageSquare,
-  Menu,
   RefreshCw,
   Search,
   Target,
@@ -132,7 +132,6 @@ const pricingPlans = [
 ]
 
 export default function LeadMachinePage() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
 
   useEffect(() => {
@@ -148,60 +147,7 @@ export default function LeadMachinePage() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
-      <nav className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl border-b border-white/10 bg-black/70">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/true-flow-logo.webp"
-                alt="TrueFlow"
-                width={240}
-                height={60}
-                className="h-10 w-auto sm:h-12"
-                priority
-              />
-            </Link>
-
-            <div className="hidden md:flex items-center gap-8 text-sm">
-              <Link href="/" className="text-white/70 hover:text-white transition-colors">Home</Link>
-              <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors">Content Engine</Link>
-              <Link href="/faq" className="text-white/70 hover:text-white transition-colors">FAQ</Link>
-              <Link
-                href="/ai-readiness-assessment"
-                className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
-              >
-                Free Assessment
-              </Link>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setIsMenuOpen((prev) => !prev)}
-              className="md:hidden p-2 text-white/70 hover:text-white"
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-
-        {isMenuOpen && (
-          <div className="md:hidden bg-black/95 border-t border-white/10">
-            <div className="px-4 py-6 space-y-4">
-              <Link href="/" className="block text-white/80" onClick={() => setIsMenuOpen(false)}>Home</Link>
-              <Link href="/content-engine" className="block text-white/80" onClick={() => setIsMenuOpen(false)}>Content Engine</Link>
-              <Link href="/faq" className="block text-white/80" onClick={() => setIsMenuOpen(false)}>FAQ</Link>
-              <Link
-                href="/ai-readiness-assessment"
-                className="block text-center px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Free Assessment
-              </Link>
-            </div>
-          </div>
-        )}
-      </nav>
+      <Navigation />
 
       <main className="pt-28 pb-24">
         <section className="relative overflow-hidden">
