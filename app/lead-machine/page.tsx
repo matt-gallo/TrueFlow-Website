@@ -353,7 +353,7 @@ export default function LeadMachinePage() {
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
           <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-purple-600/40 via-blue-600/30 to-slate-900/50 p-8 sm:p-12 text-center">
-            <h2 className="text-3xl sm:text-4xl font-semibold">Sales Argument</h2>
+            <h2 className="text-3xl sm:text-4xl font-semibold">Why You Can’t Wait</h2>
             <p className="mt-6 text-lg text-white/80">
               You can’t keep relying on referrals and bursts of hustle forever. Your competitors are already using AI to do the work you’re avoiding.
             </p>
