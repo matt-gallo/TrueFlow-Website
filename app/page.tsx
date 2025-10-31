@@ -748,7 +748,7 @@ export default function LandingPage() {
               {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link> */}
               <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
               <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">FAQs</Link>
-              <a href="https://app.trueflow.ai/changelog" className="text-white/70 hover:text-white transition-colors text-sm" target="_blank" rel="noopener noreferrer">Recent Updates</a>
+              {/* <a href="https://app.trueflow.ai/changelog" className="text-white/70 hover:text-white transition-colors text-sm" target="_blank" rel="noopener noreferrer">Recent Updates</a> */}
               <a href="https://app.trueflow.ai/login" className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-sm font-semibold">
                 Log In
               </a>
@@ -786,7 +786,7 @@ export default function LandingPage() {
               {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
               <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
               <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-              <a href="https://app.trueflow.ai/changelog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg" target="_blank" rel="noopener noreferrer">Recent Updates</a>
+              {/* <a href="https://app.trueflow.ai/changelog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg" target="_blank" rel="noopener noreferrer">Recent Updates</a> */}
               <a href="https://app.trueflow.ai/login" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-lg font-semibold block text-center mt-6">
                 Log In
               </a>
