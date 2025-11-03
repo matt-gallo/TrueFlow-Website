@@ -365,15 +365,22 @@ export const WaveScroll: React.FC<WaveScrollProps> = ({
 
 // ========== 9. DepthCards ==========
 interface DepthCardsProps {
-  cards: ReactNode[];
+  cards?: ReactNode[];
   spacing?: number;
   className?: string;
+  children?: ReactNode;
+  // Additional props that may be passed but not used in this implementation
+  gap?: number;
+  perspective?: number;
+  cardClassName?: string;
 }
 
 export const DepthCards: React.FC<DepthCardsProps> = ({ 
   cards, 
   spacing = 100,
-  className = ''
+  className = '',
+  children,
+  ...restProps
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -381,9 +388,26 @@ export const DepthCards: React.FC<DepthCardsProps> = ({
     offset: ["start start", "end end"]
   });
 
+  // Use cards prop if provided, otherwise convert children to array
+  let cardArray: ReactNode[] = [];
+  if (cards && Array.isArray(cards)) {
+    cardArray = cards;
+  } else if (children) {
+    cardArray = React.Children.toArray(children);
+  }
+
+  // Return early if no cards to render
+  if (!cardArray || cardArray.length === 0) {
+    return (
+      <div ref={containerRef} className={`relative ${className}`}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      {cards.map((card, index) => {
+      {cardArray.map((card, index) => {
         const progress = useTransform(
           scrollYProgress,
           [index * 0.25, (index + 1) * 0.25],
@@ -404,7 +428,7 @@ export const DepthCards: React.FC<DepthCardsProps> = ({
               y: smoothY, 
               scale: smoothScale,
               opacity,
-              zIndex: cards.length - index
+              zIndex: cardArray.length - index
             }}
             className="sticky top-20 will-change-transform"
           >

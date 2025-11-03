@@ -28,36 +28,36 @@ import {
 } from './advanced-animations';
 
 import {
-  ParticleField,
-  ConfettiCannon,
-  MatrixRain,
-  FireworkDisplay,
-  ParticleEmitter
+  ParticleField
+  // ConfettiCannon,
+  // MatrixRain,
+  // FireworkDisplay,
+  // ParticleEmitter
 } from './particle-systems';
 
 import {
   MultiLayerParallax,
-  ParallaxText,
-  MouseParallax,
-  ScrollRotate,
-  ParallaxCard,
-  SplitParallax,
-  ZoomParallax,
-  HorizontalParallax,
-  ParallaxGallery,
-  InfiniteScroll
+  ParallaxText
+  // MouseParallax,
+  // ScrollRotate,
+  // ParallaxCard,
+  // SplitParallax,
+  // ZoomParallax,
+  // HorizontalParallax,
+  // ParallaxGallery,
+  // InfiniteScroll
 } from './parallax-effects';
 
 import {
   FadeInUp,
-  FadeInDown,
-  FadeInLeft,
-  FadeInRight,
+  // FadeInDown,
+  SlideInLeft,
+  SlideInRight,
   ScaleIn,
   RotateIn,
-  SlideInUp,
-  BlurIn,
-  StaggerChildren
+  // SlideInUp,
+  BlurIn
+  // StaggerChildren
 } from './scroll-animations';
 
 // Animation Categories
@@ -140,7 +140,7 @@ const AnimationControls: React.FC<AnimationControlsProps> = ({
         className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
         title="Reset Animations"
       >
-        <RotateIn />
+        <Settings size={20} />
       </button>
       <button
         onClick={onPerformanceToggle}
@@ -577,59 +577,37 @@ export const AnimationShowcase: React.FC<{ isOpen: boolean; onClose: () => void 
                           </div>
                         </div>
 
+                        {/* Confetti Cannon - Component not available */}
                         <div>
-                          <h3 className="text-xl font-semibold mb-4">Confetti Cannon</h3>
+                          <h3 className="text-xl font-semibold mb-4">Confetti Cannon (Coming Soon)</h3>
                           <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg text-center">
-                            <ConfettiCannon
-                              trigger={
-                                <button className="px-6 py-3 bg-pink-600 text-white rounded-lg font-medium hover:bg-pink-700 transition-colors">
-                                  Fire Confetti! 🎉
-                                </button>
-                              }
-                              particleCount={50}
-                              spread={80}
-                            />
+                            <button className="px-6 py-3 bg-gray-400 text-white rounded-lg font-medium cursor-not-allowed" disabled>
+                              Fire Confetti! 🎉 (Coming Soon)
+                            </button>
                           </div>
                         </div>
 
+                        {/* Matrix Rain - Component not available */}
                         <div>
-                          <h3 className="text-xl font-semibold mb-4">Matrix Rain</h3>
-                          <div className="bg-black rounded-lg overflow-hidden" style={{ height: '400px' }}>
-                            <MatrixRain
-                              fontSize={16}
-                              speed={35}
-                              density={0.02}
-                            />
+                          <h3 className="text-xl font-semibold mb-4">Matrix Rain (Coming Soon)</h3>
+                          <div className="bg-black rounded-lg overflow-hidden flex items-center justify-center text-green-400" style={{ height: '400px' }}>
+                            <p>Matrix Rain Effect - Coming Soon</p>
                           </div>
                         </div>
 
+                        {/* Firework Display - Component not available */}
                         <div>
-                          <h3 className="text-xl font-semibold mb-4">Firework Display</h3>
-                          <div className="bg-gray-900 rounded-lg overflow-hidden" style={{ height: '400px' }}>
-                            <FireworkDisplay
-                              autoPlay={true}
-                              maxFireworks={5}
-                            />
+                          <h3 className="text-xl font-semibold mb-4">Firework Display (Coming Soon)</h3>
+                          <div className="bg-gray-900 rounded-lg overflow-hidden flex items-center justify-center text-white" style={{ height: '400px' }}>
+                            <p>Firework Display Effect - Coming Soon</p>
                           </div>
                         </div>
 
+                        {/* Custom Particle Emitter - Component not available */}
                         <div>
-                          <h3 className="text-xl font-semibold mb-4">Custom Particle Emitter</h3>
-                          <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg">
-                            <ParticleEmitter
-                              config={{
-                                shape: 'circle',
-                                colors: ['#3B82F6', '#8B5CF6', '#EC4899'],
-                                sizeRange: [2, 8],
-                                velocityRange: { x: [-100, 100], y: [-200, -50] },
-                                gravity: 0.5,
-                                fade: true,
-                                rotate: true,
-                                emissionRate: 10,
-                                lifespan: 2000
-                              }}
-                              position={{ x: 200, y: 200 }}
-                            />
+                          <h3 className="text-xl font-semibold mb-4">Custom Particle Emitter (Coming Soon)</h3>
+                          <div className="bg-gray-100 dark:bg-gray-800 p-8 rounded-lg flex items-center justify-center">
+                            <p className="text-gray-600 dark:text-gray-400">Custom Particle Emitter - Coming Soon</p>
                           </div>
                         </div>
                       </div>
@@ -661,36 +639,31 @@ export const AnimationShowcase: React.FC<{ isOpen: boolean; onClose: () => void 
                           </div>
                         </div>
 
+                        {/* Mouse Parallax - Component not available */}
                         <div>
-                          <h3 className="text-xl font-semibold mb-4">Mouse Parallax</h3>
-                          <MouseParallax strength={20}>
-                            <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-lg text-white text-center">
-                              <h4 className="text-2xl font-bold">Move Your Mouse</h4>
-                              <p>This content follows your cursor</p>
-                            </div>
-                          </MouseParallax>
-                        </div>
-
-                        <div>
-                          <h3 className="text-xl font-semibold mb-4">Scroll Rotate</h3>
-                          <div className="flex justify-center">
-                            <ScrollRotate>
-                              <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                                Scroll Me
-                              </div>
-                            </ScrollRotate>
+                          <h3 className="text-xl font-semibold mb-4">Mouse Parallax (Coming Soon)</h3>
+                          <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-8 rounded-lg text-white text-center">
+                            <h4 className="text-2xl font-bold">Mouse Parallax Effect</h4>
+                            <p>Coming Soon - Will follow your cursor</p>
                           </div>
                         </div>
 
+                        {/* Scroll Rotate - Component not available */}
                         <div>
-                          <h3 className="text-xl font-semibold mb-4">Zoom Parallax</h3>
-                          <ZoomParallax>
-                            <img 
-                              src="/api/placeholder/800/600" 
-                              alt="Zoom on scroll"
-                              className="w-full rounded-lg"
-                            />
-                          </ZoomParallax>
+                          <h3 className="text-xl font-semibold mb-4">Scroll Rotate (Coming Soon)</h3>
+                          <div className="flex justify-center">
+                            <div className="w-32 h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                              Coming Soon
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Zoom Parallax - Component not available */}
+                        <div>
+                          <h3 className="text-xl font-semibold mb-4">Zoom Parallax (Coming Soon)</h3>
+                          <div className="w-full h-64 bg-gray-300 rounded-lg flex items-center justify-center">
+                            <p className="text-gray-600">Zoom Parallax Effect - Coming Soon</p>
+                          </div>
                         </div>
                       </div>
                     </>
@@ -710,26 +683,25 @@ export const AnimationShowcase: React.FC<{ isOpen: boolean; onClose: () => void 
                               </div>
                             </FadeInUp>
 
-                            <FadeInDown delay={0.2}>
-                              <div className="bg-green-100 dark:bg-green-900 p-8 rounded-lg text-center">
-                                <h4 className="font-bold">Fade In Down</h4>
-                                <p className="text-sm mt-2">Scrolls down while fading in</p>
-                              </div>
-                            </FadeInDown>
+                            {/* FadeInDown - Component not available */}
+                            <div className="bg-green-100 dark:bg-green-900 p-8 rounded-lg text-center opacity-50">
+                              <h4 className="font-bold">Fade In Down (Coming Soon)</h4>
+                              <p className="text-sm mt-2">Will scroll down while fading in</p>
+                            </div>
 
-                            <FadeInLeft delay={0.4}>
+                            <SlideInLeft delay={0.4}>
                               <div className="bg-purple-100 dark:bg-purple-900 p-8 rounded-lg text-center">
-                                <h4 className="font-bold">Fade In Left</h4>
+                                <h4 className="font-bold">Slide In Left</h4>
                                 <p className="text-sm mt-2">Slides from left</p>
                               </div>
-                            </FadeInLeft>
+                            </SlideInLeft>
 
-                            <FadeInRight delay={0.6}>
+                            <SlideInRight delay={0.6}>
                               <div className="bg-pink-100 dark:bg-pink-900 p-8 rounded-lg text-center">
-                                <h4 className="font-bold">Fade In Right</h4>
+                                <h4 className="font-bold">Slide In Right</h4>
                                 <p className="text-sm mt-2">Slides from right</p>
                               </div>
-                            </FadeInRight>
+                            </SlideInRight>
                           </div>
                         </div>
 
@@ -755,12 +727,11 @@ export const AnimationShowcase: React.FC<{ isOpen: boolean; onClose: () => void 
                         <div>
                           <h3 className="text-xl font-semibold mb-8">Advanced Effects</h3>
                           <div className="space-y-8">
-                            <SlideInUp>
-                              <div className="bg-indigo-100 dark:bg-indigo-900 p-8 rounded-lg">
-                                <h4 className="font-bold text-lg">Slide In Up</h4>
-                                <p className="mt-2">Slides up from below the viewport with a smooth ease</p>
-                              </div>
-                            </SlideInUp>
+                            {/* SlideInUp - Component not available */}
+                            <div className="bg-indigo-100 dark:bg-indigo-900 p-8 rounded-lg opacity-50">
+                              <h4 className="font-bold text-lg">Slide In Up (Coming Soon)</h4>
+                              <p className="mt-2">Will slide up from below the viewport with a smooth ease</p>
+                            </div>
 
                             <BlurIn delay={0.3}>
                               <div className="bg-red-100 dark:bg-red-900 p-8 rounded-lg">
@@ -771,16 +742,17 @@ export const AnimationShowcase: React.FC<{ isOpen: boolean; onClose: () => void 
                           </div>
                         </div>
 
+                        {/* StaggerChildren - Component not available */}
                         <div>
-                          <h3 className="text-xl font-semibold mb-8">Stagger Children</h3>
-                          <StaggerChildren>
+                          <h3 className="text-xl font-semibold mb-8">Stagger Children (Coming Soon)</h3>
+                          <div className="space-y-4">
                             {[1, 2, 3, 4, 5].map((item) => (
-                              <div key={item} className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6 rounded-lg">
+                              <div key={item} className="bg-gradient-to-r from-blue-500 to-purple-500 text-white p-6 rounded-lg opacity-50">
                                 <h4 className="font-bold">Item {item}</h4>
-                                <p className="text-sm mt-1">Staggered animation</p>
+                                <p className="text-sm mt-1">Staggered animation - Coming Soon</p>
                               </div>
                             ))}
-                          </StaggerChildren>
+                          </div>
                         </div>
                       </div>
                     </>

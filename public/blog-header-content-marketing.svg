@@ -1,0 +1,81 @@
+<svg width="1200" height="600" viewBox="0 0 1200 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0f0f23;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22d3ee;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:0.3" />
+    </linearGradient>
+    
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="600" fill="url(#bgGradient)"/>
+  
+  <!-- Background blur effects -->
+  <circle cx="300" cy="150" r="150" fill="url(#accentGradient)" filter="blur(60px)" opacity="0.4"/>
+  <circle cx="900" cy="450" r="180" fill="url(#accentGradient)" filter="blur(80px)" opacity="0.3"/>
+  
+  <!-- Geometric elements -->
+  <path d="M100 300 Q300 200 500 300 T900 300" stroke="url(#textGradient)" stroke-width="2" fill="none" opacity="0.4"/>
+  <circle cx="200" cy="200" r="4" fill="#22d3ee" opacity="0.6"/>
+  <circle cx="800" cy="400" r="6" fill="#a855f7" opacity="0.5"/>
+  <circle cx="1000" cy="200" r="3" fill="#22d3ee" opacity="0.7"/>
+  
+  <!-- Content transformation visualization -->
+  <rect x="150" y="250" width="80" height="100" rx="10" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <rect x="280" y="250" width="80" height="100" rx="10" fill="rgba(34,211,238,0.2)" stroke="#22d3ee" stroke-width="2"/>
+  <path d="M230 300 L280 300" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#22d3ee"/>
+    </marker>
+  </defs>
+  
+  <!-- Lead generation icons -->
+  <g transform="translate(800, 250)">
+    <circle cx="0" cy="0" r="30" fill="rgba(168,85,247,0.2)" stroke="#a855f7" stroke-width="2"/>
+    <path d="M-10,-5 L-10,5 M-5,0 L5,0 M0,-5 L0,5" stroke="#a855f7" stroke-width="2" opacity="0.8"/>
+  </g>
+  
+  <!-- Main title -->
+  <text x="600" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="48" font-weight="700" fill="url(#textGradient)" filter="url(#glow)">
+    Transform Your Content Marketing
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="600" y="250" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="500" fill="rgba(255,255,255,0.8)">
+    From Zero Leads to Consistent Results
+  </text>
+  
+  <!-- Author and meta info -->
+  <g transform="translate(600, 400)">
+    <text x="0" y="0" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="500" fill="rgba(255,255,255,0.7)">
+      Matt Gallo • TrueFlow AI • 12 min read
+    </text>
+    <text x="0" y="25" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" font-weight="400" fill="rgba(255,255,255,0.5)">
+      September 4, 2025
+    </text>
+  </g>
+  
+  <!-- Bottom accent line -->
+  <line x1="200" y1="550" x2="1000" y2="550" stroke="url(#textGradient)" stroke-width="2" opacity="0.6"/>
+</svg>

@@ -694,7 +694,7 @@ export default function LandingPage() {
                 <Link href="/faq">FAQs</Link>
               </ElasticButton>
               <ShimmerButton className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold">
-                <Link href="https://trueflow.ai/readiness-assessment">Get Started</Link>
+                <Link href="/readiness-assessment">Get Started</Link>
               </ShimmerButton>
             </div>
 
@@ -718,7 +718,7 @@ export default function LandingPage() {
               <a href="#how-it-works" className="block text-white/70 hover:text-white transition-colors text-lg">How it Works</a>
               <a href="#testimonials" className="block text-white/70 hover:text-white transition-colors text-lg">Success Stories</a>
               <Link href="/faq" className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-              <Link href="https://trueflow.ai/readiness-assessment" className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
+              <Link href="/readiness-assessment" className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
                 Get Started
               </Link>
             </div>
@@ -755,7 +755,7 @@ export default function LandingPage() {
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
                 strength={0.3}
               >
-                <Link href="https://trueflow.ai/readiness-assessment" className="flex items-center space-x-2 sm:space-x-3">
+                <Link href="/readiness-assessment" className="flex items-center space-x-2 sm:space-x-3">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10">Discover TrueFlow</span>
                   <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
@@ -1939,7 +1939,7 @@ export default function LandingPage() {
                   </div>
 
                   <ShimmerButton className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group">
-                    <Link href="https://trueflow.ai/readiness-assessment" className="relative z-10">Get Started</Link>
+                    <Link href="/readiness-assessment" className="relative z-10">Get Started</Link>
                   </ShimmerButton>
                 </div>
                 </BorderBeam>
@@ -1998,7 +1998,7 @@ export default function LandingPage() {
                   </div>
 
                   <ShimmerButton className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group" shimmerColor="rgba(255, 255, 255, 0.7)">
-                    <Link href="https://trueflow.ai/readiness-assessment" className="relative z-10">Get Complete System</Link>
+                    <Link href="/readiness-assessment" className="relative z-10">Get Complete System</Link>
                   </ShimmerButton>
                 </div>
                 </BorderBeam>
@@ -2093,7 +2093,7 @@ export default function LandingPage() {
             
             {/* CTA */}
             <div>
-              <Link href="https://trueflow.ai/readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
+              <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
                 Get Started
               </Link>
             </div>
