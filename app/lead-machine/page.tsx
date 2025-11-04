@@ -132,6 +132,7 @@ const pricingPlans = [
 ]
 
 export default function LeadMachinePage() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
 
   useEffect(() => {
