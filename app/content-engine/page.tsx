@@ -1,5 +1,5 @@
 /**
- * TrueFlow AI Content Engine Detail Page
+ * TrueFlow AI Content Machine™ Detail Page
  * Deep dive into the AI content creation capabilities
  */
 
@@ -447,7 +447,7 @@ export default function ContentEnginePage() {
             ''
           }`}>
             <Sparkles className="h-5 w-5 text-blue-400 animate-pulse" />
-            <span className="text-white/90 text-lg">TrueFlow AI Content Engine</span>
+            <span className="text-white/90 text-lg">TrueFlow AI Content Machine™</span>
           </div>
           
           <h1 className={`text-5xl md:text-7xl font-bold text-white mb-8 leading-tight transition-all duration-1000 ${
@@ -504,7 +504,7 @@ export default function ContentEnginePage() {
             <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 transition-all duration-1000 ${
               ''
             }`}>
-              How the Content Engine Works
+              How the Content Machine Works
             </h2>
             <p className={`text-xl text-white/70 max-w-3xl mx-auto transition-all duration-1000 ${
               ''
@@ -1296,7 +1296,7 @@ export default function ContentEnginePage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Product</h4>
               <div className="space-y-2">
-                <Link href="/content-engine" className="block text-white/70 hover:text-white transition-colors">Content Engine</Link>
+                <Link href="/content-engine" className="block text-white/70 hover:text-white transition-colors">Content Machine</Link>
                 <Link href="/readiness-assessment" className="block text-white/70 hover:text-white transition-colors">Get Started</Link>
                 <Link href="/faq" className="block text-white/70 hover:text-white transition-colors">FAQs</Link>
               </div>
