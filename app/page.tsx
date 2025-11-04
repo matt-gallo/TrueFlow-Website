@@ -814,7 +814,7 @@ export default function LandingPage() {
           <div className="mb-8">
             <Link href="/content-engine" className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-12 border border-white/20 mt-16 hover:bg-white/20 transition-colors">
               <Sparkles className="h-5 w-5 text-blue-400" />
-              <span className="text-white/90 text-lg">Introducing TrueFlow AI Content Engine</span>
+              <span className="text-white/90 text-lg">Introducing TrueFlow AI Content Machine™</span>
             </Link>
             
             <div className="relative group">
@@ -1924,11 +1924,11 @@ export default function LandingPage() {
                 perspective={1000}
                 cardClassName="w-full"
               >
-                {/* Plan 1: Content Engine Only */}
+                {/* Plan 1: Content Machine Only */}
                 <BorderBeam className="" duration={4} borderWidth={2} colorFrom="#6B7280" colorTo="#9CA3AF">
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Content Engine</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Content Machine™</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
                       <span className="text-4xl font-bold text-white">
                         <AnimatedNumber
@@ -2010,12 +2010,12 @@ export default function LandingPage() {
                       </span>
                       <span className="text-white/70">/week</span>
                     </div>
-                    <p className="text-white/70">Everything in Content Engine plus full CRM</p>
+                    <p className="text-white/70">Everything in Content Machine™ plus full CRM</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Everything in Content Engine',
+                      'Everything in Content Machine™',
                       'Full CRM system',
                       'Lead capture & tracking',
                       'Automated follow-ups',
