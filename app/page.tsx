@@ -143,13 +143,13 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Lead Engine Section */}
-      <section id="lead-engine" className="py-32 px-4">
+      {/* Lead Machine Section */}
+      <section id="lead-machine" className="py-32 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <div className="inline-block bg-blue-500/20 text-blue-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                Lead Engine™
+                Lead Machine™
               </div>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
                 Never Run Out of <span className="bg-gradient-to-r from-blue-400 to-cyan-500 bg-clip-text text-transparent">Qualified Leads</span>
@@ -183,7 +183,7 @@ export default function LandingPage() {
               </div>
 
               <Link href="/lead-machine" className="group inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all">
-                <span>Explore Lead Engine</span>
+                <span>Explore Lead Machine</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -229,8 +229,8 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Content Engine Section */}
-      <section id="content-engine" className="py-32 px-4 bg-white/5">
+      {/* Content Machine Section */}
+      <section id="content-machine" className="py-32 px-4 bg-white/5">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="order-2 md:order-1">
@@ -286,7 +286,7 @@ export default function LandingPage() {
 
             <div className="order-1 md:order-2">
               <div className="inline-block bg-purple-500/20 text-purple-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
-                Content Engine™
+                Content Machine™
               </div>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6">
                 Create Content in <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Your Voice</span>, Instantly
@@ -320,7 +320,7 @@ export default function LandingPage() {
               </div>
 
               <Link href="/content-engine" className="group inline-flex items-center space-x-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-all">
-                <span>Explore Content Engine</span>
+                <span>Explore Content Machine</span>
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
