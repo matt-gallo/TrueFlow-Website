@@ -8,13 +8,14 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Navigation from '../components/Navigation'
 import { 
   ArrowLeft,
   Clock,
   Bell,
-  CheckCircle,
-  Sparkles
+  CheckCircle
 } from 'lucide-react'
+import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
 
 interface Particle {
   id: number
@@ -228,31 +229,7 @@ export default function ComingSoonPage() {
         }}
       />
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/10 bg-black/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
-            <Link href="/" className="flex items-center">
-              <Image 
-                src="/true-flow-logo.webp" 
-                alt="TrueFlow" 
-                width={280} 
-                height={84} 
-                className="h-20 w-auto transform hover:scale-105 transition-transform"
-                priority
-              />
-            </Link>
-
-            <div className="flex items-center space-x-6">
-              <Link href="/" className="text-white/70 hover:text-white transition-colors text-lg">
-                Back to Home
-              </Link>
-              <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Main Content */}
       <main className="pt-32 pb-20 px-4">
@@ -316,7 +293,7 @@ export default function ComingSoonPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Sparkles className="h-8 w-8 text-white" />
+                  <TrueFlowLogoIcon size={32} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-3">Enhanced Features</h3>
                 <p className="text-white/70">More powerful AI capabilities and automation tools</p>
@@ -424,7 +401,7 @@ export default function ComingSoonPage() {
             <p className="text-white/60 mb-6">
               Ready to get started with our current features?
             </p>
-            <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:opacity-90 transition-opacity inline-flex items-center space-x-3">
+            <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:opacity-90 transition-opacity inline-flex items-center space-x-3">
               <span>Explore TrueFlow Now</span>
               <ArrowLeft className="h-6 w-6 rotate-180" />
             </Link>

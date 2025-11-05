@@ -8,6 +8,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Navigation from '../components/Navigation'
 import { 
   ChevronDown,
   ChevronUp,
@@ -382,15 +383,29 @@ export default function FAQPage() {
     // Pricing & Plans
     {
       id: 'pricing-1',
-      question: 'What\'s included in the $150/week Content Engine plan?',
-      answer: 'The Content Engine plan includes AI-powered content creation, voice-to-content transformation, SEO-optimized blog posts, email sequences, social media posts, content dashboard access, and basic analytics. Perfect for solopreneurs and content creators who need powerful content tools.',
+      question: 'What\'s the difference between Platform and Enterprise tiers?',
+      answer: 'Platform tiers give you self-service access to our AI tools (Flow Mode, Content Engine, Chat Widgets). Enterprise includes full done-for-you implementation with CRM, automated workflows, and a dedicated success manager. Think DIY vs. Done-For-You.',
       category: 'business',
       icon: <Zap className="h-5 w-5" />
     },
     {
       id: 'pricing-2',
-      question: 'What additional features come with the $300/week Complete System?',
-      answer: 'The Complete System includes everything in Content Engine plus full CRM functionality, lead tracking, automated follow-ups, sales pipeline management, advanced analytics, customer communication hub, and a dedicated success manager. It\'s ideal for growing businesses that need comprehensive automation.',
+      question: 'Do Platform tiers include CRM features?',
+      answer: 'Full CRM capabilities (lead tracking, automated follow-ups, sales pipeline) are currently available only in our Enterprise tier. We\'re building these features into the platform for all users—coming Q1 2026.',
+      category: 'business',
+      icon: <CheckCircle className="h-5 w-5" />
+    },
+    {
+      id: 'pricing-3',
+      question: 'What\'s included in Enterprise "full-service implementation"?',
+      answer: 'Everything. We build your sales funnels, set up lead capture, create automated sequences, integrate with your tools, and provide ongoing optimization. You get a dedicated success manager and white-labeled system.',
+      category: 'business',
+      icon: <CheckCircle className="h-5 w-5" />
+    },
+    {
+      id: 'pricing-4',
+      question: 'Can I upgrade from Platform to Enterprise later?',
+      answer: 'Absolutely. Many clients start with Platform Access to test our AI tools, then upgrade to Enterprise when they\'re ready to automate their entire operation.',
       category: 'business',
       icon: <CheckCircle className="h-5 w-5" />
     },
@@ -524,36 +539,7 @@ export default function FAQPage() {
         }}
       />
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/10 bg-black/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
-            {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <Image 
-                src="/true-flow-logo.webp" 
-                alt="TrueFlow" 
-                width={280} 
-                height={70} 
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transform hover:scale-105 transition-transform"
-                priority
-                style={{ 
-                  maxWidth: '100%',
-                  objectFit: 'contain'
-                }}
-              />
-            </Link>
-
-            <div className="flex items-center space-x-6">
-              <Link href="/" className="text-white/70 hover:text-white transition-colors text-lg">
-                Back to Home
-              </Link>
-              <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Main Content */}
       <main className="pt-32 pb-20 px-4">
@@ -663,10 +649,10 @@ export default function FAQPage() {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity">
-                  Start Your Free Trial
+                <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity">
+                  Get Started
                 </Link>
-                <Link href="/" className="text-white/70 hover:text-white transition-colors underline text-lg">
+                <Link href="/" className="text-white/70 hover:text-white transition-colors underline text-sm">
                   Back to Home
                 </Link>
               </div>
@@ -677,7 +663,7 @@ export default function FAQPage() {
                   <span>No credit card required</span>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-5 w-5 text-green-400" />
+                  <Clock className="h-5 w-5 text-blue-400" />
                   <span>Setup in 5 minutes</span>
                 </div>
               </div>
@@ -710,7 +696,7 @@ export default function FAQPage() {
               <div className="space-y-2">
                 <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Features</Link>
                 <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Pricing</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">API</Link>
+                <Link href="/api-docs" className="block text-white/70 hover:text-white transition-colors">API</Link>
                 <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Integrations</Link>
               </div>
             </div>
@@ -727,7 +713,7 @@ export default function FAQPage() {
           </div>
           
           <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between text-white/50">
-            <p>&copy; 2025 TrueFlow™️ AI, LLC. All rights reserved.</p>
+            <p>&copy; 2025 TrueFlow™ AI, LLC. All rights reserved.</p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="#" className="hover:text-white transition-colors">Terms</Link>
               <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>

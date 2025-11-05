@@ -8,73 +8,29 @@
 import { useEffect, useState, useRef, useCallback, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { getPublishedPosts, tagColorPalettes } from '@/app/data/blog-posts'
+import type { BlogPost } from '@/app/types/blog'
 import './animations.css'
-import { 
-  FadeInUp, 
-  SlideInLeft, 
-  SlideInRight, 
-  ScaleIn, 
-  RotateIn, 
-  FlipIn, 
-  ZoomIn, 
-  StaggeredAnimation, 
-  ParallaxScroll, 
-  TextReveal, 
-  BlurIn 
-} from './scroll-animations'
-import { 
-  AnimatedNumber, 
-  easings 
-} from './advanced-animations'
 import {
-  MagneticButton,
-  ElasticButton,
-  TextScramble,
-  RippleEffect,
-  GlowCard,
-  TiltCard,
-  BorderBeam,
-  ShimmerButton
-} from './hover-effects'
-import {
-  MultiLayerParallax,
-  ParallaxText,
-  ScrollProgress,
-  ParallaxImage,
-  ScrollReveal3D,
-  StickyParallax,
-  DepthCards,
-  ScrollTimeline
-} from './parallax-effects'
-import {
-  ConnectedParticles,
-  ParticleExplosion,
-  MorphingBackground,
-  ParticleTrail,
-  FlowField,
-  WaveBackground,
-  GeometricBackground,
-  ParticleText
-} from './particle-systems'
-import { 
-  ChevronRight, 
-  Play, 
-  Sparkles, 
-  Zap, 
-  Brain, 
-  Mail, 
-  Calendar, 
-  TrendingUp, 
-  Users, 
+  ChevronRight,
+  ChevronDown,
+  Play,
+  Zap,
+  Brain,
+  Mail,
+  Calendar,
+  TrendingUp,
+  Users,
   MessageSquare,
   ArrowRight,
   Star,
   CheckCircle,
   Globe,
   Clock,
+  Mic,
   Target,
   BarChart3,
-  Mic,
   FileText,
   Send,
   Filter,
@@ -88,8 +44,10 @@ import {
   Instagram,
   Facebook,
   MessageCircle,
-  Youtube
+  Youtube,
+  Sparkles
 } from 'lucide-react'
+import TrueFlowLogoIcon from './components/TrueFlowLogoIcon'
 
 interface Particle {
   id: number
@@ -145,17 +103,12 @@ function useAnimatedCounter(endValue: number, duration: number = 2000, prefix: s
 
 // Animated step number component to avoid hooks in loops
 function AnimatedStepNumber({ stepNumber, index, visible }: { stepNumber: number, index: number, visible: boolean }) {
+  const animatedValue = useAnimatedCounter(stepNumber, 1000 + index * 300, '', '', visible)
+  
   return (
     <div className={`absolute -top-2 sm:-top-3 -right-2 sm:-right-3 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-white to-gray-100 text-black rounded-full flex items-center justify-center text-lg sm:text-xl lg:text-2xl font-bold shadow-xl border-2 sm:border-4 border-white transition-all duration-500 group-hover:scale-110 group-hover:rotate-12`} 
       style={{ animationDelay: `${index * 300 + 800}ms` }}>
-      <AnimatedNumber
-        to={stepNumber}
-        variant="morphing"
-        scrollTrigger={true}
-        duration={1500 + index * 300}
-        easing={easings.easeInOutCubic}
-        className="inline-block"
-      />
+      {animatedValue}
     </div>
   )
 }
@@ -174,7 +127,7 @@ function AnimatedValue({ endValue, duration, prefix = '', suffix = '', visible }
 
 // TypewriterText component for the hero section
 function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
-  const phrases = ['think', 'adapt', 'scale', 'grow', 'respond', 'learn', 'optimize', 'automate']
+  const phrases = ['doctors', 'real estate agents', 'online coaches', 'filmmakers', 'marketers', 'agencies', 'teams like yours']
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -282,30 +235,23 @@ function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
 }
 
 export default function LandingPage() {
+  const router = useRouter()
+  
+  
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isCoreSystemOpen, setIsCoreSystemOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [activeFeature, setActiveFeature] = useState(0)
+  const [recentBlogPosts, setRecentBlogPosts] = useState<BlogPost[]>([])
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [currentFeatureIndex, setCurrentFeatureIndex] = useState(-1)
-  // Removed mounted state - not needed with App Router
+  const [mounted, setMounted] = useState(false)
   const [gradientOffset, setGradientOffset] = useState(0)
   const [particles, setParticles] = useState<Particle[]>([])
-  const [explosionTrigger, setExplosionTrigger] = useState(0)
-  const [explosionPosition, setExplosionPosition] = useState({ x: 0, y: 0 })
   const [cursorTrail, setCursorTrail] = useState<CursorTrailPoint[]>([])
   const cursorTrailRef = useRef<CursorTrailPoint[]>([])
   const animationFrameRef = useRef<number | null>(null)
   const [statsVisible, setStatsVisible] = useState(true)
-
-  // Handler for particle explosion on CTA click
-  const handleCTAClick = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    setExplosionPosition({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2
-    })
-    setExplosionTrigger(prev => prev + 1)
-  }
   const [animatedValues, setAnimatedValues] = useState<Record<string, string | number>>({
     "10x": "10x",
     "85%": "85%",
@@ -333,29 +279,31 @@ export default function LandingPage() {
   const features = [
     {
       icon: <Users className="h-16 w-16" />,
-      title: "Lead Capture & Tracking",
-      description: "Seamlessly capture leads from multiple channels and track their journey through your sales funnel with real-time analytics and automated scoring.",
+      title: "Never Miss a Lead Again",
+      description: "We build systems that capture every lead and follow up automatically. Text, email, or call - your customers hear back fast, even when you're busy.",
       gradient: "from-blue-500 to-cyan-500",
-      delay: 0
+      delay: 0,
+      badge: "Most Popular"
     },
     {
-      icon: <Mail className="h-16 w-16" />,
-      title: "Automated Follow-Up",
-      description: "Never miss a follow-up again. Smart automation sends personalized messages at the perfect moment to nurture leads and close deals.",
+      icon: <MessageSquare className="h-16 w-16" />,
+      title: "24/7 Customer Communication",
+      description: "Answer common questions, schedule appointments, and update customers automatically. Give great service without lifting a finger.",
       gradient: "from-purple-500 to-pink-500",
-      delay: 100
+      delay: 100,
+      badge: "Time Saver"
     },
     {
-      icon: <Shield className="h-16 w-16" />,
-      title: "Command Dashboard",
-      description: "Get a bird's-eye view of your entire operation. Monitor performance, track KPIs, and make data-driven decisions from one central hub.",
+      icon: <Calendar className="h-16 w-16" />,
+      title: "Smart Scheduling & Reminders",
+      description: "Automatic appointment scheduling, confirmations, and reminders reduce no-shows. Keep your calendar full without the back-and-forth.",
       gradient: "from-green-500 to-emerald-500",
       delay: 200
     },
     {
-      icon: <Zap className="h-16 w-16" />,
-      title: "AI-Powered Content Machine™",
-      description: "Transform your voice into engaging content. Create blogs, newsletters, and social media posts automatically from simple voice recordings.",
+      icon: <Sparkles className="h-16 w-16" />,
+      title: "Social Media That Works",
+      description: "We create and post content that brings in customers. Stay top-of-mind without spending hours on Facebook and Instagram.",
       gradient: "from-orange-500 to-red-500",
       delay: 300
     }
@@ -366,10 +314,9 @@ export default function LandingPage() {
   //   const interval = setInterval(() => {
   //     setCurrentFeatureIndex((prev) => (prev + 1) % features.length)
   //   }, 5000)
-  //   
+  //
   //   return () => clearInterval(interval)
   // }, [features.length])
-
 
   // Generate floating particles
   const generateParticles = () => {
@@ -412,10 +359,24 @@ export default function LandingPage() {
     }))
   }
 
-  // Initialize particles on mount
+  // Handle mounting to avoid hydration issues
   useEffect(() => {
+    setMounted(true)
+    
+    // Load recent blog posts
+    const posts = getPublishedPosts().slice(0, 3) // Get the 3 most recent posts
+    setRecentBlogPosts(posts)
+    
     if (typeof window !== 'undefined') {
       generateParticles()
+      
+      // Regenerate particles on window resize
+      const handleResize = () => {
+        generateParticles()
+      }
+      
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
     }
   }, [])
 
@@ -439,6 +400,8 @@ export default function LandingPage() {
   }, [])
 
   useEffect(() => {
+    if (!mounted) return
+
     const handleScroll = () => {
       setScrollY(window.scrollY)
       
@@ -549,32 +512,41 @@ export default function LandingPage() {
         cancelAnimationFrame(animationFrameRef.current)
       }
     }
-  }, [])
+  }, [mounted])
 
-  // Remove the mounting check - it's not necessary with App Router
-  // The 'use client' directive handles hydration properly
+  // Don't render dynamic content until mounted
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    )
+  }
 
   const testimonials = [
     {
       name: "Chris",
       role: "Online Fitness Coach",
       company: "",
+      tier: "Enterprise",
       image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
       quote: "Before TrueFlow, I was manually replying to DMs with no follow-up system and feeling overwhelmed with content creation. Now I have automated DM flows and AI-driven content with a clear pipeline. This changed how I run my business.",
       results: ["50% more client inquiries", "Automated DM workflows", "Clear sales pipeline"]
     },
     {
-      name: "Melisa", 
+      name: "Melisa",
       role: "Women's Coaching Program",
       company: "",
+      tier: "Enterprise",
       image: "https://images.unsplash.com/photo-1494790108755-2616b9fc6ad1?w=150&h=150&fit=crop&crop=face",
       quote: "I had scattered offers, inconsistent follow-up, and time-consuming planning. TrueFlow gave me clarity in my offer, a structured funnel, and automated lead tracking and scheduling. Now I can focus on coaching.",
       results: ["Waitlist launch in days", "Structured funnel built", "Streamlined operations"]
     },
     {
       name: "Andrew",
-      role: "Chiropractic Clinic", 
+      role: "Chiropractic Clinic",
       company: "",
+      tier: "Enterprise",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       quote: "I struggled to follow up with leads, track appointments, and manage forms. With TrueFlow's AI-driven lead capture, integrated scheduling, and automatic form tracking system, more calls get booked and intake is smoother. The backend now works like it should.",
       results: ["More calls booked", "Smoother intake process", "Automated form tracking"]
@@ -582,87 +554,66 @@ export default function LandingPage() {
   ]
 
   const stats = [
-    { value: "10x", label: "Faster Content Creation", icon: <Clock className="h-12 w-12" /> },
-    { value: "85%", label: "Average Open Rate", icon: <Mail className="h-12 w-12" /> },
-    { value: "300%", label: "Engagement Increase", icon: <TrendingUp className="h-12 w-12" /> },
-    { value: "500+", label: "Hours Saved Monthly", icon: <Zap className="h-12 w-12" /> }
+    { value: "1000s", label: "Hours Saved", icon: <Clock className="h-12 w-12" /> },
+    { value: "$100k+", label: "Lost Revenue Recovered", icon: <TrendingUp className="h-12 w-12" /> },
+    { value: "0", label: "Leads Slipping Through", icon: <Target className="h-12 w-12" /> },
+    { value: "24/7", label: "Working For You", icon: <Zap className="h-12 w-12" /> }
   ]
 
   // Animate stats when they come into view
   const animateStats = () => {
     // Reset values to 0 before animating
     setAnimatedValues({
-      "10x": "0x",
-      "85%": "0%",
-      "300%": "0%",
-      "500+": "0+"
+      "1000s": "0",
+      "$100k+": "$0",
+      "0": "100+",
+      "24/7": "0"
     })
     
     const targets = {
-      "10x": 10,
-      "85%": 85,
-      "300%": 300,
-      "500+": 500
+      "1000s": 1000,
+      "$100k+": 100,
+      "0": 0,
+      "24/7": 24
     }
 
     Object.keys(targets).forEach((key, index) => {
       setTimeout(() => {
-        let current = 0
+        let current = key === "0" ? 100 : 0
         const target = targets[key as keyof typeof targets]
-        const increment = target / 50 // 50 steps
+        const increment = key === "0" ? -2 : target / 50 // 50 steps (count down for "0")
         const interval = setInterval(() => {
           current += increment
-          if (current >= target) {
+          if (key === "0" ? current <= target : current >= target) {
             current = target
             clearInterval(interval)
           }
-          
+
           setAnimatedValues(prev => ({
             ...prev,
-            [key]: key.includes('%') ? `${Math.round(current)}%` : 
-                   key.includes('+') ? `${Math.round(current)}+` :
-                   key.includes('x') ? `${Math.round(current)}x` : Math.round(current)
+            [key]: key === "1000s" ? `${Math.round(current)}+` :
+                   key === "$100k+" ? `$${Math.round(current)}k+` :
+                   key === "0" ? Math.round(current).toString() :
+                   key === "24/7" ? `${Math.round(current)}/7` : Math.round(current)
           }))
         }, 20) // 20ms intervals for smooth animation
       }, index * 200) // Stagger animations
     })
-  };
+  }
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Particle Trail that follows cursor */}
-      <ParticleTrail
-        color="#3b82f6"
-        particleCount={20}
-        fadeSpeed={0.95}
-        className="z-50"
-      />
-      
-      {/* Particle Explosion on CTA clicks */}
-      <ParticleExplosion
-        x={explosionPosition.x}
-        y={explosionPosition.y}
-        particleCount={50}
-        colors={['#3b82f6', '#8b5cf6', '#ec4899']}
-        trigger={explosionTrigger}
-      />
-      {/* Scroll Progress Indicator */}
-      <ScrollProgress 
-        color="#3b82f6"
-        height={4}
-        showPercentage={false}
-      />
 
       {/* Floating Particles */}
       {particles.map((particle) => (
         <div
           key={particle.id}
-          className="particle"
+          className="particle fixed pointer-events-none rounded-full z-0"
           style={{
-            left: particle.x,
-            top: particle.y,
-            width: particle.size,
-            height: particle.size,
+            left: `${particle.x}px`,
+            top: `${particle.y}px`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
             backgroundColor: particle.color,
             opacity: particle.opacity,
             animationDelay: `${particle.id * 0.1}s`,
@@ -673,7 +624,7 @@ export default function LandingPage() {
       ))}
 
       {/* Cursor Trail */}
-      <div className="cursor-trail">
+      <div className="cursor-trail" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999 }}>
         {cursorTrail.map((point, index) => {
           const age = Date.now() - point.timestamp
           const opacity = Math.max(0, 1 - age / 500)
@@ -682,7 +633,7 @@ export default function LandingPage() {
             <div
               key={index}
               style={{
-                position: 'absolute',
+                position: 'fixed',
                 left: point.x - size / 2,
                 top: point.y - size / 2,
                 width: size,
@@ -728,34 +679,83 @@ export default function LandingPage() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <ElasticButton className="text-white/70 hover:text-white transition-colors text-lg">
-                <a href="#">Home</a>
-              </ElasticButton>
-              <ElasticButton className="text-white/70 hover:text-white transition-colors text-lg">
-                <Link href="/content-engine">Content Machine</Link>
-              </ElasticButton>
-              <ElasticButton className="text-white/70 hover:text-white transition-colors text-lg">
-                <Link href="/lead-machine">Lead Machine</Link>
-              </ElasticButton>
-              <ElasticButton className="text-white/70 hover:text-white transition-colors text-lg">
-                <a href="#features">Features</a>
-              </ElasticButton>
-              <ElasticButton className="text-white/70 hover:text-white transition-colors text-lg">
-                <a href="#how-it-works">How it Works</a>
-              </ElasticButton>
-              <ElasticButton className="text-white/70 hover:text-white transition-colors text-lg">
-                <a href="#testimonials">Success Stories</a>
-              </ElasticButton>
-              <ElasticButton className="text-white/70 hover:text-white transition-colors text-lg">
-                <Link href="/faq">FAQs</Link>
-              </ElasticButton>
-              <ShimmerButton 
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full text-lg font-semibold"
-                onClick={handleCTAClick}
-              >
-                <Link href="https://trueflow.ai/readiness-assessment">Get Started</Link>
-              </ShimmerButton>
+            <div className="hidden md:flex items-center space-x-6">
+              {/* Core System Dropdown */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsCoreSystemOpen(!isCoreSystemOpen)}
+                  onBlur={() => setTimeout(() => setIsCoreSystemOpen(false), 200)}
+                  className="flex items-center gap-1 text-white/70 hover:text-white transition-colors text-sm"
+                >
+                  Core System
+                  <ChevronDown className={`w-4 h-4 transition-transform ${isCoreSystemOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {isCoreSystemOpen && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl overflow-hidden">
+                    <a 
+                      href="#why-trueflow" 
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Why TrueFlow?
+                    </a>
+                    <a 
+                      href="#features" 
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Features
+                    </a>
+                    <a
+                      href="#how-it-works"
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      How it Works
+                    </a>
+                    <a
+                      href="#flow-mode"
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Flow Mode
+                    </a>
+                    <a
+                      href="#chat-widgets"
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      AI Chat Widgets
+                    </a>
+                    <a
+                      href="#testimonials"
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Success Stories
+                    </a>
+                    <a 
+                      href="#integrations" 
+                      onClick={() => setIsCoreSystemOpen(false)}
+                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                    >
+                      Integrations
+                    </a>
+                  </div>
+                )}
+              </div>
+              <a href="https://trueflow.ai/lead-machine" className="text-white/70 hover:text-white transition-colors text-sm">Lead Machine</a>
+              <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Constant Content Engine™</Link>
+              {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link> */}
+              <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
+              <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">FAQs</Link>
+              {/* <a href="https://app.trueflow.ai/changelog" className="text-white/70 hover:text-white transition-colors text-sm" target="_blank" rel="noopener noreferrer">Recent Updates</a> */}
+              {/* <a href="https://app.trueflow.ai/login" className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-sm font-semibold">
+                Log In
+              </a> */}
+              <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
+                Free Assessment
+              </Link>
             </div>
 
             {/* Mobile menu button */}
@@ -772,15 +772,28 @@ export default function LandingPage() {
         {isMenuOpen && (
           <div className="md:hidden bg-black/90 backdrop-blur-xl border-t border-white/10">
             <div className="px-4 py-6 space-y-4">
-              <a href="#" className="block text-white/70 hover:text-white transition-colors text-lg">Home</a>
-              <Link href="/content-engine" className="block text-white/70 hover:text-white transition-colors text-lg">Content Machine</Link>
-              <Link href="/lead-machine" className="block text-white/70 hover:text-white transition-colors text-lg">Lead Machine</Link>
-              <a href="#features" className="block text-white/70 hover:text-white transition-colors text-lg">Features</a>
-              <a href="#how-it-works" className="block text-white/70 hover:text-white transition-colors text-lg">How it Works</a>
-              <a href="#testimonials" className="block text-white/70 hover:text-white transition-colors text-lg">Success Stories</a>
-              <Link href="/faq" className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-              <Link href="https://trueflow.ai/readiness-assessment" className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
-                Get Started
+              {/* Core System Section */}
+              <div className="space-y-2">
+                <div className="text-white font-semibold text-lg mb-2">Core System</div>
+                <a href="#why-trueflow" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Why TrueFlow?</a>
+                <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Features</a>
+                <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">How it Works</a>
+                <a href="#flow-mode" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Flow Mode</a>
+                <a href="#chat-widgets" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">AI Chat Widgets</a>
+                <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
+                <a href="#integrations" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Integrations</a>
+              </div>
+              <a href="https://trueflow.ai/lead-machine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Lead Machine</a>
+              <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Constant Content Engine™</Link>
+              {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
+              <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
+              <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
+              {/* <a href="https://app.trueflow.ai/changelog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg" target="_blank" rel="noopener noreferrer">Recent Updates</a> */}
+              {/* <a href="https://app.trueflow.ai/login" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-lg font-semibold block text-center mt-6">
+                Log In
+              </a> */}
+              <Link href="/ai-readiness-assessment" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
+                Free Assessment
               </Link>
             </div>
           </div>
@@ -790,89 +803,51 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center px-4 pt-32 overflow-hidden"
+        className="relative min-h-screen flex items-center justify-center px-4 pt-32"
       >
-        {/* Morphing Background */}
-        <div className="absolute inset-0">
-          <MorphingBackground
-            color1="#3b82f6"
-            color2="#8b5cf6"
-            speed={0.002}
-            className="opacity-20"
-          />
-        </div>
-        
-        {/* Connected Particles instead of basic particles */}
-        <ConnectedParticles
-          particleCount={80}
-          color="#ffffff"
-          lineColor="#ffffff"
-          maxDistance={150}
-          className="absolute inset-0 opacity-30"
-        />
-        <div className="max-w-6xl mx-auto text-center relative z-10">
+        <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
             <Link href="/content-engine" className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-12 border border-white/20 mt-16 hover:bg-white/20 transition-colors">
-              <Sparkles className="h-5 w-5 text-blue-400" />
-              <span className="text-white/90 text-lg">Introducing TrueFlow AI Content Machine™</span>
+              <TrueFlowLogoIcon size={20} className="text-blue-400" />
+              <span className="text-white/90 text-lg">Done-For-You Automation Services</span>
             </Link>
             
-            <div className="relative group">
-              <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2">
-                We build AI systems that<br />
-                <span className="inline-block min-h-[1.2em]">
-                  <TypewriterText gradientOffset={gradientOffset} />
-                </span>
-              </h1>
-              {/* Particle Text effect on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <ParticleText
-                  text="We build AI systems that"
-                  fontSize={80}
-                  color="#ffffff"
-                  className="scale-75 lg:scale-100"
-                />
-              </div>
-            </div>
-            
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2">
+              We build automations for<br />
+              <span className="inline-block min-h-[1.2em]">
+                <TypewriterText gradientOffset={gradientOffset} />
+              </span>
+            </h1>
+
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
-              Transform your voice into powerful content and automate your entire business. 
-              AI-powered content creation, lead management, customer support, and compliance monitoring in one platform.
+              Tailored systems that capture leads, follow up instantly, and keep your business running 24/7—no matter your industry.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
-              <MagneticButton 
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
-                strength={0.3}
-                onClick={handleCTAClick}
+              <Link
+                href="/ai-readiness-assessment"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
               >
-                <Link href="https://trueflow.ai/readiness-assessment" className="flex items-center space-x-2 sm:space-x-3">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="relative z-10">Discover TrueFlow</span>
-                  <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
-              </MagneticButton>
-              
-              <MagneticButton 
-                className="flex items-center space-x-3 sm:space-x-4 text-white/70 hover:text-white transition-all duration-300 group"
-                strength={0.2}
-              >
-                <Link href="/coming-soon" className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative">
-                    <div className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
-                    <Play className="h-4 w-4 sm:h-6 sm:w-6 ml-1 relative z-10 group-hover:text-blue-400 transition-colors duration-300" />
-                  </div>
-                  <span className="text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">Watch Demo</span>
-                </Link>
-              </MagneticButton>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <span className="relative z-10">Get Your Free Assessment</span>
+                <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+
+              <Link href="/coming-soon" className="flex items-center space-x-3 sm:space-x-4 text-white/70 hover:text-white transition-all duration-300 group">
+                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative">
+                  <div className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
+                  <Play className="h-4 w-4 sm:h-6 sm:w-6 ml-1 relative z-10 group-hover:text-blue-400 transition-colors duration-300" />
+                </div>
+                <span className="text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">See How It Works</span>
+              </Link>
             </div>
           </div>
 
           {/* Enhanced Floating Stats */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 lg:mt-20 mb-20 sm:mb-24 lg:mb-32 px-4" ref={statsRef}>
             {stats.map((stat, index) => (
-              <ZoomIn key={index} delay={1.2 + index * 0.15}>
               <div
+                key={index}
                 className={`bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 text-center hover:bg-white/10 hover:border-blue-400/30 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 group relative overflow-hidden transform-gpu ${
                   ''
                 }`}
@@ -940,54 +915,7 @@ export default function LandingPage() {
                 style={{ 
                   animationDelay: `${index * 200 + 400}ms`
                 }}>
-                  {stat.value === "10x" ? (
-                    <AnimatedNumber
-                      to={10}
-                      suffix="x"
-                      variant="odometer"
-                      scrollTrigger={true}
-                      duration={2000}
-                      easing={easings.easeOutExpo}
-                      className="inline-block"
-                    />
-                  ) : stat.value === "85%" ? (
-                    <AnimatedNumber
-                      to={85}
-                      suffix="%"
-                      variant="morphing"
-                      scrollTrigger={true}
-                      duration={2500}
-                      easing={easings.easeOutElastic}
-                      className="inline-block"
-                    />
-                  ) : stat.value === "300%" ? (
-                    <AnimatedNumber
-                      to={300}
-                      suffix="%"
-                      variant="particle"
-                      scrollTrigger={true}
-                      duration={3000}
-                      easing={easings.easeOutBounce}
-                      particleConfig={{
-                        colors: ['#3B82F6', '#8B5CF6', '#EC4899'],
-                        count: 15,
-                        spread: 40
-                      }}
-                      className="inline-block"
-                    />
-                  ) : stat.value === "500+" ? (
-                    <AnimatedNumber
-                      to={500}
-                      suffix="+"
-                      variant="countup"
-                      scrollTrigger={true}
-                      duration={2800}
-                      easing={easings.easeInOutCubic}
-                      className="inline-block"
-                    />
-                  ) : (
-                    animatedValues[stat.value] || stat.value
-                  )}
+                  {animatedValues[stat.value] || stat.value}
                 </div>
                 
                 {/* Label with slide-in effect */}
@@ -1003,7 +931,6 @@ export default function LandingPage() {
                 {/* Gentle border effect */}
                 <div className="absolute inset-0 rounded-2xl border-2 border-blue-400/0 group-hover:border-blue-400/20 transition-all duration-500 animate-[soft-glow_3s_ease-in-out_infinite]" style={{ animationDelay: `${index * 500}ms` }}></div>
               </div>
-              </ZoomIn>
             ))}
           </div>
         </div>
@@ -1020,31 +947,104 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* AI Application Preview Section */}
+      <section className="py-12 px-4 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header - More Concise */}
+          <div className="text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
+              AI Business OS
+            </h2>
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
+              One platform. Total automation. AI that grows with you.
+            </p>
+          </div>
+
+          {/* Device Mockup Container - Smaller */}
+          <div className="relative max-w-3xl mx-auto">
+            {/* Glow Effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20 blur-3xl opacity-50 pointer-events-none"></div>
+            
+            {/* Main Image Container */}
+            <div className="relative">
+              <Image
+                src="/content-engine-preview.png"
+                alt="TrueFlow AI Business OS interface showing desktop and mobile views with AI-powered automation and unified dashboard"
+                width={1200}
+                height={675}
+                className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
+                priority
+              />
+            </div>
+
+            {/* Key Features Grid - Compact */}
+            <div className="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
+              <div className="text-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <Brain className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-white text-sm font-medium">Smart Automation</h3>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <Globe className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-white text-sm font-medium">Unified Platform</h3>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-green-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-white text-sm font-medium">Real-Time AI</h3>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="text-center mt-8 relative z-10">
+              <Link
+                href="/ai-readiness-assessment"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
+              >
+                Get Your Free Assessment
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Problem Statement - Storytelling Section */}
-      <StickyParallax
-        stickyClassName="sticky top-20"
-        parallaxSpeed={0.5}
-      >
-        <section className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden">
-          <div className="max-w-6xl mx-auto">
-            {/* Story Timeline */}
-            <div className="space-y-20 sm:space-y-24 lg:space-y-32">
+      <section id="why-trueflow" className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          {/* Business Evolution: Side-by-Side Comparison */}
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                Who Needs Automation? Why Is It Helpful?
+              </h2>
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">If you're losing sleep over missed leads, spending hours on repetitive tasks, or watching revenue slip through the cracks... this is for you.</p>
+            </div>
+
+            {/* Vertical Stacked Chapters */}
+            <div className="flex flex-col gap-12 mt-16 max-w-4xl mx-auto">
             
             {/* Chapter 1: Once Upon A Time */}
-            <div className="text-center relative">
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-red-500/30 transition-all duration-300">
               <div className="inline-block bg-white/5 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 mb-8">
                 <span className="text-white/70 text-lg font-medium">Chapter 1</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-                Once Upon A Time...
-              </h2>
-              <div className="max-w-4xl mx-auto">
-                <p className="text-lg sm:text-xl lg:text-2xl text-white/70 mb-8 leading-relaxed">
-                  Manual everything. Growth = more hires = less profit.
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
+                You're Wearing Every Hat
+              </h3>
+              <div>
+                <p className="text-base text-white/70 mb-6 leading-relaxed">
+                  You're great at what you do. But between patient calls, property showings, coaching clients, film edits, and marketing campaigns... you're drowning in tasks that have nothing to do with your expertise. Meanwhile, leads slip through the cracks, follow-ups get forgotten, and potential revenue disappears.
                 </p>
-                
+
                 {/* Dynamic visual - Person overwhelmed with tasks */}
-                <div className="relative bg-white/5 backdrop-blur-md rounded-2xl p-12 border border-white/20 mx-auto max-w-lg overflow-hidden">
+                <div className="relative bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/20 overflow-hidden">
                   <div className="flex flex-col items-center space-y-6">
                     {/* Central person icon with stress animation */}
                     <div className="relative">
@@ -1092,7 +1092,7 @@ export default function LandingPage() {
                     </div>
                     
                     <p className="text-white/80 text-center font-medium animate-bounce">
-                      One person, infinite responsibilities
+                      Drowning in daily tasks
                     </p>
                   </div>
                   
@@ -1115,148 +1115,96 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Transition from Chapter 1 to Chapter 2 */}
-            <div className="flex items-center justify-center py-8">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-orange-500/50"></div>
-                <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
-                <div className="w-16 h-0.5 bg-gradient-to-r from-orange-500/50 to-red-500/50"></div>
-                <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="w-12 h-0.5 bg-gradient-to-r from-red-500/50 to-transparent"></div>
-              </div>
-            </div>
-
             {/* Chapter 2: Then Came Automation */}
-            <div className="text-center relative">
+            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-orange-500/30 transition-all duration-300">
               <div className="inline-block bg-white/5 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 mb-8">
                 <span className="text-white/70 text-lg font-medium">Chapter 2</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-                Then Came Automation & Intelligence
-              </h2>
-              
-              <div className="max-w-4xl mx-auto mb-16">
-                <p className="text-xl text-white/80 mb-8">
-                  More tools. Better results. Higher costs.
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
+                So You Try DIY Solutions
+              </h3>
+
+              <div>
+                <p className="text-base text-white/80 mb-6">
+                  "Just get some software," they said. "It's easy," they said. So you sign up for CRMs, schedulers, email tools, social media managers... and now you're paying hundreds per month for tools that don't talk to each other, and you STILL have to do most of the work manually.
                 </p>
                 
                 {/* Simple Tools Grid */}
-                <div className="grid grid-cols-3 gap-3 mb-8 max-w-2xl mx-auto">
+                <div className="grid grid-cols-3 gap-2 mb-6">
                   {[
-                    { 
-                      name: 'CRMs', 
+                    {
+                      name: 'Lead App',
                       color: 'from-blue-500 to-blue-600',
                       icon: Users
                     },
-                    { 
-                      name: 'Zapier', 
+                    {
+                      name: 'Scheduler',
                       color: 'from-orange-500 to-red-500',
-                      icon: Zap
+                      icon: Calendar
                     },
-                    { 
-                      name: 'AI Tools', 
+                    {
+                      name: 'Messenger',
                       color: 'from-cyan-500 to-blue-500',
-                      icon: Brain
+                      icon: MessageSquare
                     },
                   ].map((tool, index) => (
                     <div
                       key={tool.name}
-                      className={`bg-gradient-to-r ${tool.color} p-4 rounded-lg text-center flex flex-col items-center justify-center`}
+                      className={`bg-gradient-to-r ${tool.color} p-3 rounded-lg text-center flex flex-col items-center justify-center`}
                     >
-                      <tool.icon className="w-8 h-8 text-white mb-2" />
+                      <tool.icon className="w-6 h-6 text-white mb-1" />
                       <span className="text-white font-medium text-xs">{tool.name}</span>
                     </div>
                   ))}
                 </div>
 
-                <p className="text-2xl text-white/90 font-semibold mb-6">
-                  But then reality hit...
+                <p className="text-lg text-white/90 font-semibold mb-4">
+                  But here's the problem...
                 </p>
-                
-                {/* Simple Problem Statement */}
-                <div className="bg-red-500/10 rounded-xl p-6 border border-red-500/20 max-w-xl mx-auto">
-                  <p className="text-red-400 font-semibold text-lg mb-2">
-                    <AnimatedNumber
-                      to={1500}
-                      prefix="$"
-                      suffix="+/month"
-                      variant="odometer"
-                      scrollTrigger={true}
-                      duration={2000}
-                      easing={easings.easeOutCubic}
-                      separator=","
-                      className="inline-block"
-                    />
-                    . Data everywhere.
-                  </p>
-                  <p className="text-red-400 font-semibold text-lg mb-2">
-                    <AnimatedNumber
-                      to={10000}
-                      prefix="$"
-                      suffix="+"
-                      variant="odometer"
-                      scrollTrigger={true}
-                      duration={2500}
-                      easing={easings.easeOutCubic}
-                      separator=","
-                      className="inline-block"
-                    />
-                    {" "}per month for employees to manage those tools...
-                  </p>
-                  <p className="text-white/70 text-sm">Think systems administrators, social media managers, virtual assistants...</p>
-                  <p className="text-white/70 mt-2">Fragmented & Disconnected</p>
-                </div>
-              </div>
-            </div>
 
-            {/* Transition from Chapter 2 to Chapter 3 */}
-            <div className="flex items-center justify-center py-8">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-blue-500/50"></div>
-                <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse shadow-lg shadow-blue-500/50"></div>
-                <div className="w-20 h-0.5 bg-gradient-to-r from-blue-500/50 to-purple-500/50"></div>
-                <div className="w-5 h-5 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full animate-pulse shadow-lg shadow-purple-500/50" style={{ animationDelay: '0.3s' }}>
-                  <Sparkles className="h-3 w-3 text-white m-auto mt-1" />
+                {/* Simple Problem Statement */}
+                <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
+                  <p className="text-red-400 font-semibold text-sm mb-2">Each app costs $50-$200/month</p>
+                  <p className="text-red-400 font-semibold text-sm mb-2">They don't talk to each other</p>
+                  <p className="text-red-400 font-semibold text-sm mb-2">You still do most of the work</p>
+                  <p className="text-white/70 mt-3 text-xs font-semibold">Expensive, confusing, and frustrating</p>
                 </div>
-                <div className="w-20 h-0.5 bg-gradient-to-r from-purple-500/50 to-blue-500/50"></div>
-                <div className="w-4 h-4 bg-purple-500 rounded-full animate-pulse shadow-lg shadow-purple-500/50" style={{ animationDelay: '0.6s' }}></div>
-                <div className="w-12 h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent"></div>
               </div>
             </div>
 
             {/* Chapter 3: Now */}
-            <div className="text-center relative">
+            <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 border-blue-500/30 hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-blue-500/10">
               <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 rounded-full px-6 py-3 border-2 border-blue-400/50 mb-8 shadow-lg shadow-blue-500/25">
                 <span className="text-white text-lg font-bold">Chapter 3</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-                Now... TrueFlow
-              </h2>
-              <div className="max-w-4xl mx-auto">
-                <p className="text-lg sm:text-xl lg:text-2xl text-white/70 mb-8 leading-relaxed">
-                  Everything in one place. One subscription. One system that works.
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
+                We Build It. We Run It. You Reap The Benefits.
+              </h3>
+              <div>
+                <p className="text-base text-white/70 mb-6 leading-relaxed">
+                  We build custom automation systems that capture leads, follow up automatically, schedule appointments, send messages, and keep your business running 24/7 - while you focus on what you actually do best. No apps to learn. No tech headaches. Just results.
                 </p>
                 
                 {/* Dynamic unification visual */}
-                <div className="relative bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-2xl p-12 border border-white/20 mx-auto max-w-lg overflow-hidden">
+                <div className="relative bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-xl p-8 border border-white/20 overflow-hidden">
                   <div className="flex flex-col items-center space-y-6">
                     {/* Central TrueFlow hub with converging elements */}
                     <div className="relative w-40 h-40">
                       {/* Central TrueFlow logo */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse">
-                          <Sparkles className="h-8 w-8 text-white" />
+                          <TrueFlowLogoIcon size={32} />
                         </div>
                       </div>
                       
                       {/* Static positioned elements attached to lines */}
                       {[
                         { icon: Mail, angle: 0, name: 'Email' },
-                        { icon: Calendar, angle: 60, name: 'Calendar' },
-                        { icon: BarChart3, angle: 120, name: 'Analytics' },
-                        { icon: MessageSquare, angle: 180, name: 'Chat' },
-                        { icon: Target, angle: 240, name: 'CRM' },
-                        { icon: FileText, angle: 300, name: 'Content' }
+                        { icon: Calendar, angle: 60, name: 'Scheduling' },
+                        { icon: MessageSquare, angle: 120, name: 'Texts' },
+                        { icon: Users, angle: 180, name: 'Leads' },
+                        { icon: Globe, angle: 240, name: 'Website' },
+                        { icon: Instagram, angle: 300, name: 'Social' }
                       ].map((tool, index) => {
                         const radians = (tool.angle - 90) * Math.PI / 180;
                         const x = 80 + 60 * Math.cos(radians);
@@ -1318,22 +1266,22 @@ export default function LandingPage() {
                     </div>
                     
                     <p className="text-white/90 text-center font-bold text-lg bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                      Your business. Unified.
+                      We handle the tech. You run your business.
                     </p>
                     
                     {/* Success indicators */}
                     <div className="flex items-center justify-center space-x-6 text-green-400">
                       <div className="flex items-center space-x-2">
                         <CheckCircle className="h-5 w-5 animate-pulse" />
-                        <span className="text-sm font-medium">One Platform</span>
+                        <span className="text-sm font-medium">Done For You</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <CheckCircle className="h-5 w-5 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                        <span className="text-sm font-medium">One Price</span>
+                        <span className="text-sm font-medium">Simple Pricing</span>
                       </div>
                       <div className="flex items-center space-x-2">
                         <CheckCircle className="h-5 w-5 animate-pulse" style={{ animationDelay: '1s' }} />
-                        <span className="text-sm font-medium">One Solution</span>
+                        <span className="text-sm font-medium">Real Results</span>
                       </div>
                     </div>
                   </div>
@@ -1358,35 +1306,60 @@ export default function LandingPage() {
             </div>
           </div>
 
-          {/* Transition element to next section */}
-          <div className="text-center mt-16 sm:mt-20 lg:mt-24">
-            <div className="w-1 h-16 bg-gradient-to-b from-white/50 to-transparent mx-auto mb-8"></div>
-            <p className="text-white/50 text-lg">Discover how TrueFlow transforms your business</p>
-            <button 
-              onClick={() => featuresRef.current?.scrollIntoView({ behavior: 'smooth' })}
-              className="w-12 h-12 border-2 border-white/30 rounded-full flex items-center justify-center mx-auto mt-6 animate-bounce hover:border-white/50 hover:bg-white/10 transition-all duration-300 cursor-pointer"
-            >
-              <ChevronRight className="h-6 w-6 text-white/50 rotate-90" />
-            </button>
+            {/* USP and Clear Offer */}
+            <div className="text-center mt-16 sm:mt-20 lg:mt-24 max-w-4xl mx-auto">
+              <div className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-3xl p-8 sm:p-12 border-2 border-blue-500/40 shadow-2xl shadow-blue-500/20">
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                  Our Promise: More Leads. Less Work. Real Results.
+                </h3>
+                <p className="text-xl text-white/80 mb-8 leading-relaxed">
+                  We build custom automation that works 24/7 to capture leads, follow up instantly, schedule appointments, and keep your pipeline full - so you can focus on serving your clients, not chasing them.
+                </p>
+
+                {/* Key Benefits */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                    <CheckCircle className="h-10 w-10 text-green-400 mb-3 mx-auto" />
+                    <h4 className="text-white font-bold mb-2">Done For You</h4>
+                    <p className="text-white/70 text-sm">We build it, manage it, and optimize it</p>
+                  </div>
+                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                    <Clock className="h-10 w-10 text-blue-400 mb-3 mx-auto" />
+                    <h4 className="text-white font-bold mb-2">Works 24/7</h4>
+                    <p className="text-white/70 text-sm">Never miss a lead, even while you sleep</p>
+                  </div>
+                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                    <Target className="h-10 w-10 text-purple-400 mb-3 mx-auto" />
+                    <h4 className="text-white font-bold mb-2">Custom Built</h4>
+                    <p className="text-white/70 text-sm">Tailored to your business, not one-size-fits-all</p>
+                  </div>
+                </div>
+
+                {/* Strong CTA */}
+                <Link
+                  href="/ai-readiness-assessment"
+                  className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
+                >
+                  <span>Start Your Free Assessment</span>
+                  <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+                </Link>
+                <p className="text-white/50 text-sm mt-4">No commitment. No credit card. Just honest advice about what automation can do for your business.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-      </StickyParallax>
 
       {/* Features Carousel Section */}
       <section id="features" className="py-12 sm:py-16 lg:py-20 px-4 overflow-hidden pt-16 sm:pt-24 lg:pt-32" ref={featuresRef}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <FadeInUp>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8">
-                <TextScramble text="TrueFlow Core System" />
-              </h2>
-            </FadeInUp>
-            <FadeInUp delay={0.2}>
-              <p className="text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
-                Everything you need. Nothing you don't. Built for speed, clarity, and scale.
-              </p>
-            </FadeInUp>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8">
+              What Makes TrueFlow Different
+            </h2>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto mb-6 sm:mb-8 px-4">
+              We don't just sell you software. We build, manage, and optimize your entire automation system - so you can focus on running your business.
+            </p>
           </div>
 
           {/* Modern Feature Grid */}
@@ -1394,27 +1367,11 @@ export default function LandingPage() {
             {/* Feature Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12">
               {features.map((feature, index) => (
-                <ScrollReveal3D
-                  key={index}
-                  rotateX={15}
-                  rotateY={15}
-                  scale={0.95}
-                  delay={index * 0.1}
-                >
-                  <GlowCard
+                <div
                   key={index}
                   className={`group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 lg:p-8 border border-white/10 hover:border-white/15 transition-all duration-500 hover:bg-white/7 cursor-pointer ${
                     index === currentFeatureIndex ? 'ring-1 ring-blue-500/30 bg-white/8' : ''
                   }`}
-                  glowColor={
-                    feature.gradient.includes('from-blue-500') ? '#3b82f6' :
-                    feature.gradient.includes('from-purple-500') ? '#8b5cf6' :
-                    feature.gradient.includes('from-green-500') ? '#10b981' :
-                    feature.gradient.includes('from-orange-500') ? '#f97316' :
-                    '#3b82f6'
-                  }
-                >
-                <div
                   onClick={() => setCurrentFeatureIndex(index)}
                   style={{
                     animationDelay: `${feature.delay}ms`
@@ -1461,8 +1418,6 @@ export default function LandingPage() {
                     <ArrowRight className="h-4 w-4 ml-2 transition-transform duration-300" />
                   </Link>
                 </div>
-                </GlowCard>
-                </ScrollReveal3D>
               ))}
             </div>
             
@@ -1488,65 +1443,367 @@ export default function LandingPage() {
       <section id="how-it-works" className="py-16 sm:py-24 lg:py-32 px-4" ref={howItWorksRef}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <TextReveal text="How It Works" className="text-5xl md:text-7xl font-bold text-white mb-8" delay={0} />
-            <FadeInUp delay={0.4}>
-              <p className="text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto px-4">
-                Transform your ideas into powerful content in three simple steps
-              </p>
-            </FadeInUp>
+            <h2 className={`text-5xl md:text-7xl font-bold text-white mb-8 transition-all duration-1000 ${
+              ''
+            }`}>
+              How It Works
+            </h2>
+            <p className={`text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto px-4 transition-all duration-1000 ${
+              ''
+            }`}>
+              We handle the tech stuff. You focus on your business.
+            </p>
           </div>
 
-          <ScrollTimeline
-            items={[
+          {/* Animated Progress Line */}
+          <div className="relative mb-20">
+            <div className="hidden md:block absolute top-16 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-white/20 rounded-full">
+              <div className={`h-full bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 rounded-full transition-all duration-2000 ${
+                'w-full'
+              }`}></div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 relative px-4 sm:px-0">
+            {[
               {
                 step: 1,
-                title: "Record Your Ideas",
-                description: "Simply speak your thoughts, insights, or topics you want to share. Our AI captures every nuance of your voice and style.",
-                icon: <Mic className="h-16 w-16" strokeWidth={1.5} />,
+                title: "Free Assessment",
+                description: "Tell us about your business and the challenges you face. We'll identify where automation can save you time and make you money.",
+                icon: <MessageSquare className="h-16 w-16" strokeWidth={1.5} />,
                 color: "from-green-500 to-emerald-600",
                 animation: "slide-in-left"
               },
               {
-                step: 2, 
-                title: "AI Transforms Content",
-                description: "Our advanced AI analyzes your transcript and creates engaging newsletters and blog posts that sound authentically you.",
+                step: 2,
+                title: "We Build Your System",
+                description: "Our team creates custom automations tailored to your business. Lead capture, follow-ups, scheduling, messaging - whatever you need.",
                 icon: <Brain className="h-16 w-16" strokeWidth={1.5} />,
                 color: "from-blue-500 to-purple-600",
                 animation: "slide-in-up"
               },
               {
                 step: 3,
-                title: "Automated Publishing",
-                description: "Content is automatically scheduled and sent to your audience at optimal times for maximum engagement and results.",
-                icon: <Send className="h-16 w-16" strokeWidth={1.5} />,
+                title: "You Get Results",
+                description: "Your automations start working immediately. More leads captured, faster follow-ups, happier customers. Plus you get beta access to our software.",
+                icon: <TrendingUp className="h-16 w-16" strokeWidth={1.5} />,
                 color: "from-purple-500 to-pink-600",
                 animation: "slide-in-right"
               }
-            ]}
-            className="max-w-6xl mx-auto"
-          />
+            ].map((step, index) => (
+              <div
+                key={index}
+                className={`text-center group bg-black/40 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 hover:bg-black/60 hover:border-white/30 relative transition-all duration-700 transform-gpu perspective-1000 ${
+                  ''
+                }`}
+                style={{
+                  transformStyle: 'preserve-3d',
+                  transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.320, 1)'
+                }}
+                onMouseEnter={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  const centerX = rect.left + rect.width / 2
+                  const centerY = rect.top + rect.height / 2
+                  const mouseX = e.clientX - centerX
+                  const mouseY = e.clientY - centerY
+                  const rotateX = (mouseY / rect.height) * -20
+                  const rotateY = (mouseX / rect.width) * 20
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px) scale(1.05)`
+                }}
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  const centerX = rect.left + rect.width / 2
+                  const centerY = rect.top + rect.height / 2
+                  const mouseX = e.clientX - centerX
+                  const mouseY = e.clientY - centerY
+                  const rotateX = (mouseY / rect.height) * -20
+                  const rotateY = (mouseX / rect.width) * 20
+                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px) scale(1.05)`
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
+                }}
+              >
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+
+                {/* Floating microparticles */}
+                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  {[...Array(8)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-1 h-1 bg-white/40 rounded-full animate-[icon-float_3s_ease-in-out_infinite]"
+                      style={{
+                        left: `${15 + i * 10}%`,
+                        top: `${20 + (i % 3) * 25}%`,
+                        animationDelay: `${i * 0.4}s`
+                      }}
+                    />
+                  ))}
+                </div>
+
+                <div className="relative mb-8 sm:mb-10 lg:mb-12 transform transition-all duration-500 group-hover:scale-105" style={{ margin: '2rem 0.5rem 2rem 0.5rem' }}>
+                  {/* Animated circle with gentle glow */}
+                  <div className={`w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center mx-auto text-white shadow-xl group-hover:shadow-2xl transition-all duration-500 relative ${
+                    ''
+                  }`} style={{ animationDelay: `${index * 500}ms` }}>
+                    {/* Gentle rings */}
+                    <div className="absolute inset-0 rounded-full border-2 border-white/20 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                    <div className="absolute inset-2 rounded-full border border-white/10 opacity-50"></div>
+                    
+                    {/* Icon with gentle animation */}
+                    <div className={`transform transition-all duration-500 group-hover:scale-105 ${
+                      ''
+                    }`} style={{ animationDelay: `${index * 700}ms` }}>
+                      {step.icon}
+                    </div>
+                  </div>
+
+                  {/* Step number with enhanced styling - positioned to not get cut off */}
+                  <AnimatedStepNumber stepNumber={step.step} index={index} visible={howItWorksVisible} />
+                </div>
+
+                {/* Title with typewriter effect */}
+                <h3 className={`text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4 transition-all duration-500 group-hover:text-blue-100 ${
+                  'translate-y-0 opacity-100'
+                }`} style={{ transitionDelay: `${index * 300 + 1000}ms` }}>
+                  {step.title}
+                </h3>
+
+                {/* Description with slide-in */}
+                <p className={`text-white/70 leading-relaxed text-sm sm:text-base lg:text-lg group-hover:text-white/90 transition-all duration-500 ${
+                  'translate-y-0 opacity-100'
+                }`} style={{ transitionDelay: `${index * 300 + 1200}ms` }}>
+                  {step.description}
+                </p>
+
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Flow Mode Feature Spotlight */}
+      <section id="flow-mode" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-black"></div>
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Content */}
+            <div className="space-y-6">
+              <div className="inline-block px-4 py-2 bg-purple-500/20 border border-purple-500/30 rounded-full">
+                <span className="text-purple-300 text-sm font-semibold">✨ Available Now</span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+                Introducing <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Flow Mode</span>
+              </h2>
+
+              <p className="text-xl text-white/80 leading-relaxed">
+                The AI productivity system that turns scattered thoughts into organized action.
+                Stop using 5 different apps to plan your day.
+              </p>
+
+              <div className="space-y-4 pt-4">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <Mic className="h-4 w-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">1. Brain Dump</h4>
+                    <p className="text-white/70">Record everything on your mind in one voice memo</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <Brain className="h-4 w-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">2. AI Extraction</h4>
+                    <p className="text-white/70">Watch AI extract tasks and prioritize your day</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center">
+                    <Target className="h-4 w-4 text-purple-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-semibold mb-1">3. Execute with Focus</h4>
+                    <p className="text-white/70">One task at a time, zero distractions</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold hover:from-purple-700 hover:to-pink-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <span>Try Flow Mode Free</span>
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Right: Visual */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 rounded-2xl p-8 border border-purple-500/30 backdrop-blur-md">
+                <div className="space-y-4">
+                  <div className="bg-black/40 rounded-lg p-4">
+                    <p className="text-white/60 text-sm mb-2">🎤 Voice Input</p>
+                    <p className="text-white/90">&quot;I need to finish the client proposal, schedule team meeting, and respond to that urgent email...&quot;</p>
+                  </div>
+
+                  <div className="flex items-center justify-center py-2">
+                    <ArrowRight className="h-6 w-6 text-purple-400" />
+                  </div>
+
+                  <div className="bg-black/40 rounded-lg p-4 space-y-2">
+                    <p className="text-white/60 text-sm mb-2">✨ AI Extracted Tasks</p>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-red-500/30 border border-red-500 rounded"></div>
+                      <span className="text-white/90 text-sm">Finish client proposal (High Priority)</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-yellow-500/30 border border-yellow-500 rounded"></div>
+                      <span className="text-white/90 text-sm">Schedule team meeting (Medium)</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <div className="w-4 h-4 bg-green-500/30 border border-green-500 rounded"></div>
+                      <span className="text-white/90 text-sm">Respond to urgent email (Low)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Chat Widget Feature Spotlight */}
+      <section id="chat-widgets" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        {/* Gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-black"></div>
+
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left: Visual */}
+            <div className="order-2 lg:order-1 relative">
+              <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl p-8 border border-blue-500/30 backdrop-blur-md">
+                {/* Mockup of website with chat widget */}
+                <div className="bg-black/60 rounded-lg p-6 space-y-4 relative min-h-[400px]">
+                  <div className="flex items-center justify-between">
+                    <div className="space-y-1">
+                      <div className="h-3 w-32 bg-white/20 rounded"></div>
+                      <div className="h-2 w-48 bg-white/10 rounded"></div>
+                    </div>
+                  </div>
+
+                  {/* Chat widget mockup */}
+                  <div className="absolute bottom-8 right-8">
+                    <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse">
+                      <MessageCircle className="h-8 w-8 text-white" />
+                    </div>
+
+                    {/* Chat window */}
+                    <div className="absolute bottom-20 right-0 bg-black/90 backdrop-blur-md rounded-2xl border border-blue-500/30 p-4 w-80 shadow-2xl">
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-white font-semibold">TrueFlow Assistant</span>
+                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="bg-blue-500/20 rounded-lg p-3">
+                          <p className="text-white/90 text-sm">Hi! How can I help you today?</p>
+                        </div>
+                        <div className="bg-white/10 rounded-lg p-3">
+                          <p className="text-white/70 text-sm">Tell me about your services</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Content */}
+            <div className="order-1 lg:order-2 space-y-6">
+              <div className="inline-block px-4 py-2 bg-blue-500/20 border border-blue-500/30 rounded-full">
+                <span className="text-blue-300 text-sm font-semibold">✨ Available Now</span>
+              </div>
+
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white">
+                AI Chat Widgets
+              </h2>
+
+              <p className="text-xl text-white/80 leading-relaxed">
+                Turn website visitors into conversations. Add intelligent AI assistants to any site
+                in 60 seconds. Capture leads, answer questions, and engage 24/7.
+              </p>
+
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-white/90">Fully customizable</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-white/90">Unlimited websites</span>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-white/90">Lead capture</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <CheckCircle className="h-5 w-5 text-green-400" />
+                    <span className="text-white/90">Real-time analytics</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4">
+                <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-cyan-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
+                  <span>Create Your Widget</span>
+                  <ArrowRight className="h-5 w-5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Mid-page CTA Section */}
+      <section className="py-16 sm:py-24 px-4 bg-gradient-to-b from-black to-gray-900">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-blue-500/30 shadow-2xl">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+              Ready to Stop Losing Leads?
+            </h2>
+            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
+              Get a free assessment and discover exactly how automation can save you time, capture more leads, and grow your revenue.
+            </p>
+            <Link
+              href="/ai-readiness-assessment"
+              className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
+            >
+              <span>Get Your Free Assessment</span>
+              <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Enhanced Testimonials Section */}
-      <section id="testimonials" className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden" ref={testimonialsScrollRef}>
-        {/* Wave Background */}
-        <div className="absolute inset-0">
-          <WaveBackground
-            color="#06b6d4"
-            amplitude={50}
-            frequency={0.002}
-            speed={0.001}
-            className="opacity-10"
-          />
-        </div>
-        <div className="max-w-7xl mx-auto relative z-10">
+      <section id="testimonials" className="py-16 sm:py-24 lg:py-32 px-4" ref={testimonialsScrollRef}>
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <BlurIn>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8">
-                <TextScramble text="Real Results from Real Businesses" />
-              </h2>
-            </BlurIn>
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8 transition-all duration-1000 ${
+              ''
+            }`}>
+              Real Results from Real Businesses
+            </h2>
             <p className={`text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto px-4 transition-all duration-1000 ${
               ''
             }`}>
@@ -1558,11 +1815,40 @@ export default function LandingPage() {
           <div className="relative">
             <div className="flex space-x-4 sm:space-x-6 lg:space-x-8 overflow-x-auto scrollbar-hidden pb-8 pt-8 pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8" style={{ scrollSnapType: 'x mandatory' }}>
               {testimonials.map((testimonial, index) => (
-                <FlipIn key={index} delay={0.2 + index * 0.1}>
-                  <TiltCard
-                    className="flex-none w-80 sm:w-88 lg:w-96 bg-black/60 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 scroll-snap-align-start hover:bg-black/80 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-700 group relative overflow-hidden transform-gpu"
-                    maxTilt={15}
-                  >
+                <div
+                  key={index}
+                  className={`flex-none w-80 sm:w-88 lg:w-96 bg-black/60 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 scroll-snap-align-start hover:bg-black/80 hover:border-blue-400/30 hover:shadow-2xl hover:shadow-blue-500/20 transition-all duration-700 group relative overflow-hidden transform-gpu ${
+                    ''
+                  }`}
+                  style={{ 
+                    animationDelay: `${index * 200}ms`,
+                    transformStyle: 'preserve-3d',
+                    transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.320, 1)'
+                  }}
+                  onMouseEnter={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect()
+                    const centerX = rect.left + rect.width / 2
+                    const centerY = rect.top + rect.height / 2
+                    const mouseX = e.clientX - centerX
+                    const mouseY = e.clientY - centerY
+                    const rotateX = (mouseY / rect.height) * -15
+                    const rotateY = (mouseX / rect.width) * 15
+                    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(15px) scale(1.02)`
+                  }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect()
+                    const centerX = rect.left + rect.width / 2
+                    const centerY = rect.top + rect.height / 2
+                    const mouseX = e.clientX - centerX
+                    const mouseY = e.clientY - centerY
+                    const rotateX = (mouseY / rect.height) * -15
+                    const rotateY = (mouseX / rect.width) * 15
+                    e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(15px) scale(1.02)`
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
+                  }}
+                >
                   {/* Animated background gradient */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                   
@@ -1587,6 +1873,11 @@ export default function LandingPage() {
                     <div>
                       <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-blue-100 transition-colors duration-300">{testimonial.name}</h4>
                       <p className="text-sm sm:text-base text-white/70 group-hover:text-white/90 transition-colors duration-300">{testimonial.role}</p>
+                      {testimonial.tier && (
+                        <span className="inline-block mt-1 px-2 py-0.5 text-xs rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
+                          {testimonial.tier} Client
+                        </span>
+                      )}
                       <p className="text-white/50 text-xs sm:text-sm group-hover:text-white/70 transition-colors duration-300">{testimonial.company}</p>
                     </div>
                   </div>
@@ -1636,8 +1927,7 @@ export default function LandingPage() {
                       />
                     ))}
                   </div>
-                  </TiltCard>
-                </FlipIn>
+                </div>
               ))}
             </div>
 
@@ -1658,36 +1948,32 @@ export default function LandingPage() {
       </section>
 
       {/* Integrations Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden">
-        {/* Flow Field Background */}
-        <div className="absolute inset-0">
-          <FlowField
-            particleCount={300}
-            color="#8b5cf6"
-            noiseScale={0.005}
-            speed={0.001}
-            className="opacity-20"
-          />
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section id="integrations" className="py-16 sm:py-24 lg:py-32 px-4">
+        <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <FadeInUp>
-              <ParallaxText 
-                baseVelocity={5}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8"
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 sm:mb-8">
+              Seamless{' '}
+              <span 
+                className="bg-clip-text text-transparent "
+                style={{
+                  backgroundImage: `linear-gradient(${gradientOffset}deg, 
+                    hsl(${(gradientOffset + 220) % 360}, 70%, 60%), 
+                    hsl(${(gradientOffset + 280) % 360}, 80%, 65%), 
+                    hsl(${(gradientOffset + 340) % 360}, 85%, 70%), 
+                    hsl(${(gradientOffset + 40) % 360}, 75%, 65%))`,
+                  backgroundSize: '300% 300%',
+                  animation: `gradient-shift 3s ease-in-out infinite`
+                }}
               >
-                Seamless Integrations
-              </ParallaxText>
-            </FadeInUp>
-            <FadeInUp delay={0.2}>
-              <p className="text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto px-4">
-                Connect with your favorite tools and platforms to supercharge your workflow
-              </p>
-            </FadeInUp>
+                Integrations
+              </span>
+            </h2>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/70 max-w-4xl mx-auto px-4">
+              Connect with your favorite tools and platforms to supercharge your workflow
+            </p>
           </div>
 
           {/* Orbital Animation Container */}
-          <ScaleIn delay={0.5}>
           <div className="relative flex items-center justify-center min-h-[500px] sm:min-h-[600px] lg:min-h-[800px]" style={{ perspective: '1000px' }}>
             {/* Central TrueFlow Infinity Symbol */}
             <div className="absolute z-10">
@@ -1887,80 +2173,185 @@ export default function LandingPage() {
               ))}
             </div>
           </div>
-          </ScaleIn>
         </div>
       </section>
 
+      {/* Blog Preview Section */}
+      <section id="blog" className="py-16 sm:py-24 lg:py-32 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Latest from Our Blog
+            </h2>
+            <p className="text-lg sm:text-xl text-white/80">
+              Stay updated with industry insights and tips to grow your business
+            </p>
+          </div>
 
+          {/* Blog Posts Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {mounted && recentBlogPosts.map((post, index) => {
+              // Use primary tag for color, fallback to first tag
+              const primaryTagSlug = post.primaryTag?.slug || post.tags[0]?.slug
+              const gradientClass = primaryTagSlug && tagColorPalettes[primaryTagSlug] 
+                ? tagColorPalettes[primaryTagSlug]
+                : 'from-gray-500 to-slate-600'
+              
+              return (
+                <Link
+                  key={post.id}
+                  href={`/blog/${post.slug}`}
+                  className="group block"
+                >
+                  <article className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 h-full flex flex-col border border-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-white/10 transform hover:-translate-y-1">
+                    {/* Featured Image */}
+                    <div className={`h-48 bg-gradient-to-br ${gradientClass} relative overflow-hidden group`}>
+                      {post.featuredImage ? (
+                        <>
+                          <Image
+                            src={post.featuredImage.url}
+                            alt={post.featuredImage.alt}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover:scale-110"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          />
+                          {/* Color-coded transparency overlay */}
+                          <div className={`absolute inset-0 bg-gradient-to-br ${gradientClass} opacity-60 group-hover:opacity-50 transition-opacity duration-300`}></div>
+                          {/* Additional dark overlay for better text readability */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                        </>
+                      ) : (
+                        <>
+                          {/* Decorative elements for posts without images */}
+                          <div className="absolute inset-0 overflow-hidden">
+                            <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                            <div className="absolute -bottom-10 -left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
+                            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-white/5 rounded-full"></div>
+                          </div>
+                          {/* Pattern overlay */}
+                          <div className="absolute inset-0 opacity-20" style={{
+                            backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.05) 35px, rgba(255,255,255,.05) 70px)`
+                          }}></div>
+                        </>
+                      )}
+                      <div className="absolute bottom-4 left-4 z-10">
+                        <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm">
+                          {post.category.name}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="flex items-center gap-4 text-sm text-white/60 mb-3">
+                        <span className="flex items-center gap-1">
+                          <Calendar className="h-4 w-4" />
+                          {new Date(post.date).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                          })}
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <Clock className="h-4 w-4" />
+                          {post.readTime} min read
+                        </span>
+                      </div>
+
+                      <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
+                        {post.title}
+                      </h3>
+
+                      <p className="text-white/70 mb-4 line-clamp-3 flex-1">
+                        {post.excerpt}
+                      </p>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {post.tags.slice(0, 3).map((tag) => {
+                          const tagGradient = tagColorPalettes[tag.slug] || 'from-gray-500 to-slate-600'
+                          return (
+                            <span
+                              key={tag.slug}
+                              className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${tagGradient} text-white opacity-80`}
+                            >
+                              {tag.name}
+                            </span>
+                          )
+                        })}
+                        {post.tags.length > 3 && (
+                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-white/10 text-white/60">
+                            +{post.tags.length - 3} more
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-white/60">
+                          By {post.author.name}
+                        </span>
+                        <span className="text-blue-400 group-hover:translate-x-1 transition-transform">
+                          <ArrowRight className="h-5 w-5" />
+                        </span>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              )
+            })}
+
+
+          </div>
+
+          {/* View All Posts Button */}
+          <div className="text-center mt-12">
+            <Link 
+              href="/blog" 
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+            >
+              View All Posts
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden">
-        {/* Geometric Background for Pricing */}
-        <div className="absolute inset-0">
-          <GeometricBackground
-            shapes={['hexagon', 'triangle', 'circle']}
-            colors={['#f59e0b', '#ef4444', '#10b981']}
-            particleCount={30}
-            speed={0.0005}
-            className="opacity-10"
-          />
-        </div>
-        <div className="max-w-6xl mx-auto relative z-10">
+      <section className="py-16 sm:py-24 lg:py-32 px-4">
+        <div className="max-w-6xl mx-auto">
           {/* Pricing Section Header */}
           <div className="text-center mb-12 sm:mb-16">
-            <TextReveal text="Simple, Transparent Pricing" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4" delay={0} />
-            <FadeInUp delay={0.4}>
-              <p className="text-lg sm:text-xl text-white/80">
-                Choose the plan that fits your business needs
-              </p>
-            </FadeInUp>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Custom Packages for Your Business
+            </h2>
+            <p className="text-lg sm:text-xl text-white/80">
+              Every business is different. We build automation packages tailored to your specific needs and budget.
+            </p>
           </div>
 
               {/* Pricing Options */}
-              <DepthCards
-                className="mb-12 max-w-6xl mx-auto"
-                ref={pricingRef}
-                gap={32}
-                perspective={1000}
-                cardClassName="w-full"
-              >
-                {/* Plan 1: Content Machine Only */}
-                <BorderBeam className="" duration={4} borderWidth={2} colorFrom="#6B7280" colorTo="#9CA3AF">
+              <div ref={pricingRef} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
+                {/* Plan 1: Starter */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Content Machine™</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Starter Package</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className="text-4xl font-bold text-white">
-                        <AnimatedNumber
-                          to={150}
-                          prefix="$"
-                          variant="particle"
-                          scrollTrigger={true}
-                          duration={2000}
-                          easing={easings.easeOutExpo}
-                          particleConfig={{
-                            colors: ['#6B7280', '#9CA3AF', '#D1D5DB'],
-                            count: 12,
-                            spread: 30,
-                            fadeOut: true
-                          }}
-                          className="inline-block"
-                        />
-                      </span>
-                      <span className="text-white/70">/week</span>
+                      <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
-                    <p className="text-white/70">Access to our powerful AI content creation system</p>
+                    <p className="text-white/70">Perfect for small businesses just getting started with automation</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'AI-powered content creation',
-                      'Transform voice to content',
-                      'SEO-optimized blog posts',
-                      'Email sequences',
-                      'Social media posts',
-                      'Content dashboard access',
-                      'Basic analytics'
+                      'Basic lead capture setup',
+                      'Automated follow-up messages',
+                      'Simple scheduling system',
+                      'Email & SMS notifications',
+                      'Beta software access',
+                      'Email support',
+                      'Monthly check-ins'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
@@ -1969,17 +2360,13 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <ShimmerButton 
-                    className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group"
-                    onClick={handleCTAClick}
-                  >
-                    <Link href="https://trueflow.ai/readiness-assessment" className="relative z-10">Get Started</Link>
-                  </ShimmerButton>
+                  <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group">
+                    <span className="relative z-10">Get Free Assessment</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                  </Link>
                 </div>
-                </BorderBeam>
 
-                {/* Plan 2: Complete System with CRM */}
-                <BorderBeam className="" duration={3} borderWidth={3} colorFrom="#3b82f6" colorTo="#8b5cf6">
+                {/* Plan 2: Growth Package */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 scale-105 ring-2 ring-purple-500">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
@@ -1988,41 +2375,23 @@ export default function LandingPage() {
                   </div>
 
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Complete System</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Growth Package</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className="text-4xl font-bold text-white">
-                        <AnimatedNumber
-                          to={300}
-                          prefix="$"
-                          variant="particle"
-                          scrollTrigger={true}
-                          duration={2200}
-                          easing={easings.easeOutExpo}
-                          particleConfig={{
-                            colors: ['#3B82F6', '#8B5CF6', '#EC4899'],
-                            count: 20,
-                            spread: 50,
-                            fadeOut: true,
-                            gravity: 0.3
-                          }}
-                          className="inline-block"
-                        />
-                      </span>
-                      <span className="text-white/70">/week</span>
+                      <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
-                    <p className="text-white/70">Everything in Content Machine™ plus full CRM</p>
+                    <p className="text-white/70">For established businesses ready to scale</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Everything in Content Machine™',
-                      'Full CRM system',
-                      'Lead capture & tracking',
-                      'Automated follow-ups',
-                      'Sales pipeline management',
-                      'Customer communication hub',
-                      'Advanced analytics & reporting',
-                      'Dedicated success manager'
+                      'Everything in Starter',
+                      'Advanced lead nurturing workflows',
+                      'Multi-channel communication',
+                      'Social media automation',
+                      'Review request automation',
+                      'Beta software access',
+                      'Priority phone support',
+                      'Bi-weekly optimization calls'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
@@ -2031,44 +2400,39 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <ShimmerButton 
-                    className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group" 
-                    shimmerColor="rgba(255, 255, 255, 0.7)"
-                    onClick={handleCTAClick}
-                  >
-                    <Link href="https://trueflow.ai/readiness-assessment" className="relative z-10">Get Complete System</Link>
-                  </ShimmerButton>
+                  <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group">
+                    <span className="relative z-10">Get Free Assessment</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+                  </Link>
                 </div>
-                </BorderBeam>
 
-                {/* Plan 3: Custom Enterprise */}
-                <BorderBeam className="" duration={5} borderWidth={2} colorFrom="#8b5cf6" colorTo="#ec4899">
+                {/* Plan 3: Enterprise Package */}
                 <div className="relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu bg-white/5 border-white/20 hover:bg-white/10">
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <span className="bg-purple-500/20 text-purple-400 px-4 py-1 rounded-full text-sm font-semibold border border-purple-500/30">
-                      Premium
+                      White Glove
                     </span>
                   </div>
 
                   <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Custom Enterprise</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Enterprise Package</h3>
                     <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className="text-2xl font-bold text-white">Contact us</span>
-                      <span className="text-white/70">for pricing</span>
+                      <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
-                    <p className="text-white/70">Large-scale content operations for agencies & enterprises</p>
+                    <p className="text-white/70">Complete automation with dedicated support</p>
                   </div>
 
                   <div className="space-y-3 mb-6">
                     {[
-                      'Multiple brand management',
-                      'White-label content solutions',
-                      'Custom workflow development',
+                      'Everything in Growth',
+                      'Custom integrations',
+                      'Advanced CRM workflows',
+                      'Full sales pipeline automation',
+                      'Marketing campaign automation',
+                      'Beta software access',
                       'Dedicated account manager',
-                      'API access & integrations',
-                      'Team collaboration tools',
-                      'Advanced analytics & reporting',
-                      'Priority support & training'
+                      'Weekly strategy calls',
+                      'Unlimited support & revisions'
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center space-x-3">
                         <CheckCircle className="h-5 w-5 text-green-400 flex-shrink-0" />
@@ -2077,17 +2441,80 @@ export default function LandingPage() {
                     ))}
                   </div>
 
-                  <ShimmerButton className="w-full py-3 px-6 rounded-lg font-semibold transition-all bg-white/10 text-white hover:bg-white/20 border border-white/20 block text-center" shimmerColor="rgba(139, 92, 246, 0.5)">
-                    <a href="mailto:matt@trueflow.ai">Contact Sales</a>
-                  </ShimmerButton>
+                  <Link href="/ai-readiness-assessment" className="w-full py-4 px-6 rounded-full font-semibold transition-all bg-white/10 text-white hover:bg-white/20 border border-white/20 block text-center">
+                    Get Free Assessment
+                  </Link>
                 </div>
-                </BorderBeam>
-              </DepthCards>
+
+              </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-16 sm:py-24 lg:py-32 px-4 bg-black/40">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              "But What About..."
+            </h2>
+            <p className="text-lg sm:text-xl text-white/80">
+              We get it. You have questions. Here are the honest answers.
+            </p>
+          </div>
+
+          <div className="space-y-6">
+            {[
+              {
+                question: "Do I need to know anything about technology?",
+                answer: "Not at all! That's the whole point. We handle all the technical setup and maintenance. You just tell us what you want to accomplish, and we make it happen."
+              },
+              {
+                question: "How long does it take to get set up?",
+                answer: "Most basic automations are up and running within 1-2 weeks. More complex setups may take 3-4 weeks. We'll give you a clear timeline after your free assessment."
+              },
+              {
+                question: "What if I need changes or want to add something new?",
+                answer: "That's included! We're not a set-it-and-forget-it service. As your needs change, we adjust your automations. All packages include ongoing support and updates."
+              },
+              {
+                question: "Will this work with my existing tools?",
+                answer: "Almost always, yes. We build automations that connect with whatever you're already using - your phone, email, calendar, website, CRM, or any other software. If you have something specific, ask us during your free assessment."
+              },
+              {
+                question: "What's included in 'beta software access'?",
+                answer: "As we build automation for your business, you'll also get early access to our TrueFlow platform. Think of it as a bonus - you can use it to manage tasks, create content, and see your business metrics in one place."
+              },
+              {
+                question: "How much does it really cost?",
+                answer: "It depends on what you need. A simple lead capture and follow-up system might be a few hundred dollars a month. A complete automation package with scheduling, messaging, and social media could be more. The best way to find out is to get your free assessment - we'll give you an exact price based on your needs."
+              },
+              {
+                question: "What if it doesn't work for my business?",
+                answer: "We're confident it will, but we include a satisfaction guarantee in all our packages. If you're not happy with the results, we'll work with you to make it right or part ways on good terms."
+              },
+              {
+                question: "Can I cancel anytime?",
+                answer: "Yes. We typically recommend staying for at least 90 days to see the full impact, but there are no long-term contracts or cancellation fees."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-white/5 backdrop-blur-md rounded-xl border border-white/20 p-6 hover:bg-white/10 transition-all duration-300">
+                <h3 className="text-xl font-bold text-white mb-3">{faq.question}</h3>
+                <p className="text-white/70 leading-relaxed">{faq.answer}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-white/70 text-lg mb-6">Still have questions?</p>
+            <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
+              <span>Get Your Free Assessment</span>
+              <ChevronRight className="h-5 w-5" />
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Footer */}
-      <FadeInUp delay={0}>
       <footer className="py-12 sm:py-16 px-4 bg-black/80 border-t border-white/10 backdrop-blur-md">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
@@ -2103,7 +2530,7 @@ export default function LandingPage() {
                 />
               </div>
               <p className="text-white/60 text-sm">
-                The most powerful AI-driven Business Operating System for content creation and audience engagement.
+                We build the automations that help small businesses capture more leads, save time, and grow.
               </p>
             </div>
             
@@ -2113,7 +2540,7 @@ export default function LandingPage() {
               <ul className="space-y-2">
                 <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Features</Link></li>
                 <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Pricing</Link></li>
-                <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">API</Link></li>
+                <li><Link href="/api-docs" className="text-white/60 hover:text-white transition-colors text-sm">API</Link></li>
                 <li><Link href="/coming-soon" className="text-white/60 hover:text-white transition-colors text-sm">Integrations</Link></li>
               </ul>
             </div>
@@ -2131,8 +2558,8 @@ export default function LandingPage() {
             
             {/* CTA */}
             <div>
-              <Link href="https://trueflow.ai/readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
-                Get Started
+              <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
+                Get Your Free Assessment
               </Link>
             </div>
           </div>
@@ -2140,31 +2567,28 @@ export default function LandingPage() {
           {/* Bottom Bar */}
           <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-white/40 text-sm">
-              © 2025 TrueFlow™️ AI, LLC. All rights reserved.
+              © 2025 TrueFlow™ AI, LLC. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link href="/coming-soon" className="text-white/40 hover:text-white/60 transition-colors text-sm">Terms</Link>
-              <Link href="/coming-soon" className="text-white/40 hover:text-white/60 transition-colors text-sm">Privacy Policy</Link>
+              <Link href="/terms" className="text-white/40 hover:text-white/60 transition-colors text-sm">Terms</Link>
+              <Link href="/privacy" className="text-white/40 hover:text-white/60 transition-colors text-sm">Privacy Policy</Link>
             </div>
           </div>
         </div>
       </footer>
-      </FadeInUp>
 
 
       {/* Scroll to Top Button */}
       {scrollY > 500 && (
         <div className="fixed bottom-8 left-8 z-50">
-          <RippleEffect color="rgba(59, 130, 246, 0.5)" className="rounded-full">
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="bg-black/50 backdrop-blur-md text-white p-3 rounded-full shadow-lg hover:bg-black/70 transition-all duration-300 hover:scale-110 animate-float-up-down border border-white/20"
-            >
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-              </svg>
-            </button>
-          </RippleEffect>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="bg-black/50 backdrop-blur-md text-white p-3 rounded-full shadow-lg hover:bg-black/70 transition-all duration-300 hover:scale-110 animate-float-up-down border border-white/20"
+          >
+            <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+            </svg>
+          </button>
         </div>
       )}
     </div>

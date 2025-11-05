@@ -1,5 +1,5 @@
 /**
- * TrueFlow AI Content Machine™ Detail Page
+ * TrueFlow AI Content Engine Detail Page
  * Deep dive into the AI content creation capabilities
  */
 
@@ -8,6 +8,8 @@
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Navigation from '../components/Navigation'
+import ContentEngineTabs from '../components/ContentEngineTabs'
 import { 
   ArrowLeft,
   ArrowRight,
@@ -23,7 +25,6 @@ import {
   Clock,
   Users,
   Target,
-  Sparkles,
   Upload,
   Download,
   Edit3,
@@ -35,6 +36,7 @@ import {
   Layers,
   MessageSquare
 } from 'lucide-react'
+import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
 
 interface Particle {
   id: number
@@ -375,7 +377,7 @@ export default function ContentEnginePage() {
       ))}
 
       {/* Cursor Trail */}
-      <div className="cursor-trail">
+      <div className="cursor-trail" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999 }}>
         {cursorTrail.map((point, index) => {
           const age = Date.now() - point.timestamp
           const opacity = Math.max(0, 1 - age / 400)
@@ -384,7 +386,7 @@ export default function ContentEnginePage() {
             <div
               key={index}
               style={{
-                position: 'absolute',
+                position: 'fixed',
                 left: point.x - size / 2,
                 top: point.y - size / 2,
                 width: size,
@@ -410,35 +412,7 @@ export default function ContentEnginePage() {
         }}
       />
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/10 bg-black/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
-            <Link href="/" className="flex items-center">
-              <Image 
-                src="/true-flow-logo.webp" 
-                alt="TrueFlow" 
-                width={280} 
-                height={70} 
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transform hover:scale-105 transition-transform"
-                priority
-                style={{ 
-                  maxWidth: '100%',
-                  objectFit: 'contain'
-                }}
-              />
-            </Link>
-
-            <div className="flex items-center space-x-6">
-              <Link href="/" className="text-white/70 hover:text-white transition-colors text-lg">
-                Back to Home
-              </Link>
-              <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation />
 
       {/* Enhanced Hero Section */}
       <section className="pt-32 pb-20 px-4" ref={heroRef}>
@@ -446,8 +420,8 @@ export default function ContentEnginePage() {
           <div className={`inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-8 border border-white/20 transition-all duration-1000 ${
             ''
           }`}>
-            <Sparkles className="h-5 w-5 text-blue-400 animate-pulse" />
-            <span className="text-white/90 text-lg">TrueFlow AI Content Machine™</span>
+            <TrueFlowLogoIcon size={20} className="animate-pulse" />
+            <span className="text-white/90 text-lg">TrueFlow AI Constant Content Engine™</span>
           </div>
           
           <h1 className={`text-5xl md:text-7xl font-bold text-white mb-8 leading-tight transition-all duration-1000 ${
@@ -480,7 +454,7 @@ export default function ContentEnginePage() {
           <div className={`flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 transition-all duration-1000 ${
             ''
           }`}>
-            <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
+            <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative z-10">Try It Now</span>
               <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
@@ -504,7 +478,7 @@ export default function ContentEnginePage() {
             <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 transition-all duration-1000 ${
               ''
             }`}>
-              How the Content Machine Works
+              How the Constant Content Engine™ Works
             </h2>
             <p className={`text-xl text-white/70 max-w-3xl mx-auto transition-all duration-1000 ${
               ''
@@ -622,6 +596,9 @@ export default function ContentEnginePage() {
         </div>
       </section>
 
+      {/* Content Engine Workflow Tabs */}
+      <ContentEngineTabs />
+
       {/* Enhanced AI Workflows Section */}
       <section className="py-20 px-4 bg-white/5" ref={featuresRef}>
         <div className="max-w-7xl mx-auto">
@@ -706,67 +683,6 @@ export default function ContentEnginePage() {
               </div>
             </div>
 
-            {/* Lead Management Workflow */}
-            <div 
-              className={`bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 p-8 hover:bg-black/80 hover:border-purple-500/30 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-500 group relative overflow-hidden transform-gpu ${
-                ''
-              }`} 
-              style={{ 
-                animationDelay: '700ms',
-                transformStyle: 'preserve-3d',
-                transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)'
-              }}
-              onMouseEnter={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect()
-                const centerX = rect.left + rect.width / 2
-                const centerY = rect.top + rect.height / 2
-                const mouseX = e.clientX - centerX
-                const mouseY = e.clientY - centerY
-                const rotateX = (mouseY / rect.height) * -12
-                const rotateY = (mouseX / rect.width) * 12
-                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(15px) scale(1.03)`
-              }}
-              onMouseMove={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect()
-                const centerX = rect.left + rect.width / 2
-                const centerY = rect.top + rect.height / 2
-                const mouseX = e.clientX - centerX
-                const mouseY = e.clientY - centerY
-                const rotateX = (mouseY / rect.height) * -12
-                const rotateY = (mouseX / rect.width) * 12
-                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(15px) scale(1.03)`
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
-              }}
-            >
-              {/* Shimmer effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100  -skew-x-12"></div>
-              
-              <div className="flex items-center space-x-4 mb-6">
-                <div className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg group-hover:scale-105 transition-transform duration-300">
-                  <Users className="h-8 w-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-white group-hover:text-purple-100 transition-colors duration-300">Lead Management</h3>
-              </div>
-              
-              <p className="text-white/70 mb-6 group-hover:text-white/90 transition-colors duration-300">Automated lead scoring, follow-ups, and nurturing sequences that convert prospects into customers</p>
-              
-              <div className="space-y-3 mb-6">
-                {['Behavioral lead scoring', 'Automated follow-up sequences', 'Personalized outreach', 'CRM integration'].map((feature, idx) => (
-                  <div key={idx} className={`flex items-center space-x-2 transition-all duration-500 ${
-                    'translate-x-0 opacity-100'
-                  }`} style={{ transitionDelay: `${700 + idx * 100}ms` }}>
-                    <CheckCircle className="h-4 w-4 text-green-400 group-hover:scale-105 group-hover:text-green-300 transition-all duration-300" />
-                    <span className="text-white/80 text-sm group-hover:text-white/95 transition-colors duration-300">{feature}</span>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-lg p-4 border border-purple-500/30 group-hover:border-purple-400/50 transition-colors duration-300">
-                <p className="text-white/90 italic group-hover:text-white transition-colors duration-300">Never lose a lead again. AI tracks every interaction and automatically nurtures prospects with personalized content.</p>
-              </div>
-            </div>
 
             {/* Customer Support Workflow */}
             <div 
@@ -1250,7 +1166,7 @@ export default function ContentEnginePage() {
             <div className={`flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 relative z-10 transition-all duration-1000 ${
               ''
             }`}>
-              <Link href="/readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 relative overflow-hidden group/btn">
+              <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 relative overflow-hidden group/btn">
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative z-10">Start Creating Now</span>
               </Link>
@@ -1296,8 +1212,8 @@ export default function ContentEnginePage() {
             <div>
               <h4 className="text-white font-semibold mb-4">Product</h4>
               <div className="space-y-2">
-                <Link href="/content-engine" className="block text-white/70 hover:text-white transition-colors">Content Machine</Link>
-                <Link href="/readiness-assessment" className="block text-white/70 hover:text-white transition-colors">Get Started</Link>
+                <Link href="/content-engine" className="block text-white/70 hover:text-white transition-colors">Constant Content Engine™</Link>
+                <Link href="/ai-readiness-assessment" className="block text-white/70 hover:text-white transition-colors">Get Started</Link>
                 <Link href="/faq" className="block text-white/70 hover:text-white transition-colors">FAQs</Link>
               </div>
             </div>
