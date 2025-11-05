@@ -807,19 +807,14 @@ export default function LandingPage() {
       >
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
-            <Link href="/content-engine" className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-12 border border-white/20 mt-16 hover:bg-white/20 transition-colors">
-              <TrueFlowLogoIcon size={20} className="text-blue-400" />
-              <span className="text-white/90 text-lg">Done-For-You Automation Services</span>
-            </Link>
-            
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2">
-              We build automations for<br />
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2 mt-16">
+              The all-in-one, AI-powered marketing and sales platform that works 24/7 for<br />
               <span className="inline-block min-h-[1.2em]">
                 <TypewriterText gradientOffset={gradientOffset} />
               </span>
             </h1>
 
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
+            <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto mb-8 sm:mb-12 px-4">
               Business owners lose up to 10 hours a week to repetitive tasks. We automate the busy work—so you can spend more time growing your business and less time behind a screen.
             </p>
 
