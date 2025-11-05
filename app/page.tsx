@@ -820,7 +820,7 @@ export default function LandingPage() {
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/70 max-w-4xl mx-auto mb-8 sm:mb-12 px-4">
-              Tailored systems that capture leads, follow up instantly, and keep your business running 24/7—no matter your industry.
+              Business owners lose up to 10 hours a week to repetitive tasks. We automate the busy work—so you can spend more time growing your business and less time behind a screen.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
@@ -840,6 +840,29 @@ export default function LandingPage() {
                 </div>
                 <span className="text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">See How It Works</span>
               </Link>
+            </div>
+
+            {/* Clarity Statement - What This Is */}
+            <div className="mt-16 sm:mt-20 max-w-4xl mx-auto px-4">
+              <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-4 text-center">
+                  Automation for Businesses: AI Scheduling, Lead Nurturing, and Customer Retention Systems
+                </h2>
+                <p className="text-base sm:text-lg text-white/70 text-center leading-relaxed">
+                  TrueFlow builds AI-powered systems that handle scheduling, lead nurturing, and follow-up—so you can focus on your customers, not admin work.
+                  <span className="block mt-3 text-white/90 font-medium">Done-for-you automation setup + ongoing support. You focus on your business. We handle the clicks.</span>
+                </p>
+              </div>
+            </div>
+
+            {/* Outcome Statement + Social Proof */}
+            <div className="mt-8 max-w-3xl mx-auto px-4 text-center">
+              <p className="text-lg sm:text-xl text-blue-400 font-semibold mb-2">
+                Get your automation roadmap in 30 minutes — see exactly where you can save 10+ hours a week.
+              </p>
+              <p className="text-sm sm:text-base text-white/60">
+                Trusted by 100+ businesses automating their operations
+              </p>
             </div>
           </div>
 
@@ -1022,9 +1045,14 @@ export default function LandingPage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                Who Needs Automation? Why Is It Helpful?
+                Still Doing Everything Manually?
               </h2>
-              <p className="text-xl text-white/70 max-w-3xl mx-auto">If you're losing sleep over missed leads, spending hours on repetitive tasks, or watching revenue slip through the cracks... this is for you.</p>
+              <p className="text-xl text-white/70 max-w-3xl mx-auto">
+                If you're still manually scheduling, following up, or sending forms—you're losing hours daily. Automation fixes that.
+              </p>
+              <p className="text-lg text-blue-400 font-semibold mt-4 max-w-2xl mx-auto">
+                Save 10+ hours a week and never miss another lead
+              </p>
             </div>
 
             {/* Vertical Stacked Chapters */}
@@ -1779,10 +1807,13 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 backdrop-blur-md rounded-3xl p-8 sm:p-12 border border-blue-500/30 shadow-2xl">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Stop Losing Leads?
+              Ready to Save 10+ Hours a Week and Book More Clients?
             </h2>
-            <p className="text-xl text-white/80 mb-8 max-w-2xl mx-auto">
-              Get a free assessment and discover exactly how automation can save you time, capture more leads, and grow your revenue.
+            <p className="text-xl text-white/80 mb-4 max-w-2xl mx-auto">
+              Get a free 30-minute assessment and discover exactly how automation can save you time, capture more leads, and grow your revenue.
+            </p>
+            <p className="text-base text-blue-300 mb-8">
+              See your custom automation roadmap—no commitment required
             </p>
             <Link
               href="/ai-readiness-assessment"
@@ -2340,6 +2371,7 @@ export default function LandingPage() {
                     <div className="flex items-center justify-center space-x-1 mb-4">
                       <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
+                    <p className="text-sm text-blue-400 font-semibold mb-2">Best for: New businesses getting started</p>
                     <p className="text-white/70">Perfect for small businesses just getting started with automation</p>
                   </div>
 
@@ -2379,6 +2411,7 @@ export default function LandingPage() {
                     <div className="flex items-center justify-center space-x-1 mb-4">
                       <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
+                    <p className="text-sm text-purple-400 font-semibold mb-2">Best for: Teams ready to automate and scale</p>
                     <p className="text-white/70">For established businesses ready to scale</p>
                   </div>
 
@@ -2419,6 +2452,7 @@ export default function LandingPage() {
                     <div className="flex items-center justify-center space-x-1 mb-4">
                       <span className="text-3xl font-bold text-white">Custom Pricing</span>
                     </div>
+                    <p className="text-sm text-purple-400 font-semibold mb-2">Best for: Growing businesses scaling operations</p>
                     <p className="text-white/70">Complete automation with dedicated support</p>
                   </div>
 
