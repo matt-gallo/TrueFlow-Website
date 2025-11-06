@@ -957,7 +957,7 @@ export default function ReadinessAssessment() {
       ))}
 
       {/* Cursor Trail */}
-      <div className="cursor-trail">
+      <div className="cursor-trail" style={{ pointerEvents: 'none' }}>
         {cursorTrail.map((point, index) => {
           const age = Date.now() - point.timestamp
           const opacity = Math.max(0, 1 - age / 300)
