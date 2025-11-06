@@ -108,14 +108,14 @@ const pricingPlans = [
     name: 'Launch Setup',
     price: '$2,000',
     cadence: 'one-time',
-    description: 'Full buildout of the Lead Machine&trade; system',
+    description: 'Full buildout of the Lead Machine™ system',
     featured: true
   },
   {
     name: 'Core Plan',
     price: '$600',
     cadence: 'per month',
-    description: 'Lead Machine&trade; + 1 campaign + Readiness Funnel + 7-day nurture'
+    description: 'Lead Machine™ + 1 campaign + Readiness Funnel + 7-day nurture'
   },
   {
     name: 'High-Volume Plan',
@@ -156,13 +156,13 @@ export default function LeadMachinePage() {
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
               <div className="text-center lg:text-left">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/80 text-xs sm:text-sm uppercase tracking-[0.32em]">
-                  <CircleDashed className="h-4 w-4" /> Lead Machine&trade;
+                  <CircleDashed className="h-4 w-4" /> Lead Machine™
                 </span>
                 <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
                   Find. Engage. Qualify. Automatically.
                 </h1>
                 <p className="mt-6 text-xl sm:text-2xl text-white/80">
-                  TrueFlow Lead Machine&trade; is a done-for-you AI prospecting system for coaches, agencies, and service founders.
+                  TrueFlow Lead Machine™ is a done-for-you AI prospecting system for coaches, agencies, and service founders.
                 </p>
                 <p className="mt-6 text-lg text-white/70">
                   We track live intent, start human conversations, and hand you booked calls before you log in.
@@ -249,7 +249,7 @@ export default function LeadMachinePage() {
             <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-6">
               <h3 className="text-lg font-semibold text-white">In plain language:</h3>
               <ul className="mt-4 space-y-3 text-white/75">
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No manual prospecting. The Lead Machine&trade; pinpoints people searching for what you sell right now.</span></li>
+                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No manual prospecting. The Lead Machine™ pinpoints people searching for what you sell right now.</span></li>
                 <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No messy spreadsheets. We enrich every record with contact info, revenue, tech stack, and buying signals.</span></li>
                 <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No disconnected tools. Leads drop straight into GoHighLevel, Salesforce, HubSpot—wherever you already work.</span></li>
                 <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No cold, spammy campaigns. Conversations sound human, stay active, and escalate interest automatically.</span></li>
@@ -263,7 +263,7 @@ export default function LeadMachinePage() {
           <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-gray-900/40 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why it’s Different</h2>
             <p className="mt-6 text-lg text-white/80 max-w-3xl">
-              Unlike list-buying services or cold-email agencies, we integrate the Lead Machine&trade; directly into <span className="text-white font-medium">your</span> CRM, inbox, and automations. Every conversation, tag, and follow-up lives inside your environment—not someone else’s portal—and we keep it running on flow, not friction.
+              Unlike list-buying services or cold-email agencies, we integrate the Lead Machine™ directly into <span className="text-white font-medium">your</span> CRM, inbox, and automations. Every conversation, tag, and follow-up lives inside your environment—not someone else’s portal—and we keep it running on flow, not friction.
             </p>
           </div>
         </section>
@@ -313,7 +313,7 @@ export default function LeadMachinePage() {
               Every day your competitors’ inboxes fill with conversations yours should have started. Waiting another week means another week of lost opportunities.
             </p>
             <p className="mt-6 text-lg text-white/80">
-              The Lead Machine&trade; blends relationship-first selling with automation at scale—no gimmicks, no spray-and-pray, just intelligent outreach that respects your brand and multiplies your time.
+              The Lead Machine™ blends relationship-first selling with automation at scale—no gimmicks, no spray-and-pray, just intelligent outreach that respects your brand and multiplies your time.
             </p>
             <p className="mt-6 text-lg text-white/90 font-medium">
               When you see your calendar filling back up, you’ll know we’ve taken their spot.
@@ -342,7 +342,7 @@ export default function LeadMachinePage() {
           <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-900/40 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why Believe Us</h2>
             <p className="mt-6 text-lg text-white/80">
-              TrueFlow deploys Lead Machine&trade; systems for coaches, agencies, real estate teams, and local services—turning cold lists into booked calendars in under two weeks.
+              TrueFlow deploys Lead Machine™ systems for coaches, agencies, real estate teams, and local services—turning cold lists into booked calendars in under two weeks.
             </p>
             <p className="mt-4 text-lg text-white/80">No playbooks. No templates. Just proven installs that produce pipeline.</p>
           </div>
@@ -360,7 +360,7 @@ export default function LeadMachinePage() {
               ))}
             </ul>
             <p className="mt-6 text-white/70">
-              If you can describe your dream client, the Lead Machine&trade; can find them.
+              If you can describe your dream client, the Lead Machine™ can find them.
             </p>
           </div>
         </section>
@@ -394,7 +394,7 @@ export default function LeadMachinePage() {
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/70 uppercase tracking-[0.35em] text-xs">Ready?</span>
             <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">Stop chasing. Start attracting.</h2>
             <p className="mt-4 text-lg text-white/80">
-              Activate the TrueFlow Lead Machine&trade; and see your first qualified leads land in your inbox within days.
+              Activate the TrueFlow Lead Machine™ and see your first qualified leads land in your inbox within days.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <button
@@ -433,7 +433,7 @@ export default function LeadMachinePage() {
             <div className="space-y-4 text-center">
               <h3 className="text-2xl font-semibold text-white">Lock in Your Demo</h3>
               <p className="text-white/70">
-                Spots for this week are limited—choose a time below to secure your Lead Machine&trade; walkthrough.
+                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
