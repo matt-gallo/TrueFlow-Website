@@ -5,13 +5,14 @@
 
 'use client'
 
-import { useEffect, useState, useRef, useCallback, useMemo } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { getPublishedPosts, tagColorPalettes } from '@/app/data/blog-posts'
 import type { BlogPost } from '@/app/types/blog'
 import './animations.css'
+import type { LucideIcon } from 'lucide-react'
 import {
   ChevronRight,
   ChevronDown,
@@ -66,6 +67,115 @@ interface CursorTrailPoint {
   timestamp: number
 }
 
+interface SolutionProduct {
+  id: string
+  name: string
+  title: string
+  description: string
+  icon: LucideIcon
+  gradientFrom: string
+  gradientTo: string
+  accent: string
+  borderHover: string
+  bgGlow: string
+  bullets: string[]
+  hook: string
+  story: string
+  offer: string
+  offerHighlights: string[]
+  ctaHref: string
+}
+
+const solutionProducts: SolutionProduct[] = [
+  {
+    id: 'lead-machine',
+    name: 'Lead Machine™',
+    title: 'Lead Machine™',
+    description: "Custom-built for your business, Lead Machine delivers new buyers you didn't already have, for directly what your business is selling.",
+    icon: Users,
+    gradientFrom: 'from-cyan-500',
+    gradientTo: 'to-green-500',
+    accent: 'text-cyan-300',
+    borderHover: 'hover:border-cyan-500/50',
+    bgGlow: 'from-cyan-500/20 via-green-500/20 to-transparent',
+    bullets: [
+      "Finds net-new high-intent buyers actively looking for what you sell across all types of internet traffic",
+      'Engages every lead personally with AI trained on your exact offer',
+      'Drops only ready-to-buy humans onto your calendar with full context'
+    ],
+    hook: "Your sales stall because nobody is out finding and warming brand-new buyers for what you sell.",
+    story: "We build a Lead Machine specifically for your offers. It sources fresh prospects, responds in real time, nurtures with product-specific messaging, and qualifies them until they're ready to pay—then we hand them to you.",
+    offer: "Done-for-you capture + nurture + booking engine that delivers limitless net-new, sales-ready buyers for your exact business.",
+    offerHighlights: ['Channel wiring done for you', 'Offer-specific scripts in your voice', 'Live dashboards + 24/7 optimization'],
+    ctaHref: '/lead-machine'
+  },
+  {
+    id: 'full-crm',
+    name: 'Full CRM + Automations',
+    title: 'Full CRM + Automations',
+    description: 'Unify every conversation, task, and workflow inside one operating system that adapts to the way you work.',
+    icon: Zap,
+    gradientFrom: 'from-blue-500',
+    gradientTo: 'to-purple-500',
+    accent: 'text-blue-300',
+    borderHover: 'hover:border-blue-500/50',
+    bgGlow: 'from-blue-500/20 via-purple-500/20 to-transparent',
+    bullets: [
+      'Single inbox for SMS, email, chat, and calls',
+      'Playbooks that auto-assign, remind, and escalate work',
+      'Role-based dashboards, audit trails, and compliance baked in'
+    ],
+    hook: 'Your team is juggling six tools and nobody has the full picture of the customer.',
+    story: 'We sit with your operators, map exactly how you sell and deliver, then configure your existing CRM with automations, approvals, and alerts that match your process. No more duct tape or guessing who owns what.',
+    offer: '30-day retrofit: migration, automations, SOPs, and ongoing optimization so the system grows with you.',
+    offerHighlights: ['Workflow mapping workshop', 'Custom dashboards for ops + revenue', 'Priority support & optimization hours'],
+    ctaHref: '/ai-readiness-assessment'
+  },
+  {
+    id: 'ai-engines',
+    name: 'AI Chat Agents',
+    title: 'AI Chat Agents',
+    description: 'Chat agents on your site and social channels convert visitors 24/7, with voice + SMS follow-up and more built in.',
+    icon: Brain,
+    gradientFrom: 'from-amber-500',
+    gradientTo: 'to-red-500',
+    accent: 'text-amber-300',
+    borderHover: 'hover:border-amber-500/50',
+    bgGlow: 'from-amber-500/20 via-red-500/20 to-transparent',
+    bullets: [
+      'AI chat + voice agents trained on your company that answer questions instantly',
+      'Works on your site, social DMs, and phone so prospects always get a response',
+      'Routes hot conversations to humans with full context and transcripts'
+    ],
+    hook: 'Visitors bounce because nobody is there to answer when they raise their hand.',
+    story: 'We deploy AI chat, SMS, and voice agents trained on your docs, FAQs, and offers. They answer in plain language, book meetings, and hand off tough cases to your team with context.',
+    offer: 'Launch conversational AI across web, SMS, and phone in days, with ongoing training + monitoring included.',
+    offerHighlights: ['Training on your docs + offers', 'Human QA + escalation rules', 'Unified analytics + transcripts'],
+    ctaHref: '/ai-readiness-assessment'
+  },
+  {
+    id: 'content-engine',
+    name: 'Constant Content Engine™',
+    title: 'Constant Content Engine™',
+    description: 'Centralized marketing hub for turning your ideas into endless blogs, emails, and nurture sequences without sitting down to write.',
+    icon: FileText,
+    gradientFrom: 'from-purple-500',
+    gradientTo: 'to-pink-500',
+    accent: 'text-purple-300',
+    borderHover: 'hover:border-purple-500/50',
+    bgGlow: 'from-purple-500/20 via-pink-500/20 to-transparent',
+    bullets: [
+      'You brain-dump ideas once; we spin them into ready-to-post content',
+      'Editorial calendar + approvals so you can sort, tweak, and greenlight fast',
+      'SEO, design, and scheduling handled in one workspace'
+    ],
+    hook: 'Marketing stalls because you have ideas but no time to keep feeding the machine.',
+    story: 'We capture your ideas through interviews, notes, and chats, train AI on your tone, draft the assets, then let you approve, sort, and fine-tune inside a centralized hub before we publish.',
+    offer: 'All-your-marketing-in-one-place service: idea capture, AI drafting, human polish, and scheduled distribution every week.',
+    offerHighlights: ['Interview + research sprint', 'Multi-channel playbooks', 'Weekly performance reviews'],
+    ctaHref: '/content-engine'
+  }
+]
 // Enhanced animated counter hook
 function useAnimatedCounter(endValue: number, duration: number = 2000, prefix: string = '', suffix: string = '', shouldAnimate: boolean = true) {
   const [count, setCount] = useState(0)
@@ -251,22 +361,18 @@ export default function LandingPage() {
   const [cursorTrail, setCursorTrail] = useState<CursorTrailPoint[]>([])
   const cursorTrailRef = useRef<CursorTrailPoint[]>([])
   const animationFrameRef = useRef<number | null>(null)
-  const [statsVisible, setStatsVisible] = useState(true)
-  const [animatedValues, setAnimatedValues] = useState<Record<string, string | number>>({
-    "10x": "10x",
-    "85%": "85%",
-    "300%": "300%",
-    "500+": "500+"
-  })
+  const [trustSignalIndex, setTrustSignalIndex] = useState(0)
+  const [isTrustSignalVisible, setIsTrustSignalVisible] = useState(true)
   const [howItWorksVisible, setHowItWorksVisible] = useState(true)
   const howItWorksRef = useRef<HTMLDivElement>(null)
   const [testimonialsVisible, setTestimonialsVisible] = useState(true)
   const [fragmentationProgress, setFragmentationProgress] = useState(0)
+  const [selectedProduct, setSelectedProduct] = useState<SolutionProduct | null>(null)
+  const handleCloseProductModal = () => setSelectedProduct(null)
   
   // Refs for scroll animations
   const heroRef = useRef<HTMLDivElement>(null)
   const featuresRef = useRef<HTMLDivElement>(null)
-  const statsRef = useRef<HTMLDivElement>(null)
   const testimonialsRef = useRef<HTMLDivElement>(null)
   const featuresScrollRef = useRef<HTMLDivElement>(null)
   const testimonialsScrollRef = useRef<HTMLDivElement>(null)
@@ -419,15 +525,6 @@ export default function LandingPage() {
         }
       }
 
-      // Check if stats are visible for animation
-      if (statsRef.current) {
-        const rect = statsRef.current.getBoundingClientRect()
-        if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0 && !statsVisible) {
-          setStatsVisible(true)
-          animateStats()
-        }
-      }
-
       // Fragmentation animation based on scroll
       if (fragmentationRef.current) {
         const rect = fragmentationRef.current.getBoundingClientRect()
@@ -514,14 +611,18 @@ export default function LandingPage() {
     }
   }, [mounted])
 
-  // Don't render dynamic content until mounted
-  if (!mounted) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
-      </div>
-    )
-  }
+  useEffect(() => {
+    if (!selectedProduct) return
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        handleCloseProductModal()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedProduct])
 
   const testimonials = [
     {
@@ -560,45 +661,29 @@ export default function LandingPage() {
     { value: "24/7", label: "Working For You", icon: <Zap className="h-12 w-12" /> }
   ]
 
-  // Animate stats when they come into view
-  const animateStats = () => {
-    // Reset values to 0 before animating
-    setAnimatedValues({
-      "1000s": "0",
-      "$100k+": "$0",
-      "0": "100+",
-      "24/7": "0"
-    })
-    
-    const targets = {
-      "1000s": 1000,
-      "$100k+": 100,
-      "0": 0,
-      "24/7": 24
+  useEffect(() => {
+    let switchTimeout: NodeJS.Timeout | null = null
+    const interval = setInterval(() => {
+      setIsTrustSignalVisible(false)
+      switchTimeout = setTimeout(() => {
+        setTrustSignalIndex((prev) => (prev + 1) % stats.length)
+        setIsTrustSignalVisible(true)
+      }, 250)
+    }, 2000)
+
+    return () => {
+      clearInterval(interval)
+      if (switchTimeout) clearTimeout(switchTimeout)
     }
+  }, [stats.length])
 
-    Object.keys(targets).forEach((key, index) => {
-      setTimeout(() => {
-        let current = key === "0" ? 100 : 0
-        const target = targets[key as keyof typeof targets]
-        const increment = key === "0" ? -2 : target / 50 // 50 steps (count down for "0")
-        const interval = setInterval(() => {
-          current += increment
-          if (key === "0" ? current <= target : current >= target) {
-            current = target
-            clearInterval(interval)
-          }
-
-          setAnimatedValues(prev => ({
-            ...prev,
-            [key]: key === "1000s" ? `${Math.round(current)}+` :
-                   key === "$100k+" ? `$${Math.round(current)}k+` :
-                   key === "0" ? Math.round(current).toString() :
-                   key === "24/7" ? `${Math.round(current)}/7` : Math.round(current)
-          }))
-        }, 20) // 20ms intervals for smooth animation
-      }, index * 200) // Stagger animations
-    })
+  // Don't render dynamic content until mounted
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white text-xl">Loading...</div>
+      </div>
+    )
   }
 
   return (
@@ -744,7 +829,7 @@ export default function LandingPage() {
                   </div>
                 )}
               </div>
-              <a href="https://trueflow.ai/lead-machine" className="text-white/70 hover:text-white transition-colors text-sm">Lead Machine</a>
+              <a href="https://trueflow.ai/lead-machine" className="text-white/70 hover:text-white transition-colors text-sm">Lead Machine™</a>
               <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Constant Content Engine™</Link>
               {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link> */}
               <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
@@ -783,7 +868,7 @@ export default function LandingPage() {
                 <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
                 <a href="#integrations" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Integrations</a>
               </div>
-              <a href="https://trueflow.ai/lead-machine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Lead Machine</a>
+              <a href="https://trueflow.ai/lead-machine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Lead Machine™</a>
               <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Constant Content Engine™</Link>
               {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
               <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
@@ -808,7 +893,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto text-center">
           <div className="mb-8">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2 mt-16">
-              The all-in-one, AI-powered marketing and sales platform that works 24/7 for<br />
+              Teams like yours run an AI-powered marketing and sales platform that works 24/7 to<br />
               <span className="inline-block min-h-[1.2em]">
                 <TypewriterText gradientOffset={gradientOffset} />
               </span>
@@ -837,119 +922,59 @@ export default function LandingPage() {
               </Link>
             </div>
 
-            {/* Clarity Statement - What This Is */}
-            <div className="mt-16 sm:mt-20 max-w-4xl mx-auto px-4">
-              <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-8">
-                <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-white mb-4 text-center">
-                  Automation for Businesses: AI Scheduling, Lead Nurturing, and Customer Retention Systems
-                </h2>
-                <p className="text-base sm:text-lg text-white/70 text-center leading-relaxed">
-                  TrueFlow builds AI-powered systems that handle scheduling, lead nurturing, and follow-up—so you can focus on your customers, not admin work.
-                  <span className="block mt-3 text-white/90 font-medium">Done-for-you automation setup + ongoing support. You focus on your business. We handle the clicks.</span>
-                </p>
+            {/* Copy + Rotating Metrics Carousel */}
+            <div className="mt-16 sm:mt-20 px-4">
+              <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-10 lg:p-12 max-w-5xl mx-auto">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+                  <div className="space-y-6 text-center lg:text-left">
+                    <p className="text-xs uppercase tracking-[0.4em] text-white/40">Trusted by 100+ operators</p>
+                    <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-tight">
+                      Automation Systems for Scheduling, Nurture & Retention
+                    </h2>
+                    <p className="text-base text-white/70 leading-relaxed">
+                      TrueFlow installs AI workflows that run scheduling, nurture, and follow-up so you stay with customers—not admin.
+                      <span className="block mt-3 text-white/90 font-medium">Done-for-you setup plus monthly optimization. You steer the business; we run the clicks.</span>
+                    </p>
+                    <div className="space-y-1">
+                      <p className="text-base sm:text-lg text-blue-400 font-semibold">
+                        30-minute automation roadmap—find 10+ hours a week to reclaim.
+                      </p>
+                      <p className="text-xs sm:text-sm text-white/60">
+                        100+ teams already automate their operations with TrueFlow
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent blur-3xl opacity-70 pointer-events-none"></div>
+                    <div className="relative bg-white/5 rounded-2xl border border-white/10 p-8 sm:p-10 shadow-[0_10px_60px_rgba(59,130,246,0.25)] overflow-hidden">
+                      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),_transparent_60%)]"></div>
+                      <div className={`relative z-10 text-center transition-all duration-300 ${
+                        isTrustSignalVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+                      }`}>
+                        <p className="text-5xl sm:text-6xl font-black text-white drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
+                          {stats[trustSignalIndex].value}
+                        </p>
+                        <p className="text-lg sm:text-xl text-white/70 mt-2">
+                          {stats[trustSignalIndex].label}
+                        </p>
+                      </div>
+                      <div className="relative z-10 flex items-center justify-center space-x-2 mt-10">
+                        {stats.map((_, idx) => (
+                          <span
+                            key={idx}
+                            className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                              idx === trustSignalIndex ? 'bg-blue-400 w-6' : 'bg-white/20'
+                            }`}
+                          ></span>
+                        ))}
+                      </div>
+                      <p className="relative z-10 text-xs text-white/50 text-center mt-6">Rotating every 2 seconds</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-
-            {/* Outcome Statement + Social Proof */}
-            <div className="mt-8 max-w-3xl mx-auto px-4 text-center">
-              <p className="text-lg sm:text-xl text-blue-400 font-semibold mb-2">
-                Get your automation roadmap in 30 minutes — see exactly where you can save 10+ hours a week.
-              </p>
-              <p className="text-sm sm:text-base text-white/60">
-                Trusted by 100+ businesses automating their operations
-              </p>
-            </div>
-          </div>
-
-          {/* Enhanced Floating Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mt-12 sm:mt-16 lg:mt-20 mb-20 sm:mb-24 lg:mb-32 px-4" ref={statsRef}>
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className={`bg-white/5 backdrop-blur-md rounded-xl sm:rounded-2xl border border-white/20 p-4 sm:p-6 lg:p-8 text-center hover:bg-white/10 hover:border-blue-400/30 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 group relative overflow-hidden transform-gpu ${
-                  ''
-                }`}
-                style={{
-                  animationDelay: `${index * 200}ms`,
-                  transformStyle: 'preserve-3d',
-                  transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)'
-                }}
-                onMouseEnter={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  const centerX = rect.left + rect.width / 2
-                  const centerY = rect.top + rect.height / 2
-                  const mouseX = e.clientX - centerX
-                  const mouseY = e.clientY - centerY
-                  const rotateX = (mouseY / rect.height) * -12
-                  const rotateY = (mouseX / rect.width) * 12
-                  e.currentTarget.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(12px) scale(1.05)`
-                }}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  const centerX = rect.left + rect.width / 2
-                  const centerY = rect.top + rect.height / 2
-                  const mouseX = e.clientX - centerX
-                  const mouseY = e.clientY - centerY
-                  const rotateX = (mouseY / rect.height) * -12
-                  const rotateY = (mouseX / rect.width) * 12
-                  e.currentTarget.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(12px) scale(1.05)`
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
-                }}
-              >
-                {/* Shimmer effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_1.5s_ease-in-out_infinite] -skew-x-12"></div>
-                
-                {/* Dynamic gradient background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                
-                {/* Floating particles on hover */}
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {[...Array(5)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute w-1 h-1 bg-blue-400 rounded-full animate-[icon-float_2s_ease-in-out_infinite]"
-                      style={{
-                        left: `${20 + i * 15}%`,
-                        top: `${30 + (i % 2) * 40}%`,
-                        animationDelay: `${i * 0.3}s`
-                      }}
-                    />
-                  ))}
-                </div>
-                
-                {/* Icon with gentle animation */}
-                <div className={`flex justify-center mb-4 text-blue-400 group-hover:text-blue-300 relative z-10 transition-all duration-500 ${
-                  ''
-                }`} style={{ animationDelay: `${index * 300}ms` }}>
-                  {stat.icon}
-                </div>
-                
-                {/* Animated number with gentle effect */}
-                <div className={`text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-2 sm:mb-3 group-hover:text-blue-100 transition-all duration-500 relative z-10 ${
-                  ''
-                }`} 
-                style={{ 
-                  animationDelay: `${index * 200 + 400}ms`
-                }}>
-                  {animatedValues[stat.value] || stat.value}
-                </div>
-                
-                {/* Label with slide-in effect */}
-                <div className={`text-sm sm:text-base lg:text-lg text-white/70 group-hover:text-white/90 transition-all duration-500 relative z-10 ${
-                  'translate-y-0 opacity-100'
-                }`}
-                style={{ 
-                  transitionDelay: `${index * 200 + 600}ms`
-                }}>
-                  {stat.label}
-                </div>
-
-                {/* Gentle border effect */}
-                <div className="absolute inset-0 rounded-2xl border-2 border-blue-400/0 group-hover:border-blue-400/20 transition-all duration-500 animate-[soft-glow_3s_ease-in-out_infinite]" style={{ animationDelay: `${index * 500}ms` }}></div>
-              </div>
-            ))}
           </div>
         </div>
 
@@ -965,70 +990,64 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* AI Application Preview Section */}
-      <section className="py-12 px-4 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
+      {/* Product Selection Section */}
+      <section className="py-16 sm:py-20 px-4 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
         <div className="max-w-7xl mx-auto">
-          {/* Section Header - More Concise */}
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
-              AI Business OS
+          <div className="text-center mb-12">
+            <p className="text-sm uppercase tracking-[0.4em] text-white/40">Pick Your Track</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+              Three Systems. One Outcome: Flow.
             </h2>
-            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto">
-              One platform. Total automation. AI that grows with you.
-            </p>
           </div>
 
-          {/* Device Mockup Container - Smaller */}
-          <div className="relative max-w-3xl mx-auto">
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20 blur-3xl opacity-50 pointer-events-none"></div>
-            
-            {/* Main Image Container */}
-            <div className="relative">
-              <Image
-                src="/content-engine-preview.png"
-                alt="TrueFlow AI Business OS interface showing desktop and mobile views with AI-powered automation and unified dashboard"
-                width={1200}
-                height={675}
-                className="w-full h-auto rounded-2xl shadow-2xl border border-white/10"
-                priority
-              />
-            </div>
+          <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {solutionProducts.map((product) => {
+              const Icon = product.icon
+              return (
+                <div key={product.id} className="relative group">
+                  <div className={`absolute inset-0 bg-gradient-to-r ${product.bgGlow} blur-2xl opacity-50 group-hover:opacity-80 transition-opacity`}></div>
+                  <div className={`relative bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 h-full transition-all ${product.borderHover}`}>
+                    <div className={`w-16 h-16 bg-gradient-to-r ${product.gradientFrom} ${product.gradientTo} rounded-2xl flex items-center justify-center mb-6`}>
+                      <Icon className="w-8 h-8 text-white" />
+                    </div>
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-2xl font-bold text-white">{product.name}</h3>
+                      </div>
+                      <p className="text-white/70">{product.description}</p>
+                    </div>
+                    <ul className="space-y-3 my-8">
+                      {product.bullets.map((bullet, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-white/80">
+                          <div className="w-5 h-5 bg-white/10 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                            <Zap className="w-3 h-3 text-white/60" />
+                          </div>
+                          <span className="text-sm">{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedProduct(product)}
+                      className="inline-flex items-center gap-2 text-white font-medium group/cta"
+                    >
+                      Learn More
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/cta:translate-x-1" />
+                    </button>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
 
-            {/* Key Features Grid - Compact */}
-            <div className="grid grid-cols-3 gap-4 mt-8 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
-                  <Brain className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-white text-sm font-medium">Smart Automation</h3>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
-                  <Globe className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-white text-sm font-medium">Unified Platform</h3>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-10 h-10 bg-gradient-to-r from-cyan-500 to-green-500 rounded-lg flex items-center justify-center mb-2 mx-auto">
-                  <Zap className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-white text-sm font-medium">Real-Time AI</h3>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="text-center mt-8 relative z-10">
-              <Link
-                href="/ai-readiness-assessment"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-full font-medium hover:shadow-xl hover:scale-105 transition-all"
-              >
-                Get Your Free Assessment
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+          <div className="text-center mt-12">
+            <Link
+              href="/ai-readiness-assessment"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+            >
+              Not Sure Which Track? Get a Roadmap
+              <ArrowRight className="w-5 h-5" />
+            </Link>
           </div>
         </div>
       </section>
@@ -2618,6 +2637,73 @@ export default function LandingPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
             </svg>
           </button>
+        </div>
+      )}
+
+      {selectedProduct && (
+        <div
+          className="fixed inset-0 z-[999] px-4 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${selectedProduct.name} details`}
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              handleCloseProductModal()
+            }
+          }}
+        >
+          <div
+            className="relative w-full max-w-3xl bg-gradient-to-br from-white/10 via-white/5 to-transparent border border-white/20 rounded-3xl p-8 sm:p-10 shadow-[0_20px_80px_rgba(0,0,0,0.6)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={handleCloseProductModal}
+              className="absolute top-4 right-4 text-white/60 hover:text-white transition-colors"
+              aria-label="Close product details"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="space-y-8">
+              <div className="space-y-3">
+                <p className={`text-xs uppercase tracking-[0.4em] ${selectedProduct.accent}`}>Hook</p>
+                <p className="text-xl sm:text-2xl text-white/90 leading-relaxed">
+                  {selectedProduct.hook}
+                </p>
+              </div>
+              <div className="space-y-3">
+                <p className="text-xs uppercase tracking-[0.4em] text-white/50">Story</p>
+                <p className="text-base sm:text-lg text-white/80 leading-relaxed">
+                  {selectedProduct.story}
+                </p>
+              </div>
+              <div className="space-y-4">
+                <p className="text-xs uppercase tracking-[0.4em] text-white/50">Offer</p>
+                <p className="text-lg text-white font-semibold">
+                  {selectedProduct.offer}
+                </p>
+                <ul className="grid sm:grid-cols-3 gap-3">
+                  {selectedProduct.offerHighlights.map((highlight, idx) => (
+                    <li key={idx} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white/80">
+                      {highlight}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <p className="text-sm text-white/60">
+                  Ready to build the {selectedProduct.name.toLowerCase()}?
+                </p>
+                <Link
+                  href={selectedProduct.ctaHref}
+                  className={`inline-flex items-center justify-center gap-2 bg-gradient-to-r ${selectedProduct.gradientFrom} ${selectedProduct.gradientTo} text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity`}
+                >
+                  Build My System
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
