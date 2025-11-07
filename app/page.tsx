@@ -1133,7 +1133,7 @@ export default function LandingPage() {
           <div className="text-center mb-12">
             <p className="text-sm uppercase tracking-[0.4em] text-white/40">Pick Your Track</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              Three Systems. One Outcome: Flow.
+              Choose the automation system that matches your bottleneck.
             </h2>
           </div>
 
