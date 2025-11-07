@@ -86,6 +86,45 @@ interface SolutionProduct {
   ctaHref: string
 }
 
+const heroFeatureClips = [
+  {
+    id: 'clip-teams',
+    label: 'Teams like yours',
+    title: 'Coaches, doctors, real estate pros',
+    description: 'TrueFlow adapts to any service business that needs leads, follow-up, and content run for them.',
+    benefits: ['Coaches • Doctors • Real estate • Agencies • Creators'],
+    video: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
+    accent: 'from-cyan-500/40 via-blue-500/20 to-purple-500/20'
+  },
+  {
+    id: 'clip-leads',
+    label: 'Lead Machine™',
+    title: 'Auto DM to booked calls',
+    description: 'Find, engage, and qualify new buyers in under a minute.',
+    benefits: ['DM + SMS replies inside 60 seconds', 'Booked consultations drop straight onto your calendar'],
+    video: 'https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4',
+    accent: 'from-blue-500/40 via-purple-500/20 to-pink-500/20'
+  },
+  {
+    id: 'clip-crm',
+    label: 'Full CRM + Automations',
+    title: 'One view of every customer',
+    description: 'Tasks, follow-ups, and routing handled automatically.',
+    benefits: ['Playbooks auto-assign the next action', 'Dashboards show revenue, ops, and retention in real time'],
+    video: 'https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4',
+    accent: 'from-blue-500/40 via-purple-500/20 to-pink-500/20'
+  },
+  {
+    id: 'clip-content',
+    label: 'Constant Content Engine™',
+    title: 'Ideas to everywhere',
+    description: 'Brain-dump once, publish across every channel.',
+    benefits: ['AI drafts in your tone', 'Approve, tweak, and ship in minutes'],
+    video: 'https://storage.googleapis.com/coverr-main/mp4/Carving.mp4',
+    accent: 'from-amber-500/40 via-rose-500/20 to-fuchsia-500/20'
+  }
+]
+
 const solutionProducts: SolutionProduct[] = [
   {
     id: 'lead-machine',
@@ -136,7 +175,7 @@ const solutionProducts: SolutionProduct[] = [
     name: 'AI Chat Agents',
     title: 'AI Chat Agents',
     description: 'Chat agents on your site and social channels convert visitors 24/7, with voice + SMS follow-up and more built in.',
-    icon: Brain,
+    icon: Zap,
     gradientFrom: 'from-amber-500',
     gradientTo: 'to-red-500',
     accent: 'text-amber-300',
@@ -363,6 +402,7 @@ export default function LandingPage() {
   const animationFrameRef = useRef<number | null>(null)
   const [trustSignalIndex, setTrustSignalIndex] = useState(0)
   const [isTrustSignalVisible, setIsTrustSignalVisible] = useState(true)
+  const [currentHeroClip, setCurrentHeroClip] = useState(0)
   const [howItWorksVisible, setHowItWorksVisible] = useState(true)
   const howItWorksRef = useRef<HTMLDivElement>(null)
   const [testimonialsVisible, setTestimonialsVisible] = useState(true)
@@ -610,6 +650,13 @@ export default function LandingPage() {
       }
     }
   }, [mounted])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHeroClip((prev) => (prev + 1) % heroFeatureClips.length)
+    }, 5000)
+    return () => clearInterval(interval)
+  }, [])
 
   useEffect(() => {
     if (!selectedProduct) return
@@ -890,87 +937,142 @@ export default function LandingPage() {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center px-4 pt-32"
       >
-        <div className="max-w-6xl mx-auto text-center">
-          <div className="mb-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2 mt-16">
-              Teams like yours run an AI-powered marketing and sales platform that works 24/7 to<br />
-              <span className="inline-block min-h-[1.2em]">
-                <TypewriterText gradientOffset={gradientOffset} />
-              </span>
-            </h1>
+        <div className="max-w-6xl mx-auto w-full">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+            <div className="space-y-10 text-center lg:text-left">
+              <div>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2 mt-16">
+                  The all-in-one, AI-powered marketing and sales platform that works 24/7 for<br />
+                  <span className="inline-block min-h-[1.2em]">
+                    <TypewriterText gradientOffset={gradientOffset} />
+                  </span>
+                </h1>
 
-            <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto mb-8 sm:mb-12 px-4">
-              Business owners lose up to 10 hours a week to repetitive tasks. We automate the busy work—so you can spend more time growing your business and less time behind a screen.
-            </p>
+                <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto lg:mx-0 mb-8 sm:mb-12 px-4 lg:px-0">
+                  Business owners lose up to 10 hours a week to repetitive tasks. We automate the busy work—so you can spend more time growing your business and less time behind a screen.
+                </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 px-4">
-              <Link
-                href="/ai-readiness-assessment"
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="relative z-10">Get Your Free Assessment</span>
-                <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
+                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6 px-4 lg:px-0">
+                  <Link
+                    href="/ai-readiness-assessment"
+                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <span className="relative z-10">Get Your Free Assessment</span>
+                    <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
 
-              <Link href="/coming-soon" className="flex items-center space-x-3 sm:space-x-4 text-white/70 hover:text-white transition-all duration-300 group">
-                <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative">
-                  <div className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
-                  <Play className="h-4 w-4 sm:h-6 sm:w-6 ml-1 relative z-10 group-hover:text-blue-400 transition-colors duration-300" />
+                  <Link href="/coming-soon" className="flex items-center space-x-3 sm:space-x-4 text-white/70 hover:text-white transition-all duration-300 group">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative">
+                      <div className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
+                      <Play className="h-4 w-4 sm:h-6 sm:w-6 ml-1 relative z-10 group-hover:text-blue-400 transition-colors duration-300" />
+                    </div>
+                    <span className="text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">See How It Works</span>
+                  </Link>
                 </div>
-                <span className="text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">See How It Works</span>
-              </Link>
-            </div>
+              </div>
 
-            {/* Copy + Rotating Metrics Carousel */}
-            <div className="mt-16 sm:mt-20 px-4">
-              <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-10 lg:p-12 max-w-5xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-                  <div className="space-y-6 text-center lg:text-left">
-                    <p className="text-xs uppercase tracking-[0.4em] text-white/40">Trusted by 100+ operators</p>
-                    <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-tight">
-                      Automation Systems for Scheduling, Nurture & Retention
-                    </h2>
-                    <p className="text-base text-white/70 leading-relaxed">
-                      TrueFlow installs AI workflows that run scheduling, nurture, and follow-up so you stay with customers—not admin.
-                      <span className="block mt-3 text-white/90 font-medium">Done-for-you setup plus monthly optimization. You steer the business; we run the clicks.</span>
-                    </p>
-                    <div className="space-y-1">
-                      <p className="text-base sm:text-lg text-blue-400 font-semibold">
-                        30-minute automation roadmap—find 10+ hours a week to reclaim.
+              <div className="mt-8 sm:mt-14 px-4 lg:px-0">
+                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-10 lg:p-12 max-w-5xl mx-auto lg:mx-0">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+                    <div className="space-y-6 text-center lg:text-left">
+                      <p className="text-xs uppercase tracking-[0.4em] text-white/40">Trusted by 100+ operators</p>
+                      <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-tight">
+                        Automation Systems for Scheduling, Nurture & Retention
+                      </h2>
+                      <p className="text-base text-white/70 leading-relaxed">
+                        TrueFlow installs AI workflows that run scheduling, nurture, and follow-up so you stay with customers—not admin.
+                        <span className="block mt-3 text-white/90 font-medium">Done-for-you setup plus monthly optimization. You steer the business; we run the clicks.</span>
                       </p>
-                      <p className="text-xs sm:text-sm text-white/60">
-                        100+ teams already automate their operations with TrueFlow
-                      </p>
+                      <div className="space-y-1">
+                        <p className="text-base sm:text-lg text-blue-400 font-semibold">
+                          30-minute automation roadmap—find 10+ hours a week to reclaim.
+                        </p>
+                        <p className="text-xs sm:text-sm text-white/60">
+                          100+ teams already automate their operations with TrueFlow
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent blur-3xl opacity-70 pointer-events-none"></div>
+                      <div className="relative bg-white/5 rounded-2xl border border-white/10 p-8 sm:p-10 shadow-[0_10px_60px_rgba(59,130,246,0.25)] overflow-hidden">
+                        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),_transparent_60%)]"></div>
+                        <div className={`relative z-10 text-center transition-all duration-300 ${
+                          isTrustSignalVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+                        }`}>
+                          <p className="text-5xl sm:text-6xl font-black text-white drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
+                            {stats[trustSignalIndex].value}
+                          </p>
+                          <p className="text-lg sm:text-xl text-white/70 mt-2">
+                            {stats[trustSignalIndex].label}
+                          </p>
+                        </div>
+                        <div className="relative z-10 flex items-center justify-center space-x-2 mt-10">
+                          {stats.map((_, idx) => (
+                            <span
+                              key={idx}
+                              className={`h-2 w-2 rounded-full transition-all duration-300 ${
+                                idx === trustSignalIndex ? 'bg-blue-400 w-6' : 'bg-white/20'
+                              }`}
+                            ></span>
+                          ))}
+                        </div>
+                        <p className="relative z-10 text-xs text-white/50 text-center mt-6">Rotating every 2 seconds</p>
+                      </div>
                     </div>
                   </div>
+                </div>
+              </div>
+            </div>
 
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent blur-3xl opacity-70 pointer-events-none"></div>
-                    <div className="relative bg-white/5 rounded-2xl border border-white/10 p-8 sm:p-10 shadow-[0_10px_60px_rgba(59,130,246,0.25)] overflow-hidden">
-                      <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),_transparent_60%)]"></div>
-                      <div className={`relative z-10 text-center transition-all duration-300 ${
-                        isTrustSignalVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-                      }`}>
-                        <p className="text-5xl sm:text-6xl font-black text-white drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
-                          {stats[trustSignalIndex].value}
-                        </p>
-                        <p className="text-lg sm:text-xl text-white/70 mt-2">
-                          {stats[trustSignalIndex].label}
-                        </p>
-                      </div>
-                      <div className="relative z-10 flex items-center justify-center space-x-2 mt-10">
-                        {stats.map((_, idx) => (
-                          <span
-                            key={idx}
-                            className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                              idx === trustSignalIndex ? 'bg-blue-400 w-6' : 'bg-white/20'
-                            }`}
-                          ></span>
-                        ))}
-                      </div>
-                      <p className="relative z-10 text-xs text-white/50 text-center mt-6">Rotating every 2 seconds</p>
+            <div className="w-full px-2 lg:px-0">
+              <div className="relative rounded-[32px] border border-white/10 bg-white/5 overflow-hidden shadow-[0_20px_80px_rgba(15,23,42,0.6)]">
+                <div className={`absolute inset-0 bg-gradient-to-br ${heroFeatureClips[currentHeroClip].accent} opacity-60 pointer-events-none`}></div>
+                <video
+                  key={currentHeroClip}
+                  className="w-full h-[420px] sm:h-[480px] object-cover"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  poster="/content-engine-preview.png"
+                >
+                  <source src={heroFeatureClips[currentHeroClip].video} type="video/mp4" />
+                </video>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
+                  <div className="flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-white/70">
+                    <span className="h-2 w-2 rounded-full bg-white/80 animate-pulse"></span>
+                    {heroFeatureClips[currentHeroClip].label}
+                  </div>
+                  <div>
+                    <p className="text-sm uppercase text-white/60">Feature Reel</p>
+                    <h3 className="text-2xl font-semibold text-white mt-1">{heroFeatureClips[currentHeroClip].title}</h3>
+                    <p className="text-white/80 text-sm mt-2">
+                      {heroFeatureClips[currentHeroClip].description}
+                    </p>
+                    <div className="mt-4 space-y-2">
+                      {heroFeatureClips[currentHeroClip].benefits.map((benefit, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-white/85 text-sm">
+                          <CheckCircle className="w-4 h-4 text-white/70" />
+                          <span>{benefit}</span>
+                        </div>
+                      ))}
                     </div>
+                  </div>
+                  <div className="flex items-center gap-3 pt-4">
+                    {heroFeatureClips.map((clip, idx) => (
+                      <button
+                        key={clip.id}
+                        type="button"
+                        onClick={() => setCurrentHeroClip(idx)}
+                        className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
+                          idx === currentHeroClip ? 'bg-white' : 'bg-white/30'
+                        }`}
+                        aria-label={`Show ${clip.label}`}
+                      ></button>
+                    ))}
                   </div>
                 </div>
               </div>
