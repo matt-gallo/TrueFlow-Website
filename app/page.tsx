@@ -276,7 +276,7 @@ function AnimatedValue({ endValue, duration, prefix = '', suffix = '', visible }
 
 // TypewriterText component for the hero section
 function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
-  const phrases = ['doctors', 'real estate agents', 'online coaches', 'filmmakers', 'marketers', 'agencies', 'teams like yours']
+  const phrases = ['teams like yours', 'doctors', 'real estate agents', 'online coaches', 'filmmakers', 'marketers', 'agencies']
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
   const [currentText, setCurrentText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -1041,27 +1041,8 @@ export default function LandingPage() {
                   <source src={heroFeatureClips[currentHeroClip].video} type="video/mp4" />
                 </video>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
-                <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-8">
-                  <div className="flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-white/70">
-                    <span className="h-2 w-2 rounded-full bg-white/80 animate-pulse"></span>
-                    {heroFeatureClips[currentHeroClip].label}
-                  </div>
-                  <div>
-                    <p className="text-sm uppercase text-white/60">Feature Reel</p>
-                    <h3 className="text-2xl font-semibold text-white mt-1">{heroFeatureClips[currentHeroClip].title}</h3>
-                    <p className="text-white/80 text-sm mt-2">
-                      {heroFeatureClips[currentHeroClip].description}
-                    </p>
-                    <div className="mt-4 space-y-2">
-                      {heroFeatureClips[currentHeroClip].benefits.map((benefit, idx) => (
-                        <div key={idx} className="flex items-center gap-2 text-white/85 text-sm">
-                          <CheckCircle className="w-4 h-4 text-white/70" />
-                          <span>{benefit}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 pt-4">
+                <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end pointer-events-none">
+                  <div className="flex items-center gap-3 pt-4 pointer-events-auto">
                     {heroFeatureClips.map((clip, idx) => (
                       <button
                         key={clip.id}
