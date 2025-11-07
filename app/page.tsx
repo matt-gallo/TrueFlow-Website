@@ -972,58 +972,6 @@ export default function LandingPage() {
                 </div>
               </div>
 
-              <div className="mt-8 sm:mt-14 px-4 lg:px-0">
-                <div className="bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-6 sm:p-10 lg:p-12 max-w-5xl mx-auto lg:mx-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-                    <div className="space-y-6 text-center lg:text-left">
-                      <p className="text-xs uppercase tracking-[0.4em] text-white/40">Trusted by 100+ operators</p>
-                      <h2 className="text-2xl sm:text-3xl font-semibold text-white leading-tight">
-                        Automation Systems for Scheduling, Nurture & Retention
-                      </h2>
-                      <p className="text-base text-white/70 leading-relaxed">
-                        TrueFlow installs AI workflows that run scheduling, nurture, and follow-up so you stay with customers—not admin.
-                        <span className="block mt-3 text-white/90 font-medium">Done-for-you setup plus monthly optimization. You steer the business; we run the clicks.</span>
-                      </p>
-                      <div className="space-y-1">
-                        <p className="text-base sm:text-lg text-blue-400 font-semibold">
-                          30-minute automation roadmap—find 10+ hours a week to reclaim.
-                        </p>
-                        <p className="text-xs sm:text-sm text-white/60">
-                          100+ teams already automate their operations with TrueFlow
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="relative">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent blur-3xl opacity-70 pointer-events-none"></div>
-                      <div className="relative bg-white/5 rounded-2xl border border-white/10 p-8 sm:p-10 shadow-[0_10px_60px_rgba(59,130,246,0.25)] overflow-hidden">
-                        <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),_transparent_60%)]"></div>
-                        <div className={`relative z-10 text-center transition-all duration-300 ${
-                          isTrustSignalVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
-                        }`}>
-                          <p className="text-5xl sm:text-6xl font-black text-white drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
-                            {stats[trustSignalIndex].value}
-                          </p>
-                          <p className="text-lg sm:text-xl text-white/70 mt-2">
-                            {stats[trustSignalIndex].label}
-                          </p>
-                        </div>
-                        <div className="relative z-10 flex items-center justify-center space-x-2 mt-10">
-                          {stats.map((_, idx) => (
-                            <span
-                              key={idx}
-                              className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                                idx === trustSignalIndex ? 'bg-blue-400 w-6' : 'bg-white/20'
-                              }`}
-                            ></span>
-                          ))}
-                        </div>
-                        <p className="relative z-10 text-xs text-white/50 text-center mt-6">Rotating every 2 seconds</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div className="w-full px-2 lg:px-0">
