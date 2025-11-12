@@ -403,6 +403,19 @@ export default function LeadMachinePage() {
         </section>
 
         <section id="book-demo-calendar" className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto scroll-mt-24">
+          <style jsx global>{`
+            /* Hide any raw CSS text that might appear */
+            #book-demo-calendar ~ * {
+              display: block;
+            }
+
+            /* Ensure iframe renders properly */
+            #msgsndr-calendar {
+              display: block !important;
+              width: 100% !important;
+              min-height: 520px !important;
+            }
+          `}</style>
           <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-black/60 p-8 sm:p-10">
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold text-white">Lock in Your Demo</h3>
