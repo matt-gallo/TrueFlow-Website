@@ -404,9 +404,19 @@ export default function LeadMachinePage() {
 
         <section id="book-demo-calendar" className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto scroll-mt-24">
           <style jsx global>{`
-            /* Hide any raw CSS text that might appear */
-            #book-demo-calendar ~ * {
-              display: block;
+            /* Hide any raw CSS text that might appear from embed scripts */
+            #book-demo-calendar .calendar-wrapper ~ *:not(script):not(style) {
+              display: none !important;
+              visibility: hidden !important;
+              height: 0 !important;
+              overflow: hidden !important;
+            }
+
+            /* Hide text nodes that contain CSS code */
+            #book-demo-calendar *:not(h3):not(p):not(button):not(iframe):not(div):not(section) {
+              font-size: 0 !important;
+              line-height: 0 !important;
+              color: transparent !important;
             }
 
             /* Ensure iframe renders properly */
@@ -414,6 +424,12 @@ export default function LeadMachinePage() {
               display: block !important;
               width: 100% !important;
               min-height: 520px !important;
+            }
+
+            /* Hide any pseudo-elements with CSS text */
+            #book-demo-calendar *::after,
+            #book-demo-calendar *::before {
+              content: none !important;
             }
           `}</style>
           <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-black/60 p-8 sm:p-10">
@@ -423,7 +439,7 @@ export default function LeadMachinePage() {
                 Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
-            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <div className="calendar-wrapper overflow-hidden rounded-2xl border border-white/10 bg-white/5">
               <iframe
                 src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
                 id="msgsndr-calendar"
