@@ -1,6 +1,5 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
@@ -18,8 +17,7 @@ import {
   Target,
   Workflow,
   BarChart3,
-  ShieldCheck,
-  X
+  ShieldCheck
 } from 'lucide-react'
 
 const problems = [
@@ -132,18 +130,12 @@ const pricingPlans = [
 ]
 
 export default function LeadMachinePage() {
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
-
-  useEffect(() => {
-    if (isDemoModalOpen) {
-      const originalOverflow = document.body.style.overflow
-      document.body.style.overflow = 'hidden'
-      return () => {
-        document.body.style.overflow = originalOverflow
-      }
+  const scrollToCalendar = () => {
+    const calendarSection = document.getElementById('book-demo-calendar')
+    if (calendarSection) {
+      calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
-    document.body.style.overflow = ''
-  }, [isDemoModalOpen])
+  }
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -170,7 +162,7 @@ export default function LeadMachinePage() {
                 <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <button
                     type="button"
-                    onClick={() => setIsDemoModalOpen(true)}
+                    onClick={scrollToCalendar}
                     className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
                   >
                     Book a Demo
@@ -399,44 +391,26 @@ export default function LeadMachinePage() {
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 type="button"
-                onClick={() => setIsDemoModalOpen(true)}
+                onClick={scrollToCalendar}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
               >
                 Book a Demo
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>
-            <p className="mt-4 text-sm text-white/60">You’re one demo away from a self-filling pipeline.</p>
+            <p className="mt-4 text-sm text-white/60">You're one demo away from a self-filling pipeline.</p>
           </div>
         </section>
-      </main>
 
-      {isDemoModalOpen && (
-        <div
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-          role="dialog"
-          aria-modal="true"
-          onClick={() => setIsDemoModalOpen(false)}
-        >
-          <div
-            className="relative w-full max-w-3xl rounded-3xl border border-white/15 bg-black/90 p-5 shadow-2xl"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button
-              type="button"
-              onClick={() => setIsDemoModalOpen(false)}
-              className="absolute right-4 top-4 rounded-full border border-white/20 bg-white/10 p-2 text-white/70 hover:text-white"
-              aria-label="Close demo booking"
-            >
-              <X className="h-5 w-5" />
-            </button>
-            <div className="space-y-4 text-center">
-              <h3 className="text-2xl font-semibold text-white">Lock in Your Demo</h3>
-              <p className="text-white/70">
+        <section id="book-demo-calendar" className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto scroll-mt-24">
+          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-black/60 p-8 sm:p-10">
+            <div className="space-y-4 text-center mb-8">
+              <h3 className="text-3xl sm:text-4xl font-semibold text-white">Lock in Your Demo</h3>
+              <p className="text-lg text-white/70">
                 Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
               <iframe
                 src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
                 id="msgsndr-calendar"
@@ -447,8 +421,8 @@ export default function LeadMachinePage() {
             </div>
             <Script src="https://link.msgsndr.com/js/embed.js" strategy="lazyOnload" />
           </div>
-        </div>
-      )}
+        </section>
+      </main>
     </div>
   )
 }
