@@ -443,12 +443,11 @@ export default function LeadMachinePage() {
               <iframe
                 src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
                 id="msgsndr-calendar"
-                scrolling="no"
-                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '520px' }}
+                scrolling="yes"
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
                 title="Book a demo with TrueFlow"
               />
             </div>
-            <Script src="https://link.msgsndr.com/js/embed.js" strategy="lazyOnload" />
           </div>
         </section>
       </main>
