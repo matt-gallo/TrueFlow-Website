@@ -69,9 +69,9 @@ export default function CookieConsent() {
           border border-white/20
           shadow-2xl shadow-blue-500/20
           sm:rounded-3xl
-          h-[50vh] sm:h-auto
+          max-h-[50vh] sm:h-auto
           overflow-y-auto
-          p-6 sm:p-8
+          p-4 sm:p-8
         ">
           {/* Decorative gradient */}
           <div className="absolute -top-px left-1/2 -translate-x-1/2 h-px w-3/4 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
@@ -86,7 +86,7 @@ export default function CookieConsent() {
             <X className="h-5 w-5" />
           </button>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {/* Header */}
             <div className="space-y-2">
               <div className="flex items-center gap-2">
