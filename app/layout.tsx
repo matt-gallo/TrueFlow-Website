@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import CookieConsent from './components/CookieConsent'
+import ConditionalTracking from './components/ConditionalTracking'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -43,9 +44,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/true-flow-icon.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/true-flow-icon.png" />
         <meta name="theme-color" content="#000000" />
-        <script dangerouslySetInnerHTML={{
-          __html: `(function(doc, tag, id){var js = doc.getElementsByTagName(tag)[0];if (doc.getElementById(id)) {return;}js = doc.createElement(tag); js.id = id;js.src = "https://leadhacker.aipreneurs.com/px.min.js";js.type = "text/javascript";doc.head.appendChild(js);js.onload = function() {pxfired();};}(document, 'script', 'px-grabber'));function pxfired() {PxGrabber.setOptions({Label: "86197454|" + window.location.href,});PxGrabber.render();};`
-        }} />
       </head>
       <body 
         className={inter.className} 
@@ -102,6 +100,7 @@ export default function RootLayout({
           {children}
         </div>
         <CookieConsent />
+        <ConditionalTracking />
       </body>
     </html>
   )
