@@ -103,29 +103,65 @@ const verticals = [
 
 const pricingPlans = [
   {
-    name: 'Launch Setup',
-    price: '$2,000',
-    cadence: 'one-time',
-    description: 'Full buildout of the Lead Machine™ system',
+    name: 'Full TrueFlow Lead Machine Build',
+    price: '$2,600',
+    cadence: 'one-time setup',
+    originalPrice: '$3,000',
+    value: '$3,000 value',
+    description: 'Complete done-for-you buildout',
+    features: [
+      'Workflow + automation integration',
+      'Cold outreach campaign setup',
+      'Domain & inbox configuration',
+      'Custom funnel or lead magnet build',
+      '7-day nurture sequence written + installed',
+      'Analytics & reporting dashboard'
+    ],
     featured: true
   },
   {
-    name: 'Core Plan',
+    name: 'Core Campaign Activation',
     price: '$600',
     cadence: 'per month',
-    description: 'Lead Machine™ + 1 campaign + Readiness Funnel + 7-day nurture'
+    originalPrice: '$750/mo',
+    value: '$750/mo value',
+    description: 'Ongoing lead generation & optimization',
+    features: [
+      'Up to 70 new verified contacts per week (~280/mo)',
+      'AI-driven outreach in your brand tone',
+      'Replies delivered to your inbox or CRM',
+      'Weekly optimization + deliverability management',
+      'Continuous pipeline growth on autopilot'
+    ],
+    featured: true
   },
   {
-    name: 'High-Volume Plan',
-    price: '$1,200',
-    cadence: 'per month',
-    description: 'Multi-niche targeting, expanded contact lists, custom AI reply handling'
+    name: 'TrueFlow Accelerator Mastermind',
+    price: 'Included',
+    cadence: '3 months',
+    originalPrice: '$350/week',
+    value: '$4,200 value',
+    description: 'Live coaching & implementation support',
+    features: [
+      'Weekly live mastermind + implementation calls',
+      'Direct Q&A with Matt + team',
+      'Systems coaching, automation, and scaling strategies',
+      'Private Slack/Telegram for support & accountability'
+    ]
   },
   {
-    name: 'Pro Accelerator',
-    price: '$3,500',
-    cadence: 'per month',
-    description: 'Includes everything plus Weekly Office Hours, Live Q&A & Masterclasses, Dedicated Success Manager'
+    name: 'TrueFlow Platform Access',
+    price: 'Included',
+    cadence: '3 months',
+    originalPrice: '$297/mo',
+    value: '$891 value',
+    description: 'Full platform & tooling access',
+    features: [
+      'Lead Machine CRM + pipeline management',
+      'Conversation AI tooling',
+      'Pre-built automations + ROI tracking dashboards',
+      'Done-for-you reporting + compliance monitoring'
+    ]
   }
 ]
 
@@ -359,24 +395,86 @@ export default function LeadMachinePage() {
 
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-center">Pricing & Tiers</h2>
-            <p className="mt-4 text-center text-white/70 max-w-3xl mx-auto">Every tier includes the full setup, CRM integration, and hands-on onboarding—choose the pace that matches your pipeline goals.</p>
-            <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+            <div className="text-center max-w-4xl mx-auto mb-10">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-400/30 bg-blue-500/10 text-blue-300 text-sm font-medium uppercase tracking-wider">
+                Limited Launch Offer
+              </span>
+              <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">TrueFlow Lead Machine Special Offer</h2>
+              <p className="mt-4 text-lg text-white/80">
+                <span className="text-2xl font-semibold text-white">$10,341+ in done-for-you growth assets</span> for a one-time <span className="text-blue-300 font-semibold">$2,600 build</span> (then <span className="text-blue-300 font-semibold">$600/month</span> after 30 days).
+              </p>
+              <p className="mt-3 text-white/60">
+                Only 10 spots available before pricing resets to $3,000 setup + $750/month.
+              </p>
+            </div>
+
+            <div className="grid gap-6 lg:grid-cols-2">
               {pricingPlans.map((plan) => (
                 <div
                   key={plan.name}
-                  className={`rounded-3xl border border-white/10 bg-black/40 p-6 flex flex-col gap-4 ${plan.featured ? 'ring-1 ring-blue-400/50' : ''}`}
+                  className={`rounded-3xl border p-8 flex flex-col gap-6 ${
+                    plan.featured
+                      ? 'border-blue-400/50 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-black/40 ring-2 ring-blue-400/30'
+                      : 'border-white/10 bg-black/40'
+                  }`}
                 >
                   <div>
-                    <h3 className="text-xl font-semibold">{plan.name}</h3>
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
+                      {plan.featured && (
+                        <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-400/30">
+                          Save $7,700+
+                        </span>
+                      )}
+                    </div>
                     <p className="mt-2 text-white/60">{plan.description}</p>
                   </div>
-                  <div className="mt-auto">
-                    <p className="text-3xl font-semibold">{plan.price}</p>
-                    <p className="text-white/60 text-sm">{plan.cadence}</p>
+
+                  <div className="flex items-baseline gap-3">
+                    <p className="text-4xl font-semibold text-white">{plan.price}</p>
+                    <div className="flex flex-col">
+                      <p className="text-white/70 text-sm">{plan.cadence}</p>
+                      {plan.originalPrice && (
+                        <p className="text-white/40 text-xs line-through">{plan.originalPrice}</p>
+                      )}
+                    </div>
                   </div>
+
+                  {plan.value && (
+                    <div className="px-4 py-2 rounded-xl bg-white/5 border border-white/10">
+                      <p className="text-sm text-white/70">{plan.value}</p>
+                    </div>
+                  )}
+
+                  <ul className="space-y-3 flex-grow">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <CheckCircle className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-white/75 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-10 rounded-2xl border border-blue-400/30 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-transparent p-8">
+              <div className="flex items-start gap-4">
+                <ShieldCheck className="h-8 w-8 text-blue-300 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-semibold text-white">90-Day ROI Guarantee</h3>
+                  <p className="mt-2 text-white/80">
+                    See measurable ROI within 90 days or we keep sending leads until you do. After that, you only pay the $297/mo platform access until the ROI target is met.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 text-center">
+              <h3 className="text-2xl font-semibold text-white">Why this founder pricing?</h3>
+              <p className="mt-3 text-white/70 max-w-3xl mx-auto">
+                We're taking on 10 businesses at this rate to showcase wins before we reset to $3,000 setup + $750/month. Lock in this offer now—it will not return.
+              </p>
             </div>
           </div>
         </section>
