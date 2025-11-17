@@ -186,58 +186,57 @@ export default function LeadMachinePage() {
       'lc-booking'
     ]
 
-    const cleanupCSSText = () => {
-      const calendarSection = document.getElementById('book-demo-calendar')
-      if (!calendarSection) return
+    const shouldStrip = (text: string) =>
+      text.includes('/*') ||
+      text.includes('{') ||
+      text.includes('background:') ||
+      unwantedPhrases.some(phrase => text.includes(phrase))
 
-      const calendarWrapper = calendarSection.querySelector('.calendar-wrapper')
-      if (!calendarWrapper) return
-
-      // Remove any text nodes or elements after the calendar wrapper that contain CSS
-      let nextSibling = calendarWrapper.nextSibling
-      while (nextSibling) {
-        const nodeToRemove = nextSibling
-        nextSibling = nextSibling.nextSibling
-
-        // Check if it's a text node or an element with CSS-like content
-        if (nodeToRemove.nodeType === Node.TEXT_NODE) {
-          const text = nodeToRemove.textContent?.trim() || ''
-          if (
-            text.includes('/*') ||
-            text.includes('{') ||
-            text.includes('background:') ||
-            unwantedPhrases.some(phrase => text.includes(phrase))
-          ) {
-            nodeToRemove.remove()
-          }
-        } else if (nodeToRemove.nodeType === Node.ELEMENT_NODE) {
-          const element = nodeToRemove as Element
+    const cleanNodeList = (nodes: NodeListOf<ChildNode> | ChildNode[]) => {
+      nodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent?.trim() || ''
+          if (shouldStrip(text)) node.remove()
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          const element = node as Element
           const text = element.textContent?.trim() || ''
-          if (
-            text.includes('/*') ||
-            text.includes('background:') ||
-            text.includes('lc-booking') ||
-            unwantedPhrases.some(phrase => text.includes(phrase))
-          ) {
-            element.remove()
-          }
-        }
-      }
-
-      // Also clean up any stray elements inside calendar wrapper (except iframe)
-      Array.from(calendarWrapper.children).forEach(child => {
-        if (child.tagName !== 'IFRAME') {
-          const text = child.textContent?.trim() || ''
-          if (
-            text.includes('/*') ||
-            text.includes('background:') ||
-            unwantedPhrases.some(phrase => text.includes(phrase))
-          ) {
-            child.remove()
-          }
+          if (shouldStrip(text)) element.remove()
         }
       })
     }
+
+    const cleanupCSSText = () => {
+      const calendarSection = document.getElementById('book-demo-calendar')
+      const calendarWrapper = calendarSection?.querySelector('.calendar-wrapper')
+
+      if (calendarWrapper) {
+        // Remove any text nodes or elements after the calendar wrapper that contain CSS
+        let nextSibling = calendarWrapper.nextSibling
+        while (nextSibling) {
+          const nodeToRemove = nextSibling
+          nextSibling = nextSibling.nextSibling
+          cleanNodeList([nodeToRemove])
+        }
+
+        // Also clean up any stray elements inside calendar wrapper (except iframe)
+        Array.from(calendarWrapper.children).forEach(child => {
+          if (child.tagName !== 'IFRAME') {
+            cleanNodeList([child])
+          }
+        })
+      }
+
+      // Global sweep: sometimes the script appends text at the end of <body>
+      cleanNodeList(document.body.childNodes as unknown as ChildNode[])
+    }
+
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.type === 'childList') {
+          cleanNodeList(mutation.addedNodes as unknown as ChildNode[])
+        }
+      })
+    })
 
     // Run cleanup after iframe loads
     const timer = setTimeout(cleanupCSSText, 2000)
@@ -245,9 +244,13 @@ export default function LeadMachinePage() {
     // Run cleanup periodically in case CSS text appears later
     const interval = setInterval(cleanupCSSText, 3000)
 
+    // Watch for new nodes and strip immediately
+    observer.observe(document.body, { childList: true, subtree: true })
+
     return () => {
       clearTimeout(timer)
       clearInterval(interval)
+      observer.disconnect()
     }
   }, [])
 
