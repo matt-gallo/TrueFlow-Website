@@ -886,7 +886,7 @@ export default function LandingPage() {
                 Log In
               </a> */}
               <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
-                Free Assessment
+                Get started here
               </Link>
             </div>
 
@@ -925,7 +925,7 @@ export default function LandingPage() {
                 Log In
               </a> */}
               <Link href="/ai-readiness-assessment" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
-                Free Assessment
+                Get started here
               </Link>
             </div>
           </div>
@@ -1467,7 +1467,7 @@ export default function LandingPage() {
                   href="/ai-readiness-assessment"
                   className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
                 >
-                  <span>Start Your Free Assessment</span>
+                  <span>Get started here</span>
                   <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </Link>
                 <p className="text-white/50 text-sm mt-4">No commitment. No credit card. Just honest advice about what automation can do for your business.</p>
@@ -1595,7 +1595,7 @@ export default function LandingPage() {
             {[
               {
                 step: 1,
-                title: "Free Assessment",
+                title: "Start Here",
                 description: "Tell us about your business and the challenges you face. We'll identify where automation can save you time and make you money.",
                 icon: <MessageSquare className="h-16 w-16" strokeWidth={1.5} />,
                 color: "from-green-500 to-emerald-600",
@@ -1918,7 +1918,7 @@ export default function LandingPage() {
               href="/ai-readiness-assessment"
               className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
             >
-              <span>Get Your Free Assessment</span>
+              <span>Get started here</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
             </Link>
           </div>
@@ -2492,7 +2492,7 @@ export default function LandingPage() {
                   </div>
 
                   <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-gray-500 text-lg relative overflow-hidden group">
-                    <span className="relative z-10">Get Free Assessment</span>
+                    <span className="relative z-10">Get started here</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
                 </div>
@@ -2533,7 +2533,7 @@ export default function LandingPage() {
                   </div>
 
                   <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group">
-                    <span className="relative z-10">Get Free Assessment</span>
+                    <span className="relative z-10">Get started here</span>
                     <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
                   </Link>
                 </div>
@@ -2575,7 +2575,7 @@ export default function LandingPage() {
                   </div>
 
                   <Link href="/ai-readiness-assessment" className="w-full py-4 px-6 rounded-full font-semibold transition-all bg-white/10 text-white hover:bg-white/20 border border-white/20 block text-center">
-                    Get Free Assessment
+                    Get started here
                   </Link>
                 </div>
 
@@ -2640,7 +2640,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <p className="text-white/70 text-lg mb-6">Still have questions?</p>
             <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
-              <span>Get Your Free Assessment</span>
+              <span>Get started here</span>
               <ChevronRight className="h-5 w-5" />
             </Link>
           </div>
@@ -2692,7 +2692,7 @@ export default function LandingPage() {
             {/* CTA */}
             <div>
               <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
-                Get Your Free Assessment
+                Get started here
               </Link>
             </div>
           </div>

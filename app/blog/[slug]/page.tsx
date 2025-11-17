@@ -122,7 +122,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
             href="/ai-readiness-assessment"
             className="inline-flex items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity font-semibold"
           >
-            Start Your Free Assessment
+            Get started here
           </Link>
         </div>
       </section>
