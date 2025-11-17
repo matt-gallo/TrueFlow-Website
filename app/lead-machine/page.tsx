@@ -176,6 +176,16 @@ export default function LeadMachinePage() {
 
   // Clean up any stray CSS text that appears from the booking widget
   useEffect(() => {
+    const unwantedPhrases = [
+      'Pick a Date',
+      'Previous month',
+      'Next month',
+      'Available Starting',
+      'Select Date',
+      'GMT',
+      'lc-booking'
+    ]
+
     const cleanupCSSText = () => {
       const calendarSection = document.getElementById('book-demo-calendar')
       if (!calendarSection) return
@@ -192,13 +202,23 @@ export default function LeadMachinePage() {
         // Check if it's a text node or an element with CSS-like content
         if (nodeToRemove.nodeType === Node.TEXT_NODE) {
           const text = nodeToRemove.textContent?.trim() || ''
-          if (text.includes('/*') || text.includes('{') || text.includes('background:')) {
+          if (
+            text.includes('/*') ||
+            text.includes('{') ||
+            text.includes('background:') ||
+            unwantedPhrases.some(phrase => text.includes(phrase))
+          ) {
             nodeToRemove.remove()
           }
         } else if (nodeToRemove.nodeType === Node.ELEMENT_NODE) {
           const element = nodeToRemove as Element
           const text = element.textContent?.trim() || ''
-          if (text.includes('/*') || text.includes('background:') || text.includes('lc-booking')) {
+          if (
+            text.includes('/*') ||
+            text.includes('background:') ||
+            text.includes('lc-booking') ||
+            unwantedPhrases.some(phrase => text.includes(phrase))
+          ) {
             element.remove()
           }
         }
@@ -208,7 +228,11 @@ export default function LeadMachinePage() {
       Array.from(calendarWrapper.children).forEach(child => {
         if (child.tagName !== 'IFRAME') {
           const text = child.textContent?.trim() || ''
-          if (text.includes('/*') || text.includes('background:')) {
+          if (
+            text.includes('/*') ||
+            text.includes('background:') ||
+            unwantedPhrases.some(phrase => text.includes(phrase))
+          ) {
             child.remove()
           }
         }
@@ -229,6 +253,11 @@ export default function LeadMachinePage() {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
+      {/* LeadConnector booking widget script */}
+      <Script
+        src="https://link.msgsndr.com/js/form_embed.js"
+        strategy="lazyOnload"
+      />
       <Navigation />
 
       <main className="pt-28 pb-24">
@@ -560,6 +589,9 @@ export default function LeadMachinePage() {
             #book-demo-calendar .calendar-wrapper {
               position: relative;
               isolation: isolate;
+              overflow: hidden;
+              color: transparent;
+              font-size: 0;
             }
 
             /* Hide all text nodes after the calendar wrapper that contain CSS */
@@ -570,6 +602,11 @@ export default function LeadMachinePage() {
             /* Ensure only the iframe is visible inside calendar-wrapper */
             #book-demo-calendar .calendar-wrapper > *:not(iframe) {
               display: none !important;
+            }
+
+            #book-demo-calendar .calendar-wrapper iframe {
+              position: relative;
+              z-index: 1;
             }
 
             /* Ensure iframe renders properly */
