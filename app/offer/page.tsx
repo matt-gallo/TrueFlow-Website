@@ -27,6 +27,7 @@ import {
   X
 } from 'lucide-react'
 import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
+import { Footer } from '../components/Footer'
 
 // Animated counter component
 function AnimatedCounter({ endValue, duration = 2000, prefix = '', suffix = '', shouldStart = false }: {
@@ -562,34 +563,7 @@ export default function ContentOfferLanding() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center gap-4">
-              <Image 
-                src="/true-flow-logo.webp" 
-                alt="TrueFlow" 
-                width={140} 
-                height={35} 
-                className="h-8 w-auto opacity-70"
-              />
-              <span className="text-white/50 text-sm">© 2024 TrueFlow AI</span>
-            </div>
-            <div className="flex gap-6 text-sm">
-              <Link href="/privacy" className="text-white/50 hover:text-white transition-colors">
-                Privacy
-              </Link>
-              <Link href="/terms" className="text-white/50 hover:text-white transition-colors">
-                Terms
-              </Link>
-              <Link href="/faq" className="text-white/50 hover:text-white transition-colors">
-                FAQ
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

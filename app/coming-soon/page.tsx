@@ -9,13 +9,14 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
-import { 
+import {
   ArrowLeft,
   Clock,
   Bell,
   CheckCircle
 } from 'lucide-react'
 import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
+import { Footer } from '../components/Footer'
 
 interface Particle {
   id: number
@@ -409,21 +410,7 @@ export default function ComingSoonPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-black/80 backdrop-blur-md border-t border-white/10 py-16 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center mb-6">
-            <Image 
-              src="/true-flow-logo.webp" 
-              alt="TrueFlow" 
-              width={200} 
-              height={60} 
-              className="h-12 w-auto"
-            />
-          </div>
-          <p className="text-white/50">&copy; 2025 TrueFlow AI. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

@@ -23,6 +23,7 @@ import {
   Brain,
   CheckCircle
 } from 'lucide-react'
+import { Footer } from '../components/Footer'
 
 interface FAQItem {
   id: string
@@ -672,55 +673,7 @@ export default function FAQPage() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-black/80 backdrop-blur-md border-t border-white/10 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center mb-6">
-                <Image 
-                  src="/true-flow-logo.webp" 
-                  alt="TrueFlow" 
-                  width={200} 
-                  height={60} 
-                  className="h-12 w-auto"
-                />
-              </div>
-              <p className="text-white/70 mb-6 max-w-md">
-                The most powerful AI-driven Business Operating System for content creation and audience engagement.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Product</h4>
-              <div className="space-y-2">
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Features</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Pricing</Link>
-                <Link href="/api-docs" className="block text-white/70 hover:text-white transition-colors">API</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Integrations</Link>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Support</h4>
-              <div className="space-y-2">
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Help Center</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Contact</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Status</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Community</Link>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between text-white/50">
-            <p>&copy; 2025 TrueFlow™ AI, LLC. All rights reserved.</p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="#" className="hover:text-white transition-colors">Terms</Link>
-              <Link href="#" className="hover:text-white transition-colors">Privacy Policy</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

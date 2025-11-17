@@ -1,5 +1,5 @@
 import Navigation from '../components/Navigation'
-import Link from 'next/link'
+import { Footer } from '../components/Footer'
 
 export default function PrivacyPolicy() {
   return (
@@ -145,48 +145,7 @@ export default function PrivacyPolicy() {
         </div>
       </main>
       
-      {/* Footer */}
-      <footer className="bg-black/80 backdrop-blur-md border-t border-white/10 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h4 className="text-white font-semibold mb-4">TrueFlow AI</h4>
-              <p className="text-white/60 text-sm">
-                Your AI-powered digital assistant for business growth.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Product</h4>
-              <ul className="space-y-2">
-                {/* <li><Link href="/for-business" className="text-white/60 hover:text-white text-sm">For Business</Link></li> */}
-                <li><Link href="/content-engine" className="text-white/60 hover:text-white text-sm">Constant Content Engine™</Link></li>
-                <li><Link href="/faq" className="text-white/60 hover:text-white text-sm">FAQ</Link></li>
-                <li><Link href="/blog" className="text-white/60 hover:text-white text-sm">Blog</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Legal</h4>
-              <ul className="space-y-2">
-                <li><Link href="/privacy" className="text-white/60 hover:text-white text-sm">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="text-white/60 hover:text-white text-sm">Terms of Service</Link></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Contact</h4>
-              <ul className="space-y-2">
-                <li><a href="mailto:matt@trueflow.ai" className="text-white/60 hover:text-white text-sm">matt@trueflow.ai</a></li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-white/10 text-center">
-            <p className="text-white/50 text-sm">&copy; 2025 TrueFlow AI. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

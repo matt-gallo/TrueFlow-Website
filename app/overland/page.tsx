@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Mountain, Compass, MapPin, Wifi, WifiOff, Users, Star, ArrowRight, CheckCircle, Truck, Navigation } from 'lucide-react'
 import Link from 'next/link'
+import { Footer } from '../components/Footer'
 
 export default function OverlandPage() {
   const [email, setEmail] = useState('')
@@ -351,22 +352,7 @@ export default function OverlandPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-4 border-t border-white/10">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <div className="text-2xl font-bold text-white mr-4">TrueFlow</div>
-              <div className="text-white/60 text-sm">Less Screen. More Trail.</div>
-            </div>
-            <div className="flex space-x-6 text-white/60">
-              <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-              <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-              <a href="mailto:hello@trueflow.ai" className="hover:text-white transition-colors">Contact</a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

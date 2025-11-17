@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
+import { Footer } from '../components/Footer'
 import { 
   ChevronDown, 
   ChevronRight, 
@@ -994,17 +995,7 @@ widgets = client.widgets.list()`} />
         </div>
       </section>
       
-      {/* Footer */}
-      <footer className="border-t border-white/10 py-8 px-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-white/60">
-            Need help? Contact us at{' '}
-            <a href="mailto:api@trueflow.ai" className="text-purple-400 hover:text-purple-300">
-              api@trueflow.ai
-            </a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
       </div>
     </div>
   )

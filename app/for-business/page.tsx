@@ -44,6 +44,7 @@ import {
   Quote
 } from 'lucide-react'
 import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
+import { Footer } from '../components/Footer'
 
 interface Particle {
   id: number
@@ -762,49 +763,7 @@ export default function ForBusinessPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black/80 backdrop-blur-md border-t border-white/10 py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="col-span-1 md:col-span-2">
-              <div className="flex items-center mb-6">
-                <Image 
-                  src="/true-flow-logo.webp" 
-                  alt="TrueFlow" 
-                  width={200} 
-                  height={60} 
-                  className="h-12 w-auto"
-                />
-              </div>
-              <p className="text-white/70 mb-6 max-w-md">
-                Simple social media for established businesses. No technical knowledge required - we handle everything for you.
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">For Business</h4>
-              <div className="space-y-2">
-                <Link href="/for-business" className="block text-white/70 hover:text-white transition-colors">Business Overview</Link>
-                <Link href="/ai-readiness-assessment" className="block text-white/70 hover:text-white transition-colors">Start Free Trial</Link>
-                <Link href="/faq" className="block text-white/70 hover:text-white transition-colors">FAQs</Link>
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="text-white font-semibold mb-4">Support</h4>
-              <div className="space-y-2">
-                <Link href="/content-engine" className="block text-white/70 hover:text-white transition-colors">How It Works</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Help Center</Link>
-                <Link href="/coming-soon" className="block text-white/70 hover:text-white transition-colors">Contact</Link>
-              </div>
-            </div>
-          </div>
-          
-          <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/50">
-            <p>&copy; 2025 TrueFlow AI. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 }

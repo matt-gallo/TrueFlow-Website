@@ -9,6 +9,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Navigation from '@/app/components/Navigation'
 import ParticleBackground from '@/app/components/ParticleBackground'
+import { Footer } from '@/app/components/Footer'
 
 // Generate static params for all blog posts
 export async function generateStaticParams() {
@@ -126,6 +127,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
           </Link>
         </div>
       </section>
+      <Footer />
     </div>
   )
 }
