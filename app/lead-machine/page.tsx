@@ -3,7 +3,6 @@
 import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Script from 'next/script'
 import Navigation from '../components/Navigation'
 import {
   ArrowRight,
@@ -238,10 +237,9 @@ export default function LeadMachinePage() {
       })
     })
 
-    // Run cleanup after iframe loads
+    // Run cleanup immediately, after iframe loads, and periodically
+    cleanupCSSText()
     const timer = setTimeout(cleanupCSSText, 2000)
-
-    // Run cleanup periodically in case CSS text appears later
     const interval = setInterval(cleanupCSSText, 3000)
 
     // Watch for new nodes and strip immediately
@@ -257,10 +255,6 @@ export default function LeadMachinePage() {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* LeadConnector booking widget script */}
-      <Script
-        src="https://link.msgsndr.com/js/form_embed.js"
-        strategy="lazyOnload"
-      />
       <Navigation />
 
       <main className="pt-28 pb-24">
