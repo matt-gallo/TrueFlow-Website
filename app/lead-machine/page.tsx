@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
@@ -172,6 +173,59 @@ export default function LeadMachinePage() {
       calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
   }
+
+  // Clean up any stray CSS text that appears from the booking widget
+  useEffect(() => {
+    const cleanupCSSText = () => {
+      const calendarSection = document.getElementById('book-demo-calendar')
+      if (!calendarSection) return
+
+      const calendarWrapper = calendarSection.querySelector('.calendar-wrapper')
+      if (!calendarWrapper) return
+
+      // Remove any text nodes or elements after the calendar wrapper that contain CSS
+      let nextSibling = calendarWrapper.nextSibling
+      while (nextSibling) {
+        const nodeToRemove = nextSibling
+        nextSibling = nextSibling.nextSibling
+
+        // Check if it's a text node or an element with CSS-like content
+        if (nodeToRemove.nodeType === Node.TEXT_NODE) {
+          const text = nodeToRemove.textContent?.trim() || ''
+          if (text.includes('/*') || text.includes('{') || text.includes('background:')) {
+            nodeToRemove.remove()
+          }
+        } else if (nodeToRemove.nodeType === Node.ELEMENT_NODE) {
+          const element = nodeToRemove as Element
+          const text = element.textContent?.trim() || ''
+          if (text.includes('/*') || text.includes('background:') || text.includes('lc-booking')) {
+            element.remove()
+          }
+        }
+      }
+
+      // Also clean up any stray elements inside calendar wrapper (except iframe)
+      Array.from(calendarWrapper.children).forEach(child => {
+        if (child.tagName !== 'IFRAME') {
+          const text = child.textContent?.trim() || ''
+          if (text.includes('/*') || text.includes('background:')) {
+            child.remove()
+          }
+        }
+      })
+    }
+
+    // Run cleanup after iframe loads
+    const timer = setTimeout(cleanupCSSText, 2000)
+
+    // Run cleanup periodically in case CSS text appears later
+    const interval = setInterval(cleanupCSSText, 3000)
+
+    return () => {
+      clearTimeout(timer)
+      clearInterval(interval)
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
@@ -502,32 +556,45 @@ export default function LeadMachinePage() {
 
         <section id="book-demo-calendar" className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto scroll-mt-24">
           <style jsx global>{`
-            /* Hide any raw CSS text that might appear from embed scripts */
-            #book-demo-calendar .calendar-wrapper ~ *:not(script):not(style) {
-              display: none !important;
-              visibility: hidden !important;
-              height: 0 !important;
-              overflow: hidden !important;
+            /* Hide any stray CSS text content from embed scripts */
+            #book-demo-calendar .calendar-wrapper {
+              position: relative;
+              isolation: isolate;
             }
 
-            /* Hide text nodes that contain CSS code */
-            #book-demo-calendar *:not(h3):not(p):not(button):not(iframe):not(div):not(section) {
-              font-size: 0 !important;
-              line-height: 0 !important;
-              color: transparent !important;
+            /* Hide all text nodes after the calendar wrapper that contain CSS */
+            #book-demo-calendar .calendar-wrapper ~ * {
+              display: none !important;
+            }
+
+            /* Ensure only the iframe is visible inside calendar-wrapper */
+            #book-demo-calendar .calendar-wrapper > *:not(iframe) {
+              display: none !important;
             }
 
             /* Ensure iframe renders properly */
             #msgsndr-calendar {
               display: block !important;
               width: 100% !important;
-              min-height: 520px !important;
+              min-height: 700px !important;
+              background: transparent !important;
             }
 
-            /* Hide any pseudo-elements with CSS text */
-            #book-demo-calendar *::after,
-            #book-demo-calendar *::before {
-              content: none !important;
+            /* Hide any elements containing CSS-like patterns */
+            #book-demo-calendar *[class*="lc-"],
+            #book-demo-calendar *[id*="booking"] {
+              display: contents !important;
+            }
+
+            /* Prevent any text rendering outside iframe */
+            #book-demo-calendar {
+              font-size: 0 !important;
+            }
+
+            #book-demo-calendar h3,
+            #book-demo-calendar p,
+            #book-demo-calendar button {
+              font-size: 1rem !important;
             }
           `}</style>
           <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-black/60 p-8 sm:p-10">
