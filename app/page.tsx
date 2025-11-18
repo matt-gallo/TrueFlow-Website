@@ -886,6 +886,12 @@ export default function LandingPage() {
               {/* <a href="https://app.trueflow.ai/login" className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-sm font-semibold">
                 Log In
               </a> */}
+              <a 
+                href="https://login.trueflow.ai" 
+                className="border border-white/20 text-white px-5 py-2 rounded-full hover:bg-white/10 transition-colors text-sm font-semibold"
+              >
+                Sign in
+              </a>
               <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
                 Get started here
               </Link>
@@ -925,6 +931,13 @@ export default function LandingPage() {
               {/* <a href="https://app.trueflow.ai/login" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-lg font-semibold block text-center mt-6">
                 Log In
               </a> */}
+              <a 
+                href="https://login.trueflow.ai" 
+                onClick={() => setIsMenuOpen(false)}
+                className="w-full border border-white/20 text-white px-8 py-3 rounded-full hover:bg-white/10 transition-colors text-lg font-semibold block text-center"
+              >
+                Sign in
+              </a>
               <Link href="/ai-readiness-assessment" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
                 Get started here
               </Link>

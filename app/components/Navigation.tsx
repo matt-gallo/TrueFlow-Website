@@ -73,6 +73,12 @@ export default function Navigation() {
             >
               Log In
             </a> */}
+            <a
+              href="https://login.trueflow.ai"
+              className="border border-white/20 text-white px-5 py-2 rounded-full hover:bg-white/10 transition-colors text-sm font-semibold"
+            >
+              Sign in
+            </a>
             <Link
               href="/ai-readiness-assessment"
               className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold"
@@ -171,6 +177,13 @@ export default function Navigation() {
             >
               Log In
             </a> */}
+            <a
+              href="https://login.trueflow.ai"
+              onClick={handleLinkClick}
+              className="w-full border border-white/20 text-white px-8 py-3 rounded-full hover:bg-white/10 transition-colors text-lg font-semibold block text-center"
+            >
+              Sign in
+            </a>
             <Link
               href="/ai-readiness-assessment"
               onClick={handleLinkClick}
