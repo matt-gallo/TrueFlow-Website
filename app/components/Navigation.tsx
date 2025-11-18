@@ -80,7 +80,7 @@ export default function Navigation() {
               Sign in
             </a>
             <Link
-              href="/ai-readiness-assessment"
+              href="/sign-up"
               className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold"
             >
               Get started here
@@ -185,7 +185,7 @@ export default function Navigation() {
               Sign in
             </a>
             <Link
-              href="/ai-readiness-assessment"
+              href="/sign-up"
               onClick={handleLinkClick}
               className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center"
             >

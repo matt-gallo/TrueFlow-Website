@@ -46,7 +46,7 @@ export function Footer() {
           
           {/* CTA */}
           <div>
-            <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
+            <Link href="/sign-up" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
               Get started here
             </Link>
           </div>
