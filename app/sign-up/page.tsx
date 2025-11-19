@@ -329,14 +329,22 @@ export default function SignUpPage() {
         body: JSON.stringify(formData)
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('Failed to submit intake')
+        // Display specific API error message
+        const errorMsg = data.details
+          ? `${data.error}: ${data.details}`
+          : data.error || 'Failed to create your account. Please try again.'
+        setErrorMessage(errorMsg)
+        return
       }
 
+      // Success - show completion screen
       setIsComplete(true)
     } catch (error) {
       console.error(error)
-      setErrorMessage('Something went wrong while activating your trial. Please try again or contact the success team.')
+      setErrorMessage('Unable to connect to the server. Please check your internet connection and try again.')
     } finally {
       setIsSubmitting(false)
     }
