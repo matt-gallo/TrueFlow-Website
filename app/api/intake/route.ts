@@ -1,16 +1,16 @@
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
-  const agencyApiKey = process.env.GHL_AGENCY_API_KEY
-  const agencyCompanyId = process.env.GHL_COMPANY_ID
+  const privateIntegrationToken = process.env.GHL_PRIVATE_INTEGRATION_TOKEN
+  const companyId = process.env.GHL_COMPANY_ID
 
   // Validate environment variables
-  if (!agencyApiKey) {
-    console.error('GHL_AGENCY_API_KEY not configured')
-    return NextResponse.json({ error: 'Server configuration error: API key not set' }, { status: 500 })
+  if (!privateIntegrationToken) {
+    console.error('GHL_PRIVATE_INTEGRATION_TOKEN not configured')
+    return NextResponse.json({ error: 'Server configuration error: Private Integration Token not set' }, { status: 500 })
   }
 
-  if (!agencyCompanyId) {
+  if (!companyId) {
     console.error('GHL_COMPANY_ID not configured')
     return NextResponse.json({ error: 'Server configuration error: Company ID not set' }, { status: 500 })
   }
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   // Only include fields that have values (GHL API handles optional fields)
   const payload: any = {
     name: body.name,
-    companyId: agencyCompanyId
+    companyId: companyId
   }
 
   // Add optional fields only if they exist
@@ -70,7 +70,7 @@ export async function POST(request: Request) {
     const response = await fetch('https://services.leadconnectorhq.com/locations/', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${agencyApiKey}`,
+        'Authorization': `Bearer ${privateIntegrationToken}`,
         'Content-Type': 'application/json',
         'Version': '2021-07-28'
       },
