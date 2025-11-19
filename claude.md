@@ -17,11 +17,11 @@ The sign-up form at `/sign-up` automatically creates GoHighLevel sub-accounts fo
 
 Add these to Railway (both staging and production environments):
 
-1. **`GHL_PRIVATE_INTEGRATION_TOKEN`** - Your Private Integration Token from GoHighLevel
+1. **`GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN`** - Your Agency-level Private Integration Token from GoHighLevel
    - Location in GHL: Settings → Integrations → Private Integration
    - Requires: Agency Pro ($497) plan
    - Scopes needed: `locations.write` (and optionally `locations.read` for debugging)
-   - Type: Agency-level Private Integration Token
+   - Type: **Agency-level** Private Integration Token (not sub-account level)
    - **Important:** This is NOT the legacy "Agency API Token" - it must be a Private Integration Token
 
 2. **`GHL_COMPANY_ID`** - Your agency/company ID in GoHighLevel

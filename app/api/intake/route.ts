@@ -1,13 +1,13 @@
 import { NextResponse } from 'next/server'
 
 export async function POST(request: Request) {
-  const privateIntegrationToken = process.env.GHL_PRIVATE_INTEGRATION_TOKEN
+  const privateIntegrationToken = process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
   const companyId = process.env.GHL_COMPANY_ID
 
   // Validate environment variables
   if (!privateIntegrationToken) {
-    console.error('GHL_PRIVATE_INTEGRATION_TOKEN not configured')
-    return NextResponse.json({ error: 'Server configuration error: Private Integration Token not set' }, { status: 500 })
+    console.error('GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN not configured')
+    return NextResponse.json({ error: 'Server configuration error: Agency Private Integration Token not set' }, { status: 500 })
   }
 
   if (!companyId) {
