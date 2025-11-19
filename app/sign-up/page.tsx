@@ -333,9 +333,17 @@ export default function SignUpPage() {
 
       if (!response.ok) {
         // Display specific API error message
-        const errorMsg = data.details
-          ? `${data.error}: ${data.details}`
-          : data.error || 'Failed to create your account. Please try again.'
+        let errorMsg = data.error || 'Failed to create your account. Please try again.'
+
+        if (data.details) {
+          // Handle array of errors or single error detail
+          if (Array.isArray(data.details)) {
+            errorMsg = `${errorMsg}\n\n${data.details.join('\n')}`
+          } else {
+            errorMsg = `${errorMsg}: ${data.details}`
+          }
+        }
+
         setErrorMessage(errorMsg)
         return
       }
