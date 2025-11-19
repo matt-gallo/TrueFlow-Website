@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
-import { NavAuthButtons } from '@/app/components/NavAuthButtons'
+import Navigation from '@/app/components/Navigation'
+import { Footer } from '@/app/components/Footer'
 import {
   ArrowLeft,
   ArrowRight,
@@ -351,32 +351,7 @@ export default function SignUpPage() {
       </div>
 
       <div className="relative z-10">
-        <nav className="fixed top-0 left-0 right-0 border-b border-white/10 backdrop-blur-xl bg-black/60">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between h-auto py-4">
-              <Link href="/" className="flex items-center gap-3">
-                <Image
-                  src="/true-flow-logo.webp"
-                  alt="TrueFlow"
-                  width={200}
-                  height={52}
-                  className="h-10 w-auto"
-                  priority
-                />
-                <div className="hidden sm:flex items-center text-xs uppercase tracking-[0.3em] text-white/60">
-                  Intake Portal
-                </div>
-              </Link>
-              <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-6">
-                <div className="text-center sm:text-right text-xs text-white/60">
-                  <p>Data is mapped to the GHL Create Sub-Account endpoint.</p>
-                  <p>Only business name + company ID are required.</p>
-                </div>
-                <NavAuthButtons />
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navigation />
 
         <main className="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)]">
@@ -941,6 +916,8 @@ export default function SignUpPage() {
             </aside>
           </div>
         </main>
+
+        <Footer />
       </div>
     </div>
   )
