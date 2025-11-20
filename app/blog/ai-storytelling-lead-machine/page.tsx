@@ -57,12 +57,16 @@ export default function BlogPost() {
 
             {/* Author Section */}
             <div className="flex items-center justify-center gap-4 mb-8">
-              <div className="w-12 h-12 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">MG</span>
-              </div>
+              <Image
+                src="/avatars/matt-gallo.jpg"
+                alt="Matt Gallo"
+                width={48}
+                height={48}
+                className="w-12 h-12 rounded-full object-cover"
+              />
               <div className="text-left">
-                <p className="text-white font-semibold">Matt Gall</p>
-                <p className="text-white/60 text-sm">Founder & CEO, TrueFlow AI</p>
+                <p className="text-white font-semibold">Matt Gallo</p>
+                <p className="text-white/60 text-sm">Operations & Creative Director</p>
               </div>
             </div>
 

@@ -249,7 +249,7 @@ Want to see how AI-powered storytelling can transform your lead generation?
 
 ---
 
-*Matt Gall is the Founder & CEO of TrueFlow AI, where he helps businesses use AI to amplify their authentic voice and create meaningful connections with clients.*
+*Matt Gallo is the creative mind behind TrueFlow AI, where he helps creators, coaches, and service pros automate their marketing and content systems without losing the human touch. A strategist by nature and a builder at heart, Matt blends AI, storytelling, and operational rigor to create business systems that feel like flow and kill friction.*
 `,
     author: authors['matt-gallo'],
     date: '2025-11-20',
