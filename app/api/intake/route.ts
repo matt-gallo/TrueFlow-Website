@@ -21,6 +21,14 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Business name is required' }, { status: 400 })
   }
 
+  // Log incoming data for debugging
+  console.log('Received form data:', {
+    name: body.name,
+    prospectInfo: body.prospectInfo,
+    hasProspectEmail: !!body.prospectInfo?.email,
+    prospectEmail: body.prospectInfo?.email
+  })
+
   // Build the payload for GHL API
   // Only include fields that have values (GHL API handles optional fields)
   const payload: any = {
@@ -91,7 +99,12 @@ export async function POST(request: Request) {
     payload.snapshotId = body.snapshotId
   }
 
-  console.log('Creating GHL sub-account with payload:', { ...payload, companyId: '[REDACTED]' })
+  console.log('Creating GHL sub-account with payload:', {
+    ...payload,
+    companyId: '[REDACTED]',
+    hasProspectInfo: !!payload.prospectInfo,
+    prospectInfoFields: payload.prospectInfo ? Object.keys(payload.prospectInfo) : []
+  })
 
   try {
     // Call GoHighLevel API to create sub-account
