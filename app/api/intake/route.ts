@@ -40,7 +40,14 @@ export async function POST(request: Request) {
 
   // Add nested objects only if they have data
   if (body.prospectInfo && (body.prospectInfo.firstName || body.prospectInfo.lastName || body.prospectInfo.email)) {
-    payload.prospectInfo = body.prospectInfo
+    // Only include prospectInfo fields that have values
+    const filteredProspectInfo: any = {}
+    if (body.prospectInfo.firstName) filteredProspectInfo.firstName = body.prospectInfo.firstName
+    if (body.prospectInfo.lastName) filteredProspectInfo.lastName = body.prospectInfo.lastName
+    if (body.prospectInfo.email) filteredProspectInfo.email = body.prospectInfo.email
+    if (Object.keys(filteredProspectInfo).length > 0) {
+      payload.prospectInfo = filteredProspectInfo
+    }
   }
 
   if (body.settings) {
@@ -48,15 +55,36 @@ export async function POST(request: Request) {
   }
 
   if (body.social && Object.values(body.social).some(v => v)) {
-    payload.social = body.social
+    // Only include social fields that have values
+    const filteredSocial: any = {}
+    Object.entries(body.social).forEach(([key, value]) => {
+      if (value) {
+        filteredSocial[key] = value
+      }
+    })
+    if (Object.keys(filteredSocial).length > 0) {
+      payload.social = filteredSocial
+    }
   }
 
   if (body.twilio && (body.twilio.sid || body.twilio.authToken)) {
-    payload.twilio = body.twilio
+    // Only include twilio fields that have values
+    const filteredTwilio: any = {}
+    if (body.twilio.sid) filteredTwilio.sid = body.twilio.sid
+    if (body.twilio.authToken) filteredTwilio.authToken = body.twilio.authToken
+    if (Object.keys(filteredTwilio).length > 0) {
+      payload.twilio = filteredTwilio
+    }
   }
 
   if (body.mailgun && (body.mailgun.apiKey || body.mailgun.domain)) {
-    payload.mailgun = body.mailgun
+    // Only include mailgun fields that have values
+    const filteredMailgun: any = {}
+    if (body.mailgun.apiKey) filteredMailgun.apiKey = body.mailgun.apiKey
+    if (body.mailgun.domain) filteredMailgun.domain = body.mailgun.domain
+    if (Object.keys(filteredMailgun).length > 0) {
+      payload.mailgun = filteredMailgun
+    }
   }
 
   if (body.snapshotId) {
