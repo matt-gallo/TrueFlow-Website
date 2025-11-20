@@ -488,11 +488,12 @@ export default function SignUpPage() {
                           Phone (optional, include country code)
                           <input
                             type="tel"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono"
                             placeholder="+1410039940"
                             value={formData.phone}
                             onChange={(e) => updateFormData('phone', e.target.value)}
                           />
+                          <span className="text-xs text-white/50">Example: +1410039940 or +44 20 7946 0958</span>
                           {fieldErrors.phone && <span className="text-xs text-rose-300">{fieldErrors.phone}</span>}
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
@@ -504,22 +505,64 @@ export default function SignUpPage() {
                             value={formData.website}
                             onChange={(e) => updateFormData('website', e.target.value)}
                           />
+                          <span className="text-xs text-white/50">Must include https:// or http://</span>
                           {fieldErrors.website && <span className="text-xs text-rose-300">{fieldErrors.website}</span>}
                         </label>
                       </div>
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
                           Timezone (optional)
-                          <input
-                            type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="US/Central"
+                          <select
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none appearance-none cursor-pointer"
                             value={formData.timezone}
                             onChange={(e) => updateFormData('timezone', e.target.value)}
-                          />
+                          >
+                            <option value="">Select timezone...</option>
+                            <optgroup label="US Timezones">
+                              <option value="US/Eastern">US/Eastern (EST/EDT)</option>
+                              <option value="US/Central">US/Central (CST/CDT)</option>
+                              <option value="US/Mountain">US/Mountain (MST/MDT)</option>
+                              <option value="US/Pacific">US/Pacific (PST/PDT)</option>
+                              <option value="US/Alaska">US/Alaska (AKST/AKDT)</option>
+                              <option value="US/Hawaii">US/Hawaii (HST)</option>
+                            </optgroup>
+                            <optgroup label="Americas">
+                              <option value="America/Toronto">America/Toronto (Canada Eastern)</option>
+                              <option value="America/Vancouver">America/Vancouver (Canada Pacific)</option>
+                              <option value="America/Mexico_City">America/Mexico_City (Mexico)</option>
+                              <option value="America/Sao_Paulo">America/Sao_Paulo (Brazil)</option>
+                              <option value="America/Argentina/Buenos_Aires">America/Argentina/Buenos_Aires</option>
+                            </optgroup>
+                            <optgroup label="Europe">
+                              <option value="Europe/London">Europe/London (GMT/BST)</option>
+                              <option value="Europe/Paris">Europe/Paris (CET/CEST)</option>
+                              <option value="Europe/Berlin">Europe/Berlin (CET/CEST)</option>
+                              <option value="Europe/Rome">Europe/Rome (CET/CEST)</option>
+                              <option value="Europe/Madrid">Europe/Madrid (CET/CEST)</option>
+                              <option value="Europe/Amsterdam">Europe/Amsterdam (CET/CEST)</option>
+                            </optgroup>
+                            <optgroup label="Asia">
+                              <option value="Asia/Dubai">Asia/Dubai (GST)</option>
+                              <option value="Asia/Kolkata">Asia/Kolkata (IST)</option>
+                              <option value="Asia/Singapore">Asia/Singapore (SGT)</option>
+                              <option value="Asia/Hong_Kong">Asia/Hong_Kong (HKT)</option>
+                              <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                              <option value="Asia/Shanghai">Asia/Shanghai (CST)</option>
+                            </optgroup>
+                            <optgroup label="Pacific">
+                              <option value="Australia/Sydney">Australia/Sydney (AEST/AEDT)</option>
+                              <option value="Australia/Melbourne">Australia/Melbourne (AEST/AEDT)</option>
+                              <option value="Pacific/Auckland">Pacific/Auckland (NZST/NZDT)</option>
+                            </optgroup>
+                          </select>
+                          <span className="text-xs text-white/50">Select your business timezone</span>
                         </label>
-                        <div className="flex flex-col gap-2 text-sm text-white/60">
-                          <p>We pass fields exactly as the API expects. Anything you leave blank stays unstated.</p>
+                        <div className="flex flex-col gap-2 justify-center">
+                          <div className="p-3 rounded-2xl bg-blue-500/10 border border-blue-400/20">
+                            <p className="text-xs text-blue-200/90 leading-relaxed">
+                              <strong>Note:</strong> We pass fields exactly as the API expects. Anything you leave blank stays unstated.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -533,10 +576,11 @@ export default function SignUpPage() {
                           <input
                             type="text"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="4th fleet street"
+                            placeholder="123 Main Street, Suite 400"
                             value={formData.address}
                             onChange={(e) => updateFormData('address', e.target.value)}
                           />
+                          <span className="text-xs text-white/50">Street address with suite/unit if applicable</span>
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
                           City (optional)
@@ -547,40 +591,44 @@ export default function SignUpPage() {
                             value={formData.city}
                             onChange={(e) => updateFormData('city', e.target.value)}
                           />
+                          <span className="text-xs text-white/50">Example: Los Angeles, Toronto, London</span>
                         </label>
                       </div>
                       <div className="grid gap-4 sm:grid-cols-3">
                         <label className="flex flex-col gap-2 text-sm">
-                          State (optional)
+                          State/Province (optional)
                           <input
                             type="text"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="Illinois"
+                            placeholder="California"
                             value={formData.state}
                             onChange={(e) => updateFormData('state', e.target.value)}
                           />
+                          <span className="text-xs text-white/50">Full name or code: CA, NY, ON</span>
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
-                          Country (2-letter, optional)
+                          Country (2-letter code)
                           <input
                             type="text"
                             maxLength={2}
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none uppercase"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none uppercase font-mono"
                             placeholder="US"
                             value={formData.country}
                             onChange={(e) => updateFormData('country', e.target.value.toUpperCase())}
                           />
+                          <span className="text-xs text-white/50">US, CA, GB, AU, etc.</span>
                           {fieldErrors.country && <span className="text-xs text-rose-300">{fieldErrors.country}</span>}
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
-                          Postal code (optional)
+                          Postal/ZIP code (optional)
                           <input
                             type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="567654"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono"
+                            placeholder="90210"
                             value={formData.postalCode}
                             onChange={(e) => updateFormData('postalCode', e.target.value)}
                           />
+                          <span className="text-xs text-white/50">Example: 10001 or SW1A 1AA</span>
                         </label>
                       </div>
                       <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
@@ -595,6 +643,11 @@ export default function SignUpPage() {
 
                   {currentStep === 3 && (
                     <div className="space-y-6">
+                      <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-400/20">
+                        <p className="text-sm text-blue-100/90">
+                          <strong>Prospect info</strong> is the primary contact for this sub-account. Leave blank if not needed initially.
+                        </p>
+                      </div>
                       <div className="grid gap-4 sm:grid-cols-3">
                         <label className="flex flex-col gap-2 text-sm">
                           Prospect first name (optional)
@@ -621,10 +674,11 @@ export default function SignUpPage() {
                           <input
                             type="email"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="john.doe@mail.com"
+                            placeholder="john.doe@example.com"
                             value={formData.prospectInfo.email}
                             onChange={(e) => updateNested('prospectInfo', 'email', e.target.value)}
                           />
+                          <span className="text-xs text-white/50">Must be valid email format</span>
                           {fieldErrors['prospectInfo.email'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.email']}</span>}
                         </label>
                       </div>
@@ -660,24 +714,26 @@ export default function SignUpPage() {
                             <MessageCircle className="h-4 w-4" />
                             Social links (optional)
                           </div>
-                          <div className="grid gap-2 text-sm text-white/80">
+                          <div className="grid gap-3 text-sm text-white/80">
                             {(
                               [
-                                { key: 'facebookUrl', placeholder: 'https://www.facebook.com/' },
-                                { key: 'googlePlus', placeholder: 'https://www.googleplus.com/' },
-                                { key: 'linkedIn', placeholder: 'https://www.linkedin.com/' },
-                                { key: 'foursquare', placeholder: 'https://www.foursquare.com/' },
-                                { key: 'twitter', placeholder: 'https://www.twitter.com/' }
+                                { key: 'facebookUrl', placeholder: 'https://www.facebook.com/yourpage', label: 'Facebook' },
+                                { key: 'linkedIn', placeholder: 'https://www.linkedin.com/company/yourcompany', label: 'LinkedIn' },
+                                { key: 'twitter', placeholder: 'https://www.twitter.com/yourhandle', label: 'Twitter/X' },
+                                { key: 'instagram', placeholder: 'https://www.instagram.com/yourhandle', label: 'Instagram' },
+                                { key: 'youtube', placeholder: 'https://www.youtube.com/@yourchannel', label: 'YouTube' }
                               ] as const
                             ).map((field) => (
-                              <input
-                                key={field.key}
-                                type="url"
-                                className="px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                                placeholder={field.placeholder}
-                                value={(formData.social as any)[field.key]}
-                                onChange={(e) => updateNested('social', field.key, e.target.value)}
-                              />
+                              <div key={field.key}>
+                                <label className="text-xs text-white/60 mb-1 block">{field.label}</label>
+                                <input
+                                  type="url"
+                                  className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none text-sm"
+                                  placeholder={field.placeholder}
+                                  value={(formData.social as any)[field.key]}
+                                  onChange={(e) => updateNested('social', field.key, e.target.value)}
+                                />
+                              </div>
                             ))}
                           </div>
                         </div>
@@ -691,75 +747,92 @@ export default function SignUpPage() {
                         <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
                           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-100 text-xs font-semibold">
                             <ArrowRight className="h-4 w-4" />
-                            Remaining social (optional)
+                            Additional social (optional)
                           </div>
-                          <div className="grid gap-2 text-sm text-white/80">
+                          <div className="grid gap-3 text-sm text-white/80">
                             {(
                               [
-                                { key: 'yelp', placeholder: 'https://www.yelp.com/' },
-                                { key: 'instagram', placeholder: 'https://www.instagram.com/' },
-                                { key: 'youtube', placeholder: 'https://www.youtube.com/' },
-                                { key: 'pinterest', placeholder: 'https://www.pinterest.com/' },
-                                { key: 'blogRss', placeholder: 'https://www.blogRss.com/' },
-                                { key: 'googlePlacesId', placeholder: 'Google Places ID' }
+                                { key: 'yelp', placeholder: 'https://www.yelp.com/biz/your-business', label: 'Yelp' },
+                                { key: 'pinterest', placeholder: 'https://www.pinterest.com/yourprofile', label: 'Pinterest' },
+                                { key: 'foursquare', placeholder: 'https://foursquare.com/v/your-venue/id', label: 'Foursquare' },
+                                { key: 'blogRss', placeholder: 'https://yourblog.com/feed.xml', label: 'Blog RSS Feed' },
+                                { key: 'googlePlacesId', placeholder: 'ChIJN1t_tDeuEmsRUsoyG83frY4', label: 'Google Places ID' }
                               ] as const
                             ).map((field) => (
-                              <input
-                                key={field.key}
-                                type="text"
-                                className="px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                                placeholder={field.placeholder}
-                                value={(formData.social as any)[field.key]}
-                                onChange={(e) => updateNested('social', field.key, e.target.value)}
-                              />
+                              <div key={field.key}>
+                                <label className="text-xs text-white/60 mb-1 block">{field.label}</label>
+                                <input
+                                  type="text"
+                                  className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none text-sm"
+                                  placeholder={field.placeholder}
+                                  value={(formData.social as any)[field.key]}
+                                  onChange={(e) => updateNested('social', field.key, e.target.value)}
+                                />
+                              </div>
                             ))}
                           </div>
                         </div>
                         <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
                           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-100 text-xs font-semibold">
-                            <ArrowLeft className="h-4 w-4" />
-                            Provider settings (optional)
+                            <Shield className="h-4 w-4" />
+                            Provider credentials (optional)
                           </div>
-                          <div className="grid gap-2">
-                            <input
-                              type="text"
-                              className="px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                              placeholder="Twilio SID"
-                              value={formData.twilio.sid}
-                              onChange={(e) => updateNested('twilio', 'sid', e.target.value)}
-                            />
-                            {fieldErrors['twilio.sid'] && <span className="text-xs text-rose-300">{fieldErrors['twilio.sid']}</span>}
-                            <input
-                              type="text"
-                              className="px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                              placeholder="Twilio Auth Token"
-                              value={formData.twilio.authToken}
-                              onChange={(e) => updateNested('twilio', 'authToken', e.target.value)}
-                            />
-                            {fieldErrors['twilio.authToken'] && <span className="text-xs text-rose-300">{fieldErrors['twilio.authToken']}</span>}
-                            <input
-                              type="text"
-                              className="px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                              placeholder="Mailgun API Key"
-                              value={formData.mailgun.apiKey}
-                              onChange={(e) => updateNested('mailgun', 'apiKey', e.target.value)}
-                            />
-                            {fieldErrors['mailgun.apiKey'] && <span className="text-xs text-rose-300">{fieldErrors['mailgun.apiKey']}</span>}
-                            <input
-                              type="text"
-                              className="px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                              placeholder="Mailgun Domain"
-                              value={formData.mailgun.domain}
-                              onChange={(e) => updateNested('mailgun', 'domain', e.target.value)}
-                            />
-                            {fieldErrors['mailgun.domain'] && <span className="text-xs text-rose-300">{fieldErrors['mailgun.domain']}</span>}
-                            <input
-                              type="text"
-                              className="px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                              placeholder="Snapshot ID (optional)"
-                              value={formData.snapshotId}
-                              onChange={(e) => updateFormData('snapshotId', e.target.value)}
-                            />
+                          <div className="grid gap-3">
+                            <div>
+                              <label className="text-xs text-white/60 mb-1 block">Twilio Account SID</label>
+                              <input
+                                type="text"
+                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono text-sm"
+                                placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+                                value={formData.twilio.sid}
+                                onChange={(e) => updateNested('twilio', 'sid', e.target.value)}
+                              />
+                              {fieldErrors['twilio.sid'] && <span className="text-xs text-rose-300">{fieldErrors['twilio.sid']}</span>}
+                            </div>
+                            <div>
+                              <label className="text-xs text-white/60 mb-1 block">Twilio Auth Token</label>
+                              <input
+                                type="password"
+                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono text-sm"
+                                placeholder="********************************"
+                                value={formData.twilio.authToken}
+                                onChange={(e) => updateNested('twilio', 'authToken', e.target.value)}
+                              />
+                              {fieldErrors['twilio.authToken'] && <span className="text-xs text-rose-300">{fieldErrors['twilio.authToken']}</span>}
+                            </div>
+                            <div>
+                              <label className="text-xs text-white/60 mb-1 block">Mailgun API Key</label>
+                              <input
+                                type="password"
+                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono text-sm"
+                                placeholder="key-********************************"
+                                value={formData.mailgun.apiKey}
+                                onChange={(e) => updateNested('mailgun', 'apiKey', e.target.value)}
+                              />
+                              {fieldErrors['mailgun.apiKey'] && <span className="text-xs text-rose-300">{fieldErrors['mailgun.apiKey']}</span>}
+                            </div>
+                            <div>
+                              <label className="text-xs text-white/60 mb-1 block">Mailgun Domain</label>
+                              <input
+                                type="text"
+                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none text-sm"
+                                placeholder="mg.yourdomain.com"
+                                value={formData.mailgun.domain}
+                                onChange={(e) => updateNested('mailgun', 'domain', e.target.value)}
+                              />
+                              {fieldErrors['mailgun.domain'] && <span className="text-xs text-rose-300">{fieldErrors['mailgun.domain']}</span>}
+                            </div>
+                            <div>
+                              <label className="text-xs text-white/60 mb-1 block">Snapshot ID (optional)</label>
+                              <input
+                                type="text"
+                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono text-sm"
+                                placeholder="snapshot_abc123xyz"
+                                value={formData.snapshotId}
+                                onChange={(e) => updateFormData('snapshotId', e.target.value)}
+                              />
+                              <span className="text-xs text-white/40 mt-1 block">GHL snapshot to clone for this account</span>
+                            </div>
                           </div>
                         </div>
                       </div>
