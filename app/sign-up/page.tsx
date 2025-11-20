@@ -210,8 +210,70 @@ export default function SignUpPage() {
     setCurrentStep(targetStep)
   }
 
+  const formatPhone = (value: string) => {
+    // Remove all non-numeric and non-plus characters except spaces and dashes
+    const cleaned = value.replace(/[^\d+\s-]/g, '')
+
+    // If empty, return empty
+    if (!cleaned) return ''
+
+    // Keep original formatting if user is typing spaces/dashes
+    return cleaned
+  }
+
+  const formatWebsite = (value: string) => {
+    // Auto-add https:// if user starts typing a domain
+    if (value && !value.match(/^https?:\/\//i) && value.includes('.')) {
+      return `https://${value}`
+    }
+    return value
+  }
+
+  const formatEmail = (value: string) => {
+    // Auto-lowercase emails
+    return value.toLowerCase()
+  }
+
+  const formatPostalCode = (value: string) => {
+    // Uppercase postal codes for international formats
+    return value.toUpperCase().trim()
+  }
+
+  const formatState = (value: string) => {
+    // If 2 characters, assume state code and uppercase
+    if (value.length <= 2) {
+      return value.toUpperCase()
+    }
+    // Otherwise, title case (e.g., "california" -> "California")
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
+  }
+
   const updateFormData = (field: keyof SignUpFormData, value: string) => {
-    setFormData((prev) => ({ ...prev, [field]: value }))
+    let formattedValue = value
+
+    // Apply auto-formatting based on field
+    switch (field) {
+      case 'phone':
+        formattedValue = formatPhone(value)
+        break
+      case 'website':
+        // Only format on blur, not while typing
+        formattedValue = value
+        break
+      case 'postalCode':
+        formattedValue = formatPostalCode(value)
+        break
+      case 'country':
+        formattedValue = value.toUpperCase().trim()
+        break
+      case 'state':
+        formattedValue = formatState(value)
+        break
+      default:
+        formattedValue = value
+    }
+
+    setFormData((prev) => ({ ...prev, [field]: formattedValue }))
     setFieldErrors((prev) => {
       const next = { ...prev }
       delete next[field as string]
@@ -220,11 +282,23 @@ export default function SignUpPage() {
   }
 
   const updateNested = <T extends keyof SignUpFormData>(section: T, key: keyof SignUpFormData[T], value: string | boolean) => {
+    let formattedValue = value
+
+    // Apply auto-formatting for nested fields
+    if (typeof value === 'string') {
+      if (section === 'prospectInfo' && key === 'email') {
+        formattedValue = formatEmail(value)
+      } else if (section === 'social') {
+        // Trim whitespace from social URLs
+        formattedValue = value.trim()
+      }
+    }
+
     setFormData((prev) => ({
       ...prev,
       [section]: {
         ...(prev[section] as any),
-        [key]: value
+        [key]: formattedValue
       }
     }))
     setFieldErrors((prev) => {
@@ -232,6 +306,12 @@ export default function SignUpPage() {
       delete next[`${String(section)}.${String(key)}`]
       return next
     })
+  }
+
+  const handleWebsiteBlur = () => {
+    if (formData.website) {
+      updateFormData('website', formatWebsite(formData.website))
+    }
   }
 
   const isUrl = (value: string) => {
@@ -500,12 +580,13 @@ export default function SignUpPage() {
                           Website (optional)
                           <input
                             type="url"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="https://yourwebsite.com"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
+                            placeholder="yourwebsite.com"
                             value={formData.website}
                             onChange={(e) => updateFormData('website', e.target.value)}
+                            onBlur={handleWebsiteBlur}
                           />
-                          <span className="text-xs text-white/50">Must include https:// or http://</span>
+                          <span className="text-xs text-white/50">Start typing your domain - we'll add https:// automatically</span>
                           {fieldErrors.website && <span className="text-xs text-rose-300">{fieldErrors.website}</span>}
                         </label>
                       </div>
@@ -599,36 +680,36 @@ export default function SignUpPage() {
                           State/Province (optional)
                           <input
                             type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="California"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
+                            placeholder="California or CA"
                             value={formData.state}
                             onChange={(e) => updateFormData('state', e.target.value)}
                           />
-                          <span className="text-xs text-white/50">Full name or code: CA, NY, ON</span>
+                          <span className="text-xs text-white/50">Auto-formats: "ca" → "CA", "california" → "California"</span>
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
                           Country (2-letter code)
                           <input
                             type="text"
                             maxLength={2}
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none uppercase font-mono"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none uppercase font-mono transition-all"
                             placeholder="US"
                             value={formData.country}
-                            onChange={(e) => updateFormData('country', e.target.value.toUpperCase())}
+                            onChange={(e) => updateFormData('country', e.target.value)}
                           />
-                          <span className="text-xs text-white/50">US, CA, GB, AU, etc.</span>
+                          <span className="text-xs text-white/50">Auto-uppercases: "us" → "US"</span>
                           {fieldErrors.country && <span className="text-xs text-rose-300">{fieldErrors.country}</span>}
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
                           Postal/ZIP code (optional)
                           <input
                             type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono transition-all"
                             placeholder="90210"
                             value={formData.postalCode}
                             onChange={(e) => updateFormData('postalCode', e.target.value)}
                           />
-                          <span className="text-xs text-white/50">Example: 10001 or SW1A 1AA</span>
+                          <span className="text-xs text-white/50">Auto-uppercases: "sw1a 1aa" → "SW1A1AA"</span>
                         </label>
                       </div>
                       <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
@@ -673,12 +754,12 @@ export default function SignUpPage() {
                           Prospect email (optional)
                           <input
                             type="email"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
                             placeholder="john.doe@example.com"
                             value={formData.prospectInfo.email}
                             onChange={(e) => updateNested('prospectInfo', 'email', e.target.value)}
                           />
-                          <span className="text-xs text-white/50">Must be valid email format</span>
+                          <span className="text-xs text-white/50">Auto-lowercases: "John@Example.COM" → "john@example.com"</span>
                           {fieldErrors['prospectInfo.email'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.email']}</span>}
                         </label>
                       </div>
