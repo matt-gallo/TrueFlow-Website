@@ -22,6 +22,7 @@ import type { LucideIcon } from 'lucide-react'
 
 interface SignUpFormData {
   name: string
+  email: string
   phone: string
   address: string
   city: string
@@ -127,6 +128,7 @@ export default function SignUpPage() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const [formData, setFormData] = useState<SignUpFormData>({
     name: '',
+    email: '',
     phone: '',
     address: '',
     city: '',
@@ -208,8 +210,8 @@ export default function SignUpPage() {
   }
 
   const formatEmail = (value: string) => {
-    // Auto-lowercase emails
-    return value.toLowerCase()
+    // Auto-lowercase and trim emails
+    return value.trim().toLowerCase()
   }
 
   const formatPostalCode = (value: string) => {
@@ -237,6 +239,9 @@ export default function SignUpPage() {
       case 'website':
         // Only format on blur, not while typing
         formattedValue = value
+        break
+      case 'email':
+        formattedValue = formatEmail(value)
         break
       case 'postalCode':
         formattedValue = formatPostalCode(value)
@@ -310,6 +315,11 @@ export default function SignUpPage() {
 
     if (step === 1) {
       if (!formData.name.trim()) errors.name = 'Business name is required'
+      if (!formData.email.trim()) {
+        errors.email = 'Account email is required'
+      } else if (!isEmail(formData.email)) {
+        errors.email = 'Enter a valid email address'
+      }
       if (formData.phone && !isPhone(formData.phone)) errors.phone = 'Enter a valid phone number with country code'
       if (formData.website && !isUrl(formData.website)) errors.website = 'Enter a valid URL'
     }
@@ -539,6 +549,19 @@ export default function SignUpPage() {
                             required
                           />
                           {fieldErrors.name && <span className="text-xs text-rose-300">{fieldErrors.name}</span>}
+                        </label>
+                        <label className="flex flex-col gap-2 text-sm">
+                          Account email (required)
+                          <input
+                            type="email"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
+                            placeholder="owner@company.com"
+                            value={formData.email}
+                            onChange={(e) => updateFormData('email', e.target.value)}
+                            required
+                          />
+                          <span className="text-xs text-white/50">Used for login, invoices, and account alerts</span>
+                          {fieldErrors.email && <span className="text-xs text-rose-300">{fieldErrors.email}</span>}
                         </label>
                       </div>
                       <div className="grid gap-4 sm:grid-cols-2">

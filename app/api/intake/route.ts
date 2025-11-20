@@ -24,6 +24,8 @@ export async function POST(request: Request) {
   // Log incoming data for debugging
   console.log('Received form data:', {
     name: body.name,
+    locationEmail: body.email,
+    hasLocationEmail: !!body.email,
     prospectInfo: body.prospectInfo,
     hasProspectEmail: !!body.prospectInfo?.email,
     prospectEmail: body.prospectInfo?.email
@@ -37,6 +39,7 @@ export async function POST(request: Request) {
   }
 
   // Add optional fields only if they exist
+  if (body.email) payload.email = body.email
   if (body.phone) payload.phone = body.phone
   if (body.address) payload.address = body.address
   if (body.city) payload.city = body.city
@@ -102,6 +105,7 @@ export async function POST(request: Request) {
   console.log('Creating GHL sub-account with payload:', {
     ...payload,
     companyId: '[REDACTED]',
+    hasLocationEmail: !!payload.email,
     hasProspectInfo: !!payload.prospectInfo,
     prospectInfoFields: payload.prospectInfo ? Object.keys(payload.prospectInfo) : []
   })
