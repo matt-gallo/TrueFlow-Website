@@ -85,27 +85,6 @@ const statsHighlights = [
   { label: 'Founders who stay after trial', value: '97%', detail: 'Because $297/mo feels like stealing for $350/wk of value.' }
 ]
 
-const testimonials = [
-  {
-    quote: 'We plugged into TrueFlow on a Monday and by Thursday we had a complete content engine, lead nurture, and a live accelerator coach walking us through every switch.',
-    author: 'Nina Patel',
-    role: 'Agency Founder',
-    metric: '+18 qualified demos in 2 weeks'
-  },
-  {
-    quote: 'The accelerator felt like having an internal ops team. They cloned my voice, set up automations, and even handled my success messaging. $297/mo is ridiculous for what we get.',
-    author: 'Corey Martinez',
-    role: 'Fractional CMO',
-    metric: '12 hrs per week reclaimed'
-  },
-  {
-    quote: 'We added the 1:1 success manager and it genuinely feels like a personal chief of staff. Fast responses, loom recaps, and zero guesswork.',
-    author: 'Amanda Lee',
-    role: 'Coaching Collective CEO',
-    metric: '3 new offers launched'
-  }
-]
-
 const acceleratorMoments: AcceleratorMoment[] = [
   {
     day: 'Day 1',
@@ -141,7 +120,6 @@ const valueChips = [
 
 export default function SignUpPage() {
   const [currentStep, setCurrentStep] = useState(1)
-  const [activeTestimonial, setActiveTestimonial] = useState(0)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -1035,32 +1013,6 @@ export default function SignUpPage() {
                       </div>
                     )
                   })}
-                </div>
-              </div>
-
-              <div className="p-6 rounded-3xl border border-white/10 bg-white/5">
-                <div className="flex items-center gap-3 text-sm text-white/70">
-                  <MessageCircle className="h-5 w-5 text-blue-300" />
-                  Proof from the community
-                </div>
-                <div className="mt-6 space-y-4">
-                  <p className="text-lg italic text-white/80">“{testimonials[activeTestimonial].quote}”</p>
-                  <div>
-                    <p className="font-semibold">{testimonials[activeTestimonial].author}</p>
-                    <p className="text-sm text-white/60">{testimonials[activeTestimonial].role}</p>
-                    <p className="text-sm text-emerald-300">{testimonials[activeTestimonial].metric}</p>
-                  </div>
-                  <div className="flex gap-2">
-                    {testimonials.map((_, index) => (
-                      <button
-                        key={index}
-                        type="button"
-                        onClick={() => setActiveTestimonial(index)}
-                        className={`w-3 h-3 rounded-full ${index === activeTestimonial ? 'bg-white' : 'bg-white/30'}`}
-                        aria-label={`Show testimonial ${index + 1}`}
-                      />
-                    ))}
-                  </div>
                 </div>
               </div>
 
