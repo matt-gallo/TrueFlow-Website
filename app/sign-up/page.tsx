@@ -482,10 +482,6 @@ export default function SignUpPage() {
                           />
                           {fieldErrors.name && <span className="text-xs text-rose-300">{fieldErrors.name}</span>}
                         </label>
-                        <div className="flex flex-col gap-2 text-sm text-white/60">
-                          <p>We&apos;ll attach the correct agency/company ID automatically on the backend using our secured token.</p>
-                          <p className="text-white/50">You don&apos;t need to provide it.</p>
-                        </div>
                       </div>
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
