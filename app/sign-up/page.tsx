@@ -3,28 +3,30 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Navigation from '@/app/components/Navigation'
-import { Footer } from '@/app/components/Footer'
 import {
   ArrowLeft,
   ArrowRight,
   BadgeCheck,
-  BarChart3,
   CheckCircle,
-  Clock,
-  MessageCircle,
+  CreditCard,
+  HeartHandshake,
+  Moon,
   Shield,
   Sparkles,
-  Star,
+  Sun,
   Users,
   Zap
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
 interface SignUpFormData {
-  name: string
+  // Step 1: Account Basics
+  fullName: string
   email: string
+  role: string
+  // Step 2: Business Snapshot (GHL required fields)
+  company: string
   phone: string
-  industry: string
   address: string
   city: string
   state: string
@@ -32,39 +34,13 @@ interface SignUpFormData {
   postalCode: string
   website: string
   timezone: string
-  prospectInfo: {
-    firstName: string
-    lastName: string
-    email: string
-  }
-  settings: {
-    allowDuplicateContact: boolean
-    allowDuplicateOpportunity: boolean
-    allowFacebookNameMerge: boolean
-    disableContactTimezone: boolean
-  }
-  social: {
-    facebookUrl: string
-    googlePlus: string
-    linkedIn: string
-    foursquare: string
-    twitter: string
-    yelp: string
-    instagram: string
-    youtube: string
-    pinterest: string
-    blogRss: string
-    googlePlacesId: string
-  }
-  twilio: {
-    sid: string
-    authToken: string
-  }
-  mailgun: {
-    apiKey: string
-    domain: string
-  }
-  snapshotId: string
+  teamSize: string
+  primaryGoal: string
+  voiceNotes: string
+  // Step 3: Launch Game Plan
+  winsWanted: string
+  // Step 4: Trial + Payment
+  includeSuccessManager: boolean
 }
 
 interface AcceleratorMoment {
@@ -75,15 +51,24 @@ interface AcceleratorMoment {
 }
 
 const steps = [
-  { id: 1, title: 'Account Basics', subtitle: 'Business name + contact' },
-  { id: 2, title: 'Location Details', subtitle: 'Address + timezone (optional)' },
-  { id: 3, title: 'Integrations', subtitle: 'Social + provider creds' }
+  { id: 1, title: 'Account Basics', subtitle: 'Your name and contact info' },
+  { id: 2, title: 'Business Snapshot', subtitle: 'Tell us about your business' },
+  { id: 3, title: 'Launch Game Plan', subtitle: 'Stack the resources you want' },
+  { id: 4, title: 'Trial + Payment', subtitle: 'Secure your 14-day trial' }
 ] as const
 
-const statsHighlights = [
-  { label: 'Average time to launch', value: '3 days', detail: 'Accelerator teams handle the heavy lifting.' },
-  { label: 'Content assets delivered in trial', value: '42+', detail: 'Emails, posts, lead magnets, and automation copy.' },
-  { label: 'Founders who stay after trial', value: '97%', detail: 'Because $297/mo feels like stealing for $350/wk of value.' }
+const goalOptions = [
+  'Launch Content Machine',
+  'Automate Lead Flow',
+  'Scale Community & Offers',
+  'Systematize Operations'
+]
+
+const resourceOptions = [
+  { label: 'Voice & Story Library', description: 'We map your tone, stories, and hooks so AI sounds like you.' },
+  { label: 'Demand Engine', description: 'Outbound, inbound, and nurture campaigns built with you live.' },
+  { label: 'Sales Enablement', description: 'Scripts, objection flows, and follow-up automations.' },
+  { label: 'Mindset + CEO Ops', description: 'Accountability, decision frameworks, and weekly scorecards.' }
 ]
 
 const acceleratorMoments: AcceleratorMoment[] = [
@@ -113,181 +98,108 @@ const acceleratorMoments: AcceleratorMoment[] = [
   }
 ]
 
-const valueChips = [
-  'TrueFlow Accelerator access (14 days)',
-  'Live success team + resources worth $350/week',
-  'Done-for-you onboarding + personal automations'
+const platformFeatures = [
+  'Full CRM & Pipeline Management — never lose a lead again',
+  'Content Engine + Auto-Publishing — grow your digital footprint on autopilot',
+  'AI Chat Agents — book calls 2-3x faster, 24/7',
+  'Email & SMS Automation — nurture leads and close deals automatically',
+  'Scheduling & Calendar Sync — prospects book directly into your calendar',
+  'Funnels & Landing Pages — high-converting pages that drive sales',
+  'Reputation Management — collect 5-star reviews at scale',
+  'Analytics & Reporting — know exactly what\'s working'
 ]
 
 export default function SignUpPage() {
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
+  const [selectedResources, setSelectedResources] = useState<string[]>(['Voice & Story Library'])
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isRedirecting, setIsRedirecting] = useState(false)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
+  const [isDarkMode, setIsDarkMode] = useState(true)
+
+  // Theme classes
+  const theme = {
+    bg: isDarkMode ? 'bg-black' : 'bg-gray-50',
+    text: isDarkMode ? 'text-white' : 'text-gray-900',
+    textMuted: isDarkMode ? 'text-white/70' : 'text-gray-600',
+    textMuted2: isDarkMode ? 'text-white/60' : 'text-gray-500',
+    textMuted3: isDarkMode ? 'text-white/50' : 'text-gray-400',
+    cardBg: isDarkMode ? 'bg-white/5' : 'bg-white',
+    cardBorder: isDarkMode ? 'border-white/10' : 'border-gray-200',
+    inputBg: isDarkMode ? 'bg-black/30' : 'bg-white',
+    inputBorder: isDarkMode ? 'border-white/10' : 'border-gray-300',
+    chipBg: isDarkMode ? 'bg-white/5' : 'bg-gray-100',
+    chipBorder: isDarkMode ? 'border-white/10' : 'border-gray-200',
+    gradientBg: isDarkMode ? 'from-black via-slate-950 to-black' : 'from-gray-50 via-white to-gray-50',
+    glowOpacity: isDarkMode ? '/10' : '/5',
+    sectionBg: isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-xl',
+    backBtn: isDarkMode ? 'border-white/20 text-white/80 hover:text-white' : 'border-gray-300 text-gray-600 hover:text-gray-900',
+  }
   const [formData, setFormData] = useState<SignUpFormData>({
-    name: '',
+    fullName: '',
     email: '',
+    role: 'Founder / CEO',
+    company: '',
     phone: '',
-    industry: '',
     address: '',
     city: '',
     state: '',
-    country: '',
+    country: 'US',
     postalCode: '',
     website: '',
     timezone: '',
-    prospectInfo: {
-      firstName: '',
-      lastName: '',
-      email: ''
-    },
-    settings: {
-      allowDuplicateContact: false,
-      allowDuplicateOpportunity: false,
-      allowFacebookNameMerge: false,
-      disableContactTimezone: false
-    },
-    social: {
-      facebookUrl: '',
-      googlePlus: '',
-      linkedIn: '',
-      foursquare: '',
-      twitter: '',
-      yelp: '',
-      instagram: '',
-      youtube: '',
-      pinterest: '',
-      blogRss: '',
-      googlePlacesId: ''
-    },
-    twilio: {
-      sid: '',
-      authToken: ''
-    },
-    mailgun: {
-      apiKey: '',
-      domain: ''
-    },
-    snapshotId: ''
+    teamSize: '1-3',
+    primaryGoal: 'Launch Content Machine',
+    voiceNotes: '',
+    winsWanted: '',
+    includeSuccessManager: true
   })
 
   const progress = useMemo(() => (currentStep / steps.length) * 100, [currentStep])
 
-  const handleNext = () => {
-    if (!validateStep(currentStep)) return
-    if (currentStep < steps.length) setCurrentStep((prev) => prev + 1)
-  }
-
-  const handlePrev = () => {
-    if (currentStep > 1) {
-      setCurrentStep((prev) => prev - 1)
-    }
-  }
-
-  const handleStepSelect = (targetStep: number) => {
-    if (targetStep > currentStep && !validateStep(currentStep)) return
-    setCurrentStep(targetStep)
-  }
-
-  const formatPhone = (value: string) => {
-    // Remove all non-numeric and non-plus characters except spaces and dashes
-    const cleaned = value.replace(/[^\d+\s-]/g, '')
-
-    // If empty, return empty
-    if (!cleaned) return ''
-
-    // Keep original formatting if user is typing spaces/dashes
-    return cleaned
-  }
-
+  // Format helpers
+  const formatPhone = (value: string) => value.replace(/[^\d+\s-]/g, '')
+  const formatEmail = (value: string) => value.trim().toLowerCase()
   const formatWebsite = (value: string) => {
-    // Auto-add https:// if user starts typing a domain
     if (value && !value.match(/^https?:\/\//i) && value.includes('.')) {
       return `https://${value}`
     }
     return value
   }
-
-  const formatEmail = (value: string) => {
-    // Auto-lowercase and trim emails
-    return value.trim().toLowerCase()
-  }
-
-  const formatPostalCode = (value: string) => {
-    // Uppercase postal codes for international formats
-    return value.toUpperCase().trim()
-  }
-
   const formatState = (value: string) => {
-    // If 2 characters, assume state code and uppercase
-    if (value.length <= 2) {
-      return value.toUpperCase()
-    }
-    // Otherwise, title case (e.g., "california" -> "California")
+    if (value.length <= 2) return value.toUpperCase()
     return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase()
   }
 
-  const updateFormData = (field: keyof SignUpFormData, value: string) => {
+  const updateFormData = (field: keyof SignUpFormData, value: string | boolean) => {
     let formattedValue = value
-
-    // Apply auto-formatting based on field
-    switch (field) {
-      case 'phone':
-        formattedValue = formatPhone(value)
-        break
-      case 'website':
-        // Only format on blur, not while typing
-        formattedValue = value
-        break
-      case 'email':
-        formattedValue = formatEmail(value)
-        break
-      case 'postalCode':
-        formattedValue = formatPostalCode(value)
-        break
-      case 'country':
-        formattedValue = value.toUpperCase().trim()
-        break
-      case 'state':
-        formattedValue = formatState(value)
-        break
-      default:
-        formattedValue = value
+    if (typeof value === 'string') {
+      switch (field) {
+        case 'phone':
+          formattedValue = formatPhone(value)
+          break
+        case 'email':
+          formattedValue = formatEmail(value)
+          break
+        case 'country':
+          formattedValue = value.toUpperCase().trim()
+          break
+        case 'state':
+          formattedValue = formatState(value)
+          break
+        case 'postalCode':
+          formattedValue = value.toUpperCase().trim()
+          break
+        default:
+          formattedValue = value
+      }
     }
-
     setFormData((prev) => ({ ...prev, [field]: formattedValue }))
     setFieldErrors((prev) => {
       const next = { ...prev }
       delete next[field as string]
-      return next
-    })
-  }
-
-  const updateNested = <T extends keyof SignUpFormData>(section: T, key: keyof SignUpFormData[T], value: string | boolean) => {
-    let formattedValue = value
-
-    // Apply auto-formatting for nested fields
-    if (typeof value === 'string') {
-      if (section === 'prospectInfo' && key === 'email') {
-        formattedValue = formatEmail(value)
-      } else if (section === 'social') {
-        // Trim whitespace from social URLs
-        formattedValue = value.trim()
-      }
-    }
-
-    setFormData((prev) => ({
-      ...prev,
-      [section]: {
-        ...(prev[section] as any),
-        [key]: formattedValue
-      }
-    }))
-    setFieldErrors((prev) => {
-      const next = { ...prev }
-      delete next[`${String(section)}.${String(key)}`]
       return next
     })
   }
@@ -298,72 +210,48 @@ export default function SignUpPage() {
     }
   }
 
+  // Validation helpers
+  const isEmail = (value: string) => /\S+@\S+\.\S+/.test(value)
+  const isPhone = (value: string) => /^\+?[0-9\-\s()]{7,}$/.test(value)
   const isUrl = (value: string) => {
     try {
       const url = new URL(value)
       return Boolean(url.protocol && url.host)
-    } catch (e) {
+    } catch {
       return false
     }
   }
-
-  const isEmail = (value: string) => /\S+@\S+\.\S+/.test(value)
-  const isPhone = (value: string) => /^\+?[0-9\-\s()]{7,}$/.test(value)
   const isCountry = (value: string) => /^[A-Za-z]{2}$/.test(value)
 
   const collectStepErrors = (step: number) => {
     const errors: Record<string, string> = {}
 
     if (step === 1) {
-      if (!formData.name.trim()) errors.name = 'Business name is required'
+      if (!formData.fullName.trim()) errors.fullName = 'Full name is required'
       if (!formData.email.trim()) {
-        errors.email = 'Account email is required'
+        errors.email = 'Email is required'
       } else if (!isEmail(formData.email)) {
         errors.email = 'Enter a valid email address'
       }
-      if (!formData.phone.trim()) {
-        errors.phone = 'Business phone is required'
-      } else if (!isPhone(formData.phone)) {
-        errors.phone = 'Enter a valid phone number with country code'
-      }
-      if (!formData.industry.trim()) {
-        errors.industry = 'Industry helps us route you to the right playbook'
-      }
-      if (formData.website && !isUrl(formData.website)) errors.website = 'Enter a valid URL'
     }
 
     if (step === 2) {
-      if (!formData.address.trim()) errors.address = 'Business address is required'
+      if (!formData.company.trim()) errors.company = 'Business name is required'
+      if (!formData.phone.trim()) {
+        errors.phone = 'Phone number is required'
+      } else if (!isPhone(formData.phone)) {
+        errors.phone = 'Enter a valid phone number'
+      }
+      if (!formData.address.trim()) errors.address = 'Address is required'
       if (!formData.city.trim()) errors.city = 'City is required'
-      if (!formData.state.trim()) errors.state = 'State/Province is required'
+      if (!formData.state.trim()) errors.state = 'State is required'
       if (!formData.country.trim()) {
         errors.country = 'Country is required'
       } else if (!isCountry(formData.country)) {
         errors.country = 'Use a 2-letter country code'
       }
-      if (!formData.postalCode.trim()) errors.postalCode = 'Postal/ZIP code is required'
-    }
-
-    if (step === 3) {
-      if (!formData.prospectInfo.firstName.trim()) {
-        errors['prospectInfo.firstName'] = 'Primary contact first name is required'
-      }
-      if (!formData.prospectInfo.lastName.trim()) {
-        errors['prospectInfo.lastName'] = 'Primary contact last name is required'
-      }
-      if (!formData.prospectInfo.email.trim()) {
-        errors['prospectInfo.email'] = 'Primary contact email is required'
-      } else if (!isEmail(formData.prospectInfo.email)) {
-        errors['prospectInfo.email'] = 'Enter a valid email'
-      }
-
-      const twilioFilled = formData.twilio.sid || formData.twilio.authToken
-      if (twilioFilled && !formData.twilio.sid) errors['twilio.sid'] = 'SID required when adding Twilio'
-      if (twilioFilled && !formData.twilio.authToken) errors['twilio.authToken'] = 'Auth token required when adding Twilio'
-
-      const mailgunFilled = formData.mailgun.apiKey || formData.mailgun.domain
-      if (mailgunFilled && !formData.mailgun.apiKey) errors['mailgun.apiKey'] = 'API key required when adding Mailgun'
-      if (mailgunFilled && !formData.mailgun.domain) errors['mailgun.domain'] = 'Domain required when adding Mailgun'
+      if (!formData.postalCode.trim()) errors.postalCode = 'Postal code is required'
+      if (formData.website && !isUrl(formData.website)) errors.website = 'Enter a valid URL'
     }
 
     return errors
@@ -375,19 +263,39 @@ export default function SignUpPage() {
     return Object.keys(errors).length === 0
   }
 
+  const handleNext = () => {
+    if (!validateStep(currentStep)) return
+    if (currentStep < steps.length) setCurrentStep((prev) => prev + 1)
+  }
+
+  const handlePrev = () => {
+    if (currentStep > 1) setCurrentStep((prev) => prev - 1)
+  }
+
+  const handleStepSelect = (targetStep: number) => {
+    if (targetStep > currentStep && !validateStep(currentStep)) return
+    setCurrentStep(targetStep)
+  }
+
+  const toggleResource = (label: string) => {
+    setSelectedResources((prev) =>
+      prev.includes(label) ? prev.filter((item) => item !== label) : [...prev, label]
+    )
+  }
+
   useEffect(() => {
     if (!isComplete) return
-
     setIsRedirecting(true)
     const timeout = setTimeout(() => {
       window.location.href = 'https://login.trueflow.ai'
     }, 2500)
-
     return () => clearTimeout(timeout)
   }, [isComplete])
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+
+    // Validate all steps
     const allErrors = steps.reduce((acc, step) => {
       const stepErrors = collectStepErrors(step.id)
       return { ...acc, ...stepErrors }
@@ -395,52 +303,64 @@ export default function SignUpPage() {
 
     if (Object.keys(allErrors).length > 0) {
       setFieldErrors(allErrors)
-      if (currentStep < steps.length) return
-      if (!allErrors.name && !allErrors.companyId) {
-        setErrorMessage('Please correct the highlighted fields before submitting.')
-      }
+      setErrorMessage('Please correct the highlighted fields before submitting.')
       return
     }
 
     if (currentStep < steps.length) return
 
-    if (!formData.name) {
-      setErrorMessage('Business name is required to create a sub-account.')
-      return
-    }
-
     setIsSubmitting(true)
     setErrorMessage(null)
 
     try {
+      // Build payload for GHL API
+      const ghlPayload = {
+        name: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        city: formData.city,
+        state: formData.state,
+        country: formData.country,
+        postalCode: formData.postalCode,
+        website: formData.website || undefined,
+        timezone: formData.timezone || undefined,
+        prospectInfo: {
+          firstName: formData.fullName.split(' ')[0],
+          lastName: formData.fullName.split(' ').slice(1).join(' ') || '',
+          email: formData.email
+        },
+        // Additional metadata for accelerator
+        metadata: {
+          role: formData.role,
+          teamSize: formData.teamSize,
+          primaryGoal: formData.primaryGoal,
+          voiceNotes: formData.voiceNotes,
+          winsWanted: formData.winsWanted,
+          selectedResources,
+          includeSuccessManager: formData.includeSuccessManager
+        }
+      }
+
       const response = await fetch('/api/intake', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(ghlPayload)
       })
 
       const data = await response.json()
 
       if (!response.ok) {
-        // Display specific API error message
         let errorMsg = data.error || 'Failed to create your account. Please try again.'
-
         if (data.details) {
-          // Handle array of errors or single error detail
-          if (Array.isArray(data.details)) {
-            errorMsg = `${errorMsg}\n\n${data.details.join('\n')}`
-          } else {
-            errorMsg = `${errorMsg}: ${data.details}`
-          }
+          errorMsg = Array.isArray(data.details)
+            ? `${errorMsg}\n\n${data.details.join('\n')}`
+            : `${errorMsg}: ${data.details}`
         }
-
         setErrorMessage(errorMsg)
         return
       }
 
-      // Success - show completion screen
       setIsComplete(true)
     } catch (error) {
       console.error(error)
@@ -451,19 +371,112 @@ export default function SignUpPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className={`min-h-screen ${theme.bg} ${theme.text} transition-colors duration-300`}>
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-slate-950 to-black" />
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[620px] h-[620px] bg-purple-600/10 blur-[160px]" />
-        <div className="absolute bottom-0 right-10 w-[420px] h-[420px] bg-blue-500/10 blur-[180px]" />
+        <div className={`absolute inset-0 bg-gradient-to-b ${theme.gradientBg}`} />
+        <div className={`absolute top-10 left-1/2 -translate-x-1/2 w-[620px] h-[620px] bg-[#1d929e]${theme.glowOpacity} blur-[160px]`} />
+        <div className={`absolute bottom-0 right-10 w-[420px] h-[420px] bg-emerald-500${theme.glowOpacity} blur-[180px]`} />
       </div>
+
+      {/* Theme Toggle Button */}
+      <button
+        onClick={() => setIsDarkMode(!isDarkMode)}
+        className={`fixed top-24 right-6 z-50 p-3 rounded-full ${isDarkMode ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700'} transition-colors shadow-lg`}
+        aria-label="Toggle theme"
+      >
+        {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+      </button>
 
       <div className="relative z-10">
         <Navigation />
 
         <main className="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
+          {/* Hero Section - What You're Getting */}
+          <div className="max-w-6xl mx-auto mb-16">
+            <div className="text-center mb-12">
+              <p className="text-xs uppercase tracking-[0.4em] text-[#1d929e] mb-4">Start Your 14-Day Free Trial</p>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+                The all-in-one platform to <span className="bg-gradient-to-r from-[#1d929e] to-emerald-400 bg-clip-text text-transparent">grow your business</span>
+              </h1>
+              <p className={`text-xl ${theme.textMuted} mt-6 max-w-3xl mx-auto`}>
+                Get full access to TrueFlow&apos;s CRM, automation, and AI tools — plus 2 weeks in the TrueFlow Accelerator with live coaching, resources, and done-for-you setup.
+              </p>
+            </div>
+
+            {/* Pricing Clarity Box */}
+            <div className={`${isDarkMode ? 'bg-gradient-to-br from-[#1d929e]/20 via-emerald-500/10 to-transparent' : 'bg-white shadow-xl'} border border-[#1d929e]/30 rounded-3xl p-8 mb-12`}>
+              <div className="grid gap-8 lg:grid-cols-3">
+                <div className="text-center lg:text-left">
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>Today</p>
+                  <p className="text-4xl font-bold text-emerald-500">$0</p>
+                  <p className={`${theme.textMuted} mt-2`}>14-day free trial starts immediately</p>
+                </div>
+                <div className={`text-center lg:text-left lg:border-l lg:border-r ${isDarkMode ? 'lg:border-white/10' : 'lg:border-gray-200'} lg:px-8`}>
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial — Platform</p>
+                  <p className="text-4xl font-bold">$297<span className={`text-lg font-normal ${theme.textMuted2}`}>/mo</span></p>
+                  <p className={`${theme.textMuted} mt-2`}>Full TrueFlow CRM + all features below</p>
+                </div>
+                <div className="text-center lg:text-left">
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial — Accelerator</p>
+                  <p className="text-4xl font-bold">$350<span className={`text-lg font-normal ${theme.textMuted2}`}>/wk</span></p>
+                  <p className={`${theme.textMuted} mt-2`}>Optional: live coaching + hands-on support</p>
+                </div>
+              </div>
+              <div className={`mt-8 pt-6 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'} text-center`}>
+                <p className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>
+                  <CheckCircle className="h-5 w-5 text-emerald-500 inline mr-2" />
+                  Cancel anytime before Day 14 — no charge, no commitment
+                </p>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <div className="text-center mb-12">
+              <a
+                href="#signup-form"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 font-semibold text-lg shadow-lg shadow-[#1d929e]/25 hover:shadow-[#1d929e]/40 transition-shadow"
+              >
+                Sign Up Now
+                <ArrowRight className="h-5 w-5" />
+              </a>
+            </div>
+
+            {/* What's Included - Platform Features */}
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-center mb-8">Everything you get with TrueFlow</h2>
+              <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2 max-w-4xl mx-auto">
+                {platformFeatures.map((feature) => (
+                  <div key={feature} className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-emerald-500 flex-shrink-0" />
+                    <p className={isDarkMode ? 'text-white/90' : 'text-gray-700'}>{feature}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Accelerator Bonus Callout */}
+            <div className={`${isDarkMode ? 'bg-gradient-to-r from-[#1d929e]/10 via-emerald-500/10 to-teal-500/10 border-white/10' : 'bg-gradient-to-r from-[#1d929e]/5 via-emerald-500/5 to-teal-500/5 border-gray-200 shadow-lg'} border rounded-3xl p-8 text-center`}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1d929e]/20 border border-[#1d929e]/30 text-[#1d929e] text-sm font-semibold mb-4">
+                <Sparkles className="h-4 w-4" />
+                Included Free in Your Trial
+              </div>
+              <h3 className="text-2xl font-bold mb-3">TrueFlow Accelerator — 2 Weeks of Live Support</h3>
+              <p className={`${theme.textMuted} max-w-2xl mx-auto mb-6`}>
+                Don&apos;t just get the tools — get them set up right. For the first 14 days, you&apos;ll have access to live coaching calls, done-with-you onboarding, a dedicated success team, and our full library of trainings and AI tools. This is normally $350/week, but it&apos;s included free with your trial.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Live group coaching calls</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>AI Sales Coach</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Offer Architecture Blueprint</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Constant Content Engine</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Morning Mindset Mastery</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Voice & brand cloning</span>
+              </div>
+            </div>
+          </div>
+
           <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)]">
-            <section className="bg-white/5 border border-white/10 rounded-3xl backdrop-blur-xl p-6 sm:p-8 shadow-2xl shadow-blue-500/10">
+            <section id="signup-form" className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-6 sm:p-8 shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'} scroll-mt-24 border`}>
               {isComplete ? (
                 <div className="space-y-8 text-center">
                   <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-green-500/10 border border-green-400/30 text-green-200">
@@ -475,7 +488,7 @@ export default function SignUpPage() {
                       You&apos;re in. The accelerator team is spinning everything up.
                     </h1>
                     <p className="text-lg text-white/70 max-w-2xl mx-auto">
-                      Expect a welcome email, portal invite, and a link to book your Accelerator kickoff call in the next 5 minutes. We&apos;ll route you to login shortly.
+                      Expect a welcome email, portal invite, and a link to book your Accelerator kickoff call in the next 5 minutes. Your trial is active through Day 14, and we won&apos;t bill the $297/mo membership until then.
                     </p>
                   </div>
                   <div className="grid gap-4 sm:grid-cols-3 text-left">
@@ -485,7 +498,7 @@ export default function SignUpPage() {
                         <div key={moment.day} className="p-4 rounded-2xl bg-white/5 border border-white/10">
                           <div className="text-xs text-white/60 uppercase tracking-wider">{moment.day}</div>
                           <div className="flex items-center gap-2 mt-2 font-semibold">
-                            <Icon className="h-4 w-4 text-blue-400" />
+                            <Icon className="h-4 w-4 text-[#1d929e]" />
                             {moment.title}
                           </div>
                           <p className="text-sm text-white/60 mt-2">{moment.detail}</p>
@@ -497,7 +510,7 @@ export default function SignUpPage() {
                   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                     <Link
                       href="https://login.trueflow.ai"
-                      className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 font-semibold shadow-lg shadow-blue-500/20"
+                      className="px-6 py-3 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 font-semibold shadow-lg shadow-[#1d929e]/20"
                     >
                       {isRedirecting ? 'Redirecting to Login...' : 'Go to Login.TrueFlow.ai'}
                     </Link>
@@ -513,32 +526,23 @@ export default function SignUpPage() {
                 <form className="space-y-10" onSubmit={handleSubmit}>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.4em] text-white/50">TrueFlow Accelerator Trial</p>
-                      <h1 className="text-3xl sm:text-4xl font-bold mt-2">Create your account + plug into the TrueFlow Accelerator</h1>
-                      <p className="text-white/70 mt-3">
-                        Get the exact systems, support, and resources we normally charge $350/week for, free for 14 days. Cancel anytime before Day 14 to avoid the $297/mo membership.
+                      <h2 className="text-2xl sm:text-3xl font-bold">
+                        Start your free trial
+                      </h2>
+                      <p className={`${theme.textMuted} mt-2`}>
+                        Fill out the form below to get instant access to TrueFlow + 2 weeks in the Accelerator.
                       </p>
-                      <p className="text-sm text-white/60 mt-3">
-                        We align this intake with the GHL Create Sub-Account endpoint. Business name and company/agency ID are required; every other field is optional and can be added later.
-                      </p>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {valueChips.map((chip) => (
-                        <span key={chip} className="px-3 py-1.5 rounded-full border border-white/10 text-xs text-white/70">
-                          {chip}
-                        </span>
-                      ))}
                     </div>
                   </div>
 
                   <div>
-                    <div className="flex items-center justify-between text-xs text-white/60">
+                    <div className={`flex items-center justify-between text-xs ${theme.textMuted2}`}>
                       <span>Step {currentStep} of {steps.length}</span>
                       <span>{Math.round(progress)}% complete</span>
                     </div>
-                    <div className="mt-3 h-2 bg-white/10 rounded-full">
+                    <div className={`mt-3 h-2 ${isDarkMode ? 'bg-white/10' : 'bg-gray-200'} rounded-full`}>
                       <div
-                        className="h-2 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+                        className="h-2 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
@@ -549,534 +553,446 @@ export default function SignUpPage() {
                           type="button"
                           className={`p-3 rounded-2xl border text-left transition ${
                             currentStep === step.id
-                              ? 'border-blue-400 bg-blue-500/10'
-                              : 'border-white/10 bg-white/5 hover:border-white/30'
+                              ? 'border-[#1d929e] bg-[#1d929e]/10'
+                              : isDarkMode ? 'border-white/10 bg-white/5 hover:border-white/30' : 'border-gray-200 bg-gray-50 hover:border-gray-300'
                           }`}
                           onClick={() => handleStepSelect(step.id)}
                         >
-                          <p className="text-xs text-white/60">Step {step.id}</p>
+                          <p className={`text-xs ${theme.textMuted2}`}>Step {step.id}</p>
                           <p className="text-sm font-semibold">{step.title}</p>
-                          <p className="text-[11px] text-white/50 mt-1">{step.subtitle}</p>
                         </button>
                       ))}
                     </div>
                   </div>
 
+                  {/* Step 1: Account Basics */}
                   {currentStep === 1 && (
                     <div className="space-y-6">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
-                          Business name (required)
+                          Full name
                           <input
                             type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="Mark Shoes"
-                            value={formData.name}
-                            onChange={(e) => updateFormData('name', e.target.value)}
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            placeholder="Jordan Reyes"
+                            value={formData.fullName}
+                            onChange={(e) => updateFormData('fullName', e.target.value)}
                             required
                           />
-                          {fieldErrors.name && <span className="text-xs text-rose-300">{fieldErrors.name}</span>}
+                          {fieldErrors.fullName && <span className="text-xs text-rose-300">{fieldErrors.fullName}</span>}
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
-                          Account email (required)
+                          Work email
                           <input
                             type="email"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
-                            placeholder="owner@company.com"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            placeholder="you@company.com"
                             value={formData.email}
                             onChange={(e) => updateFormData('email', e.target.value)}
                             required
                           />
-                          <span className="text-xs text-white/50">Used for login, invoices, and account alerts</span>
                           {fieldErrors.email && <span className="text-xs text-rose-300">{fieldErrors.email}</span>}
                         </label>
                       </div>
+                      <label className="flex flex-col gap-2 text-sm">
+                        Primary role
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                          {['Founder / CEO', 'Operator', 'Marketing', 'Sales'].map((role) => (
+                            <button
+                              key={role}
+                              type="button"
+                              className={`px-3 py-2 rounded-xl border text-xs font-semibold transition ${
+                                formData.role === role
+                                  ? 'border-[#1d929e] bg-[#1d929e]/10'
+                                  : isDarkMode ? 'border-white/10 hover:border-white/30' : 'border-gray-200 hover:border-gray-300'
+                              }`}
+                              onClick={() => updateFormData('role', role)}
+                            >
+                              {role}
+                            </button>
+                          ))}
+                        </div>
+                      </label>
+                      <p className={`${theme.textMuted2} text-sm flex items-center gap-2`}>
+                        <CheckCircle className="h-4 w-4 text-emerald-500" />
+                        Your login gives you access to the dashboard + accelerator curriculum instantly once the intake is complete.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Step 2: Business Snapshot */}
+                  {currentStep === 2 && (
+                    <div className="space-y-6">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
-                          Phone (required, include country code)
+                          Business name
+                          <input
+                            type="text"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            placeholder="The Growth Lab"
+                            value={formData.company}
+                            onChange={(e) => updateFormData('company', e.target.value)}
+                            required
+                          />
+                          {fieldErrors.company && <span className="text-xs text-rose-300">{fieldErrors.company}</span>}
+                        </label>
+                        <label className="flex flex-col gap-2 text-sm">
+                          Phone (include country code)
                           <input
                             type="tel"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono"
-                            placeholder="+1410039940"
+                            placeholder="+1 555 123 4567"
                             value={formData.phone}
                             onChange={(e) => updateFormData('phone', e.target.value)}
                             required
                           />
-                          <span className="text-xs text-white/50">Example: +1410039940 or +44 20 7946 0958</span>
                           {fieldErrors.phone && <span className="text-xs text-rose-300">{fieldErrors.phone}</span>}
                         </label>
+                      </div>
+                      <label className="flex flex-col gap-2 text-sm">
+                        Business address
+                        <input
+                          type="text"
+                          className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                          placeholder="123 Main Street, Suite 400"
+                          value={formData.address}
+                          onChange={(e) => updateFormData('address', e.target.value)}
+                          required
+                        />
+                        {fieldErrors.address && <span className="text-xs text-rose-300">{fieldErrors.address}</span>}
+                      </label>
+                      <div className="grid gap-4 sm:grid-cols-4">
+                        <label className="flex flex-col gap-2 text-sm">
+                          City
+                          <input
+                            type="text"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            placeholder="New York"
+                            value={formData.city}
+                            onChange={(e) => updateFormData('city', e.target.value)}
+                            required
+                          />
+                          {fieldErrors.city && <span className="text-xs text-rose-300">{fieldErrors.city}</span>}
+                        </label>
+                        <label className="flex flex-col gap-2 text-sm">
+                          State
+                          <input
+                            type="text"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            placeholder="NY"
+                            value={formData.state}
+                            onChange={(e) => updateFormData('state', e.target.value)}
+                            required
+                          />
+                          {fieldErrors.state && <span className="text-xs text-rose-300">{fieldErrors.state}</span>}
+                        </label>
+                        <label className="flex flex-col gap-2 text-sm">
+                          Country
+                          <input
+                            type="text"
+                            maxLength={2}
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none uppercase font-mono"
+                            placeholder="US"
+                            value={formData.country}
+                            onChange={(e) => updateFormData('country', e.target.value)}
+                            required
+                          />
+                          {fieldErrors.country && <span className="text-xs text-rose-300">{fieldErrors.country}</span>}
+                        </label>
+                        <label className="flex flex-col gap-2 text-sm">
+                          Postal code
+                          <input
+                            type="text"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono"
+                            placeholder="10001"
+                            value={formData.postalCode}
+                            onChange={(e) => updateFormData('postalCode', e.target.value)}
+                            required
+                          />
+                          {fieldErrors.postalCode && <span className="text-xs text-rose-300">{fieldErrors.postalCode}</span>}
+                        </label>
+                      </div>
+                      <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
                           Website (optional)
                           <input
                             type="url"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
                             placeholder="yourwebsite.com"
                             value={formData.website}
                             onChange={(e) => updateFormData('website', e.target.value)}
                             onBlur={handleWebsiteBlur}
                           />
-                          <span className="text-xs text-white/50">Start typing your domain - we'll add https:// automatically</span>
                           {fieldErrors.website && <span className="text-xs text-rose-300">{fieldErrors.website}</span>}
                         </label>
-                      </div>
-                      <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
-                          Industry (required)
-                          <input
-                            type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="e.g., Medspa, Coaching, Real Estate"
-                            value={formData.industry}
-                            onChange={(e) => updateFormData('industry', e.target.value)}
-                            required
-                          />
-                          <span className="text-xs text-white/50">Helps us preload the right automations</span>
-                          {fieldErrors.industry && <span className="text-xs text-rose-300">{fieldErrors.industry}</span>}
-                        </label>
-                      </div>
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        <label className="flex flex-col gap-2 text-sm">
-                          Timezone (optional)
+                          Timezone
                           <select
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none appearance-none cursor-pointer"
                             value={formData.timezone}
                             onChange={(e) => updateFormData('timezone', e.target.value)}
                           >
                             <option value="">Select timezone...</option>
-                            <optgroup label="US Timezones">
-                              <option value="US/Eastern">US/Eastern (EST/EDT)</option>
-                              <option value="US/Central">US/Central (CST/CDT)</option>
-                              <option value="US/Mountain">US/Mountain (MST/MDT)</option>
-                              <option value="US/Pacific">US/Pacific (PST/PDT)</option>
-                              <option value="US/Alaska">US/Alaska (AKST/AKDT)</option>
-                              <option value="US/Hawaii">US/Hawaii (HST)</option>
-                            </optgroup>
-                            <optgroup label="Americas">
-                              <option value="America/Toronto">America/Toronto (Canada Eastern)</option>
-                              <option value="America/Vancouver">America/Vancouver (Canada Pacific)</option>
-                              <option value="America/Mexico_City">America/Mexico_City (Mexico)</option>
-                              <option value="America/Sao_Paulo">America/Sao_Paulo (Brazil)</option>
-                              <option value="America/Argentina/Buenos_Aires">America/Argentina/Buenos_Aires</option>
-                            </optgroup>
-                            <optgroup label="Europe">
-                              <option value="Europe/London">Europe/London (GMT/BST)</option>
-                              <option value="Europe/Paris">Europe/Paris (CET/CEST)</option>
-                              <option value="Europe/Berlin">Europe/Berlin (CET/CEST)</option>
-                              <option value="Europe/Rome">Europe/Rome (CET/CEST)</option>
-                              <option value="Europe/Madrid">Europe/Madrid (CET/CEST)</option>
-                              <option value="Europe/Amsterdam">Europe/Amsterdam (CET/CEST)</option>
-                            </optgroup>
-                            <optgroup label="Asia">
-                              <option value="Asia/Dubai">Asia/Dubai (GST)</option>
-                              <option value="Asia/Kolkata">Asia/Kolkata (IST)</option>
-                              <option value="Asia/Singapore">Asia/Singapore (SGT)</option>
-                              <option value="Asia/Hong_Kong">Asia/Hong_Kong (HKT)</option>
-                              <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
-                              <option value="Asia/Shanghai">Asia/Shanghai (CST)</option>
-                            </optgroup>
-                            <optgroup label="Pacific">
-                              <option value="Australia/Sydney">Australia/Sydney (AEST/AEDT)</option>
-                              <option value="Australia/Melbourne">Australia/Melbourne (AEST/AEDT)</option>
-                              <option value="Pacific/Auckland">Pacific/Auckland (NZST/NZDT)</option>
-                            </optgroup>
+                            <option value="US/Eastern">US/Eastern (EST/EDT)</option>
+                            <option value="US/Central">US/Central (CST/CDT)</option>
+                            <option value="US/Mountain">US/Mountain (MST/MDT)</option>
+                            <option value="US/Pacific">US/Pacific (PST/PDT)</option>
+                            <option value="US/Alaska">US/Alaska</option>
+                            <option value="US/Hawaii">US/Hawaii</option>
+                            <option value="Europe/London">Europe/London (GMT)</option>
+                            <option value="Europe/Paris">Europe/Paris (CET)</option>
+                            <option value="Asia/Tokyo">Asia/Tokyo (JST)</option>
+                            <option value="Australia/Sydney">Australia/Sydney (AEST)</option>
                           </select>
-                          <span className="text-xs text-white/50">Select your business timezone</span>
                         </label>
-                        <div className="flex flex-col gap-2 justify-center">
-                          <div className="p-3 rounded-2xl bg-blue-500/10 border border-blue-400/20">
-                            <p className="text-xs text-blue-200/90 leading-relaxed">
-                              <strong>Note:</strong> We pass fields exactly as the API expects. Anything you leave blank stays unstated.
-                            </p>
-                          </div>
-                        </div>
                       </div>
-                    </div>
-                  )}
-
-                  {currentStep === 2 && (
-                    <div className="space-y-6">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
-                          Address (required)
-                          <input
-                            type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="123 Main Street, Suite 400"
-                            value={formData.address}
-                            onChange={(e) => updateFormData('address', e.target.value)}
-                            required
-                          />
-                          <span className="text-xs text-white/50">Street address with suite/unit if applicable</span>
-                          {fieldErrors.address && <span className="text-xs text-rose-300">{fieldErrors.address}</span>}
+                          Team size
+                          <select
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            value={formData.teamSize}
+                            onChange={(e) => updateFormData('teamSize', e.target.value)}
+                          >
+                            <option>Solo</option>
+                            <option>1-3</option>
+                            <option>4-10</option>
+                            <option>11-25</option>
+                            <option>26+</option>
+                          </select>
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
-                          City (required)
-                          <input
-                            type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="New York"
-                            value={formData.city}
-                            onChange={(e) => updateFormData('city', e.target.value)}
-                            required
-                          />
-                          <span className="text-xs text-white/50">Example: Los Angeles, Toronto, London</span>
-                          {fieldErrors.city && <span className="text-xs text-rose-300">{fieldErrors.city}</span>}
-                        </label>
-                      </div>
-                      <div className="grid gap-4 sm:grid-cols-3">
-                        <label className="flex flex-col gap-2 text-sm">
-                          State/Province (required)
-                          <input
-                            type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
-                            placeholder="California or CA"
-                            value={formData.state}
-                            onChange={(e) => updateFormData('state', e.target.value)}
-                            required
-                          />
-                          <span className="text-xs text-white/50">Auto-formats: "ca" → "CA", "california" → "California"</span>
-                          {fieldErrors.state && <span className="text-xs text-rose-300">{fieldErrors.state}</span>}
-                        </label>
-                        <label className="flex flex-col gap-2 text-sm">
-                          Country (required, 2-letter code)
-                          <input
-                            type="text"
-                            maxLength={2}
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none uppercase font-mono transition-all"
-                            placeholder="US"
-                            value={formData.country}
-                            onChange={(e) => updateFormData('country', e.target.value)}
-                            required
-                          />
-                          <span className="text-xs text-white/50">Auto-uppercases: "us" → "US"</span>
-                          {fieldErrors.country && <span className="text-xs text-rose-300">{fieldErrors.country}</span>}
-                        </label>
-                        <label className="flex flex-col gap-2 text-sm">
-                          Postal/ZIP code (required)
-                          <input
-                            type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono transition-all"
-                            placeholder="90210"
-                            value={formData.postalCode}
-                            onChange={(e) => updateFormData('postalCode', e.target.value)}
-                            required
-                          />
-                          <span className="text-xs text-white/50">Auto-uppercases: "sw1a 1aa" → "SW1A1AA"</span>
-                          {fieldErrors.postalCode && <span className="text-xs text-rose-300">{fieldErrors.postalCode}</span>}
-                        </label>
-                      </div>
-                      <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-100 text-xs font-semibold">
-                          <BadgeCheck className="h-4 w-4" />
-                          Required for launch
-                        </div>
-                        <p className="text-sm text-white/70">Address, city, state, country, and postal code ensure billing, compliance, and mailers work from day one.</p>
-                      </div>
-                    </div>
-                  )}
-
-                  {currentStep === 3 && (
-                    <div className="space-y-6">
-                      <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-4">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-100 text-xs font-semibold">
-                          <Users className="h-4 w-4" />
-                          Primary contact (required)
-                        </div>
-                        <p className="text-sm text-white/70">We invite this person as the owner inside the new sub-account.</p>
-                        <div className="grid gap-4 sm:grid-cols-3">
-                          <label className="flex flex-col gap-2 text-sm">
-                            First name
-                            <input
-                              type="text"
-                              className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                              placeholder="John"
-                              value={formData.prospectInfo.firstName}
-                              onChange={(e) => updateNested('prospectInfo', 'firstName', e.target.value)}
-                              required
-                            />
-                            {fieldErrors['prospectInfo.firstName'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.firstName']}</span>}
-                          </label>
-                          <label className="flex flex-col gap-2 text-sm">
-                            Last name
-                            <input
-                              type="text"
-                              className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                              placeholder="Doe"
-                              value={formData.prospectInfo.lastName}
-                              onChange={(e) => updateNested('prospectInfo', 'lastName', e.target.value)}
-                              required
-                            />
-                            {fieldErrors['prospectInfo.lastName'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.lastName']}</span>}
-                          </label>
-                          <label className="flex flex-col gap-2 text-sm">
-                            Work email
-                            <input
-                              type="email"
-                              className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
-                              placeholder="owner@business.com"
-                              value={formData.prospectInfo.email}
-                              onChange={(e) => updateNested('prospectInfo', 'email', e.target.value)}
-                              required
-                            />
-                            <span className="text-xs text-white/50">We’ll send the portal invite here</span>
-                            {fieldErrors['prospectInfo.email'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.email']}</span>}
-                          </label>
-                        </div>
-                        <div className="grid gap-3 text-sm text-white/80">
-                          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Account settings</p>
-                          {([
-                            { key: 'allowDuplicateContact', label: 'Allow duplicate contacts' },
-                            { key: 'allowDuplicateOpportunity', label: 'Allow duplicate opportunities' },
-                            { key: 'allowFacebookNameMerge', label: 'Allow Facebook name merge' },
-                            { key: 'disableContactTimezone', label: 'Disable contact timezone checks' }
-                          ] as const).map((setting) => (
-                            <label key={setting.key} className="inline-flex items-center gap-2">
-                              <input
-                                type="checkbox"
-                                className="accent-blue-500"
-                                checked={(formData.settings as any)[setting.key]}
-                                onChange={(e) => updateNested('settings', setting.key, e.target.checked)}
-                              />
-                              {setting.label}
-                            </label>
-                          ))}
-                        </div>
-                      </div>
-
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
-                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-100 text-xs font-semibold">
-                            <ArrowRight className="h-4 w-4" />
-                            Additional social (optional)
-                          </div>
-                          <div className="grid gap-3 text-sm text-white/80">
-                            {(
-                              [
-                                { key: 'yelp', placeholder: 'https://www.yelp.com/biz/your-business', label: 'Yelp' },
-                                { key: 'pinterest', placeholder: 'https://www.pinterest.com/yourprofile', label: 'Pinterest' },
-                                { key: 'foursquare', placeholder: 'https://foursquare.com/v/your-venue/id', label: 'Foursquare' },
-                                { key: 'blogRss', placeholder: 'https://yourblog.com/feed.xml', label: 'Blog RSS Feed' },
-                                { key: 'googlePlacesId', placeholder: 'ChIJN1t_tDeuEmsRUsoyG83frY4', label: 'Google Places ID' }
-                              ] as const
-                            ).map((field) => (
-                              <div key={field.key}>
-                                <label className="text-xs text-white/60 mb-1 block">{field.label}</label>
-                                <input
-                                  type="text"
-                                  className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none text-sm"
-                                  placeholder={field.placeholder}
-                                  value={(formData.social as any)[field.key]}
-                                  onChange={(e) => updateNested('social', field.key, e.target.value)}
-                                />
-                              </div>
+                          Primary goal
+                          <div className="grid grid-cols-2 gap-2">
+                            {goalOptions.map((goal) => (
+                              <button
+                                key={goal}
+                                type="button"
+                                className={`px-3 py-2 rounded-xl border text-xs font-semibold transition ${
+                                  formData.primaryGoal === goal
+                                    ? 'border-[#1d929e] bg-[#1d929e]/10'
+                                    : 'border-white/10 hover:border-white/30'
+                                }`}
+                                onClick={() => updateFormData('primaryGoal', goal)}
+                              >
+                                {goal}
+                              </button>
                             ))}
                           </div>
-                        </div>
-                        <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
-                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-100 text-xs font-semibold">
-                            <Shield className="h-4 w-4" />
-                            Provider credentials (optional)
-                          </div>
-                          <div className="grid gap-3">
-                            <div>
-                              <label className="text-xs text-white/60 mb-1 block">Twilio Account SID</label>
-                              <input
-                                type="text"
-                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono text-sm"
-                                placeholder="ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-                                value={formData.twilio.sid}
-                                onChange={(e) => updateNested('twilio', 'sid', e.target.value)}
-                              />
-                              {fieldErrors['twilio.sid'] && <span className="text-xs text-rose-300">{fieldErrors['twilio.sid']}</span>}
-                            </div>
-                            <div>
-                              <label className="text-xs text-white/60 mb-1 block">Twilio Auth Token</label>
-                              <input
-                                type="password"
-                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono text-sm"
-                                placeholder="********************************"
-                                value={formData.twilio.authToken}
-                                onChange={(e) => updateNested('twilio', 'authToken', e.target.value)}
-                              />
-                              {fieldErrors['twilio.authToken'] && <span className="text-xs text-rose-300">{fieldErrors['twilio.authToken']}</span>}
-                            </div>
-                            <div>
-                              <label className="text-xs text-white/60 mb-1 block">Mailgun API Key</label>
-                              <input
-                                type="password"
-                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono text-sm"
-                                placeholder="key-********************************"
-                                value={formData.mailgun.apiKey}
-                                onChange={(e) => updateNested('mailgun', 'apiKey', e.target.value)}
-                              />
-                              {fieldErrors['mailgun.apiKey'] && <span className="text-xs text-rose-300">{fieldErrors['mailgun.apiKey']}</span>}
-                            </div>
-                            <div>
-                              <label className="text-xs text-white/60 mb-1 block">Mailgun Domain</label>
-                              <input
-                                type="text"
-                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none text-sm"
-                                placeholder="mg.yourdomain.com"
-                                value={formData.mailgun.domain}
-                                onChange={(e) => updateNested('mailgun', 'domain', e.target.value)}
-                              />
-                              {fieldErrors['mailgun.domain'] && <span className="text-xs text-rose-300">{fieldErrors['mailgun.domain']}</span>}
-                            </div>
-                            <div>
-                              <label className="text-xs text-white/60 mb-1 block">Snapshot ID (optional)</label>
-                              <input
-                                type="text"
-                                className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono text-sm"
-                                placeholder="snapshot_abc123xyz"
-                                value={formData.snapshotId}
-                                onChange={(e) => updateFormData('snapshotId', e.target.value)}
-                              />
-                              <span className="text-xs text-white/40 mt-1 block">GHL snapshot to clone for this account</span>
-                            </div>
-                          </div>
-                        </div>
+                        </label>
                       </div>
-                      <div className="flex flex-col gap-3 text-sm text-white/70">
-                        <p className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-emerald-300" />
-                          These details feed both the Create Sub-Account and Create User endpoints in GoHighLevel.
-                        </p>
-                        <p className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-emerald-300" />
-                          The primary contact becomes the owner login—we send them the invite automatically.
-                        </p>
-                        <p className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-emerald-300" />
-                          Need adjustments? Your accelerator coach can tweak anything after kickoff.
-                        </p>
-                      </div>
-                      {errorMessage && (
-                        <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-100 text-sm">
-                          {errorMessage}
-                        </div>
-                      )}
-                      <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                        <div className="flex gap-3 justify-between sm:justify-start">
-                          <button
-                            type="button"
-                            onClick={handlePrev}
-                            className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-white/80 hover:text-white transition"
-                          >
-                            <ArrowLeft className="h-4 w-4" /> Back
-                          </button>
-                          <button
-                            type="button"
-                            onClick={handleNext}
-                            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/10 text-white/80 hover:text-white border border-white/20"
-                          >
-                            Next
-                            <ArrowRight className="h-4 w-4" />
-                          </button>
-                        </div>
-                        <button
-                          type="submit"
-                          disabled={isSubmitting}
-                          className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 font-semibold shadow-lg shadow-blue-500/20 disabled:opacity-60"
-                        >
-                          {isSubmitting ? 'Submitting...' : 'Submit to GHL'}
-                        </button>
+                      <label className="flex flex-col gap-2 text-sm">
+                        Drop any quick context we should know (optional)
+                        <textarea
+                          className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none min-h-[100px]"
+                          placeholder="Tell us about your offer, audience, or current bottlenecks."
+                          value={formData.voiceNotes}
+                          onChange={(e) => updateFormData('voiceNotes', e.target.value)}
+                        />
+                      </label>
+                      <div className="p-4 rounded-2xl border border-white/10 bg-gradient-to-r from-blue-500/5 to-purple-600/5 text-sm text-white/80">
+                        <strong className="text-white">Heads up:</strong> this intel feeds your Account Blueprint so the accelerator coaches know exactly what to build with you on day one.
                       </div>
                     </div>
                   )}
 
-                  {errorMessage && currentStep !== 3 && (
-                    <p className="text-sm text-rose-300">{errorMessage}</p>
+                  {/* Step 3: Launch Game Plan */}
+                  {currentStep === 3 && (
+                    <div className="space-y-6">
+                      <div className="p-4 rounded-2xl border border-[#1d929e]/30 bg-[#1d929e]/5 flex gap-3">
+                        <Sparkles className="h-6 w-6 text-[#1d929e] flex-shrink-0" />
+                        <p className="text-sm text-white/80">
+                          TrueFlow Accelerator gives you two live weeks of business, marketing, sales, and mindset resources. Pick what matters most and we&apos;ll stack your onboarding plan around it.
+                        </p>
+                      </div>
+                      <div className="space-y-3">
+                        {resourceOptions.map((resource) => (
+                          <label
+                            key={resource.label}
+                            className={`flex items-start gap-3 p-4 rounded-2xl border cursor-pointer transition ${
+                              selectedResources.includes(resource.label)
+                                ? 'border-[#1d929e] bg-[#1d929e]/10'
+                                : 'border-white/10 hover:border-white/30'
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              className="mt-1 accent-[#1d929e]"
+                              checked={selectedResources.includes(resource.label)}
+                              onChange={() => toggleResource(resource.label)}
+                            />
+                            <div>
+                              <p className="font-semibold">{resource.label}</p>
+                              <p className="text-sm text-white/70">{resource.description}</p>
+                            </div>
+                          </label>
+                        ))}
+                      </div>
+                      <label className="flex flex-col gap-2 text-sm">
+                        What wins would make this trial feel legendary?
+                        <textarea
+                          className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none min-h-[120px]"
+                          placeholder="Example: book 5 sales calls, launch weekly email, audit funnels, build leadership dashboard..."
+                          value={formData.winsWanted}
+                          onChange={(e) => updateFormData('winsWanted', e.target.value)}
+                        />
+                      </label>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <div className="p-4 rounded-2xl border border-white/10">
+                          <p className="text-xs text-white/60 uppercase tracking-widest">Included</p>
+                          <p className="font-semibold mt-2">TrueFlow Accelerator Live Access</p>
+                          <p className="text-sm text-white/70 mt-1">Small-group calls, templates, and swipe files usually billed at $350/week.</p>
+                        </div>
+                        <div className="p-4 rounded-2xl border border-white/10">
+                          <p className="text-xs text-white/60 uppercase tracking-widest">Bonus</p>
+                          <p className="font-semibold mt-2">Automation & Success Library</p>
+                          <p className="text-sm text-white/70 mt-1">Scripts, metrics dashboards, and playbooks delivered inside your workspace.</p>
+                        </div>
+                      </div>
+                    </div>
                   )}
 
-                  {currentStep < 3 && (
-                    <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-                      {currentStep > 1 ? (
+                  {/* Step 4: Trial + Payment */}
+                  {currentStep === 4 && (
+                    <div className="space-y-6">
+                      {/* Success Manager Toggle - moved above payment */}
+                      <label
+                        className={`flex flex-col gap-2 p-4 rounded-2xl border cursor-pointer transition ${
+                          formData.includeSuccessManager ? 'border-[#1d929e] bg-[#1d929e]/10' : isDarkMode ? 'border-white/10 hover:border-white/30' : 'border-gray-200 hover:border-gray-300'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-4">
+                          <div>
+                            <p className="font-semibold flex items-center gap-2">
+                              <HeartHandshake className="h-5 w-5 text-[#1d929e]" />
+                              Add 1:1 Success Manager
+                            </p>
+                            <p className={`text-sm ${theme.textMuted} mt-1`}>Direct support, quick-response voice and chat, essentially a personal operator in your corner.</p>
+                          </div>
+                          <span className="text-sm font-semibold whitespace-nowrap">+$147/mo</span>
+                        </div>
                         <button
                           type="button"
-                          onClick={handlePrev}
-                          className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-white/20 text-white/80 hover:text-white transition"
+                          className={`mt-3 inline-flex items-center w-14 h-8 rounded-full p-1 transition ${
+                            formData.includeSuccessManager ? 'bg-[#1d929e]' : isDarkMode ? 'bg-white/10' : 'bg-gray-200'
+                          }`}
+                          onClick={() => updateFormData('includeSuccessManager', !formData.includeSuccessManager)}
                         >
-                          <ArrowLeft className="h-4 w-4" /> Back
+                          <span
+                            className={`h-6 w-6 rounded-full bg-white transform transition shadow ${
+                              formData.includeSuccessManager ? 'translate-x-6' : 'translate-x-0'
+                            }`}
+                          />
                         </button>
-                      ) : (
-                        <span />
-                      )}
+                      </label>
 
+                      {/* Pricing Summary */}
+                      <div className={`p-5 rounded-2xl border ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'}`}>
+                        <div className="flex flex-wrap items-center gap-3">
+                          <CreditCard className="h-6 w-6 text-[#1d929e]" />
+                          <p className="text-lg font-semibold">
+                            14-Day Free Trial • Then {formData.includeSuccessManager ? '$444' : '$297'}/mo
+                          </p>
+                        </div>
+                        <ul className={`mt-3 space-y-2 text-sm ${theme.textMuted}`}>
+                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Full TrueFlow platform + accelerator access</li>
+                          {formData.includeSuccessManager && (
+                            <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> 1:1 Success Manager included</li>
+                          )}
+                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14 — $0 charged</li>
+                        </ul>
+                      </div>
+
+                      {/* GHL Payment Embed */}
+                      <div className={`rounded-2xl overflow-hidden border ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
+                        <iframe
+                          src={formData.includeSuccessManager
+                            ? 'https://link.fastpaydirect.com/payment-link/6920f847802b2ce38d6b0f8e'
+                            : 'https://link.fastpaydirect.com/payment-link/6920f7f2bbe219eb5e3624d1'
+                          }
+                          className="w-full min-h-[500px] border-0"
+                          title="Payment Form"
+                          allow="payment"
+                        />
+                      </div>
+
+                      <p className={`text-xs ${theme.textMuted2}`}>
+                        By completing payment, you agree to the TrueFlow Terms of Service. Your 14-day free trial starts immediately — you won&apos;t be charged until Day 15.
+                      </p>
+                    </div>
+                  )}
+
+                  {errorMessage && (
+                    <div className="p-4 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-200 text-sm whitespace-pre-wrap">
+                      {errorMessage}
+                    </div>
+                  )}
+
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                    {currentStep > 1 ? (
+                      <button
+                        type="button"
+                        onClick={handlePrev}
+                        className={`inline-flex items-center gap-2 px-5 py-3 rounded-full border ${theme.backBtn} transition`}
+                      >
+                        <ArrowLeft className="h-4 w-4" /> Back
+                      </button>
+                    ) : (
+                      <span />
+                    )}
+
+                    {currentStep < steps.length ? (
                       <button
                         type="button"
                         onClick={handleNext}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 font-semibold shadow-lg shadow-blue-500/20"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 font-semibold shadow-lg shadow-[#1d929e]/20"
                       >
                         Continue
                         <ArrowRight className="h-4 w-4" />
                       </button>
-                    </div>
-                  )}
+                    ) : (
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 font-semibold shadow-lg shadow-[#1d929e]/20 disabled:opacity-60"
+                      >
+                        {isSubmitting ? 'Creating Your Account...' : 'Start 14-Day Trial'}
+                        {!isSubmitting && <ArrowRight className="h-4 w-4" />}
+                      </button>
+                    )}
+                  </div>
                 </form>
               )}
             </section>
 
-            <aside className="space-y-6">
-              <div className="p-6 rounded-3xl border border-white/10 bg-white/5">
-                <div className="flex items-center gap-3 text-sm text-white/70">
-                  <Star className="h-5 w-5 text-amber-300" />
-                  Value proof
-                </div>
-                <div className="mt-6 grid gap-6">
-                  {statsHighlights.map((stat) => (
-                    <div key={stat.label} className="rounded-2xl border border-white/10 p-4">
-                      <p className="text-xs text-white/60 uppercase tracking-widest">{stat.label}</p>
-                      <p className="text-4xl font-bold mt-2">{stat.value}</p>
-                      <p className="text-sm text-white/70 mt-1">{stat.detail}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="p-6 rounded-3xl border border-purple-500/30 bg-gradient-to-br from-purple-600/20 via-blue-500/10 to-transparent">
-                <div className="flex items-center gap-3 text-sm text-white/80">
-                  <BadgeCheck className="h-5 w-5 text-purple-200" />
-                  TrueFlowAccelerator™ Timeline
+            {/* Sticky sidebar with Accelerator timeline only */}
+            <aside className="lg:sticky lg:top-36 lg:self-start space-y-6">
+              <div className={`p-6 rounded-3xl border border-[#1d929e]/30 ${isDarkMode ? 'bg-gradient-to-br from-[#1d929e]/20 via-emerald-500/10 to-transparent' : 'bg-white shadow-xl'}`}>
+                <div className={`flex items-center gap-3 text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                  <BadgeCheck className="h-5 w-5 text-[#1d929e]" />
+                  TrueFlow Accelerator Timeline
                 </div>
                 <div className="mt-6 space-y-4">
                   {acceleratorMoments.map((moment) => {
                     const Icon = moment.icon
                     return (
                       <div key={moment.day} className="flex gap-3">
-                        <div className="w-16 text-xs text-white/60">{moment.day}</div>
+                        <div className={`w-16 text-xs ${theme.textMuted2}`}>{moment.day}</div>
                         <div className="flex-1">
                           <div className="flex items-center gap-2 font-semibold">
-                            <Icon className="h-4 w-4 text-purple-200" />
+                            <Icon className="h-4 w-4 text-[#1d929e]" />
                             {moment.title}
                           </div>
-                          <p className="text-sm text-white/70">{moment.detail}</p>
+                          <p className={`text-sm ${theme.textMuted}`}>{moment.detail}</p>
                         </div>
                       </div>
                     )
                   })}
                 </div>
               </div>
-
-              <div className="p-6 rounded-3xl border border-white/10 bg-white/5 space-y-4">
-                <div className="flex items-center gap-3">
-                  <Users className="h-5 w-5 text-pink-300" />
-                  <div>
-                    <p className="font-semibold">Support included</p>
-                    <p className="text-sm text-white/70">We&apos;ll confirm details map cleanly to the GHL endpoint and help adjust later.</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-white/60">
-                  <Clock className="h-4 w-4" /> Average reply time under 2 hours
-                </div>
-                <div className="flex items-center gap-3 text-sm text-white/60">
-                  <BarChart3 className="h-4 w-4" /> Weekly scorecards + proactive nudges
-                </div>
-              </div>
             </aside>
           </div>
         </main>
-
-        <Footer />
       </div>
     </div>
   )
