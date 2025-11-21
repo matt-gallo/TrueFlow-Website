@@ -76,8 +76,7 @@ interface AcceleratorMoment {
 const steps = [
   { id: 1, title: 'Account Basics', subtitle: 'Business name + contact' },
   { id: 2, title: 'Location Details', subtitle: 'Address + timezone (optional)' },
-  { id: 3, title: 'Contact + Settings', subtitle: 'Prospect info + flags' },
-  { id: 4, title: 'Integrations', subtitle: 'Social + provider creds' }
+  { id: 3, title: 'Integrations', subtitle: 'Social + provider creds' }
 ] as const
 
 const statsHighlights = [
@@ -329,10 +328,6 @@ export default function SignUpPage() {
     }
 
     if (step === 3) {
-      if (formData.prospectInfo.email && !isEmail(formData.prospectInfo.email)) errors['prospectInfo.email'] = 'Enter a valid email'
-    }
-
-    if (step === 4) {
       const twilioFilled = formData.twilio.sid || formData.twilio.authToken
       if (twilioFilled && !formData.twilio.sid) errors['twilio.sid'] = 'SID required when adding Twilio'
       if (twilioFilled && !formData.twilio.authToken) errors['twilio.authToken'] = 'Auth token required when adding Twilio'
@@ -489,18 +484,7 @@ export default function SignUpPage() {
                 <form className="space-y-10" onSubmit={handleSubmit}>
                   <div className="space-y-4">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.4em] text-white/50">TrueFlow Intake</p>
-                      <h1 className="text-3xl sm:text-4xl font-bold mt-2">Map your sub-account details</h1>
-                      <p className="text-white/70 mt-3">
-                        We align this intake with the GHL Create Sub-Account endpoint. Business name and company/agency ID are required; every other field is optional and can be added later.
-                      </p>
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      {valueChips.map((chip) => (
-                        <span key={chip} className="px-3 py-1.5 rounded-full border border-white/10 text-xs text-white/70">
-                          {chip}
-                        </span>
-                      ))}
+                      <h1 className="text-3xl sm:text-4xl font-bold mt-2">Welcome to TrueFlow, enter your information to get started</h1>
                     </div>
                   </div>
 
@@ -725,106 +709,6 @@ export default function SignUpPage() {
 
                   {currentStep === 3 && (
                     <div className="space-y-6">
-                      <div className="p-4 rounded-2xl bg-blue-500/10 border border-blue-400/20">
-                        <p className="text-sm text-blue-100/90">
-                          <strong>Prospect info</strong> is the primary contact for this sub-account. Leave blank if not needed initially.
-                        </p>
-                      </div>
-                      <div className="grid gap-4 sm:grid-cols-3">
-                        <label className="flex flex-col gap-2 text-sm">
-                          Prospect first name (optional)
-                          <input
-                            type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="John"
-                            value={formData.prospectInfo.firstName}
-                            onChange={(e) => updateNested('prospectInfo', 'firstName', e.target.value)}
-                          />
-                        </label>
-                        <label className="flex flex-col gap-2 text-sm">
-                          Prospect last name (optional)
-                          <input
-                            type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
-                            placeholder="Doe"
-                            value={formData.prospectInfo.lastName}
-                            onChange={(e) => updateNested('prospectInfo', 'lastName', e.target.value)}
-                          />
-                        </label>
-                        <label className="flex flex-col gap-2 text-sm">
-                          Prospect email (optional)
-                          <input
-                            type="email"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
-                            placeholder="john.doe@example.com"
-                            value={formData.prospectInfo.email}
-                            onChange={(e) => updateNested('prospectInfo', 'email', e.target.value)}
-                          />
-                          <span className="text-xs text-white/50">Auto-lowercases: "John@Example.COM" → "john@example.com"</span>
-                          {fieldErrors['prospectInfo.email'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.email']}</span>}
-                        </label>
-                      </div>
-                      <div className="grid gap-4 sm:grid-cols-2">
-                        <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
-                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-100 text-xs font-semibold">
-                            <Clock className="h-4 w-4" />
-                            Settings (optional)
-                          </div>
-                          <div className="grid grid-cols-1 gap-3 text-sm text-white/80">
-                            {(
-                              [
-                                { key: 'allowDuplicateContact', label: 'Allow duplicate contact' },
-                                { key: 'allowDuplicateOpportunity', label: 'Allow duplicate opportunity' },
-                                { key: 'allowFacebookNameMerge', label: 'Allow Facebook name merge' },
-                                { key: 'disableContactTimezone', label: 'Disable contact timezone' }
-                              ] as const
-                            ).map((setting) => (
-                              <label key={setting.key} className="inline-flex items-center gap-2">
-                                <input
-                                  type="checkbox"
-                                  className="accent-blue-500"
-                                  checked={(formData.settings as any)[setting.key]}
-                                  onChange={(e) => updateNested('settings', setting.key, e.target.checked)}
-                                />
-                                {setting.label}
-                              </label>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
-                          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-100 text-xs font-semibold">
-                            <MessageCircle className="h-4 w-4" />
-                            Social links (optional)
-                          </div>
-                          <div className="grid gap-3 text-sm text-white/80">
-                            {(
-                              [
-                                { key: 'facebookUrl', placeholder: 'https://www.facebook.com/yourpage', label: 'Facebook' },
-                                { key: 'linkedIn', placeholder: 'https://www.linkedin.com/company/yourcompany', label: 'LinkedIn' },
-                                { key: 'twitter', placeholder: 'https://www.twitter.com/yourhandle', label: 'Twitter/X' },
-                                { key: 'instagram', placeholder: 'https://www.instagram.com/yourhandle', label: 'Instagram' },
-                                { key: 'youtube', placeholder: 'https://www.youtube.com/@yourchannel', label: 'YouTube' }
-                              ] as const
-                            ).map((field) => (
-                              <div key={field.key}>
-                                <label className="text-xs text-white/60 mb-1 block">{field.label}</label>
-                                <input
-                                  type="url"
-                                  className="w-full px-3 py-2 rounded-xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none text-sm"
-                                  placeholder={field.placeholder}
-                                  value={(formData.social as any)[field.key]}
-                                  onChange={(e) => updateNested('social', field.key, e.target.value)}
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {currentStep === 4 && (
-                    <div className="space-y-6">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
                           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-100 text-xs font-semibold">
@@ -966,11 +850,11 @@ export default function SignUpPage() {
                     </div>
                   )}
 
-                  {errorMessage && currentStep !== 4 && (
+                  {errorMessage && currentStep !== 3 && (
                     <p className="text-sm text-rose-300">{errorMessage}</p>
                   )}
 
-                  {currentStep < 4 && (
+                  {currentStep < 3 && (
                     <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
                       {currentStep > 1 ? (
                         <button
