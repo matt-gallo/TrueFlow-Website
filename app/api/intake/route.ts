@@ -28,7 +28,15 @@ export async function POST(request: Request) {
     hasLocationEmail: !!body.email,
     prospectInfo: body.prospectInfo,
     hasProspectEmail: !!body.prospectInfo?.email,
-    prospectEmail: body.prospectInfo?.email
+    prospectEmail: body.prospectInfo?.email,
+    // Log accelerator metadata if present
+    metadata: body.metadata ? {
+      role: body.metadata.role,
+      teamSize: body.metadata.teamSize,
+      primaryGoal: body.metadata.primaryGoal,
+      selectedResources: body.metadata.selectedResources,
+      includeSuccessManager: body.metadata.includeSuccessManager
+    } : null
   })
 
   // Build the payload for GHL API
