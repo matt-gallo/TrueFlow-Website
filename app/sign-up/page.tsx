@@ -24,6 +24,7 @@ interface SignUpFormData {
   name: string
   email: string
   phone: string
+  industry: string
   address: string
   city: string
   state: string
@@ -113,9 +114,9 @@ const acceleratorMoments: AcceleratorMoment[] = [
 ]
 
 const valueChips = [
-  'Maps directly to GHL Create Sub-Account API',
-  'We attach the agency/company ID on the backend',
-  'All other fields optional and updateable later'
+  'TrueFlow Accelerator access (14 days)',
+  'Live success team + resources worth $350/week',
+  'Done-for-you onboarding + personal automations'
 ]
 
 export default function SignUpPage() {
@@ -129,6 +130,7 @@ export default function SignUpPage() {
     name: '',
     email: '',
     phone: '',
+    industry: '',
     address: '',
     city: '',
     state: '',
@@ -319,15 +321,42 @@ export default function SignUpPage() {
       } else if (!isEmail(formData.email)) {
         errors.email = 'Enter a valid email address'
       }
-      if (formData.phone && !isPhone(formData.phone)) errors.phone = 'Enter a valid phone number with country code'
+      if (!formData.phone.trim()) {
+        errors.phone = 'Business phone is required'
+      } else if (!isPhone(formData.phone)) {
+        errors.phone = 'Enter a valid phone number with country code'
+      }
+      if (!formData.industry.trim()) {
+        errors.industry = 'Industry helps us route you to the right playbook'
+      }
       if (formData.website && !isUrl(formData.website)) errors.website = 'Enter a valid URL'
     }
 
     if (step === 2) {
-      if (formData.country && !isCountry(formData.country)) errors.country = 'Use a 2-letter country code'
+      if (!formData.address.trim()) errors.address = 'Business address is required'
+      if (!formData.city.trim()) errors.city = 'City is required'
+      if (!formData.state.trim()) errors.state = 'State/Province is required'
+      if (!formData.country.trim()) {
+        errors.country = 'Country is required'
+      } else if (!isCountry(formData.country)) {
+        errors.country = 'Use a 2-letter country code'
+      }
+      if (!formData.postalCode.trim()) errors.postalCode = 'Postal/ZIP code is required'
     }
 
     if (step === 3) {
+      if (!formData.prospectInfo.firstName.trim()) {
+        errors['prospectInfo.firstName'] = 'Primary contact first name is required'
+      }
+      if (!formData.prospectInfo.lastName.trim()) {
+        errors['prospectInfo.lastName'] = 'Primary contact last name is required'
+      }
+      if (!formData.prospectInfo.email.trim()) {
+        errors['prospectInfo.email'] = 'Primary contact email is required'
+      } else if (!isEmail(formData.prospectInfo.email)) {
+        errors['prospectInfo.email'] = 'Enter a valid email'
+      }
+
       const twilioFilled = formData.twilio.sid || formData.twilio.authToken
       if (twilioFilled && !formData.twilio.sid) errors['twilio.sid'] = 'SID required when adding Twilio'
       if (twilioFilled && !formData.twilio.authToken) errors['twilio.authToken'] = 'Auth token required when adding Twilio'
@@ -484,7 +513,21 @@ export default function SignUpPage() {
                 <form className="space-y-10" onSubmit={handleSubmit}>
                   <div className="space-y-4">
                     <div>
-                      <h1 className="text-3xl sm:text-4xl font-bold mt-2">Welcome to TrueFlow, enter your information to get started</h1>
+                      <p className="text-xs uppercase tracking-[0.4em] text-white/50">TrueFlow Accelerator Trial</p>
+                      <h1 className="text-3xl sm:text-4xl font-bold mt-2">Create your account + plug into the TrueFlow Accelerator</h1>
+                      <p className="text-white/70 mt-3">
+                        Get the exact systems, support, and resources we normally charge $350/week for, free for 14 days. Cancel anytime before Day 14 to avoid the $297/mo membership.
+                      </p>
+                      <p className="text-sm text-white/60 mt-3">
+                        We align this intake with the GHL Create Sub-Account endpoint. Business name and company/agency ID are required; every other field is optional and can be added later.
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {valueChips.map((chip) => (
+                        <span key={chip} className="px-3 py-1.5 rounded-full border border-white/10 text-xs text-white/70">
+                          {chip}
+                        </span>
+                      ))}
                     </div>
                   </div>
 
@@ -550,13 +593,14 @@ export default function SignUpPage() {
                       </div>
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
-                          Phone (optional, include country code)
+                          Phone (required, include country code)
                           <input
                             type="tel"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono"
                             placeholder="+1410039940"
                             value={formData.phone}
                             onChange={(e) => updateFormData('phone', e.target.value)}
+                            required
                           />
                           <span className="text-xs text-white/50">Example: +1410039940 or +44 20 7946 0958</span>
                           {fieldErrors.phone && <span className="text-xs text-rose-300">{fieldErrors.phone}</span>}
@@ -573,6 +617,21 @@ export default function SignUpPage() {
                           />
                           <span className="text-xs text-white/50">Start typing your domain - we'll add https:// automatically</span>
                           {fieldErrors.website && <span className="text-xs text-rose-300">{fieldErrors.website}</span>}
+                        </label>
+                      </div>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <label className="flex flex-col gap-2 text-sm">
+                          Industry (required)
+                          <input
+                            type="text"
+                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
+                            placeholder="e.g., Medspa, Coaching, Real Estate"
+                            value={formData.industry}
+                            onChange={(e) => updateFormData('industry', e.target.value)}
+                            required
+                          />
+                          <span className="text-xs text-white/50">Helps us preload the right automations</span>
+                          {fieldErrors.industry && <span className="text-xs text-rose-300">{fieldErrors.industry}</span>}
                         </label>
                       </div>
                       <div className="grid gap-4 sm:grid-cols-2">
@@ -638,42 +697,48 @@ export default function SignUpPage() {
                     <div className="space-y-6">
                       <div className="grid gap-4 sm:grid-cols-2">
                         <label className="flex flex-col gap-2 text-sm">
-                          Address (optional)
+                          Address (required)
                           <input
                             type="text"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
                             placeholder="123 Main Street, Suite 400"
                             value={formData.address}
                             onChange={(e) => updateFormData('address', e.target.value)}
+                            required
                           />
                           <span className="text-xs text-white/50">Street address with suite/unit if applicable</span>
+                          {fieldErrors.address && <span className="text-xs text-rose-300">{fieldErrors.address}</span>}
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
-                          City (optional)
+                          City (required)
                           <input
                             type="text"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
                             placeholder="New York"
                             value={formData.city}
                             onChange={(e) => updateFormData('city', e.target.value)}
+                            required
                           />
                           <span className="text-xs text-white/50">Example: Los Angeles, Toronto, London</span>
+                          {fieldErrors.city && <span className="text-xs text-rose-300">{fieldErrors.city}</span>}
                         </label>
                       </div>
                       <div className="grid gap-4 sm:grid-cols-3">
                         <label className="flex flex-col gap-2 text-sm">
-                          State/Province (optional)
+                          State/Province (required)
                           <input
                             type="text"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
                             placeholder="California or CA"
                             value={formData.state}
                             onChange={(e) => updateFormData('state', e.target.value)}
+                            required
                           />
                           <span className="text-xs text-white/50">Auto-formats: "ca" → "CA", "california" → "California"</span>
+                          {fieldErrors.state && <span className="text-xs text-rose-300">{fieldErrors.state}</span>}
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
-                          Country (2-letter code)
+                          Country (required, 2-letter code)
                           <input
                             type="text"
                             maxLength={2}
@@ -681,34 +746,103 @@ export default function SignUpPage() {
                             placeholder="US"
                             value={formData.country}
                             onChange={(e) => updateFormData('country', e.target.value)}
+                            required
                           />
                           <span className="text-xs text-white/50">Auto-uppercases: "us" → "US"</span>
                           {fieldErrors.country && <span className="text-xs text-rose-300">{fieldErrors.country}</span>}
                         </label>
                         <label className="flex flex-col gap-2 text-sm">
-                          Postal/ZIP code (optional)
+                          Postal/ZIP code (required)
                           <input
                             type="text"
                             className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono transition-all"
                             placeholder="90210"
                             value={formData.postalCode}
                             onChange={(e) => updateFormData('postalCode', e.target.value)}
+                            required
                           />
                           <span className="text-xs text-white/50">Auto-uppercases: "sw1a 1aa" → "SW1A1AA"</span>
+                          {fieldErrors.postalCode && <span className="text-xs text-rose-300">{fieldErrors.postalCode}</span>}
                         </label>
                       </div>
                       <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-100 text-xs font-semibold">
                           <BadgeCheck className="h-4 w-4" />
-                          Optional fields stay empty if omitted
+                          Required for launch
                         </div>
-                        <p className="text-sm text-white/70">We only send what you provide. Defaults are left blank to respect the API contract.</p>
+                        <p className="text-sm text-white/70">Address, city, state, country, and postal code ensure billing, compliance, and mailers work from day one.</p>
                       </div>
                     </div>
                   )}
 
                   {currentStep === 3 && (
                     <div className="space-y-6">
+                      <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-4">
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-100 text-xs font-semibold">
+                          <Users className="h-4 w-4" />
+                          Primary contact (required)
+                        </div>
+                        <p className="text-sm text-white/70">We invite this person as the owner inside the new sub-account.</p>
+                        <div className="grid gap-4 sm:grid-cols-3">
+                          <label className="flex flex-col gap-2 text-sm">
+                            First name
+                            <input
+                              type="text"
+                              className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
+                              placeholder="John"
+                              value={formData.prospectInfo.firstName}
+                              onChange={(e) => updateNested('prospectInfo', 'firstName', e.target.value)}
+                              required
+                            />
+                            {fieldErrors['prospectInfo.firstName'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.firstName']}</span>}
+                          </label>
+                          <label className="flex flex-col gap-2 text-sm">
+                            Last name
+                            <input
+                              type="text"
+                              className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none"
+                              placeholder="Doe"
+                              value={formData.prospectInfo.lastName}
+                              onChange={(e) => updateNested('prospectInfo', 'lastName', e.target.value)}
+                              required
+                            />
+                            {fieldErrors['prospectInfo.lastName'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.lastName']}</span>}
+                          </label>
+                          <label className="flex flex-col gap-2 text-sm">
+                            Work email
+                            <input
+                              type="email"
+                              className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none transition-all"
+                              placeholder="owner@business.com"
+                              value={formData.prospectInfo.email}
+                              onChange={(e) => updateNested('prospectInfo', 'email', e.target.value)}
+                              required
+                            />
+                            <span className="text-xs text-white/50">We’ll send the portal invite here</span>
+                            {fieldErrors['prospectInfo.email'] && <span className="text-xs text-rose-300">{fieldErrors['prospectInfo.email']}</span>}
+                          </label>
+                        </div>
+                        <div className="grid gap-3 text-sm text-white/80">
+                          <p className="text-xs uppercase tracking-[0.3em] text-white/60">Account settings</p>
+                          {([
+                            { key: 'allowDuplicateContact', label: 'Allow duplicate contacts' },
+                            { key: 'allowDuplicateOpportunity', label: 'Allow duplicate opportunities' },
+                            { key: 'allowFacebookNameMerge', label: 'Allow Facebook name merge' },
+                            { key: 'disableContactTimezone', label: 'Disable contact timezone checks' }
+                          ] as const).map((setting) => (
+                            <label key={setting.key} className="inline-flex items-center gap-2">
+                              <input
+                                type="checkbox"
+                                className="accent-blue-500"
+                                checked={(formData.settings as any)[setting.key]}
+                                onChange={(e) => updateNested('settings', setting.key, e.target.checked)}
+                              />
+                              {setting.label}
+                            </label>
+                          ))}
+                        </div>
+                      </div>
+
                       <div className="grid gap-4 sm:grid-cols-2">
                         <div className="bg-black/20 border border-white/10 rounded-2xl p-4 space-y-3">
                           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-100 text-xs font-semibold">
@@ -805,15 +939,15 @@ export default function SignUpPage() {
                       <div className="flex flex-col gap-3 text-sm text-white/70">
                         <p className="flex items-center gap-2">
                           <CheckCircle className="h-4 w-4 text-emerald-300" />
-                          We only submit fields supported by the Create Sub-Account endpoint.
+                          These details feed both the Create Sub-Account and Create User endpoints in GoHighLevel.
                         </p>
                         <p className="flex items-center gap-2">
                           <CheckCircle className="h-4 w-4 text-emerald-300" />
-                          Only business name and company/agency ID are required; everything else is optional.
+                          The primary contact becomes the owner login—we send them the invite automatically.
                         </p>
                         <p className="flex items-center gap-2">
                           <CheckCircle className="h-4 w-4 text-emerald-300" />
-                          You can update these later in the portal if needed.
+                          Need adjustments? Your accelerator coach can tweak anything after kickoff.
                         </p>
                       </div>
                       {errorMessage && (
