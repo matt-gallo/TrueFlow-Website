@@ -208,6 +208,9 @@ async function processPaymentSuccess(webhookBody: any) {
     console.log('[Webhook] Successfully created sub-account:', intakeResult.locationId)
     console.log('[Webhook] Successfully created user:', intakeResult.userId)
 
+    // Trigger password reset email for the new user
+    await triggerPasswordReset(signupData.email)
+
     // Send success email to customer
     await sendWelcomeEmail(signupData, intakeResult)
 
@@ -219,6 +222,29 @@ async function processPaymentSuccess(webhookBody: any) {
     console.log('[Webhook] Payment-to-account flow completed successfully')
   } catch (error) {
     console.error('[Webhook] Error processing payment success:', error)
+  }
+}
+
+// Trigger GHL password reset email
+async function triggerPasswordReset(email: string) {
+  try {
+    const userCreationToken = process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN_USER_CREATION ||
+                              process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
+
+    if (!userCreationToken) {
+      console.warn('[Webhook] No token configured, skipping password reset')
+      return
+    }
+
+    console.log('[Webhook] Triggering password reset for:', email)
+
+    // GHL doesn't have a direct "send password reset" API endpoint
+    // Instead, we'll include the password reset link in the welcome email
+    // and let users use the "Forgot Password" flow at login if needed
+
+    console.log('[Webhook] Password reset flow: User will receive welcome email with instructions')
+  } catch (error) {
+    console.error('[Webhook] Error triggering password reset:', error)
   }
 }
 
@@ -240,17 +266,31 @@ async function sendWelcomeEmail(signupData: any, intakeResult: any) {
       <p>Hi ${firstName},</p>
       <p>Your account has been successfully created! Your 14-day free trial starts now.</p>
 
-      <h2>Your Login Details</h2>
-      <p><strong>Email:</strong> ${signupData.email}</p>
-      <p><strong>Login URL:</strong> <a href="https://login.trueflow.ai">https://login.trueflow.ai</a></p>
+      <h2>Set Up Your Password</h2>
+      <p>To access your account, you need to set up your password:</p>
+      <ol>
+        <li>Go to <a href="https://login.trueflow.ai" style="color: #06b6d4; font-weight: bold;">https://login.trueflow.ai</a></li>
+        <li>Click "Forgot Password"</li>
+        <li>Enter your email: <strong>${signupData.email}</strong></li>
+        <li>Check your inbox for the password reset link</li>
+        <li>Set your new password and log in</li>
+      </ol>
 
-      <p>You'll receive a password reset email shortly to set up your login credentials.</p>
+      <div style="background: #f0f9ff; border-left: 4px solid #06b6d4; padding: 16px; margin: 24px 0;">
+        <p style="margin: 0; font-weight: bold; color: #0e7490;">Quick Login Link:</p>
+        <p style="margin: 8px 0 0 0;">
+          <a href="https://login.trueflow.ai" style="color: #06b6d4; text-decoration: none;">
+            https://login.trueflow.ai
+          </a>
+        </p>
+      </div>
 
       <h2>What's Next?</h2>
       <ul>
-        <li>Check your email for your password setup link</li>
+        <li>Set up your password using the steps above</li>
         <li>Join our TrueFlow Accelerator kickoff call</li>
         <li>Access your full CRM and automation suite</li>
+        <li>Explore your content creation tools</li>
       </ul>
 
       <p>Questions? Reply to this email or contact us at support@trueflow.ai</p>

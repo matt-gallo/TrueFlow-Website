@@ -969,8 +969,8 @@ export default function SignUpPage() {
                         <iframe
                           src={
                             formData.includeSuccessManager
-                              ? `https://link.fastpaydirect.com/payment-link/6920f847802b2ce38d6b0f8e?email=${encodeURIComponent(formData.email)}&signup_id=${encodeURIComponent(signupId)}&name=${encodeURIComponent(formData.fullName)}`
-                              : `https://link.fastpaydirect.com/payment-link/6920f7f2bbe219eb5e3624d1?email=${encodeURIComponent(formData.email)}&signup_id=${encodeURIComponent(signupId)}&name=${encodeURIComponent(formData.fullName)}`
+                              ? `https://link.fastpaydirect.com/payment-link/6920f847802b2ce38d6b0f8e?email=${encodeURIComponent(formData.email)}&signup_id=${encodeURIComponent(signupId)}&name=${encodeURIComponent(formData.fullName)}&redirect_url=${encodeURIComponent(`https://trueflow.ai/sign-up/success?signupId=${signupId}`)}`
+                              : `https://link.fastpaydirect.com/payment-link/6920f7f2bbe219eb5e3624d1?email=${encodeURIComponent(formData.email)}&signup_id=${encodeURIComponent(signupId)}&name=${encodeURIComponent(formData.fullName)}&redirect_url=${encodeURIComponent(`https://trueflow.ai/sign-up/success?signupId=${signupId}`)}`
                           }
                           className="w-full min-h-[500px] border-0"
                           title="Payment Form"
