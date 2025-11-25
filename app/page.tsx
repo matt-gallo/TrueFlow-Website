@@ -50,6 +50,8 @@ import {
 } from 'lucide-react'
 import TrueFlowLogoIcon from './components/TrueFlowLogoIcon'
 import { Footer } from './components/Footer'
+import { useTheme } from './components/ThemeProvider'
+import { Moon, Sun } from 'lucide-react'
 
 interface Particle {
   id: number
@@ -386,8 +388,8 @@ function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
 
 export default function LandingPage() {
   const router = useRouter()
-  
-  
+  const { isDarkMode, toggleTheme } = useTheme()
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isCoreSystemOpen, setIsCoreSystemOpen] = useState(false)
   const [scrollY, setScrollY] = useState(0)
@@ -728,14 +730,18 @@ export default function LandingPage() {
   // Don't render dynamic content until mounted
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+      <div className={`min-h-screen flex items-center justify-center transition-colors ${
+        isDarkMode ? 'bg-black' : 'bg-gray-50'
+      }`}>
+        <div className={`text-xl ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Loading...</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className={`min-h-screen overflow-x-hidden transition-colors ${
+      isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
+    }`}>
 
       {/* Floating Particles */}
       {particles.map((particle) => (
@@ -792,7 +798,11 @@ export default function LandingPage() {
         }}
       />
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b border-white/10 transition-all duration-500 bg-black/60">
+      <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-all duration-500 ${
+        isDarkMode
+          ? 'border-white/10 bg-black/60'
+          : 'border-gray-200 bg-white/80'
+      }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
             {/* Logo */}
@@ -818,77 +828,128 @@ export default function LandingPage() {
                 <button
                   onClick={() => setIsCoreSystemOpen(!isCoreSystemOpen)}
                   onBlur={() => setTimeout(() => setIsCoreSystemOpen(false), 200)}
-                  className="flex items-center gap-1 text-white/70 hover:text-white transition-colors text-sm"
+                  className={`flex items-center gap-1 transition-colors text-sm ${
+                    isDarkMode
+                      ? 'text-white/70 hover:text-white'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
                 >
                   Core System
                   <ChevronDown className={`w-4 h-4 transition-transform ${isCoreSystemOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {isCoreSystemOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-48 bg-black/95 backdrop-blur-xl border border-white/10 rounded-lg shadow-xl overflow-hidden">
-                    <a 
-                      href="#why-trueflow" 
+                  <div className={`absolute top-full left-0 mt-2 w-48 backdrop-blur-xl border rounded-lg shadow-xl overflow-hidden ${
+                    isDarkMode
+                      ? 'bg-black/95 border-white/10'
+                      : 'bg-white/95 border-gray-200'
+                  }`}>
+                    <a
+                      href="#why-trueflow"
                       onClick={() => setIsCoreSystemOpen(false)}
-                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                      className={`block px-4 py-3 transition-colors text-sm ${
+                        isDarkMode
+                          ? 'text-white/70 hover:text-white hover:bg-white/10'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
                     >
                       Why TrueFlow?
                     </a>
-                    <a 
-                      href="#features" 
+                    <a
+                      href="#features"
                       onClick={() => setIsCoreSystemOpen(false)}
-                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                      className={`block px-4 py-3 transition-colors text-sm ${
+                        isDarkMode
+                          ? 'text-white/70 hover:text-white hover:bg-white/10'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
                     >
                       Features
                     </a>
                     <a
                       href="#how-it-works"
                       onClick={() => setIsCoreSystemOpen(false)}
-                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                      className={`block px-4 py-3 transition-colors text-sm ${
+                        isDarkMode
+                          ? 'text-white/70 hover:text-white hover:bg-white/10'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
                     >
                       How it Works
                     </a>
                     <a
                       href="#flow-mode"
                       onClick={() => setIsCoreSystemOpen(false)}
-                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                      className={`block px-4 py-3 transition-colors text-sm ${
+                        isDarkMode
+                          ? 'text-white/70 hover:text-white hover:bg-white/10'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
                     >
                       Flow Mode
                     </a>
                     <a
                       href="#chat-widgets"
                       onClick={() => setIsCoreSystemOpen(false)}
-                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                      className={`block px-4 py-3 transition-colors text-sm ${
+                        isDarkMode
+                          ? 'text-white/70 hover:text-white hover:bg-white/10'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
                     >
                       AI Chat Widgets
                     </a>
                     <a
                       href="#testimonials"
                       onClick={() => setIsCoreSystemOpen(false)}
-                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                      className={`block px-4 py-3 transition-colors text-sm ${
+                        isDarkMode
+                          ? 'text-white/70 hover:text-white hover:bg-white/10'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
                     >
                       Success Stories
                     </a>
-                    <a 
-                      href="#integrations" 
+                    <a
+                      href="#integrations"
                       onClick={() => setIsCoreSystemOpen(false)}
-                      className="block px-4 py-3 text-white/70 hover:text-white hover:bg-white/10 transition-colors text-sm"
+                      className={`block px-4 py-3 transition-colors text-sm ${
+                        isDarkMode
+                          ? 'text-white/70 hover:text-white hover:bg-white/10'
+                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      }`}
                     >
                       Integrations
                     </a>
                   </div>
                 )}
               </div>
-              <a href="https://trueflow.ai/lead-machine" className="text-white/70 hover:text-white transition-colors text-sm">Lead Machine™</a>
-              <Link href="/content-engine" className="text-white/70 hover:text-white transition-colors text-sm">Constant Content Engine™</Link>
-              {/* <Link href="/for-business" className="text-white/70 hover:text-white transition-colors text-sm">For Business</Link> */}
-              <a href="#blog" className="text-white/70 hover:text-white transition-colors text-sm">Blog</a>
-              <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">FAQs</Link>
-              {/* <a href="https://app.trueflow.ai/changelog" className="text-white/70 hover:text-white transition-colors text-sm" target="_blank" rel="noopener noreferrer">Recent Updates</a> */}
-              {/* <a href="https://app.trueflow.ai/login" className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-5 py-2 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-sm font-semibold">
-                Log In
-              </a> */}
-              <a 
-                href="https://login.trueflow.ai" 
-                className="border border-white/20 text-white px-5 py-2 rounded-full hover:bg-white/10 transition-colors text-sm font-semibold"
+              <a href="https://trueflow.ai/lead-machine" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Lead Machine™</a>
+              <Link href="/content-engine" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Constant Content Engine™</Link>
+              {/* <Link href="/for-business" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>For Business</Link> */}
+              <a href="#blog" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Blog</a>
+              <Link href="/faq" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>FAQs</Link>
+              {/* <a href="https://app.trueflow.ai/changelog" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`} target="_blank" rel="noopener noreferrer">Recent Updates</a> */}
+
+              {/* Theme Toggle Button */}
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-full transition-colors ${
+                  isDarkMode
+                    ? 'bg-white/10 hover:bg-white/20 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+                }`}
+                aria-label="Toggle theme"
+              >
+                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+
+              <a
+                href="https://login.trueflow.ai"
+                className={`border px-5 py-2 rounded-full transition-colors text-sm font-semibold ${
+                  isDarkMode
+                    ? 'border-white/20 text-white hover:bg-white/10'
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-100'
+                }`}
               >
                 Sign in
               </a>
@@ -897,44 +958,62 @@ export default function LandingPage() {
               </Link>
             </div>
 
-            {/* Mobile menu button */}
-            <button 
-              className="md:hidden text-white"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
-            </button>
+            {/* Mobile menu button and theme toggle */}
+            <div className="md:hidden flex items-center space-x-3">
+              <button
+                onClick={toggleTheme}
+                className={`p-2 rounded-full transition-colors ${
+                  isDarkMode
+                    ? 'bg-white/10 hover:bg-white/20 text-white'
+                    : 'bg-gray-200 hover:bg-gray-300 text-gray-700'
+                }`}
+                aria-label="Toggle theme"
+              >
+                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+              <button
+                className={isDarkMode ? 'text-white' : 'text-gray-900'}
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+              >
+                {isMenuOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden bg-black/90 backdrop-blur-xl border-t border-white/10">
+          <div className={`md:hidden backdrop-blur-xl border-t transition-colors ${
+            isDarkMode
+              ? 'bg-black/90 border-white/10'
+              : 'bg-white/90 border-gray-200'
+          }`}>
             <div className="px-4 py-6 space-y-4">
               {/* Core System Section */}
               <div className="space-y-2">
-                <div className="text-white font-semibold text-lg mb-2">Core System</div>
-                <a href="#why-trueflow" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Why TrueFlow?</a>
-                <a href="#features" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Features</a>
-                <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">How it Works</a>
-                <a href="#flow-mode" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Flow Mode</a>
-                <a href="#chat-widgets" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">AI Chat Widgets</a>
-                <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Success Stories</a>
-                <a href="#integrations" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg pl-4">Integrations</a>
+                <div className={`font-semibold text-lg mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Core System</div>
+                <a href="#why-trueflow" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Why TrueFlow?</a>
+                <a href="#features" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Features</a>
+                <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>How it Works</a>
+                <a href="#flow-mode" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Flow Mode</a>
+                <a href="#chat-widgets" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>AI Chat Widgets</a>
+                <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Success Stories</a>
+                <a href="#integrations" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Integrations</a>
               </div>
-              <a href="https://trueflow.ai/lead-machine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Lead Machine™</a>
-              <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Constant Content Engine™</Link>
-              {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">For Business</Link> */}
-              <a href="#blog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">Blog</a>
-              <Link href="/faq" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg">FAQs</Link>
-              {/* <a href="https://app.trueflow.ai/changelog" onClick={() => setIsMenuOpen(false)} className="block text-white/70 hover:text-white transition-colors text-lg" target="_blank" rel="noopener noreferrer">Recent Updates</a> */}
-              {/* <a href="https://app.trueflow.ai/login" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all text-lg font-semibold block text-center mt-6">
-                Log In
-              </a> */}
-              <a 
-                href="https://login.trueflow.ai" 
+              <a href="https://trueflow.ai/lead-machine" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Lead Machine™</a>
+              <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Constant Content Engine™</Link>
+              {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>For Business</Link> */}
+              <a href="#blog" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Blog</a>
+              <Link href="/faq" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>FAQs</Link>
+              {/* <a href="https://app.trueflow.ai/changelog" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`} target="_blank" rel="noopener noreferrer">Recent Updates</a> */}
+              <a
+                href="https://login.trueflow.ai"
                 onClick={() => setIsMenuOpen(false)}
-                className="w-full border border-white/20 text-white px-8 py-3 rounded-full hover:bg-white/10 transition-colors text-lg font-semibold block text-center"
+                className={`w-full border px-8 py-3 rounded-full transition-colors text-lg font-semibold block text-center ${
+                  isDarkMode
+                    ? 'border-white/20 text-white hover:bg-white/10'
+                    : 'border-gray-300 text-gray-700 hover:bg-gray-100'
+                }`}
               >
                 Sign in
               </a>
