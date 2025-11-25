@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
+import { useTheme } from '../components/ThemeProvider'
 import {
   ArrowRight,
   BadgeCheck,
@@ -156,6 +157,7 @@ const pricingPlans = [
 ]
 
 export default function LeadMachinePage() {
+  const { isDarkMode } = useTheme()
   const scrollToCalendar = () => {
     const calendarSection = document.getElementById('book-demo-calendar')
     if (calendarSection) {
@@ -243,7 +245,11 @@ export default function LeadMachinePage() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div
+      className={`min-h-screen overflow-hidden lead-machine-page ${
+        isDarkMode ? 'theme-dark bg-black text-white' : 'theme-light bg-gray-50 text-gray-900'
+      }`}
+    >
       {/* LeadConnector booking widget script */}
       <Navigation />
 

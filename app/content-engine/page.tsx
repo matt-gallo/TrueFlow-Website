@@ -10,6 +10,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
 import ContentEngineTabs from '../components/ContentEngineTabs'
+import { useTheme } from '../components/ThemeProvider'
 import {
   ArrowLeft,
   ArrowRight,
@@ -74,6 +75,7 @@ export default function ContentEnginePage() {
     capabilities: true,
     cta: true
   })
+  const { isDarkMode } = useTheme()
   
   // Refs for scroll animations
   const heroRef = useRef(null)
@@ -322,14 +324,20 @@ export default function ContentEnginePage() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+      <div className={`min-h-screen flex items-center justify-center ${
+        isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
+      }`}>
+        <div className="text-xl">Loading...</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div
+      className={`min-h-screen overflow-x-hidden content-engine-page ${
+        isDarkMode ? 'theme-dark bg-black text-white' : 'theme-light bg-gray-50 text-gray-900'
+      }`}
+    >
       <style jsx>{`
         @keyframes fade-in {
           0% { opacity: 0; }
