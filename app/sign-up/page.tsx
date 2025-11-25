@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Navigation from '@/app/components/Navigation'
+import { useTheme } from '@/app/components/ThemeProvider'
 import {
   ArrowLeft,
   ArrowRight,
@@ -10,10 +11,8 @@ import {
   CheckCircle,
   CreditCard,
   HeartHandshake,
-  Moon,
   Shield,
   Sparkles,
-  Sun,
   Users,
   Zap
 } from 'lucide-react'
@@ -110,6 +109,7 @@ const platformFeatures = [
 ]
 
 export default function SignUpPage() {
+  const { isDarkMode } = useTheme()
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
@@ -117,7 +117,6 @@ export default function SignUpPage() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isRedirecting, setIsRedirecting] = useState(false)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
-  const [isDarkMode, setIsDarkMode] = useState(true)
   const [signupId, setSignupId] = useState('')
 
   // Generate unique signup ID on mount
@@ -438,15 +437,6 @@ export default function SignUpPage() {
         <div className={`absolute top-10 left-1/2 -translate-x-1/2 w-[620px] h-[620px] bg-[#1d929e]${theme.glowOpacity} blur-[160px]`} />
         <div className={`absolute bottom-0 right-10 w-[420px] h-[420px] bg-emerald-500${theme.glowOpacity} blur-[180px]`} />
       </div>
-
-      {/* Theme Toggle Button */}
-      <button
-        onClick={() => setIsDarkMode(!isDarkMode)}
-        className={`fixed top-24 right-6 z-50 p-3 rounded-full ${isDarkMode ? 'bg-white/10 hover:bg-white/20 text-white' : 'bg-gray-200 hover:bg-gray-300 text-gray-700'} transition-colors shadow-lg`}
-        aria-label="Toggle theme"
-      >
-        {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-      </button>
 
       <div className="relative z-10">
         <Navigation />
