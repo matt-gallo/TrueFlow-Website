@@ -3,11 +3,13 @@
 import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { CheckCircle, Loader2, AlertCircle } from 'lucide-react'
+import { useTheme } from '@/app/components/ThemeProvider'
 
 export default function SignUpSuccess() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const signupId = searchParams.get('signupId')
+  const { isDarkMode } = useTheme()
 
   const [status, setStatus] = useState<'checking' | 'ready' | 'error'>('checking')
   const [accountData, setAccountData] = useState<any>(null)
@@ -90,29 +92,37 @@ export default function SignUpSuccess() {
 
   if (status === 'checking') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center">
+      <div className={`min-h-screen flex items-center justify-center px-4 transition-colors ${
+        isDarkMode
+          ? 'bg-gradient-to-br from-gray-900 via-black to-gray-900'
+          : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
+      }`}>
+        <div className={`max-w-md w-full backdrop-blur-xl border rounded-2xl p-8 text-center transition-colors ${
+          isDarkMode
+            ? 'bg-black/60 border-white/10'
+            : 'bg-white/80 border-gray-200 shadow-xl'
+        }`}>
           <Loader2 className="h-16 w-16 text-cyan-500 mx-auto mb-6 animate-spin" />
-          <h1 className="text-3xl font-bold text-white mb-4">
+          <h1 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             Setting up your account...
           </h1>
-          <p className="text-gray-400 mb-6">
+          <p className={`mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Please wait while we create your TrueFlow workspace. This usually takes 10-30 seconds.
           </p>
           <div className="space-y-3 text-left">
-            <div className="flex items-center gap-3 text-sm text-gray-300">
+            <div className={`flex items-center gap-3 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
               Processing payment confirmation
             </div>
-            <div className="flex items-center gap-3 text-sm text-gray-300">
+            <div className={`flex items-center gap-3 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
               Creating your sub-account
             </div>
-            <div className="flex items-center gap-3 text-sm text-gray-300">
+            <div className={`flex items-center gap-3 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
               Setting up user access
             </div>
-            <div className="flex items-center gap-3 text-sm text-gray-300">
+            <div className={`flex items-center gap-3 text-sm ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
               <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" style={{ animationDelay: '0.6s' }}></div>
               Sending welcome email
             </div>
@@ -124,17 +134,29 @@ export default function SignUpSuccess() {
 
   if (status === 'ready') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center">
+      <div className={`min-h-screen flex items-center justify-center px-4 transition-colors ${
+        isDarkMode
+          ? 'bg-gradient-to-br from-gray-900 via-black to-gray-900'
+          : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
+      }`}>
+        <div className={`max-w-md w-full backdrop-blur-xl border rounded-2xl p-8 text-center transition-colors ${
+          isDarkMode
+            ? 'bg-black/60 border-white/10'
+            : 'bg-white/80 border-gray-200 shadow-xl'
+        }`}>
           <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-6" />
-          <h1 className="text-3xl font-bold text-white mb-4">
+          <h1 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             Welcome to TrueFlow!
           </h1>
-          <p className="text-gray-400 mb-6">
+          <p className={`mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             Your account has been created successfully. Check your email for login instructions.
           </p>
-          <div className="bg-cyan-500/10 border border-cyan-500/20 rounded-lg p-4 mb-6">
-            <p className="text-sm text-cyan-400 mb-2">
+          <div className={`border rounded-lg p-4 mb-6 ${
+            isDarkMode
+              ? 'bg-cyan-500/10 border-cyan-500/20'
+              : 'bg-cyan-50 border-cyan-200'
+          }`}>
+            <p className={`text-sm mb-2 ${isDarkMode ? 'text-cyan-400' : 'text-cyan-700'}`}>
               Redirecting to login in {countdown} seconds...
             </p>
             <button
@@ -144,7 +166,7 @@ export default function SignUpSuccess() {
               Go to Login Now
             </button>
           </div>
-          <p className="text-xs text-gray-500">
+          <p className={`text-xs ${isDarkMode ? 'text-gray-500' : 'text-gray-600'}`}>
             You'll receive a password setup email shortly. Check your inbox and spam folder.
           </p>
         </div>
@@ -154,13 +176,21 @@ export default function SignUpSuccess() {
 
   if (status === 'error') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-black/60 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center">
+      <div className={`min-h-screen flex items-center justify-center px-4 transition-colors ${
+        isDarkMode
+          ? 'bg-gradient-to-br from-gray-900 via-black to-gray-900'
+          : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
+      }`}>
+        <div className={`max-w-md w-full backdrop-blur-xl border rounded-2xl p-8 text-center transition-colors ${
+          isDarkMode
+            ? 'bg-black/60 border-white/10'
+            : 'bg-white/80 border-gray-200 shadow-xl'
+        }`}>
           <AlertCircle className="h-16 w-16 text-red-500 mx-auto mb-6" />
-          <h1 className="text-3xl font-bold text-white mb-4">
+          <h1 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
             Something went wrong
           </h1>
-          <p className="text-gray-400 mb-6">
+          <p className={`mb-6 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
             {errorMessage}
           </p>
           <div className="space-y-3">
@@ -172,7 +202,11 @@ export default function SignUpSuccess() {
             </button>
             <a
               href="mailto:support@trueflow.ai"
-              className="block w-full border border-white/20 text-white px-6 py-3 rounded-full hover:bg-white/10 transition-colors font-semibold"
+              className={`block w-full border px-6 py-3 rounded-full transition-colors font-semibold ${
+                isDarkMode
+                  ? 'border-white/20 text-white hover:bg-white/10'
+                  : 'border-gray-300 text-gray-700 hover:bg-gray-100'
+              }`}
             >
               Contact Support
             </a>
