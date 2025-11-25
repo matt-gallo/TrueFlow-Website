@@ -1556,30 +1556,48 @@ export default function LandingPage() {
 
             {/* USP and Clear Offer */}
             <div className="text-center mt-16 sm:mt-20 lg:mt-24 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-3xl p-8 sm:p-12 border-2 border-blue-500/40 shadow-2xl shadow-blue-500/20">
-                <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+              <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border-2 shadow-2xl ${
+                isDarkMode
+                  ? 'bg-gradient-to-br from-blue-500/20 to-purple-600/20 border-blue-500/40 shadow-blue-500/20'
+                  : 'bg-white border-blue-200 shadow-blue-200'
+              }`}>
+                <h3 className={`text-3xl sm: text-4xl md:text-5xl font-bold mb-6 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>
                   Our Promise: More Leads. Less Work. Real Results.
                 </h3>
-                <p className="text-xl text-white/80 mb-8 leading-relaxed">
+                <p className={`text-xl mb-8 leading-relaxed ${isDarkMode ? 'text-white/80' : 'text-gray-600'}`}>
                   We build custom automation that works 24/7 to capture leads, follow up instantly, schedule appointments, and keep your pipeline full - so you can focus on serving your clients, not chasing them.
                 </p>
 
                 {/* Key Benefits */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                  <div className={`rounded-xl p-6 border ${
+                    isDarkMode ? 'bg-white/5 border-white/20' : 'bg-gray-50 border-gray-200'
+                  }`}>
                     <CheckCircle className="h-10 w-10 text-green-400 mb-3 mx-auto" />
-                    <h4 className="text-white font-bold mb-2">Done For You</h4>
-                    <p className="text-white/70 text-sm">We build it, manage it, and optimize it</p>
+                    <h4 className={`font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Done For You</h4>
+                    <p className={`${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>
+                      We build it, manage it, and optimize it
+                    </p>
                   </div>
-                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                  <div className={`rounded-xl p-6 border ${
+                    isDarkMode ? 'bg-white/5 border-white/20' : 'bg-gray-50 border-gray-200'
+                  }`}>
                     <Clock className="h-10 w-10 text-blue-400 mb-3 mx-auto" />
-                    <h4 className="text-white font-bold mb-2">Works 24/7</h4>
-                    <p className="text-white/70 text-sm">Never miss a lead, even while you sleep</p>
+                    <h4 className={`font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Works 24/7</h4>
+                    <p className={`${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>
+                      Never miss a lead, even while you sleep
+                    </p>
                   </div>
-                  <div className="bg-white/5 rounded-xl p-6 border border-white/20">
+                  <div className={`rounded-xl p-6 border ${
+                    isDarkMode ? 'bg-white/5 border-white/20' : 'bg-gray-50 border-gray-200'
+                  }`}>
                     <Target className="h-10 w-10 text-purple-400 mb-3 mx-auto" />
-                    <h4 className="text-white font-bold mb-2">Custom Built</h4>
-                    <p className="text-white/70 text-sm">Tailored to your business, not one-size-fits-all</p>
+                    <h4 className={`font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Custom Built</h4>
+                    <p className={`${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>
+                      Tailored to your business, not one-size-fits-all
+                    </p>
                   </div>
                 </div>
 
