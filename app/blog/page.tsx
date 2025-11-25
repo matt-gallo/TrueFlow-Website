@@ -8,8 +8,10 @@ import { Calendar, Clock, ArrowRight, Search } from 'lucide-react'
 import { getPublishedPosts, categories, tagColorPalettes } from '@/app/data/blog-posts'
 import type { BlogPost, Category } from '@/app/types/blog'
 import ParticleBackground from '@/app/components/ParticleBackground'
+import { useTheme } from '../components/ThemeProvider'
 
 export default function BlogPage() {
+  const { isDarkMode } = useTheme()
   const [posts, setPosts] = useState<BlogPost[]>([])
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
@@ -46,10 +48,12 @@ export default function BlogPage() {
   if (!mounted) return null
 
   return (
-    <div className="min-h-screen bg-black text-white relative">
+    <div className={`min-h-screen relative transition-colors ${
+      isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
+    }`}>
       {/* Particle Background */}
       <ParticleBackground particleCount={50} />
-      
+
       {/* Navigation */}
       <Navigation />
 
@@ -59,20 +63,24 @@ export default function BlogPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight pb-2">
             TrueFlow Blog
           </h1>
-          <p className="text-xl text-white/80 mb-8 max-w-3xl mx-auto">
+          <p className={`text-xl mb-8 max-w-3xl mx-auto ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
             Insights, strategies, and tips to transform your business with AI-powered automation
           </p>
 
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto mb-12">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/40 h-5 w-5" />
+              <Search className={`absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 ${isDarkMode ? 'text-white/40' : 'text-gray-400'}`} />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition-colors"
+                className={`w-full pl-12 pr-4 py-3 backdrop-blur-sm border rounded-full focus:outline-none transition-colors ${
+                  isDarkMode
+                    ? 'bg-white/10 border-white/20 text-white placeholder-white/40 focus:border-white/40'
+                    : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-gray-500'
+                }`}
               />
             </div>
           </div>
@@ -84,7 +92,9 @@ export default function BlogPage() {
               className={`px-6 py-2 rounded-full transition-all ${
                 selectedCategory === 'all'
                   ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                  : 'bg-white/10 text-white/70 hover:bg-white/20'
+                  : isDarkMode
+                    ? 'bg-white/10 text-white/70 hover:bg-white/20'
+                    : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
               }`}
             >
               All Posts
@@ -96,7 +106,9 @@ export default function BlogPage() {
                 className={`px-6 py-2 rounded-full transition-all ${
                   selectedCategory === category.slug
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                    : 'bg-white/10 text-white/70 hover:bg-white/20'
+                    : isDarkMode
+                      ? 'bg-white/10 text-white/70 hover:bg-white/20'
+                      : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
                 }`}
               >
                 {category.name}

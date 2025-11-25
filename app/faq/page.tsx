@@ -9,7 +9,7 @@ import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
-import { 
+import {
   ChevronDown,
   ChevronUp,
   ArrowLeft,
@@ -24,6 +24,7 @@ import {
   CheckCircle
 } from 'lucide-react'
 import { Footer } from '../components/Footer'
+import { useTheme } from '../components/ThemeProvider'
 
 interface FAQItem {
   id: string
@@ -51,6 +52,7 @@ interface CursorTrailPoint {
 }
 
 export default function FAQPage() {
+  const { isDarkMode } = useTheme()
   const [openItem, setOpenItem] = useState<string | null>(null)
   const [activeCategory, setActiveCategory] = useState<string>('all')
   const [mounted, setMounted] = useState(false)
@@ -456,14 +458,18 @@ export default function FAQPage() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+      <div className={`min-h-screen flex items-center justify-center transition-colors ${
+        isDarkMode ? 'bg-black' : 'bg-gray-50'
+      }`}>
+        <div className={`text-xl ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Loading...</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className={`min-h-screen overflow-x-hidden transition-colors ${
+      isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
+    }`}>
       <style jsx>{`
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -547,10 +553,10 @@ export default function FAQPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <h1 className={`text-5xl md:text-6xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Frequently Asked Questions
             </h1>
-            <p className="text-xl text-white/70 max-w-2xl mx-auto">
+            <p className={`text-xl max-w-2xl mx-auto ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
               Get answers to common questions about TrueFlow AI and how it can transform your business operations.
             </p>
           </div>
@@ -564,7 +570,9 @@ export default function FAQPage() {
                 className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-200 ${
                   activeCategory === category.id
                     ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white'
-                    : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
+                    : isDarkMode
+                      ? 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
+                      : 'bg-gray-200 text-gray-600 hover:bg-gray-300 hover:text-gray-900'
                 }`}
               >
                 {category.icon}
@@ -578,7 +586,11 @@ export default function FAQPage() {
             {filteredFAQs.map((item) => (
               <div
                 key={item.id}
-                className="bg-white/5 backdrop-blur-md rounded-xl border border-white/20 hover:bg-white/10 transition-all duration-500 transform-gpu"
+                className={`backdrop-blur-md rounded-xl border transition-all duration-500 transform-gpu ${
+                  isDarkMode
+                    ? 'bg-white/5 border-white/20 hover:bg-white/10'
+                    : 'bg-white border-gray-200 hover:bg-gray-50 shadow-md'
+                }`}
                 style={{
                   transformStyle: 'preserve-3d',
                   transition: 'transform 0.4s cubic-bezier(0.23, 1, 0.320, 1)'
@@ -615,11 +627,11 @@ export default function FAQPage() {
                     <div className="text-blue-400">
                       {item.icon}
                     </div>
-                    <h3 className="text-lg font-semibold text-white pr-4">
+                    <h3 className={`text-lg font-semibold pr-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                       {item.question}
                     </h3>
                   </div>
-                  <div className="text-white/70">
+                  <div className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                     {openItem === item.id ? (
                       <ChevronUp className="h-5 w-5" />
                     ) : (
@@ -627,10 +639,10 @@ export default function FAQPage() {
                     )}
                   </div>
                 </button>
-                
+
                 {openItem === item.id && (
                   <div className="px-6 pb-6">
-                    <div className="ml-9 text-white/80 leading-relaxed">
+                    <div className={`ml-9 leading-relaxed ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                       {item.answer}
                     </div>
                   </div>
@@ -641,19 +653,23 @@ export default function FAQPage() {
 
           {/* CTA Section */}
           <div className="mt-20 text-center">
-            <div className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-3xl border border-white/20 p-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <div className={`backdrop-blur-md rounded-3xl border p-12 ${
+              isDarkMode
+                ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-white/20'
+                : 'bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 shadow-xl'
+            }`}>
+              <h2 className={`text-3xl md:text-4xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 Still Have Questions?
               </h2>
-              <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+              <p className={`text-xl mb-8 max-w-2xl mx-auto ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 Get started with TrueFlow AI and experience the power of voice-to-content transformation for your business.
               </p>
-              
+
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
                 <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:opacity-90 transition-opacity">
                   Get Started
                 </Link>
-                <Link href="/" className="text-white/70 hover:text-white transition-colors underline text-sm">
+                <Link href="/" className={`transition-colors underline text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
                   Back to Home
                 </Link>
               </div>
