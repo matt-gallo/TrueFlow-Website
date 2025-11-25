@@ -1561,7 +1561,7 @@ export default function LandingPage() {
                   ? 'bg-gradient-to-br from-blue-500/20 to-purple-600/20 border-blue-500/40 shadow-blue-500/20'
                   : 'bg-white border-blue-200 shadow-blue-200'
               }`}>
-                <h3 className={`text-3xl sm: text-4xl md:text-5xl font-bold mb-6 ${
+                <h3 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${
                   isDarkMode ? 'text-white' : 'text-gray-900'
                 }`}>
                   Our Promise: More Leads. Less Work. Real Results.
