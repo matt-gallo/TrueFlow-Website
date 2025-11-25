@@ -103,65 +103,55 @@ const verticals = [
 
 const pricingPlans = [
   {
-    name: 'Full TrueFlow Lead Machine Build',
-    price: '$2,600',
-    cadence: 'one-time setup',
-    originalPrice: '$3,000',
-    value: '$3,000 value',
-    description: 'Complete done-for-you buildout',
+    name: 'Starter',
+    price: '$750',
+    cadence: 'every 28 days',
+    originalPrice: null,
+    value: null,
+    description: 'Perfect for testing the waters',
     features: [
-      'Workflow + automation integration',
-      'Cold outreach campaign setup',
-      'Domain & inbox configuration',
-      'Custom funnel or lead magnet build',
-      '7-day nurture sequence written + installed',
-      'Analytics & reporting dashboard'
-    ],
-    featured: true
-  },
-  {
-    name: 'Core Campaign Activation',
-    price: '$600',
-    cadence: 'per month',
-    originalPrice: '$750/mo',
-    value: '$750/mo value',
-    description: 'Ongoing lead generation & optimization',
-    features: [
-      'Up to 70 new verified contacts per week (~280/mo)',
+      '10 new buyer prospects per day (~280/month)',
+      'Enhanced contact data with firmographics',
       'AI-driven outreach in your brand tone',
-      'Replies delivered to your inbox or CRM',
-      'Weekly optimization + deliverability management',
-      'Continuous pipeline growth on autopilot'
+      'CRM integration & automation setup',
+      'Weekly optimization & deliverability management',
+      'Performance dashboard & analytics'
+    ],
+    featured: false
+  },
+  {
+    name: 'Growth',
+    price: '$1,560',
+    cadence: 'every 28 days',
+    originalPrice: null,
+    value: 'Most Popular',
+    description: 'Scale your pipeline consistently',
+    features: [
+      '30 new buyer prospects per day (~840/month)',
+      'Everything in Starter, plus:',
+      'Priority optimization & monitoring',
+      'A/B testing on messaging & sequences',
+      'Dedicated account check-ins',
+      'Advanced targeting & segmentation'
     ],
     featured: true
   },
   {
-    name: 'TrueFlow Accelerator Mastermind',
-    price: 'Included',
-    cadence: '3 months',
-    originalPrice: '$350/week',
-    value: '$4,200 value',
-    description: 'Live coaching & implementation support',
+    name: 'Scale',
+    price: '$3,000',
+    cadence: 'every 28 days',
+    originalPrice: null,
+    value: 'Best Value',
+    description: 'Dominate your market with volume',
     features: [
-      'Weekly live mastermind + implementation calls',
-      'Direct Q&A with Matt + team',
-      'Systems coaching, automation, and scaling strategies',
-      'Private Slack/Telegram for support & accountability'
-    ]
-  },
-  {
-    name: 'TrueFlow Platform Access',
-    price: 'Included',
-    cadence: '3 months',
-    originalPrice: '$297/mo',
-    value: '$891 value',
-    description: 'Full platform & tooling access',
-    features: [
-      'Lead Machine CRM + pipeline management',
-      'Conversation AI tooling',
-      'Pre-built automations + ROI tracking dashboards',
-      'Done-for-you reporting + compliance monitoring'
-    ]
+      '70+ new buyer prospects per day (~2,000/month)',
+      'Everything in Growth, plus:',
+      'Multi-campaign management',
+      'White-glove optimization service',
+      'Custom integrations & workflows',
+      'Quarterly strategy sessions'
+    ],
+    featured: false
   }
 ]
 
@@ -476,19 +466,16 @@ export default function LeadMachinePage() {
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
             <div className="text-center max-w-4xl mx-auto mb-10">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-400/30 bg-blue-500/10 text-blue-300 text-sm font-medium uppercase tracking-wider">
-                Limited Launch Offer
-              </span>
-              <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">TrueFlow Lead Machine Special Offer</h2>
+              <h2 className="text-3xl sm:text-4xl font-semibold">Transparent Pricing That Scales With You</h2>
               <p className="mt-4 text-lg text-white/80">
-                <span className="text-2xl font-semibold text-white">$10,341+ in done-for-you growth assets</span> for a one-time <span className="text-blue-300 font-semibold">$2,600 build</span> (then <span className="text-blue-300 font-semibold">$600/month</span> after 30 days).
+                Start at <span className="text-2xl font-semibold text-blue-300">$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
               </p>
-              <p className="mt-3 text-white/60">
-                Only 10 spots available before pricing resets to $3,000 setup + $750/month.
+              <p className="mt-3 text-white/70">
+                One-time setup fee: <span className="text-white font-semibold">$2,000</span> (includes full buildout, CRM integration, and campaign optimization)
               </p>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {pricingPlans.map((plan) => (
                 <div
                   key={plan.name}
@@ -501,9 +488,9 @@ export default function LeadMachinePage() {
                   <div>
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
-                      {plan.featured && (
+                      {plan.value && (
                         <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-400/30">
-                          Save $7,700+
+                          {plan.value}
                         </span>
                       )}
                     </div>
@@ -519,12 +506,6 @@ export default function LeadMachinePage() {
                       )}
                     </div>
                   </div>
-
-                  {plan.value && (
-                    <div className="px-4 py-2 rounded-xl bg-white/5 border border-white/10">
-                      <p className="text-sm text-white/70">{plan.value}</p>
-                    </div>
-                  )}
 
                   <ul className="space-y-3 flex-grow">
                     {plan.features.map((feature) => (
@@ -544,16 +525,16 @@ export default function LeadMachinePage() {
                 <div>
                   <h3 className="text-xl font-semibold text-white">90-Day ROI Guarantee</h3>
                   <p className="mt-2 text-white/80">
-                    See measurable ROI within 90 days or we keep sending leads until you do. After that, you only pay the $297/mo platform access until the ROI target is met.
+                    If the system doesn't generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="mt-8 text-center">
-              <h3 className="text-2xl font-semibold text-white">Why this founder pricing?</h3>
+              <h3 className="text-2xl font-semibold text-white">Need a custom plan?</h3>
               <p className="mt-3 text-white/70 max-w-3xl mx-auto">
-                We're taking on 10 businesses at this rate to showcase wins before we reset to $3,000 setup + $750/month. Lock in this offer now—it will not return.
+                Every business is different. Book a demo and we'll build a plan tailored to your market, volume needs, and growth goals.
               </p>
             </div>
           </div>
