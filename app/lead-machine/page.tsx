@@ -582,53 +582,21 @@ export default function LeadMachinePage() {
 
         <section id="book-demo-calendar" className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto scroll-mt-24">
           <style jsx global>{`
-            /* Hide any stray CSS text content from embed scripts */
-            #book-demo-calendar .calendar-wrapper {
-              position: relative;
-              isolation: isolate;
-              overflow: hidden;
-              color: transparent;
-              font-size: 0;
-            }
-
-            /* Hide all text nodes after the calendar wrapper that contain CSS */
-            #book-demo-calendar .calendar-wrapper ~ * {
+            /* Hide any raw CSS text that might appear from embed scripts */
+            #book-demo-calendar > div > div:last-child:not(.space-y-4):not(.calendar-wrapper) {
               display: none !important;
-            }
-
-            /* Ensure only the iframe is visible inside calendar-wrapper */
-            #book-demo-calendar .calendar-wrapper > *:not(iframe) {
-              display: none !important;
-            }
-
-            #book-demo-calendar .calendar-wrapper iframe {
-              position: relative;
-              z-index: 1;
             }
 
             /* Ensure iframe renders properly */
             #msgsndr-calendar {
               display: block !important;
               width: 100% !important;
-              min-height: 700px !important;
-              background: transparent !important;
+              min-height: 520px !important;
             }
 
-            /* Hide any elements containing CSS-like patterns */
-            #book-demo-calendar *[class*="lc-"],
-            #book-demo-calendar *[id*="booking"] {
-              display: contents !important;
-            }
-
-            /* Prevent any text rendering outside iframe */
-            #book-demo-calendar {
-              font-size: 0 !important;
-            }
-
-            #book-demo-calendar h3,
-            #book-demo-calendar p,
-            #book-demo-calendar button {
-              font-size: 1rem !important;
+            /* Hide any direct text content after calendar wrapper */
+            #book-demo-calendar .calendar-wrapper ~ * {
+              display: none !important;
             }
           `}</style>
           <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-black/60 p-8 sm:p-10">
@@ -645,6 +613,28 @@ export default function LeadMachinePage() {
                 scrolling="yes"
                 style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
                 title="Book a demo with TrueFlow"
+                onLoad={(e) => {
+                  // Remove any CSS text nodes that appear after iframe loads
+                  setTimeout(() => {
+                    const section = document.getElementById('book-demo-calendar')
+                    if (section) {
+                      const walker = document.createTreeWalker(
+                        section,
+                        NodeFilter.SHOW_TEXT,
+                        null
+                      )
+                      const nodesToRemove: Node[] = []
+                      let node
+                      while ((node = walker.nextNode())) {
+                        const text = node.textContent || ''
+                        if (text.includes('body {') || text.includes('background:') || text.includes('.lc-booking')) {
+                          nodesToRemove.push(node)
+                        }
+                      }
+                      nodesToRemove.forEach((n) => n.parentNode?.removeChild(n))
+                    }
+                  }, 1000)
+                }}
               />
             </div>
           </div>
