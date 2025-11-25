@@ -500,8 +500,10 @@ export default function ContentEnginePage() {
             {workflowSteps.map((step, index) => (
               <div key={step.id} className="relative">
                 <div 
-                  className={`bg-white/5 backdrop-blur-md rounded-2xl border border-white/20 p-8 text-center hover:bg-white/10 hover:border-blue-400/30 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 h-full group relative overflow-hidden transform-gpu ${
-                    ''
+                  className={`backdrop-blur-md rounded-2xl border p-8 text-center transition-all duration-500 h-full group relative overflow-hidden transform-gpu ${
+                    isDarkMode
+                      ? 'bg-white/5 border-white/20 hover:bg-white/10 hover:border-blue-400/30 hover:shadow-xl hover:shadow-blue-500/10'
+                      : 'bg-white border-gray-200 hover:border-blue-200 hover:shadow-lg'
                   }`} 
                   style={{ 
                     animationDelay: `${index * 200}ms`,
@@ -553,26 +555,43 @@ export default function ContentEnginePage() {
                   <div className={`w-20 h-20 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center mx-auto mb-6 shadow-xl group-hover:scale-105 group-hover:shadow-2xl transition-all duration-500 relative ${
                     ''
                   }`} style={{ animationDelay: `${index * 300}ms` }}>
-                    <div className="absolute inset-0 rounded-full border-2 border-white/20 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
+                    <div className={`absolute inset-0 rounded-full border-2 transition-opacity duration-500 ${
+                      isDarkMode ? 'border-white/20' : 'border-blue-200'
+                    } opacity-0 group-hover:opacity-40`}></div>
                     <div className={`transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-12 ${
                       ''
                     }`} style={{ 
                       animationDelay: `${index * 500}ms`,
                       filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.2))'
                     }}>
-                      <div className="transition-all duration-300 group-hover:animate-pulse text-white" style={{ strokeWidth: '2px' }}>
+                      <div
+                        className={`transition-all duration-300 group-hover:animate-pulse ${
+                          isDarkMode ? 'text-white' : 'text-gray-50'
+                        }`}
+                        style={{ strokeWidth: '2px' }}
+                      >
                         {step.icon}
                       </div>
                     </div>
                   </div>
                   
-                  <h3 className={`text-xl font-bold text-white mb-4 group-hover:text-blue-100 transition-all duration-500 ${
-                    'translate-y-0 opacity-100'
-                  }`} style={{ transitionDelay: `${index * 200 + 300}ms` }}>{step.title}</h3>
+                  <h3
+                    className={`text-xl font-bold mb-4 transition-all duration-500 ${
+                      isDarkMode ? 'text-white group-hover:text-blue-100' : 'text-gray-900 group-hover:text-blue-600'
+                    } translate-y-0 opacity-100`}
+                    style={{ transitionDelay: `${index * 200 + 300}ms` }}
+                  >
+                    {step.title}
+                  </h3>
                   
-                  <p className={`text-white/70 mb-6 group-hover:text-white/90 transition-all duration-500 ${
-                    'translate-y-0 opacity-100'
-                  }`} style={{ transitionDelay: `${index * 200 + 400}ms` }}>{step.description}</p>
+                  <p
+                    className={`mb-6 transition-all duration-500 ${
+                      isDarkMode ? 'text-white/70 group-hover:text-white/90' : 'text-gray-600 group-hover:text-gray-800'
+                    } translate-y-0 opacity-100`}
+                    style={{ transitionDelay: `${index * 200 + 400}ms` }}
+                  >
+                    {step.description}
+                  </p>
                   
                   <div className="space-y-2 relative z-10">
                     {step.details.map((detail, idx) => (
@@ -583,7 +602,13 @@ export default function ContentEnginePage() {
                           <CheckCircle className="h-4 w-4 text-green-400 flex-shrink-0 group-hover:scale-105 group-hover:text-green-300 transition-all duration-300" />
                           <div className="absolute inset-0 bg-green-400/10 rounded-full scale-0 group-hover:scale-110 transition-transform duration-300"></div>
                         </div>
-                        <span className="text-white/80 text-sm group-hover:text-white/95 transition-colors duration-300">{detail}</span>
+                        <span
+                          className={`text-sm transition-colors duration-300 ${
+                            isDarkMode ? 'text-white/80 group-hover:text-white/95' : 'text-gray-700 group-hover:text-gray-900'
+                          }`}
+                        >
+                          {detail}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -594,7 +619,11 @@ export default function ContentEnginePage() {
                     'opacity-100 translate-x-0'
                   }`} style={{ transitionDelay: `${index * 200 + 800}ms` }}>
                     <div className="relative">
-                      <ArrowRight className="h-8 w-8 text-white/70 group-hover:text-blue-400 transition-colors duration-300" />
+                      <ArrowRight
+                        className={`h-8 w-8 transition-colors duration-300 ${
+                          isDarkMode ? 'text-white/70 group-hover:text-blue-400' : 'text-gray-500 group-hover:text-blue-500'
+                        }`}
+                      />
                       <div className="absolute inset-0 bg-blue-400/20 rounded-full scale-0 group-hover:scale-150 transition-transform duration-300"></div>
                     </div>
                   </div>
