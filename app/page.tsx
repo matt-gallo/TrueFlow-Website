@@ -1254,30 +1254,34 @@ export default function LandingPage() {
           {/* Business Evolution: Side-by-Side Comparison */}
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 Still Doing Everything Manually?
               </h2>
-              <p className="text-xl text-white/70 max-w-3xl mx-auto">
+              <p className={`text-xl max-w-3xl mx-auto ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 If you're still manually scheduling, following up, or sending forms—you're losing hours daily. Automation fixes that.
               </p>
-              <p className="text-lg text-blue-400 font-semibold mt-4 max-w-2xl mx-auto">
+              <p className="text-lg text-blue-500 font-semibold mt-4 max-w-2xl mx-auto">
                 Save 10+ hours a week and never miss another lead
               </p>
             </div>
 
             {/* Vertical Stacked Chapters */}
             <div className="flex flex-col gap-12 mt-16 max-w-4xl mx-auto">
-            
+
             {/* Chapter 1: Once Upon A Time */}
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-red-500/30 transition-all duration-300">
-              <div className="inline-block bg-white/5 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 mb-8">
-                <span className="text-white/70 text-lg font-medium">Chapter 1</span>
+            <div className={`backdrop-blur-md rounded-2xl p-6 sm:p-8 border hover:border-red-500/30 transition-all duration-300 ${
+              isDarkMode ? 'bg-white/5 border-white/20' : 'bg-white border-gray-200 shadow-lg'
+            }`}>
+              <div className={`inline-block backdrop-blur-md rounded-full px-6 py-3 border mb-8 ${
+                isDarkMode ? 'bg-white/5 border-white/20' : 'bg-gray-100 border-gray-300'
+              }`}>
+                <span className={`text-lg font-medium ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Chapter 1</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
+              <h3 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 You're Wearing Every Hat
               </h3>
               <div>
-                <p className="text-base text-white/70 mb-6 leading-relaxed">
+                <p className={`text-base mb-6 leading-relaxed ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                   You're great at what you do. But between patient calls, property showings, coaching clients, film edits, and marketing campaigns... you're drowning in tasks that have nothing to do with your expertise. Meanwhile, leads slip through the cracks, follow-ups get forgotten, and potential revenue disappears.
                 </p>
 
@@ -1329,7 +1333,7 @@ export default function LandingPage() {
                       </div>
                     </div>
                     
-                    <p className="text-white/80 text-center font-medium animate-bounce">
+                    <p className={`text-center font-medium animate-bounce ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                       Drowning in daily tasks
                     </p>
                   </div>
@@ -1354,16 +1358,20 @@ export default function LandingPage() {
             </div>
 
             {/* Chapter 2: Then Came Automation */}
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/20 hover:border-orange-500/30 transition-all duration-300">
-              <div className="inline-block bg-white/5 backdrop-blur-md rounded-full px-6 py-3 border border-white/20 mb-8">
-                <span className="text-white/70 text-lg font-medium">Chapter 2</span>
+            <div className={`backdrop-blur-md rounded-2xl p-6 sm:p-8 border hover:border-orange-500/30 transition-all duration-300 ${
+              isDarkMode ? 'bg-white/5 border-white/20' : 'bg-white border-gray-200 shadow-lg'
+            }`}>
+              <div className={`inline-block backdrop-blur-md rounded-full px-6 py-3 border mb-8 ${
+                isDarkMode ? 'bg-white/5 border-white/20' : 'bg-gray-100 border-gray-300'
+              }`}>
+                <span className={`text-lg font-medium ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Chapter 2</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
+              <h3 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 So You Try DIY Solutions
               </h3>
 
               <div>
-                <p className="text-base text-white/80 mb-6">
+                <p className={`text-base mb-6 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                   "Just get some software," they said. "It's easy," they said. So you sign up for CRMs, schedulers, email tools, social media managers... and now you're paying hundreds per month for tools that don't talk to each other, and you STILL have to do most of the work manually.
                 </p>
                 
@@ -1396,7 +1404,7 @@ export default function LandingPage() {
                   ))}
                 </div>
 
-                <p className="text-lg text-white/90 font-semibold mb-4">
+                <p className={`text-lg font-semibold mb-4 ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>
                   But here's the problem...
                 </p>
 
@@ -1405,21 +1413,23 @@ export default function LandingPage() {
                   <p className="text-red-400 font-semibold text-sm mb-2">Each app costs $50-$200/month</p>
                   <p className="text-red-400 font-semibold text-sm mb-2">They don't talk to each other</p>
                   <p className="text-red-400 font-semibold text-sm mb-2">You still do most of the work</p>
-                  <p className="text-white/70 mt-3 text-xs font-semibold">Expensive, confusing, and frustrating</p>
+                  <p className={`mt-3 text-xs font-semibold ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Expensive, confusing, and frustrating</p>
                 </div>
               </div>
             </div>
 
             {/* Chapter 3: Now */}
-            <div className="bg-gradient-to-br from-blue-500/10 to-purple-600/10 backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 border-blue-500/30 hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-blue-500/10">
+            <div className={`backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 border-blue-500/30 hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-blue-500/10 ${
+              isDarkMode ? 'bg-gradient-to-br from-blue-500/10 to-purple-600/10' : 'bg-gradient-to-br from-blue-50 to-purple-50'
+            }`}>
               <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 rounded-full px-6 py-3 border-2 border-blue-400/50 mb-8 shadow-lg shadow-blue-500/25">
                 <span className="text-white text-lg font-bold">Chapter 3</span>
               </div>
-              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 leading-tight">
+              <h3 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 We Build It. We Run It. You Reap The Benefits.
               </h3>
               <div>
-                <p className="text-base text-white/70 mb-6 leading-relaxed">
+                <p className={`text-base mb-6 leading-relaxed ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                   We build custom automation systems that capture leads, follow up automatically, schedule appointments, send messages, and keep your business running 24/7 - while you focus on what you actually do best. No apps to learn. No tech headaches. Just results.
                 </p>
                 
