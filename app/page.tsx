@@ -1034,14 +1034,18 @@ export default function LandingPage() {
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
             <div className="space-y-10 text-center lg:text-left">
               <div>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight px-2 mt-16">
+                <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight px-2 mt-16 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>
                   The all-in-one, AI-powered marketing and sales platform that works 24/7 for<br />
                   <span className="inline-block min-h-[1.2em]">
                     <TypewriterText gradientOffset={gradientOffset} />
                   </span>
                 </h1>
 
-                <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-3xl mx-auto lg:mx-0 mb-8 sm:mb-12 px-4 lg:px-0">
+                <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto lg:mx-0 mb-8 sm:mb-12 px-4 lg:px-0 ${
+                  isDarkMode ? 'text-white/60' : 'text-gray-600'
+                }`}>
                   Business owners lose up to 10 hours a week to repetitive tasks. We automate the busy work—so you can spend more time growing your business and less time behind a screen.
                 </p>
 
@@ -1055,8 +1059,12 @@ export default function LandingPage() {
                     <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
 
-                  <Link href="/coming-soon" className="flex items-center space-x-3 sm:space-x-4 text-white/70 hover:text-white transition-all duration-300 group">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative">
+                  <Link href="/coming-soon" className={`flex items-center space-x-3 sm:space-x-4 transition-all duration-300 group ${
+                    isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+                  }`}>
+                    <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full backdrop-blur-md flex items-center justify-center border group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative ${
+                      isDarkMode ? 'bg-white/10 border-white/20 group-hover:bg-white/20' : 'bg-gray-100 border-gray-300 group-hover:bg-gray-200'
+                    }`}>
                       <div className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
                       <Play className="h-4 w-4 sm:h-6 sm:w-6 ml-1 relative z-10 group-hover:text-blue-400 transition-colors duration-300" />
                     </div>
@@ -1119,19 +1127,19 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 text-center lg:text-left">
-              <p className="text-xs uppercase tracking-[0.4em] text-white/40">Trusted by 100+ operators</p>
-              <h2 className="text-3xl sm:text-4xl font-semibold text-white leading-tight">
+              <p className={`text-xs uppercase tracking-[0.4em] ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>Trusted by 100+ operators</p>
+              <h2 className={`text-3xl sm:text-4xl font-semibold leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 Automation Systems for Scheduling, Nurture & Retention
               </h2>
-              <p className="text-base text-white/70 leading-relaxed">
+              <p className={`text-base leading-relaxed ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 TrueFlow installs AI workflows that run scheduling, nurture, and follow-up so you stay with customers—not admin.
-                <span className="block mt-3 text-white/90 font-medium">Done-for-you setup plus monthly optimization. You steer the business; we run the clicks.</span>
+                <span className={`block mt-3 font-medium ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>Done-for-you setup plus monthly optimization. You steer the business; we run the clicks.</span>
               </p>
               <div className="space-y-1">
-                <p className="text-base sm:text-lg text-blue-400 font-semibold">
+                <p className="text-base sm:text-lg text-blue-500 font-semibold">
                   30-minute automation roadmap—find 10+ hours a week to reclaim.
                 </p>
-                <p className="text-xs sm:text-sm text-white/60">
+                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>
                   100+ teams already automate their operations with TrueFlow
                 </p>
               </div>
@@ -1139,15 +1147,19 @@ export default function LandingPage() {
 
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent blur-3xl opacity-70 pointer-events-none"></div>
-              <div className="relative bg-white/5 rounded-2xl border border-white/10 p-8 sm:p-10 shadow-[0_10px_60px_rgba(59,130,246,0.25)] overflow-hidden">
+              <div className={`relative rounded-2xl border p-8 sm:p-10 shadow-[0_10px_60px_rgba(59,130,246,0.25)] overflow-hidden ${
+                isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200'
+              }`}>
                 <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),_transparent_60%)]"></div>
                 <div className={`relative z-10 text-center transition-all duration-300 ${
                   isTrustSignalVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
                 }`}>
-                  <p className="text-5xl sm:text-6xl font-black text-white drop-shadow-[0_0_25px_rgba(59,130,246,0.35)]">
+                  <p className={`text-5xl sm:text-6xl font-black drop-shadow-[0_0_25px_rgba(59,130,246,0.35)] ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
                     {stats[trustSignalIndex].value}
                   </p>
-                  <p className="text-lg sm:text-xl text-white/70 mt-2">
+                  <p className={`text-lg sm:text-xl mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                     {stats[trustSignalIndex].label}
                   </p>
                 </div>
@@ -1156,12 +1168,12 @@ export default function LandingPage() {
                     <span
                       key={idx}
                       className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                        idx === trustSignalIndex ? 'bg-blue-400 w-6' : 'bg-white/20'
+                        idx === trustSignalIndex ? 'bg-blue-400 w-6' : isDarkMode ? 'bg-white/20' : 'bg-gray-300'
                       }`}
                     ></span>
                   ))}
                 </div>
-                <p className="relative z-10 text-xs text-white/50 text-center mt-6">Rotating every 2 seconds</p>
+                <p className={`relative z-10 text-xs text-center mt-6 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>Rotating every 2 seconds</p>
               </div>
             </div>
           </div>
@@ -1169,11 +1181,13 @@ export default function LandingPage() {
       </section>
 
       {/* Product Selection Section */}
-      <section className="py-16 sm:py-20 px-4 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
+      <section className={`py-16 sm:py-20 px-4 relative overflow-hidden ${
+        isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-gray-100'
+      }`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <p className="text-sm uppercase tracking-[0.4em] text-white/40">Pick Your Track</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+            <p className={`text-sm uppercase tracking-[0.4em] ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>Pick Your Track</p>
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               Choose the automation system that matches your bottleneck.
             </h2>
           </div>
@@ -1184,21 +1198,25 @@ export default function LandingPage() {
               return (
                 <div key={product.id} className="relative group">
                   <div className={`absolute inset-0 bg-gradient-to-r ${product.bgGlow} blur-2xl opacity-50 group-hover:opacity-80 transition-opacity`}></div>
-                  <div className={`relative bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 p-8 h-full transition-all ${product.borderHover}`}>
+                  <div className={`relative backdrop-blur-md rounded-2xl border p-8 h-full transition-all ${product.borderHover} ${
+                    isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+                  }`}>
                     <div className={`w-16 h-16 bg-gradient-to-r ${product.gradientFrom} ${product.gradientTo} rounded-2xl flex items-center justify-center mb-6`}>
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <div className="space-y-4">
                       <div>
-                        <h3 className="text-2xl font-bold text-white">{product.name}</h3>
+                        <h3 className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{product.name}</h3>
                       </div>
-                      <p className="text-white/70">{product.description}</p>
+                      <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>{product.description}</p>
                     </div>
                     <ul className="space-y-3 my-8">
                       {product.bullets.map((bullet, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-white/80">
-                          <div className="w-5 h-5 bg-white/10 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
-                            <Zap className="w-3 h-3 text-white/60" />
+                        <li key={idx} className={`flex items-start gap-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                          <div className={`w-5 h-5 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0 ${
+                            isDarkMode ? 'bg-white/10' : 'bg-gray-200'
+                          }`}>
+                            <Zap className={`w-3 h-3 ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`} />
                           </div>
                           <span className="text-sm">{bullet}</span>
                         </li>
