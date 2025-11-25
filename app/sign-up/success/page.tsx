@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { CheckCircle, Loader2, AlertCircle } from 'lucide-react'
 import { useTheme } from '@/app/components/ThemeProvider'
 
-export default function SignUpSuccess() {
+function SignUpSuccessContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const signupId = searchParams.get('signupId')
@@ -217,4 +217,31 @@ export default function SignUpSuccess() {
   }
 
   return null
+}
+
+export default function SignUpSuccess() {
+  const { isDarkMode } = useTheme()
+
+  return (
+    <Suspense fallback={
+      <div className={`min-h-screen flex items-center justify-center px-4 transition-colors ${
+        isDarkMode
+          ? 'bg-gradient-to-br from-gray-900 via-black to-gray-900'
+          : 'bg-gradient-to-br from-gray-50 via-white to-gray-100'
+      }`}>
+        <div className={`max-w-md w-full backdrop-blur-xl border rounded-2xl p-8 text-center transition-colors ${
+          isDarkMode
+            ? 'bg-black/60 border-white/10'
+            : 'bg-white/80 border-gray-200 shadow-xl'
+        }`}>
+          <Loader2 className="h-16 w-16 text-cyan-500 mx-auto mb-6 animate-spin" />
+          <h1 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+            Loading...
+          </h1>
+        </div>
+      </div>
+    }>
+      <SignUpSuccessContent />
+    </Suspense>
+  )
 }
