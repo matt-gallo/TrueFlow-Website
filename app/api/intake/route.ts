@@ -1,7 +1,21 @@
 import { NextResponse } from 'next/server'
+import { randomBytes } from 'crypto'
+
+const GHL_API_BASE = 'https://services.leadconnectorhq.com'
+const GHL_API_VERSION = '2021-07-28'
+
+function generateTemporaryPassword(): string {
+  const override = process.env.GHL_DEFAULT_USER_PASSWORD
+  if (override && override.trim().length > 0) {
+    return override
+  }
+
+  return `Tf!${randomBytes(8).toString('hex')}9`
+}
 
 export async function POST(request: Request) {
   const privateIntegrationToken = process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
+  const userCreationToken = process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN_USER_CREATION || privateIntegrationToken
   const companyId = process.env.GHL_COMPANY_ID
 
   // Validate environment variables
@@ -19,6 +33,16 @@ export async function POST(request: Request) {
   const body = await request.json().catch(() => null)
   if (!body || !body.name) {
     return NextResponse.json({ error: 'Business name is required' }, { status: 400 })
+  }
+
+  const userEmail = body.prospectInfo?.email
+  const userFirstName = body.prospectInfo?.firstName
+  const userLastName = body.prospectInfo?.lastName || 'User'
+
+  if (!userEmail || !userFirstName) {
+    return NextResponse.json({
+      error: 'Primary contact name and email are required to finish onboarding.'
+    }, { status: 400 })
   }
 
   // Log incoming data for debugging
@@ -120,12 +144,12 @@ export async function POST(request: Request) {
 
   try {
     // Call GoHighLevel API to create sub-account
-    const response = await fetch('https://services.leadconnectorhq.com/locations/', {
+    const response = await fetch(`${GHL_API_BASE}/locations/`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${privateIntegrationToken}`,
         'Content-Type': 'application/json',
-        'Version': '2021-07-28'
+        'Version': GHL_API_VERSION
       },
       body: JSON.stringify(payload)
     })
@@ -155,10 +179,58 @@ export async function POST(request: Request) {
 
     console.log('Successfully created GHL sub-account:', responseData.id)
 
+    const locationId = responseData.id
+    const userPayload = {
+      companyId,
+      firstName: userFirstName,
+      lastName: userLastName,
+      email: userEmail,
+      password: generateTemporaryPassword(),
+      phone: body.phone || undefined,
+      type: 'account',
+      role: 'admin',
+      locationIds: [locationId]
+    }
+
+    console.log('Creating user for new sub-account', {
+      email: userEmail,
+      firstName: userFirstName,
+      lastName: userLastName,
+      locationId
+    })
+
+    const userResponse = await fetch(`${GHL_API_BASE}/users/`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${userCreationToken}`,
+        'Content-Type': 'application/json',
+        'Version': GHL_API_VERSION
+      },
+      body: JSON.stringify(userPayload)
+    })
+
+    const userData = await userResponse.json()
+
+    if (!userResponse.ok) {
+      console.error('Failed to create user for sub-account', {
+        status: userResponse.status,
+        response: userData
+      })
+
+      return NextResponse.json({
+        error: 'Sub-account created, but failed to provision user access. Please contact support.',
+        details: userData.message || userData.error,
+        locationId
+      }, { status: userResponse.status })
+    }
+
+    console.log('Successfully added user to new sub-account', userData.id)
+
     return NextResponse.json({
       status: 'success',
-      locationId: responseData.id,
-      message: 'Sub-account created successfully'
+      locationId,
+      userId: userData.id,
+      message: 'Sub-account and user created successfully'
     })
 
   } catch (error) {

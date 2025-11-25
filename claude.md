@@ -30,12 +30,16 @@ Add these to Railway (both staging and production environments):
    - **NOT** the 7-digit Relationship Number (e.g., `1-234-567`)
    - **How to find it:** Run `GET /locations/search?limit=1` with your Private Integration Token and look for the `companyId` field in the response
 
+3. **`GHL_DEFAULT_USER_PASSWORD`** *(optional)* - Override password used for newly created users
+   - If not set, a secure random password is generated automatically
+   - Useful when you want to set a known default before forcing a password reset workflow
+
 ### How It Works
 
 1. User completes the sign-up form at `/sign-up`
 2. Form submits to `/api/intake` endpoint
 3. Backend calls GHL API: `POST https://services.leadconnectorhq.com/locations/`
-4. New sub-account is created automatically
+4. After the location is created, backend calls `POST https://services.leadconnectorhq.com/users/` to provision the primary contact
 5. User receives confirmation and is redirected to login
 
 ### API Endpoint
