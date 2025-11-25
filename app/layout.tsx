@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import CookieConsent from './components/CookieConsent'
 import ConditionalTracking from './components/ConditionalTracking'
+import { ThemeProvider } from './components/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -96,11 +97,13 @@ export default function RootLayout({
             }
           `
         }} />
-        <div suppressHydrationWarning={true}>
-          {children}
-        </div>
-        <CookieConsent />
-        <ConditionalTracking />
+        <ThemeProvider>
+          <div suppressHydrationWarning={true}>
+            {children}
+          </div>
+          <CookieConsent />
+          <ConditionalTracking />
+        </ThemeProvider>
       </body>
     </html>
   )
