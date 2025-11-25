@@ -75,6 +75,14 @@ export async function POST(request: NextRequest) {
     console.log(`[Webhook] Processing event type: ${eventType}`)
 
     switch (eventType) {
+      case 'payment.succeeded':
+      case 'InvoicePaid':
+      case 'OrderCompleted':
+      case 'order.completed':
+        console.log('[Webhook] Payment succeeded, creating sub-account:', body)
+        await processPaymentSuccess(body)
+        break
+
       case 'contact.created':
       case 'ContactCreate':
       case 'FormSubmitted':
@@ -150,6 +158,169 @@ export async function GET(request: NextRequest) {
     oldestEvent: webhookEvents[webhookEvents.length - 1]?.timestamp,
     newestEvent: webhookEvents[0]?.timestamp
   })
+}
+
+// Process payment success and create GHL sub-account
+async function processPaymentSuccess(webhookBody: any) {
+  try {
+    console.log('[Webhook] Processing payment success event')
+
+    // Extract signup_id from webhook metadata/custom fields
+    const signupId = webhookBody.signup_id ||
+                     webhookBody.metadata?.signup_id ||
+                     webhookBody.customFields?.signup_id ||
+                     webhookBody.contact?.customField?.find((f: any) => f.key === 'signup_id')?.value
+
+    if (!signupId) {
+      console.error('[Webhook] No signup_id found in payment webhook')
+      return
+    }
+
+    console.log('[Webhook] Found signup_id:', signupId)
+
+    // Retrieve signup data from temporary storage
+    const signupDataResponse = await fetch(`${process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000'}/api/signup-data?signupId=${signupId}`)
+
+    if (!signupDataResponse.ok) {
+      console.error('[Webhook] Failed to retrieve signup data:', signupDataResponse.status)
+      return
+    }
+
+    const signupData = await signupDataResponse.json()
+    console.log('[Webhook] Retrieved signup data for:', signupData.email)
+
+    // Call the intake endpoint to create sub-account + user
+    const intakeResponse = await fetch(`${process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000'}/api/intake`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(signupData)
+    })
+
+    const intakeResult = await intakeResponse.json()
+
+    if (!intakeResponse.ok) {
+      console.error('[Webhook] Failed to create sub-account:', intakeResult)
+      // Send error notification email
+      await sendPaymentErrorNotification(signupData, intakeResult)
+      return
+    }
+
+    console.log('[Webhook] Successfully created sub-account:', intakeResult.locationId)
+    console.log('[Webhook] Successfully created user:', intakeResult.userId)
+
+    // Send success email to customer
+    await sendWelcomeEmail(signupData, intakeResult)
+
+    // Delete signup data after successful processing
+    await fetch(`${process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000'}/api/signup-data?signupId=${signupId}`, {
+      method: 'DELETE'
+    })
+
+    console.log('[Webhook] Payment-to-account flow completed successfully')
+  } catch (error) {
+    console.error('[Webhook] Error processing payment success:', error)
+  }
+}
+
+// Send welcome email with login credentials
+async function sendWelcomeEmail(signupData: any, intakeResult: any) {
+  try {
+    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.includes('your_')) {
+      console.warn('[Webhook] Resend API key not configured, skipping welcome email')
+      return
+    }
+
+    const { Resend } = await import('resend')
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
+    const firstName = signupData.prospectInfo?.firstName || 'there'
+
+    const emailContent = `
+      <h1>Welcome to TrueFlow!</h1>
+      <p>Hi ${firstName},</p>
+      <p>Your account has been successfully created! Your 14-day free trial starts now.</p>
+
+      <h2>Your Login Details</h2>
+      <p><strong>Email:</strong> ${signupData.email}</p>
+      <p><strong>Login URL:</strong> <a href="https://login.trueflow.ai">https://login.trueflow.ai</a></p>
+
+      <p>You'll receive a password reset email shortly to set up your login credentials.</p>
+
+      <h2>What's Next?</h2>
+      <ul>
+        <li>Check your email for your password setup link</li>
+        <li>Join our TrueFlow Accelerator kickoff call</li>
+        <li>Access your full CRM and automation suite</li>
+      </ul>
+
+      <p>Questions? Reply to this email or contact us at support@trueflow.ai</p>
+
+      <p>Welcome aboard!</p>
+      <p>The TrueFlow Team</p>
+    `
+
+    await resend.emails.send({
+      from: 'TrueFlow AI <welcome@trueflow.ai>',
+      to: [signupData.email],
+      subject: 'Welcome to TrueFlow - Your Account is Ready!',
+      html: emailContent
+    })
+
+    // Also notify internal team
+    await resend.emails.send({
+      from: 'TrueFlow AI <onboarding@resend.dev>',
+      to: ['griffin@trueflow.ai', 'matt@trueflow.ai'],
+      subject: `New Account Created: ${signupData.name}`,
+      html: `
+        <h2>New TrueFlow Account Created</h2>
+        <p><strong>Business:</strong> ${signupData.name}</p>
+        <p><strong>Contact:</strong> ${signupData.prospectInfo?.firstName} ${signupData.prospectInfo?.lastName}</p>
+        <p><strong>Email:</strong> ${signupData.email}</p>
+        <p><strong>Phone:</strong> ${signupData.phone}</p>
+        <p><strong>Location ID:</strong> ${intakeResult.locationId}</p>
+        <p><strong>User ID:</strong> ${intakeResult.userId}</p>
+        <p><strong>Success Manager:</strong> ${signupData.metadata?.includeSuccessManager ? 'Yes (+$147/mo)' : 'No'}</p>
+        <p><strong>Primary Goal:</strong> ${signupData.metadata?.primaryGoal}</p>
+        <p><strong>Selected Resources:</strong> ${signupData.metadata?.selectedResources?.join(', ')}</p>
+      `
+    })
+
+    console.log('[Webhook] Welcome email sent to:', signupData.email)
+  } catch (error) {
+    console.error('[Webhook] Error sending welcome email:', error)
+  }
+}
+
+// Send error notification if account creation fails
+async function sendPaymentErrorNotification(signupData: any, error: any) {
+  try {
+    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.includes('your_')) {
+      return
+    }
+
+    const { Resend } = await import('resend')
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
+    await resend.emails.send({
+      from: 'TrueFlow AI <alerts@resend.dev>',
+      to: ['griffin@trueflow.ai', 'matt@trueflow.ai'],
+      subject: '🚨 Account Creation Failed After Payment',
+      html: `
+        <h2>Account Creation Failed</h2>
+        <p>Payment succeeded but sub-account creation failed for:</p>
+        <p><strong>Email:</strong> ${signupData.email}</p>
+        <p><strong>Business:</strong> ${signupData.name}</p>
+        <p><strong>Signup ID:</strong> ${signupData.signupId}</p>
+        <h3>Error Details:</h3>
+        <pre>${JSON.stringify(error, null, 2)}</pre>
+        <p><strong>Action Required:</strong> Manually create this account in GoHighLevel.</p>
+      `
+    })
+
+    console.log('[Webhook] Error notification sent')
+  } catch (err) {
+    console.error('[Webhook] Error sending error notification:', err)
+  }
 }
 
 // Process new contact and add tags + send notification

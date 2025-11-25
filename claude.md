@@ -34,17 +34,52 @@ Add these to Railway (both staging and production environments):
    - If not set, a secure random password is generated automatically
    - Useful when you want to set a known default before forcing a password reset workflow
 
-### How It Works
+### How It Works (Payment-First Flow)
 
-1. User completes the sign-up form at `/sign-up`
-2. Form submits to `/api/intake` endpoint
-3. Backend calls GHL API: `POST https://services.leadconnectorhq.com/locations/`
-4. After the location is created, backend calls `POST https://services.leadconnectorhq.com/users/` to provision the primary contact
-5. User receives confirmation and is redirected to login
+1. User fills out the 4-step sign-up form at `/sign-up`
+2. On Step 3 → Step 4 transition, form data is stored temporarily on the server via `/api/signup-data`
+3. User completes payment in the FastPay Direct iframe (Step 4)
+4. Payment processor sends webhook to `/api/webhooks/ghl` with `signup_id` parameter
+5. Webhook handler retrieves stored form data and calls `/api/intake` to create sub-account + user
+6. Backend calls GHL API:
+   - `POST https://services.leadconnectorhq.com/locations/` (creates sub-account)
+   - `POST https://services.leadconnectorhq.com/users/` (provisions admin user)
+7. Welcome email is sent to the user with login instructions
+8. Temporary signup data is deleted
 
-### API Endpoint
+**Key benefit:** Accounts are only created after successful payment, preventing free trial abuse.
 
+### FastPay Webhook Configuration
+
+To enable automatic account creation after payment, configure FastPay to send webhooks:
+
+1. Log into your GoHighLevel account
+2. Navigate to **Settings** → **Payments** → **FastPay Direct**
+3. Find your payment links:
+   - Standard plan: `6920f7f2bbe219eb5e3624d1` ($297/mo)
+   - With Success Manager: `6920f847802b2ce38d6b0f8e` ($444/mo)
+4. Set webhook URL: `https://trueflow.ai/api/webhooks/ghl`
+5. Enable events: `payment.succeeded`, `InvoicePaid`, `OrderCompleted`, `order.completed`
+6. Ensure `signup_id` custom field is passed back in webhook payload
+
+**Important:** The payment iframe automatically includes `email`, `signup_id`, and `name` as URL parameters that should be captured by FastPay.
+
+### API Endpoints
+
+#### 1. Intake API (Sub-account Creation)
 - **File**: `app/api/intake/route.ts`
 - **Method**: POST
 - **Required field**: `name` (business name)
 - **Optional fields**: phone, address, city, state, country, postalCode, website, timezone, prospectInfo, settings, social, twilio, mailgun, snapshotId
+
+#### 2. Signup Data API (Temporary Storage)
+- **File**: `app/api/signup-data/route.ts`
+- **Methods**: POST (store), GET (retrieve), DELETE (cleanup)
+- **Purpose**: Temporarily stores form data before payment completion
+- **TTL**: 1 hour (auto-cleanup)
+
+#### 3. Webhook API (Payment Processing)
+- **File**: `app/api/webhooks/ghl/route.ts`
+- **Method**: POST
+- **Purpose**: Receives payment success webhooks and triggers account creation
+- **Supported events**: `payment.succeeded`, `InvoicePaid`, `OrderCompleted`, `order.completed`

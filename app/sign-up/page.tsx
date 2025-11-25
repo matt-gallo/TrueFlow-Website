@@ -118,6 +118,13 @@ export default function SignUpPage() {
   const [isRedirecting, setIsRedirecting] = useState(false)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const [isDarkMode, setIsDarkMode] = useState(true)
+  const [signupId, setSignupId] = useState('')
+
+  // Generate unique signup ID on mount
+  useEffect(() => {
+    const id = `signup_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    setSignupId(id)
+  }, [])
 
   // Theme classes
   const theme = {
@@ -263,9 +270,63 @@ export default function SignUpPage() {
     return Object.keys(errors).length === 0
   }
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (!validateStep(currentStep)) return
-    if (currentStep < steps.length) setCurrentStep((prev) => prev + 1)
+    if (currentStep < steps.length) {
+      // When entering Step 4 (payment), store form data on server
+      if (currentStep === 3) {
+        const signupData = {
+          signupId,
+          name: formData.company,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          country: formData.country,
+          postalCode: formData.postalCode,
+          website: formData.website || undefined,
+          timezone: formData.timezone || undefined,
+          prospectInfo: {
+            firstName: formData.fullName.split(' ')[0],
+            lastName: formData.fullName.split(' ').slice(1).join(' ') || '',
+            email: formData.email
+          },
+          metadata: {
+            role: formData.role,
+            teamSize: formData.teamSize,
+            primaryGoal: formData.primaryGoal,
+            voiceNotes: formData.voiceNotes,
+            winsWanted: formData.winsWanted,
+            selectedResources,
+            includeSuccessManager: formData.includeSuccessManager
+          },
+          timestamp: new Date().toISOString()
+        }
+
+        try {
+          // Store on server for webhook to retrieve
+          const response = await fetch('/api/signup-data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(signupData)
+          })
+
+          if (!response.ok) {
+            setErrorMessage('Failed to prepare payment. Please try again.')
+            return
+          }
+
+          console.log('Stored signup data for payment webhook:', signupData)
+        } catch (error) {
+          console.error('Error storing signup data:', error)
+          setErrorMessage('Unable to connect to the server. Please check your internet connection.')
+          return
+        }
+      }
+
+      setCurrentStep((prev) => prev + 1)
+    }
   }
 
   const handlePrev = () => {
@@ -906,9 +967,10 @@ export default function SignUpPage() {
                       {/* GHL Payment Embed */}
                       <div className={`rounded-2xl overflow-hidden border ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
                         <iframe
-                          src={formData.includeSuccessManager
-                            ? 'https://link.fastpaydirect.com/payment-link/6920f847802b2ce38d6b0f8e'
-                            : 'https://link.fastpaydirect.com/payment-link/6920f7f2bbe219eb5e3624d1'
+                          src={
+                            formData.includeSuccessManager
+                              ? `https://link.fastpaydirect.com/payment-link/6920f847802b2ce38d6b0f8e?email=${encodeURIComponent(formData.email)}&signup_id=${encodeURIComponent(signupId)}&name=${encodeURIComponent(formData.fullName)}`
+                              : `https://link.fastpaydirect.com/payment-link/6920f7f2bbe219eb5e3624d1?email=${encodeURIComponent(formData.email)}&signup_id=${encodeURIComponent(signupId)}&name=${encodeURIComponent(formData.fullName)}`
                           }
                           className="w-full min-h-[500px] border-0"
                           title="Payment Form"
@@ -919,6 +981,13 @@ export default function SignUpPage() {
                       <p className={`text-xs ${theme.textMuted2}`}>
                         By completing payment, you agree to the TrueFlow Terms of Service. Your 14-day free trial starts immediately — you won&apos;t be charged until Day 15.
                       </p>
+
+                      <div className={`p-4 rounded-2xl border ${isDarkMode ? 'border-blue-500/30 bg-blue-500/10' : 'border-blue-300 bg-blue-50'}`}>
+                        <p className={`text-sm ${isDarkMode ? 'text-blue-200' : 'text-blue-900'}`}>
+                          <CheckCircle className="h-4 w-4 inline mr-2" />
+                          After completing payment above, your account will be created automatically and you&apos;ll receive login credentials via email.
+                        </p>
+                      </div>
                     </div>
                   )}
 
@@ -928,20 +997,21 @@ export default function SignUpPage() {
                     </div>
                   )}
 
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    {currentStep > 1 ? (
-                      <button
-                        type="button"
-                        onClick={handlePrev}
-                        className={`inline-flex items-center gap-2 px-5 py-3 rounded-full border ${theme.backBtn} transition`}
-                      >
-                        <ArrowLeft className="h-4 w-4" /> Back
-                      </button>
-                    ) : (
-                      <span />
-                    )}
+                  {/* Navigation buttons - hide on Step 4 (payment) */}
+                  {currentStep < steps.length && (
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                      {currentStep > 1 ? (
+                        <button
+                          type="button"
+                          onClick={handlePrev}
+                          className={`inline-flex items-center gap-2 px-5 py-3 rounded-full border ${theme.backBtn} transition`}
+                        >
+                          <ArrowLeft className="h-4 w-4" /> Back
+                        </button>
+                      ) : (
+                        <span />
+                      )}
 
-                    {currentStep < steps.length ? (
                       <button
                         type="button"
                         onClick={handleNext}
@@ -950,17 +1020,21 @@ export default function SignUpPage() {
                         Continue
                         <ArrowRight className="h-4 w-4" />
                       </button>
-                    ) : (
+                    </div>
+                  )}
+
+                  {/* Back button only on Step 4 (payment) */}
+                  {currentStep === steps.length && (
+                    <div className="flex justify-start">
                       <button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 font-semibold shadow-lg shadow-[#1d929e]/20 disabled:opacity-60"
+                        type="button"
+                        onClick={handlePrev}
+                        className={`inline-flex items-center gap-2 px-5 py-3 rounded-full border ${theme.backBtn} transition`}
                       >
-                        {isSubmitting ? 'Creating Your Account...' : 'Start 14-Day Trial'}
-                        {!isSubmitting && <ArrowRight className="h-4 w-4" />}
+                        <ArrowLeft className="h-4 w-4" /> Back
                       </button>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </form>
               )}
             </section>
