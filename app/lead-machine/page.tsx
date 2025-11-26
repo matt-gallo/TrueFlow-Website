@@ -314,6 +314,15 @@ export default function LeadMachinePage() {
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-semibold">Why Most Pipelines Leak</h2>
+          <div className="mt-8 rounded-2xl overflow-hidden border border-white/10 max-w-4xl mx-auto">
+            <Image
+              src="/trueflow-lead-machine-pipelines.png"
+              alt="Lead Machine Pipeline - Where Leads Leak"
+              width={900}
+              height={500}
+              className="w-full h-auto"
+            />
+          </div>
           <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_1fr] items-start">
             <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
               <p className="text-white font-semibold uppercase tracking-[0.3em] text-xs sm:text-sm">You don’t have a leads problem—you have a leak problem.</p>
@@ -397,15 +406,6 @@ export default function LeadMachinePage() {
               <p className="mt-4 text-white/70">
                 Every component is done-for-you and tuned so the entire system runs like a single operator — only faster.
               </p>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-white/10 max-w-4xl mx-auto">
-              <Image
-                src="/trueflow-lead-machine-pipelines.png"
-                alt="Lead Machine Pipeline Components"
-                width={900}
-                height={500}
-                className="w-full h-auto"
-              />
             </div>
             <div className="grid gap-6 md:grid-cols-2">
               {features.map(({ title, description, icon: Icon }) => (
