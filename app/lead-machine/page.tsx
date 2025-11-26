@@ -614,7 +614,8 @@ export default function LeadMachinePage() {
             #msgsndr-calendar {
               display: block !important;
               width: 100% !important;
-              min-height: 900px !important;
+              aspect-ratio: 1.089 / 1 !important;
+              min-height: 600px !important;
             }
 
             /* Hide any direct text content after calendar wrapper */
@@ -634,7 +635,7 @@ export default function LeadMachinePage() {
                 src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
                 id="msgsndr-calendar"
                 scrolling="yes"
-                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '900px' }}
+                style={{ width: '100%', border: 'none', overflow: 'hidden', aspectRatio: '1.089 / 1', minHeight: '600px' }}
                 title="Book a demo with TrueFlow"
                 onLoad={(e) => {
                   // Remove any CSS text nodes that appear after iframe loads
