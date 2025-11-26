@@ -453,17 +453,30 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
+          <div className={`rounded-3xl border p-8 sm:p-12 ${
+            isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-white shadow-xl'
+          }`}>
             <h2 className="text-3xl sm:text-4xl font-semibold">What's Included When You Activate</h2>
             <ol className="mt-6 space-y-4">
               {offerStack.map((item, index) => (
-                <li key={item} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-black/40 px-5 py-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300 font-semibold">{index + 1}</span>
-                  <span className="text-white/75">{item}</span>
+                <li
+                  key={item}
+                  className={`flex items-start gap-4 rounded-2xl px-5 py-4 border ${
+                    isDarkMode ? 'border-white/10 bg-black/40' : 'border-gray-200 bg-gray-50'
+                  }`}
+                >
+                  <span
+                    className={`flex h-10 w-10 items-center justify-center rounded-full font-semibold ${
+                      isDarkMode ? 'bg-emerald-500/20 text-emerald-300' : 'bg-[#1d929e]/15 text-[#1d929e]'
+                    }`}
+                  >
+                    {index + 1}
+                  </span>
+                  <span className={`${theme.textMuted}`}>{item}</span>
                 </li>
               ))}
             </ol>
-            <p className="mt-6 text-white/70 font-medium">
+            <p className={`mt-6 font-medium ${theme.textMuted}`}>
               Activate today → expect your first qualified conversations within 14 days.
             </p>
           </div>
