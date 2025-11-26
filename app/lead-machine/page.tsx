@@ -288,7 +288,7 @@ export default function LeadMachinePage() {
               <div className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
                 <div className="rounded-2xl overflow-hidden border border-white/10">
                   <Image
-                    src="/trueflow-lead-machine-banner.png"
+                    src={isDarkMode ? "/trueflow-lead-machine-banner.png" : "/trueflow-lead-machine-banner-light-mode.png"}
                     alt="TrueFlow Lead Machine Banner"
                     width={600}
                     height={400}
