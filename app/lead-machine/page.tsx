@@ -255,7 +255,7 @@ export default function LeadMachinePage() {
 
       <main className="pt-28 pb-24">
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-500/15 via-purple-600/12 to-cyan-500/8 blur-3xl" aria-hidden />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1d929e]/20 via-emerald-600/10 to-cyan-500/10 blur-3xl" aria-hidden />
           <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
               <div className="text-center lg:text-left">
@@ -275,7 +275,7 @@ export default function LeadMachinePage() {
                   <button
                     type="button"
                     onClick={scrollToCalendar}
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
+                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 text-lg font-semibold hover:shadow-2xl hover:shadow-[#1d929e]/30 transition-all"
                   >
                     Book a Demo
                     <ArrowRight className="h-5 w-5" />
@@ -304,8 +304,8 @@ export default function LeadMachinePage() {
                     <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Automated routing into GoHighLevel (or your CRM) with stages, tasks, and alerts.</span></li>
                   </ul>
                 </div>
-                <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-blue-600/20 to-purple-600/20 p-6">
-                  <p className="text-sm text-white/80">“Wake up to inboxes full of <span className="text-white">Interested — tell me more</span> replies. That’s when you know the machine is doing its job.”</p>
+                <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1d929e]/20 to-emerald-500/20 p-6">
+                  <p className="text-sm text-white/80">"Wake up to inboxes full of <span className="text-[#1d929e]">Interested — tell me more</span> replies. That's when you know the machine is doing its job."</p>
                 </div>
               </div>
             </div>
@@ -340,7 +340,7 @@ export default function LeadMachinePage() {
                 DIY automations or list-buying rarely fix this. They add more tools, more manual effort, and still no predictable flow.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-blue-500/20 via-purple-600/20 to-pink-500/10 border border-white/20 rounded-3xl p-8">
+            <div className="bg-gradient-to-br from-[#1d929e]/25 via-emerald-600/20 to-teal-500/10 border border-white/20 rounded-3xl p-8">
               <h3 className="text-xl font-semibold">Our Promise</h3>
               <p className="mt-4 text-white/80">
                 We build the machine inside your business — tailored targeting, live intent data, outreach, nurture, and reporting — so your calendar fills itself while you focus on delivery.
@@ -370,7 +370,7 @@ export default function LeadMachinePage() {
             <ol className="mt-8 grid gap-4 sm:grid-cols-2">
               {propositionSteps.map((step, index) => (
                 <li key={step} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/20 text-lg font-semibold text-blue-300">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1d929e]/20 text-lg font-semibold text-[#1d929e]">
                     {index + 1}
                   </span>
                   <p className="text-white/80">{step}</p>
@@ -391,7 +391,7 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-blue-600/30 via-purple-600/30 to-gray-900/40 p-8 sm:p-12">
+          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-[#1d929e]/25 via-emerald-600/20 to-gray-900/40 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why it’s Different</h2>
             <p className="mt-6 text-lg text-white/80 max-w-3xl">
               Unlike list-buying services or cold-email agencies, we integrate the Lead Machine™ directly into <span className="text-white font-medium">your</span> CRM, inbox, and automations. Every conversation, tag, and follow-up lives inside your environment—not someone else’s portal—and we keep it running on flow, not friction.
@@ -409,9 +409,9 @@ export default function LeadMachinePage() {
             </div>
             <div className="grid gap-6 md:grid-cols-2">
               {features.map(({ title, description, icon: Icon }) => (
-                <div key={title} className="rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-blue-400/40">
+                <div key={title} className="rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-[#1d929e]/40">
                   <div className="flex items-center gap-4">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/20 text-blue-300">
+                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1d929e]/20 text-[#1d929e]">
                       <Icon className="h-6 w-6" />
                     </span>
                     <h3 className="text-xl font-semibold">{title}</h3>
@@ -438,7 +438,7 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-purple-600/40 via-blue-600/30 to-slate-900/50 p-8 sm:p-12 text-center">
+          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-[#1d929e]/25 via-emerald-600/20 to-slate-900/40 p-8 sm:p-12 text-center">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why You Can’t Wait</h2>
             <p className="mt-6 text-lg text-white/80">
               Every day your competitors’ inboxes fill with conversations yours should have started. Waiting another week means another week of lost opportunities.
@@ -458,7 +458,7 @@ export default function LeadMachinePage() {
             <ol className="mt-6 space-y-4">
               {offerStack.map((item, index) => (
                 <li key={item} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-black/40 px-5 py-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/20 text-purple-200 font-semibold">{index + 1}</span>
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-300 font-semibold">{index + 1}</span>
                   <span className="text-white/75">{item}</span>
                 </li>
               ))}
@@ -470,7 +470,7 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-blue-900/40 p-8 sm:p-12">
+          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-[#1d929e]/20 via-emerald-600/20 to-teal-900/30 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why Believe Us</h2>
             <p className="mt-6 text-lg text-white/80">
               TrueFlow deploys Lead Machine™ systems for coaches, agencies, real estate teams, and local services—turning cold lists into booked calendars in under two weeks.
@@ -510,7 +510,7 @@ export default function LeadMachinePage() {
             <div className="text-center max-w-4xl mx-auto mb-10">
               <h2 className="text-3xl sm:text-4xl font-semibold">Transparent Pricing That Scales With You</h2>
               <p className="mt-4 text-lg text-white/80">
-                Start at <span className="text-2xl font-semibold text-blue-300">$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
+                Start at <span className="text-2xl font-semibold text-[#1d929e]">$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
               </p>
               <p className="mt-3 text-white/70">
                 One-time setup fee: <span className="text-white font-semibold">$2,000</span> (includes full buildout, CRM integration, and campaign optimization)
@@ -523,7 +523,7 @@ export default function LeadMachinePage() {
                   key={plan.name}
                   className={`rounded-3xl border p-8 flex flex-col gap-6 ${
                     plan.featured
-                      ? 'border-blue-400/50 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-black/40 ring-2 ring-blue-400/30'
+                      ? 'border-[#1d929e]/50 bg-gradient-to-br from-[#1d929e]/10 via-emerald-500/10 to-black/40 ring-2 ring-[#1d929e]/30'
                       : 'border-white/10 bg-black/40'
                   }`}
                 >
@@ -531,7 +531,7 @@ export default function LeadMachinePage() {
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
                       {plan.value && (
-                        <span className="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-400/30">
+                        <span className="px-3 py-1 rounded-full bg-[#1d929e]/20 text-[#1d929e] text-xs font-semibold uppercase tracking-wider border border-[#1d929e]/30">
                           {plan.value}
                         </span>
                       )}
@@ -561,7 +561,7 @@ export default function LeadMachinePage() {
               ))}
             </div>
 
-            <div className="mt-10 rounded-2xl border border-blue-400/30 bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-transparent p-8">
+            <div className="mt-10 rounded-2xl border border-[#1d929e]/30 bg-gradient-to-br from-[#1d929e]/20 via-emerald-500/20 to-transparent p-8">
               <div className="flex items-start gap-4">
                 <ShieldCheck className="h-8 w-8 text-blue-300 flex-shrink-0 mt-1" />
                 <div>
@@ -583,7 +583,7 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-blue-600/40 via-purple-600/40 to-black/60 p-10 sm:p-14">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#1d929e]/25 via-emerald-600/25 to-black/60 p-10 sm:p-14">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/70 uppercase tracking-[0.35em] text-xs">Ready?</span>
             <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">Stop chasing. Start attracting.</h2>
             <p className="mt-4 text-lg text-white/80">
@@ -593,7 +593,7 @@ export default function LeadMachinePage() {
               <button
                 type="button"
                 onClick={scrollToCalendar}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-lg font-semibold hover:shadow-2xl hover:shadow-blue-500/30 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 text-lg font-semibold hover:shadow-2xl hover:shadow-[#1d929e]/30 transition-all"
               >
                 Book a Demo
                 <ArrowRight className="h-5 w-5" />
@@ -622,7 +622,7 @@ export default function LeadMachinePage() {
               display: none !important;
             }
           `}</style>
-          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-blue-600/20 via-purple-600/20 to-black/60 p-8 sm:p-10">
+          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-[#1d929e]/20 via-emerald-600/20 to-black/60 p-8 sm:p-10">
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold text-white">Lock in Your Demo</h3>
               <p className="text-lg text-white/70">
