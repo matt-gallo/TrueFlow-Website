@@ -472,11 +472,11 @@ export default function LeadMachinePage() {
                   >
                     {index + 1}
                   </span>
-                  <span className={`${theme.textMuted}`}>{item}</span>
+                  <span className={`${isDarkMode ? 'text-white/75' : 'text-gray-700'}`}>{item}</span>
                 </li>
               ))}
             </ol>
-            <p className={`mt-6 font-medium ${theme.textMuted}`}>
+            <p className={`mt-6 font-medium ${isDarkMode ? 'text-white/75' : 'text-gray-700'}`}>
               Activate today → expect your first qualified conversations within 14 days.
             </p>
           </div>
