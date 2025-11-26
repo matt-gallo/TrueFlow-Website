@@ -2,8 +2,9 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  ChevronRight, 
+import { useTheme } from './ThemeProvider'
+import {
+  ChevronRight,
   FileText,
   Mic,
   Edit3,
@@ -118,6 +119,7 @@ const tabs = [
 ]
 
 export default function ContentEngineTabs() {
+  const { isDarkMode } = useTheme()
   const [activeTab, setActiveTab] = useState(1)
   const [videosAvailable, setVideosAvailable] = useState(true) // Start with true since videos are available
   const currentTab = tabs.find(tab => tab.id === activeTab)
@@ -125,26 +127,36 @@ export default function ContentEngineTabs() {
   return (
     <section className="py-12 md:py-20 px-4 relative overflow-hidden">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-black to-black" />
+      <div className={`absolute inset-0 bg-gradient-to-b ${
+        isDarkMode
+          ? 'from-[#1d929e]/20 via-black to-black'
+          : 'from-gray-50 via-white to-gray-100'
+      }`} />
       
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-12">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 px-2"
           >
-            <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <span className={`bg-gradient-to-r ${
+              isDarkMode
+                ? 'from-[#1d929e] via-emerald-400 to-teal-400'
+                : 'from-[#1d929e] via-emerald-500 to-teal-600'
+            } bg-clip-text text-transparent`}>
               Experience the Constant Content Engine™ Workflow
             </span>
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-base sm:text-lg md:text-xl text-white/70 max-w-3xl mx-auto px-2"
+            className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto px-2 ${
+              isDarkMode ? 'text-white/70' : 'text-gray-600'
+            }`}
           >
             Transform your expertise into weeks of content in just 6 simple steps
           </motion.p>
@@ -161,9 +173,13 @@ export default function ContentEngineTabs() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`
                     relative px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium transition-all duration-300 text-sm md:text-base whitespace-nowrap
-                    ${activeTab === tab.id 
-                      ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow-lg shadow-purple-500/25' 
-                      : 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white/80'
+                    ${activeTab === tab.id
+                      ? isDarkMode
+                        ? 'bg-gradient-to-r from-[#1d929e] to-emerald-500 text-white shadow-lg shadow-[#1d929e]/25'
+                        : 'bg-gradient-to-r from-[#1d929e] to-emerald-500 text-white shadow-lg shadow-[#1d929e]/25'
+                      : isDarkMode
+                        ? 'bg-white/5 text-white/60 hover:bg-white/10 hover:text-white/80'
+                        : 'bg-gray-200 text-gray-600 hover:bg-gray-300 hover:text-gray-900'
                     }
                   `}
                   whileHover={{ scale: 1.05 }}
@@ -177,12 +193,14 @@ export default function ContentEngineTabs() {
                   {activeTab === tab.id && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg -z-10"
+                      className="absolute inset-0 bg-gradient-to-r from-[#1d929e] to-emerald-500 rounded-lg -z-10"
                       transition={{ type: "spring", duration: 0.5 }}
                     />
                   )}
                   {index < tabs.length - 1 && (
-                    <ChevronRight className="hidden lg:inline absolute -right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/30" />
+                    <ChevronRight className={`hidden lg:inline absolute -right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 ${
+                      isDarkMode ? 'text-white/30' : 'text-gray-400'
+                    }`} />
                   )}
                 </motion.button>
               )
@@ -199,25 +217,35 @@ export default function ContentEngineTabs() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-lg rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 border border-white/10"
+              className={`backdrop-blur-lg rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 lg:p-12 border ${
+                isDarkMode
+                  ? 'bg-gradient-to-br from-white/5 to-white/10 border-white/10'
+                  : 'bg-white border-gray-200 shadow-xl'
+              }`}
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
                 {/* Left: Content */}
                 <div className="order-2 md:order-1">
                   <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-1.5 sm:p-2 rounded-lg">
+                    <div className="bg-gradient-to-r from-[#1d929e] to-emerald-500 p-1.5 sm:p-2 rounded-lg">
                       <currentTab.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white" />
                     </div>
-                    <span className="text-xs sm:text-sm font-semibold text-purple-400">
+                    <span className={`text-xs sm:text-sm font-semibold ${
+                      isDarkMode ? 'text-[#1d929e]' : 'text-[#1d929e]'
+                    }`}>
                       STEP {currentTab.id} OF 6
                     </span>
                   </div>
-                  
-                  <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
+
+                  <h3 className={`text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
                     {currentTab.content.heading}
                   </h3>
-                  
-                  <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base md:text-lg">
+
+                  <p className={`mb-4 sm:mb-6 text-sm sm:text-base md:text-lg ${
+                    isDarkMode ? 'text-white/70' : 'text-gray-600'
+                  }`}>
                     {currentTab.content.description}
                   </p>
                   
@@ -231,9 +259,11 @@ export default function ContentEngineTabs() {
                         className="flex items-start gap-2 sm:gap-3"
                       >
                         <div className="mt-0.5 sm:mt-1 flex-shrink-0">
-                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-gradient-to-r from-[#1d929e] to-emerald-400 rounded-full" />
                         </div>
-                        <span className="text-white/80 text-sm sm:text-base">{feature}</span>
+                        <span className={`text-sm sm:text-base ${
+                          isDarkMode ? 'text-white/80' : 'text-gray-700'
+                        }`}>{feature}</span>
                       </motion.li>
                     ))}
                   </ul>
@@ -241,19 +271,27 @@ export default function ContentEngineTabs() {
 
                 {/* Right: Video Placeholder */}
                 <div className="relative order-1 md:order-2">
-                  <div className="relative rounded-lg sm:rounded-xl overflow-hidden bg-gradient-to-br from-purple-900/30 to-blue-900/30 border border-white/10">
+                  <div className={`relative rounded-lg sm:rounded-xl overflow-hidden border ${
+                    isDarkMode
+                      ? 'bg-gradient-to-br from-[#1d929e]/20 to-emerald-900/20 border-white/10'
+                      : 'bg-gradient-to-br from-gray-100 to-gray-200 border-gray-300'
+                  }`}>
                     {/* Video Player for .mov files */}
                     <div className="aspect-video relative">
                       {/* Always show placeholder - will be hidden if video loads */}
-                      <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-900/30 to-blue-900/30" id={`placeholder-${currentTab.id}`}>
+                      <div className={`absolute inset-0 flex items-center justify-center ${
+                        isDarkMode
+                          ? 'bg-gradient-to-br from-[#1d929e]/20 to-emerald-900/20'
+                          : 'bg-gradient-to-br from-gray-100 to-gray-200'
+                      }`} id={`placeholder-${currentTab.id}`}>
                         <div className="text-center p-8">
-                          <motion.div 
-                            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-2 sm:mb-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center"
-                            animate={{ 
+                          <motion.div
+                            className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mx-auto mb-2 sm:mb-4 bg-gradient-to-r from-[#1d929e] to-emerald-500 rounded-full flex items-center justify-center"
+                            animate={{
                               scale: [1, 1.1, 1],
                               rotate: [0, 5, -5, 0]
                             }}
-                            transition={{ 
+                            transition={{
                               duration: 3,
                               repeat: Infinity,
                               repeatType: "reverse"
@@ -261,10 +299,14 @@ export default function ContentEngineTabs() {
                           >
                             <currentTab.icon className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 text-white" />
                           </motion.div>
-                          <p className="text-white/60 text-xs sm:text-sm font-medium">
+                          <p className={`text-xs sm:text-sm font-medium ${
+                            isDarkMode ? 'text-white/60' : 'text-gray-600'
+                          }`}>
                             Step {currentTab.id}: {currentTab.title}
                           </p>
-                          <p className="text-white/40 text-xs mt-1 sm:mt-2">
+                          <p className={`text-xs mt-1 sm:mt-2 ${
+                            isDarkMode ? 'text-white/40' : 'text-gray-500'
+                          }`}>
                             Interactive demo
                           </p>
                         </div>
@@ -310,16 +352,20 @@ export default function ContentEngineTabs() {
               </div>
 
               {/* Progress indicator */}
-              <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-white/10">
+              <div className={`mt-6 sm:mt-8 pt-6 sm:pt-8 border-t ${
+                isDarkMode ? 'border-white/10' : 'border-gray-200'
+              }`}>
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex gap-1 sm:gap-2">
                     {tabs.map((tab) => (
                       <div
                         key={tab.id}
                         className={`h-1 w-8 sm:w-10 md:w-12 rounded-full transition-all duration-300 ${
-                          tab.id <= activeTab 
-                            ? 'bg-gradient-to-r from-blue-400 to-purple-400' 
-                            : 'bg-white/20'
+                          tab.id <= activeTab
+                            ? 'bg-gradient-to-r from-[#1d929e] to-emerald-400'
+                            : isDarkMode
+                              ? 'bg-white/20'
+                              : 'bg-gray-300'
                         }`}
                       />
                     ))}
@@ -329,7 +375,7 @@ export default function ContentEngineTabs() {
                       if (activeTab < 6) setActiveTab(activeTab + 1)
                       else setActiveTab(1)
                     }}
-                    className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg text-sm sm:text-base font-medium hover:opacity-90 transition-opacity flex items-center gap-1 sm:gap-2"
+                    className="px-3 py-1.5 sm:px-4 sm:py-2 bg-gradient-to-r from-[#1d929e] to-emerald-500 text-white rounded-lg text-sm sm:text-base font-medium hover:opacity-90 transition-opacity flex items-center gap-1 sm:gap-2"
                   >
                     {activeTab < 6 ? 'Next Step' : 'Start Over'}
                     <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
