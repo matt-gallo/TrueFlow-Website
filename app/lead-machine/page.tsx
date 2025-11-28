@@ -1,10 +1,9 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
-import { useTheme } from '../components/ThemeProvider'
 import {
   ArrowRight,
   BadgeCheck,
@@ -20,21 +19,6 @@ import {
   BarChart3,
   ShieldCheck
 } from 'lucide-react'
-
-const problems = [
-  'Rely on referrals or luck instead of a daily stream of new conversations',
-  'Spend hours chasing dead leads, ghosted DMs, or low-intent lists',
-  "Piece together tools that don’t sync — data lives everywhere except the CRM",
-  'Lose prospects after the first reply because follow-up isn’t automated',
-  'Stay in constant catch-up mode instead of scaling what already works'
-]
-
-const propositionSteps = [
-  'Pinpoints buyers searching for your offer within the last 7 days',
-  'Drops enriched contact data directly into your CRM or pipeline',
-  'Starts natural email and SMS conversations instantly',
-  'Qualifies intent, routes hot leads, and books time on your calendar'
-]
 
 const features = [
   {
@@ -80,11 +64,9 @@ const features = [
 ]
 
 const benefits = [
-  'Stop guessing where tomorrow’s opportunities come from — the pipeline stays full.',
-  'Start your day with qualified, pre-warmed prospects already on the calendar.',
-  'Get back hours of focus time each week while the machine runs 24/7.',
-  'Know exactly what’s working with live data on outreach, replies, and bookings.',
-  'Scale into new offers or markets without rebuilding your lead engine from scratch.'
+  'Your calendar fills with warm prospects — no more chasing cold leads.',
+  'Your team focuses on closing, not manual follow-up or list building.',
+  'Revenue becomes predictable because the pipeline never runs dry.'
 ]
 
 const offerStack = [
@@ -125,7 +107,7 @@ const pricingPlans = [
     price: '$1,560',
     cadence: 'every 28 days',
     originalPrice: null,
-    value: 'Most Popular',
+    value: 'Recommended',
     description: 'Scale your pipeline consistently',
     features: [
       '30 new buyer prospects per day (~840/month)',
@@ -156,13 +138,83 @@ const pricingPlans = [
   }
 ]
 
+const builderQuestions = [
+  {
+    id: 'volume',
+    label: 'How many new qualified conversations do you need each day?',
+    options: [
+      { value: '10', copy: '5-10 per day', score: 0 },
+      { value: '30', copy: '15-30 per day', score: 1 },
+      { value: '70', copy: '40+ per day', score: 2 }
+    ]
+  },
+  {
+    id: 'team',
+    label: 'How many people handle follow-up today?',
+    options: [
+      { value: 'solo', copy: 'Mostly founder-led', score: 0 },
+      { value: 'pod', copy: '1-2 setters or closers', score: 1 },
+      { value: 'team', copy: 'Dedicated sales pod', score: 2 }
+    ]
+  },
+  {
+    id: 'systems',
+    label: 'How complex is your current tech stack?',
+    options: [
+      { value: 'simple', copy: 'Basic CRM + automations', score: 0 },
+      { value: 'growing', copy: 'Multiple offers + nurture paths', score: 1 },
+      { value: 'advanced', copy: 'Multi-market or compliance needs', score: 2 }
+    ]
+  }
+]
+
 export default function LeadMachinePage() {
-  const { isDarkMode } = useTheme()
+  const [isBuilderOpen, setIsBuilderOpen] = useState(false)
+  const [builderStep, setBuilderStep] = useState(0)
+  const [manualPlanChoice, setManualPlanChoice] = useState<string | null>(null)
+  const [builderAnswers, setBuilderAnswers] = useState(() => {
+    const defaults: Record<string, string> = {}
+    builderQuestions.forEach(question => {
+      defaults[question.id] = question.options[0].value
+    })
+    return defaults
+  })
+
   const scrollToCalendar = () => {
     const calendarSection = document.getElementById('book-demo-calendar')
     if (calendarSection) {
       calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
+  }
+
+  const updateBuilderAnswer = (questionId: string, value: string) => {
+    setBuilderAnswers(prev => ({ ...prev, [questionId]: value }))
+    setManualPlanChoice(null)
+  }
+
+  const toggleBuilder = () => {
+    setIsBuilderOpen(prev => {
+      const nextState = !prev
+      if (!nextState) {
+        setBuilderStep(0)
+        setManualPlanChoice(null)
+      } else {
+        requestAnimationFrame(() => {
+          document
+            .getElementById('lead-machine-builder')
+            ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        })
+      }
+      return nextState
+    })
+  }
+
+  const handleNextStep = () => {
+    setBuilderStep(prev => Math.min(prev + 1, builderQuestions.length))
+  }
+
+  const handlePrevStep = () => {
+    setBuilderStep(prev => Math.max(prev - 1, 0))
   }
 
   // Clean up any stray CSS text that appears from the booking widget
@@ -244,179 +296,232 @@ export default function LeadMachinePage() {
     }
   }, [])
 
+  const builderScore = builderQuestions.reduce((score, question) => {
+    const selected = question.options.find(option => option.value === builderAnswers[question.id])
+    return score + (selected?.score || 0)
+  }, 0)
+
+  const recommendedPlanName = builderScore >= 4 ? 'Scale' : builderScore >= 2 ? 'Growth' : 'Starter'
+  const activePlanName = manualPlanChoice || recommendedPlanName
+  const activePlan = pricingPlans.find(plan => plan.name === activePlanName) ?? pricingPlans[0]
+  const activePlanHighlights = activePlan.features.slice(0, 3)
+  const totalBuilderSteps = builderQuestions.length
+  const isSummaryStep = builderStep >= totalBuilderSteps
+  const currentQuestion = !isSummaryStep ? builderQuestions[builderStep] : null
+
   return (
-    <div
-      className={`min-h-screen overflow-hidden lead-machine-page ${
-        isDarkMode ? 'theme-dark bg-black text-white' : 'theme-light bg-gray-50 text-gray-900'
-      }`}
-    >
+    <div className="min-h-screen bg-black text-white overflow-hidden">
       {/* LeadConnector booking widget script */}
       <Navigation />
 
       <main className="pt-28 pb-24">
-        <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#1d929e]/20 via-emerald-600/10 to-cyan-500/10 blur-3xl" aria-hidden />
-          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] items-start">
-              <div className="text-center lg:text-left">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/80 text-xs sm:text-sm uppercase tracking-[0.32em]">
-                  <CircleDashed className="h-4 w-4" /> Lead Machine™
-                </span>
-                <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
-                  Find. Engage. Qualify. Automatically.
-                </h1>
-                <p className="mt-6 text-xl sm:text-2xl text-white/80">
-                  TrueFlow Lead Machine™ is a done-for-you AI prospecting system for coaches, agencies, and service founders.
-                </p>
-                <p className="mt-6 text-lg text-white/70">
-                  We track live intent, start human conversations, and hand you booked calls before you log in.
-                </p>
-                <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                  <button
-                    type="button"
-                    onClick={scrollToCalendar}
-                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 text-lg font-semibold hover:shadow-2xl hover:shadow-[#1d929e]/30 transition-all"
-                  >
-                    Book a Demo
-                    <ArrowRight className="h-5 w-5" />
-                  </button>
-                </div>
-                <p className="mt-4 text-sm text-white/60">
-                  <ShieldCheck className="inline h-4 w-4 mr-1 text-blue-300 align-text-bottom" /> ROI Assurance: if you don't recoup your setup fee in 90 days, we keep the machine running at no service cost until you do.
-                </p>
-              </div>
-              <div className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
-                <div className="rounded-2xl overflow-hidden border border-white/10">
-                  <Image
-                    src={isDarkMode ? "/trueflow-lead-machine-banner.png" : "/trueflow-lead-machine-banner-light-mode.png"}
-                    alt="TrueFlow Lead Machine Banner"
-                    width={600}
-                    height={400}
-                    className="w-full h-auto"
-                  />
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-black/40 p-6">
-                  <h3 className="text-lg font-semibold text-white">Inside the Machine</h3>
-                  <ul className="mt-4 space-y-3 text-white/70 text-sm sm:text-base">
-                    <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Daily scrape of buyers who searched your keywords within the last 7 days.</span></li>
-                    <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Enriched firmographic filters — revenue, location, tech stack, job role, and more.</span></li>
-                    <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Natural conversation starters tuned to your voice so replies feel human, not scripted.</span></li>
-                    <li className="flex items-start gap-3"><CheckCircle className="mt-0.5 h-5 w-5 text-blue-400" /><span>Automated routing into GoHighLevel (or your CRM) with stages, tasks, and alerts.</span></li>
-                  </ul>
-                </div>
-                <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#1d929e]/20 to-emerald-500/20 p-6">
-                  <p className="text-sm text-white/80">"Wake up to inboxes full of <span className="text-[#1d929e]">Interested — tell me more</span> replies. That's when you know the machine is doing its job."</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-semibold">Why Most Pipelines Leak</h2>
-          <div className="mt-8 rounded-2xl overflow-hidden border border-white/10 max-w-4xl mx-auto">
-            <Image
-              src="/trueflow-lead-machine-pipelines.png"
-              alt="Lead Machine Pipeline - Where Leads Leak"
-              width={900}
-              height={500}
-              className="w-full h-auto"
-            />
-          </div>
-          <div className="mt-6 grid gap-8 lg:grid-cols-[1.2fr_1fr] items-start">
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8">
-              <p className="text-white font-semibold uppercase tracking-[0.3em] text-xs sm:text-sm">You don’t have a leads problem—you have a leak problem.</p>
-              <h3 className="mt-3 text-2xl font-medium text-white">The issue isn’t traffic — it’s traction.</h3>
-              <p className="mt-3 text-white/70">Here’s where good leads quietly fall through the cracks:</p>
-              <ul className="mt-6 space-y-3 text-white/70">
-                {problems.map((problem) => (
-                  <li key={problem} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 mt-0.5 text-blue-400" />
-                    <span>{problem}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="mt-6 text-white/60">
-                DIY automations or list-buying rarely fix this. They add more tools, more manual effort, and still no predictable flow.
-              </p>
-            </div>
-            <div className="bg-gradient-to-br from-[#1d929e]/25 via-emerald-600/20 to-teal-500/10 border border-white/20 rounded-3xl p-8">
-              <h3 className="text-xl font-semibold">Our Promise</h3>
-              <p className="mt-4 text-white/80">
-                We build the machine inside your business — tailored targeting, live intent data, outreach, nurture, and reporting — so your calendar fills itself while you focus on delivery.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-8 sm:p-12">
-            <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h2 className="text-3xl sm:text-4xl font-semibold">How the Machine Runs</h2>
-                <p className="mt-3 text-white/70">TrueFlow handles the first 90% of your sales process, then hands you intent-qualified conversations:</p>
-              </div>
-              <BadgeCheck className="h-12 w-12 text-blue-400" />
-            </div>
-            <div className="mt-8 rounded-2xl overflow-hidden border border-white/10">
+        <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12 text-center relative overflow-hidden">
+            <div className="absolute -top-4 right-0 w-[520px] max-w-full opacity-90 pointer-events-none">
               <Image
-                src="/trueflow-lead-machine-funnel-banner.png"
-                alt="Lead Machine Funnel Flow"
-                width={800}
-                height={450}
+                src="/trueflow-lead-machine-banner-transparent.png"
+                alt="TrueFlow Lead Machine"
+                width={780}
+                height={390}
                 className="w-full h-auto"
+                priority
               />
             </div>
-            <ol className="mt-8 grid gap-4 sm:grid-cols-2">
-              {propositionSteps.map((step, index) => (
-                <li key={step} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1d929e]/20 text-lg font-semibold text-[#1d929e]">
-                    {index + 1}
-                  </span>
-                  <p className="text-white/80">{step}</p>
-                </li>
-              ))}
-            </ol>
-            <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-6">
-              <h3 className="text-lg font-semibold text-white">In plain language:</h3>
-              <ul className="mt-4 space-y-3 text-white/75">
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No manual prospecting. The Lead Machine™ pinpoints people searching for what you sell right now.</span></li>
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No messy spreadsheets. We enrich every record with contact info, revenue, tech stack, and buying signals.</span></li>
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No disconnected tools. Leads drop straight into GoHighLevel, Salesforce, HubSpot—wherever you already work.</span></li>
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No cold, spammy campaigns. Conversations sound human, stay active, and escalate interest automatically.</span></li>
-                <li className="flex gap-3"><ArrowRight className="mt-0.5 h-4 w-4 text-blue-400" /><span>No chasing. Once they raise their hand, the system routes, scores, and books them onto your calendar.</span></li>
-              </ul>
+            <div className="relative z-10 mt-28 sm:mt-32">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
+                Never chase leads again.
+              </h1>
+              <p className="mt-6 text-xl sm:text-2xl text-white/80 font-medium">
+                We find, engage, and qualify ready-to-buy clients for you — automatically.
+              </p>
+              <p className="mt-6 text-lg text-white/70">
+                Plug in our AI-powered Lead Machine once, and wake up to booked calls sitting in your CRM every day.
+              </p>
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  type="button"
+                  onClick={scrollToCalendar}
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-lg font-semibold hover:shadow-2xl hover:shadow-cyan-500/30 transition-all"
+                >
+                  See the Lead Machine in Action
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+              </div>
+              <p className="mt-4 text-sm text-white/60">
+                Takes 2 minutes — zero tech setup. <ShieldCheck className="inline h-4 w-4 ml-2 mr-1 text-blue-300 align-text-bottom" /> ROI Assurance: if you don’t recoup your setup fee in 90 days, we keep the machine running at no service cost until you do.
+              </p>
             </div>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-[#1d929e]/25 via-emerald-600/20 to-gray-900/40 p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold">Why it’s Different</h2>
-            <p className="mt-6 text-lg text-white/80 max-w-3xl">
-              Unlike list-buying services or cold-email agencies, we integrate the Lead Machine™ directly into <span className="text-white font-medium">your</span> CRM, inbox, and automations. Every conversation, tag, and follow-up lives inside your environment—not someone else’s portal—and we keep it running on flow, not friction.
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-semibold">What We Do For You</h2>
+            <p className="mt-4 text-lg text-white/70">
+              From finding contacts to booking meetings — we handle every step of your B2B pipeline.
+            </p>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            {[{
+              title: 'Find Your Ideal Contacts',
+              description: 'We identify and verify decision-makers actively searching for solutions like yours.',
+              icon: Search
+            }, {
+              title: 'High-Value Outreach',
+              description: 'Reach out with irresistible free offers (no strings attached) that get replies and permission to market.',
+              icon: Mail
+            }, {
+              title: 'Deliver & Build Trust',
+              description: 'We fulfill the promise, deliver value, and build the relationship on your behalf.',
+              icon: BadgeCheck
+            }, {
+              title: 'Nurture & Convert',
+              description: 'Automated email marketing sequences that warm leads and move them toward a decision.',
+              icon: RefreshCw
+            }, {
+              title: 'Lead Magnets & Funnels',
+              description: 'Custom-built lead magnets and conversion funnels designed to qualify and educate prospects.',
+              icon: Target
+            }, {
+              title: 'Appointment Setting',
+              description: 'We book qualified prospects directly into your calendar — warm and ready to buy.',
+              icon: Workflow
+            }].map(item => (
+              <div
+                key={item.title}
+                className="relative rounded-3xl border border-blue-400/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/10 backdrop-blur-xl p-6 overflow-hidden"
+              >
+                <item.icon className="absolute -right-6 -bottom-6 h-40 w-40 text-blue-400/10" />
+                <div className="relative z-10">
+                  <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                  <p className="text-white/70 text-sm">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <p className="text-white/70 text-lg">
+              <span className="text-white font-semibold">One-time setup: $2,000</span> · <span className="text-white font-semibold">Monthly service starts at $1,250</span>
+            </p>
+            <p className="mt-3 text-white/60">
+              Activate today → expect your first qualified conversations within 14 days.
             </p>
           </div>
         </section>
 
+        <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
+            <p className="text-xs uppercase tracking-[0.3em] text-white/60">It’s not hype — it’s math</p>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300">Lead Machine identifies intent, starts the conversation, and syncs every reply into your pipeline + ads.</h2>
+            <p className="mt-4 text-white/70 text-lg">
+              Live intent signals → human-tone outreach → qualified replies routed into your CRM with enriched data powering retargeting audiences.
+            </p>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-3 text-white/80">
+              <div className="rounded-2xl border border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20 backdrop-blur-xl p-5">
+                <div className="flex items-center gap-3 text-white/80 text-sm uppercase tracking-[0.2em]">
+                  <span role="img" aria-label="verified">👤</span> Verified contacts
+                </div>
+                <p className="mt-2 text-3xl font-semibold text-white">70+ / day</p>
+                <p className="mt-2 text-white/80">Live-intent scraping pulls people who raised their hand for your offer within the last 7 days.</p>
+              </div>
+
+              <div className="rounded-2xl border border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20 backdrop-blur-xl p-5">
+                <div className="flex items-center gap-3 text-white/80 text-sm uppercase tracking-[0.2em]">
+                  <span role="img" aria-label="response">⏱️</span> Sub-minute replies
+                </div>
+                <p className="mt-2 text-3xl font-semibold text-white">&lt;60 seconds</p>
+                <p className="mt-2 text-white/80">AI outreach replies in your voice across email, SMS, and DM so prospects never wait.</p>
+              </div>
+
+              <div className="rounded-2xl border border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20 backdrop-blur-xl p-5">
+                <div className="flex items-center gap-3 text-white/80 text-sm uppercase tracking-[0.2em]">
+                  <span role="img" aria-label="pipeline">📈</span> Pipeline clarity
+                </div>
+                <p className="mt-2 text-3xl font-semibold text-white">100% tracked</p>
+                <p className="mt-2 text-white/80">Warm replies push straight into your CRM stages and sync into high-converting retargeting audiences.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
-          <div className="flex flex-col gap-10">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-semibold">The Machine, Piece by Piece</h2>
+              <h2 className="text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300">Stop paying for leads. Start owning conversations.</h2>
               <p className="mt-4 text-white/70">
-                Every component is done-for-you and tuned so the entire system runs like a single operator — only faster.
+                Most tools hand you a CSV. Lead Machine hands you verified humans already talking back — with every reply tracked inside your CRM.
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              {features.map(({ title, description, icon: Icon }) => (
-                <div key={title} className="rounded-3xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-[#1d929e]/40">
-                  <div className="flex items-center gap-4">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#1d929e]/20 text-[#1d929e]">
-                      <Icon className="h-6 w-6" />
-                    </span>
-                    <h3 className="text-xl font-semibold">{title}</h3>
-                  </div>
-                  <p className="mt-4 text-white/70">{description}</p>
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              {[{
+                title: 'Lists → Live intent',
+                copy: 'We identify buyers actively searching for what you sell, not scraped directories.'
+              }, {
+                title: 'Cold blasts → Human replies',
+                copy: 'AI responds in your tone within seconds so prospects feel heard, not spammed.'
+              }, {
+                title: 'Leads → Conversations',
+                copy: 'Only people who raise their hand move into your pipeline with context, tasks, and retargeting audiences.'
+              }].map(item => (
+                <div key={item.title} className="rounded-3xl border border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20 backdrop-blur-xl p-6">
+                  <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 text-white/80">{item.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
+          <div className="rounded-3xl border border-white/15 bg-gradient-to-r from-cyan-900/40 via-blue-900/30 to-black/60 p-8 sm:p-12">
+            <div className="text-center max-w-3xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-semibold">How the Lead Machine Works (in 3 moves)</h2>
+              <p className="mt-4 text-white/70">
+                Turn it on once. Then every day, it repeats the same playbook: find intent → spark conversations → hand off warm buyers.
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-3">
+              {[{
+                title: 'Identify live intent',
+                copy: 'We scan the web for people searching your exact offers — not recycled lists.'
+              }, {
+                title: 'Start real conversations',
+                copy: 'AI outreach replies in your voice within 60 seconds and keeps the thread moving.'
+              }, {
+                title: 'Sync warm replies',
+                copy: 'Qualified hand-raisers land in your CRM with tags, context, and retargeting audiences ready to run.'
+              }].map(step => (
+                <div key={step.title} className="rounded-3xl border border-white/15 bg-white/5 p-6">
+                  <h3 className="text-xl font-semibold text-white">{step.title}</h3>
+                  <p className="mt-3 text-white/70">{step.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
+            <div className="grid gap-8 md:grid-cols-3">
+              {[{
+                label: 'Data Intelligence',
+                description: 'Finds who’s searching right now with verified contact data.'
+              }, {
+                label: 'AI Outreach Engine',
+                description: 'Starts 1:1 conversations automatically—no cold-calling or spray-and-pray.'
+              }, {
+                label: 'CRM + Ad Sync',
+                description: 'Drops qualified replies into your pipeline and fuels smarter retargeting.'
+              }].map(column => (
+                <div key={column.label} className="rounded-3xl border border-white/10 bg-black/40 p-6">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">{column.label}</p>
+                  <h3 className="mt-3 text-2xl font-semibold text-white">{column.label}</h3>
+                  <p className="mt-3 text-white/70">{column.description}</p>
+                  <p className="mt-4 text-sm text-white/60">No wasted spend. No manual follow-up. No generic lists.</p>
                 </div>
               ))}
             </div>
@@ -425,65 +530,59 @@ export default function LeadMachinePage() {
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold">What You Gain</h2>
-            <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+            <h2 className="text-3xl sm:text-4xl font-semibold">Here’s what happens when you turn it on.</h2>
+            <ul className="mt-8 space-y-4 text-white/80">
               {benefits.map((benefit) => (
-                <li key={benefit} className="flex items-start gap-3 rounded-2xl bg-black/40 border border-white/10 px-5 py-4">
+                <li key={benefit} className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-blue-400 mt-0.5" />
-                  <span className="text-white/75">{benefit}</span>
+                  <span className="text-lg">{benefit}</span>
                 </li>
               ))}
             </ul>
+            <div className="mt-8 text-center">
+              <button
+                type="button"
+                onClick={scrollToCalendar}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 text-lg font-semibold text-white hover:shadow-2xl hover:shadow-cyan-500/30"
+              >
+                Activate the Machine
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-[#1d929e]/25 via-emerald-600/20 to-slate-900/40 p-8 sm:p-12 text-center">
-            <h2 className="text-3xl sm:text-4xl font-semibold">Why You Can’t Wait</h2>
+          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-cyan-600/40 via-blue-600/30 to-slate-900/50 p-8 sm:p-12 text-center">
+            <h2 className="text-3xl sm:text-4xl font-semibold">Why you can’t wait</h2>
             <p className="mt-6 text-lg text-white/80">
-              Every day your competitors’ inboxes fill with conversations yours should have started. Waiting another week means another week of lost opportunities.
+              Every day you wait, a competitor runs this playbook and talks to the buyers you should be closing.
             </p>
             <p className="mt-6 text-lg text-white/80">
-              The Lead Machine™ blends relationship-first selling with automation at scale—no gimmicks, no spray-and-pray, just intelligent outreach that respects your brand and multiplies your time.
-            </p>
-            <p className="mt-6 text-lg text-white/90 font-medium">
-              When you see your calendar filling back up, you’ll know we’ve taken their spot.
+              There’s only one reason you’re not closing more — no one is talking to your best prospects first. We fix that in days, not months.
             </p>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className={`rounded-3xl border p-8 sm:p-12 ${
-            isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-white shadow-xl'
-          }`}>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">What's Included When You Activate</h2>
             <ol className="mt-6 space-y-4">
               {offerStack.map((item, index) => (
-                <li
-                  key={item}
-                  className={`flex items-start gap-4 rounded-2xl px-5 py-4 border ${
-                    isDarkMode ? 'border-white/10 bg-black/40' : 'border-gray-200 bg-gray-50'
-                  }`}
-                >
-                  <span
-                    className={`flex h-10 w-10 items-center justify-center rounded-full font-semibold ${
-                      isDarkMode ? 'bg-emerald-500/20 text-emerald-300' : 'bg-[#1d929e]/15 text-[#1d929e]'
-                    }`}
-                  >
-                    {index + 1}
-                  </span>
-                  <span className={`${isDarkMode ? 'text-white/75' : 'text-gray-700'}`}>{item}</span>
+                <li key={item} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-black/40 px-5 py-4">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-100 font-semibold">{index + 1}</span>
+                  <span className="text-white/75">{item}</span>
                 </li>
               ))}
             </ol>
-            <p className={`mt-6 font-medium ${isDarkMode ? 'text-white/75' : 'text-gray-700'}`}>
+            <p className="mt-6 text-white/70 font-medium">
               Activate today → expect your first qualified conversations within 14 days.
             </p>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-[#1d929e]/20 via-emerald-600/20 to-teal-900/30 p-8 sm:p-12">
+          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-blue-900/40 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Why Believe Us</h2>
             <p className="mt-6 text-lg text-white/80">
               TrueFlow deploys Lead Machine™ systems for coaches, agencies, real estate teams, and local services—turning cold lists into booked calendars in under two weeks.
@@ -495,15 +594,6 @@ export default function LeadMachinePage() {
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
             <h2 className="text-3xl sm:text-4xl font-semibold">Who It Works For</h2>
-            <div className="mt-8 rounded-2xl overflow-hidden border border-white/10">
-              <Image
-                src="/trueflow-lead-machine-who-it-works-for.png"
-                alt="Who Lead Machine Works For"
-                width={800}
-                height={400}
-                className="w-full h-auto"
-              />
-            </div>
             <ul className="mt-6 space-y-4">
               {verticals.map((vertical) => (
                 <li key={vertical} className="flex items-start gap-3">
@@ -523,7 +613,7 @@ export default function LeadMachinePage() {
             <div className="text-center max-w-4xl mx-auto mb-10">
               <h2 className="text-3xl sm:text-4xl font-semibold">Transparent Pricing That Scales With You</h2>
               <p className="mt-4 text-lg text-white/80">
-                Start at <span className="text-2xl font-semibold text-[#1d929e]">$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
+                Start at <span className="text-2xl font-semibold text-blue-300">$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
               </p>
               <p className="mt-3 text-white/70">
                 One-time setup fee: <span className="text-white font-semibold">$2,000</span> (includes full buildout, CRM integration, and campaign optimization)
@@ -536,7 +626,7 @@ export default function LeadMachinePage() {
                   key={plan.name}
                   className={`rounded-3xl border p-8 flex flex-col gap-6 ${
                     plan.featured
-                      ? 'border-[#1d929e]/50 bg-gradient-to-br from-[#1d929e]/10 via-emerald-500/10 to-black/40 ring-2 ring-[#1d929e]/30'
+                      ? 'border-cyan-400/50 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-black/40 ring-2 ring-cyan-400/30'
                       : 'border-white/10 bg-black/40'
                   }`}
                 >
@@ -544,7 +634,13 @@ export default function LeadMachinePage() {
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
                       {plan.value && (
-                        <span className="px-3 py-1 rounded-full bg-[#1d929e]/20 text-[#1d929e] text-xs font-semibold uppercase tracking-wider border border-[#1d929e]/30">
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg ${
+                            plan.value === 'Recommended'
+                              ? 'bg-cyan-300 text-slate-900 border border-cyan-100'
+                              : 'bg-amber-300 text-slate-900 border border-amber-100'
+                          }`}
+                        >
                           {plan.value}
                         </span>
                       )}
@@ -570,49 +666,199 @@ export default function LeadMachinePage() {
                       </li>
                     ))}
                   </ul>
+
                 </div>
               ))}
             </div>
 
-            <div className="mt-10 rounded-2xl border border-[#1d929e]/30 bg-gradient-to-br from-[#1d929e]/20 via-emerald-500/20 to-transparent p-8">
-              <div className="flex items-start gap-4">
-                <ShieldCheck className="h-8 w-8 text-blue-300 flex-shrink-0 mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold text-white">90-Day ROI Guarantee</h3>
-                  <p className="mt-2 text-white/80">
-                    If the system doesn't generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.
-                  </p>
-                </div>
+            <div className="mt-10 flex flex-col items-center gap-3 text-center">
+              <button
+                type="button"
+                onClick={toggleBuilder}
+                className="inline-flex items-center gap-3 rounded-full border border-cyan-400/40 bg-cyan-500/10 px-8 py-3 text-lg font-semibold text-white transition-colors hover:bg-cyan-500/20"
+                aria-expanded={isBuilderOpen}
+              >
+                {isBuilderOpen ? 'Hide Build Planner' : 'Build Your Lead Machine'}
+              </button>
+              <p className="text-sm text-white/60">Answer a few quick questions and we'll point you to the right Lead Machine™ package.</p>
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-cyan-500/15 via-blue-500/20 to-transparent p-5 text-center">
+              <div className="inline-flex items-center justify-center gap-3 text-white/90 text-sm sm:text-base">
+                <ShieldCheck className="h-6 w-6 text-cyan-300" />
+                <p className="font-medium">90-Day ROI Guarantee If the system doesn't generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.</p>
               </div>
             </div>
 
-            <div className="mt-8 text-center">
-              <h3 className="text-2xl font-semibold text-white">Need a custom plan?</h3>
-              <p className="mt-3 text-white/70 max-w-3xl mx-auto">
-                Every business is different. Book a demo and we'll build a plan tailored to your market, volume needs, and growth goals.
-              </p>
-            </div>
+            {isBuilderOpen && (
+              <div id="lead-machine-builder" className="mt-10 rounded-3xl border border-white/10 bg-black/40 p-6 sm:p-8">
+                <div className="space-y-6">
+                  <div>
+                    <div className="flex items-center justify-between text-sm text-white/60">
+                      <span>Step {Math.min(builderStep + 1, totalBuilderSteps + 1)} of {totalBuilderSteps + 1}</span>
+                      <span>{isSummaryStep ? 'See your plan' : 'Answer the prompts'}</span>
+                    </div>
+                    <div className="mt-3 h-2 w-full rounded-full bg-white/10">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all"
+                        style={{ width: `${(Math.min(builderStep, totalBuilderSteps) / totalBuilderSteps) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  {!isSummaryStep && currentQuestion && (
+                    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                      <p className="text-xs uppercase tracking-[0.3em] text-white/60">Question {builderStep + 1}</p>
+                      <h3 className="mt-3 text-2xl font-semibold text-white">{currentQuestion.label}</h3>
+                      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                        {currentQuestion.options.map(option => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => updateBuilderAnswer(currentQuestion.id, option.value)}
+                            className={`rounded-2xl border px-4 py-4 text-left text-sm transition-all ${
+                              builderAnswers[currentQuestion.id] === option.value
+                                ? 'border-cyan-300 bg-cyan-500/10 text-white shadow-lg shadow-cyan-900/30'
+                                : 'border-white/10 bg-black/30 text-white/70 hover:border-white/40'
+                            }`}
+                          >
+                            {option.copy}
+                          </button>
+                        ))}
+                      </div>
+
+                      <div className="mt-6 flex flex-wrap gap-4">
+                        <button
+                          type="button"
+                          onClick={handlePrevStep}
+                          disabled={builderStep === 0}
+                          className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/70 disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                          Back
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleNextStep}
+                          className="rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/30"
+                        >
+                          {builderStep === totalBuilderSteps - 1 ? 'See Recommendation' : 'Next'}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {isSummaryStep && (
+                    <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+                      <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Your build</p>
+                        <h3 className="mt-2 text-3xl font-semibold text-white">{activePlanName} Plan</h3>
+                        <p className="mt-3 text-white/70 text-sm">
+                          {manualPlanChoice
+                            ? 'We locked in your selection—scroll up to the pricing cards if you want the full breakdown.'
+                            : `Based on your answers, the ${activePlanName} package will keep your pipeline on pace.`}
+                        </p>
+
+                        <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 space-y-3">
+                          {activePlanHighlights.map(feature => (
+                            <div key={feature} className="flex items-start gap-3 text-sm text-white/80">
+                              <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
+                              <span>{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-6 flex flex-wrap gap-3 text-xs text-white/50">
+                          {builderQuestions.map(question => (
+                            <span key={question.id} className="rounded-full border border-white/15 px-3 py-1">
+                              {question.options.find(option => option.value === builderAnswers[question.id])?.copy}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="mt-6 flex flex-wrap gap-4">
+                          <button
+                            type="button"
+                            onClick={() => setBuilderStep(0)}
+                            className="rounded-full border border-white/20 px-6 py-3 text-xs font-semibold text-white/70"
+                          >
+                            Start over
+                          </button>
+                        <button
+                          type="button"
+                          onClick={scrollToCalendar}
+                          className="rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/30"
+                        >
+                            Book my demo
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="rounded-3xl border border-white/15 bg-black/30 p-6 flex flex-col gap-4">
+                        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Choose any package</p>
+                        <div className="flex flex-wrap gap-3">
+                          {pricingPlans.map(plan => (
+                            <button
+                              key={plan.name}
+                              type="button"
+                              onClick={() => setManualPlanChoice(prev => (prev === plan.name ? null : plan.name))}
+                            className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                              (manualPlanChoice || recommendedPlanName) === plan.name && activePlanName === plan.name
+                                ? 'border-cyan-300 bg-cyan-500/10 text-white'
+                                : 'border-white/15 text-white/70 hover:border-white/40'
+                            }`}
+                            >
+                              {plan.name}
+                            </button>
+                          ))}
+                        </div>
+
+                        {manualPlanChoice && (
+                          <button
+                            type="button"
+                            onClick={() => setManualPlanChoice(null)}
+                            className="text-left text-sm text-white/60 underline-offset-4 hover:text-white"
+                          >
+                            Back to our recommendation
+                          </button>
+                        )}
+
+                        <div className="rounded-2xl border border-white/10 bg-white/5 p-5 space-y-3">
+                          <p className="text-sm font-semibold text-white/80">What's inside {activePlanName}</p>
+                          {activePlanHighlights.map(feature => (
+                            <div key={feature} className="flex items-start gap-3 text-xs text-white/70">
+                              <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
+                              <span>{feature}</span>
+                            </div>
+                          ))}
+                          <p className="text-xs text-white/50">Full details are in the pricing grid above.</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-[#1d929e]/25 via-emerald-600/25 to-black/60 p-10 sm:p-14">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-cyan-600/40 via-blue-600/40 to-black/60 p-10 sm:p-14">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/70 uppercase tracking-[0.35em] text-xs">Ready?</span>
-            <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">Stop chasing. Start attracting.</h2>
+            <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">Let the machine do the prospecting for you.</h2>
             <p className="mt-4 text-lg text-white/80">
-              Activate the TrueFlow Lead Machine™ and see your first qualified leads land in your inbox within days.
+              Book a free walkthrough, see your pipeline model, and decide if you want us to run it for you.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 type="button"
                 onClick={scrollToCalendar}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 text-lg font-semibold hover:shadow-2xl hover:shadow-[#1d929e]/30 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-lg font-semibold hover:shadow-2xl hover:shadow-cyan-500/30 transition-all"
               >
-                Book a Demo
+                Book Your Free Demo
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>
-            <p className="mt-4 text-sm text-white/60">You're one demo away from a self-filling pipeline.</p>
+            <p className="mt-4 text-sm text-white/70">We only onboard 22 installs per month to protect performance.</p>
           </div>
         </section>
 
@@ -627,8 +873,7 @@ export default function LeadMachinePage() {
             #msgsndr-calendar {
               display: block !important;
               width: 100% !important;
-              aspect-ratio: 1.089 / 1 !important;
-              min-height: 600px !important;
+              min-height: 520px !important;
             }
 
             /* Hide any direct text content after calendar wrapper */
@@ -636,7 +881,7 @@ export default function LeadMachinePage() {
               display: none !important;
             }
           `}</style>
-          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-[#1d929e]/20 via-emerald-600/20 to-black/60 p-8 sm:p-10">
+          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-cyan-600/20 via-blue-600/20 to-black/60 p-8 sm:p-10">
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold text-white">Lock in Your Demo</h3>
               <p className="text-lg text-white/70">
@@ -648,7 +893,7 @@ export default function LeadMachinePage() {
                 src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
                 id="msgsndr-calendar"
                 scrolling="yes"
-                style={{ width: '100%', border: 'none', overflow: 'hidden', aspectRatio: '1.089 / 1', minHeight: '600px' }}
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
                 title="Book a demo with TrueFlow"
                 onLoad={(e) => {
                   // Remove any CSS text nodes that appear after iframe loads
@@ -676,6 +921,68 @@ export default function LeadMachinePage() {
             </div>
           </div>
         </section>
+
+        <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
+            <div className="text-center mb-10">
+              <p className="text-xs uppercase tracking-[0.3em] text-white/60">After the demo</p>
+              <h2 className="mt-3 text-3xl sm:text-4xl font-semibold">What happens once you say yes</h2>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {[{
+                title: 'Day 0-2',
+                copy: 'Install your Lead Machine environment, connect domains, and import your dream clients list.'
+              }, {
+                title: 'Day 3-7',
+                copy: 'Launch 1:1 conversations, deliver your irresistible offer, and tag every reply in your CRM.'
+              }, {
+                title: 'Day 8-14',
+                copy: 'Layer nurture, ads, and appointment setting so pipelines stay full while you close.'
+              }].map(item => (
+                <div key={item.title} className="rounded-3xl border border-blue-300/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/15 backdrop-blur-xl p-6">
+                  <p className="text-sm text-white/60 uppercase tracking-[0.2em]">{item.title}</p>
+                  <p className="mt-3 text-white text-lg">{item.copy}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
+          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-blue-600/40 via-slate-900/50 to-black/60 p-8 sm:p-12">
+            <div className="space-y-6 text-white/80">
+              <p className="text-sm uppercase tracking-[0.3em] text-white/60">Story time</p>
+              <h2 className="text-3xl sm:text-4xl font-semibold text-white">“We turned the machine on Friday. By Monday, five warm replies were waiting.”</h2>
+              <p>
+                Dana runs a boutique automation agency. Every week was feast or famine. We loaded her dream-client filters, dropped a
+                “Let us audit your funnels for free” offer, and by the end of week one she had her first two retainers closed.
+              </p>
+              <p>
+                Nothing about Dana’s offer changed. Only the leverage. When buyers raise their hand first, selling feels like service again.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
+          <div className="rounded-3xl border border-rose-400/30 bg-gradient-to-br from-rose-600/30 via-purple-600/30 to-black/60 p-10 sm:p-14">
+            <p className="text-xs uppercase tracking-[0.35em] text-white/70">Urgent</p>
+            <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-white">Only 22 installs per month. Next cohort starts Monday.</h2>
+            <p className="mt-4 text-white/80 text-lg">If this is the week you stop guessing where leads will come from, grab a slot now.</p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                type="button"
+                onClick={scrollToCalendar}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 to-amber-400 text-lg font-semibold text-black hover:shadow-2xl hover:shadow-rose-500/30 transition-all"
+              >
+                Reserve my install
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
+            <p className="mt-3 text-sm text-white/60">No payment due today—just pick your kickoff call.</p>
+          </div>
+        </section>
+
       </main>
     </div>
   )
