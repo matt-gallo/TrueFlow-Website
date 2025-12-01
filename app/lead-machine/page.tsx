@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
+import { useTheme } from '../components/ThemeProvider'
 import {
   ArrowRight,
   BadgeCheck,
@@ -169,6 +170,8 @@ const builderQuestions = [
 ]
 
 export default function LeadMachinePage() {
+  const { theme } = useTheme()
+  const isDarkMode = theme === 'dark'
   const [isBuilderOpen, setIsBuilderOpen] = useState(false)
   const [builderStep, setBuilderStep] = useState(0)
   const [manualPlanChoice, setManualPlanChoice] = useState<string | null>(null)
@@ -310,16 +313,20 @@ export default function LeadMachinePage() {
   const currentQuestion = !isSummaryStep ? builderQuestions[builderStep] : null
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden">
+    <div className={`min-h-screen overflow-hidden transition-colors duration-300 ${
+      isDarkMode ? 'bg-black text-white' : 'bg-white text-gray-900'
+    }`}>
       {/* LeadConnector booking widget script */}
       <Navigation />
 
       <main className="pt-28 pb-24">
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12 text-center relative overflow-hidden">
+          <div className={`rounded-3xl border p-8 sm:p-12 text-center relative overflow-hidden ${
+            isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'
+          }`}>
             <div className="absolute -top-4 right-0 w-[520px] max-w-full opacity-90 pointer-events-none">
               <Image
-                src="/trueflow-lead-machine-banner-transparent.png"
+                src={isDarkMode ? "/trueflow-lead-machine-banner-transparent.png" : "/trueflow-lead-machine-banner-light-mode.png"}
                 alt="TrueFlow Lead Machine"
                 width={780}
                 height={390}
@@ -328,13 +335,19 @@ export default function LeadMachinePage() {
               />
             </div>
             <div className="relative z-10 mt-28 sm:mt-32">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight">
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl font-semibold leading-tight ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>
                 Never chase leads again.
               </h1>
-              <p className="mt-6 text-xl sm:text-2xl text-white/80 font-medium">
+              <p className={`mt-6 text-xl sm:text-2xl font-medium ${
+                isDarkMode ? 'text-white/80' : 'text-gray-700'
+              }`}>
                 We find, engage, and qualify ready-to-buy clients for you — automatically.
               </p>
-              <p className="mt-6 text-lg text-white/70">
+              <p className={`mt-6 text-lg ${
+                isDarkMode ? 'text-white/70' : 'text-gray-600'
+              }`}>
                 Plug in our AI-powered Lead Machine once, and wake up to booked calls sitting in your CRM every day.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -347,8 +360,12 @@ export default function LeadMachinePage() {
                   <ArrowRight className="h-5 w-5" />
                 </button>
               </div>
-              <p className="mt-4 text-sm text-white/60">
-                Takes 2 minutes — zero tech setup. <ShieldCheck className="inline h-4 w-4 ml-2 mr-1 text-blue-300 align-text-bottom" /> ROI Assurance: if you don’t recoup your setup fee in 90 days, we keep the machine running at no service cost until you do.
+              <p className={`mt-4 text-sm ${
+                isDarkMode ? 'text-white/60' : 'text-gray-500'
+              }`}>
+                Takes 2 minutes — zero tech setup. <ShieldCheck className={`inline h-4 w-4 ml-2 mr-1 align-text-bottom ${
+                  isDarkMode ? 'text-blue-300' : 'text-blue-500'
+                }`} /> ROI Assurance: if you don't recoup your setup fee in 90 days, we keep the machine running at no service cost until you do.
               </p>
             </div>
           </div>
@@ -356,8 +373,12 @@ export default function LeadMachinePage() {
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
           <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-semibold">What We Do For You</h2>
-            <p className="mt-4 text-lg text-white/70">
+            <h2 className={`text-3xl sm:text-4xl font-semibold ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>What We Do For You</h2>
+            <p className={`mt-4 text-lg ${
+              isDarkMode ? 'text-white/70' : 'text-gray-600'
+            }`}>
               From finding contacts to booking meetings — we handle every step of your B2B pipeline.
             </p>
           </div>
@@ -390,68 +411,134 @@ export default function LeadMachinePage() {
             }].map(item => (
               <div
                 key={item.title}
-                className="relative rounded-3xl border border-blue-400/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/10 backdrop-blur-xl p-6 overflow-hidden"
+                className={`relative rounded-3xl border p-6 overflow-hidden backdrop-blur-xl ${
+                  isDarkMode
+                    ? 'border-blue-400/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/10'
+                    : 'border-blue-300/40 bg-gradient-to-br from-blue-100/80 to-cyan-50/60'
+                }`}
               >
-                <item.icon className="absolute -right-6 -bottom-6 h-40 w-40 text-blue-400/10" />
+                <item.icon className={`absolute -right-6 -bottom-6 h-40 w-40 ${
+                  isDarkMode ? 'text-blue-400/10' : 'text-blue-200/30'
+                }`} />
                 <div className="relative z-10">
-                  <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
-                  <p className="text-white/70 text-sm">{item.description}</p>
+                  <h3 className={`text-xl font-semibold mb-2 ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>{item.title}</h3>
+                  <p className={`text-sm ${
+                    isDarkMode ? 'text-white/70' : 'text-gray-600'
+                  }`}>{item.description}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="mt-10 text-center">
-            <p className="text-white/70 text-lg">
-              <span className="text-white font-semibold">One-time setup: $2,000</span> · <span className="text-white font-semibold">Monthly service starts at $1,250</span>
+            <p className={`text-lg ${
+              isDarkMode ? 'text-white/70' : 'text-gray-600'
+            }`}>
+              <span className={`font-semibold ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>One-time setup: $2,000</span> · <span className={`font-semibold ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>Monthly service starts at $1,250</span>
             </p>
-            <p className="mt-3 text-white/60">
+            <p className={`mt-3 ${
+              isDarkMode ? 'text-white/60' : 'text-gray-500'
+            }`}>
               Activate today → expect your first qualified conversations within 14 days.
             </p>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
-            <p className="text-xs uppercase tracking-[0.3em] text-white/60">It’s not hype — it’s math</p>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300">Lead Machine identifies intent, starts the conversation, and syncs every reply into your pipeline + ads.</h2>
-            <p className="mt-4 text-white/70 text-lg">
+          <div className={`rounded-3xl border p-8 sm:p-12 ${
+            isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'
+          }`}>
+            <p className={`text-xs uppercase tracking-[0.3em] ${
+              isDarkMode ? 'text-white/60' : 'text-gray-500'
+            }`}>It's not hype — it's math</p>
+            <h2 className={`mt-3 text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text ${
+              isDarkMode
+                ? 'bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300'
+                : 'bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600'
+            }`}>Lead Machine identifies intent, starts the conversation, and syncs every reply into your pipeline + ads.</h2>
+            <p className={`mt-4 text-lg ${
+              isDarkMode ? 'text-white/70' : 'text-gray-600'
+            }`}>
               Live intent signals → human-tone outreach → qualified replies routed into your CRM with enriched data powering retargeting audiences.
             </p>
 
-            <div className="mt-10 grid gap-6 md:grid-cols-3 text-white/80">
-              <div className="rounded-2xl border border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20 backdrop-blur-xl p-5">
-                <div className="flex items-center gap-3 text-white/80 text-sm uppercase tracking-[0.2em]">
+            <div className="mt-10 grid gap-6 md:grid-cols-3">
+              <div className={`rounded-2xl border backdrop-blur-xl p-5 ${
+                isDarkMode
+                  ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20'
+                  : 'border-blue-300/40 bg-gradient-to-br from-blue-100/70 to-cyan-50/50'
+              }`}>
+                <div className={`flex items-center gap-3 text-sm uppercase tracking-[0.2em] ${
+                  isDarkMode ? 'text-white/80' : 'text-gray-600'
+                }`}>
                   <span role="img" aria-label="verified">👤</span> Verified contacts
                 </div>
-                <p className="mt-2 text-3xl font-semibold text-white">70+ / day</p>
-                <p className="mt-2 text-white/80">Live-intent scraping pulls people who raised their hand for your offer within the last 7 days.</p>
+                <p className={`mt-2 text-3xl font-semibold ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>70+ / day</p>
+                <p className={`mt-2 ${
+                  isDarkMode ? 'text-white/80' : 'text-gray-600'
+                }`}>Live-intent scraping pulls people who raised their hand for your offer within the last 7 days.</p>
               </div>
 
-              <div className="rounded-2xl border border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20 backdrop-blur-xl p-5">
-                <div className="flex items-center gap-3 text-white/80 text-sm uppercase tracking-[0.2em]">
+              <div className={`rounded-2xl border backdrop-blur-xl p-5 ${
+                isDarkMode
+                  ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20'
+                  : 'border-blue-300/40 bg-gradient-to-br from-blue-100/70 to-cyan-50/50'
+              }`}>
+                <div className={`flex items-center gap-3 text-sm uppercase tracking-[0.2em] ${
+                  isDarkMode ? 'text-white/80' : 'text-gray-600'
+                }`}>
                   <span role="img" aria-label="response">⏱️</span> Sub-minute replies
                 </div>
-                <p className="mt-2 text-3xl font-semibold text-white">&lt;60 seconds</p>
-                <p className="mt-2 text-white/80">AI outreach replies in your voice across email, SMS, and DM so prospects never wait.</p>
+                <p className={`mt-2 text-3xl font-semibold ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>&lt;60 seconds</p>
+                <p className={`mt-2 ${
+                  isDarkMode ? 'text-white/80' : 'text-gray-600'
+                }`}>AI outreach replies in your voice across email, SMS, and DM so prospects never wait.</p>
               </div>
 
-              <div className="rounded-2xl border border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20 backdrop-blur-xl p-5">
-                <div className="flex items-center gap-3 text-white/80 text-sm uppercase tracking-[0.2em]">
+              <div className={`rounded-2xl border backdrop-blur-xl p-5 ${
+                isDarkMode
+                  ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20'
+                  : 'border-blue-300/40 bg-gradient-to-br from-blue-100/70 to-cyan-50/50'
+              }`}>
+                <div className={`flex items-center gap-3 text-sm uppercase tracking-[0.2em] ${
+                  isDarkMode ? 'text-white/80' : 'text-gray-600'
+                }`}>
                   <span role="img" aria-label="pipeline">📈</span> Pipeline clarity
                 </div>
-                <p className="mt-2 text-3xl font-semibold text-white">100% tracked</p>
-                <p className="mt-2 text-white/80">Warm replies push straight into your CRM stages and sync into high-converting retargeting audiences.</p>
+                <p className={`mt-2 text-3xl font-semibold ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>100% tracked</p>
+                <p className={`mt-2 ${
+                  isDarkMode ? 'text-white/80' : 'text-gray-600'
+                }`}>Warm replies push straight into your CRM stages and sync into high-converting retargeting audiences.</p>
               </div>
             </div>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
+          <div className={`rounded-3xl border p-8 sm:p-12 ${
+            isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'
+          }`}>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300">Stop paying for leads. Start owning conversations.</h2>
-              <p className="mt-4 text-white/70">
+              <h2 className={`text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text ${
+                isDarkMode
+                  ? 'bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300'
+                  : 'bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600'
+              }`}>Stop paying for leads. Start owning conversations.</h2>
+              <p className={`mt-4 ${
+                isDarkMode ? 'text-white/70' : 'text-gray-600'
+              }`}>
                 Most tools hand you a CSV. Lead Machine hands you verified humans already talking back — with every reply tracked inside your CRM.
               </p>
             </div>
@@ -466,9 +553,17 @@ export default function LeadMachinePage() {
                 title: 'Leads → Conversations',
                 copy: 'Only people who raise their hand move into your pipeline with context, tasks, and retargeting audiences.'
               }].map(item => (
-                <div key={item.title} className="rounded-3xl border border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20 backdrop-blur-xl p-6">
-                  <h3 className="text-xl font-semibold text-white">{item.title}</h3>
-                  <p className="mt-3 text-white/80">{item.copy}</p>
+                <div key={item.title} className={`rounded-3xl border backdrop-blur-xl p-6 ${
+                  isDarkMode
+                    ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20'
+                    : 'border-blue-300/40 bg-gradient-to-br from-blue-100/70 to-cyan-50/50'
+                }`}>
+                  <h3 className={`text-xl font-semibold ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>{item.title}</h3>
+                  <p className={`mt-3 ${
+                    isDarkMode ? 'text-white/80' : 'text-gray-600'
+                  }`}>{item.copy}</p>
                 </div>
               ))}
             </div>
@@ -476,10 +571,10 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
-          <div className="rounded-3xl border border-white/15 bg-gradient-to-r from-cyan-900/40 via-blue-900/30 to-black/60 p-8 sm:p-12">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-r from-cyan-900/40 via-blue-900/30 to-black/60' : 'bg-gradient-to-r from-cyan-100/60 via-blue-100/50 to-gray-50'} p-8 sm:p-12`}>
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl sm:text-4xl font-semibold">How the Lead Machine Works (in 3 moves)</h2>
-              <p className="mt-4 text-white/70">
+              <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>How the Lead Machine Works (in 3 moves)</h2>
+              <p className={`mt-4 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 Turn it on once. Then every day, it repeats the same playbook: find intent → spark conversations → hand off warm buyers.
               </p>
             </div>
@@ -495,9 +590,9 @@ export default function LeadMachinePage() {
                 title: 'Sync warm replies',
                 copy: 'Qualified hand-raisers land in your CRM with tags, context, and retargeting audiences ready to run.'
               }].map(step => (
-                <div key={step.title} className="rounded-3xl border border-white/15 bg-white/5 p-6">
-                  <h3 className="text-xl font-semibold text-white">{step.title}</h3>
-                  <p className="mt-3 text-white/70">{step.copy}</p>
+                <div key={step.title} className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-6`}>
+                  <h3 className={`text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{step.title}</h3>
+                  <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{step.copy}</p>
                 </div>
               ))}
             </div>
@@ -505,11 +600,11 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-8 sm:p-12`}>
             <div className="grid gap-8 md:grid-cols-3">
               {[{
                 label: 'Data Intelligence',
-                description: 'Finds who’s searching right now with verified contact data.'
+                description: 'Finds who\'s searching right now with verified contact data.'
               }, {
                 label: 'AI Outreach Engine',
                 description: 'Starts 1:1 conversations automatically—no cold-calling or spray-and-pray.'
@@ -517,11 +612,11 @@ export default function LeadMachinePage() {
                 label: 'CRM + Ad Sync',
                 description: 'Drops qualified replies into your pipeline and fuels smarter retargeting.'
               }].map(column => (
-                <div key={column.label} className="rounded-3xl border border-white/10 bg-black/40 p-6">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/60">{column.label}</p>
-                  <h3 className="mt-3 text-2xl font-semibold text-white">{column.label}</h3>
-                  <p className="mt-3 text-white/70">{column.description}</p>
-                  <p className="mt-4 text-sm text-white/60">No wasted spend. No manual follow-up. No generic lists.</p>
+                <div key={column.label} className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-black/40' : 'bg-gray-100'} p-6`}>
+                  <p className={`text-xs uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>{column.label}</p>
+                  <h3 className={`mt-3 text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{column.label}</h3>
+                  <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{column.description}</p>
+                  <p className={`mt-4 text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>No wasted spend. No manual follow-up. No generic lists.</p>
                 </div>
               ))}
             </div>
@@ -529,9 +624,9 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold">Here’s what happens when you turn it on.</h2>
-            <ul className="mt-8 space-y-4 text-white/80">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-8 sm:p-12`}>
+            <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Here's what happens when you turn it on.</h2>
+            <ul className={`mt-8 space-y-4 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               {benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-blue-400 mt-0.5" />
@@ -553,70 +648,70 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-cyan-600/40 via-blue-600/30 to-slate-900/50 p-8 sm:p-12 text-center">
-            <h2 className="text-3xl sm:text-4xl font-semibold">Why you can’t wait</h2>
-            <p className="mt-6 text-lg text-white/80">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/20' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-cyan-600/40 via-blue-600/30 to-slate-900/50' : 'bg-gradient-to-br from-cyan-100 via-blue-100 to-gray-50'} p-8 sm:p-12 text-center`}>
+            <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Why you can't wait</h2>
+            <p className={`mt-6 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               Every day you wait, a competitor runs this playbook and talks to the buyers you should be closing.
             </p>
-            <p className="mt-6 text-lg text-white/80">
-              There’s only one reason you’re not closing more — no one is talking to your best prospects first. We fix that in days, not months.
+            <p className={`mt-6 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+              There's only one reason you're not closing more — no one is talking to your best prospects first. We fix that in days, not months.
             </p>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold">What's Included When You Activate</h2>
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-8 sm:p-12`}>
+            <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>What's Included When You Activate</h2>
             <ol className="mt-6 space-y-4">
               {offerStack.map((item, index) => (
-                <li key={item} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-black/40 px-5 py-4">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-cyan-500/20 text-cyan-100 font-semibold">{index + 1}</span>
-                  <span className="text-white/75">{item}</span>
+                <li key={item} className={`flex items-start gap-4 rounded-2xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-black/40' : 'bg-gray-100'} px-5 py-4`}>
+                  <span className={`flex h-10 w-10 items-center justify-center rounded-full ${isDarkMode ? 'bg-cyan-500/20 text-cyan-100' : 'bg-cyan-100 text-cyan-700'} font-semibold`}>{index + 1}</span>
+                  <span className={isDarkMode ? 'text-white/75' : 'text-gray-600'}>{item}</span>
                 </li>
               ))}
             </ol>
-            <p className="mt-6 text-white/70 font-medium">
+            <p className={`mt-6 ${isDarkMode ? 'text-white/70' : 'text-gray-600'} font-medium`}>
               Activate today → expect your first qualified conversations within 14 days.
             </p>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/20 bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-blue-900/40 p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold">Why Believe Us</h2>
-            <p className="mt-6 text-lg text-white/80">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/20' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-blue-900/40' : 'bg-gradient-to-br from-cyan-100 via-blue-100 to-blue-50'} p-8 sm:p-12`}>
+            <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Why Believe Us</h2>
+            <p className={`mt-6 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               TrueFlow deploys Lead Machine™ systems for coaches, agencies, real estate teams, and local services—turning cold lists into booked calendars in under two weeks.
             </p>
-            <p className="mt-4 text-lg text-white/80">No playbooks. No templates. Just proven installs that produce pipeline.</p>
+            <p className={`mt-4 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>No playbooks. No templates. Just proven installs that produce pipeline.</p>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
-            <h2 className="text-3xl sm:text-4xl font-semibold">Who It Works For</h2>
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-8 sm:p-12`}>
+            <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Who It Works For</h2>
             <ul className="mt-6 space-y-4">
               {verticals.map((vertical) => (
                 <li key={vertical} className="flex items-start gap-3">
                   <ArrowRight className="h-5 w-5 text-blue-400 mt-0.5" />
-                  <span className="text-white/75">{vertical}</span>
+                  <span className={isDarkMode ? 'text-white/75' : 'text-gray-600'}>{vertical}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-white/70">
+            <p className={`mt-6 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
               If you can describe your dream client, the Lead Machine™ can find them.
             </p>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-8 sm:p-12`}>
             <div className="text-center max-w-4xl mx-auto mb-10">
-              <h2 className="text-3xl sm:text-4xl font-semibold">Transparent Pricing That Scales With You</h2>
-              <p className="mt-4 text-lg text-white/80">
-                Start at <span className="text-2xl font-semibold text-blue-300">$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
+              <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Transparent Pricing That Scales With You</h2>
+              <p className={`mt-4 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                Start at <span className={`text-2xl font-semibold ${isDarkMode ? 'text-blue-300' : 'text-blue-600'}`}>$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
               </p>
-              <p className="mt-3 text-white/70">
-                One-time setup fee: <span className="text-white font-semibold">$2,000</span> (includes full buildout, CRM integration, and campaign optimization)
+              <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                One-time setup fee: <span className={`${isDarkMode ? 'text-white' : 'text-gray-900'} font-semibold`}>$2,000</span> (includes full buildout, CRM integration, and campaign optimization)
               </p>
             </div>
 
@@ -626,13 +721,17 @@ export default function LeadMachinePage() {
                   key={plan.name}
                   className={`rounded-3xl border p-8 flex flex-col gap-6 ${
                     plan.featured
-                      ? 'border-cyan-400/50 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-black/40 ring-2 ring-cyan-400/30'
-                      : 'border-white/10 bg-black/40'
+                      ? isDarkMode
+                        ? 'border-cyan-400/50 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-black/40 ring-2 ring-cyan-400/30'
+                        : 'border-cyan-400 bg-gradient-to-br from-cyan-50 via-blue-50 to-gray-100 ring-2 ring-cyan-400/50'
+                      : isDarkMode
+                        ? 'border-white/10 bg-black/40'
+                        : 'border-gray-200 bg-gray-100'
                   }`}
                 >
                   <div>
                     <div className="flex items-start justify-between gap-4">
-                      <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
+                      <h3 className={`text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{plan.name}</h3>
                       {plan.value && (
                         <span
                           className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg ${
@@ -645,15 +744,15 @@ export default function LeadMachinePage() {
                         </span>
                       )}
                     </div>
-                    <p className="mt-2 text-white/60">{plan.description}</p>
+                    <p className={`mt-2 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>{plan.description}</p>
                   </div>
 
                   <div className="flex items-baseline gap-3">
-                    <p className="text-4xl font-semibold text-white">{plan.price}</p>
+                    <p className={`text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{plan.price}</p>
                     <div className="flex flex-col">
-                      <p className="text-white/70 text-sm">{plan.cadence}</p>
+                      <p className={`${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>{plan.cadence}</p>
                       {plan.originalPrice && (
-                        <p className="text-white/40 text-xs line-through">{plan.originalPrice}</p>
+                        <p className={`${isDarkMode ? 'text-white/40' : 'text-gray-400'} text-xs line-through`}>{plan.originalPrice}</p>
                       )}
                     </div>
                   </div>
@@ -662,7 +761,7 @@ export default function LeadMachinePage() {
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
                         <CheckCircle className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
-                        <span className="text-white/75 text-sm">{feature}</span>
+                        <span className={`${isDarkMode ? 'text-white/75' : 'text-gray-600'} text-sm`}>{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -675,30 +774,30 @@ export default function LeadMachinePage() {
               <button
                 type="button"
                 onClick={toggleBuilder}
-                className="inline-flex items-center gap-3 rounded-full border border-cyan-400/40 bg-cyan-500/10 px-8 py-3 text-lg font-semibold text-white transition-colors hover:bg-cyan-500/20"
+                className={`inline-flex items-center gap-3 rounded-full border ${isDarkMode ? 'border-cyan-400/40 bg-cyan-500/10' : 'border-cyan-400 bg-cyan-50'} px-8 py-3 text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} transition-colors ${isDarkMode ? 'hover:bg-cyan-500/20' : 'hover:bg-cyan-100'}`}
                 aria-expanded={isBuilderOpen}
               >
                 {isBuilderOpen ? 'Hide Build Planner' : 'Build Your Lead Machine'}
               </button>
-              <p className="text-sm text-white/60">Answer a few quick questions and we'll point you to the right Lead Machine™ package.</p>
+              <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Answer a few quick questions and we'll point you to the right Lead Machine™ package.</p>
             </div>
 
-            <div className="mt-8 rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-cyan-500/15 via-blue-500/20 to-transparent p-5 text-center">
-              <div className="inline-flex items-center justify-center gap-3 text-white/90 text-sm sm:text-base">
-                <ShieldCheck className="h-6 w-6 text-cyan-300" />
+            <div className={`mt-8 rounded-2xl border ${isDarkMode ? 'border-cyan-400/30 bg-gradient-to-br from-cyan-500/15 via-blue-500/20 to-transparent' : 'border-cyan-300 bg-gradient-to-br from-cyan-50 via-blue-50 to-transparent'} p-5 text-center`}>
+              <div className={`inline-flex items-center justify-center gap-3 ${isDarkMode ? 'text-white/90' : 'text-gray-800'} text-sm sm:text-base`}>
+                <ShieldCheck className={`h-6 w-6 ${isDarkMode ? 'text-cyan-300' : 'text-cyan-600'}`} />
                 <p className="font-medium">90-Day ROI Guarantee If the system doesn't generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.</p>
               </div>
             </div>
 
             {isBuilderOpen && (
-              <div id="lead-machine-builder" className="mt-10 rounded-3xl border border-white/10 bg-black/40 p-6 sm:p-8">
+              <div id="lead-machine-builder" className={`mt-10 rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-black/40' : 'bg-gray-100'} p-6 sm:p-8`}>
                 <div className="space-y-6">
                   <div>
-                    <div className="flex items-center justify-between text-sm text-white/60">
+                    <div className={`flex items-center justify-between text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
                       <span>Step {Math.min(builderStep + 1, totalBuilderSteps + 1)} of {totalBuilderSteps + 1}</span>
                       <span>{isSummaryStep ? 'See your plan' : 'Answer the prompts'}</span>
                     </div>
-                    <div className="mt-3 h-2 w-full rounded-full bg-white/10">
+                    <div className={`mt-3 h-2 w-full rounded-full ${isDarkMode ? 'bg-white/10' : 'bg-gray-200'}`}>
                       <div
                         className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all"
                         style={{ width: `${(Math.min(builderStep, totalBuilderSteps) / totalBuilderSteps) * 100}%` }}
@@ -707,9 +806,9 @@ export default function LeadMachinePage() {
                   </div>
 
                   {!isSummaryStep && currentQuestion && (
-                    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                      <p className="text-xs uppercase tracking-[0.3em] text-white/60">Question {builderStep + 1}</p>
-                      <h3 className="mt-3 text-2xl font-semibold text-white">{currentQuestion.label}</h3>
+                    <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-6`}>
+                      <p className={`text-xs uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Question {builderStep + 1}</p>
+                      <h3 className={`mt-3 text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{currentQuestion.label}</h3>
                       <div className="mt-6 grid gap-4 sm:grid-cols-3">
                         {currentQuestion.options.map(option => (
                           <button
@@ -718,8 +817,12 @@ export default function LeadMachinePage() {
                             onClick={() => updateBuilderAnswer(currentQuestion.id, option.value)}
                             className={`rounded-2xl border px-4 py-4 text-left text-sm transition-all ${
                               builderAnswers[currentQuestion.id] === option.value
-                                ? 'border-cyan-300 bg-cyan-500/10 text-white shadow-lg shadow-cyan-900/30'
-                                : 'border-white/10 bg-black/30 text-white/70 hover:border-white/40'
+                                ? isDarkMode
+                                  ? 'border-cyan-300 bg-cyan-500/10 text-white shadow-lg shadow-cyan-900/30'
+                                  : 'border-cyan-400 bg-cyan-50 text-gray-900 shadow-lg shadow-cyan-200/50'
+                                : isDarkMode
+                                  ? 'border-white/10 bg-black/30 text-white/70 hover:border-white/40'
+                                  : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
                             }`}
                           >
                             {option.copy}
@@ -732,7 +835,7 @@ export default function LeadMachinePage() {
                           type="button"
                           onClick={handlePrevStep}
                           disabled={builderStep === 0}
-                          className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/70 disabled:cursor-not-allowed disabled:opacity-40"
+                          className={`rounded-full border ${isDarkMode ? 'border-white/20' : 'border-gray-300'} px-6 py-3 text-sm font-semibold ${isDarkMode ? 'text-white/70' : 'text-gray-600'} disabled:cursor-not-allowed disabled:opacity-40`}
                         >
                           Back
                         </button>
@@ -749,27 +852,27 @@ export default function LeadMachinePage() {
 
                   {isSummaryStep && (
                     <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
-                      <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-                        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Your build</p>
-                        <h3 className="mt-2 text-3xl font-semibold text-white">{activePlanName} Plan</h3>
-                        <p className="mt-3 text-white/70 text-sm">
+                      <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-6`}>
+                        <p className={`text-xs uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Your build</p>
+                        <h3 className={`mt-2 text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{activePlanName} Plan</h3>
+                        <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>
                           {manualPlanChoice
                             ? 'We locked in your selection—scroll up to the pricing cards if you want the full breakdown.'
                             : `Based on your answers, the ${activePlanName} package will keep your pipeline on pace.`}
                         </p>
 
-                        <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 space-y-3">
+                        <div className={`mt-6 rounded-2xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-black/30' : 'bg-white'} p-5 space-y-3`}>
                           {activePlanHighlights.map(feature => (
-                            <div key={feature} className="flex items-start gap-3 text-sm text-white/80">
+                            <div key={feature} className={`flex items-start gap-3 text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                               <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
                               <span>{feature}</span>
                             </div>
                           ))}
                         </div>
 
-                        <div className="mt-6 flex flex-wrap gap-3 text-xs text-white/50">
+                        <div className={`mt-6 flex flex-wrap gap-3 text-xs ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
                           {builderQuestions.map(question => (
-                            <span key={question.id} className="rounded-full border border-white/15 px-3 py-1">
+                            <span key={question.id} className={`rounded-full border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} px-3 py-1`}>
                               {question.options.find(option => option.value === builderAnswers[question.id])?.copy}
                             </span>
                           ))}
@@ -779,7 +882,7 @@ export default function LeadMachinePage() {
                           <button
                             type="button"
                             onClick={() => setBuilderStep(0)}
-                            className="rounded-full border border-white/20 px-6 py-3 text-xs font-semibold text-white/70"
+                            className={`rounded-full border ${isDarkMode ? 'border-white/20' : 'border-gray-300'} px-6 py-3 text-xs font-semibold ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}
                           >
                             Start over
                           </button>
@@ -793,8 +896,8 @@ export default function LeadMachinePage() {
                         </div>
                       </div>
 
-                      <div className="rounded-3xl border border-white/15 bg-black/30 p-6 flex flex-col gap-4">
-                        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Choose any package</p>
+                      <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-black/30' : 'bg-white'} p-6 flex flex-col gap-4`}>
+                        <p className={`text-xs uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Choose any package</p>
                         <div className="flex flex-wrap gap-3">
                           {pricingPlans.map(plan => (
                             <button
@@ -803,8 +906,12 @@ export default function LeadMachinePage() {
                               onClick={() => setManualPlanChoice(prev => (prev === plan.name ? null : plan.name))}
                             className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                               (manualPlanChoice || recommendedPlanName) === plan.name && activePlanName === plan.name
-                                ? 'border-cyan-300 bg-cyan-500/10 text-white'
-                                : 'border-white/15 text-white/70 hover:border-white/40'
+                                ? isDarkMode
+                                  ? 'border-cyan-300 bg-cyan-500/10 text-white'
+                                  : 'border-cyan-400 bg-cyan-50 text-gray-900'
+                                : isDarkMode
+                                  ? 'border-white/15 text-white/70 hover:border-white/40'
+                                  : 'border-gray-300 text-gray-600 hover:border-gray-400'
                             }`}
                             >
                               {plan.name}
@@ -816,21 +923,21 @@ export default function LeadMachinePage() {
                           <button
                             type="button"
                             onClick={() => setManualPlanChoice(null)}
-                            className="text-left text-sm text-white/60 underline-offset-4 hover:text-white"
+                            className={`text-left text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-500 hover:text-gray-900'} underline-offset-4`}
                           >
                             Back to our recommendation
                           </button>
                         )}
 
-                        <div className="rounded-2xl border border-white/10 bg-white/5 p-5 space-y-3">
-                          <p className="text-sm font-semibold text-white/80">What's inside {activePlanName}</p>
+                        <div className={`rounded-2xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-5 space-y-3`}>
+                          <p className={`text-sm font-semibold ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>What's inside {activePlanName}</p>
                           {activePlanHighlights.map(feature => (
-                            <div key={feature} className="flex items-start gap-3 text-xs text-white/70">
+                            <div key={feature} className={`flex items-start gap-3 text-xs ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                               <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
                               <span>{feature}</span>
                             </div>
                           ))}
-                          <p className="text-xs text-white/50">Full details are in the pricing grid above.</p>
+                          <p className={`text-xs ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>Full details are in the pricing grid above.</p>
                         </div>
                       </div>
                     </div>
@@ -842,10 +949,10 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-cyan-600/40 via-blue-600/40 to-black/60 p-10 sm:p-14">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/20 bg-white/5 text-white/70 uppercase tracking-[0.35em] text-xs">Ready?</span>
-            <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">Let the machine do the prospecting for you.</h2>
-            <p className="mt-4 text-lg text-white/80">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-gradient-to-br from-cyan-600/40 via-blue-600/40 to-black/60' : 'bg-gradient-to-br from-cyan-100 via-blue-100 to-gray-50'} p-10 sm:p-14`}>
+            <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${isDarkMode ? 'border-white/20 bg-white/5 text-white/70' : 'border-gray-300 bg-white text-gray-600'} uppercase tracking-[0.35em] text-xs`}>Ready?</span>
+            <h2 className={`mt-6 text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Let the machine do the prospecting for you.</h2>
+            <p className={`mt-4 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               Book a free walkthrough, see your pipeline model, and decide if you want us to run it for you.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
@@ -858,7 +965,7 @@ export default function LeadMachinePage() {
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>
-            <p className="mt-4 text-sm text-white/70">We only onboard 22 installs per month to protect performance.</p>
+            <p className={`mt-4 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>We only onboard 22 installs per month to protect performance.</p>
           </div>
         </section>
 
@@ -881,14 +988,14 @@ export default function LeadMachinePage() {
               display: none !important;
             }
           `}</style>
-          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-cyan-600/20 via-blue-600/20 to-black/60 p-8 sm:p-10">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-cyan-600/20 via-blue-600/20 to-black/60' : 'bg-gradient-to-br from-cyan-100/80 via-blue-100/80 to-gray-50'} p-8 sm:p-10`}>
             <div className="space-y-4 text-center mb-8">
-              <h3 className="text-3xl sm:text-4xl font-semibold text-white">Lock in Your Demo</h3>
-              <p className="text-lg text-white/70">
+              <h3 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Lock in Your Demo</h3>
+              <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
-            <div className="calendar-wrapper overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+            <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-white'}`}>
               <iframe
                 src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
                 id="msgsndr-calendar"
@@ -923,10 +1030,10 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12">
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-8 sm:p-12`}>
             <div className="text-center mb-10">
-              <p className="text-xs uppercase tracking-[0.3em] text-white/60">After the demo</p>
-              <h2 className="mt-3 text-3xl sm:text-4xl font-semibold">What happens once you say yes</h2>
+              <p className={`text-xs uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>After the demo</p>
+              <h2 className={`mt-3 text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>What happens once you say yes</h2>
             </div>
             <div className="grid gap-6 md:grid-cols-3">
               {[{
@@ -939,9 +1046,9 @@ export default function LeadMachinePage() {
                 title: 'Day 8-14',
                 copy: 'Layer nurture, ads, and appointment setting so pipelines stay full while you close.'
               }].map(item => (
-                <div key={item.title} className="rounded-3xl border border-blue-300/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/15 backdrop-blur-xl p-6">
-                  <p className="text-sm text-white/60 uppercase tracking-[0.2em]">{item.title}</p>
-                  <p className="mt-3 text-white text-lg">{item.copy}</p>
+                <div key={item.title} className={`rounded-3xl border ${isDarkMode ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/15' : 'border-blue-300 bg-gradient-to-br from-blue-100/80 to-cyan-100/60'} backdrop-blur-xl p-6`}>
+                  <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'} uppercase tracking-[0.2em]`}>{item.title}</p>
+                  <p className={`mt-3 ${isDarkMode ? 'text-white' : 'text-gray-900'} text-lg`}>{item.copy}</p>
                 </div>
               ))}
             </div>
@@ -949,26 +1056,26 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
-          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-blue-600/40 via-slate-900/50 to-black/60 p-8 sm:p-12">
-            <div className="space-y-6 text-white/80">
-              <p className="text-sm uppercase tracking-[0.3em] text-white/60">Story time</p>
-              <h2 className="text-3xl sm:text-4xl font-semibold text-white">“We turned the machine on Friday. By Monday, five warm replies were waiting.”</h2>
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-blue-600/40 via-slate-900/50 to-black/60' : 'bg-gradient-to-br from-blue-100 via-gray-100 to-gray-50'} p-8 sm:p-12`}>
+            <div className={`space-y-6 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+              <p className={`text-sm uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Story time</p>
+              <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>"We turned the machine on Friday. By Monday, five warm replies were waiting."</h2>
               <p>
                 Dana runs a boutique automation agency. Every week was feast or famine. We loaded her dream-client filters, dropped a
-                “Let us audit your funnels for free” offer, and by the end of week one she had her first two retainers closed.
+                "Let us audit your funnels for free" offer, and by the end of week one she had her first two retainers closed.
               </p>
               <p>
-                Nothing about Dana’s offer changed. Only the leverage. When buyers raise their hand first, selling feels like service again.
+                Nothing about Dana's offer changed. Only the leverage. When buyers raise their hand first, selling feels like service again.
               </p>
             </div>
           </div>
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
-          <div className="rounded-3xl border border-rose-400/30 bg-gradient-to-br from-rose-600/30 via-purple-600/30 to-black/60 p-10 sm:p-14">
-            <p className="text-xs uppercase tracking-[0.35em] text-white/70">Urgent</p>
-            <h2 className="mt-4 text-3xl sm:text-4xl font-semibold text-white">Only 22 installs per month. Next cohort starts Monday.</h2>
-            <p className="mt-4 text-white/80 text-lg">If this is the week you stop guessing where leads will come from, grab a slot now.</p>
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-rose-400/30 bg-gradient-to-br from-rose-600/30 via-purple-600/30 to-black/60' : 'border-rose-300 bg-gradient-to-br from-rose-100 via-purple-100 to-gray-50'} p-10 sm:p-14`}>
+            <p className={`text-xs uppercase tracking-[0.35em] ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Urgent</p>
+            <h2 className={`mt-4 text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Only 22 installs per month. Next cohort starts Monday.</h2>
+            <p className={`mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-700'} text-lg`}>If this is the week you stop guessing where leads will come from, grab a slot now.</p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 type="button"
@@ -979,7 +1086,7 @@ export default function LeadMachinePage() {
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>
-            <p className="mt-3 text-sm text-white/60">No payment due today—just pick your kickoff call.</p>
+            <p className={`mt-3 text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>No payment due today—just pick your kickoff call.</p>
           </div>
         </section>
 
