@@ -326,7 +326,7 @@ export default function LeadMachinePage() {
           }`}>
             <div className="absolute -top-4 right-0 w-[520px] max-w-full opacity-90 pointer-events-none">
               <Image
-                src={isDarkMode ? "/trueflow-lead-machine-banner-transparent.png" : "/trueflow-lead-machine-banner.png"}
+                src={isDarkMode ? "/trueflow-lead-machine-banner-transparent.png" : "/trueflow-lead-machine-banner-light-mode.png"}
                 alt="TrueFlow Lead Machine"
                 width={780}
                 height={390}
