@@ -28,6 +28,7 @@ import {
 } from 'lucide-react'
 import TrueFlowLogoIcon from '../components/TrueFlowLogoIcon'
 import { Footer } from '../components/Footer'
+import { useTheme } from '../components/ThemeProvider'
 
 // Animated counter component
 function AnimatedCounter({ endValue, duration = 2000, prefix = '', suffix = '', shouldStart = false }: {
@@ -63,10 +64,12 @@ function AnimatedCounter({ endValue, duration = 2000, prefix = '', suffix = '', 
 }
 
 export default function ContentOfferLanding() {
+  const { isDarkMode } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [statsVisible, setStatsVisible] = useState(false)
   const statsRef = useRef<HTMLDivElement>(null)
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
 
   useEffect(() => {
     setMounted(true)
@@ -100,7 +103,7 @@ export default function ContentOfferLanding() {
           <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex items-center">
               <Image 
-                src="/true-flow-logo.webp" 
+                src={logoSrc}
                 alt="TrueFlow" 
                 width={280} 
                 height={70} 

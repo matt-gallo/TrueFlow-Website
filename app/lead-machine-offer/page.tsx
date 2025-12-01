@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTheme } from '@/app/components/ThemeProvider'
 
 const inclusions = [
   {
@@ -52,6 +55,8 @@ const inclusions = [
 ]
 
 export default function LeadMachineOfferPage() {
+  const { isDarkMode } = useTheme()
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
   return (
     <div className="min-h-screen bg-black text-white">
       <div className="fixed inset-0 pointer-events-none">
@@ -63,7 +68,7 @@ export default function LeadMachineOfferPage() {
       <div className="relative z-10">
         <header className="max-w-6xl mx-auto px-6 py-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <Link href="/" className="flex items-center">
-            <Image src="/true-flow-logo.webp" alt="TrueFlow" width={240} height={64} className="h-12 w-auto" />
+            <Image src={logoSrc} alt="TrueFlow" width={240} height={64} className="h-12 w-auto" />
           </Link>
           <div className="text-right space-y-1">
             <p className="text-sm text-white/70">Questions? Text the team at <span className="text-white">(305) 901-6455</span></p>

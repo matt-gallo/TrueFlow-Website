@@ -11,6 +11,7 @@ export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const pathname = usePathname()
   const { isDarkMode, toggleTheme } = useTheme()
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
   
   // Close menu when route changes
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image 
-              src="/true-flow-logo.webp" 
+              src={logoSrc}
               alt="TrueFlow" 
               width={280} 
               height={70} 

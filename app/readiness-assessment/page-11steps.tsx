@@ -40,6 +40,7 @@ import {
   Settings
 } from 'lucide-react'
 import { DebugComponent } from './debug'
+import { useTheme } from '../components/ThemeProvider'
 
 interface Question {
   id: string
@@ -165,6 +166,7 @@ const questions: Question[] = [
 ]
 
 export default function ReadinessAssessment() {
+  const { isDarkMode } = useTheme()
   const [currentStep, setCurrentStep] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [showResults, setShowResults] = useState(false)
@@ -190,6 +192,7 @@ export default function ReadinessAssessment() {
   const [cursorTrail, setCursorTrail] = useState<CursorTrailPoint[]>([])
   const cursorTrailRef = useRef<CursorTrailPoint[]>([])
   const animationFrameRef = useRef<number | null>(null)
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
 
   // Business types from get-started page
   const businessTypes: BusinessType[] = [
@@ -618,8 +621,8 @@ export default function ReadinessAssessment() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/">
-              <Image 
-                src="/true-flow-logo.webp" 
+                <Image 
+                  src={logoSrc} 
                 alt="TrueFlow" 
                 width={280} 
                 height={70} 

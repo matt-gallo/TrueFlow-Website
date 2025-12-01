@@ -389,6 +389,7 @@ function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
 export default function LandingPage() {
   const router = useRouter()
   const { isDarkMode, toggleTheme } = useTheme()
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isCoreSystemOpen, setIsCoreSystemOpen] = useState(false)
@@ -808,7 +809,7 @@ export default function LandingPage() {
             {/* Logo */}
             <div className="flex items-center">
               <Image 
-                src="/true-flow-logo.webp" 
+                src={logoSrc}
                 alt="TrueFlow" 
                 width={280} 
                 height={70} 

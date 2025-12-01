@@ -35,6 +35,7 @@ import {
   X
 } from 'lucide-react'
 import { DebugComponent } from './debug'
+import { useTheme } from '../components/ThemeProvider'
 
 interface Question {
   id: string
@@ -125,6 +126,7 @@ interface ContactInfo {
 }
 
 export default function ReadinessAssessment() {
+  const { isDarkMode } = useTheme()
   const [currentStep, setCurrentStep] = useState(0)
   const [answers, setAnswers] = useState<Record<string, string>>({})
   const [showResults, setShowResults] = useState(false)
@@ -140,6 +142,7 @@ export default function ReadinessAssessment() {
   const [submitError, setSubmitError] = useState('')
   const [mounted, setMounted] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
 
   useEffect(() => {
     setMounted(true)
@@ -298,8 +301,8 @@ export default function ReadinessAssessment() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/">
-              <Image 
-                src="/true-flow-logo.webp" 
+                <Image 
+                  src={logoSrc} 
                 alt="TrueFlow" 
                 width={280} 
                 height={70} 
@@ -366,8 +369,8 @@ export default function ReadinessAssessment() {
               {/* Logo */}
               <div className="flex items-center">
                 <Link href="/">
-                  <Image 
-                    src="/true-flow-logo.webp" 
+                    <Image 
+                      src={logoSrc} 
                     alt="TrueFlow" 
                     width={280} 
                     height={70} 

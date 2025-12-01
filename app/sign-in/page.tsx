@@ -9,6 +9,7 @@ import { useTheme } from '@/app/components/ThemeProvider'
 export default function SignInPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const { isDarkMode } = useTheme()
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -34,7 +35,7 @@ export default function SignInPage() {
         <nav className="px-6 py-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/true-flow-logo.webp"
+              src={logoSrc}
               alt="TrueFlow"
               width={200}
               height={52}

@@ -6,6 +6,7 @@ import { useTheme } from './ThemeProvider'
 
 export function Footer() {
   const { isDarkMode } = useTheme()
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
 
   return (
     <footer className={`py-12 sm:py-16 px-4 border-t backdrop-blur-md transition-colors ${
@@ -17,7 +18,7 @@ export function Footer() {
           <div>
             <div className="mb-4">
               <Image
-                src="/true-flow-logo.webp"
+                src={logoSrc}
                 alt="TrueFlow"
                 width={120}
                 height={40}

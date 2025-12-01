@@ -9,8 +9,11 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 import { CheckCircle, ArrowRight, Calendar } from 'lucide-react'
 import Image from 'next/image'
+import { useTheme } from '@/app/components/ThemeProvider'
 
 export default function ThankYouPage() {
+  const { isDarkMode } = useTheme()
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
   useEffect(() => {
     // Scroll to top on load
     window.scrollTo(0, 0)
@@ -24,7 +27,7 @@ export default function ThankYouPage() {
           <div className="flex items-center justify-between h-20">
             <Link href="/" className="flex items-center space-x-3">
               <Image
-                src="/true-flow-logo.webp"
+                src={logoSrc}
                 alt="TrueFlow"
                 width={150}
                 height={50}

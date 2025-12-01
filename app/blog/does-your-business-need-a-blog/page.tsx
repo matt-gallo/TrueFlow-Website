@@ -3,8 +3,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { useTheme } from '@/app/components/ThemeProvider'
 
 export default function BlogPost() {
+  const { isDarkMode } = useTheme()
+  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Background Effects */}
@@ -19,7 +22,7 @@ export default function BlogPost() {
         <nav className="flex items-center justify-between p-6 max-w-7xl mx-auto">
           <Link href="/" className="flex items-center">
             <Image 
-              src="/true-flow-logo.webp" 
+              src={logoSrc} 
               alt="TrueFlow" 
               width={280} 
               height={70} 
