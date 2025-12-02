@@ -78,6 +78,24 @@ const offerStack = [
   'Ongoing Tracking & Optimization – monthly performance review and tuning'
 ]
 
+const systemColumns = [
+  {
+    label: 'Data Intelligence',
+    description: "Finds who's searching right now with verified contact data.",
+    image: '/data-intellegence.png'
+  },
+  {
+    label: 'AI Outreach Engine',
+    description: 'Starts 1:1 conversations automatically—no cold-calling or spray-and-pray.',
+    image: '/ai-outreach-engine.png'
+  },
+  {
+    label: 'CRM + Ad Sync',
+    description: 'Drops qualified replies into your pipeline and fuels smarter retargeting.',
+    image: '/crm-ad-sync.png'
+  }
+]
+
 const verticals = [
   'Local Service Businesses (chiropractors, contractors, med-spas, real estate teams)',
   'Online Coaches & Creators',
@@ -602,21 +620,38 @@ export default function LeadMachinePage() {
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
           <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-8 sm:p-12`}>
             <div className="grid gap-8 md:grid-cols-3">
-              {[{
-                label: 'Data Intelligence',
-                description: 'Finds who\'s searching right now with verified contact data.'
-              }, {
-                label: 'AI Outreach Engine',
-                description: 'Starts 1:1 conversations automatically—no cold-calling or spray-and-pray.'
-              }, {
-                label: 'CRM + Ad Sync',
-                description: 'Drops qualified replies into your pipeline and fuels smarter retargeting.'
-              }].map(column => (
-                <div key={column.label} className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-black/40' : 'bg-gray-100'} p-6`}>
-                  <p className={`text-xs uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>{column.label}</p>
-                  <h3 className={`mt-3 text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{column.label}</h3>
-                  <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{column.description}</p>
-                  <p className={`mt-4 text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>No wasted spend. No manual follow-up. No generic lists.</p>
+              {systemColumns.map((column) => (
+                <div
+                  key={column.label}
+                  className={`rounded-3xl border flex flex-col gap-5 ${
+                    isDarkMode ? 'border-white/10 bg-black/40' : 'border-gray-200 bg-gray-100'
+                  } p-6`}
+                >
+                  <div
+                    className={`relative w-full aspect-[4/3] overflow-hidden rounded-2xl border ${
+                      isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-white'
+                    }`}
+                  >
+                    <Image
+                      src={column.image}
+                      alt={`${column.label} visual`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <p className={`text-xs uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+                      {column.label}
+                    </p>
+                    <h3 className={`mt-3 text-2xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                      {column.label}
+                    </h3>
+                    <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{column.description}</p>
+                    <p className={`mt-4 text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+                      No wasted spend. No manual follow-up. No generic lists.
+                    </p>
+                  </div>
                 </div>
               ))}
             </div>
