@@ -88,22 +88,19 @@ export default function PrivacyPolicy() {
 
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-slate-900 mb-4">7. Your Rights and Choices</h2>
-            <p>You have the right to:</p>
+            <p>
+              Because our outreach and prospecting are focused on business contacts, most of the data we collect falls under U.S. state
+              exemptions for B2B communications. Even so, you may always contact us to:
+            </p>
             <ul className="list-disc ml-6 mb-4">
-              <li>Request access to or a copy of the data we maintain about you</li>
-              <li>Correct or update inaccurate information</li>
-              <li>Request deletion subject to retention obligations</li>
-              <li>Object to or restrict certain processing activities</li>
-              <li>Withdraw consent where we rely on consent to process data</li>
-              <li>Opt out of marketing emails using the link provided in each message</li>
+              <li>Request access to or a copy of information we maintain about you</li>
+              <li>Correct or update inaccurate business contact details</li>
+              <li>Request deletion where legally permissible</li>
+              <li>Opt out of marketing emails using the unsubscribe link provided in every message</li>
             </ul>
             <p>
-              California residents can exercise CCPA/CPRA rights (access, deletion, opt-out of selling or sharing personal information)
-              by contacting us through the methods below. We will verify requests using information already associated with your account.
-            </p>
-            <p>
-              Individuals located in the United Kingdom or European Union may exercise GDPR rights, including data portability and the
-              right to lodge a complaint with a supervisory authority. We respond to all verified requests within the timelines required by law.
+              We verify requests using information already associated with the business contact record and respond within reasonable timelines
+              consistent with applicable U.S. laws that regulate B2B outreach.
             </p>
           </section>
 
@@ -127,16 +124,18 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className="text-2xl font-semibold text-slate-900 mb-4">10. Compliance Standards</h2>
             <p>
-              We design our outreach and data handling workflows to align with applicable U.S. and international standards, including:
+              Our services are designed for U.S.-based business-to-business (B2B) outreach. We prioritize states that expressly exempt
+              B2B communications from their consumer privacy statutes (for example, the Virginia CDPA, Colorado Privacy Act, and similar laws)
+              and avoid collecting consumer data in jurisdictions that do not offer a clear business-contact exemption. Our safeguards include:
             </p>
             <ul className="list-disc ml-6 mb-4">
-              <li><strong>CAN-SPAM Act:</strong> Marketing emails include accurate sender identification, a clear subject line, and an always-available unsubscribe link. Opt-out requests are honored within 10 business days.</li>
-              <li><strong>Telephone Consumer Protection Act (TCPA):</strong> We obtain appropriate consent before using automated dialing or SMS tools, maintain internal do-not-contact lists, and document contact preferences.</li>
-              <li><strong>California Consumer Privacy Act (CCPA) and state privacy laws:</strong> We provide transparency about data uses, enable rights requests, and do not sell personal information collected for lead-generation without explicit notice.</li>
-              <li><strong>General Data Protection Regulation (GDPR):</strong> When handling data from the United Kingdom or European Union, we rely on lawful bases for processing, support data subject rights, and use Standard Contractual Clauses when transferring data to the United States.</li>
+              <li><strong>CAN-SPAM Act:</strong> Accurate sender details, truthful subject lines, and prominent unsubscribe links with opt-outs honored within 10 business days.</li>
+              <li><strong>Telephone Consumer Protection Act (TCPA):</strong> Documented consent for automated dialing or SMS, internal do-not-contact lists, and respect for time-of-day restrictions.</li>
+              <li><strong>State B2B Safe Harbor Monitoring:</strong> Ongoing tracking of state laws that distinguish between commercial and consumer contexts to confirm that campaign segments stay within approved categories.</li>
+              <li><strong>Vendor Oversight:</strong> Due diligence on lead providers to confirm that contact data originates from lawful commercial sources with audit trails.</li>
             </ul>
             <p>
-              We periodically review additional U.S. state requirements that distinguish between business and consumer contacts, maintain vendor due diligence files, and document our compliance posture so clients can audit how prospect data is sourced and used.
+              We document our compliance decisions so that clients can review how contacts were sourced, which state exemptions apply, and how opt-outs are enforced.
             </p>
           </section>
 
