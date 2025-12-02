@@ -71,8 +71,8 @@ export default function CookieConsent() {
             ? 'bg-gradient-to-br from-slate-900 via-black to-slate-900 border border-white/20 shadow-2xl shadow-blue-500/20'
             : 'bg-white border border-gray-200 shadow-2xl shadow-gray-300/30'}
           sm:rounded-3xl
-          max-h-[50vh] sm:h-auto
-          overflow-y-auto
+          max-h-none sm:h-auto
+          overflow-visible
           p-4 sm:p-8
         `}>
           {/* Decorative gradient */}
