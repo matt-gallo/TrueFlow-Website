@@ -110,3 +110,56 @@ To enable automatic account creation after payment, configure FastPay to send we
 - **Method**: POST
 - **Purpose**: Receives payment success webhooks and triggers account creation
 - **Supported events**: `payment.succeeded`, `InvoicePaid`, `OrderCompleted`, `order.completed`
+
+---
+
+## Blog Formatting Guidelines
+
+**CRITICAL: When formatting or creating blog posts, you MUST follow these strict guidelines.**
+
+### Core Principle: Formatting Only
+
+- **DO NOT modify, rewrite, or enhance the provided content**
+- **DO NOT add creative flourishes or embellishments**
+- **DO NOT change wording, phrasing, or messaging**
+- **ONLY apply the prescribed formatting structure and styling**
+
+### Required Structure
+
+All blog posts must follow this exact structure. See **BLOG_FORMATTING_GUIDE.md** for complete implementation details.
+
+1. **Background Effects** - Dark gradient background with blue/purple blur effects
+2. **Navigation** - Logo + "Back to Blog" link
+3. **Header Image** (optional) - Full-width rounded header image
+4. **Title Section** - Gradient text (cyan-400 to purple-600)
+5. **Subtitle** - White/70 opacity
+6. **Author Section** (when provided) - Avatar with gradient circle, name, title
+7. **Meta Information** - Date, read time, category
+8. **Social Sharing Buttons** - X, LinkedIn, Facebook, Instagram
+9. **Content Container** - Backdrop-blur card with border
+10. **Content** - Properly formatted with prescribed heading/text styles
+11. **Call-to-Action** (when included)
+
+### Formatting Requirements
+
+- **Background**: `bg-black` with gradient blur overlays
+- **Primary Gradient**: `from-cyan-400 to-purple-600`
+- **Headings**:
+  - H1: 4xl/5xl with gradient text
+  - H2: 3xl with gradient text
+  - H3: 2xl white
+  - H4: xl cyan-400
+- **Body Text**: lg, white/80 opacity, leading-relaxed
+- **Lists**: Cyan bullets (•), white/80 text
+- **Blockquotes**: Left border cyan-400, white/5 background
+- **Cards**: white/5 background, white/10 border, rounded-xl
+
+### Strict Rules
+
+1. **Never alter the content substance** - Only apply visual formatting
+2. **Follow the style guide exactly** - No variations or interpretations
+3. **Maintain brand consistency** - Use prescribed colors and gradients
+4. **Preserve content hierarchy** - Match heading levels to content structure
+5. **No creative liberty** - Implement formatting mechanically and precisely
+
+For complete implementation details, component code, and examples, see **BLOG_FORMATTING_GUIDE.md**.
