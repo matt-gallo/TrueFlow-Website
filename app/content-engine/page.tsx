@@ -76,6 +76,11 @@ export default function ContentEnginePage() {
     cta: true
   })
   const { isDarkMode } = useTheme()
+  const primaryText = isDarkMode ? 'text-white' : 'text-gray-900'
+  const secondaryText = isDarkMode ? 'text-white/70' : 'text-gray-600'
+  const mutedText = isDarkMode ? 'text-white/80' : 'text-gray-700'
+  const accentText = isDarkMode ? 'text-white/90' : 'text-gray-800'
+  const subtleText = isDarkMode ? 'text-white/60' : 'text-gray-500'
   
   // Refs for scroll animations
   const heroRef = useRef(null)
@@ -641,12 +646,12 @@ export default function ContentEnginePage() {
       <section className="py-20 px-4 bg-white/5" ref={featuresRef}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 transition-all duration-1000 ${
+            <h2 className={`text-4xl md:text-5xl font-bold ${primaryText} mb-6 transition-all duration-1000 ${
               ''
             }`}>
               Complete AI Business Workflows
             </h2>
-            <p className={`text-xl text-white/70 max-w-3xl mx-auto transition-all duration-1000 ${
+            <p className={`text-xl ${secondaryText} max-w-3xl mx-auto transition-all duration-1000 ${
               ''
             }`}>
               Beyond content creation - TrueFlow automates your entire business operations
@@ -656,7 +661,11 @@ export default function ContentEnginePage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             {/* Smart Scheduling Workflow */}
             <div 
-              className={`bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 p-8 hover:bg-black/80 hover:border-orange-500/30 hover:shadow-xl hover:shadow-orange-500/10 transition-all duration-500 group relative overflow-hidden transform-gpu ${
+              className={`backdrop-blur-md rounded-2xl border p-8 transition-all duration-500 group relative overflow-hidden transform-gpu ${
+                isDarkMode
+                  ? 'bg-black/60 border-white/20 hover:bg-black/80 hover:border-orange-500/30 hover:shadow-xl hover:shadow-orange-500/10'
+                  : 'bg-white border-orange-100 hover:bg-orange-50 hover:border-orange-200 hover:shadow-xl hover:shadow-orange-200/40'
+              } ${
                 ''
               }`} 
               style={{ 
@@ -692,39 +701,43 @@ export default function ContentEnginePage() {
                 <div className="p-3 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg">
                   <Calendar className="h-8 w-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Smart Scheduling</h3>
+                <h3 className={`text-2xl font-bold ${primaryText}`}>Smart Scheduling</h3>
               </div>
               
-              <p className="text-white/70 mb-6">AI-driven content calendar that analyzes audience behavior to optimize publishing times for maximum engagement</p>
+              <p className={`${secondaryText} mb-6`}>AI-driven content calendar that analyzes audience behavior to optimize publishing times for maximum engagement</p>
               
               <div className="space-y-3 mb-6">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Audience activity analysis</span>
+                  <span className={`${mutedText} text-sm`}>Audience activity analysis</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Cross-platform optimization</span>
+                  <span className={`${mutedText} text-sm`}>Cross-platform optimization</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Automated posting queues</span>
+                  <span className={`${mutedText} text-sm`}>Automated posting queues</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Performance tracking</span>
+                  <span className={`${mutedText} text-sm`}>Performance tracking</span>
                 </div>
               </div>
               
               <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 rounded-lg p-4 border border-orange-500/30">
-                <p className="text-white/90 italic">Automatically schedule your content at optimal times across email, social media, and blog platforms for 3x better engagement.</p>
+                <p className={`${accentText} italic`}>Automatically schedule your content at optimal times across email, social media, and blog platforms for 3x better engagement.</p>
               </div>
             </div>
 
 
             {/* Customer Support Workflow */}
             <div 
-              className={`bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 p-8 hover:bg-black/80 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-500 group relative overflow-hidden transform-gpu ${
+              className={`backdrop-blur-md rounded-2xl border p-8 transition-all duration-500 group relative overflow-hidden transform-gpu ${
+                isDarkMode
+                  ? 'bg-black/60 border-white/20 hover:bg-black/80 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10'
+                  : 'bg-white border-blue-100 hover:bg-blue-50 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-200/40'
+              } ${
                 ''
               }`} 
               style={{ 
@@ -760,32 +773,32 @@ export default function ContentEnginePage() {
                 <div className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg">
                   <MessageSquare className="h-8 w-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Smart Support</h3>
+                <h3 className={`text-2xl font-bold ${primaryText}`}>Smart Support</h3>
               </div>
               
-              <p className="text-white/70 mb-6">AI-powered customer support that handles routine inquiries and escalates complex issues to your team</p>
+              <p className={`${secondaryText} mb-6`}>AI-powered customer support that handles routine inquiries and escalates complex issues to your team</p>
               
               <div className="space-y-3 mb-6">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">24/7 AI chat support</span>
+                  <span className={`${mutedText} text-sm`}>24/7 AI chat support</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Intelligent ticket routing</span>
+                  <span className={`${mutedText} text-sm`}>Intelligent ticket routing</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Knowledge base integration</span>
+                  <span className={`${mutedText} text-sm`}>Knowledge base integration</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Sentiment analysis</span>
+                  <span className={`${mutedText} text-sm`}>Sentiment analysis</span>
                 </div>
               </div>
               
               <div className="bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-lg p-4 border border-blue-500/30">
-                <p className="text-white/90 italic">Reduce support workload by 80% while improving customer satisfaction with instant, accurate AI responses.</p>
+                <p className={`${accentText} italic`}>Reduce support workload by 80% while improving customer satisfaction with instant, accurate AI responses.</p>
               </div>
             </div>
           </div>
@@ -793,7 +806,11 @@ export default function ContentEnginePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Compliance & Security */}
             <div 
-              className="bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 p-8 hover:bg-black/80 transition-all duration-500 transform-gpu"
+              className={`backdrop-blur-md rounded-2xl border p-8 transition-all duration-500 transform-gpu ${
+                isDarkMode
+                  ? 'bg-black/60 border-white/20 hover:bg-black/80'
+                  : 'bg-white border-purple-100 hover:bg-purple-50'
+              }`}
               style={{
                 transformStyle: 'preserve-3d',
                 transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)'
@@ -826,38 +843,42 @@ export default function ContentEnginePage() {
                 <div className="p-3 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-lg">
                   <Shield className="h-8 w-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Compliance & Security</h3>
+                <h3 className={`text-2xl font-bold ${primaryText}`}>Compliance & Security</h3>
               </div>
               
-              <p className="text-white/70 mb-6">Automated compliance monitoring, security audits, and regulatory reporting</p>
+              <p className={`${secondaryText} mb-6`}>Automated compliance monitoring, security audits, and regulatory reporting</p>
               
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">GDPR compliance</span>
+                  <span className={`${mutedText} text-sm`}>GDPR compliance</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Security monitoring</span>
+                  <span className={`${mutedText} text-sm`}>Security monitoring</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Audit trails</span>
+                  <span className={`${mutedText} text-sm`}>Audit trails</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Risk assessment</span>
+                  <span className={`${mutedText} text-sm`}>Risk assessment</span>
                 </div>
               </div>
               
               <div className="bg-gradient-to-r from-indigo-500/20 to-blue-500/20 rounded-lg p-4 border border-indigo-500/30">
-                <p className="text-white/90 italic">Stay compliant automatically with AI that tracks regulations and flags potential risks before they become problems.</p>
+                <p className={`${accentText} italic`}>Stay compliant automatically with AI that tracks regulations and flags potential risks before they become problems.</p>
               </div>
             </div>
 
             {/* Process Automation */}
             <div 
-              className="bg-black/60 backdrop-blur-md rounded-2xl border border-white/20 p-8 hover:bg-black/80 transition-all duration-500 transform-gpu"
+              className={`backdrop-blur-md rounded-2xl border p-8 transition-all duration-500 transform-gpu ${
+                isDarkMode
+                  ? 'bg-black/60 border-white/20 hover:bg-black/80'
+                  : 'bg-white border-yellow-100 hover:bg-yellow-50'
+              }`}
               style={{
                 transformStyle: 'preserve-3d',
                 transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)'
@@ -890,32 +911,32 @@ export default function ContentEnginePage() {
                 <div className="p-3 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg">
                   <Zap className="h-8 w-8" />
                 </div>
-                <h3 className="text-2xl font-bold text-white">Process Automation</h3>
+                <h3 className={`text-2xl font-bold ${primaryText}`}>Process Automation</h3>
               </div>
               
-              <p className="text-white/70 mb-6">Connect your systems so data flows automatically without manual entry or duplicate work</p>
+              <p className={`${secondaryText} mb-6`}>Connect your systems so data flows automatically without manual entry or duplicate work</p>
               
               <div className="grid grid-cols-2 gap-3 mb-6">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">System integrations</span>
+                  <span className={`${mutedText} text-sm`}>System integrations</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Data synchronization</span>
+                  <span className={`${mutedText} text-sm`}>Data synchronization</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Workflow automation</span>
+                  <span className={`${mutedText} text-sm`}>Workflow automation</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-400" />
-                  <span className="text-white/80 text-sm">Error reduction</span>
+                  <span className={`${mutedText} text-sm`}>Error reduction</span>
                 </div>
               </div>
               
               <div className="bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-lg p-4 border border-yellow-500/30">
-                <p className="text-white/90 italic">Eliminate manual data entry and connect all your business tools for seamless operations.</p>
+                <p className={`${accentText} italic`}>Eliminate manual data entry and connect all your business tools for seamless operations.</p>
               </div>
             </div>
           </div>
@@ -926,12 +947,12 @@ export default function ContentEnginePage() {
       <section className="py-20 px-4" ref={contentTypesRef}>
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-20">
-            <h2 className={`text-4xl md:text-5xl font-bold text-white mb-6 transition-all duration-1000 ${
+            <h2 className={`text-4xl md:text-5xl font-bold ${primaryText} mb-6 transition-all duration-1000 ${
               ''
             }`}>
               Content Types You Can Create
             </h2>
-            <p className={`text-xl text-white/70 max-w-3xl mx-auto transition-all duration-1000 ${
+            <p className={`text-xl ${secondaryText} max-w-3xl mx-auto transition-all duration-1000 ${
               ''
             }`}>
               One voice recording becomes multiple pieces of professional content
@@ -942,9 +963,13 @@ export default function ContentEnginePage() {
             {contentTypes.map((type, index) => (
               <div 
                 key={index} 
-                className={`bg-black/60 backdrop-blur-md rounded-2xl border p-8 hover:bg-black/80 hover:shadow-2xl transition-all duration-700 group relative overflow-hidden transform-gpu ${
-                type.status === 'automated' ? 'border-green-500/50 hover:border-green-400/70 hover:shadow-green-500/20' : 'border-orange-500/50 hover:border-orange-400/70 hover:shadow-orange-500/20'
-              } ${''}`} 
+                className={`backdrop-blur-md rounded-2xl border p-8 hover:shadow-2xl transition-all duration-700 group relative overflow-hidden transform-gpu ${
+                  isDarkMode ? 'bg-black/60 hover:bg-black/80' : 'bg-white hover:bg-slate-50'
+                } ${
+                  type.status === 'automated'
+                    ? 'border-green-500/50 hover:border-green-400/70 hover:shadow-green-500/20'
+                    : 'border-orange-500/50 hover:border-orange-400/70 hover:shadow-orange-500/20'
+                } ${''}`} 
                 style={{ 
                   animationDelay: `${index * 300 + 500}ms`,
                   transformStyle: 'preserve-3d',
@@ -989,16 +1014,16 @@ export default function ContentEnginePage() {
                   }`}>
                     {type.icon}
                   </div>
-                  <h3 className="text-2xl font-bold text-white pr-20">{type.name}</h3>
+                  <h3 className={`text-2xl font-bold ${primaryText} pr-20`}>{type.name}</h3>
                 </div>
                 
-                <p className="text-white/70 mb-6">{type.description}</p>
+                <p className={`${secondaryText} mb-6`}>{type.description}</p>
                 
                 <div className="grid grid-cols-2 gap-3 mb-6">
                   {type.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center space-x-2">
                       <CheckCircle className="h-4 w-4 text-green-400" />
-                      <span className="text-white/80 text-sm">{feature}</span>
+                      <span className={`${mutedText} text-sm`}>{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -1008,13 +1033,13 @@ export default function ContentEnginePage() {
                     ? 'bg-gradient-to-r from-green-500/20 to-emerald-600/20 border-green-500/30'
                     : 'bg-gradient-to-r from-orange-500/20 to-red-600/20 border-orange-500/30'
                 }`}>
-                  <p className="text-white/90 italic">{type.example}</p>
+                  <p className={`${accentText} italic`}>{type.example}</p>
                 </div>
 
                 {/* Social Platform Logos for Social Media Content */}
                 {type.name === 'Social Media Content' && (
-                  <div className="mt-6 pt-6 border-t border-white/20">
-                    <p className="text-white/60 text-sm mb-4">Supported Platforms (Beta):</p>
+                  <div className={`mt-6 pt-6 border-t ${isDarkMode ? 'border-white/20' : 'border-gray-200'}`}>
+                    <p className={`${subtleText} text-sm mb-4`}>Supported Platforms (Beta):</p>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg p-4 text-center flex flex-col items-center">
                         <svg viewBox="0 0 24 24" className="w-8 h-8 fill-white mb-2">
@@ -1058,8 +1083,8 @@ export default function ContentEnginePage() {
 
                 {/* Course Platform Logos for Course Content */}
                 {type.name === 'Course Content' && (
-                  <div className="mt-6 pt-6 border-t border-white/20">
-                    <p className="text-white/60 text-sm mb-4">Supported Platforms (Beta):</p>
+                  <div className={`mt-6 pt-6 border-t ${isDarkMode ? 'border-white/20' : 'border-gray-200'}`}>
+                    <p className={`${subtleText} text-sm mb-4`}>Supported Platforms (Beta):</p>
                     <div className="grid grid-cols-3 gap-4">
                       <div className="bg-orange-500 rounded-lg p-4 text-center flex flex-col items-center">
                         <svg viewBox="0 0 24 24" className="w-8 h-8 fill-white mb-2">
