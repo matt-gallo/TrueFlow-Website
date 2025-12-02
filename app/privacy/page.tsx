@@ -3,138 +3,171 @@ import { Footer } from '../components/Footer'
 
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-purple-900/20 to-black">
+    <div className="min-h-screen bg-slate-50 text-slate-900">
       <Navigation />
-      
+
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
-        <h1 className="text-4xl font-bold text-white mb-8">Privacy Policy</h1>
-        
-        <div className="prose prose-lg max-w-none text-white/80">
-          <p className="text-sm text-white/60 mb-8">Last updated: January 13, 2025</p>
-          
+        <h1 className="text-4xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
+
+        <div className="prose prose-lg prose-slate max-w-none text-slate-600">
+          <p className="text-sm text-slate-500 mb-8">Last updated: March 15, 2025</p>
+
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">1. Introduction</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">1. Introduction</h2>
             <p>
-              TrueFlow AI ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
+              TrueFlow AI ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how
+              we collect, use, disclose, and safeguard your information when you visit our website and use our services.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">2. Information We Collect</h2>
-            <h3 className="text-xl font-semibold text-white/90 mb-2">Personal Information</h3>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">2. Information We Collect</h2>
+            <h3 className="text-xl font-semibold text-slate-800 mb-2">Personal Information</h3>
             <p>We may collect personal information that you provide directly to us, such as:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>Name and contact information (email address, phone number)</li>
-              <li>Company/organization name</li>
-              <li>Account credentials</li>
-              <li>Payment information (processed securely through third-party payment processors)</li>
-              <li>Communications you send to us</li>
+              <li>Company or organization name and role</li>
+              <li>Account credentials and authentication data</li>
+              <li>Billing details processed by trusted third-party payment providers</li>
+              <li>Content you share with our team (support requests, feedback, or messages)</li>
             </ul>
-            
-            <h3 className="text-xl font-semibold text-white/90 mb-2">Automatically Collected Information</h3>
+
+            <h3 className="text-xl font-semibold text-slate-800 mb-2">Automatically Collected Information</h3>
             <p>When you use our services, we automatically collect certain information, including:</p>
             <ul className="list-disc ml-6 mb-4">
-              <li>IP address and device information</li>
-              <li>Browser type and operating system</li>
-              <li>Pages visited and time spent on our website</li>
-              <li>Referring website addresses</li>
-              <li>Usage data and analytics</li>
+              <li>IP address, device identifiers, and approximate location</li>
+              <li>Browser type, operating system, and language preferences</li>
+              <li>Pages visited, time spent on our website, and referring URLs</li>
+              <li>Usage data and diagnostics to improve performance</li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">3. How We Use Your Information</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">3. How We Use Your Information</h2>
             <p>We use the information we collect to:</p>
             <ul className="list-disc ml-6 mb-4">
-              <li>Provide, maintain, and improve our services</li>
-              <li>Process transactions and send related information</li>
-              <li>Send technical notices, updates, and support messages</li>
-              <li>Respond to your comments, questions, and customer service requests</li>
-              <li>Communicate with you about products, services, and events</li>
-              <li>Monitor and analyze trends, usage, and activities</li>
-              <li>Detect, investigate, and prevent fraudulent or illegal activities</li>
-              <li>Comply with legal obligations</li>
+              <li>Provide, maintain, and improve our products and services</li>
+              <li>Process transactions and send billing or account-related updates</li>
+              <li>Deliver onboarding, support, and technical notices</li>
+              <li>Respond to inquiries, feedback, or troubleshooting requests</li>
+              <li>Send marketing communications with easy opt-out options</li>
+              <li>Monitor trends and usage to inform product decisions</li>
+              <li>Detect, investigate, and prevent fraud or misuse</li>
+              <li>Comply with contractual and legal obligations</li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">4. Information Sharing and Disclosure</h2>
-            <p>We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:</p>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">4. Information Sharing and Disclosure</h2>
+            <p>We do not sell or rent personal information. We may share data only when necessary:</p>
             <ul className="list-disc ml-6 mb-4">
-              <li><strong>Service Providers:</strong> With third-party vendors who perform services on our behalf</li>
-              <li><strong>Legal Requirements:</strong> When required by law or to respond to legal process</li>
-              <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-              <li><strong>Consent:</strong> With your consent or at your direction</li>
-              <li><strong>Aggregated Information:</strong> We may share aggregated or anonymized information that cannot identify you</li>
+              <li><strong>Service Providers:</strong> Trusted vendors who help us operate, subject to confidentiality and security obligations.</li>
+              <li><strong>Legal Requirements:</strong> When required by applicable law, regulation, or legal process.</li>
+              <li><strong>Business Transfers:</strong> In connection with a merger, financing, or acquisition of all or part of our business.</li>
+              <li><strong>Consent:</strong> When you direct us to share information with partners or third parties.</li>
+              <li><strong>Aggregated Insights:</strong> Non-identifying analytics used for benchmarking or marketing.</li>
             </ul>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">5. Data Security</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">5. Data Security</h2>
             <p>
-              We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure.
+              We implement administrative, technical, and physical safeguards designed to protect personal information against
+              unauthorized access, alteration, disclosure, or destruction. While we strive for industry best practices, no
+              method of transmission over the internet or electronic storage is completely secure.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">6. Data Retention</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">6. Data Retention</h2>
             <p>
-              We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law.
+              We retain personal information only for as long as necessary to fulfill the purposes outlined here, resolve disputes,
+              enforce our agreements, and comply with legal, accounting, or reporting obligations.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">7. Your Rights and Choices</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">7. Your Rights and Choices</h2>
             <p>You have the right to:</p>
             <ul className="list-disc ml-6 mb-4">
-              <li>Access and receive a copy of your personal information</li>
-              <li>Correct or update your personal information</li>
-              <li>Delete your personal information</li>
-              <li>Object to or restrict the processing of your personal information</li>
-              <li>Withdraw consent where we rely on consent to process your information</li>
-              <li>Opt-out of marketing communications</li>
+              <li>Request access to or a copy of the data we maintain about you</li>
+              <li>Correct or update inaccurate information</li>
+              <li>Request deletion subject to retention obligations</li>
+              <li>Object to or restrict certain processing activities</li>
+              <li>Withdraw consent where we rely on consent to process data</li>
+              <li>Opt out of marketing emails using the link provided in each message</li>
             </ul>
-          </section>
-
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">8. Cookies and Tracking Technologies</h2>
             <p>
-              We use cookies and similar tracking technologies to track activity on our website and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.
+              California residents can exercise CCPA/CPRA rights (access, deletion, opt-out of selling or sharing personal information)
+              by contacting us through the methods below. We will verify requests using information already associated with your account.
+            </p>
+            <p>
+              Individuals located in the United Kingdom or European Union may exercise GDPR rights, including data portability and the
+              right to lodge a complaint with a supervisory authority. We respond to all verified requests within the timelines required by law.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">9. Third-Party Links</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">8. Cookies and Tracking Technologies</h2>
             <p>
-              Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.
+              We use first- and third-party cookies, device identifiers, and similar tracking technologies to enable core platform
+              functionality, remember preferences, analyze traffic, and measure campaign performance. You can adjust cookie settings
+              in your browser or opt out of analytics and advertising cookies using industry tools such as the Network Advertising Initiative opt-out page.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">10. Children's Privacy</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">9. Third-Party Links</h2>
             <p>
-              Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from children under 18.
+              Our website may contain links to third-party websites or integrations. Their privacy practices are governed by their own
+              policies, and we encourage you to review those statements before providing information.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">11. International Data Transfers</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">10. Compliance Standards</h2>
             <p>
-              Your information may be transferred to and maintained on servers located outside of your jurisdiction. By using our services, you consent to such transfers.
+              We design our outreach and data handling workflows to align with applicable U.S. and international standards, including:
+            </p>
+            <ul className="list-disc ml-6 mb-4">
+              <li><strong>CAN-SPAM Act:</strong> Marketing emails include accurate sender identification, a clear subject line, and an always-available unsubscribe link. Opt-out requests are honored within 10 business days.</li>
+              <li><strong>Telephone Consumer Protection Act (TCPA):</strong> We obtain appropriate consent before using automated dialing or SMS tools, maintain internal do-not-contact lists, and document contact preferences.</li>
+              <li><strong>California Consumer Privacy Act (CCPA) and state privacy laws:</strong> We provide transparency about data uses, enable rights requests, and do not sell personal information collected for lead-generation without explicit notice.</li>
+              <li><strong>General Data Protection Regulation (GDPR):</strong> When handling data from the United Kingdom or European Union, we rely on lawful bases for processing, support data subject rights, and use Standard Contractual Clauses when transferring data to the United States.</li>
+            </ul>
+            <p>
+              We periodically review additional U.S. state requirements that distinguish between business and consumer contacts, maintain vendor due diligence files, and document our compliance posture so clients can audit how prospect data is sourced and used.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">12. Changes to This Privacy Policy</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">11. Children's Privacy</h2>
             <p>
-              We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.
+              Our services are not directed to individuals under the age of 18, and we do not knowingly collect personal information from children.
+              If we learn that a child has provided personal information, we will delete it.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-white mb-4">13. Contact Us</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">12. International Data Transfers</h2>
             <p>
-              If you have any questions about this Privacy Policy, please contact us at:
+              Your information may be transferred to servers located in the United States or other jurisdictions where we or our service providers
+              operate. We use contractual protections and due diligence to safeguard data during cross-border transfers.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">13. Changes to This Privacy Policy</h2>
+            <p>
+              We may update this Privacy Policy as our services evolve. Material changes will be posted on this page with an updated "Last updated" date,
+              and we will notify you through product or email notices when legally required.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-4">14. Contact Us</h2>
+            <p>
+              If you have any questions about this Privacy Policy or wish to exercise your privacy rights, contact us at:
             </p>
             <div className="mt-4">
               <p><strong>TrueFlow AI</strong></p>
@@ -144,7 +177,7 @@ export default function PrivacyPolicy() {
           </section>
         </div>
       </main>
-      
+
       <Footer />
     </div>
   )
