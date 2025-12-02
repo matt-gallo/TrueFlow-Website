@@ -342,7 +342,13 @@ export default function LeadMachinePage() {
           <div className={`rounded-3xl border p-8 sm:p-12 text-center relative overflow-hidden ${
             isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'
           }`}>
-            <div className="absolute -top-4 right-0 w-[520px] max-w-full opacity-90 pointer-events-none">
+            {/* Gradient fade for banner in light mode */}
+            {!isDarkMode && (
+              <div className="absolute -top-4 right-0 w-[520px] max-w-full h-[390px] bg-gradient-to-l from-gray-50 via-gray-50/40 to-transparent pointer-events-none z-[5]" />
+            )}
+            <div className={`absolute -top-4 right-0 w-[520px] max-w-full pointer-events-none ${
+              isDarkMode ? 'opacity-90' : 'opacity-80 mix-blend-multiply'
+            }`}>
               <Image
                 src={isDarkMode ? "/trueflow-lead-machine-banner-transparent.png" : "/trueflow-lead-machine-banner-light-mode.png"}
                 alt="TrueFlow Lead Machine"
