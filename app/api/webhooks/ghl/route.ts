@@ -160,6 +160,32 @@ export async function GET(request: NextRequest) {
   })
 }
 
+// Helper to get base URL for internal API calls
+function getBaseUrl(): string {
+  // In production, use the configured URL
+  if (process.env.NEXT_PUBLIC_LANDING_URL) {
+    return process.env.NEXT_PUBLIC_LANDING_URL
+  }
+
+  // In development, use localhost
+  if (process.env.NODE_ENV === 'development') {
+    return 'http://localhost:3000'
+  }
+
+  // Fallback: construct from Vercel/Railway environment variables
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`
+  }
+
+  if (process.env.RAILWAY_PUBLIC_DOMAIN) {
+    return `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
+  }
+
+  // Last resort
+  console.warn('[Webhook] NEXT_PUBLIC_LANDING_URL not set, using localhost fallback')
+  return 'http://localhost:3000'
+}
+
 // Process payment success and create GHL sub-account
 async function processPaymentSuccess(webhookBody: any) {
   try {
@@ -173,16 +199,22 @@ async function processPaymentSuccess(webhookBody: any) {
 
     if (!signupId) {
       console.error('[Webhook] No signup_id found in payment webhook')
+      console.error('[Webhook] Webhook body:', JSON.stringify(webhookBody, null, 2))
       return
     }
 
     console.log('[Webhook] Found signup_id:', signupId)
 
+    const baseUrl = getBaseUrl()
+    console.log('[Webhook] Using base URL:', baseUrl)
+
     // Retrieve signup data from temporary storage
-    const signupDataResponse = await fetch(`${process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000'}/api/signup-data?signupId=${signupId}`)
+    const signupDataResponse = await fetch(`${baseUrl}/api/signup-data?signupId=${signupId}`)
 
     if (!signupDataResponse.ok) {
       console.error('[Webhook] Failed to retrieve signup data:', signupDataResponse.status)
+      const errorText = await signupDataResponse.text()
+      console.error('[Webhook] Response:', errorText)
       return
     }
 
@@ -190,7 +222,7 @@ async function processPaymentSuccess(webhookBody: any) {
     console.log('[Webhook] Retrieved signup data for:', signupData.email)
 
     // Call the intake endpoint to create sub-account + user
-    const intakeResponse = await fetch(`${process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000'}/api/intake`, {
+    const intakeResponse = await fetch(`${baseUrl}/api/intake`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(signupData)
@@ -215,7 +247,7 @@ async function processPaymentSuccess(webhookBody: any) {
     await sendWelcomeEmail(signupData, intakeResult)
 
     // Delete signup data after successful processing
-    await fetch(`${process.env.NEXT_PUBLIC_LANDING_URL || 'http://localhost:3000'}/api/signup-data?signupId=${signupId}`, {
+    await fetch(`${baseUrl}/api/signup-data?signupId=${signupId}`, {
       method: 'DELETE'
     })
 

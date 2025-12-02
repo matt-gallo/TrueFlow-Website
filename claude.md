@@ -15,12 +15,14 @@ The sign-up form at `/sign-up` automatically creates GoHighLevel sub-accounts fo
 
 ### Required Environment Variables
 
-Add these to Railway (both staging and production environments):
+Add these to Railway (both staging and production environments). See `.env.ghl.example` for a complete reference.
+
+#### Required for GoHighLevel Integration
 
 1. **`GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN`** - Your Agency-level Private Integration Token from GoHighLevel
    - Location in GHL: Settings → Integrations → Private Integration
    - Requires: Agency Pro ($497) plan
-   - Scopes needed: `locations.write` (and optionally `locations.read` for debugging)
+   - Scopes needed: `locations.write`, `users.write` (and optionally `locations.read` for debugging)
    - Type: **Agency-level** Private Integration Token (not sub-account level)
    - **Important:** This is NOT the legacy "Agency API Token" - it must be a Private Integration Token
 
@@ -30,9 +32,34 @@ Add these to Railway (both staging and production environments):
    - **NOT** the 7-digit Relationship Number (e.g., `1-234-567`)
    - **How to find it:** Run `GET /locations/search?limit=1` with your Private Integration Token and look for the `companyId` field in the response
 
-3. **`GHL_DEFAULT_USER_PASSWORD`** *(optional)* - Override password used for newly created users
+#### Required for Email Notifications
+
+3. **`RESEND_API_KEY`** - API key from Resend for sending welcome emails
+   - Get from: https://resend.com/api-keys
+   - Ensure your domain (trueflow.ai) is verified in Resend dashboard
+
+#### Required for Webhook Processing
+
+4. **`NEXT_PUBLIC_LANDING_URL`** - Your application's public URL
+   - Production: `https://trueflow.ai`
+   - Staging: `https://your-staging-url.railway.app`
+   - Used by webhooks to call internal APIs (`/api/signup-data`, `/api/intake`)
+
+#### Optional But Recommended
+
+5. **`GHL_DEFAULT_USER_PASSWORD`** - Override password for newly created users
    - If not set, a secure random password is generated automatically
    - Useful when you want to set a known default before forcing a password reset workflow
+
+6. **`GHL_WEBHOOK_SECRET`** - Secret for verifying webhook signatures from FastPay
+   - Recommended for production to prevent unauthorized webhook calls
+   - If not set, signature verification is skipped
+
+7. **`GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN_USER_CREATION`** - Separate token for user creation
+   - Only needed if you have different scopes/permissions for user management
+   - Falls back to main token if not set
+
+For detailed deployment instructions, see **SIGNUP_DEPLOYMENT_GUIDE.md**
 
 ### How It Works (Payment-First Flow)
 
