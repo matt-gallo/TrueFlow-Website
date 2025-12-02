@@ -1,12 +1,14 @@
 'use client'
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
+import ThemePreferenceModal from './ThemePreferenceModal'
 
 type Theme = 'light' | 'dark'
 
 interface ThemeContextType {
   theme: Theme
   toggleTheme: () => void
+  setTheme: (theme: Theme) => void
   isDarkMode: boolean
 }
 
@@ -15,13 +17,22 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('dark')
   const [mounted, setMounted] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   // Load theme from localStorage on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem('trueflow-theme') as Theme
+    const hasChosenTheme = localStorage.getItem('trueflow-theme-chosen')
+
     if (savedTheme) {
       setTheme(savedTheme)
     }
+
+    // Show modal only if user hasn't chosen a theme before
+    if (!hasChosenTheme) {
+      setShowModal(true)
+    }
+
     setMounted(true)
   }, [])
 
@@ -39,9 +50,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     setTheme(prev => prev === 'dark' ? 'light' : 'dark')
   }
 
+  const handleThemeSelection = (selectedTheme: Theme) => {
+    setTheme(selectedTheme)
+    setShowModal(false)
+  }
+
   const value = {
     theme,
     toggleTheme,
+    setTheme,
     isDarkMode: theme === 'dark'
   }
 
@@ -52,6 +69,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   return (
     <ThemeContext.Provider value={value}>
+      {showModal && <ThemePreferenceModal onSelectTheme={handleThemeSelection} />}
       {children}
     </ThemeContext.Provider>
   )
@@ -64,6 +82,7 @@ export function useTheme() {
     return {
       theme: 'dark' as Theme,
       toggleTheme: () => {},
+      setTheme: () => {},
       isDarkMode: true
     }
   }
