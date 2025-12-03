@@ -125,7 +125,7 @@ export default function ContentEngineTabs() {
   const currentTab = tabs.find(tab => tab.id === activeTab)
 
   return (
-    <section className="py-12 md:py-20 px-4 relative overflow-hidden">
+    <section id="content-engine-workflow" className="py-12 md:py-20 px-4 relative overflow-hidden">
       {/* Background gradient */}
       <div className={`absolute inset-0 bg-gradient-to-b ${
         isDarkMode

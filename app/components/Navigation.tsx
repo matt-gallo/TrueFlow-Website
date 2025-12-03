@@ -16,22 +16,32 @@ export default function Navigation() {
   const mobileLinks = [
     { label: 'Home', href: '/' },
     { label: 'Constant Content Engine™', href: '/content-engine' },
-    { label: 'Features', href: '/#features' },
-    { label: 'How it Works', href: '/#how-it-works' },
-    { label: 'Success Stories', href: '/#testimonials' },
-    { label: 'Blog', href: '/blog' },
+    { label: 'Features', href: '/#features', homeAnchor: '#features' },
+    { label: 'How it Works', href: '/#how-it-works', homeAnchor: '#how-it-works' },
+    { label: 'Success Stories', href: '/#testimonials', homeAnchor: '#testimonials' },
+    { label: 'Blog', href: '/blog', homeAnchor: '#blog' },
     { label: 'FAQs', href: '/faq' },
     { label: 'Recent Updates', href: 'https://app.trueflow.ai/changelog', external: true },
   ]
 
-  const isLinkActive = (href: string) => {
+  const isLinkActive = (href: string, homeAnchor?: string) => {
     if (href === '/') {
       return pathname === '/'
+    }
+    if (homeAnchor && pathname === '/') {
+      return false
     }
     if (href.startsWith('/#')) {
       return pathname === '/'
     }
     return pathname === href || pathname.startsWith(`${href}/`)
+  }
+
+  const getMobileHref = (link: (typeof mobileLinks)[number]) => {
+    if (!link.external && pathname === '/' && link.homeAnchor) {
+      return link.homeAnchor
+    }
+    return link.href
   }
 
   // Close menu when route changes
@@ -157,7 +167,7 @@ export default function Navigation() {
         }`}>
           <div className="px-4 py-6 space-y-4">
             {mobileLinks.map(link => {
-              const active = !link.external && isLinkActive(link.href)
+              const active = !link.external && isLinkActive(link.href, link.homeAnchor)
               const baseClasses = active
                 ? isDarkMode ? 'text-white font-semibold' : 'text-gray-900 font-semibold'
                 : isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
@@ -166,7 +176,7 @@ export default function Navigation() {
                 return (
                   <a
                     key={link.label}
-                    href={link.href}
+                    href={getMobileHref(link)}
                     onClick={handleLinkClick}
                     className={`block transition-colors text-lg ${baseClasses}`}
                     target="_blank"
@@ -180,7 +190,7 @@ export default function Navigation() {
               return (
                 <Link
                   key={link.label}
-                  href={link.href}
+                  href={getMobileHref(link)}
                   onClick={handleLinkClick}
                   className={`block transition-colors text-lg ${baseClasses}`}
                 >

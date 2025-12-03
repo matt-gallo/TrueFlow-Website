@@ -1050,7 +1050,7 @@ export default function LandingPage() {
                   Business owners lose up to 10 hours a week to repetitive tasks. We automate the busy work—so you can spend more time growing your business and less time behind a screen.
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-6 px-4 lg:px-0">
+                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start px-4 lg:px-0">
                   <Link
                     href="/ai-readiness-assessment"
                     className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
@@ -1058,18 +1058,6 @@ export default function LandingPage() {
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     <span className="relative z-10">Get Your AI Roadmap</span>
                     <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-
-                  <Link href="/coming-soon" className={`flex items-center space-x-3 sm:space-x-4 transition-all duration-300 group ${
-                    isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-                  }`}>
-                    <div className={`w-12 h-12 sm:w-16 sm:h-16 rounded-full backdrop-blur-md flex items-center justify-center border group-hover:scale-110 group-hover:border-blue-400/50 transition-all duration-300 relative ${
-                      isDarkMode ? 'bg-white/10 border-white/20 group-hover:bg-white/20' : 'bg-gray-100 border-gray-300 group-hover:bg-gray-200'
-                    }`}>
-                      <div className="absolute inset-0 rounded-full bg-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 "></div>
-                      <Play className="h-4 w-4 sm:h-6 sm:w-6 ml-1 relative z-10 group-hover:text-blue-400 transition-colors duration-300" />
-                    </div>
-                    <span className="text-lg sm:text-xl group-hover:text-blue-400 transition-colors duration-300">See How It Works</span>
                   </Link>
                 </div>
               </div>

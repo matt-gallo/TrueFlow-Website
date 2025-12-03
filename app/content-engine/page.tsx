@@ -90,6 +90,11 @@ export default function ContentEnginePage() {
   const capabilitiesRef = useRef(null)
   const ctaRef = useRef(null)
 
+  const scrollToWorkflowTabs = () => {
+    const section = document.getElementById('content-engine-workflow')
+    section?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
+
   // Generate floating particles
   const generateParticles = () => {
     const particleCount = 50
@@ -474,7 +479,11 @@ export default function ContentEnginePage() {
               <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
             
-            <button className="flex items-center space-x-4 text-white/70 hover:text-white transition-all duration-300 group hover:scale-105">
+            <button
+              type="button"
+              onClick={scrollToWorkflowTabs}
+              className="flex items-center space-x-4 text-white/70 hover:text-white transition-all duration-300 group hover:scale-105"
+            >
               <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-white/20 group-hover:border-blue-400/30 transition-all duration-300 relative">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 <Play className="h-6 w-6 ml-1 relative z-10 group-hover:scale-110 transition-transform duration-300" />
