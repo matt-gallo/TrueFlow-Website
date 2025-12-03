@@ -1,19 +1,24 @@
+'use client'
+
 import Navigation from '../components/Navigation'
 import { Footer } from '../components/Footer'
+import { useTheme } from '../components/ThemeProvider'
 
 export default function PrivacyPolicy() {
+  const { isDarkMode } = useTheme()
+
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
+    <div className={`min-h-screen ${isDarkMode ? 'bg-black text-white' : 'bg-slate-50 text-slate-900'}`}>
       <Navigation />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
-        <h1 className="text-4xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
+        <h1 className={`text-4xl font-bold mb-8 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Privacy Policy</h1>
 
-        <div className="prose prose-lg prose-slate max-w-none text-slate-600">
-          <p className="text-sm text-slate-500 mb-8">Last updated: December 2, 2025</p>
+        <div className={`prose prose-lg max-w-none ${isDarkMode ? 'text-white/80' : 'prose-slate text-slate-600'}`}>
+          <p className={`text-sm mb-8 ${isDarkMode ? 'text-white/60' : 'text-slate-500'}`}>Last updated: December 2, 2025</p>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">1. Introduction</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>1. Introduction</h2>
             <p>
               TrueFlow AI ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how
               we collect, use, disclose, and safeguard your information when you visit our website and use our services.
@@ -21,8 +26,8 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">2. Information We Collect</h2>
-            <h3 className="text-xl font-semibold text-slate-800 mb-2">Personal Information</h3>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>2. Information We Collect</h2>
+            <h3 className={`text-xl font-semibold mb-2 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Personal Information</h3>
             <p>We may collect personal information that you provide directly to us, such as:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>Name and contact information (email address, phone number)</li>
@@ -32,7 +37,7 @@ export default function PrivacyPolicy() {
               <li>Content you share with our team (support requests, feedback, or messages)</li>
             </ul>
 
-            <h3 className="text-xl font-semibold text-slate-800 mb-2">Automatically Collected Information</h3>
+            <h3 className={`text-xl font-semibold mb-2 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Automatically Collected Information</h3>
             <p>When you use our services, we automatically collect certain information, including:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>IP address, device identifiers, and approximate location</li>
@@ -43,7 +48,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">3. How We Use Your Information</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>3. How We Use Your Information</h2>
             <p>We use the information we collect to:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>Provide, maintain, and improve our products and services</li>
@@ -58,7 +63,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">4. Information Sharing and Disclosure</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>4. Information Sharing and Disclosure</h2>
             <p>We do not sell or rent personal information. We may share data only when necessary:</p>
             <ul className="list-disc ml-6 mb-4">
               <li><strong>Service Providers:</strong> Trusted vendors who help us operate, subject to confidentiality and security obligations.</li>
@@ -70,7 +75,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">5. Data Security</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>5. Data Security</h2>
             <p>
               We implement administrative, technical, and physical safeguards designed to protect personal information against
               unauthorized access, alteration, disclosure, or destruction. While we strive for industry best practices, no
@@ -79,7 +84,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">6. Data Retention</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>6. Data Retention</h2>
             <p>
               We retain personal information only for as long as necessary to fulfill the purposes outlined here, resolve disputes,
               enforce our agreements, and comply with legal, accounting, or reporting obligations.
@@ -87,7 +92,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">7. Your Rights and Choices</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>7. Your Rights and Choices</h2>
             <p>
               Because our outreach and prospecting are focused on business contacts, most of the data we collect falls under U.S. state
               exemptions for B2B communications. Even so, you may always contact us to:
@@ -105,7 +110,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">8. Cookies and Tracking Technologies</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>8. Cookies and Tracking Technologies</h2>
             <p>
               We use first- and third-party cookies, device identifiers, and similar tracking technologies to enable core platform
               functionality, remember preferences, analyze traffic, and measure campaign performance. You can adjust cookie settings
@@ -114,7 +119,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">9. Third-Party Links</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>9. Third-Party Links</h2>
             <p>
               Our website may contain links to third-party websites or integrations. Their privacy practices are governed by their own
               policies, and we encourage you to review those statements before providing information.
@@ -122,7 +127,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">10. Compliance Standards</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>10. Compliance Standards</h2>
             <p>
               Our services are designed for U.S.-based business-to-business (B2B) outreach. We prioritize states that expressly exempt
               B2B communications from their consumer privacy statutes (for example, the Virginia CDPA, Colorado Privacy Act, and similar laws)
@@ -140,7 +145,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">11. Children's Privacy</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>11. Children's Privacy</h2>
             <p>
               Our services are not directed to individuals under the age of 18, and we do not knowingly collect personal information from children.
               If we learn that a child has provided personal information, we will delete it.
@@ -148,7 +153,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">12. International Data Transfers</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>12. International Data Transfers</h2>
             <p>
               Your information may be transferred to servers located in the United States or other jurisdictions where we or our service providers
               operate. We use contractual protections and due diligence to safeguard data during cross-border transfers.
@@ -156,7 +161,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">13. Changes to This Privacy Policy</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>13. Changes to This Privacy Policy</h2>
             <p>
               We may update this Privacy Policy as our services evolve. Material changes will be posted on this page with an updated "Last updated" date,
               and we will notify you through product or email notices when legally required.
@@ -164,7 +169,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">14. Contact Us</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>14. Contact Us</h2>
             <p>
               If you have any questions about this Privacy Policy or wish to exercise your privacy rights, contact us at:
             </p>
