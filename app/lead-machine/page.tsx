@@ -93,17 +93,20 @@ const systemColumns = [
   {
     label: 'Data Intelligence',
     description: "Finds who's searching right now with verified contact data.",
-    image: '/data-intellegence-v2.png'
+    imageLight: '/data-intellegence-v2.png',
+    imageDark: '/data-intellegence-v2-dark.png'
   },
   {
     label: 'AI Outreach Engine',
     description: 'Starts 1:1 conversations automatically—no cold-calling or spray-and-pray.',
-    image: '/ai-outreach-engine-v2.png'
+    imageLight: '/ai-outreach-engine-v2.png',
+    imageDark: '/ai-outreach-engine-v2-dark.png'
   },
   {
     label: 'CRM + Ad Sync',
     description: 'Drops qualified replies into your pipeline and fuels smarter retargeting.',
-    image: '/crm-ad-sync-v2.png'
+    imageLight: '/crm-ad-sync-v2.png',
+    imageDark: '/crm-ad-sync-v2-dark.png'
   }
 ]
 
@@ -734,7 +737,7 @@ export default function LeadMachinePage() {
                     }`}
                   >
                     <Image
-                      src={column.image}
+                      src={isDarkMode ? column.imageDark : column.imageLight}
                       alt={`${column.label} visual`}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
