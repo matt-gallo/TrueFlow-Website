@@ -12,7 +12,28 @@ export default function Navigation() {
   const pathname = usePathname()
   const { isDarkMode, toggleTheme } = useTheme()
   const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
-  
+
+  const mobileLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Constant Content Engine™', href: '/content-engine' },
+    { label: 'Features', href: '/#features' },
+    { label: 'How it Works', href: '/#how-it-works' },
+    { label: 'Success Stories', href: '/#testimonials' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'FAQs', href: '/faq' },
+    { label: 'Recent Updates', href: 'https://app.trueflow.ai/changelog', external: true },
+  ]
+
+  const isLinkActive = (href: string) => {
+    if (href === '/') {
+      return pathname === '/'
+    }
+    if (href.startsWith('/#')) {
+      return pathname === '/'
+    }
+    return pathname === href || pathname.startsWith(`${href}/`)
+  }
+
   // Close menu when route changes
   useEffect(() => {
     setIsMenuOpen(false)
@@ -135,84 +156,38 @@ export default function Navigation() {
             : 'bg-white/90 border-gray-200'
         }`}>
           <div className="px-4 py-6 space-y-4">
-            <Link
-              href="/"
-              onClick={handleLinkClick}
-              className={`block transition-colors text-lg ${
-                pathname === '/'
-                  ? isDarkMode ? 'text-white font-semibold' : 'text-gray-900 font-semibold'
-                  : isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Home
-            </Link>
-            <Link
-              href="/content-engine"
-              onClick={handleLinkClick}
-              className={`block transition-colors text-lg ${
-                pathname === '/content-engine'
-                  ? isDarkMode ? 'text-white font-semibold' : 'text-gray-900 font-semibold'
-                  : isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Constant Content Engine™
-            </Link>
-            <Link
-              href="/blog"
-              onClick={handleLinkClick}
-              className={`block transition-colors text-lg ${
-                pathname.startsWith('/blog')
-                  ? isDarkMode ? 'text-white font-semibold' : 'text-gray-900 font-semibold'
-                  : isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              Blog
-            </Link>
-            <Link
-              href="/faq"
-              onClick={handleLinkClick}
-              className={`block transition-colors text-lg ${
-                pathname === '/faq'
-                  ? isDarkMode ? 'text-white font-semibold' : 'text-gray-900 font-semibold'
-                  : isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
-              }`}
-            >
-              FAQs
-            </Link>
-            {pathname === '/' && (
-              <>
-                <a
-                  href="https://app.trueflow.ai/changelog"
+            {mobileLinks.map(link => {
+              const active = !link.external && isLinkActive(link.href)
+              const baseClasses = active
+                ? isDarkMode ? 'text-white font-semibold' : 'text-gray-900 font-semibold'
+                : isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+
+              if (link.external) {
+                return (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    onClick={handleLinkClick}
+                    className={`block transition-colors text-lg ${baseClasses}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.label}
+                  </a>
+                )
+              }
+
+              return (
+                <Link
+                  key={link.label}
+                  href={link.href}
                   onClick={handleLinkClick}
-                  className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  className={`block transition-colors text-lg ${baseClasses}`}
                 >
-                  Recent Updates
-                </a>
-                <a
-                  href="#features"
-                  onClick={handleLinkClick}
-                  className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
-                >
-                  Features
-                </a>
-                <a
-                  href="#how-it-works"
-                  onClick={handleLinkClick}
-                  className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
-                >
-                  How it Works
-                </a>
-                <a
-                  href="#testimonials"
-                  onClick={handleLinkClick}
-                  className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}
-                >
-                  Success Stories
-                </a>
-              </>
-            )}
+                  {link.label}
+                </Link>
+              )
+            })}
             <a
               href="https://login.trueflow.ai"
               onClick={handleLinkClick}
