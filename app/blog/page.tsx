@@ -51,8 +51,8 @@ export default function BlogPage() {
     <div className={`min-h-screen relative transition-colors ${
       isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
     }`}>
-      {/* Particle Background */}
-      <ParticleBackground particleCount={50} />
+      {/* Particle Background - only in dark mode */}
+      {isDarkMode && <ParticleBackground particleCount={50} />}
 
       {/* Navigation */}
       <Navigation />
@@ -123,7 +123,7 @@ export default function BlogPage() {
         <div className="max-w-6xl mx-auto">
           {filteredPosts.length === 0 ? (
             <div className="text-center py-16">
-              <p className="text-white/60 text-lg">No posts found matching your criteria.</p>
+              <p className={`text-lg ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>No posts found matching your criteria.</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -140,7 +140,11 @@ export default function BlogPage() {
                     href={`/blog/${post.slug}`}
                     className="group block"
                   >
-                    <article className="bg-white/10 backdrop-blur-sm rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300 h-full flex flex-col border border-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-white/10 transform hover:-translate-y-1">
+                    <article className={`backdrop-blur-sm rounded-2xl overflow-hidden transition-all duration-300 h-full flex flex-col border transform hover:-translate-y-1 ${
+                      isDarkMode
+                        ? 'bg-white/10 hover:bg-white/15 border-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-white/10'
+                        : 'bg-white hover:bg-gray-50 border-gray-200 hover:border-gray-300 hover:shadow-2xl hover:shadow-gray-200/50'
+                    }`}>
                       {/* Featured Image */}
                       <div className={`h-48 bg-gradient-to-br ${gradientClass} relative overflow-hidden group`}>
                         {post.featuredImage ? (
@@ -172,7 +176,7 @@ export default function BlogPage() {
                           </>
                         )}
                         <div className="absolute bottom-4 left-4 z-10">
-                          <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm">
+                          <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-white">
                             {post.category.name}
                           </span>
                         </div>
@@ -180,7 +184,7 @@ export default function BlogPage() {
 
                     {/* Content */}
                     <div className="p-6 flex-1 flex flex-col">
-                      <div className="flex items-center gap-4 text-sm text-white/60 mb-3">
+                      <div className={`flex items-center gap-4 text-sm mb-3 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
                         <span className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
                           {new Date(post.date).toLocaleDateString('en-US', {
@@ -195,11 +199,13 @@ export default function BlogPage() {
                         </span>
                       </div>
 
-                      <h2 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors line-clamp-2">
+                      <h2 className={`text-xl font-semibold mb-3 group-hover:text-blue-400 transition-colors line-clamp-2 ${
+                        isDarkMode ? 'text-white' : 'text-gray-900'
+                      }`}>
                         {post.title}
                       </h2>
 
-                      <p className="text-white/70 mb-4 line-clamp-3 flex-1">
+                      <p className={`mb-4 line-clamp-3 flex-1 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                         {post.excerpt}
                       </p>
 
@@ -217,17 +223,21 @@ export default function BlogPage() {
                           )
                         })}
                         {post.tags.length > 3 && (
-                          <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-white/10 text-white/60">
+                          <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
+                            isDarkMode ? 'bg-white/10 text-white/60' : 'bg-gray-100 text-gray-500'
+                          }`}>
                             +{post.tags.length - 3} more
                           </span>
                         )}
                       </div>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-sm text-white/60">
+                        <span className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
                           By {post.author.name}
                         </span>
-                        <span className="text-blue-400 group-hover:translate-x-1 transition-transform">
+                        <span className={`group-hover:translate-x-1 transition-transform ${
+                          isDarkMode ? 'text-blue-400' : 'text-blue-500'
+                        }`}>
                           <ArrowRight className="h-5 w-5" />
                         </span>
                       </div>
