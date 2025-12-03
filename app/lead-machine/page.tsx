@@ -1172,6 +1172,18 @@ export default function LeadMachinePage() {
               <p className={`text-xs uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>After the demo</p>
               <h2 className={`mt-3 text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>What happens once you say yes</h2>
             </div>
+
+            {/* After the demo image */}
+            <div className="mb-10 relative w-full rounded-2xl overflow-hidden">
+              <Image
+                src="/after-the-demo.png"
+                alt="After the demo timeline"
+                width={1200}
+                height={600}
+                className="w-full h-auto"
+              />
+            </div>
+
             <div className="grid gap-6 md:grid-cols-3">
               {[{
                 title: 'Day 0-2',
