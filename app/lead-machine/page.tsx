@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
@@ -20,6 +20,17 @@ import {
   BarChart3,
   ShieldCheck
 } from 'lucide-react'
+
+interface Particle {
+  id: number
+  x: number
+  y: number
+  vx: number
+  vy: number
+  size: number
+  opacity: number
+  color: string
+}
 
 const features = [
   {
@@ -200,6 +211,77 @@ export default function LeadMachinePage() {
     })
     return defaults
   })
+  const [particles, setParticles] = useState<Particle[]>([])
+  const animationFrameRef = useRef<number | null>(null)
+
+  // Generate floating particles
+  const generateParticles = () => {
+    const particleCount = 50
+    const newParticles: Particle[] = []
+    for (let i = 0; i < particleCount; i++) {
+      newParticles.push({
+        id: i,
+        x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+        y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 4 + 1,
+        opacity: Math.random() * 0.5 + 0.1,
+        color: ['#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4'][Math.floor(Math.random() * 4)]
+      })
+    }
+    setParticles(newParticles)
+  }
+
+  // Animate particles
+  const animateParticles = () => {
+    setParticles(prev => prev.map(particle => {
+      let newX = particle.x + particle.vx
+      let newY = particle.y + particle.vy
+
+      // Wrap around screen edges
+      const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1200
+      const screenHeight = typeof window !== 'undefined' ? window.innerHeight : 800
+      if (newX > screenWidth) newX = 0
+      if (newX < 0) newX = screenWidth
+      if (newY > screenHeight) newY = 0
+      if (newY < 0) newY = screenHeight
+
+      return {
+        ...particle,
+        x: newX,
+        y: newY
+      }
+    }))
+  }
+
+  // Initialize particles
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      generateParticles()
+
+      // Regenerate particles on window resize
+      const handleResize = () => {
+        generateParticles()
+      }
+
+      // Animation loop
+      const animateLoop = () => {
+        animateParticles()
+        animationFrameRef.current = requestAnimationFrame(animateLoop)
+      }
+
+      animationFrameRef.current = requestAnimationFrame(animateLoop)
+      window.addEventListener('resize', handleResize)
+
+      return () => {
+        window.removeEventListener('resize', handleResize)
+        if (animationFrameRef.current) {
+          cancelAnimationFrame(animationFrameRef.current)
+        }
+      }
+    }
+  }, [])
 
   const scrollToCalendar = () => {
     const calendarSection = document.getElementById('book-demo-calendar')
@@ -334,6 +416,25 @@ export default function LeadMachinePage() {
     <div className={`min-h-screen overflow-hidden transition-colors duration-300 ${
       isDarkMode ? 'bg-black text-white' : 'bg-white text-gray-900'
     }`}>
+      {/* Floating Particles */}
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className="particle fixed pointer-events-none rounded-full z-0"
+          style={{
+            left: `${particle.x}px`,
+            top: `${particle.y}px`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            backgroundColor: particle.color,
+            opacity: particle.opacity,
+            animationDelay: `${particle.id * 0.1}s`,
+            filter: 'blur(1px)',
+            boxShadow: `0 0 ${particle.size * 2}px ${particle.color}`,
+          }}
+        />
+      ))}
+
       {/* LeadConnector booking widget script */}
       <Navigation />
 
