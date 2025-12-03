@@ -93,17 +93,17 @@ const systemColumns = [
   {
     label: 'Data Intelligence',
     description: "Finds who's searching right now with verified contact data.",
-    image: '/data-intellegence.png'
+    image: '/data-intellegence-v2.png'
   },
   {
     label: 'AI Outreach Engine',
     description: 'Starts 1:1 conversations automatically—no cold-calling or spray-and-pray.',
-    image: '/ai-outreach-engine.png'
+    image: '/ai-outreach-engine-v2.png'
   },
   {
     label: 'CRM + Ad Sync',
     description: 'Drops qualified replies into your pipeline and fuels smarter retargeting.',
-    image: '/crm-ad-sync.png'
+    image: '/crm-ad-sync-v2.png'
   }
 ]
 
