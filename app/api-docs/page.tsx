@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Navigation from '../components/Navigation'
 import { Footer } from '../components/Footer'
+import { useTheme } from '../components/ThemeProvider'
 import { 
   ChevronDown, 
   ChevronRight, 
@@ -218,6 +219,7 @@ function EndpointCard({ endpoint, category }: { endpoint: any; category: string 
 }
 
 export default function ApiDocsPage() {
+  const { isDarkMode } = useTheme()
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [copiedToken, setCopiedToken] = useState(false)
@@ -737,7 +739,11 @@ export default function ApiDocsPage() {
   }
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900/20 via-gray-900 to-blue-900/20">
+    <div className={`min-h-screen ${
+      isDarkMode
+        ? 'bg-gradient-to-br from-purple-900/20 via-gray-900 to-blue-900/20'
+        : 'bg-white'
+    }`}>
       <Navigation />
       
       {/* Add padding to account for fixed navigation */}
