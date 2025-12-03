@@ -141,14 +141,14 @@ export default function ComingSoonPage() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+      <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+        <div className="text-slate-500 text-xl">Loading...</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-900 overflow-x-hidden">
       <style jsx>{`
         @keyframes gradient-shift {
           0% { background-position: 0% 50%; }
@@ -238,19 +238,19 @@ export default function ComingSoonPage() {
           
           {/* Hero Section */}
           <div className="mb-16">
-            <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-8 border border-white/20">
-              <Clock className="h-5 w-5 text-blue-400" />
-              <span className="text-white/90 text-lg">Coming Soon</span>
+            <div className="inline-flex items-center space-x-2 bg-white rounded-full px-6 py-3 mb-8 border border-slate-200 shadow-sm">
+              <Clock className="h-5 w-5 text-blue-500" />
+              <span className="text-slate-600 text-lg font-semibold">Coming Soon</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight">
+            <h1 className="text-5xl md:text-7xl font-bold text-slate-900 mb-8 leading-tight">
               We're Building Something{" "}
               <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 Amazing
               </span>
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/70 max-w-3xl mx-auto mb-12">
+            <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-12">
               This feature is currently under development. We're working hard to bring you 
               the best AI-powered business automation tools.
             </p>
@@ -258,7 +258,7 @@ export default function ComingSoonPage() {
 
           {/* Features Preview */}
           <div 
-            className="bg-white/5 backdrop-blur-md rounded-3xl border border-white/20 p-12 mb-16 transform-gpu"
+            className="bg-white rounded-3xl border border-slate-200 p-12 mb-16 shadow-xl shadow-slate-200/60"
             style={{
               transformStyle: 'preserve-3d',
               transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)'
@@ -287,7 +287,7 @@ export default function ComingSoonPage() {
               e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
             }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-8">
               What's Coming Next
             </h2>
             
@@ -296,31 +296,31 @@ export default function ComingSoonPage() {
                 <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <TrueFlowLogoIcon size={32} />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Enhanced Features</h3>
-                <p className="text-white/70">More powerful AI capabilities and automation tools</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Enhanced Features</h3>
+                <p className="text-slate-600">More powerful AI capabilities and automation tools</p>
               </div>
               
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <CheckCircle className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Better Integration</h3>
-                <p className="text-white/70">Seamless connections with your favorite platforms</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Better Integration</h3>
+                <p className="text-slate-600">Seamless connections with your favorite platforms</p>
               </div>
               
               <div className="text-center">
                 <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Bell className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">Smart Notifications</h3>
-                <p className="text-white/70">Stay updated with real-time insights and alerts</p>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">Smart Notifications</h3>
+                <p className="text-slate-600">Stay updated with real-time insights and alerts</p>
               </div>
             </div>
           </div>
 
           {/* Email Signup */}
           <div 
-            className="bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-3xl border border-white/20 p-12 transform-gpu"
+            className="bg-white rounded-3xl border border-slate-200 p-12 transform-gpu shadow-2xl shadow-blue-100/60"
             style={{
               transformStyle: 'preserve-3d',
               transition: 'transform 0.5s cubic-bezier(0.23, 1, 0.320, 1)'
@@ -349,10 +349,10 @@ export default function ComingSoonPage() {
               e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
             }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
               Be the First to Know
             </h2>
-            <p className="text-xl text-white/70 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
               Get notified when this feature launches and be among the first to experience 
               the next generation of AI business automation.
             </p>
@@ -365,7 +365,7 @@ export default function ComingSoonPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="flex-1 px-6 py-4 bg-white/10 border border-white/20 rounded-full text-white placeholder-white/50 focus:border-blue-500 focus:outline-none transition-colors"
+                    className="flex-1 px-6 py-4 bg-white border border-slate-200 rounded-full text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors shadow-sm"
                     required
                   />
                   <button
@@ -377,21 +377,21 @@ export default function ComingSoonPage() {
                 </div>
               </form>
             ) : (
-              <div className="bg-green-500/20 border border-green-500/50 rounded-2xl p-6 max-w-md mx-auto">
+              <div className="bg-green-50 border border-green-200 rounded-2xl p-6 max-w-md mx-auto">
                 <div className="flex items-center justify-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-400" />
-                  <span className="text-white font-semibold">Thanks! We'll notify you when it's ready.</span>
+                  <CheckCircle className="h-6 w-6 text-green-500" />
+                  <span className="text-slate-700 font-semibold">Thanks! We'll notify you when it's ready.</span>
                 </div>
               </div>
             )}
 
-            <div className="flex items-center justify-center space-x-8 mt-8 text-white/50">
+            <div className="flex items-center justify-center space-x-8 mt-8 text-slate-500">
               <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
+                <CheckCircle className="h-5 w-5 text-green-500" />
                 <span>No spam, ever</span>
               </div>
               <div className="flex items-center space-x-2">
-                <CheckCircle className="h-5 w-5 text-green-400" />
+                <CheckCircle className="h-5 w-5 text-green-500" />
                 <span>Unsubscribe anytime</span>
               </div>
             </div>
@@ -399,7 +399,7 @@ export default function ComingSoonPage() {
 
           {/* CTA */}
           <div className="mt-16 text-center">
-            <p className="text-white/60 mb-6">
+            <p className="text-slate-600 mb-6">
               Ready to get started with our current features?
             </p>
             <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:opacity-90 transition-opacity inline-flex items-center space-x-3">

@@ -162,7 +162,7 @@ export default function ThemePreferenceModal({ onSelectTheme }: ThemePreferenceM
           {/* Footer note */}
           <div className="mt-8 text-center">
             <p className="text-sm text-white/50">
-              You can change this anytime in settings
+              You can change this anytime from the top navigation bar
             </p>
           </div>
         </div>
