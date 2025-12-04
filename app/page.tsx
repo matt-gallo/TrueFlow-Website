@@ -1415,7 +1415,7 @@ export default function LandingPage() {
                       {/* Central TrueFlow logo */}
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse">
-                          <TrueFlowLogoIcon size={32} />
+                          <TrueFlowLogoIcon size={32} isDarkMode={isDarkMode} />
                         </div>
                       </div>
                       

@@ -439,8 +439,8 @@ export default function ContentEnginePage() {
           <div className={`inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md rounded-full px-6 py-3 mb-8 border border-white/20 transition-all duration-1000 ${
             ''
           }`}>
-            <TrueFlowLogoIcon size={20} className="animate-pulse" />
-            <span className="text-white/90 text-lg">TrueFlow AI Constant Content Engine™</span>
+            <TrueFlowLogoIcon size={20} className="animate-pulse" isDarkMode={isDarkMode} />
+            <span className={`text-lg ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>TrueFlow AI Constant Content Engine™</span>
           </div>
           
           <h1 className={`text-5xl md:text-7xl font-bold text-white mb-8 leading-tight transition-all duration-1000 ${
