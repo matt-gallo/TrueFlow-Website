@@ -260,7 +260,7 @@ function AnimatedValue({ endValue, duration, prefix = '', suffix = '', visible }
 }
 
 // TypewriterText component for the hero section
-function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
+function TypewriterText({ gradientOffset, isDarkMode }: { gradientOffset: number, isDarkMode: boolean }) {
   const phrases = ['teams like yours', 'doctors', 'real estate agents', 'online coaches', 'filmmakers', 'marketers', 'agencies']
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0)
   const [currentText, setCurrentText] = useState('')
@@ -341,12 +341,17 @@ function TypewriterText({ gradientOffset }: { gradientOffset: number }) {
     return () => clearInterval(cursorTimer)
   }, [])
 
+  const lightModeLightness = [45, 50, 55, 48]
+  const darkModeLightness = [60, 65, 70, 65]
+
+  const selectedLightness = isDarkMode ? darkModeLightness : lightModeLightness
+
   const gradientStyle = {
     backgroundImage: `linear-gradient(${gradientOffset}deg, 
-      hsl(${(gradientOffset + 220) % 360}, 70%, 60%), 
-      hsl(${(gradientOffset + 280) % 360}, 80%, 65%), 
-      hsl(${(gradientOffset + 340) % 360}, 85%, 70%), 
-      hsl(${(gradientOffset + 40) % 360}, 75%, 65%))`,
+      hsl(${(gradientOffset + 220) % 360}, 70%, ${selectedLightness[0]}%), 
+      hsl(${(gradientOffset + 280) % 360}, 80%, ${selectedLightness[1]}%), 
+      hsl(${(gradientOffset + 340) % 360}, 85%, ${selectedLightness[2]}%), 
+      hsl(${(gradientOffset + 40) % 360}, 75%, ${selectedLightness[3]}%))`,
     backgroundSize: '300% 300%',
     animation: `gradient-shift 3s ease-in-out infinite`
   }
@@ -1022,7 +1027,7 @@ export default function LandingPage() {
                 }`}>
                   The all-in-one, AI-powered marketing and sales platform that works 24/7 for<br />
                   <span className="inline-block min-h-[1.2em]">
-                    <TypewriterText gradientOffset={gradientOffset} />
+                    <TypewriterText gradientOffset={gradientOffset} isDarkMode={isDarkMode} />
                   </span>
                 </h1>
 
