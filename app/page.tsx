@@ -928,7 +928,7 @@ export default function LandingPage() {
                 }`}
                 aria-label="Toggle theme"
               >
-                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                {isDarkMode ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
               </button>
 
               <a
@@ -957,7 +957,7 @@ export default function LandingPage() {
                 }`}
                 aria-label="Toggle theme"
               >
-                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+                {isDarkMode ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
               </button>
               <button
                 className={isDarkMode ? 'text-white' : 'text-gray-900'}
