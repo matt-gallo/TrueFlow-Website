@@ -178,63 +178,95 @@ function CodeExample({ code, language = 'javascript', isDarkMode }: { code: stri
 // Endpoint Card Component
 function EndpointCard({ endpoint, category, isDarkMode }: { endpoint: any; category: string; isDarkMode: boolean }) {
   const [isExpanded, setIsExpanded] = useState(false)
-  
+
   return (
-    <div className="bg-gradient-to-br from-gray-900/30 to-gray-800/30 rounded-lg border border-white/10 overflow-hidden hover:border-purple-500/30 transition-colors">
+    <div className={`rounded-lg border overflow-hidden transition-colors ${
+      isDarkMode
+        ? 'bg-gradient-to-br from-gray-900/30 to-gray-800/30 border-white/10 hover:border-purple-500/30'
+        : 'bg-gray-50 border-gray-200 hover:border-purple-500/50'
+    }`}>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full p-3 md:p-4 flex items-start md:items-center justify-between hover:bg-white/5 transition-colors"
+        className={`w-full p-3 md:p-4 flex items-start md:items-center justify-between transition-colors ${
+          isDarkMode ? 'hover:bg-white/5' : 'hover:bg-gray-100'
+        }`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-left flex-1">
           <MethodBadge method={endpoint.method} />
           <div className="flex-1 min-w-0">
-            <h4 className="text-white font-medium text-sm md:text-base truncate">{endpoint.name}</h4>
-            <code className="text-purple-400 text-xs md:text-sm break-all">{endpoint.endpoint}</code>
+            <h4 className={`font-medium text-sm md:text-base truncate ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>{endpoint.name}</h4>
+            <code className={`text-xs md:text-sm break-all ${
+              isDarkMode ? 'text-purple-400' : 'text-purple-600'
+            }`}>{endpoint.endpoint}</code>
           </div>
         </div>
-        <ChevronRight className={`w-4 h-4 md:w-5 md:h-5 text-white/60 transition-transform flex-shrink-0 ml-2 ${isExpanded ? 'rotate-90' : ''}`} />
+        <ChevronRight className={`w-4 h-4 md:w-5 md:h-5 transition-transform flex-shrink-0 ml-2 ${
+          isExpanded ? 'rotate-90' : ''
+        } ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`} />
       </button>
       
       {isExpanded && (
-        <div className="border-t border-white/10 p-3 md:p-4 space-y-3 md:space-y-4">
-          <p className="text-white/80 text-xs md:text-sm">{endpoint.description}</p>
-          
+        <div className={`border-t p-3 md:p-4 space-y-3 md:space-y-4 ${
+          isDarkMode ? 'border-white/10' : 'border-gray-200'
+        }`}>
+          <p className={`text-xs md:text-sm ${
+            isDarkMode ? 'text-white/80' : 'text-gray-700'
+          }`}>{endpoint.description}</p>
+
           {endpoint.authentication && (
             <div className="flex items-center gap-2 text-yellow-400 text-sm">
               <Shield className="w-4 h-4" />
               <span>Requires authentication</span>
             </div>
           )}
-          
+
           {endpoint.parameters && endpoint.parameters.length > 0 && (
             <div>
-              <h5 className="text-white font-medium mb-2">Parameters</h5>
+              <h5 className={`font-medium mb-2 ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>Parameters</h5>
               <div className="space-y-2">
                 {endpoint.parameters.map((param: any, idx: number) => (
-                  <div key={idx} className="bg-black/30 rounded-lg p-2 md:p-3">
+                  <div key={idx} className={`rounded-lg p-2 md:p-3 ${
+                    isDarkMode ? 'bg-black/30' : 'bg-white border border-gray-200'
+                  }`}>
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
                       <div className="flex flex-wrap items-center gap-1">
-                        <code className="text-purple-400 text-xs md:text-sm">{param.name}</code>
-                        <span className="text-white/60 text-xs md:text-sm">{param.type}</span>
+                        <code className={`text-xs md:text-sm ${
+                          isDarkMode ? 'text-purple-400' : 'text-purple-600'
+                        }`}>{param.name}</code>
+                        <span className={`text-xs md:text-sm ${
+                          isDarkMode ? 'text-white/60' : 'text-gray-600'
+                        }`}>{param.type}</span>
                         {param.required && <span className="text-red-400 text-[10px] md:text-xs">Required</span>}
                       </div>
                       {param.default && (
-                        <span className="text-white/40 text-xs md:text-sm">Default: {param.default}</span>
+                        <span className={`text-xs md:text-sm ${
+                          isDarkMode ? 'text-white/40' : 'text-gray-500'
+                        }`}>Default: {param.default}</span>
                       )}
                     </div>
-                    <p className="text-white/60 text-xs md:text-sm mt-0.5 md:mt-1">{param.description}</p>
+                    <p className={`text-xs md:text-sm mt-0.5 md:mt-1 ${
+                      isDarkMode ? 'text-white/60' : 'text-gray-600'
+                    }`}>{param.description}</p>
                     {param.in && (
-                      <p className="text-white/40 text-[10px] md:text-xs mt-0.5 md:mt-1">Location: {param.in}</p>
+                      <p className={`text-[10px] md:text-xs mt-0.5 md:mt-1 ${
+                        isDarkMode ? 'text-white/40' : 'text-gray-500'
+                      }`}>Location: {param.in}</p>
                     )}
                   </div>
                 ))}
               </div>
             </div>
           )}
-          
+
           {endpoint.response && (
             <div>
-              <h5 className="text-white font-medium mb-2">Response Example</h5>
+              <h5 className={`font-medium mb-2 ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>Response Example</h5>
               <CodeExample code={JSON.stringify(endpoint.response, null, 2)} isDarkMode={isDarkMode} />
             </div>
           )}
@@ -779,8 +811,10 @@ export default function ApiDocsPage() {
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center gap-3">
             <AlertCircle className="w-5 h-5 text-yellow-400 flex-shrink-0" />
-            <p className="text-yellow-100 text-sm md:text-base">
-              <span className="font-semibold">Note:</span> The TrueFlow API is currently in development and not yet available for external use or private integrations. 
+            <p className={`text-sm md:text-base ${
+              isDarkMode ? 'text-yellow-100' : 'text-yellow-900'
+            }`}>
+              <span className="font-semibold">Note:</span> The TrueFlow API is currently in development and not yet available for external use or private integrations.
               It is currently operational for backend services only. Full public API access is coming soon!
             </p>
           </div>
@@ -791,8 +825,8 @@ export default function ApiDocsPage() {
       <section className="py-12 md:py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-purple-500/10 rounded-full px-3 py-1.5 md:px-4 md:py-2 mb-4 md:mb-6">
-            <Code className="w-3 h-3 md:w-4 md:h-4 text-purple-400" />
-            <span className="text-purple-400 text-xs md:text-sm">API Version 1.0.0</span>
+            <Code className={`w-3 h-3 md:w-4 md:h-4 ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`} />
+            <span className={`text-xs md:text-sm ${isDarkMode ? 'text-purple-400' : 'text-purple-600'}`}>API Version 1.0.0</span>
           </div>
 
           <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 bg-gradient-to-r ${
@@ -907,18 +941,26 @@ export default function ApiDocsPage() {
       <section className="py-8 md:py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="mb-6 md:mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 md:mb-6">API Endpoints</h2>
+            <h2 className={`text-2xl md:text-3xl font-bold mb-4 md:mb-6 ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>API Endpoints</h2>
 
             {/* Search and Filter */}
             <div className="flex flex-col gap-3 md:gap-4 mb-4 md:mb-6">
               <div className="relative">
-                <Search className="absolute left-2.5 md:left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-white/40" />
+                <Search className={`absolute left-2.5 md:left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 ${
+                  isDarkMode ? 'text-white/40' : 'text-gray-400'
+                }`} />
                 <input
                   type="text"
                   placeholder="Search endpoints..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-white/10 backdrop-blur-md rounded-lg px-8 md:px-10 py-2 md:py-3 text-sm md:text-base text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                  className={`w-full backdrop-blur-md rounded-lg px-8 md:px-10 py-2 md:py-3 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-purple-500 ${
+                    isDarkMode
+                      ? 'bg-white/10 text-white placeholder-white/40'
+                      : 'bg-gray-100 text-gray-900 placeholder-gray-400 border border-gray-200'
+                  }`}
                 />
               </div>
 
@@ -930,7 +972,9 @@ export default function ApiDocsPage() {
                     className={`flex items-center gap-1 md:gap-2 px-2 md:px-4 py-1.5 md:py-2 rounded-lg whitespace-nowrap transition-colors text-xs md:text-sm ${
                       selectedCategory === cat.id
                         ? 'bg-purple-500 text-white'
-                        : 'bg-white/10 text-white/60 hover:bg-white/20'
+                        : isDarkMode
+                          ? 'bg-white/10 text-white/60 hover:bg-white/20'
+                          : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                     }`}
                   >
                     <span className="w-3 h-3 md:w-4 md:h-4">{cat.icon}</span>
@@ -948,7 +992,9 @@ export default function ApiDocsPage() {
               <div key={key}>
                 <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
                   <span className="w-4 h-4 md:w-5 md:h-5">{categoryData.icon}</span>
-                  <h3 className="text-lg md:text-xl font-bold text-white">{categoryData.category}</h3>
+                  <h3 className={`text-lg md:text-xl font-bold ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>{categoryData.category}</h3>
                 </div>
                 <div className="space-y-2 md:space-y-3">
                   {categoryData.endpoints.map((endpoint: any, idx: number) => (
@@ -958,29 +1004,41 @@ export default function ApiDocsPage() {
               </div>
             ))}
           </div>
-          
+
           {filteredEndpoints.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-white/60">No endpoints found matching your search.</p>
+              <p className={isDarkMode ? 'text-white/60' : 'text-gray-600'}>No endpoints found matching your search.</p>
             </div>
           )}
         </div>
       </section>
       
       {/* SDKs Section */}
-      <section className="py-8 md:py-12 px-4 border-t border-white/10">
+      <section className={`py-8 md:py-12 px-4 ${
+        isDarkMode ? 'border-t border-white/10' : 'border-t border-gray-200'
+      }`}>
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">SDKs & Libraries</h2>
+          <h2 className={`text-2xl md:text-3xl font-bold mb-6 md:mb-8 ${
+            isDarkMode ? 'text-white' : 'text-gray-900'
+          }`}>SDKs & Libraries</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-4 md:p-6">
+            <div className={`backdrop-blur-xl rounded-xl border p-4 md:p-6 ${
+              isDarkMode
+                ? 'bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10'
+                : 'bg-gray-50 border-gray-200'
+            }`}>
               <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
                 <div className="bg-yellow-500/10 p-1.5 md:p-2 rounded-lg">
                   <Code className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
                 </div>
-                <h3 className="text-white font-bold text-sm md:text-base">JavaScript/TypeScript</h3>
+                <h3 className={`font-bold text-sm md:text-base ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>JavaScript/TypeScript</h3>
               </div>
-              <p className="text-white/60 text-xs md:text-sm mb-3 md:mb-4">Official SDK for Node.js and browser environments</p>
+              <p className={`text-xs md:text-sm mb-3 md:mb-4 ${
+                isDarkMode ? 'text-white/60' : 'text-gray-600'
+              }`}>Official SDK for Node.js and browser environments</p>
               <CodeExample code="npm install @trueflow/sdk" language="bash" isDarkMode={isDarkMode} />
               <div className="mt-4">
                 <CodeExample code={`import { TrueFlow } from '@trueflow/sdk'
@@ -990,14 +1048,22 @@ const widgets = await client.widgets.list()`} isDarkMode={isDarkMode} />
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-4 md:p-6">
+            <div className={`backdrop-blur-xl rounded-xl border p-4 md:p-6 ${
+              isDarkMode
+                ? 'bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10'
+                : 'bg-gray-50 border-gray-200'
+            }`}>
               <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
                 <div className="bg-blue-500/10 p-1.5 md:p-2 rounded-lg">
                   <Code className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />
                 </div>
-                <h3 className="text-white font-bold text-sm md:text-base">Python</h3>
+                <h3 className={`font-bold text-sm md:text-base ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>Python</h3>
               </div>
-              <p className="text-white/60 text-xs md:text-sm mb-3 md:mb-4">Python SDK for server-side integrations</p>
+              <p className={`text-xs md:text-sm mb-3 md:mb-4 ${
+                isDarkMode ? 'text-white/60' : 'text-gray-600'
+              }`}>Python SDK for server-side integrations</p>
               <CodeExample code="pip install trueflow" language="bash" isDarkMode={isDarkMode} />
               <div className="mt-4">
                 <CodeExample code={`from trueflow import TrueFlow
@@ -1007,14 +1073,22 @@ widgets = client.widgets.list()`} isDarkMode={isDarkMode} />
               </div>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-4 md:p-6">
+            <div className={`backdrop-blur-xl rounded-xl border p-4 md:p-6 ${
+              isDarkMode
+                ? 'bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10'
+                : 'bg-gray-50 border-gray-200'
+            }`}>
               <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
                 <div className="bg-purple-500/10 p-1.5 md:p-2 rounded-lg">
                   <Globe className="w-4 h-4 md:w-5 md:h-5 text-purple-400" />
                 </div>
-                <h3 className="text-white font-bold text-sm md:text-base">REST API</h3>
+                <h3 className={`font-bold text-sm md:text-base ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>REST API</h3>
               </div>
-              <p className="text-white/60 text-xs md:text-sm mb-3 md:mb-4">Direct HTTP requests to our endpoints</p>
+              <p className={`text-xs md:text-sm mb-3 md:mb-4 ${
+                isDarkMode ? 'text-white/60' : 'text-gray-600'
+              }`}>Direct HTTP requests to our endpoints</p>
               <CodeExample code={`curl -H 'Authorization: Bearer your_token' \\
   https://app.trueflow.ai/api/widgets`} language="bash" isDarkMode={isDarkMode} />
             </div>
@@ -1023,12 +1097,22 @@ widgets = client.widgets.list()`} isDarkMode={isDarkMode} />
       </section>
       
       {/* Webhook Events */}
-      <section className="py-8 md:py-12 px-4 border-t border-white/10">
+      <section className={`py-8 md:py-12 px-4 ${
+        isDarkMode ? 'border-t border-white/10' : 'border-t border-gray-200'
+      }`}>
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8">Webhook Events</h2>
+          <h2 className={`text-2xl md:text-3xl font-bold mb-6 md:mb-8 ${
+            isDarkMode ? 'text-white' : 'text-gray-900'
+          }`}>Webhook Events</h2>
 
-          <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-xl rounded-xl border border-white/10 p-4 md:p-6">
-            <p className="text-white/60 text-sm md:text-base mb-4 md:mb-6">Subscribe to these events for real-time updates:</p>
+          <div className={`backdrop-blur-xl rounded-xl border p-4 md:p-6 ${
+            isDarkMode
+              ? 'bg-gradient-to-br from-gray-900/50 to-gray-800/50 border-white/10'
+              : 'bg-gray-50 border-gray-200'
+          }`}>
+            <p className={`text-sm md:text-base mb-4 md:mb-6 ${
+              isDarkMode ? 'text-white/60' : 'text-gray-600'
+            }`}>Subscribe to these events for real-time updates:</p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-3">
               {[
@@ -1042,8 +1126,12 @@ widgets = client.widgets.list()`} isDarkMode={isDarkMode} />
                 'widget.interaction',
                 'content.generated'
               ].map((event) => (
-                <div key={event} className="bg-black/30 rounded-lg px-3 py-1.5 md:px-4 md:py-2">
-                  <code className="text-purple-400 text-xs md:text-sm">{event}</code>
+                <div key={event} className={`rounded-lg px-3 py-1.5 md:px-4 md:py-2 ${
+                  isDarkMode ? 'bg-black/30' : 'bg-white border border-gray-200'
+                }`}>
+                  <code className={`text-xs md:text-sm ${
+                    isDarkMode ? 'text-purple-400' : 'text-purple-600'
+                  }`}>{event}</code>
                 </div>
               ))}
             </div>

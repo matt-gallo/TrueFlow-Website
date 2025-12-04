@@ -16,6 +16,7 @@ export default function Navigation() {
   const mobileLinks = [
     { label: 'Home', href: '/' },
     { label: 'Constant Content Engine™', href: '/content-engine' },
+    { label: 'Lead Machine', href: '/lead-machine' },
     { label: 'Features', href: '/#features', homeAnchor: '#features' },
     { label: 'How it Works', href: '/#how-it-works', homeAnchor: '#how-it-works' },
     { label: 'Success Stories', href: '/#testimonials', homeAnchor: '#testimonials' },
