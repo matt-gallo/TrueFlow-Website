@@ -473,11 +473,11 @@ export default function ContentEnginePage() {
           <div className={`flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 transition-all duration-1000 ${
             ''
           }`}>
-            <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
+            <a href="https://app.trueflow.ai" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative z-10">Try It Now</span>
               <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
+            </a>
             
             <button
               type="button"
