@@ -89,42 +89,21 @@ interface SolutionProduct {
   ctaHref: string
 }
 
-const heroFeatureClips = [
+const heroImages = [
   {
-    id: 'clip-teams',
-    label: 'Teams like yours',
-    title: 'Coaches, doctors, real estate pros',
-    description: 'TrueFlow adapts to any service business that needs leads, follow-up, and content run for them.',
-    benefits: ['Coaches • Doctors • Real estate • Agencies • Creators'],
-    video: 'https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4',
-    accent: 'from-cyan-500/40 via-blue-500/20 to-purple-500/20'
+    id: 'hero-1',
+    image: '/hero1.png',
+    alt: 'TrueFlow Hero 1'
   },
   {
-    id: 'clip-leads',
-    label: 'Lead Machine™',
-    title: 'Auto DM to booked calls',
-    description: 'Find, engage, and qualify new buyers in under a minute.',
-    benefits: ['DM + SMS replies inside 60 seconds', 'Booked consultations drop straight onto your calendar'],
-    video: 'https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4',
-    accent: 'from-blue-500/40 via-purple-500/20 to-pink-500/20'
+    id: 'hero-2',
+    image: '/hero2.png',
+    alt: 'TrueFlow Hero 2'
   },
   {
-    id: 'clip-crm',
-    label: 'Full CRM + Automations',
-    title: 'One view of every customer',
-    description: 'Tasks, follow-ups, and routing handled automatically.',
-    benefits: ['Playbooks auto-assign the next action', 'Dashboards show revenue, ops, and retention in real time'],
-    video: 'https://storage.googleapis.com/coverr-main/mp4/Footboys.mp4',
-    accent: 'from-blue-500/40 via-purple-500/20 to-pink-500/20'
-  },
-  {
-    id: 'clip-content',
-    label: 'Constant Content Engine™',
-    title: 'Ideas to everywhere',
-    description: 'Brain-dump once, publish across every channel.',
-    benefits: ['AI drafts in your tone', 'Approve, tweak, and ship in minutes'],
-    video: 'https://storage.googleapis.com/coverr-main/mp4/Carving.mp4',
-    accent: 'from-amber-500/40 via-rose-500/20 to-fuchsia-500/20'
+    id: 'hero-3',
+    image: '/hero3.png',
+    alt: 'TrueFlow Hero 3'
   }
 ]
 
@@ -657,7 +636,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentHeroClip((prev) => (prev + 1) % heroFeatureClips.length)
+      setCurrentHeroClip((prev) => (prev + 1) % heroImages.length)
     }, 5000)
     return () => clearInterval(interval)
   }, [])
@@ -1066,30 +1045,28 @@ export default function LandingPage() {
 
             <div className="w-full px-2 lg:px-0">
               <div className="relative rounded-[32px] border border-white/10 bg-white/5 overflow-hidden shadow-[0_20px_80px_rgba(15,23,42,0.6)]">
-                <div className={`absolute inset-0 bg-gradient-to-br ${heroFeatureClips[currentHeroClip].accent} opacity-60 pointer-events-none`}></div>
-                <video
-                  key={currentHeroClip}
-                  className="w-full h-[420px] sm:h-[480px] object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster="/content-engine-preview.png"
-                >
-                  <source src={heroFeatureClips[currentHeroClip].video} type="video/mp4" />
-                </video>
+                <div className="relative w-full h-[420px] sm:h-[480px]">
+                  <Image
+                    key={currentHeroClip}
+                    src={heroImages[currentHeroClip].image}
+                    alt={heroImages[currentHeroClip].alt}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
                 <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end pointer-events-none">
                   <div className="flex items-center gap-3 pt-4 pointer-events-auto">
-                    {heroFeatureClips.map((clip, idx) => (
+                    {heroImages.map((img, idx) => (
                       <button
-                        key={clip.id}
+                        key={img.id}
                         type="button"
                         onClick={() => setCurrentHeroClip(idx)}
                         className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
                           idx === currentHeroClip ? 'bg-white' : 'bg-white/30'
                         }`}
-                        aria-label={`Show ${clip.label}`}
+                        aria-label={`Show hero image ${idx + 1}`}
                       ></button>
                     ))}
                   </div>
