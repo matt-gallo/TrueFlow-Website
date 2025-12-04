@@ -23,6 +23,11 @@ export default function PrivacyPolicy() {
               TrueFlow AI ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how
               we collect, use, disclose, and safeguard your information when you visit our website and use our services.
             </p>
+            <p>
+              Our lead machine, outreach, and associated data processing services operate solely within the United States outside California,
+              and we automatically exclude California-based business contact records from those offerings. All other platform features operate
+              globally and currently have no geographic restrictions.
+            </p>
           </section>
 
           <section className="mb-8">
@@ -45,6 +50,10 @@ export default function PrivacyPolicy() {
               <li>Pages visited, time spent on our website, and referring URLs</li>
               <li>Usage data and diagnostics to improve performance</li>
             </ul>
+            <p>
+              Lead machine and outreach datasets are sourced only from U.S. business contacts outside California, and we suppress California
+              business contact records during ingestion and processing.
+            </p>
           </section>
 
           <section className="mb-8">
@@ -59,6 +68,7 @@ export default function PrivacyPolicy() {
               <li>Monitor trends and usage to inform product decisions</li>
               <li>Detect, investigate, and prevent fraud or misuse</li>
               <li>Comply with contractual and legal obligations</li>
+              <li>Operate lead machine, outreach, and data processing services solely in U.S. jurisdictions outside California, excluding California-based business contact records</li>
             </ul>
           </section>
 
@@ -129,14 +139,15 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>10. Compliance Standards</h2>
             <p>
-              Our services are designed for U.S.-based business-to-business (B2B) outreach. We prioritize states that expressly exempt
-              B2B communications from their consumer privacy statutes (for example, the Virginia CDPA, Colorado Privacy Act, and similar laws)
-              and avoid collecting consumer data in jurisdictions that do not offer a clear business-contact exemption. Our safeguards include:
+              Our lead machine, outreach, and related data processing services are designed for U.S.-based business-to-business (B2B) outreach outside California.
+              We prioritize states that expressly exempt B2B communications from their consumer privacy statutes (for example, the Virginia CDPA,
+              Colorado Privacy Act, and similar laws) and avoid collecting consumer data in jurisdictions that do not offer a clear business-contact
+              exemption. These geographic limits do not apply to other platform features, which continue to operate globally. Our safeguards include:
             </p>
             <ul className="list-disc ml-6 mb-4">
               <li><strong>CAN-SPAM Act:</strong> Accurate sender details, truthful subject lines, and prominent unsubscribe links with opt-outs honored within 10 business days.</li>
               <li><strong>Telephone Consumer Protection Act (TCPA):</strong> Documented consent for automated dialing or SMS, internal do-not-contact lists, and respect for time-of-day restrictions.</li>
-              <li><strong>State B2B Safe Harbor Monitoring:</strong> Ongoing tracking of state laws that distinguish between commercial and consumer contexts to confirm that campaign segments stay within approved categories.</li>
+              <li><strong>State B2B Safe Harbor Monitoring:</strong> Ongoing tracking of state laws that distinguish between commercial and consumer contexts to confirm that campaign segments stay within approved categories, with California contacts excluded only from the lead machine and outreach automations.</li>
               <li><strong>Vendor Oversight:</strong> Due diligence on lead providers to confirm that contact data originates from lawful commercial sources with audit trails.</li>
             </ul>
             <p>
@@ -156,7 +167,9 @@ export default function PrivacyPolicy() {
             <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>12. International Data Transfers</h2>
             <p>
               Your information may be transferred to servers located in the United States or other jurisdictions where we or our service providers
-              operate. We use contractual protections and due diligence to safeguard data during cross-border transfers.
+              operate. We use contractual protections and due diligence to safeguard data during cross-border transfers. International transfers apply
+              to platform features that operate globally, while the lead machine, outreach, and related data processing remain U.S.-only and exclude
+              California business contact records.
             </p>
           </section>
 
