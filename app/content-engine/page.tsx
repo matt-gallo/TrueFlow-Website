@@ -473,14 +473,8 @@ export default function ContentEnginePage() {
           <div className={`flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 transition-all duration-1000 ${
             ''
           }`}>
-            <a href="https://app.trueflow.ai" className={`px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group ${
-              isDarkMode
-                ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-blue-500/25'
-                : 'bg-gradient-to-r from-blue-200 to-purple-200 text-gray-900 hover:shadow-blue-300/50'
-            }`}>
-              <div className={`absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                isDarkMode ? 'from-blue-600 to-purple-700' : 'from-blue-300 to-purple-300'
-              }`}></div>
+            <a href="https://app.trueflow.ai" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-3 relative overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <span className="relative z-10">Try It Now</span>
               <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
@@ -1244,14 +1238,8 @@ export default function ContentEnginePage() {
             <div className={`flex flex-col sm:flex-row items-center justify-center space-y-6 sm:space-y-0 sm:space-x-8 relative z-10 transition-all duration-1000 ${
               ''
             }`}>
-              <Link href="/ai-readiness-assessment" className={`px-10 py-5 rounded-full text-xl font-semibold hover:scale-110 hover:shadow-xl transition-all duration-300 relative overflow-hidden group/btn ${
-                isDarkMode
-                  ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:shadow-blue-500/30'
-                  : 'bg-gradient-to-r from-blue-200 to-purple-200 text-gray-900 hover:shadow-blue-300/50'
-              }`}>
-                <div className={`absolute inset-0 bg-gradient-to-r opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300 ${
-                  isDarkMode ? 'from-blue-600 to-purple-700' : 'from-blue-300 to-purple-300'
-                }`}></div>
+              <Link href="/ai-readiness-assessment" className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-semibold hover:scale-110 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 relative overflow-hidden group/btn">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
                 <span className="relative z-10">Start Creating Now</span>
               </Link>
               <Link href="/faq" className="text-white/70 hover:text-white hover:scale-105 transition-all duration-300 underline text-xl relative group/link">
