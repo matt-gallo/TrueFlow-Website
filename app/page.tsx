@@ -92,17 +92,20 @@ interface SolutionProduct {
 const heroImages = [
   {
     id: 'hero-1',
-    image: '/hero1.png',
+    imageLight: '/hero1.png',
+    imageDark: '/hero1-dark.png',
     alt: 'TrueFlow Hero 1'
   },
   {
     id: 'hero-2',
-    image: '/hero2.png',
+    imageLight: '/hero2.png',
+    imageDark: '/hero2-dark.png',
     alt: 'TrueFlow Hero 2'
   },
   {
     id: 'hero-3',
-    image: '/hero3.png',
+    imageLight: '/hero3.png',
+    imageDark: '/hero3-dark.png',
     alt: 'TrueFlow Hero 3'
   }
 ]
@@ -1047,8 +1050,8 @@ export default function LandingPage() {
               <div className="relative rounded-[32px] border border-white/10 bg-white/5 overflow-hidden shadow-[0_20px_80px_rgba(15,23,42,0.6)]">
                 <div className="relative w-full h-[420px] sm:h-[480px]">
                   <Image
-                    key={currentHeroClip}
-                    src={heroImages[currentHeroClip].image}
+                    key={`${currentHeroClip}-${isDarkMode ? 'dark' : 'light'}`}
+                    src={isDarkMode ? heroImages[currentHeroClip].imageDark : heroImages[currentHeroClip].imageLight}
                     alt={heroImages[currentHeroClip].alt}
                     fill
                     className="object-cover"
