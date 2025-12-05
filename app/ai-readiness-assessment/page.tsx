@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import Navigation from '../components/Navigation'
-import { Footer } from '../components/Footer'
 
 const TALLY_EMBED_URL = 'https://tally.so/embed/w4ODAY?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'
 
@@ -51,8 +50,6 @@ export default function AIReadinessAssessmentPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   )
 }

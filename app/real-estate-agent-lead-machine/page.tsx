@@ -4,19 +4,225 @@ import { useState, useEffect } from 'react'
 import Navigation from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import ParticleBackground from '../components/ParticleBackground'
-import { ArrowRight, Search, Layers, MessageCircle, Lock, BarChart3, FileText, Clock, CheckCircle } from 'lucide-react'
-import type { Metadata } from 'next'
+import { ArrowRight, Search, Layers, MessageCircle, Lock, BarChart3, FileText, Clock, CheckCircle, ShieldCheck } from 'lucide-react'
+
+const pricingPlans = [
+  {
+    name: 'Core Plan',
+    price: '$1,200',
+    cadence: 'per month',
+    description: '1 market (up to 5 zip codes) + buyer/seller targeting + 500 new leads/month + basic nurture',
+    features: [
+      '500 new qualified leads per month',
+      'Hyper-local buyer/seller targeting (up to 5 zip codes)',
+      'AI-driven intent monitoring across Google, Zillow, Realtor.com',
+      'Basic nurture sequences (7-14 days)',
+      'CRM integration (kvCORE, BoomTown, Follow Up Boss)',
+      'Weekly performance dashboard'
+    ],
+    featured: false
+  },
+  {
+    name: 'Growth Plan',
+    price: '$2,500',
+    cadence: 'per month',
+    description: 'Multi-market targeting + 1,500 leads/month + listing alert automation + market reports',
+    features: [
+      '1,500 new qualified leads per month',
+      'Everything in Core, plus:',
+      'Multi-market targeting (unlimited zip codes)',
+      'Listing alert automation with segmentation',
+      'AI-generated monthly market reports',
+      'Advanced nurture workflows (30 days)',
+      'Priority optimization & A/B testing'
+    ],
+    featured: true,
+    value: 'Recommended'
+  },
+  {
+    name: 'Enterprise Plan',
+    price: '$5,000',
+    cadence: 'per month',
+    description: 'Unlimited markets + custom agent routing + performance analytics + dedicated success manager',
+    features: [
+      'Unlimited lead volume (2,000+ per month)',
+      'Everything in Growth, plus:',
+      'Custom agent routing & territory management',
+      'Advanced performance analytics & coaching insights',
+      'Dedicated success manager',
+      'White-glove optimization service',
+      'Quarterly strategy sessions'
+    ],
+    featured: false,
+    value: 'Best Value'
+  }
+]
+
+const builderQuestions = [
+  {
+    id: 'agents',
+    label: 'How many agents are in your brokerage?',
+    options: [
+      { value: '10', copy: '1-10 agents', score: 0 },
+      { value: '30', copy: '10-30 agents', score: 1 },
+      { value: '50', copy: '30+ agents', score: 2 }
+    ]
+  },
+  {
+    id: 'volume',
+    label: 'How many new qualified leads does your brokerage need monthly?',
+    options: [
+      { value: '500', copy: '300-500 leads/month', score: 0 },
+      { value: '1500', copy: '1,000-1,500 leads/month', score: 1 },
+      { value: '2000', copy: '2,000+ leads/month', score: 2 }
+    ]
+  },
+  {
+    id: 'systems',
+    label: 'How mature is your current lead system?',
+    options: [
+      { value: 'basic', copy: 'Basic CRM, manual follow-up', score: 0 },
+      { value: 'growing', copy: 'CRM + some automation', score: 1 },
+      { value: 'advanced', copy: 'Multi-market with analytics', score: 2 }
+    ]
+  }
+]
 
 export default function RealEstateLeadMachine() {
   const [mounted, setMounted] = useState(false)
+  const [isBuilderOpen, setIsBuilderOpen] = useState(false)
+  const [builderStep, setBuilderStep] = useState(0)
+  const [manualPlanChoice, setManualPlanChoice] = useState<string | null>(null)
+  const [builderAnswers, setBuilderAnswers] = useState(() => {
+    const defaults: Record<string, string> = {}
+    builderQuestions.forEach(question => {
+      defaults[question.id] = question.options[0].value
+    })
+    return defaults
+  })
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  // Clean up calendar CSS text
+  useEffect(() => {
+    const unwantedPhrases = [
+      'Pick a Date',
+      'Previous month',
+      'Next month',
+      'Available Starting',
+      'Select Date',
+      'GMT',
+      'lc-booking'
+    ]
+
+    const shouldStrip = (text: string) =>
+      text.includes('/*') ||
+      text.includes('{') ||
+      text.includes('background:') ||
+      unwantedPhrases.some(phrase => text.includes(phrase))
+
+    const cleanNodeList = (nodes: NodeListOf<ChildNode> | ChildNode[]) => {
+      nodes.forEach(node => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent?.trim() || ''
+          if (shouldStrip(text)) node.remove()
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          const element = node as Element
+          const text = element.textContent?.trim() || ''
+          if (shouldStrip(text)) element.remove()
+        }
+      })
+    }
+
+    const cleanupCSSText = () => {
+      const calendarSection = document.getElementById('book-demo-calendar')
+      const calendarWrapper = calendarSection?.querySelector('.calendar-wrapper')
+
+      if (calendarWrapper) {
+        let nextSibling = calendarWrapper.nextSibling
+        while (nextSibling) {
+          const nodeToRemove = nextSibling
+          nextSibling = nextSibling.nextSibling
+          cleanNodeList([nodeToRemove])
+        }
+
+        Array.from(calendarWrapper.children).forEach(child => {
+          if (child.tagName !== 'IFRAME') {
+            cleanNodeList([child])
+          }
+        })
+      }
+
+      cleanNodeList(document.body.childNodes as unknown as ChildNode[])
+    }
+
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
+        if (mutation.type === 'childList') {
+          cleanNodeList(mutation.addedNodes as unknown as ChildNode[])
+        }
+      })
+    })
+
+    cleanupCSSText()
+    const timer = setTimeout(cleanupCSSText, 2000)
+    const interval = setInterval(cleanupCSSText, 3000)
+
+    observer.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      clearTimeout(timer)
+      clearInterval(interval)
+      observer.disconnect()
+    }
+  }, [])
+
   const scrollToDemo = () => {
-    document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })
+    document.getElementById('book-demo-calendar')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
+
+  const updateBuilderAnswer = (questionId: string, value: string) => {
+    setBuilderAnswers(prev => ({ ...prev, [questionId]: value }))
+    setManualPlanChoice(null)
+  }
+
+  const toggleBuilder = () => {
+    setIsBuilderOpen(prev => {
+      const nextState = !prev
+      if (!nextState) {
+        setBuilderStep(0)
+        setManualPlanChoice(null)
+      } else {
+        requestAnimationFrame(() => {
+          document.getElementById('lead-machine-builder')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        })
+      }
+      return nextState
+    })
+  }
+
+  const handleNextStep = () => {
+    setBuilderStep(prev => Math.min(prev + 1, builderQuestions.length))
+  }
+
+  const handlePrevStep = () => {
+    setBuilderStep(prev => Math.max(prev - 1, 0))
+  }
+
+  const builderScore = builderQuestions.reduce((score, question) => {
+    const selected = question.options.find(option => option.value === builderAnswers[question.id])
+    return score + (selected?.score || 0)
+  }, 0)
+
+  const recommendedPlanName = builderScore >= 4 ? 'Enterprise Plan' : builderScore >= 2 ? 'Growth Plan' : 'Core Plan'
+  const activePlanName = manualPlanChoice || recommendedPlanName
+  const activePlan = pricingPlans.find(plan => plan.name === activePlanName) ?? pricingPlans[0]
+  const activePlanHighlights = activePlan.features.slice(0, 3)
+  const totalBuilderSteps = builderQuestions.length
+  const isSummaryStep = builderStep >= totalBuilderSteps
+  const currentQuestion = !isSummaryStep ? builderQuestions[builderStep] : null
 
   if (!mounted) {
     return (
@@ -65,7 +271,7 @@ export default function RealEstateLeadMachine() {
                   onClick={scrollToDemo}
                   className="px-5 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_60px_rgba(59,130,246,0.4)]"
                 >
-                  Book a Strategy Session
+                  Book a Free Demo
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button className="px-5 py-3 bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all">
@@ -324,53 +530,232 @@ export default function RealEstateLeadMachine() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Pricing with Builder */}
       <section className="py-20 px-4">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="bg-white/5 border border-white/10 rounded-3xl p-10">
-            <h2 className="text-4xl lg:text-5xl font-bold text-center mb-6">
-              Pricing & Tiers
-            </h2>
-            <p className="text-lg text-white/70 text-center max-w-4xl mx-auto mb-12">
-              Every tier includes full setup, CRM integration, and hands-on onboarding—choose the pace that matches your brokerage size and growth goals.
-            </p>
+            <div className="text-center max-w-4xl mx-auto mb-10">
+              <h2 className="text-4xl lg:text-5xl font-bold mb-6">Transparent Pricing That Scales With You</h2>
+              <p className="text-lg text-white/80 mb-3">
+                Start at <span className="text-2xl font-semibold text-blue-300">$1,200/month</span> for the Core plan. Need more volume? Scale up as your brokerage grows.
+              </p>
+              <p className="text-white/70">
+                One-time setup fee: <span className="text-white font-semibold">$3,500</span> (includes full buildout, CRM integration, and agent training)
+              </p>
+            </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              {[
-                { title: 'Brokerage Setup', description: 'Full Lead Machine™ buildout + CRM integration + agent training', price: '$3,500', cadence: 'one-time', featured: true },
-                { title: 'Core Plan', description: '1 market (up to 5 zip codes) + buyer/seller targeting + 500 new leads/month + basic nurture', price: '$1,200', cadence: 'per month', featured: false },
-                { title: 'Growth Plan', description: 'Multi-market targeting + 1,500 leads/month + listing alert automation + market reports', price: '$2,500', cadence: 'per month', featured: false },
-                { title: 'Enterprise Plan', description: 'Unlimited markets + custom agent routing + performance analytics + dedicated success manager', price: '$5,000', cadence: 'per month', featured: false }
-              ].map((tier, idx) => (
+            <div className="grid gap-6 md:grid-cols-3">
+              {pricingPlans.map((plan) => (
                 <div
-                  key={idx}
-                  className={`bg-black/40 border ${tier.featured ? 'border-blue-400/50 shadow-[0_0_0_1px_rgba(96,165,250,0.2)]' : 'border-white/10'} rounded-3xl p-8 flex flex-col`}
+                  key={plan.name}
+                  className={`rounded-3xl border p-8 flex flex-col gap-6 ${
+                    plan.featured
+                      ? 'border-cyan-400/50 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-black/40 ring-2 ring-cyan-400/30'
+                      : 'border-white/10 bg-black/40'
+                  }`}
                 >
-                  <h3 className="text-xl font-semibold mb-2">{tier.title}</h3>
-                  <p className="text-white/60 text-sm mb-6 flex-grow">{tier.description}</p>
                   <div>
-                    <div className="text-4xl font-bold mb-1">{tier.price}</div>
-                    <div className="text-white/60 text-sm">{tier.cadence}</div>
+                    <div className="flex items-start justify-between gap-4">
+                      <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
+                      {plan.value && (
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider shadow-lg ${
+                            plan.value === 'Recommended'
+                              ? 'bg-cyan-300 text-slate-900 border border-cyan-100'
+                              : 'bg-amber-300 text-slate-900 border border-amber-100'
+                          }`}
+                        >
+                          {plan.value}
+                        </span>
+                      )}
+                    </div>
+                    <p className="mt-2 text-white/60 text-sm">{plan.description}</p>
                   </div>
+
+                  <div className="flex items-baseline gap-3">
+                    <p className="text-4xl font-semibold text-white">{plan.price}</p>
+                    <p className="text-white/70 text-sm">{plan.cadence}</p>
+                  </div>
+
+                  <ul className="space-y-3 flex-grow">
+                    {plan.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-3">
+                        <CheckCircle className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                        <span className="text-white/75 text-sm">{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
 
-            <div>
-              <h3 className="text-2xl font-semibold text-center mb-6">Add-Ons</h3>
-              <div className="grid md:grid-cols-3 gap-5">
-                {[
-                  { title: 'Open House Lead Capture Kit', price: '$500 setup + $200/month' },
-                  { title: 'Seller Trigger Engine', price: '+$800/month' },
-                  { title: 'Retargeting Pixel Management', price: '+$400/month' }
-                ].map((addon, idx) => (
-                  <div key={idx} className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <h4 className="font-semibold mb-2">{addon.title}</h4>
-                    <p className="text-blue-400 font-semibold text-sm">{addon.price}</p>
-                  </div>
-                ))}
+            <div className="mt-10 flex flex-col items-center gap-3 text-center">
+              <button
+                type="button"
+                onClick={toggleBuilder}
+                className="inline-flex items-center gap-3 rounded-full border border-cyan-400/40 bg-cyan-500/10 px-8 py-3 text-lg font-semibold text-white transition-colors hover:bg-cyan-500/20"
+                aria-expanded={isBuilderOpen}
+              >
+                {isBuilderOpen ? 'Hide Plan Finder' : 'Find Your Perfect Plan'}
+              </button>
+              <p className="text-sm text-white/60">Answer 3 quick questions and we&apos;ll recommend the right Lead Machine™ package for your brokerage.</p>
+            </div>
+
+            <div className="mt-8 rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-cyan-500/15 via-blue-500/20 to-transparent p-5 text-center">
+              <div className="inline-flex items-center justify-center gap-3 text-white/90 text-sm sm:text-base">
+                <ShieldCheck className="h-6 w-6 text-cyan-300" />
+                <p className="font-medium">90-Day ROI Guarantee: If the system doesn&apos;t generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.</p>
               </div>
             </div>
+
+            {isBuilderOpen && (
+              <div id="lead-machine-builder" className="mt-10 rounded-3xl border border-white/10 bg-black/40 p-6 sm:p-8">
+                <div className="space-y-6">
+                  <div>
+                    <div className="flex items-center justify-between text-sm text-white/60">
+                      <span>Step {Math.min(builderStep + 1, totalBuilderSteps + 1)} of {totalBuilderSteps + 1}</span>
+                      <span>{isSummaryStep ? 'See your plan' : 'Answer the prompts'}</span>
+                    </div>
+                    <div className="mt-3 h-2 w-full rounded-full bg-white/10">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all"
+                        style={{ width: `${(Math.min(builderStep, totalBuilderSteps) / totalBuilderSteps) * 100}%` }}
+                      ></div>
+                    </div>
+                  </div>
+
+                  {!isSummaryStep && currentQuestion && (
+                    <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                      <p className="text-xs uppercase tracking-[0.3em] text-white/60">Question {builderStep + 1}</p>
+                      <h3 className="mt-3 text-2xl font-semibold text-white">{currentQuestion.label}</h3>
+                      <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                        {currentQuestion.options.map(option => (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => updateBuilderAnswer(currentQuestion.id, option.value)}
+                            className={`rounded-2xl border px-4 py-4 text-left text-sm transition-all ${
+                              builderAnswers[currentQuestion.id] === option.value
+                                ? 'border-cyan-300 bg-cyan-500/10 text-white shadow-lg shadow-cyan-900/30'
+                                : 'border-white/10 bg-black/30 text-white/70 hover:border-white/40'
+                            }`}
+                          >
+                            {option.copy}
+                          </button>
+                        ))}
+                      </div>
+
+                      <div className="mt-6 flex flex-wrap gap-4">
+                        <button
+                          type="button"
+                          onClick={handlePrevStep}
+                          disabled={builderStep === 0}
+                          className="rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white/70 disabled:cursor-not-allowed disabled:opacity-40"
+                        >
+                          Back
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleNextStep}
+                          className="rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/30"
+                        >
+                          {builderStep === totalBuilderSteps - 1 ? 'See Recommendation' : 'Next'}
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {isSummaryStep && (
+                    <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+                      <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
+                        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Your build</p>
+                        <h3 className="mt-2 text-3xl font-semibold text-white">{activePlanName}</h3>
+                        <p className="mt-3 text-white/70 text-sm">
+                          {manualPlanChoice
+                            ? 'We locked in your selection—scroll up to the pricing cards if you want the full breakdown.'
+                            : `Based on your answers, the ${activePlanName} will keep your pipeline on pace.`}
+                        </p>
+
+                        <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 space-y-3">
+                          {activePlanHighlights.map(feature => (
+                            <div key={feature} className="flex items-start gap-3 text-sm text-white/80">
+                              <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
+                              <span>{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-6 flex flex-wrap gap-3 text-xs text-white/50">
+                          {builderQuestions.map(question => (
+                            <span key={question.id} className="rounded-full border border-white/15 px-3 py-1">
+                              {question.options.find(option => option.value === builderAnswers[question.id])?.copy}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div className="mt-6 flex flex-wrap gap-4">
+                          <button
+                            type="button"
+                            onClick={() => setBuilderStep(0)}
+                            className="rounded-full border border-white/20 px-6 py-3 text-xs font-semibold text-white/70"
+                          >
+                            Start over
+                          </button>
+                          <button
+                            type="button"
+                            onClick={scrollToDemo}
+                            className="rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/30"
+                          >
+                            Book my free demo
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="rounded-3xl border border-white/15 bg-black/30 p-6 flex flex-col gap-4">
+                        <p className="text-xs uppercase tracking-[0.3em] text-white/60">Choose any package</p>
+                        <div className="flex flex-wrap gap-3">
+                          {pricingPlans.map(plan => (
+                            <button
+                              key={plan.name}
+                              type="button"
+                              onClick={() => setManualPlanChoice(prev => (prev === plan.name ? null : plan.name))}
+                              className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
+                                (manualPlanChoice || recommendedPlanName) === plan.name && activePlanName === plan.name
+                                  ? 'border-cyan-300 bg-cyan-500/10 text-white'
+                                  : 'border-white/15 text-white/70 hover:border-white/40'
+                              }`}
+                            >
+                              {plan.name}
+                            </button>
+                          ))}
+                        </div>
+
+                        {manualPlanChoice && (
+                          <button
+                            type="button"
+                            onClick={() => setManualPlanChoice(null)}
+                            className="text-left text-sm text-white/60 underline-offset-4 hover:text-white"
+                          >
+                            Back to our recommendation
+                          </button>
+                        )}
+
+                        <div className="rounded-2xl border border-white/10 bg-white/5 p-5 space-y-3">
+                          <p className="text-sm font-semibold text-white/80">What&apos;s inside {activePlanName}</p>
+                          {activePlanHighlights.map(feature => (
+                            <div key={feature} className="flex items-start gap-3 text-xs text-white/70">
+                              <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
+                              <span>{feature}</span>
+                            </div>
+                          ))}
+                          <p className="text-xs text-white/50">Full details are in the pricing grid above.</p>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -398,7 +783,7 @@ export default function RealEstateLeadMachine() {
       </section>
 
       {/* Final CTA */}
-      <section id="demo" className="py-20 px-4">
+      <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="bg-gradient-to-br from-blue-500/40 to-purple-500/40 border border-white/10 rounded-3xl p-16 text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 bg-white/5 text-white/80 text-xs uppercase tracking-[0.32em] mb-6">
@@ -411,8 +796,11 @@ export default function RealEstateLeadMachine() {
               Activate the TrueFlow Lead Machine™ and give every agent the lead flow top producers take for granted—starting in 14 days.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-5">
-              <button className="px-5 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition-all">
-                Book a Strategy Session
+              <button
+                onClick={scrollToDemo}
+                className="px-5 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition-all"
+              >
+                Book Your Free Demo
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button className="px-5 py-3 bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all">
@@ -421,6 +809,63 @@ export default function RealEstateLeadMachine() {
             </div>
             <div className="mt-5">
               <span className="text-white/70">One strategy session away from predictable deal flow.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Calendar Section */}
+      <section id="book-demo-calendar" className="py-20 px-4 scroll-mt-24">
+        <style jsx global>{`
+          #book-demo-calendar > div > div:last-child:not(.space-y-4):not(.calendar-wrapper) {
+            display: none !important;
+          }
+          #msgsndr-calendar {
+            display: block !important;
+            width: 100% !important;
+            min-height: 520px !important;
+          }
+          #book-demo-calendar .calendar-wrapper ~ * {
+            display: none !important;
+          }
+        `}</style>
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-3xl border border-white/15 bg-gradient-to-br from-cyan-600/20 via-blue-600/20 to-black/60 p-8 sm:p-10">
+            <div className="space-y-4 text-center mb-8">
+              <h3 className="text-3xl sm:text-4xl font-semibold text-white">Lock in Your Free Demo</h3>
+              <p className="text-lg text-white/70">
+                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+              </p>
+            </div>
+            <div className="calendar-wrapper overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
+                id="msgsndr-calendar"
+                scrolling="yes"
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
+                title="Book a demo with TrueFlow"
+                onLoad={() => {
+                  setTimeout(() => {
+                    const section = document.getElementById('book-demo-calendar')
+                    if (section) {
+                      const walker = document.createTreeWalker(
+                        section,
+                        NodeFilter.SHOW_TEXT,
+                        null
+                      )
+                      const nodesToRemove: Node[] = []
+                      let node
+                      while ((node = walker.nextNode())) {
+                        const text = node.textContent || ''
+                        if (text.includes('body {') || text.includes('background:') || text.includes('.lc-booking')) {
+                          nodesToRemove.push(node)
+                        }
+                      }
+                      nodesToRemove.forEach((n) => n.parentNode?.removeChild(n))
+                    }
+                  }, 1000)
+                }}
+              />
             </div>
           </div>
         </div>
