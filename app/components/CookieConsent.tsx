@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { X } from 'lucide-react'
 import { useTheme } from './ThemeProvider'
+import Link from 'next/link'
 
 interface ConsentPreferences {
   visitorData: boolean
@@ -101,11 +102,17 @@ export default function CookieConsent() {
                   <path d="m9 12 2 2 4-4"></path>
                 </svg>
                 <h2 className={`text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Privacy & Preferences
+                  <Link href="/privacy" className="outline-none focus-visible:underline hover:underline">
+                    Privacy & Preferences
+                  </Link>
                 </h2>
               </div>
               <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                We value your privacy. Choose your data preferences below.
+                We value your privacy. Choose your data preferences below.{' '}
+                <Link href="/privacy" className="underline-offset-2 text-blue-300 hover:underline" target="_blank">
+                  Read our Privacy Policy
+                </Link>
+                .
               </p>
             </div>
 
@@ -201,7 +208,11 @@ export default function CookieConsent() {
             {/* Footer */}
             <div className={`pt-3 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
               <p className={`text-xs text-center ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>
-                By continuing, you agree to our data practices.
+                By continuing, you agree to our data practices outlined in our{' '}
+                <Link href="/privacy" className="underline-offset-2 hover:underline">
+                  Privacy Policy
+                </Link>
+                .
               </p>
             </div>
           </div>
