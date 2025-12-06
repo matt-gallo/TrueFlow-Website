@@ -14,10 +14,10 @@ import {
   CalendarCheck,
   CheckCircle,
   FileText,
-  Handshake,
   MessageSquare,
   ShieldCheck,
-  Target
+  Target,
+  Users
 } from 'lucide-react'
 
 const workflow = [
@@ -57,7 +57,7 @@ const features = [
   {
     title: 'Advisor Booking Machine',
     description: 'Automations tuned for fiduciary and hybrid RIAs that fill calendars with vetted households instead of cold lists.',
-    icon: Handshake
+    icon: Users
   },
   {
     title: 'Liquidity Event Radar',
@@ -82,7 +82,7 @@ const features = [
   {
     title: 'Referral Network Amplifier',
     description: 'Keeps CPAs, attorneys, and centers of influence in the loop with co-branded updates and introductions.',
-    icon: Handshake
+    icon: Users
   },
   {
     title: 'Retargeting Audience Builder',
@@ -166,6 +166,9 @@ const faqs = [
 export default function FinancialAdvisorLeadMachinePage() {
   const [mounted, setMounted] = useState(false)
   const { isDarkMode } = useTheme()
+  const scrollToCalendar = () => {
+    document.getElementById('book-demo-calendar')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -197,10 +200,14 @@ export default function FinancialAdvisorLeadMachinePage() {
                 Built from our best-performing professional services funnels—this playbook keeps your practice pipeline full while you focus on client reviews, not prospecting.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
-                <Link href="/sign-up" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white font-semibold shadow-[0_15px_40px_rgba(14,165,233,0.4)]">
+                <button
+                  type="button"
+                  onClick={scrollToCalendar}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white font-semibold shadow-[0_15px_40px_rgba(14,165,233,0.4)]"
+                >
                   Get your AI automation demo
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </button>
                 <Link href="#workflow" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 ${isDarkMode ? 'text-white/80 hover:bg-white/5' : 'text-gray-700 hover:bg-white/20'}`}>
                   See how it works
                 </Link>
@@ -331,10 +338,14 @@ export default function FinancialAdvisorLeadMachinePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/sign-up" className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold ${isDarkMode ? 'border-white/30 hover:bg-white/10' : 'border-slate-300 hover:bg-slate-100'}`}>
+                  <button
+                    type="button"
+                    onClick={scrollToCalendar}
+                    className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold ${isDarkMode ? 'border-white/30 hover:bg-white/10' : 'border-slate-300 hover:bg-slate-100'}`}
+                  >
                     Book a call
                     <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </button>
                 </div>
               ))}
             </div>
@@ -358,17 +369,65 @@ export default function FinancialAdvisorLeadMachinePage() {
 
         <section className="py-24 px-4">
           <div className={`max-w-5xl mx-auto rounded-[40px] p-14 text-center border ${isDarkMode ? 'bg-gradient-to-br from-cyan-500/40 to-indigo-500/30 border-white/10' : 'bg-gradient-to-br from-cyan-200 to-indigo-200 border-cyan-200'}`}>
-            <p className={`uppercase tracking-[0.4em] text-xs ${isDarkMode ? 'text-white/70' : 'text-indigo-900'}`}>Ready?</p>
+            <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
+              isDarkMode ? 'border-white/30 text-white/70' : 'border-cyan-200 text-cyan-700'
+            } text-xs uppercase tracking-[0.35em]`}>Ready?</span>
             <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep markets moving while your calendar fills itself.</h2>
-            <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>Switch on the Financial Advisor Lead Machine and let AI handle detection, nurturing, and scheduling while you focus on fiduciary advice.</p>
+            <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
+              Turn on the Financial Advisor Lead Machine and let AI keep discovery calls booked.
+            </p>
             <div className="flex flex-wrap justify-center gap-4 mt-10">
-              <Link href="/sign-up" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold ${isDarkMode ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
-                Schedule an advisor strategy session
+              <button
+                type="button"
+                onClick={scrollToCalendar}
+                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold ${
+                  isDarkMode ? 'bg-white text-black' : 'bg-gray-900 text-white'
+                }`}
+              >
+                Lock in your walkthrough
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href="/lead-machine" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border ${isDarkMode ? 'border-white/40 text-white' : 'border-gray-700 text-gray-900'}`}>
-                Explore the full Lead Machine
-              </Link>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="book-demo-calendar" className="py-20 px-4 scroll-mt-24">
+          <style jsx global>{`
+            #book-demo-calendar > div > div:last-child:not(.space-y-4):not(.calendar-wrapper) {
+              display: none !important;
+            }
+
+            #advisor-msgsndr-calendar {
+              display: block !important;
+              width: 100% !important;
+              min-height: 520px !important;
+            }
+
+            #book-demo-calendar .calendar-wrapper ~ * {
+              display: none !important;
+            }
+          `}</style>
+          <div className={`max-w-5xl mx-auto rounded-3xl p-10 border ${
+            isDarkMode
+              ? 'bg-gradient-to-br from-cyan-500/15 to-indigo-500/15 border-white/10'
+              : 'bg-gradient-to-br from-cyan-100 to-indigo-100 border-cyan-200'
+          }`}>
+            <div className="space-y-4 text-center mb-8">
+              <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
+              <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
+                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+              </p>
+            </div>
+            <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${
+              isDarkMode ? 'border-white/10 bg-white/5' : 'border-cyan-200 bg-white'
+            }`}>
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
+                id="advisor-msgsndr-calendar"
+                scrolling="yes"
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
+                title="Book a demo with TrueFlow"
+              />
             </div>
           </div>
         </section>
