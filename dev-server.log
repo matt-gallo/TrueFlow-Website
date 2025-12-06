@@ -32,3 +32,61 @@ Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
  GET /solar-installation-lead-machine 200 in 49ms
  ✓ Compiled /sign-up in 444ms (601 modules)
  ✓ Compiled in 383ms (603 modules)
+ ⨯ ./app/sign-up/page.tsx:6:1
+Module not found: Can't resolve '@/components/NavAuthButtons'
+[0m [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mImage[39m [36mfrom[39m [32m'next/image'[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mNavAuthButtons[39m } [36mfrom[39m [32m'@/components/NavAuthButtons'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m [36mimport[39m {[0m
+[0m [90m 8 |[39m   [33mArrowLeft[39m[33m,[39m[0m
+[0m [90m 9 |[39m   [33mArrowRight[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ ○ Compiling /_error ...
+ ⨯ ./app/sign-up/page.tsx:6:1
+Module not found: Can't resolve '@/components/NavAuthButtons'
+[0m [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mImage[39m [36mfrom[39m [32m'next/image'[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mNavAuthButtons[39m } [36mfrom[39m [32m'@/components/NavAuthButtons'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m [36mimport[39m {[0m
+[0m [90m 8 |[39m   [33mArrowLeft[39m[33m,[39m[0m
+[0m [90m 9 |[39m   [33mArrowRight[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ GET /solar-installation-lead-machine 500 in 14ms
+ GET /solar-installation-lead-machine 500 in 16ms
+ GET /solar-installation-lead-machine 500 in 35ms
+ ⨯ ./app/sign-up/page.tsx:6:1
+Module not found: Can't resolve '@/components/NavAuthButtons'
+[0m [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[0m
+[0m [90m 5 |[39m [36mimport[39m [33mImage[39m [36mfrom[39m [32m'next/image'[39m[0m
+[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mNavAuthButtons[39m } [36mfrom[39m [32m'@/components/NavAuthButtons'[39m[0m
+[0m [90m   |[39m [31m[1m^[22m[39m[0m
+[0m [90m 7 |[39m [36mimport[39m {[0m
+[0m [90m 8 |[39m   [33mArrowLeft[39m[33m,[39m[0m
+[0m [90m 9 |[39m   [33mArrowRight[39m[33m,[39m[0m
+
+https://nextjs.org/docs/messages/module-not-found
+ GET /solar-installation-lead-machine 500 in 17ms
+ ✓ Compiled /_error in 445ms (504 modules)
+ ✓ Compiled in 468ms (504 modules)
+ ✓ Compiled in 235ms (504 modules)
+ ✓ Compiled in 343ms (504 modules)
+ ✓ Compiled in 404ms (504 modules)
+ ✓ Compiled in 353ms (504 modules)
+ ✓ Compiled in 386ms (504 modules)
+ ✓ Compiled in 345ms (504 modules)
+ ✓ Compiled in 305ms (504 modules)
+ ✓ Compiled in 277ms (504 modules)
+ ✓ Compiled in 252ms (504 modules)
+ ✓ Compiled in 341ms (504 modules)
+ ✓ Compiled in 240ms (504 modules)
+ ✓ Compiled in 455ms (504 modules)
+ ✓ Compiled in 562ms (834 modules)
+ ✓ Compiled in 339ms (834 modules)
+ ✓ Compiled in 346ms (834 modules)
+ ✓ Compiled in 342ms (504 modules)
+ ✓ Compiled in 250ms (504 modules)
+ ✓ Compiled in 254ms (504 modules)

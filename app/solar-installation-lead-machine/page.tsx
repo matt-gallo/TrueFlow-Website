@@ -103,36 +103,42 @@ const stats = [
 
 const pricing = [
   {
-    title: 'Launch Kit',
-    price: '$4,800',
-    cadence: 'one-time build',
+    title: 'Starter',
+    price: '$750',
+    cadence: 'every 28 days',
     bullets: [
-      'Territory research & targeting setup',
-      'CRM + calendar integration',
-      'Solar-ready conversation scripts',
-      'Team onboarding session'
+      '10 new homeowner prospects per day (~280/month)',
+      'Enhanced property + contact data',
+      'AI-driven outreach in your brand voice',
+      'CRM integration & automation setup',
+      'Weekly optimization & deliverability management',
+      'Performance dashboard & analytics'
     ]
   },
   {
-    title: 'Active Flow',
-    price: '$2,200',
-    cadence: 'per month',
+    title: 'Growth',
+    price: '$1,560',
+    cadence: 'every 28 days',
     bullets: [
-      'Up to 800 new homeowner signals/month',
-      'AI outreach + nurture campaigns',
-      'Live performance dashboard',
-      'Weekly optimization + deliverability management'
+      '30 new homeowner prospects per day (~840/month)',
+      'Everything in Starter, plus:',
+      'Priority optimization & monitoring',
+      'A/B testing on messaging & sequences',
+      'Dedicated account check-ins',
+      'Advanced targeting & segmentation'
     ]
   },
   {
-    title: 'Scale Grid',
-    price: '$4,500',
-    cadence: 'per month',
+    title: 'Scale',
+    price: '$3,000',
+    cadence: 'every 28 days',
     bullets: [
-      'Multi-market coverage + franchise routing',
-      'Dedicated success engineer',
-      'Advanced financing + partner workflows',
-      'Quarterly strategy labs with your leadership'
+      '70+ new homeowner prospects per day (~2,000/month)',
+      'Everything in Growth, plus:',
+      'Multi-campaign management',
+      'White-glove optimization service',
+      'Custom integrations & workflows',
+      'Quarterly strategy sessions'
     ]
   }
 ]
@@ -345,7 +351,14 @@ export default function SolarInstallationLeadMachine() {
         <section className="py-20 px-4">
           <div className="max-w-6xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-6">Pricing & engagement models</h2>
-            <p className={`text-center max-w-3xl mx-auto mb-10 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Start with the launch kit, then pick the management tier that mirrors your install volume. Every plan comes with ROI protection and live support.</p>
+            <div className="text-center max-w-4xl mx-auto mb-10 space-y-3">
+              <p className={isDarkMode ? 'text-white/80 text-lg' : 'text-gray-700 text-lg'}>
+                Start at <span className={`font-semibold text-2xl ${isDarkMode ? 'text-emerald-300' : 'text-emerald-600'}`}>$750 every 28 days</span> for 10 homeowner-ready conversations per day. Need more volume? Add packs of 10 per day as you scale.
+              </p>
+              <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
+                One-time setup fee: <span className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$2,000</span> (includes full buildout, CRM integration, and solar-specific campaign optimization).
+              </p>
+            </div>
             <div className="grid md:grid-cols-3 gap-6">
               {pricing.map(plan => (
                 <div key={plan.title} className={`rounded-3xl p-8 flex flex-col ${

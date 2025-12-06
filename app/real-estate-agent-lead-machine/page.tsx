@@ -9,49 +9,47 @@ import { ArrowRight, Search, Layers, MessageCircle, Lock, BarChart3, FileText, C
 
 const pricingPlans = [
   {
-    name: 'Core Plan',
-    price: '$1,200',
-    cadence: 'per month',
-    description: '1 market (up to 5 zip codes) + buyer/seller targeting + 500 new leads/month + basic nurture',
+    name: 'Starter',
+    price: '$750',
+    cadence: 'every 28 days',
+    description: 'Perfect for testing the waters',
     features: [
-      '500 new qualified leads per month',
-      'Hyper-local buyer/seller targeting (up to 5 zip codes)',
-      'AI-driven intent monitoring across Google, Zillow, Realtor.com',
-      'Basic nurture sequences (7-14 days)',
-      'CRM integration (kvCORE, BoomTown, Follow Up Boss)',
-      'Weekly performance dashboard'
+      '10 new buyer & seller prospects per day (~280/month)',
+      'Enhanced contact + property data with buyer intent',
+      'AI-driven outreach in your brokerage tone',
+      'CRM integration & automation setup',
+      'Weekly optimization & deliverability management',
+      'Performance dashboard & analytics'
     ],
     featured: false
   },
   {
-    name: 'Growth Plan',
-    price: '$2,500',
-    cadence: 'per month',
-    description: 'Multi-market targeting + 1,500 leads/month + listing alert automation + market reports',
+    name: 'Growth',
+    price: '$1,560',
+    cadence: 'every 28 days',
+    description: 'Scale your pipeline consistently',
     features: [
-      '1,500 new qualified leads per month',
-      'Everything in Core, plus:',
-      'Multi-market targeting (unlimited zip codes)',
-      'Listing alert automation with segmentation',
-      'AI-generated monthly market reports',
-      'Advanced nurture workflows (30 days)',
-      'Priority optimization & A/B testing'
+      '30 new buyer & seller prospects per day (~840/month)',
+      'Everything in Starter, plus:',
+      'Priority optimization & monitoring',
+      'A/B testing on messaging & sequences',
+      'Dedicated account check-ins',
+      'Advanced targeting & segmentation'
     ],
     featured: true,
     value: 'Recommended'
   },
   {
-    name: 'Enterprise Plan',
-    price: '$5,000',
-    cadence: 'per month',
-    description: 'Unlimited markets + custom agent routing + performance analytics + dedicated success manager',
+    name: 'Scale',
+    price: '$3,000',
+    cadence: 'every 28 days',
+    description: 'Dominate your market with volume',
     features: [
-      'Unlimited lead volume (2,000+ per month)',
+      '70+ new buyer & seller prospects per day (~2,000/month)',
       'Everything in Growth, plus:',
-      'Custom agent routing & territory management',
-      'Advanced performance analytics & coaching insights',
-      'Dedicated success manager',
+      'Multi-campaign management',
       'White-glove optimization service',
+      'Custom integrations & workflows',
       'Quarterly strategy sessions'
     ],
     featured: false,
@@ -218,7 +216,7 @@ export default function RealEstateLeadMachine() {
     return score + (selected?.score || 0)
   }, 0)
 
-  const recommendedPlanName = builderScore >= 4 ? 'Enterprise Plan' : builderScore >= 2 ? 'Growth Plan' : 'Core Plan'
+  const recommendedPlanName = builderScore >= 4 ? 'Scale' : builderScore >= 2 ? 'Growth' : 'Starter'
   const activePlanName = manualPlanChoice || recommendedPlanName
   const activePlan = pricingPlans.find(plan => plan.name === activePlanName) ?? pricingPlans[0]
   const activePlanHighlights = activePlan.features.slice(0, 3)
@@ -597,10 +595,10 @@ export default function RealEstateLeadMachine() {
             <div className="text-center max-w-4xl mx-auto mb-10">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">Transparent Pricing That Scales With You</h2>
               <p className="text-lg text-white/80 mb-3">
-                Start at <span className="text-2xl font-semibold text-blue-300">$1,200/month</span> for the Core plan. Need more volume? Scale up as your brokerage grows.
+                Start at <span className="text-2xl font-semibold text-blue-300">$750 every 28 days</span> for 10 new buyer & seller conversations per day. Need more volume? Add packs of 10 per day as you scale.
               </p>
               <p className="text-white/70">
-                One-time setup fee: <span className="text-white font-semibold">$3,500</span> (includes full buildout, CRM integration, and agent training)
+                One-time setup fee: <span className="text-white font-semibold">$2,000</span> (includes full buildout, CRM integration, and campaign optimization)
               </p>
             </div>
 
