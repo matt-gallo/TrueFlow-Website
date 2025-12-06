@@ -1462,7 +1462,11 @@ export default function LandingPage() {
                       </div>
                     </div>
                     
-                    <p className="text-white/90 text-center font-bold text-lg bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                    <p className={`text-center font-bold text-lg ${
+                      isDarkMode
+                        ? 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'
+                        : 'text-gray-900'
+                    }`}>
                       We handle the tech. You run your business.
                     </p>
                     

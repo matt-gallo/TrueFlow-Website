@@ -191,7 +191,13 @@ export default function MedSpaLeadMachinePage() {
         <section className="pt-28 pb-16 px-4">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
             <div>
-              <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/30 text-xs uppercase tracking-[0.4em] text-white/70">
+              <p
+                className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs uppercase tracking-[0.4em] ${
+                  isDarkMode
+                    ? 'border border-white/30 text-white/70'
+                    : 'border border-rose-200 text-rose-700 bg-white'
+                }`}
+              >
                 Med Spa Lead Machine
               </p>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6">
@@ -200,7 +206,7 @@ export default function MedSpaLeadMachinePage() {
               <p className="text-2xl font-semibold mt-4 text-pink-200">
                 AI finds self-care seekers, answers their questions, and books them into your chair automatically.
               </p>
-              <p className="text-lg mt-4 text-white/70 max-w-2xl">
+              <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 Built from our top-performing campaigns in beauty and aesthetics, this playbook keeps your injectors and estheticians busy with high-intent clients instead of DMs and voicemails.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
@@ -212,7 +218,14 @@ export default function MedSpaLeadMachinePage() {
                   Get your AI automation demo
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <Link href="#workflow" className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 text-white/80 hover:bg-white/5">
+                <Link
+                  href="#workflow"
+                  className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border transition ${
+                    isDarkMode
+                      ? 'border-white/30 text-white/80 hover:bg-white/5'
+                      : 'border-rose-200 text-rose-700 hover:bg-rose-50'
+                  }`}
+                >
                   See how it works
                 </Link>
               </div>
@@ -236,9 +249,11 @@ export default function MedSpaLeadMachinePage() {
                 priority
               />
               <div className="bg-gradient-to-br from-rose-500/15 to-purple-500/15 rounded-2xl border border-white/10 p-6">
-                <p className="text-xs uppercase tracking-[0.35em] text-white/60">Live feed</p>
+                <p className={`text-xs uppercase tracking-[0.35em] ${isDarkMode ? 'text-white/60' : 'text-rose-700'}`}>Live feed</p>
                 <h3 className="text-3xl font-semibold mt-4">Booked consultations</h3>
-                <p className="text-white/70 mt-2">AI concierge ➜ qualified guest ➜ confirmed slot.</p>
+                <p className={`${isDarkMode ? 'text-white/70' : 'text-gray-700'} mt-2`}>
+                  AI concierge ➜ qualified guest ➜ confirmed slot.
+                </p>
                 <div className="mt-5 space-y-3 text-sm">
                   {['Lip filler consult • 9:40 AM', 'Hydrafacial VIP • 11:15 AM', 'Weight loss program review • 1:30 PM'].map(item => (
                     <div key={item} className="flex items-center gap-3">
