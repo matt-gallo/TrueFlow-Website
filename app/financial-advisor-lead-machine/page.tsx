@@ -1,0 +1,380 @@
+'use client'
+
+import { useEffect, useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import Navigation from '../components/Navigation'
+import { Footer } from '../components/Footer'
+import ParticleBackground from '../components/ParticleBackground'
+import { useTheme } from '../components/ThemeProvider'
+import {
+  ArrowRight,
+  Banknote,
+  BarChart3,
+  CalendarCheck,
+  CheckCircle,
+  FileText,
+  Handshake,
+  MessageSquare,
+  ShieldCheck,
+  Target
+} from 'lucide-react'
+
+const workflow = [
+  {
+    title: 'Surface in-market investors',
+    description: 'Monitors search intent, financial news subscribers, and LinkedIn behavior to spot households researching new advisors or wealth strategies.',
+    icon: Target
+  },
+  {
+    title: 'Enrich with investable assets + timing',
+    description: 'Layers in company liquidity events, retirement timelines, equity comp, and life milestones so you know who is actually ready to talk.',
+    icon: Banknote
+  },
+  {
+    title: 'Launch trust-building outreach',
+    description: 'AI sends human-grade emails and texts referencing market updates, whitepapers, and planning prompts in your voice.',
+    icon: MessageSquare
+  },
+  {
+    title: 'Qualify compliance-friendly details',
+    description: 'Collects goals, risk tolerance, household assets, and current advisor relationship while logging disclosures for compliance review.',
+    icon: ShieldCheck
+  },
+  {
+    title: 'Book discovery calls automatically',
+    description: 'Connects to Calendly, HubSpot, or Wealthbox calendars to secure meetings without back-and-forth or receptionist bandwidth.',
+    icon: CalendarCheck
+  },
+  {
+    title: 'Nurture with fiduciary-grade content',
+    description: 'Sends quarterly outlooks, tax deadlines, and custom lead magnets until prospects are ready to transfer assets.',
+    icon: FileText
+  }
+]
+
+const features = [
+  {
+    title: 'Advisor Booking Machine',
+    description: 'Automations tuned for fiduciary and hybrid RIAs that fill calendars with vetted households instead of cold lists.',
+    icon: Handshake
+  },
+  {
+    title: 'Liquidity Event Radar',
+    description: 'Spots equity vesting, business exits, or inheritance signals to prioritize higher AUM prospects.',
+    icon: BarChart3
+  },
+  {
+    title: 'AI Compliance Concierge',
+    description: 'Answers planning questions, references approved resources, and logs every conversation for audit trails.',
+    icon: ShieldCheck
+  },
+  {
+    title: 'Whitepaper + Webinar Engine',
+    description: 'Delivers gated content and automatically registers interested prospects for your webinars or in-office events.',
+    icon: FileText
+  },
+  {
+    title: 'CRM + Custodian Sync',
+    description: 'Integrates with Wealthbox, Redtail, Salesforce, and custodian workflows so notes, tasks, and KYC data stay organized.',
+    icon: CalendarCheck
+  },
+  {
+    title: 'Referral Network Amplifier',
+    description: 'Keeps CPAs, attorneys, and centers of influence in the loop with co-branded updates and introductions.',
+    icon: Handshake
+  },
+  {
+    title: 'Retargeting Audience Builder',
+    description: 'Pushes engaged prospects into compliant LinkedIn/Meta audiences for follow-up ads without manual exports.',
+    icon: Target
+  },
+  {
+    title: 'Performance Dashboard',
+    description: 'See booked calls, pipeline value, compliance status, and ROI in real time.',
+    icon: BarChart3
+  }
+]
+
+const stats = [
+  { label: 'Discovery calls booked in 60 days', value: '28', detail: 'avg. per advisor pod' },
+  { label: 'Average household AUM', value: '$1.4M', detail: 'from automation-sourced leads' },
+  { label: 'Compliance-ready transcripts', value: '100%', detail: 'logged automatically' }
+]
+
+const pricing = [
+  {
+    title: 'Starter',
+    price: '$750',
+    cadence: 'every 28 days',
+    bullets: [
+      '10 investor conversations per day (~280/month)',
+      'Enhanced contact + asset signals',
+      'AI messaging trained on your fiduciary tone',
+      'CRM integration & automation setup',
+      'Weekly optimization + deliverability management',
+      'Performance dashboard'
+    ]
+  },
+  {
+    title: 'Growth',
+    price: '$1,560',
+    cadence: 'every 28 days',
+    bullets: [
+      '30 investor conversations per day (~840/month)',
+      'Everything in Starter, plus:',
+      'Priority optimization & compliance monitoring',
+      'A/B testing on nurture campaigns',
+      'Dedicated success check-ins',
+      'Advanced segmentation (AUM tiers)'
+    ]
+  },
+  {
+    title: 'Scale',
+    price: '$3,000',
+    cadence: 'every 28 days',
+    bullets: [
+      '70+ conversations per day (~2,000/month)',
+      'Everything in Growth, plus:',
+      'Multi-advisor routing & teaming',
+      'White-glove optimization + creative testing',
+      'Custom integrations & custodian workflows',
+      'Quarterly strategy sessions'
+    ]
+  }
+]
+
+const faqs = [
+  {
+    q: 'Is this compliant with our broker-dealer or RIA policies?',
+    a: 'We configure messaging using your approved disclosures and archive every conversation for audit access. You can require pre-approval on campaigns before launch.'
+  },
+  {
+    q: 'Do you deliver exclusive households?',
+    a: 'Yes. Leads are never shared. Each conversation routes through your CRM and is assigned to the advisor on record.'
+  },
+  {
+    q: 'Can you nurture legacy prospects already in our CRM?',
+    a: 'Upload dormant lists and we re-engage with market commentary, webinar invites, and financial planning prompts.'
+  },
+  {
+    q: 'How fast can we deploy?',
+    a: 'Most advisory firms go live in 14 days, including brand voice training, compliance review, and calendar hookups.'
+  }
+]
+
+export default function FinancialAdvisorLeadMachinePage() {
+  const [mounted, setMounted] = useState(false)
+  const { isDarkMode } = useTheme()
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) {
+    return <div className={`min-h-screen flex items-center justify-center ${isDarkMode ? 'bg-black text-white/70' : 'bg-white text-gray-600'}`}>Loading...</div>
+  }
+
+  return (
+    <div className={isDarkMode ? 'bg-slate-950 text-white' : 'bg-slate-50 text-gray-900'}>
+      <ParticleBackground particleCount={35} />
+      <Navigation />
+
+      <main className="relative z-10">
+        <section className="pt-28 pb-16 px-4">
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+            <div>
+              <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/30 text-xs uppercase tracking-[0.4em] text-white/70">
+                Advisor Lead Machine
+              </p>
+              <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6">
+                Financial advisors: your AI booking partner.
+              </h1>
+              <p className="text-2xl font-semibold mt-4 text-cyan-200">
+                AI finds households ready for a new fiduciary and books discovery calls automatically.
+              </p>
+              <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                Built from our best-performing professional services funnels—this playbook keeps your practice pipeline full while you focus on client reviews, not prospecting.
+              </p>
+              <div className="flex flex-wrap gap-4 mt-8">
+                <Link href="/sign-up" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 text-white font-semibold shadow-[0_15px_40px_rgba(14,165,233,0.4)]">
+                  Get your AI automation demo
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link href="#workflow" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 ${isDarkMode ? 'text-white/80 hover:bg-white/5' : 'text-gray-700 hover:bg-white/20'}`}>
+                  See how it works
+                </Link>
+              </div>
+              <div className="mt-8 grid sm:grid-cols-3 gap-4">
+                {stats.map(stat => (
+                  <div key={stat.label} className={`rounded-2xl p-4 border ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-lg'}`}>
+                    <p className="text-3xl font-bold text-cyan-200">{stat.value}</p>
+                    <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{stat.label}</p>
+                    <p className={`text-xs mt-1 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>{stat.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className={`rounded-3xl p-6 border ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-2xl'}`}>
+              <Image
+                src="/lead-machine-subpage-files/financial-advisors-ad-version-a.png"
+                alt="Financial advisor lead machine campaign"
+                width={900}
+                height={1200}
+                className={`w-full rounded-2xl border mb-6 object-cover ${isDarkMode ? 'border-white/10' : 'border-slate-200'}`}
+                priority
+              />
+              <div className="bg-gradient-to-br from-cyan-500/15 to-indigo-500/15 rounded-2xl border border-white/10 p-6">
+                <p className="text-xs uppercase tracking-[0.35em] text-white/60">Deal room</p>
+                <h3 className="text-3xl font-semibold mt-4">Discovery calls locked</h3>
+                <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>AI concierge ➜ vetted household ➜ scheduled review.</p>
+                <div className="mt-5 space-y-3 text-sm">
+                  {['401k rollover review • 10:00 AM', 'Liquidity event planning • 1:15 PM', 'Retirement income analysis • 3:45 PM'].map(item => (
+                    <div key={item} className="flex items-center gap-3">
+                      <CheckCircle className="w-4 h-4 text-cyan-200" />
+                      <span className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className={`text-xs mt-6 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+                  ROI Guarantee: If Lead Machine doesn’t cover its monthly cost in 90 days, we keep it running at no service fee until it does.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="workflow" className="py-20 px-4">
+          <div className={`max-w-6xl mx-auto rounded-3xl p-10 border ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-xl'}`}>
+            <div className="mb-10">
+              <h2 className="text-4xl font-bold">How the Advisor Lead Machine runs</h2>
+              <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Balances compliance, personalization, and speed so you stay focused on clients.</p>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              {workflow.map(item => (
+                <div key={item.title} className={`rounded-2xl p-6 flex items-start gap-4 border ${isDarkMode ? 'bg-black/40 border-white/10' : 'bg-slate-100 border-slate-200'}`}>
+                  <div className="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center">
+                    <item.icon className="w-6 h-6 text-cyan-200" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold">{item.title}</h3>
+                    <p className={`mt-1 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-4">
+          <div className="max-w-6xl mx-auto text-center">
+            <p className={`uppercase tracking-[0.35em] text-xs ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Components</p>
+            <h2 className="text-4xl font-bold mt-4">Everything your practice needs before transferring assets</h2>
+            <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Each module is built specifically for advisory and wealth management teams.</p>
+          </div>
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-6 mt-10">
+            {features.map(feature => (
+              <div key={feature.title} className={`rounded-3xl p-8 transition border ${isDarkMode ? 'bg-white/5 border-white/10 hover:border-cyan-300/50' : 'bg-white border-slate-200 hover:border-cyan-300 shadow-lg'}`}>
+                <div className="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center mb-4">
+                  <feature.icon className="w-6 h-6 text-cyan-300" />
+                </div>
+                <h3 className="text-2xl font-semibold">{feature.title}</h3>
+                <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-20 px-4">
+          <div className={`max-w-6xl mx-auto rounded-3xl border p-10 text-center ${isDarkMode ? 'bg-gradient-to-br from-cyan-500/15 to-indigo-500/15 border-white/20' : 'bg-gradient-to-br from-cyan-100 to-indigo-100 border-cyan-200'}`}>
+            <p className="text-3xl font-semibold mb-4">Proof from active advisory deployments</p>
+            <p className={`mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>Aggregated metrics from anonymized RIA & IAR partners.</p>
+            <div className="grid sm:grid-cols-3 gap-6">
+              <div>
+                <p className="text-5xl font-bold text-cyan-200">+53%</p>
+                <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Increase in qualified discovery calls</p>
+              </div>
+              <div>
+                <p className="text-5xl font-bold text-cyan-200">$2.3M</p>
+                <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Average pipeline added per quarter</p>
+              </div>
+              <div>
+                <p className="text-5xl font-bold text-cyan-200">0</p>
+                <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Compliance exceptions triggered</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-6">Pricing & engagement models</h2>
+            <div className="text-center max-w-4xl mx-auto mb-10 space-y-3">
+              <p className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                Start at <span className={`font-semibold text-2xl ${isDarkMode ? 'text-cyan-200' : 'text-cyan-600'}`}>$750 every 28 days</span> for 10 investor-ready conversations per day.
+              </p>
+              <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
+                One-time setup fee: <span className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$2,000</span> (includes full buildout, CRM integration, and compliance-ready campaign optimization).
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {pricing.map(plan => (
+                <div key={plan.title} className={`rounded-3xl p-8 flex flex-col border ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-lg'}`}>
+                  <h3 className="text-2xl font-semibold">{plan.title}</h3>
+                  <p className="text-4xl font-bold mt-3">{plan.price}</p>
+                  <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>{plan.cadence}</p>
+                  <ul className={`mt-6 space-y-3 flex-1 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                    {plan.bullets.map(bullet => (
+                      <li key={bullet} className="flex items-start gap-2">
+                        <CheckCircle className="w-4 h-4 text-cyan-300 mt-1" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/sign-up" className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold ${isDarkMode ? 'border-white/30 hover:bg-white/10' : 'border-slate-300 hover:bg-slate-100'}`}>
+                    Book a call
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-20 px-4">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className={`uppercase tracking-[0.35em] text-xs ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Questions</p>
+            <h2 className="text-4xl font-bold mt-4">Everything advisors ask before switching on automation</h2>
+          </div>
+          <div className="max-w-5xl mx-auto mt-10 space-y-5">
+            {faqs.map(item => (
+              <div key={item.q} className={`rounded-3xl p-6 border ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-lg'}`}>
+                <h3 className="text-xl font-semibold">{item.q}</h3>
+                <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="py-24 px-4">
+          <div className={`max-w-5xl mx-auto rounded-[40px] p-14 text-center border ${isDarkMode ? 'bg-gradient-to-br from-cyan-500/40 to-indigo-500/30 border-white/10' : 'bg-gradient-to-br from-cyan-200 to-indigo-200 border-cyan-200'}`}>
+            <p className={`uppercase tracking-[0.4em] text-xs ${isDarkMode ? 'text-white/70' : 'text-indigo-900'}`}>Ready?</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep markets moving while your calendar fills itself.</h2>
+            <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>Switch on the Financial Advisor Lead Machine and let AI handle detection, nurturing, and scheduling while you focus on fiduciary advice.</p>
+            <div className="flex flex-wrap justify-center gap-4 mt-10">
+              <Link href="/sign-up" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold ${isDarkMode ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
+                Schedule an advisor strategy session
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link href="/lead-machine" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border ${isDarkMode ? 'border-white/40 text-white' : 'border-gray-700 text-gray-900'}`}>
+                Explore the full Lead Machine
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  )
+}
