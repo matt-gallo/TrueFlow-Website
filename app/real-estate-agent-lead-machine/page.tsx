@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Navigation from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import ParticleBackground from '../components/ParticleBackground'
@@ -314,6 +315,14 @@ export default function RealEstateLeadMachine() {
             <div className={`rounded-3xl p-8 backdrop-blur ${
               isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-lg'
             }`}>
+              <Image
+                src="/lead-machine-subpage-files/real-estate-ad-version-b.png"
+                alt="Real estate lead machine campaign"
+                width={900}
+                height={1200}
+                className={`w-full rounded-2xl border mb-6 object-cover ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}
+                priority
+              />
               <div className={`bg-gradient-to-br rounded-2xl border p-6 ${
                 isDarkMode
                   ? 'from-blue-500/10 to-purple-500/10 border-white/10'
