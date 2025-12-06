@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { NavAuthButtons } from '@/components/NavAuthButtons'
+import { NavAuthButtons } from '@/app/components/NavAuthButtons'
 import {
   ArrowLeft,
   ArrowRight,
