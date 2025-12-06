@@ -166,6 +166,9 @@ const faqs = [
 export default function SolarInstallationLeadMachine() {
   const [mounted, setMounted] = useState(false)
   const { isDarkMode } = useTheme()
+  const scrollToCalendar = () => {
+    document.getElementById('book-demo-calendar')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -207,13 +210,14 @@ export default function SolarInstallationLeadMachine() {
                 Inspired by our top-performing ad campaign, this playbook turns every territory into a self-filling calendar—no door knocking, no endless callbacks, just qualified homeowners ready for proposals.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
-                <Link
-                  href="/sign-up"
+                <button
+                  type="button"
+                  onClick={scrollToCalendar}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-pink-500 text-black font-semibold shadow-[0_20px_60px_rgba(249,115,22,0.45)] hover:translate-y-[-2px] transition-all"
                 >
                   Get your AI automation demo
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </button>
                 <Link
                   href="#workflow"
                   className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border transition ${
@@ -384,8 +388,9 @@ export default function SolarInstallationLeadMachine() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href="/sign-up"
+                  <button
+                    type="button"
+                    onClick={scrollToCalendar}
                     className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold transition ${
                       isDarkMode
                         ? 'border-white/30 hover:bg-white/10'
@@ -394,7 +399,7 @@ export default function SolarInstallationLeadMachine() {
                   >
                     Book a call
                     <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </button>
                 </div>
               ))}
             </div>
@@ -424,27 +429,82 @@ export default function SolarInstallationLeadMachine() {
               ? 'from-emerald-500/40 to-cyan-500/30 border border-white/10'
               : 'from-emerald-500/50 to-cyan-500/40 border border-emerald-300'
           }`}>
-            <p className={`uppercase tracking-[0.4em] text-xs ${isDarkMode ? 'text-white/80' : 'text-emerald-900'}`}>Ready?</p>
+            <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
+              isDarkMode ? 'border-white/30 text-white/70' : 'border-emerald-200 text-emerald-700'
+            } text-xs uppercase tracking-[0.35em]`}>Ready?</span>
             <h2 className="text-4xl lg:text-5xl font-bold mt-4">Turn every sunny roof into a booked consultation.</h2>
-            <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>Flip on the Solar Lead Machine and let AI do the hunting, nurturing, and scheduling while your team focuses on installs.</p>
+            <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
+              Switch on the Solar Lead Machine and let AI handle detection, nurture, and scheduling while your team focuses on installs.
+            </p>
             <div className="flex flex-wrap justify-center gap-4 mt-10">
-              <Link
-                href="/sign-up"
+              <button
+                type="button"
+                onClick={scrollToCalendar}
                 className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold ${
                   isDarkMode ? 'bg-white text-black' : 'bg-gray-900 text-white'
                 }`}
               >
-                Schedule a solar strategy session
+                Lock in your walkthrough
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/lead-machine"
-                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border ${
-                  isDarkMode ? 'border-white/40 text-white' : 'border-gray-700 text-gray-900'
-                }`}
-              >
-                Explore the full Lead Machine
-              </Link>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="book-demo-calendar" className="py-20 px-4 scroll-mt-24">
+          <style jsx global>{`
+            #book-demo-calendar > div > div:last-child:not(.space-y-4):not(.calendar-wrapper) {
+              display: none !important;
+            }
+
+            #msgsndr-calendar {
+              display: block !important;
+              width: 100% !important;
+              min-height: 520px !important;
+            }
+
+            #book-demo-calendar .calendar-wrapper ~ * {
+              display: none !important;
+            }
+          `}</style>
+          <div className={`max-w-4xl mx-auto rounded-3xl p-8 sm:p-10 border ${
+            isDarkMode
+              ? 'bg-gradient-to-br from-emerald-500/15 to-cyan-500/15 border-white/10'
+              : 'bg-gradient-to-br from-emerald-100 to-cyan-100 border-emerald-100'
+          }`}>
+            <div className="space-y-4 text-center mb-8">
+              <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
+              <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
+                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+              </p>
+            </div>
+            <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${
+              isDarkMode ? 'border-white/10 bg-white/5' : 'border-emerald-200 bg-white'
+            }`}>
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
+                id="msgsndr-calendar"
+                scrolling="yes"
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
+                title="Book a demo with TrueFlow"
+                onLoad={() => {
+                  setTimeout(() => {
+                    const section = document.getElementById('book-demo-calendar')
+                    if (section) {
+                      const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT)
+                      const nodesToRemove: Node[] = []
+                      let node
+                      while ((node = walker.nextNode())) {
+                        const text = node.textContent || ''
+                        if (text.includes('body {') || text.includes('background:') || text.includes('.lc-booking')) {
+                          nodesToRemove.push(node)
+                        }
+                      }
+                      nodesToRemove.forEach(n => n.parentNode?.removeChild(n))
+                    }
+                  }, 1000)
+                }}
+              />
             </div>
           </div>
         </section>

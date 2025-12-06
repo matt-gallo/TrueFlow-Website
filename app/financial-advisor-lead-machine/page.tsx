@@ -397,7 +397,7 @@ export default function FinancialAdvisorLeadMachinePage() {
               display: none !important;
             }
 
-            #advisor-msgsndr-calendar {
+            #msgsndr-calendar {
               display: block !important;
               width: 100% !important;
               min-height: 520px !important;
@@ -407,7 +407,7 @@ export default function FinancialAdvisorLeadMachinePage() {
               display: none !important;
             }
           `}</style>
-          <div className={`max-w-5xl mx-auto rounded-3xl p-10 border ${
+          <div className={`max-w-4xl mx-auto rounded-3xl p-8 sm:p-10 border ${
             isDarkMode
               ? 'bg-gradient-to-br from-cyan-500/15 to-indigo-500/15 border-white/10'
               : 'bg-gradient-to-br from-cyan-100 to-indigo-100 border-cyan-200'
@@ -423,10 +423,27 @@ export default function FinancialAdvisorLeadMachinePage() {
             }`}>
               <iframe
                 src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
-                id="advisor-msgsndr-calendar"
+                id="msgsndr-calendar"
                 scrolling="yes"
                 style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
                 title="Book a demo with TrueFlow"
+                onLoad={() => {
+                  setTimeout(() => {
+                    const section = document.getElementById('book-demo-calendar')
+                    if (section) {
+                      const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT)
+                      const nodesToRemove: Node[] = []
+                      let node
+                      while ((node = walker.nextNode())) {
+                        const text = node.textContent || ''
+                        if (text.includes('body {') || text.includes('background:') || text.includes('.lc-booking')) {
+                          nodesToRemove.push(node)
+                        }
+                      }
+                      nodesToRemove.forEach(n => n.parentNode?.removeChild(n))
+                    }
+                  }, 1000)
+                }}
               />
             </div>
           </div>

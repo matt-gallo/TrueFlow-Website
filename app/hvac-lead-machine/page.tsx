@@ -167,6 +167,9 @@ const faqs = [
 export default function HvacLeadMachinePage() {
   const [mounted, setMounted] = useState(false)
   const { isDarkMode } = useTheme()
+  const scrollToCalendar = () => {
+    document.getElementById('book-demo-calendar')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -198,10 +201,14 @@ export default function HvacLeadMachinePage() {
                 Modeled after our best-performing trades campaigns, this system keeps crews busy with profitable installs and emergency calls—no more cold nights or idle technicians.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
-                <Link href="/sign-up" className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 text-white font-semibold shadow-[0_15px_40px_rgba(251,191,36,0.4)]">
+                <button
+                  type="button"
+                  onClick={scrollToCalendar}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500 text-white font-semibold shadow-[0_15px_40px_rgba(251,191,36,0.4)]"
+                >
                   Get your AI automation demo
                   <ArrowRight className="w-4 h-4" />
-                </Link>
+                </button>
                 <Link href="#workflow" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/30 ${isDarkMode ? 'text-white/80 hover:bg-white/5' : 'text-gray-700 hover:bg-white/20'}`}>
                   See how it works
                 </Link>
@@ -332,10 +339,14 @@ export default function HvacLeadMachinePage() {
                       </li>
                     ))}
                   </ul>
-                  <Link href="/sign-up" className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold ${isDarkMode ? 'border-white/30 hover:bg-white/10' : 'border-amber-200 hover:bg-amber-50'}`}>
+                  <button
+                    type="button"
+                    onClick={scrollToCalendar}
+                    className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 text-sm font-semibold ${isDarkMode ? 'border-white/30 hover:bg-white/10' : 'border-amber-200 hover:bg-amber-50'}`}
+                  >
                     Book a call
                     <ArrowRight className="w-4 h-4" />
-                  </Link>
+                  </button>
                 </div>
               ))}
             </div>
@@ -359,17 +370,82 @@ export default function HvacLeadMachinePage() {
 
         <section className="py-24 px-4">
           <div className={`max-w-5xl mx-auto rounded-[40px] p-14 text-center border ${isDarkMode ? 'bg-gradient-to-br from-amber-500/40 to-orange-500/30 border-white/10' : 'bg-gradient-to-br from-amber-200 to-orange-200 border-amber-300'}`}>
-            <p className={`uppercase tracking-[0.4em] text-xs ${isDarkMode ? 'text-white/70' : 'text-orange-900'}`}>Ready?</p>
+            <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
+              isDarkMode ? 'border-white/30 text-white/70' : 'border-amber-300 text-amber-700'
+            } text-xs uppercase tracking-[0.35em]`}>Ready?</span>
             <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep trucks busy even when the phones spike.</h2>
-            <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>Flip on the HVAC Lead Machine and let AI handle intent tracking, qualifying, and scheduling while your crews handle installs and repairs.</p>
+            <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
+              Let the HVAC Lead Machine book the calendar while your crews focus on installs and repairs.
+            </p>
             <div className="flex flex-wrap justify-center gap-4 mt-10">
-              <Link href="/sign-up" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold ${isDarkMode ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
-                Schedule an HVAC strategy session
+              <button
+                type="button"
+                onClick={scrollToCalendar}
+                className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold ${
+                  isDarkMode ? 'bg-white text-black' : 'bg-gray-900 text-white'
+                }`}
+              >
+                Lock in your walkthrough
                 <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link href="/lead-machine" className={`inline-flex items-center gap-2 px-6 py-3 rounded-full border ${isDarkMode ? 'border-white/40 text-white' : 'border-gray-700 text-gray-900'}`}>
-                Explore the full Lead Machine
-              </Link>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="book-demo-calendar" className="py-20 px-4 scroll-mt-24">
+          <style jsx global>{`
+            #book-demo-calendar > div > div:last-child:not(.space-y-4):not(.calendar-wrapper) {
+              display: none !important;
+            }
+
+            #msgsndr-calendar {
+              display: block !important;
+              width: 100% !important;
+              min-height: 520px !important;
+            }
+
+            #book-demo-calendar .calendar-wrapper ~ * {
+              display: none !important;
+            }
+          `}</style>
+          <div className={`max-w-4xl mx-auto rounded-3xl p-8 sm:p-10 border ${
+            isDarkMode
+              ? 'bg-gradient-to-br from-amber-500/15 to-orange-500/15 border-white/10'
+              : 'bg-gradient-to-br from-amber-100 to-orange-100 border-amber-200'
+          }`}>
+            <div className="space-y-4 text-center mb-8">
+              <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
+              <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
+                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+              </p>
+            </div>
+            <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${
+              isDarkMode ? 'border-white/10 bg-white/5' : 'border-amber-200 bg-white'
+            }`}>
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
+                id="msgsndr-calendar"
+                scrolling="yes"
+                style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
+                title="Book a demo with TrueFlow"
+                onLoad={() => {
+                  setTimeout(() => {
+                    const section = document.getElementById('book-demo-calendar')
+                    if (section) {
+                      const walker = document.createTreeWalker(section, NodeFilter.SHOW_TEXT)
+                      const nodesToRemove: Node[] = []
+                      let node
+                      while ((node = walker.nextNode())) {
+                        const text = node.textContent || ''
+                        if (text.includes('body {') || text.includes('background:') || text.includes('.lc-booking')) {
+                          nodesToRemove.push(node)
+                        }
+                      }
+                      nodesToRemove.forEach(n => n.parentNode?.removeChild(n))
+                    }
+                  }, 1000)
+                }}
+              />
             </div>
           </div>
         </section>
