@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react'
 import Navigation from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import ParticleBackground from '../components/ParticleBackground'
-import { ArrowRight, Search, Layers, MessageCircle, Lock, BarChart3, FileText, Clock, CheckCircle, ShieldCheck } from 'lucide-react'
+import { useTheme } from '../components/ThemeProvider'
+import { ArrowRight, Search, Layers, MessageCircle, Lock, BarChart3, FileText, Clock, CheckCircle, ShieldCheck, TrendingUp } from 'lucide-react'
 
 const pricingPlans = [
   {
@@ -90,6 +91,7 @@ const builderQuestions = [
 
 export default function RealEstateLeadMachine() {
   const [mounted, setMounted] = useState(false)
+  const { isDarkMode } = useTheme()
   const [isBuilderOpen, setIsBuilderOpen] = useState(false)
   const [builderStep, setBuilderStep] = useState(0)
   const [manualPlanChoice, setManualPlanChoice] = useState<string | null>(null)
@@ -226,14 +228,18 @@ export default function RealEstateLeadMachine() {
 
   if (!mounted) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+      <div className={`min-h-screen flex items-center justify-center transition-colors ${
+        isDarkMode ? 'bg-black' : 'bg-gray-50'
+      }`}>
+        <div className={`text-xl ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Loading...</div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className={`min-h-screen overflow-x-hidden transition-colors ${
+      isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
+    }`}>
       <ParticleBackground particleCount={50} />
       <Navigation />
 
@@ -245,7 +251,11 @@ export default function RealEstateLeadMachine() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 items-start">
             <div>
-              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/20 bg-white/5 text-white/80 text-xs uppercase tracking-[0.32em] mb-6">
+              <div className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs uppercase tracking-[0.32em] mb-6 ${
+                isDarkMode
+                  ? 'border border-white/20 bg-white/5 text-white/80'
+                  : 'border border-blue-200 bg-blue-50 text-blue-700'
+              }`}>
                 <span className="w-2 h-2 bg-blue-500 rounded-full" />
                 Lead Machine™ for Real Estate
               </div>
@@ -254,41 +264,77 @@ export default function RealEstateLeadMachine() {
                 The average real estate agent spends 63% of their time searching for the next deal.
               </h1>
 
-              <p className="text-3xl lg:text-4xl font-bold my-6 leading-tight">
+              <p className="text-3xl lg:text-4xl font-bold my-6 leading-tight text-blue-500">
                 The top 10% spend that time closing.
               </p>
 
-              <p className="text-2xl text-white/80 mb-5">
+              <p className={`text-2xl mb-5 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                 and what if you could flip a switch?
               </p>
 
-              <p className="text-lg text-white/70 mb-10">
+              <p className={`text-lg mb-10 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 We track live intent, start human conversations, and hand your agents booked calls before they log in.
               </p>
 
-              <div className="flex flex-wrap gap-4 mb-5">
+              <div className="flex flex-wrap gap-4 mb-8">
                 <button
                   onClick={scrollToDemo}
-                  className="px-5 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_60px_rgba(59,130,246,0.4)]"
+                  className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition-all hover:-translate-y-0.5 hover:shadow-[0_20px_60px_rgba(59,130,246,0.4)]"
                 >
                   Book a Free Demo
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <button className="px-5 py-3 bg-white/10 border border-white/20 rounded-full text-white font-semibold text-sm hover:bg-white/15 hover:border-white/30 transition-all">
+                <button className={`px-6 py-3 rounded-full font-semibold text-sm transition-all border ${
+                  isDarkMode
+                    ? 'bg-white/10 border-white/20 text-white hover:bg-white/15 hover:border-white/30'
+                    : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
+                }`}>
                   See How It Works
                 </button>
               </div>
+
+              <div className="grid sm:grid-cols-3 gap-4">
+                {[
+                  { value: '+42%', label: 'Avg. transaction increase', detail: 'first 90 days' },
+                  { value: '15-20', label: 'Qualified leads per agent', detail: 'monthly average' },
+                  { value: '-67%', label: 'Agent turnover reduction', detail: 'vs. industry baseline' }
+                ].map((stat, idx) => (
+                  <div key={stat.label} className={`rounded-2xl p-4 ${
+                    isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-lg'
+                  }`}>
+                    <p className="text-3xl font-bold text-blue-500">{stat.value}</p>
+                    <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{stat.label}</p>
+                    <p className={`text-xs mt-1 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>{stat.detail}</p>
+                    {idx === 0 && (
+                      <p className={`text-[10px] mt-3 uppercase tracking-widest ${isDarkMode ? 'text-white/40' : 'text-gray-400'}`}>Based on partner averages</p>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
 
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm">
-              <img
-                src="https://storage.googleapis.com/msgsndr/GVFoSfHpPaXzRXCJbym0/media/691a3c05c656aa1df31c550a.png"
-                alt="TrueFlow Lead Machine Dashboard"
-                className="w-full rounded-2xl border border-white/10 mb-5"
-              />
-              <div className="flex items-start gap-1 text-[11px] text-white/40 mt-4">
-                <CheckCircle className="w-3 h-3 flex-shrink-0 mt-0.5 opacity-30" />
-                <span>ROI Guarantee: If the system doesn&apos;t generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.</span>
+            <div className={`rounded-3xl p-8 backdrop-blur ${
+              isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-lg'
+            }`}>
+              <div className={`bg-gradient-to-br rounded-2xl border p-6 ${
+                isDarkMode
+                  ? 'from-blue-500/10 to-purple-500/10 border-white/10'
+                  : 'from-blue-500/20 to-purple-500/20 border-blue-200'
+              }`}>
+                <p className={`text-sm uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>Performance Snapshot</p>
+                <h3 className="text-3xl font-semibold mt-4">Consistent Lead Flow</h3>
+                <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>AI tracks intent → nurtures prospects → routes qualified leads to agents.</p>
+                <div className="mt-6 space-y-3">
+                  {['Intent captured · Real-time', 'Conversation started · Automated', 'Calendar synced · Ready to close'].map(item => (
+                    <div key={item} className={`flex items-center gap-3 text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                      <CheckCircle className="w-4 h-4 text-blue-500" />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+                <p className={`text-xs mt-6 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+                  90-Day ROI Guarantee: If the system doesn&apos;t generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.
+                </p>
               </div>
             </div>
           </div>
@@ -303,14 +349,16 @@ export default function RealEstateLeadMachine() {
           </h2>
 
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8">
-            <div className="bg-white/5 border border-white/10 rounded-3xl p-10">
-              <p className="text-xs uppercase tracking-[0.3em] font-bold mb-3">
+            <div className={`rounded-3xl p-10 ${
+              isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-lg'
+            }`}>
+              <p className={`text-xs uppercase tracking-[0.3em] font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                 You don&apos;t have a retention problem—you have a lead flow problem.
               </p>
               <h3 className="text-2xl font-semibold mb-4">
                 Agents leave for one reason: better opportunities elsewhere.
               </h3>
-              <p className="text-white/70 mb-6">
+              <p className={`mb-6 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 Here&apos;s where the cracks appear:
               </p>
 
@@ -324,25 +372,29 @@ export default function RealEstateLeadMachine() {
                   { title: 'Lost Buyer Intent:', text: 'Buyers exploring neighborhoods online go to Zillow, Redfin, Compass—you never even know they existed' }
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
-                    <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-white/70">
-                      <strong className="text-white">{item.title}</strong> {item.text}
+                    <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                    <span className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
+                      <strong className={isDarkMode ? 'text-white' : 'text-gray-900'}>{item.title}</strong> {item.text}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <p className="text-white/60 mt-6">
+              <p className={`mt-6 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
                 More Zillow leads or open house sign-ins won&apos;t fix this. You need a system that captures intent, qualifies prospects, and delivers them ready-to-convert.
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 border border-white/20 rounded-3xl p-10">
+            <div className={`bg-gradient-to-br rounded-3xl p-10 ${
+              isDarkMode
+                ? 'from-blue-500/20 to-purple-500/20 border border-white/20'
+                : 'from-blue-500/30 to-purple-500/30 border border-blue-300'
+            }`}>
               <h3 className="text-2xl font-semibold mb-4">Our Promise</h3>
-              <p className="text-white/80 mb-5">
+              <p className={`mb-5 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
                 We build the Lead Machine™ inside your brokerage—hyper-local targeting, intent tracking, automated nurture, agent routing, and performance analytics—so your agents wake up to warm leads in their pipeline, not empty calendars.
               </p>
-              <p className="text-white/70">
+              <p className={isDarkMode ? 'text-white/70' : 'text-gray-700'}>
                 When agents know quality leads are coming consistently, they stay. When they stay, you scale.
               </p>
             </div>
@@ -353,43 +405,39 @@ export default function RealEstateLeadMachine() {
       {/* How It Works */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-10">
+          <div className={`rounded-3xl p-10 ${
+            isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-lg'
+          }`}>
             <div className="mb-8">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">How the Machine Runs</h2>
-              <p className="text-lg text-white/70">
+              <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 TrueFlow handles the first 90% of your lead generation process, then hands agents warm, intent-qualified prospects:
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-[2fr_1fr] gap-12 items-start">
-              <div className="space-y-4">
-                {[
-                  'Monitors live buyer/seller intent across Google, Zillow, Realtor.com, and social platforms in your target zip codes',
-                  'Enriches every lead with contact info, pre-qualification signals, property interests, and move timeline',
-                  'Routes to the right agent based on specialty, geography, availability, or conversion rate—no favoritism, full transparency',
-                  'Starts human-tone conversations with listing alerts, market updates, and neighborhood insights',
-                  'Qualifies intent with a 2-minute Buyer/Seller Readiness Assessment—scores timeline, budget, and motivation',
-                  'Books qualified prospects directly onto agent calendars or routes to CRM nurture workflow'
-                ].map((text, idx) => (
-                  <div key={idx} className="flex items-start gap-4 bg-white/5 border border-white/10 rounded-2xl p-6">
-                    <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center text-lg font-bold text-blue-300 flex-shrink-0">
-                      {idx + 1}
-                    </div>
-                    <p className="text-white/80 pt-1.5">{text}</p>
+            <div className="grid md:grid-cols-2 gap-6">
+              {[
+                'Monitors live buyer/seller intent across Google, Zillow, Realtor.com, and social platforms in your target zip codes',
+                'Enriches every lead with contact info, pre-qualification signals, property interests, and move timeline',
+                'Routes to the right agent based on specialty, geography, availability, or conversion rate—no favoritism, full transparency',
+                'Starts human-tone conversations with listing alerts, market updates, and neighborhood insights',
+                'Qualifies intent with a 2-minute Buyer/Seller Readiness Assessment—scores timeline, budget, and motivation',
+                'Books qualified prospects directly onto agent calendars or routes to CRM nurture workflow'
+              ].map((text, idx) => (
+                <div key={idx} className={`flex items-start gap-4 rounded-2xl p-6 ${
+                  isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-gray-50 border border-gray-200'
+                }`}>
+                  <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center text-lg font-bold text-blue-500 flex-shrink-0">
+                    {idx + 1}
                   </div>
-                ))}
-              </div>
-
-              <div className="lg:sticky lg:top-24">
-                <img
-                  src="https://storage.googleapis.com/msgsndr/GVFoSfHpPaXzRXCJbym0/media/691a3c0e85602c02de48c742.png"
-                  alt="Lead notification"
-                  className="w-full h-auto rounded-2xl"
-                />
-              </div>
+                  <p className={`pt-1.5 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>{text}</p>
+                </div>
+              ))}
             </div>
 
-            <div className="bg-black/40 border border-white/10 rounded-2xl p-8 mt-8">
+            <div className={`rounded-2xl p-8 mt-8 ${
+              isDarkMode ? 'bg-black/40 border border-white/10' : 'bg-blue-50 border border-blue-200'
+            }`}>
               <h3 className="text-2xl font-semibold mb-5">In Plain Language:</h3>
               <ul className="space-y-3">
                 {[
@@ -400,8 +448,8 @@ export default function RealEstateLeadMachine() {
                   'No guessing what\'s working. Live dashboard shows lead volume, agent response time, conversion rate, and ROI.'
                 ].map((text, idx) => (
                   <li key={idx} className="flex gap-3">
-                    <ArrowRight className="w-4 h-4 text-blue-400 flex-shrink-0 mt-1" />
-                    <span className="text-white/75">{text}</span>
+                    <ArrowRight className="w-4 h-4 text-blue-500 flex-shrink-0 mt-1" />
+                    <span className={isDarkMode ? 'text-white/75' : 'text-gray-700'}>{text}</span>
                   </li>
                 ))}
               </ul>
@@ -435,14 +483,18 @@ export default function RealEstateLeadMachine() {
             ].map((feature, idx) => {
               const Icon = feature.icon
               return (
-                <div key={idx} className="bg-white/5 border border-white/10 rounded-3xl p-8 hover:border-blue-400/40 transition-colors">
+                <div key={idx} className={`rounded-3xl p-8 transition-colors ${
+                  isDarkMode
+                    ? 'bg-white/5 border border-white/10 hover:border-blue-400/40'
+                    : 'bg-white border border-gray-200 hover:border-blue-400 shadow-lg'
+                }`}>
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-6 h-6 text-blue-300" />
+                      <Icon className="w-6 h-6 text-blue-500" />
                     </div>
                     <h3 className="text-xl font-semibold">{feature.title}</h3>
                   </div>
-                  <p className="text-white/70">{feature.text}</p>
+                  <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>{feature.text}</p>
                 </div>
               )
             })}
@@ -453,7 +505,9 @@ export default function RealEstateLeadMachine() {
       {/* Benefits */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white/5 border border-white/10 rounded-3xl p-10">
+          <div className={`rounded-3xl p-10 ${
+            isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-lg'
+          }`}>
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               What Your Brokerage Gains
             </h2>
@@ -466,10 +520,12 @@ export default function RealEstateLeadMachine() {
                 { title: 'Time Back to Leadership:', text: 'Stop manually vetting leads or babysitting agent follow-up—the machine runs 24/7' },
                 { title: 'Scale Without Chaos:', text: 'Expand into new zip codes, property types (luxury, investment), or markets without rebuilding from scratch' }
               ].map((benefit, idx) => (
-                <div key={idx} className="bg-black/40 border border-white/10 rounded-2xl p-6 flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span className="text-white/70">
-                    <strong className="text-white">{benefit.title}</strong> {benefit.text}
+                <div key={idx} className={`rounded-2xl p-6 flex items-start gap-3 ${
+                  isDarkMode ? 'bg-black/40 border border-white/10' : 'bg-gray-50 border border-gray-200'
+                }`}>
+                  <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
+                  <span className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
+                    <strong className={isDarkMode ? 'text-white' : 'text-gray-900'}>{benefit.title}</strong> {benefit.text}
                   </span>
                 </div>
               ))}
@@ -481,7 +537,11 @@ export default function RealEstateLeadMachine() {
       {/* Case Study */}
       <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-br from-purple-500/30 to-blue-500/30 border border-white/20 rounded-3xl p-12 text-center">
+          <div className={`bg-gradient-to-br rounded-3xl p-12 text-center ${
+            isDarkMode
+              ? 'from-purple-500/30 to-blue-500/30 border border-white/20'
+              : 'from-purple-500/40 to-blue-500/40 border border-purple-300'
+          }`}>
             <p className="text-3xl font-semibold leading-snug mb-5">
               &quot;We went from losing 4 agents in Q1 to recruiting 6 new producers in Q2—because every agent now gets 15-20 qualified buyer leads per month, automatically.&quot;
             </p>
