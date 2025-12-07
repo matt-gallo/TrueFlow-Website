@@ -9,7 +9,7 @@ import ParticleBackground from '../components/ParticleBackground'
 import { useTheme } from '../components/ThemeProvider'
 import {
   ArrowRight,
-  Barbell,
+  Dumbbell,
   BarChart3,
   CalendarCheck,
   CheckCircle,
@@ -84,7 +84,7 @@ const features = [
   {
     title: 'Challenge / Event Sequences',
     description: 'Runs Bring-a-Friend WODs, seasonal challenges, and open prep campaigns automatically.',
-    icon: Barbell
+    icon: Dumbbell
   },
   {
     title: 'Drop-in & Referral Engine',
