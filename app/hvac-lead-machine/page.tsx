@@ -188,13 +188,19 @@ export default function HvacLeadMachinePage() {
         <section className="pt-28 pb-16 px-4">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
             <div>
-              <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/30 text-xs uppercase tracking-[0.4em] text-white/70">
+              <p
+                className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs uppercase tracking-[0.4em] ${
+                  isDarkMode
+                    ? 'border border-white/30 text-white/70'
+                    : 'border border-amber-200 text-amber-700 bg-white'
+                }`}
+              >
                 HVAC Lead Machine
               </p>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6">
                 HVAC providers: your AI dispatch & booking machine.
               </h1>
-              <p className="text-2xl font-semibold mt-4 text-amber-200">
+              <p className={`text-2xl font-semibold mt-4 ${isDarkMode ? 'text-amber-200' : 'text-amber-700'}`}>
                 AI finds urgent homeowners, answers them instantly, and drops booked jobs into your dispatch board.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>

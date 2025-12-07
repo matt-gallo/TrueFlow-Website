@@ -203,7 +203,7 @@ export default function MedSpaLeadMachinePage() {
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6">
                 Med spas & aesthetic clinics: your AI booking lounge.
               </h1>
-              <p className="text-2xl font-semibold mt-4 text-pink-200">
+              <p className={`text-2xl font-semibold mt-4 ${isDarkMode ? 'text-pink-200' : 'text-rose-600'}`}>
                 AI finds self-care seekers, answers their questions, and books them into your chair automatically.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>

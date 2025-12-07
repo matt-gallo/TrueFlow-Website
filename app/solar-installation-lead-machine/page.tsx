@@ -203,7 +203,7 @@ export default function SolarInstallationLeadMachine() {
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6">
                 Solar Installation Companies: Your AI booking machine.
               </h1>
-              <p className="text-2xl text-emerald-500 font-semibold mt-4">
+              <p className={`text-2xl font-semibold mt-4 ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`}>
                 AI finds homeowners interested in solar and books consultations automatically.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>

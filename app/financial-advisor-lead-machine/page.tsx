@@ -187,13 +187,19 @@ export default function FinancialAdvisorLeadMachinePage() {
         <section className="pt-28 pb-16 px-4">
           <div className="max-w-6xl mx-auto grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
             <div>
-              <p className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/30 text-xs uppercase tracking-[0.4em] text-white/70">
+              <p
+                className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs uppercase tracking-[0.4em] ${
+                  isDarkMode
+                    ? 'border border-white/30 text-white/70'
+                    : 'border border-cyan-200 text-cyan-700 bg-white'
+                }`}
+              >
                 Advisor Lead Machine
               </p>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mt-6">
                 Financial advisors: your AI booking partner.
               </h1>
-              <p className="text-2xl font-semibold mt-4 text-cyan-200">
+              <p className={`text-2xl font-semibold mt-4 ${isDarkMode ? 'text-cyan-200' : 'text-cyan-700'}`}>
                 AI finds households ready for a new fiduciary and books discovery calls automatically.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
