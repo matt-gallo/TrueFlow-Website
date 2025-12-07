@@ -222,7 +222,7 @@ export default function HvacLeadMachinePage() {
               <div className="mt-8 grid sm:grid-cols-3 gap-4">
                 {stats.map(stat => (
                   <div key={stat.label} className={`rounded-2xl p-4 border ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-amber-100 shadow-lg'}`}>
-                    <p className="text-3xl font-bold text-amber-200">{stat.value}</p>
+                    <p className={`text-3xl font-bold ${isDarkMode ? 'text-amber-200' : 'text-amber-700'}`}>{stat.value}</p>
                     <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{stat.label}</p>
                     <p className={`text-xs mt-1 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>{stat.detail}</p>
                   </div>
@@ -245,7 +245,7 @@ export default function HvacLeadMachinePage() {
                 <div className="mt-5 space-y-3 text-sm">
                   {['No-heat call • 7:45 AM', 'Mini-split install • 11:20 AM', 'IAQ assessment • 2:00 PM'].map(item => (
                     <div key={item} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-amber-200" />
+                      <CheckCircle className={`w-4 h-4 ${isDarkMode ? 'text-amber-200' : 'text-amber-700'}`} />
                       <span className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>{item}</span>
                     </div>
                   ))}
@@ -268,7 +268,7 @@ export default function HvacLeadMachinePage() {
               {workflow.map(item => (
                 <div key={item.title} className={`rounded-2xl p-6 flex items-start gap-4 border ${isDarkMode ? 'bg-black/40 border-white/10' : 'bg-amber-50 border-amber-100'}`}>
                   <div className="w-12 h-12 rounded-2xl bg-amber-500/20 flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-amber-300" />
+                  <item.icon className={`w-6 h-6 ${isDarkMode ? 'text-amber-300' : 'text-amber-700'}`} />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold">{item.title}</h3>
@@ -305,15 +305,15 @@ export default function HvacLeadMachinePage() {
             <p className={`mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>Aggregated partner metrics, not fabricated testimonials.</p>
             <div className="grid sm:grid-cols-3 gap-6">
               <div>
-                <p className="text-5xl font-bold text-amber-200">+62%</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-amber-200' : 'text-amber-700'}`}>+62%</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Increase in booked emergency calls</p>
               </div>
               <div>
-                <p className="text-5xl font-bold text-amber-200">4.3h</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-amber-200' : 'text-amber-700'}`}>4.3h</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Average time from inquiry to technician arrival</p>
               </div>
               <div>
-                <p className="text-5xl font-bold text-amber-200">2.9x</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-amber-200' : 'text-amber-700'}`}>2.9x</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Maintenance plan upsell lift</p>
               </div>
             </div>
@@ -325,7 +325,7 @@ export default function HvacLeadMachinePage() {
             <h2 className="text-4xl font-bold text-center mb-6">Pricing & engagement models</h2>
             <div className="text-center max-w-4xl mx-auto mb-10 space-y-3">
               <p className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                Start at <span className={`font-semibold text-2xl ${isDarkMode ? 'text-amber-200' : 'text-amber-600'}`}>$750 every 28 days</span> for 10 service-ready conversations per day.
+                Start at <span className={`font-semibold text-2xl ${isDarkMode ? 'text-amber-200' : 'text-amber-700'}`}>$750 every 28 days</span> for 10 service-ready conversations per day.
               </p>
               <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                 One-time setup fee: <span className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$2,000</span> (includes full buildout, CRM/dispatch integration, and campaign optimization).
@@ -340,7 +340,7 @@ export default function HvacLeadMachinePage() {
                   <ul className={`mt-6 space-y-3 flex-1 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                     {plan.bullets.map(bullet => (
                       <li key={bullet} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-amber-300 mt-1" />
+                        <CheckCircle className={`w-4 h-4 mt-1 ${isDarkMode ? 'text-amber-300' : 'text-amber-700'}`} />
                         <span>{bullet}</span>
                       </li>
                     ))}

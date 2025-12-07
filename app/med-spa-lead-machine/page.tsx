@@ -232,7 +232,7 @@ export default function MedSpaLeadMachinePage() {
               <div className="mt-8 grid sm:grid-cols-3 gap-4">
                 {stats.map(stat => (
                   <div key={stat.label} className={`rounded-2xl p-4 ${isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-rose-100 shadow-lg'}`}>
-                    <p className="text-3xl font-bold text-pink-200">{stat.value}</p>
+                    <p className={`text-3xl font-bold ${isDarkMode ? 'text-pink-200' : 'text-rose-600'}`}>{stat.value}</p>
                     <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{stat.label}</p>
                     <p className={`text-xs mt-1 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>{stat.detail}</p>
                   </div>
@@ -257,7 +257,7 @@ export default function MedSpaLeadMachinePage() {
                 <div className="mt-5 space-y-3 text-sm">
                   {['Lip filler consult • 9:40 AM', 'Hydrafacial VIP • 11:15 AM', 'Weight loss program review • 1:30 PM'].map(item => (
                     <div key={item} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-pink-200" />
+                      <CheckCircle className={`w-4 h-4 ${isDarkMode ? 'text-pink-200' : 'text-rose-600'}`} />
                       <span className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>{item}</span>
                     </div>
                   ))}
@@ -280,7 +280,7 @@ export default function MedSpaLeadMachinePage() {
               {workflow.map(item => (
                 <div key={item.title} className={`rounded-2xl p-6 flex items-start gap-4 border ${isDarkMode ? 'bg-black/40 border-white/10' : 'bg-rose-50 border-rose-100'}`}>
                   <div className="w-12 h-12 rounded-2xl bg-rose-500/20 flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-rose-300" />
+                  <item.icon className={`w-6 h-6 ${isDarkMode ? 'text-rose-300' : 'text-rose-600'}`} />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold">{item.title}</h3>
@@ -317,15 +317,15 @@ export default function MedSpaLeadMachinePage() {
             <p className={`mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>Aggregated performance metrics from anonymized partner dashboards.</p>
             <div className="grid sm:grid-cols-3 gap-6">
               <div>
-                <p className="text-5xl font-bold text-rose-200">+47%</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-rose-200' : 'text-rose-600'}`}>+47%</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Average lift in booked consultations</p>
               </div>
               <div>
-                <p className="text-5xl font-bold text-rose-200">21d</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-rose-200' : 'text-rose-600'}`}>21d</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Median time from first inquiry to treatment start</p>
               </div>
               <div>
-                <p className="text-5xl font-bold text-rose-200">3.8x</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-rose-200' : 'text-rose-600'}`}>3.8x</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Increase in membership conversions from automation</p>
               </div>
             </div>
@@ -352,7 +352,7 @@ export default function MedSpaLeadMachinePage() {
                   <ul className={`mt-6 space-y-3 flex-1 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                     {plan.bullets.map(bullet => (
                       <li key={bullet} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-rose-300 mt-1" />
+                        <CheckCircle className={`w-4 h-4 mt-1 ${isDarkMode ? 'text-rose-300' : 'text-rose-600'}`} />
                         <span>{bullet}</span>
                       </li>
                     ))}

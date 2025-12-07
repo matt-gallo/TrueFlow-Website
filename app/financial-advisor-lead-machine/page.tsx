@@ -221,7 +221,7 @@ export default function FinancialAdvisorLeadMachinePage() {
               <div className="mt-8 grid sm:grid-cols-3 gap-4">
                 {stats.map(stat => (
                   <div key={stat.label} className={`rounded-2xl p-4 border ${isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-lg'}`}>
-                    <p className="text-3xl font-bold text-cyan-200">{stat.value}</p>
+                    <p className={`text-3xl font-bold ${isDarkMode ? 'text-cyan-200' : 'text-cyan-700'}`}>{stat.value}</p>
                     <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{stat.label}</p>
                     <p className={`text-xs mt-1 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>{stat.detail}</p>
                   </div>
@@ -244,7 +244,7 @@ export default function FinancialAdvisorLeadMachinePage() {
                 <div className="mt-5 space-y-3 text-sm">
                   {['401k rollover review • 10:00 AM', 'Liquidity event planning • 1:15 PM', 'Retirement income analysis • 3:45 PM'].map(item => (
                     <div key={item} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-cyan-200" />
+                      <CheckCircle className={`w-4 h-4 ${isDarkMode ? 'text-cyan-200' : 'text-cyan-700'}`} />
                       <span className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>{item}</span>
                     </div>
                   ))}
@@ -267,7 +267,7 @@ export default function FinancialAdvisorLeadMachinePage() {
               {workflow.map(item => (
                 <div key={item.title} className={`rounded-2xl p-6 flex items-start gap-4 border ${isDarkMode ? 'bg-black/40 border-white/10' : 'bg-slate-100 border-slate-200'}`}>
                   <div className="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-cyan-200" />
+                    <item.icon className={`w-6 h-6 ${isDarkMode ? 'text-cyan-200' : 'text-cyan-700'}`} />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold">{item.title}</h3>
@@ -289,7 +289,7 @@ export default function FinancialAdvisorLeadMachinePage() {
             {features.map(feature => (
               <div key={feature.title} className={`rounded-3xl p-8 transition border ${isDarkMode ? 'bg-white/5 border-white/10 hover:border-cyan-300/50' : 'bg-white border-slate-200 hover:border-cyan-300 shadow-lg'}`}>
                 <div className="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-cyan-300" />
+                  <feature.icon className={`w-6 h-6 ${isDarkMode ? 'text-cyan-300' : 'text-cyan-700'}`} />
                 </div>
                 <h3 className="text-2xl font-semibold">{feature.title}</h3>
                 <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{feature.description}</p>
@@ -304,15 +304,15 @@ export default function FinancialAdvisorLeadMachinePage() {
             <p className={`mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>Aggregated metrics from anonymized RIA & IAR partners.</p>
             <div className="grid sm:grid-cols-3 gap-6">
               <div>
-                <p className="text-5xl font-bold text-cyan-200">+53%</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-cyan-200' : 'text-cyan-700'}`}>+53%</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Increase in qualified discovery calls</p>
               </div>
               <div>
-                <p className="text-5xl font-bold text-cyan-200">$2.3M</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-cyan-200' : 'text-cyan-700'}`}>$2.3M</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Average pipeline added per quarter</p>
               </div>
               <div>
-                <p className="text-5xl font-bold text-cyan-200">0</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-cyan-200' : 'text-cyan-700'}`}>0</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Compliance exceptions triggered</p>
               </div>
             </div>
@@ -324,7 +324,7 @@ export default function FinancialAdvisorLeadMachinePage() {
             <h2 className="text-4xl font-bold text-center mb-6">Pricing & engagement models</h2>
             <div className="text-center max-w-4xl mx-auto mb-10 space-y-3">
               <p className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                Start at <span className={`font-semibold text-2xl ${isDarkMode ? 'text-cyan-200' : 'text-cyan-600'}`}>$750 every 28 days</span> for 10 investor-ready conversations per day.
+                Start at <span className={`font-semibold text-2xl ${isDarkMode ? 'text-cyan-200' : 'text-cyan-700'}`}>$750 every 28 days</span> for 10 investor-ready conversations per day.
               </p>
               <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                 One-time setup fee: <span className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$2,000</span> (includes full buildout, CRM integration, and compliance-ready campaign optimization).
@@ -339,7 +339,7 @@ export default function FinancialAdvisorLeadMachinePage() {
                   <ul className={`mt-6 space-y-3 flex-1 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                     {plan.bullets.map(bullet => (
                       <li key={bullet} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-cyan-300 mt-1" />
+                        <CheckCircle className={`w-4 h-4 mt-1 ${isDarkMode ? 'text-cyan-300' : 'text-cyan-700'}`} />
                         <span>{bullet}</span>
                       </li>
                     ))}

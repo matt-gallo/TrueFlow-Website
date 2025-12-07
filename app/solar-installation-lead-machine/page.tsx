@@ -234,7 +234,7 @@ export default function SolarInstallationLeadMachine() {
                   <div key={stat.label} className={`rounded-2xl p-4 ${
                     isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-lg'
                   }`}>
-                    <p className="text-3xl font-bold text-emerald-500">{stat.value}</p>
+                    <p className={`text-3xl font-bold ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`}>{stat.value}</p>
                     <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{stat.label}</p>
                     <p className={`text-xs mt-1 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>{stat.detail}</p>
                     {idx === 0 && (
@@ -266,7 +266,7 @@ export default function SolarInstallationLeadMachine() {
                 <div className="mt-6 space-y-3">
                   {['Bill uploaded · 2:14 PM', 'Financing approved · 3:02 PM', 'Roof inspection scheduled · 4:18 PM'].map(item => (
                     <div key={item} className={`flex items-center gap-3 text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                      <CheckCircle className="w-4 h-4 text-emerald-500" />
+                      <CheckCircle className={`w-4 h-4 ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`} />
                       {item}
                     </div>
                   ))}
@@ -293,7 +293,7 @@ export default function SolarInstallationLeadMachine() {
                   isDarkMode ? 'bg-black/40 border border-white/10' : 'bg-gray-50 border border-gray-200'
                 }`}>
                   <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
-                    <item.icon className="w-6 h-6 text-emerald-500" />
+                    <item.icon className={`w-6 h-6 ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`} />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold">{item.title}</h3>
@@ -319,7 +319,7 @@ export default function SolarInstallationLeadMachine() {
                   : 'bg-white border border-gray-200 hover:border-emerald-400 shadow-lg'
               }`}>
                 <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-emerald-500" />
+                  <feature.icon className={`w-6 h-6 ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`} />
                 </div>
                 <h3 className="text-2xl font-semibold">{feature.title}</h3>
                 <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>{feature.description}</p>
@@ -340,19 +340,19 @@ export default function SolarInstallationLeadMachine() {
             </p>
             <div className="grid sm:grid-cols-3 gap-6">
               <div>
-                <p className="text-5xl font-bold text-emerald-500">+41%</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`}>+41%</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                   Average close-rate lift once AI follow-up replaces manual chasing
                 </p>
               </div>
               <div>
-                <p className="text-5xl font-bold text-emerald-500">12d</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`}>12d</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                   Median time from first inquiry to booked consultation across territories
                 </p>
               </div>
               <div>
-                <p className="text-5xl font-bold text-emerald-500">4.7⭐</p>
+                <p className={`text-5xl font-bold ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`}>4.7⭐</p>
                 <p className={`mt-1 text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                   Post-install review average for jobs sourced via Lead Machine automations
                 </p>
@@ -366,7 +366,7 @@ export default function SolarInstallationLeadMachine() {
             <h2 className="text-4xl font-bold text-center mb-6">Pricing & engagement models</h2>
             <div className="text-center max-w-4xl mx-auto mb-10 space-y-3">
               <p className={isDarkMode ? 'text-white/80 text-lg' : 'text-gray-700 text-lg'}>
-                Start at <span className={`font-semibold text-2xl ${isDarkMode ? 'text-emerald-300' : 'text-emerald-600'}`}>$750 every 28 days</span> for 10 homeowner-ready conversations per day. Need more volume? Add packs of 10 per day as you scale.
+                Start at <span className={`font-semibold text-2xl ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`}>$750 every 28 days</span> for 10 homeowner-ready conversations per day. Need more volume? Add packs of 10 per day as you scale.
               </p>
               <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                 One-time setup fee: <span className={`font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$2,000</span> (includes full buildout, CRM integration, and solar-specific campaign optimization).
@@ -383,7 +383,7 @@ export default function SolarInstallationLeadMachine() {
                   <ul className={`mt-6 space-y-3 flex-1 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                     {plan.bullets.map(bullet => (
                       <li key={bullet} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-emerald-500 mt-1" />
+                        <CheckCircle className={`w-4 h-4 mt-1 ${isDarkMode ? 'text-emerald-300' : 'text-emerald-700'}`} />
                         <span>{bullet}</span>
                       </li>
                     ))}

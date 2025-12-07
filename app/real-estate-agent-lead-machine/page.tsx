@@ -604,7 +604,7 @@ export default function RealEstateLeadMachine() {
             <div className="text-center max-w-4xl mx-auto mb-10">
               <h2 className="text-4xl lg:text-5xl font-bold mb-6">Transparent Pricing That Scales With You</h2>
               <p className="text-lg text-white/80 mb-3">
-                Start at <span className="text-2xl font-semibold text-blue-300">$750 every 28 days</span> for 10 new buyer & seller conversations per day. Need more volume? Add packs of 10 per day as you scale.
+                Start at <span className={`text-2xl font-semibold ${isDarkMode ? 'text-blue-300' : 'text-blue-500'}`}>$750 every 28 days</span> for 10 new buyer & seller conversations per day. Need more volume? Add packs of 10 per day as you scale.
               </p>
               <p className="text-white/70">
                 One-time setup fee: <span className="text-white font-semibold">$2,000</span> (includes full buildout, CRM integration, and campaign optimization)
@@ -670,7 +670,7 @@ export default function RealEstateLeadMachine() {
 
             <div className="mt-8 rounded-2xl border border-cyan-400/30 bg-gradient-to-br from-cyan-500/15 via-blue-500/20 to-transparent p-5 text-center">
               <div className="inline-flex items-center justify-center gap-3 text-white/90 text-sm sm:text-base">
-                <ShieldCheck className="h-6 w-6 text-cyan-300" />
+                <ShieldCheck className={`h-6 w-6 ${isDarkMode ? 'text-cyan-300' : 'text-cyan-500'}`} />
                 <p className="font-medium">90-Day ROI Guarantee: If the system doesn&apos;t generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.</p>
               </div>
             </div>
@@ -746,7 +746,7 @@ export default function RealEstateLeadMachine() {
                         <div className="mt-6 rounded-2xl border border-white/10 bg-black/30 p-5 space-y-3">
                           {activePlanHighlights.map(feature => (
                             <div key={feature} className="flex items-start gap-3 text-sm text-white/80">
-                              <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
+                              <CheckCircle className={`mt-0.5 h-4 w-4 ${isDarkMode ? 'text-blue-300' : 'text-blue-500'}`} />
                               <span>{feature}</span>
                             </div>
                           ))}
@@ -811,7 +811,7 @@ export default function RealEstateLeadMachine() {
                           <p className="text-sm font-semibold text-white/80">What&apos;s inside {activePlanName}</p>
                           {activePlanHighlights.map(feature => (
                             <div key={feature} className="flex items-start gap-3 text-xs text-white/70">
-                              <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
+                              <CheckCircle className={`mt-0.5 h-4 w-4 ${isDarkMode ? 'text-blue-300' : 'text-blue-500'}`} />
                               <span>{feature}</span>
                             </div>
                           ))}
