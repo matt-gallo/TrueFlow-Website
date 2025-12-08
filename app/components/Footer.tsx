@@ -13,7 +13,7 @@ export function Footer() {
       isDarkMode ? 'bg-black/80 border-white/10' : 'bg-gray-100 border-gray-200'
     }`}>
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="mb-4">
@@ -50,6 +50,24 @@ export function Footer() {
               <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Status</Link></li>
               <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Community</Link></li>
             </ul>
+          </div>
+
+          {/* Contact Information */}
+          <div>
+            <h4 className={`font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Contact</h4>
+            <div className="space-y-2">
+              <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>
+                1621 Central Avenue<br />
+                Cheyenne, Wyoming 82001
+              </p>
+              <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>
+                <a href="tel:+14246675537" className={`transition-colors ${isDarkMode ? 'hover:text-white' : 'hover:text-gray-900'}`}>
+                  +1 424-667-5537
+                </a>
+                <br />
+                <span className={`text-xs ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>(call or text)</span>
+              </p>
+            </div>
           </div>
 
           {/* CTA */}
