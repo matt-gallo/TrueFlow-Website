@@ -45,6 +45,11 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/true-flow-icon.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/true-flow-icon.png" />
         <meta name="theme-color" content="#000000" />
+        <script
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+          data-widget-id="6830ad06619d7c1715180638"
+        />
       </head>
       <body 
         className={inter.className} 
