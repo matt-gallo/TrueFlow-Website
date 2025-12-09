@@ -17,11 +17,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>('light')
   const [mounted, setMounted] = useState(false)
 
-  // Load theme from localStorage on mount
+  // Load theme from localStorage on mount (defaults to light)
   useEffect(() => {
     const savedTheme = localStorage.getItem('trueflow-theme') as Theme
-    if (savedTheme) {
-      setTheme(savedTheme)
+    // Always default to light mode, even if dark was previously saved
+    if (savedTheme && savedTheme === 'light') {
+      setTheme('light')
+    } else {
+      // Force light mode as default
+      setTheme('light')
     }
 
     setMounted(true)

@@ -112,32 +112,10 @@ const heroImages = [
 
 const solutionProducts: SolutionProduct[] = [
   {
-    id: 'lead-machine',
-    name: 'Lead Machine™',
-    title: 'Lead Machine™',
-    description: "Custom-built for your business, Lead Machine delivers new buyers you didn't already have, for directly what your business is selling.",
-    icon: Users,
-    gradientFrom: 'from-cyan-500',
-    gradientTo: 'to-green-500',
-    accent: 'text-cyan-300',
-    borderHover: 'hover:border-cyan-500/50',
-    bgGlow: 'from-cyan-500/20 via-green-500/20 to-transparent',
-    bullets: [
-      "Finds net-new high-intent buyers actively looking for what you sell across all types of internet traffic",
-      'Engages every lead personally with AI trained on your exact offer',
-      'Drops only ready-to-buy humans onto your calendar with full context'
-    ],
-    hook: "Your sales stall because nobody is out finding and warming brand-new buyers for what you sell.",
-    story: "We build a Lead Machine specifically for your offers. It sources fresh prospects, responds in real time, nurtures with product-specific messaging, and qualifies them until they're ready to pay—then we hand them to you.",
-    offer: "Done-for-you capture + nurture + booking engine that delivers limitless net-new, sales-ready buyers for your exact business.",
-    offerHighlights: ['Channel wiring done for you', 'Offer-specific scripts in your voice', 'Live dashboards + 24/7 optimization'],
-    ctaHref: '/lead-machine'
-  },
-  {
     id: 'full-crm',
     name: 'Full CRM + Automations',
     title: 'Full CRM + Automations',
-    description: 'Unify every conversation, task, and workflow inside one operating system that adapts to the way you work.',
+    description: 'All-in-one platform that tracks every lead and customer for you.',
     icon: Zap,
     gradientFrom: 'from-blue-500',
     gradientTo: 'to-purple-500',
@@ -145,43 +123,24 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-blue-500/50',
     bgGlow: 'from-blue-500/20 via-purple-500/20 to-transparent',
     bullets: [
-      'Single inbox for SMS, email, chat, and calls',
-      'Playbooks that auto-assign, remind, and escalate work',
-      'Role-based dashboards, audit trails, and compliance baked in'
+      'Full CRM & Pipeline Management — never lose a lead again',
+      'AI Chat Agents — book calls 2-3x faster, 24/7',
+      'Scheduling & Calendar Sync — prospects book directly into your calendar',
+      'Email & SMS Automation — nurture leads and close deals automatically',
+      'Reputation Management — collect 5-star reviews at scale',
+      'Analytics & Reporting — know exactly what\'s working'
     ],
     hook: 'Your team is juggling six tools and nobody has the full picture of the customer.',
-    story: 'We sit with your operators, map exactly how you sell and deliver, then configure your existing CRM with automations, approvals, and alerts that match your process. No more duct tape or guessing who owns what.',
+    story: 'We sit with your operators, map exactly how you sell and deliver, then configure your CRM with automations, approvals, and alerts that match your process. No more duct tape or guessing who owns what.',
     offer: '30-day retrofit: migration, automations, SOPs, and ongoing optimization so the system grows with you.',
     offerHighlights: ['Workflow mapping workshop', 'Custom dashboards for ops + revenue', 'Priority support & optimization hours'],
-    ctaHref: '/ai-readiness-assessment'
-  },
-  {
-    id: 'ai-engines',
-    name: 'AI Chat Agents',
-    title: 'AI Chat Agents',
-    description: 'Chat agents on your site and social channels convert visitors 24/7, with voice + SMS follow-up and more built in.',
-    icon: Zap,
-    gradientFrom: 'from-amber-500',
-    gradientTo: 'to-red-500',
-    accent: 'text-amber-300',
-    borderHover: 'hover:border-amber-500/50',
-    bgGlow: 'from-amber-500/20 via-red-500/20 to-transparent',
-    bullets: [
-      'AI chat + voice agents trained on your company that answer questions instantly',
-      'Works on your site, social DMs, and phone so prospects always get a response',
-      'Routes hot conversations to humans with full context and transcripts'
-    ],
-    hook: 'Visitors bounce because nobody is there to answer when they raise their hand.',
-    story: 'We deploy AI chat, SMS, and voice agents trained on your docs, FAQs, and offers. They answer in plain language, book meetings, and hand off tough cases to your team with context.',
-    offer: 'Launch conversational AI across web, SMS, and phone in days, with ongoing training + monitoring included.',
-    offerHighlights: ['Training on your docs + offers', 'Human QA + escalation rules', 'Unified analytics + transcripts'],
-    ctaHref: '/ai-readiness-assessment'
+    ctaHref: '/sign-up'
   },
   {
     id: 'content-engine',
     name: 'Constant Content Engine™',
     title: 'Constant Content Engine™',
-    description: 'Centralized marketing hub for turning your ideas into endless blogs, emails, and nurture sequences without sitting down to write.',
+    description: 'Grow your digital footprint on autopilot with multi-channel content creation.',
     icon: FileText,
     gradientFrom: 'from-purple-500',
     gradientTo: 'to-pink-500',
@@ -189,7 +148,8 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-purple-500/50',
     bgGlow: 'from-purple-500/20 via-pink-500/20 to-transparent',
     bullets: [
-      'You brain-dump ideas once; we spin them into ready-to-post content',
+      'Content Engine + Auto-Publishing — grow your digital footprint on autopilot',
+      'Multi-channel content creation (email newsletters, blog posts for SEO, social media)',
       'Editorial calendar + approvals so you can sort, tweak, and greenlight fast',
       'SEO, design, and scheduling handled in one workspace'
     ],
@@ -198,6 +158,29 @@ const solutionProducts: SolutionProduct[] = [
     offer: 'All-your-marketing-in-one-place service: idea capture, AI drafting, human polish, and scheduled distribution every week.',
     offerHighlights: ['Interview + research sprint', 'Multi-channel playbooks', 'Weekly performance reviews'],
     ctaHref: '/content-engine'
+  },
+  {
+    id: 'lead-machine',
+    name: 'Lead Machine™',
+    title: 'Lead Machine™',
+    description: "Finds new customers for you with targeted outreach done right.",
+    icon: Users,
+    gradientFrom: 'from-cyan-500',
+    gradientTo: 'to-green-500',
+    accent: 'text-cyan-300',
+    borderHover: 'hover:border-cyan-500/50',
+    bgGlow: 'from-cyan-500/20 via-green-500/20 to-transparent',
+    bullets: [
+      "Cold emailing / bulk emailing done the right way",
+      'Referral and reactivation campaigns',
+      'Funnels & Landing Pages — high-converting pages that drive sales',
+      'Finds net-new high-intent buyers actively looking for what you sell'
+    ],
+    hook: "Your sales stall because nobody is out finding and warming brand-new buyers for what you sell.",
+    story: "We build a Lead Machine specifically for your offers. It sources fresh prospects, responds in real time, nurtures with product-specific messaging, and qualifies them until they're ready to pay—then we hand them to you.",
+    offer: "Done-for-you capture + nurture + booking engine that delivers limitless net-new, sales-ready buyers for your exact business.",
+    offerHighlights: ['Channel wiring done for you', 'Offer-specific scripts in your voice', 'Live dashboards + 24/7 optimization'],
+    ctaHref: '/lead-machine'
   }
 ]
 // Enhanced animated counter hook
@@ -1034,16 +1017,16 @@ export default function LandingPage() {
                 <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto lg:mx-0 mb-8 sm:mb-12 px-4 lg:px-0 ${
                   isDarkMode ? 'text-white/60' : 'text-gray-600'
                 }`}>
-                  Business owners lose up to 10 hours a week to repetitive tasks. We automate the busy work—so you can spend more time growing your business and less time behind a screen.
+                  Would you like 50% more sales on average over the next 90 days? We install this for you and you can try it free for 14 days. Cancel anytime.
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start px-4 lg:px-0">
                   <Link
-                    href="/ai-readiness-assessment"
+                    href="/sign-up"
                     className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="relative z-10">Get Your AI Roadmap</span>
+                    <span className="relative z-10">Start your free trial</span>
                     <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
@@ -1096,60 +1079,62 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Trust + Metrics Section */}
-      <section className="px-4 py-16">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 text-center lg:text-left">
-              <p className={`text-xs uppercase tracking-[0.4em] ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>Trusted by 100+ operators</p>
-              <h2 className={`text-3xl sm:text-4xl font-semibold leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Automation Systems for Scheduling, Nurture & Retention
-              </h2>
-              <p className={`text-base leading-relaxed ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                TrueFlow installs AI workflows that run scheduling, nurture, and follow-up so you stay with customers—not admin.
-                <span className={`block mt-3 font-medium ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>Done-for-you setup plus monthly optimization. You steer the business; we run the clicks.</span>
-              </p>
-              <div className="space-y-1">
-                <p className="text-base sm:text-lg text-blue-500 font-semibold">
-                  30-minute automation roadmap—find 10+ hours a week to reclaim.
-                </p>
-                <p className={`text-xs sm:text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>
-                  100+ teams already automate their operations with TrueFlow
-                </p>
-              </div>
-            </div>
+      {/* Trust Signals Scrolling Banner */}
+      <section className={`py-12 mt-16 overflow-hidden relative ${
+        isDarkMode ? 'bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-blue-900/20' : 'bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50'
+      }`}>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5"></div>
 
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-transparent blur-3xl opacity-70 pointer-events-none"></div>
-              <div className={`relative rounded-2xl border p-8 sm:p-10 shadow-[0_10px_60px_rgba(59,130,246,0.25)] overflow-hidden ${
-                isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200'
-              }`}>
-                <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.45),_transparent_60%)]"></div>
-                <div className={`relative z-10 text-center transition-all duration-300 ${
-                  isTrustSignalVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+        {/* Scrolling Container */}
+        <div className="relative flex animate-scroll-banner">
+          {/* First set of stats */}
+          <div className="flex items-center space-x-16 px-8 flex-shrink-0">
+            {stats.map((stat, idx) => (
+              <div key={`stat-1-${idx}`} className="flex items-center space-x-4 min-w-[300px]">
+                <div className={`p-4 rounded-2xl ${
+                  isDarkMode ? 'bg-white/10' : 'bg-white shadow-sm'
                 }`}>
-                  <p className={`text-5xl sm:text-6xl font-black drop-shadow-[0_0_25px_rgba(59,130,246,0.35)] ${
+                  {stat.icon}
+                </div>
+                <div>
+                  <p className={`text-4xl font-bold ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    {stats[trustSignalIndex].value}
+                    {stat.value}
                   </p>
-                  <p className={`text-lg sm:text-xl mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                    {stats[trustSignalIndex].label}
+                  <p className={`text-sm ${
+                    isDarkMode ? 'text-white/70' : 'text-gray-600'
+                  }`}>
+                    {stat.label}
                   </p>
                 </div>
-                <div className="relative z-10 flex items-center justify-center space-x-2 mt-10">
-                  {stats.map((_, idx) => (
-                    <span
-                      key={idx}
-                      className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                        idx === trustSignalIndex ? 'bg-blue-400 w-6' : isDarkMode ? 'bg-white/20' : 'bg-gray-300'
-                      }`}
-                    ></span>
-                  ))}
-                </div>
-                <p className={`relative z-10 text-xs text-center mt-6 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>Rotating every 2 seconds</p>
               </div>
-            </div>
+            ))}
+          </div>
+
+          {/* Duplicate set for seamless loop */}
+          <div className="flex items-center space-x-16 px-8 flex-shrink-0">
+            {stats.map((stat, idx) => (
+              <div key={`stat-2-${idx}`} className="flex items-center space-x-4 min-w-[300px]">
+                <div className={`p-4 rounded-2xl ${
+                  isDarkMode ? 'bg-white/10' : 'bg-white shadow-sm'
+                }`}>
+                  {stat.icon}
+                </div>
+                <div>
+                  <p className={`text-4xl font-bold ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {stat.value}
+                  </p>
+                  <p className={`text-sm ${
+                    isDarkMode ? 'text-white/70' : 'text-gray-600'
+                  }`}>
+                    {stat.label}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1160,13 +1145,12 @@ export default function LandingPage() {
       }`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <p className={`text-sm uppercase tracking-[0.4em] ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>Pick Your Track</p>
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              Choose the automation system that matches your bottleneck.
+              Here's Everything You Get
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {solutionProducts.map((product) => {
               const Icon = product.icon
               return (
@@ -1210,13 +1194,24 @@ export default function LandingPage() {
             })}
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/ai-readiness-assessment"
+              href="/sign-up"
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
             >
-              Not Sure Which Track? Get a Roadmap
+              Start your free trial
               <ArrowRight className="w-5 h-5" />
+            </Link>
+            <Link
+              href="/demo"
+              className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg border-2 hover:shadow-xl hover:scale-105 transition-all ${
+                isDarkMode
+                  ? 'border-white/20 text-white hover:bg-white/5'
+                  : 'border-gray-300 text-gray-900 hover:bg-gray-50'
+              }`}
+            >
+              Schedule your demo
+              <Calendar className="w-5 h-5" />
             </Link>
           </div>
         </div>
