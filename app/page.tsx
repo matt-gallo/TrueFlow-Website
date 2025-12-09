@@ -396,6 +396,9 @@ export default function LandingPage() {
   const [pricingVisible, setPricingVisible] = useState(false)
   const pricingRef = useRef<HTMLDivElement>(null)
 
+  // Demo booking modal state
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
+
   const features = [
     {
       icon: <Users className="h-16 w-16" />,
@@ -1202,8 +1205,8 @@ export default function LandingPage() {
               Start your free trial
               <ArrowRight className="w-5 h-5" />
             </Link>
-            <Link
-              href="/demo"
+            <button
+              onClick={() => setIsDemoModalOpen(true)}
               className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg border-2 hover:shadow-xl hover:scale-105 transition-all ${
                 isDarkMode
                   ? 'border-white/20 text-white hover:bg-white/5'
@@ -1212,7 +1215,7 @@ export default function LandingPage() {
             >
               Schedule your demo
               <Calendar className="w-5 h-5" />
-            </Link>
+            </button>
           </div>
 
           {/* Embedded Sign-Up Form */}
@@ -3229,6 +3232,53 @@ export default function LandingPage() {
                   Build My System
                   <ArrowRight className="w-4 h-4" />
                 </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Demo Booking Modal */}
+      {isDemoModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+          onClick={() => setIsDemoModalOpen(false)}
+        >
+          <div
+            className={`relative w-full max-w-4xl max-h-[90vh] rounded-2xl overflow-hidden ${
+              isDarkMode ? 'bg-gray-900 border border-white/20' : 'bg-white border border-gray-200'
+            }`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <button
+              onClick={() => setIsDemoModalOpen(false)}
+              className={`absolute top-4 right-4 z-10 p-2 rounded-full transition-colors ${
+                isDarkMode
+                  ? 'bg-white/10 hover:bg-white/20 text-white'
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
+              }`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Modal content */}
+            <div className="p-6">
+              <h3 className={`text-2xl font-bold mb-4 ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>
+                Schedule Your Demo
+              </h3>
+              <div className="w-full" style={{ minHeight: '600px' }}>
+                <iframe
+                  src="https://api.leadconnectorhq.com/widget/booking/nc8KAbjOlywMkW6XPSBj"
+                  style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '600px' }}
+                  scrolling="no"
+                  id="nc8KAbjOlywMkW6XPSBj_1765305582551"
+                ></iframe>
+                <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
               </div>
             </div>
           </div>
