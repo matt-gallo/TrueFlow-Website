@@ -1214,6 +1214,278 @@ export default function LandingPage() {
               <Calendar className="w-5 h-5" />
             </Link>
           </div>
+
+          {/* Embedded Sign-Up Form */}
+          <div className="mt-20 max-w-2xl mx-auto">
+            <div className={`rounded-3xl border p-8 md:p-12 ${
+              isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-2xl'
+            }`}>
+              <div className="text-center mb-8">
+                <h3 className={`text-2xl md:text-3xl font-bold mb-3 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>
+                  Start your free trial
+                </h3>
+                <p className={`text-base md:text-lg ${
+                  isDarkMode ? 'text-white/70' : 'text-gray-600'
+                }`}>
+                  Fill out the form below to get instant access to TrueFlow + 2 weeks in the Accelerator.
+                </p>
+              </div>
+
+              {/* Progress Indicator */}
+              <div className="mb-8">
+                <div className="flex items-center justify-between mb-2">
+                  <span className={`text-sm font-semibold ${
+                    isDarkMode ? 'text-white/80' : 'text-gray-700'
+                  }`}>
+                    Step 1 of 4
+                  </span>
+                  <span className={`text-sm font-semibold ${
+                    isDarkMode ? 'text-white/60' : 'text-gray-500'
+                  }`}>
+                    25% complete
+                  </span>
+                </div>
+                <div className={`h-2 rounded-full overflow-hidden ${
+                  isDarkMode ? 'bg-white/10' : 'bg-gray-200'
+                }`}>
+                  <div className="h-full w-1/4 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"></div>
+                </div>
+              </div>
+
+              {/* Form Steps Preview */}
+              <div className="grid grid-cols-4 gap-2 mb-8">
+                {['Account Basics', 'Business Snapshot', 'Launch Game Plan', 'Trial + Payment'].map((step, idx) => (
+                  <div key={idx} className={`text-center p-3 rounded-lg border ${
+                    idx === 0
+                      ? isDarkMode ? 'bg-blue-500/10 border-blue-500/30' : 'bg-blue-50 border-blue-200'
+                      : isDarkMode ? 'bg-white/5 border-white/10' : 'bg-gray-50 border-gray-200'
+                  }`}>
+                    <div className={`text-xs font-semibold ${
+                      idx === 0
+                        ? 'text-blue-500'
+                        : isDarkMode ? 'text-white/50' : 'text-gray-400'
+                    }`}>
+                      Step {idx + 1}
+                    </div>
+                    <div className={`text-xs mt-1 ${
+                      idx === 0
+                        ? isDarkMode ? 'text-white/90' : 'text-gray-900'
+                        : isDarkMode ? 'text-white/40' : 'text-gray-500'
+                    }`}>
+                      {step}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Form Fields */}
+              <div className="space-y-6">
+                <div>
+                  <label className={`block text-sm font-semibold mb-2 ${
+                    isDarkMode ? 'text-white/90' : 'text-gray-900'
+                  }`}>
+                    Full name
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Jordan Reyes"
+                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                      isDarkMode
+                        ? 'bg-black/30 border-white/10 text-white placeholder-white/40'
+                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                    }`}
+                    readOnly
+                  />
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-semibold mb-2 ${
+                    isDarkMode ? 'text-white/90' : 'text-gray-900'
+                  }`}>
+                    Work email
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="you@company.com"
+                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                      isDarkMode
+                        ? 'bg-black/30 border-white/10 text-white placeholder-white/40'
+                        : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
+                    }`}
+                    readOnly
+                  />
+                </div>
+
+                <div>
+                  <label className={`block text-sm font-semibold mb-2 ${
+                    isDarkMode ? 'text-white/90' : 'text-gray-900'
+                  }`}>
+                    Primary role
+                  </label>
+                  <select
+                    className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all ${
+                      isDarkMode
+                        ? 'bg-black/30 border-white/10 text-white'
+                        : 'bg-white border-gray-300 text-gray-900'
+                    }`}
+                    disabled
+                  >
+                    <option>Founder / CEO</option>
+                    <option>Operator</option>
+                    <option>Marketing</option>
+                    <option>Sales</option>
+                  </select>
+                </div>
+
+                <div className={`p-4 rounded-lg ${
+                  isDarkMode ? 'bg-blue-500/10' : 'bg-blue-50'
+                }`}>
+                  <p className={`text-sm ${
+                    isDarkMode ? 'text-white/80' : 'text-gray-700'
+                  }`}>
+                    Your login gives you access to the dashboard + accelerator curriculum instantly once the intake is complete.
+                  </p>
+                </div>
+
+                {/* CTA Button */}
+                <Link
+                  href="/sign-up"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+                >
+                  Continue
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Timeline Section - How It Works */}
+          <div className="mt-20 max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>
+                Here's How It Works
+              </h3>
+              <p className={`text-lg ${
+                isDarkMode ? 'text-white/70' : 'text-gray-600'
+              }`}>
+                Your 14-day journey from signup to fully automated operations
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {/* Day 1 */}
+              <div className={`relative flex gap-6 p-6 rounded-2xl border ${
+                isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+              }`}>
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                    <Sparkles className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-sm font-bold text-blue-500">Day 1</span>
+                    <div className={`h-px flex-1 ${
+                      isDarkMode ? 'bg-white/10' : 'bg-gray-200'
+                    }`}></div>
+                  </div>
+                  <h4 className={`text-xl font-bold mb-2 ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    White-glove onboarding
+                  </h4>
+                  <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
+                    Live intake, access granted, and we pull your content + data instantly.
+                  </p>
+                </div>
+              </div>
+
+              {/* Day 3 */}
+              <div className={`relative flex gap-6 p-6 rounded-2xl border ${
+                isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+              }`}>
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                    <Zap className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-sm font-bold text-cyan-500">Day 3</span>
+                    <div className={`h-px flex-1 ${
+                      isDarkMode ? 'bg-white/10' : 'bg-gray-200'
+                    }`}></div>
+                  </div>
+                  <h4 className={`text-xl font-bold mb-2 ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    Systems go live
+                  </h4>
+                  <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
+                    Demand, content, and service workflows switch on with human QA.
+                  </p>
+                </div>
+              </div>
+
+              {/* Day 7 */}
+              <div className={`relative flex gap-6 p-6 rounded-2xl border ${
+                isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+              }`}>
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                    <Users className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-sm font-bold text-purple-500">Day 7</span>
+                    <div className={`h-px flex-1 ${
+                      isDarkMode ? 'bg-white/10' : 'bg-gray-200'
+                    }`}></div>
+                  </div>
+                  <h4 className={`text-xl font-bold mb-2 ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    TrueFlow Accelerator workshop
+                  </h4>
+                  <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
+                    Walkthrough of marketing, sales, ops, and mindset frameworks.
+                  </p>
+                </div>
+              </div>
+
+              {/* Day 14 */}
+              <div className={`relative flex gap-6 p-6 rounded-2xl border ${
+                isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+              }`}>
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-sm font-bold text-green-500">Day 14</span>
+                    <div className={`h-px flex-1 ${
+                      isDarkMode ? 'bg-white/10' : 'bg-gray-200'
+                    }`}></div>
+                  </div>
+                  <h4 className={`text-xl font-bold mb-2 ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    Trial wrap + expansion
+                  </h4>
+                  <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
+                    Card on file activates $297/mo membership unless you cancel.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
