@@ -57,12 +57,12 @@ export default function CookieConsent() {
 
   return (
     <>
-      {/* Consent Popup - Desktop: bottom-right, Mobile: slide up from bottom */}
+      {/* Consent Popup - Desktop: bottom-left, Mobile: slide up from bottom */}
       <div className={`
         fixed z-[100]
-        bottom-0 right-0
+        bottom-0 left-0
         w-full sm:w-auto sm:max-w-md
-        sm:bottom-6 sm:right-6
+        sm:bottom-6 sm:left-6
         transition-transform duration-500 ease-out
         ${showModal ? 'translate-y-0' : 'translate-y-full'}
       `}>
