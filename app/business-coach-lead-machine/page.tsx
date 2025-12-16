@@ -33,7 +33,7 @@ const workflow = [
   },
   {
     title: 'Launch AI enrollment concierge',
-    description: 'AI replies to DMs, forms, and waitlist requests in your brand voice—handling objections, sharing wins, and keeping interest warm 24/7.',
+    description: 'AI replies to DMs, forms, and waitlist requests in your brand voice, handling objections, sharing wins, and keeping interest warm 24/7.',
     icon: MessageSquare
   },
   {
@@ -56,7 +56,7 @@ const workflow = [
 const features = [
   {
     title: 'Coach Enrollment Machine',
-    description: 'Automation tuned for high-ticket coaching, masterminds, and premium cohorts so you spend time coaching—not chasing DMs.',
+    description: 'Automation tuned for high-ticket coaching, masterminds, and premium cohorts so you spend time coaching, not chasing DMs.',
     icon: Sparkles
   },
   {
@@ -147,7 +147,7 @@ const pricing = [
 const faqs = [
   {
     q: 'Do you handle the DM and inbox follow-up?',
-    a: 'Yes. The AI concierge monitors Instagram, Facebook, email, SMS, and form submissions then replies in your approved tone—looping in a human only when needed.'
+    a: 'Yes. The AI concierge monitors Instagram, Facebook, email, SMS, and form submissions then replies in your approved tone, looping in a human only when needed.'
   },
   {
     q: 'Are the conversations exclusive to my offer?',
@@ -342,7 +342,7 @@ export default function BusinessCoachLeadMachinePage() {
           >
             <p className="text-3xl font-semibold mb-4">Proof from active coaching deployments</p>
             <p className={`mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-              Aggregated partner performance across group programs, masterminds, and fractional advisors—no cherry-picked screenshots.
+              Aggregated partner performance across group programs, masterminds, and fractional advisors, no cherry-picked screenshots.
             </p>
             <div className="grid sm:grid-cols-3 gap-6">
               <div>
@@ -493,7 +493,7 @@ export default function BusinessCoachLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited. Choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div

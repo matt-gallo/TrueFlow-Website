@@ -33,7 +33,7 @@ const workflow = [
   },
   {
     title: 'Launch human AI outreach',
-    description: 'AI texts and emails in a conversational tone—educating homeowners about ROI, incentives, and time-to-install while building trust.',
+    description: 'AI texts and emails in a conversational tone, educating homeowners about ROI, incentives, and time-to-install while building trust.',
     icon: MessageCircle
   },
   {
@@ -56,7 +56,7 @@ const workflow = [
 const features = [
   {
     title: 'AI Booking Machine',
-    description: 'Combines solar-specific playbooks with automation to move homeowners from curiosity to confirmed consultation—no manual chasing.',
+    description: 'Combines solar-specific playbooks with automation to move homeowners from curiosity to confirmed consultation, no manual chasing.',
     icon: Zap
   },
   {
@@ -86,7 +86,7 @@ const features = [
   },
   {
     title: 'Referral Amplifier',
-    description: 'After installation, nudges happy homeowners to leave reviews and refer neighbors—feeding the pipeline without extra ad spend.',
+    description: 'After installation, nudges happy homeowners to leave reviews and refer neighbors, feeding the pipeline without extra ad spend.',
     icon: ShieldCheck
   },
   {
@@ -151,7 +151,7 @@ const faqs = [
   },
   {
     q: 'Can we use our existing CRM?',
-    a: 'Yes. We integrate with GoHighLevel, HubSpot, Salesforce, JobNimbus, or your internal system—keeping every task, tag, and automation in sync.'
+    a: 'Yes. We integrate with GoHighLevel, HubSpot, Salesforce, JobNimbus, or your internal system, keeping every task, tag, and automation in sync.'
   },
   {
     q: 'What about financing questions?',
@@ -207,7 +207,7 @@ export default function SolarInstallationLeadMachine() {
                 AI finds homeowners interested in solar and books consultations automatically.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Inspired by our top-performing ad campaign, this playbook turns every territory into a self-filling calendar—no door knocking, no endless callbacks, just qualified homeowners ready for proposals.
+                Inspired by our top-performing ad campaign, this playbook turns every territory into a self-filling calendar, no door knocking, no endless callbacks, just qualified homeowners ready for proposals.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <button

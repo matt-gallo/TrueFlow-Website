@@ -98,14 +98,14 @@ const acceleratorMoments: AcceleratorMoment[] = [
 ]
 
 const platformFeatures = [
-  'Full CRM & Pipeline Management — never lose a lead again',
-  'Content Engine + Auto-Publishing — grow your digital footprint on autopilot',
-  'AI Chat Agents — book calls 2-3x faster, 24/7',
-  'Email & SMS Automation — nurture leads and close deals automatically',
-  'Scheduling & Calendar Sync — prospects book directly into your calendar',
-  'Funnels & Landing Pages — high-converting pages that drive sales',
-  'Reputation Management — collect 5-star reviews at scale',
-  'Analytics & Reporting — know exactly what\'s working'
+  'Full CRM & Pipeline Management - never lose a lead again',
+  'Content Engine + Auto-Publishing - grow your digital footprint on autopilot',
+  'AI Chat Agents - book calls 2-3x faster, 24/7',
+  'Email & SMS Automation - nurture leads and close deals automatically',
+  'Scheduling & Calendar Sync - prospects book directly into your calendar',
+  'Funnels & Landing Pages - high-converting pages that drive sales',
+  'Reputation Management - collect 5-star reviews at scale',
+  'Analytics & Reporting - know exactly what\'s working'
 ]
 
 export default function SignUpPage() {
@@ -450,7 +450,7 @@ export default function SignUpPage() {
                 The all-in-one platform to <span className="bg-gradient-to-r from-[#1d929e] to-emerald-400 bg-clip-text text-transparent">grow your business</span>
               </h1>
               <p className={`text-xl ${theme.textMuted} mt-6 max-w-3xl mx-auto`}>
-                Get full access to TrueFlow&apos;s CRM, automation, and AI tools — plus 2 weeks in the TrueFlow Accelerator with live coaching, resources, and done-for-you setup.
+                Get full access to TrueFlow&apos;s CRM, automation, and AI tools, plus 2 weeks in the TrueFlow Accelerator with live coaching, resources, and done-for-you setup.
               </p>
             </div>
 
@@ -463,12 +463,12 @@ export default function SignUpPage() {
                   <p className={`${theme.textMuted} mt-2`}>14-day free trial starts immediately</p>
                 </div>
                 <div className={`text-center lg:text-left lg:border-l lg:border-r ${isDarkMode ? 'lg:border-white/10' : 'lg:border-gray-200'} lg:px-8`}>
-                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial — Platform</p>
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial - Platform</p>
                   <p className="text-4xl font-bold">$297<span className={`text-lg font-normal ${theme.textMuted2}`}>/mo</span></p>
                   <p className={`${theme.textMuted} mt-2`}>Full TrueFlow CRM + all features below</p>
                 </div>
                 <div className="text-center lg:text-left">
-                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial — Accelerator</p>
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial - Accelerator</p>
                   <p className="text-4xl font-bold">$350<span className={`text-lg font-normal ${theme.textMuted2}`}>/wk</span></p>
                   <p className={`${theme.textMuted} mt-2`}>Optional: live coaching + hands-on support</p>
                 </div>
@@ -476,7 +476,7 @@ export default function SignUpPage() {
               <div className={`mt-8 pt-6 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'} text-center`}>
                 <p className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>
                   <CheckCircle className="h-5 w-5 text-emerald-500 inline mr-2" />
-                  Cancel anytime before Day 14 — no charge, no commitment
+                  Cancel anytime before Day 14, no charge, no commitment
                 </p>
               </div>
             </div>
@@ -511,9 +511,9 @@ export default function SignUpPage() {
                 <Sparkles className="h-4 w-4" />
                 Included Free in Your Trial
               </div>
-              <h3 className="text-2xl font-bold mb-3">TrueFlow Accelerator — 2 Weeks of Live Support</h3>
+              <h3 className="text-2xl font-bold mb-3">TrueFlow Accelerator - 2 Weeks of Live Support</h3>
               <p className={`${theme.textMuted} max-w-2xl mx-auto mb-6`}>
-                Don&apos;t just get the tools — get them set up right. For the first 14 days, you&apos;ll have access to live coaching calls, done-with-you onboarding, a dedicated success team, and our full library of trainings and AI tools. This is normally $350/week, but it&apos;s included free with your trial.
+                Don&apos;t just get the tools, get them set up right. For the first 14 days, you&apos;ll have access to live coaching calls, done-with-you onboarding, a dedicated success team, and our full library of trainings and AI tools. This is normally $350/week, but it&apos;s included free with your trial.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Live group coaching calls</span>
@@ -557,7 +557,7 @@ export default function SignUpPage() {
                       )
                     })}
                   </div>
-                  <p className="text-sm text-white/60">Hang tight—we&apos;re directing you to the secure login hub.</p>
+                  <p className="text-sm text-white/60">Hang tight, we&apos;re directing you to the secure login hub.</p>
                   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                     <Link
                       href="https://login.trueflow.ai"
@@ -950,7 +950,7 @@ export default function SignUpPage() {
                           {formData.includeSuccessManager && (
                             <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> 1:1 Success Manager included</li>
                           )}
-                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14 — $0 charged</li>
+                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14, $0 charged</li>
                         </ul>
                       </div>
 
@@ -969,7 +969,7 @@ export default function SignUpPage() {
                       </div>
 
                       <p className={`text-xs ${theme.textMuted2}`}>
-                        By completing payment, you agree to the TrueFlow Terms of Service. Your 14-day free trial starts immediately — you won&apos;t be charged until Day 15.
+                        By completing payment, you agree to the TrueFlow Terms of Service. Your 14-day free trial starts immediately, you won&apos;t be charged until Day 15.
                       </p>
 
                       <div className={`p-4 rounded-2xl border ${isDarkMode ? 'border-blue-500/30 bg-blue-500/10' : 'border-blue-300 bg-blue-50'}`}>

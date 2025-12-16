@@ -203,7 +203,7 @@ export default function FinancialAdvisorLeadMachinePage() {
                 AI finds households ready for a new fiduciary and books discovery calls automatically.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Built from our best-performing professional services funnels—this playbook keeps your practice pipeline full while you focus on client reviews, not prospecting.
+                Built from our best-performing professional services funnels, this playbook keeps your practice pipeline full while you focus on client reviews, not prospecting.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <button
@@ -421,7 +421,7 @@ export default function FinancialAdvisorLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited. Choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${

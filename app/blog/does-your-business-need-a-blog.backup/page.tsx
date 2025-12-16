@@ -3,11 +3,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { useTheme } from '@/app/components/ThemeProvider'
 
 export default function BlogPost() {
-  const { isDarkMode } = useTheme()
-  const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Background Effects */}
@@ -22,7 +19,7 @@ export default function BlogPost() {
         <nav className="flex items-center justify-between p-6 max-w-7xl mx-auto">
           <Link href="/" className="flex items-center">
             <Image 
-              src={logoSrc} 
+              src="/true-flow-logo.webp" 
               alt="TrueFlow" 
               width={280} 
               height={70} 
@@ -160,7 +157,7 @@ export default function BlogPost() {
               </p>
 
               <p className="text-lg leading-relaxed mb-6">
-                Here&apos;s something that might surprise you: Google&apos;s internal research reveals the <strong>7-11-4 rule</strong> - consumers need to see your brand 7 times, across 11 touchpoints, over 4 different locations before they&apos;ll make a purchase decision. Your blog posts are critical touchpoints in this journey, helping prospects get familiar with your expertise and approach.
+                Here&apos;s something that might surprise you: Google&apos;s internal research reveals the <strong>7-11-4 rule</strong>—consumers need to see your brand 7 times, across 11 touchpoints, over 4 different locations before they&apos;ll make a purchase decision. Your blog posts are critical touchpoints in this journey, helping prospects get familiar with your expertise and approach.
               </p>
 
               <p className="text-lg leading-relaxed mb-6">
@@ -230,7 +227,7 @@ export default function BlogPost() {
               </ul>
               
               <p className="text-lg leading-relaxed mb-6">
-                However, even in these scenarios, <strong>most businesses can benefit from some form of content marketing</strong> - it just might not need to be a traditional blog.
+                However, even in these scenarios, <strong>most businesses can benefit from some form of content marketing</strong>—it just might not need to be a traditional blog.
               </p>
 
               <h2 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent mt-12 mb-6">
@@ -261,7 +258,7 @@ export default function BlogPost() {
               </ul>
 
               <p className="text-lg leading-relaxed mb-8">
-                The real question isn&apos;t whether you need a blog - it&apos;s whether you can afford NOT to have one in 2025&apos;s competitive landscape.
+                The real question isn&apos;t whether you need a blog—it&apos;s whether you can afford NOT to have one in 2025&apos;s competitive landscape.
               </p>
               
               <p className="text-lg leading-relaxed mb-8">
@@ -273,7 +270,7 @@ export default function BlogPost() {
                   <strong>That&apos;s where TrueFlow changes everything.</strong>
                 </p>
                 <p className="mb-4">
-                  Instead of you staring at a blank page every week, wondering what to write about, TrueFlow pulls from your existing content - your conversations, your stories, your expertise - and transforms it into blog posts that sound exactly like you.
+                  Instead of you staring at a blank page every week, wondering what to write about, TrueFlow pulls from your existing content—your conversations, your stories, your expertise—and transforms it into blog posts that sound exactly like you.
                 </p>
                 <p>
                   No generic AI fluff. No robotic tone. Just your voice, amplified and automated.
@@ -295,7 +292,7 @@ export default function BlogPost() {
               </div>
               
               <p className="text-lg leading-relaxed mb-6">
-                The TrueFlow content engine doesn&apos;t just solve the &quot;what to write&quot; problem - it solves the <strong className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">&quot;how to keep up&quot;</strong> problem.
+                The TrueFlow content engine doesn&apos;t just solve the &quot;what to write&quot; problem—it solves the <strong className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">&quot;how to keep up&quot;</strong> problem.
               </p>
               
               <p className="text-lg leading-relaxed mb-6">
@@ -371,7 +368,7 @@ export default function BlogPost() {
 
               <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-8">
                 <h3 className="text-xl font-semibold mb-4 text-cyan-400">2. Competition Level</h3>
-                <p className="text-white/80">In competitive markets, content marketing becomes a necessity rather than a luxury. Your competitors are likely already investing in content - can you afford not to?</p>
+                <p className="text-white/80">In competitive markets, content marketing becomes a necessity rather than a luxury. Your competitors are likely already investing in content—can you afford not to?</p>
               </div>
 
               <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-8">

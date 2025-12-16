@@ -89,26 +89,6 @@ interface SolutionProduct {
   ctaHref: string
 }
 
-const heroImages = [
-  {
-    id: 'hero-1',
-    imageLight: '/hero1.png',
-    imageDark: '/hero1-dark.png',
-    alt: 'TrueFlow Hero 1'
-  },
-  {
-    id: 'hero-2',
-    imageLight: '/hero2.png',
-    imageDark: '/hero2-dark.png',
-    alt: 'TrueFlow Hero 2'
-  },
-  {
-    id: 'hero-3',
-    imageLight: '/hero3.png',
-    imageDark: '/hero3-dark.png',
-    alt: 'TrueFlow Hero 3'
-  }
-]
 
 const solutionProducts: SolutionProduct[] = [
   {
@@ -123,12 +103,12 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-blue-500/50',
     bgGlow: 'from-blue-500/20 via-purple-500/20 to-transparent',
     bullets: [
-      'Full CRM & Pipeline Management — never lose a lead again',
-      'AI Chat Agents — book calls 2-3x faster, 24/7',
-      'Scheduling & Calendar Sync — prospects book directly into your calendar',
-      'Email & SMS Automation — nurture leads and close deals automatically',
-      'Reputation Management — collect 5-star reviews at scale',
-      'Analytics & Reporting — know exactly what\'s working'
+      'Full CRM & Pipeline Management - never lose a lead again',
+      'AI Chat Agents - book calls 2-3x faster, 24/7',
+      'Scheduling & Calendar Sync - prospects book directly into your calendar',
+      'Email & SMS Automation - nurture leads and close deals automatically',
+      'Reputation Management - collect 5-star reviews at scale',
+      'Analytics & Reporting - know exactly what\'s working'
     ],
     hook: 'Your team is juggling six tools and nobody has the full picture of the customer.',
     story: 'We sit with your operators, map exactly how you sell and deliver, then configure your CRM with automations, approvals, and alerts that match your process. No more duct tape or guessing who owns what.',
@@ -148,7 +128,7 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-purple-500/50',
     bgGlow: 'from-purple-500/20 via-pink-500/20 to-transparent',
     bullets: [
-      'Content Engine + Auto-Publishing — grow your digital footprint on autopilot',
+      'Content Engine + Auto-Publishing - grow your digital footprint on autopilot',
       'Multi-channel content creation (email newsletters, blog posts for SEO, social media)',
       'Editorial calendar + approvals so you can sort, tweak, and greenlight fast',
       'SEO, design, and scheduling handled in one workspace'
@@ -173,11 +153,11 @@ const solutionProducts: SolutionProduct[] = [
     bullets: [
       "Cold emailing / bulk emailing done the right way",
       'Referral and reactivation campaigns',
-      'Funnels & Landing Pages — high-converting pages that drive sales',
+      'Funnels & Landing Pages - high-converting pages that drive sales',
       'Finds net-new high-intent buyers actively looking for what you sell'
     ],
     hook: "Your sales stall because nobody is out finding and warming brand-new buyers for what you sell.",
-    story: "We build a Lead Machine specifically for your offers. It sources fresh prospects, responds in real time, nurtures with product-specific messaging, and qualifies them until they're ready to pay—then we hand them to you.",
+    story: "We build a Lead Machine specifically for your offers. It sources fresh prospects, responds in real time, nurtures with product-specific messaging, and qualifies them until they're ready to pay, then we hand them to you.",
     offer: "Done-for-you capture + nurture + booking engine that delivers limitless net-new, sales-ready buyers for your exact business.",
     offerHighlights: ['Channel wiring done for you', 'Offer-specific scripts in your voice', 'Live dashboards + 24/7 optimization'],
     ctaHref: '/lead-machine'
@@ -376,7 +356,6 @@ export default function LandingPage() {
   const animationFrameRef = useRef<number | null>(null)
   const [trustSignalIndex, setTrustSignalIndex] = useState(0)
   const [isTrustSignalVisible, setIsTrustSignalVisible] = useState(true)
-  const [currentHeroClip, setCurrentHeroClip] = useState(0)
   const [howItWorksVisible, setHowItWorksVisible] = useState(true)
   const howItWorksRef = useRef<HTMLDivElement>(null)
   const [testimonialsVisible, setTestimonialsVisible] = useState(true)
@@ -628,12 +607,6 @@ export default function LandingPage() {
     }
   }, [mounted])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentHeroClip((prev) => (prev + 1) % heroImages.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
 
   useEffect(() => {
     if (!selectedProduct) return
@@ -1004,67 +977,33 @@ export default function LandingPage() {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center px-4 pt-32"
       >
-        <div className="max-w-6xl mx-auto w-full">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-            <div className="space-y-10 text-center lg:text-left">
-              <div>
-                <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight px-2 mt-16 ${
-                  isDarkMode ? 'text-white' : 'text-gray-900'
-                }`}>
-                  The all-in-one, AI-powered marketing and sales platform that works 24/7 for<br />
-                  <span className="inline-block min-h-[1.2em]">
-                    <TypewriterText gradientOffset={gradientOffset} isDarkMode={isDarkMode} />
-                  </span>
-                </h1>
+        <div className="max-w-4xl mx-auto w-full">
+          <div className="text-center space-y-10">
+            <div>
+              <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight px-2 mt-16 ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>
+                We install systems that book sales calls for you 24/7.
+              </h1>
 
-                <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto lg:mx-0 mb-8 sm:mb-12 px-4 lg:px-0 ${
-                  isDarkMode ? 'text-white/60' : 'text-gray-600'
-                }`}>
-                  Would you like 50% more sales on average over the next 90 days? We install this for you and you can try it free for 14 days. Cancel anytime.
+              <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-12 px-4 ${
+                isDarkMode ? 'text-white/60' : 'text-gray-600'
+              }`}>
+                Done-for-you CRM, AI follow-up, and automated marketing systems so no lead ever slips through.
+              </p>
+
+              <div className="flex flex-col items-center px-4">
+                <Link
+                  href="/sign-up"
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-auto justify-center"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative z-10">Book a free demo</span>
+                  <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+                <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+                  (Real person from TrueFlow)
                 </p>
-
-                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start px-4 lg:px-0">
-                  <Link
-                    href="/sign-up"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="relative z-10">Start your free trial</span>
-                    <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </div>
-
-            </div>
-
-            <div className="w-full px-2 lg:px-0">
-              <div className="relative rounded-[32px] border border-white/10 bg-white/5 overflow-hidden shadow-[0_20px_80px_rgba(15,23,42,0.6)]">
-                <div className="relative w-full h-[420px] sm:h-[480px]">
-                  <Image
-                    key={`${currentHeroClip}-${isDarkMode ? 'dark' : 'light'}`}
-                    src={isDarkMode ? heroImages[currentHeroClip].imageDark : heroImages[currentHeroClip].imageLight}
-                    alt={heroImages[currentHeroClip].alt}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
-                <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end pointer-events-none">
-                  <div className="flex items-center gap-3 pt-4 pointer-events-auto">
-                    {heroImages.map((img, idx) => (
-                      <button
-                        key={img.id}
-                        type="button"
-                        onClick={() => setCurrentHeroClip(idx)}
-                        className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
-                          idx === currentHeroClip ? 'bg-white' : 'bg-white/30'
-                        }`}
-                        aria-label={`Show hero image ${idx + 1}`}
-                      ></button>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -2310,7 +2249,7 @@ export default function LandingPage() {
               Get a free 30-minute assessment and discover exactly how automation can save you time, capture more leads, and grow your revenue.
             </p>
             <p className="text-base text-blue-500 mb-8">
-              See your custom automation roadmap—no commitment required
+              See your custom automation roadmap - no commitment required
             </p>
             <Link
               href="/sign-up"

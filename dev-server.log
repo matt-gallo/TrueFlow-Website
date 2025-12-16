@@ -2,121 +2,15 @@
 > trueflow-landing@1.0.1 dev
 > next dev -p 3001
 
-  ▲ Next.js 14.2.33
+  ▲ Next.js 14.2.35
   - Local:        http://localhost:3001
+  - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 1275ms
-(node:50188) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
- ○ Compiling /solar-installation-lead-machine ...
-Browserslist: browsers data (caniuse-lite) is 6 months old. Please run:
-  npx update-browserslist-db@latest
-  Why you should do it regularly: https://github.com/browserslist/update-db#readme
- ✓ Compiled /solar-installation-lead-machine in 3s (602 modules)
- ✓ Compiled in 402ms (304 modules)
- GET /solar-installation-lead-machine 200 in 3468ms
+ ✓ Ready in 4.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 7.4s (624 modules)
+ ✓ Compiled in 1279ms (320 modules)
+ GET / 200 in 8833ms
  ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
- ✓ Compiled in 399ms (593 modules)
- ✓ Compiled in 274ms (593 modules)
- ✓ Compiled in 287ms (593 modules)
- ✓ Compiled in 339ms (593 modules)
- ✓ Compiled in 270ms (593 modules)
- ✓ Compiled in 320ms (593 modules)
- ✓ Compiled in 305ms (593 modules)
- ✓ Compiled in 774ms (593 modules)
- ✓ Compiled in 352ms (593 modules)
- ✓ Compiled in 331ms (593 modules)
- ✓ Compiled in 336ms (593 modules)
- GET /solar-installation-lead-machine 200 in 86ms
- GET /solar-installation-lead-machine 200 in 49ms
- ✓ Compiled /sign-up in 444ms (601 modules)
- ✓ Compiled in 383ms (603 modules)
- ⨯ ./app/sign-up/page.tsx:6:1
-Module not found: Can't resolve '@/components/NavAuthButtons'
-[0m [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[0m
-[0m [90m 5 |[39m [36mimport[39m [33mImage[39m [36mfrom[39m [32m'next/image'[39m[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mNavAuthButtons[39m } [36mfrom[39m [32m'@/components/NavAuthButtons'[39m[0m
-[0m [90m   |[39m [31m[1m^[22m[39m[0m
-[0m [90m 7 |[39m [36mimport[39m {[0m
-[0m [90m 8 |[39m   [33mArrowLeft[39m[33m,[39m[0m
-[0m [90m 9 |[39m   [33mArrowRight[39m[33m,[39m[0m
-
-https://nextjs.org/docs/messages/module-not-found
- ○ Compiling /_error ...
- ⨯ ./app/sign-up/page.tsx:6:1
-Module not found: Can't resolve '@/components/NavAuthButtons'
-[0m [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[0m
-[0m [90m 5 |[39m [36mimport[39m [33mImage[39m [36mfrom[39m [32m'next/image'[39m[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mNavAuthButtons[39m } [36mfrom[39m [32m'@/components/NavAuthButtons'[39m[0m
-[0m [90m   |[39m [31m[1m^[22m[39m[0m
-[0m [90m 7 |[39m [36mimport[39m {[0m
-[0m [90m 8 |[39m   [33mArrowLeft[39m[33m,[39m[0m
-[0m [90m 9 |[39m   [33mArrowRight[39m[33m,[39m[0m
-
-https://nextjs.org/docs/messages/module-not-found
- GET /solar-installation-lead-machine 500 in 14ms
- GET /solar-installation-lead-machine 500 in 16ms
- GET /solar-installation-lead-machine 500 in 35ms
- ⨯ ./app/sign-up/page.tsx:6:1
-Module not found: Can't resolve '@/components/NavAuthButtons'
-[0m [90m 4 |[39m [36mimport[39m [33mLink[39m [36mfrom[39m [32m'next/link'[39m[0m
-[0m [90m 5 |[39m [36mimport[39m [33mImage[39m [36mfrom[39m [32m'next/image'[39m[0m
-[0m[31m[1m>[22m[39m[90m 6 |[39m [36mimport[39m { [33mNavAuthButtons[39m } [36mfrom[39m [32m'@/components/NavAuthButtons'[39m[0m
-[0m [90m   |[39m [31m[1m^[22m[39m[0m
-[0m [90m 7 |[39m [36mimport[39m {[0m
-[0m [90m 8 |[39m   [33mArrowLeft[39m[33m,[39m[0m
-[0m [90m 9 |[39m   [33mArrowRight[39m[33m,[39m[0m
-
-https://nextjs.org/docs/messages/module-not-found
- GET /solar-installation-lead-machine 500 in 17ms
- ✓ Compiled /_error in 445ms (504 modules)
- ✓ Compiled in 468ms (504 modules)
- ✓ Compiled in 235ms (504 modules)
- ✓ Compiled in 343ms (504 modules)
- ✓ Compiled in 404ms (504 modules)
- ✓ Compiled in 353ms (504 modules)
- ✓ Compiled in 386ms (504 modules)
- ✓ Compiled in 345ms (504 modules)
- ✓ Compiled in 305ms (504 modules)
- ✓ Compiled in 277ms (504 modules)
- ✓ Compiled in 252ms (504 modules)
- ✓ Compiled in 341ms (504 modules)
- ✓ Compiled in 240ms (504 modules)
- ✓ Compiled in 455ms (504 modules)
- ✓ Compiled in 562ms (834 modules)
- ✓ Compiled in 339ms (834 modules)
- ✓ Compiled in 346ms (834 modules)
- ✓ Compiled in 342ms (504 modules)
- ✓ Compiled in 250ms (504 modules)
- ✓ Compiled in 254ms (504 modules)
- ✓ Compiled in 583ms (820 modules)
- ✓ Compiled in 640ms (820 modules)
- ✓ Compiled in 398ms (820 modules)
- ✓ Compiled in 401ms (834 modules)
- ✓ Compiled in 318ms (504 modules)
- ✓ Compiled in 275ms (504 modules)
- ✓ Compiled in 376ms (504 modules)
- ✓ Compiled in 291ms (504 modules)
- ✓ Compiled in 394ms (834 modules)
- ✓ Compiled in 320ms (834 modules)
- ✓ Compiled in 361ms (834 modules)
- ✓ Compiled in 509ms (840 modules)
- ✓ Compiled in 365ms (507 modules)
- ✓ Compiled in 287ms (507 modules)
- ✓ Compiled in 308ms (507 modules)
- ✓ Compiled in 313ms (507 modules)
- ✓ Compiled in 279ms (507 modules)
- ✓ Compiled in 368ms (503 modules)
- ✓ Compiled in 489ms (836 modules)
- ✓ Compiled in 335ms (503 modules)
- ✓ Compiled in 346ms (503 modules)
- ✓ Compiled in 303ms (503 modules)
- ✓ Compiled in 514ms (503 modules)
- ✓ Compiled in 429ms (503 modules)
- ✓ Compiled in 432ms (503 modules)
- ✓ Compiled in 375ms (503 modules)
- ✓ Compiled in 313ms (503 modules)
- ✓ Compiled in 467ms (836 modules)
- ✓ Compiled in 316ms (503 modules)
- ✓ Compiled in 376ms (503 modules)
+ GET / 200 in 223ms
