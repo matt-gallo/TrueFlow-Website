@@ -240,12 +240,12 @@ export default function ArriveAliveBlogSample() {
         <div className="arrive-alive-header">
           <div className="arrive-alive-content">
             <h1>The Hidden Liability Every Corporate Safety Manager Should Fear</h1>
-            <p className="subtitle">Why Your Current Emergency Training Could Be Putting Lives—and Your Career—at Risk</p>
+            <p className="subtitle">Why Your Current Emergency Training Could Be Putting Lives and Your Career at Risk</p>
           </div>
         </div>
 
         <div className="arrive-alive-content">
-          <p><strong>Picture this:</strong> It's 2:30 PM on a Tuesday. Sarah from accounting suddenly collapses at her desk. Her face is blue. She's not breathing. Everyone's looking at you—the safety coordinator—expecting you to know what to do.</p>
+          <p><strong>Picture this:</strong> It's 2:30 PM on a Tuesday. Sarah from accounting suddenly collapses at her desk. Her face is blue. She's not breathing. Everyone's looking at you, the safety coordinator, expecting you to know what to do.</p>
 
           <p>Do you freeze? Do you panic? Or do you spring into action with the confidence that comes from <em>real</em> emergency preparedness training?</p>
 
@@ -253,7 +253,7 @@ export default function ArriveAliveBlogSample() {
 
           <div className="stats-box">
             <h3>395,000</h3>
-            <p>Americans suffer cardiac arrest outside of hospitals each year. Less than 40% receive bystander CPR—often because workplace training failed to prepare employees for the real thing.</p>
+            <p>Americans suffer cardiac arrest outside of hospitals each year. Less than 40% receive bystander CPR, often because workplace training failed to prepare employees for the real thing.</p>
           </div>
 
           <h2>The Problem With "Check-the-Box" Training</h2>
@@ -262,7 +262,7 @@ export default function ArriveAliveBlogSample() {
 
           <p>Then reality hits.</p>
 
-          <p>When a real emergency happens, that "trained" employee panics. They can't remember the steps. They're paralyzed by fear. And worst of all? <span className="emphasis">You—the safety coordinator—are the one who gets blamed when the training fails.</span></p>
+          <p>When a real emergency happens, that "trained" employee panics. They can't remember the steps. They're paralyzed by fear. And worst of all? <span className="emphasis">You, the safety coordinator, are the one who gets blamed when the training fails.</span></p>
 
           <div className="highlight-box">
             <h3>The Real Cost of Inadequate Training</h3>
@@ -271,7 +271,7 @@ export default function ArriveAliveBlogSample() {
 
           <h2>Why Traditional Training Fails When It Matters Most</h2>
 
-          <p>I'm Josh, the founder of Arrive Alive Training, and I've spent years working as a first responder. I've seen what happens when people are truly prepared—and when they're not. The difference is stark, and it comes down to three critical failures in traditional corporate training:</p>
+          <p>I'm Josh, the founder of Arrive Alive Training, and I've spent years working as a first responder. I've seen what happens when people are truly prepared and when they're not. The difference is stark, and it comes down to three critical failures in traditional corporate training:</p>
 
           <h3>1. One-Size-Fits-All Approaches Don't Work</h3>
           <p>Your accounting team faces different risks than your warehouse staff. Your executives need different skills than your front-line managers. Cookie-cutter training ignores these realities and leaves dangerous gaps in your emergency preparedness.</p>

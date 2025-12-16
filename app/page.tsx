@@ -89,26 +89,6 @@ interface SolutionProduct {
   ctaHref: string
 }
 
-const heroImages = [
-  {
-    id: 'hero-1',
-    imageLight: '/hero1.png',
-    imageDark: '/hero1-dark.png',
-    alt: 'TrueFlow Hero 1'
-  },
-  {
-    id: 'hero-2',
-    imageLight: '/hero2.png',
-    imageDark: '/hero2-dark.png',
-    alt: 'TrueFlow Hero 2'
-  },
-  {
-    id: 'hero-3',
-    imageLight: '/hero3.png',
-    imageDark: '/hero3-dark.png',
-    alt: 'TrueFlow Hero 3'
-  }
-]
 
 const solutionProducts: SolutionProduct[] = [
   {
@@ -123,17 +103,39 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-blue-500/50',
     bgGlow: 'from-blue-500/20 via-purple-500/20 to-transparent',
     bullets: [
-      'Full CRM & Pipeline Management — never lose a lead again',
-      'AI Chat Agents — book calls 2-3x faster, 24/7',
-      'Scheduling & Calendar Sync — prospects book directly into your calendar',
-      'Email & SMS Automation — nurture leads and close deals automatically',
-      'Reputation Management — collect 5-star reviews at scale',
-      'Analytics & Reporting — know exactly what\'s working'
+      'Lead capture from forms, ads, chat, website, and DMs.',
+      'Full CRM & Pipeline Management - never lose a lead again',
+      'Email & SMS Automation - nurture leads automatically',
+      'Reputation Management - collect 5-star reviews at scale',
+      'Analytics & Reporting - know exactly what\'s working'
     ],
     hook: 'Your team is juggling six tools and nobody has the full picture of the customer.',
     story: 'We sit with your operators, map exactly how you sell and deliver, then configure your CRM with automations, approvals, and alerts that match your process. No more duct tape or guessing who owns what.',
     offer: '30-day retrofit: migration, automations, SOPs, and ongoing optimization so the system grows with you.',
     offerHighlights: ['Workflow mapping workshop', 'Custom dashboards for ops + revenue', 'Priority support & optimization hours'],
+    ctaHref: '/sign-up'
+  },
+  {
+    id: 'ai-chat-agents',
+    name: 'AI Chat Agents',
+    title: 'AI Chat Agents',
+    description: 'Smart chat agents that book calls 2-3x faster, available 24/7.',
+    icon: MessageSquare,
+    gradientFrom: 'from-green-500',
+    gradientTo: 'to-emerald-500',
+    accent: 'text-green-300',
+    borderHover: 'hover:border-green-500/50',
+    bgGlow: 'from-green-500/20 via-emerald-500/20 to-transparent',
+    bullets: [
+      'AI Chat Agents - book calls 2-3x faster, 24/7',
+      'Smart scheduling - prospects book directly into your calendar',
+      'Instant responses to common questions',
+      'Qualify leads automatically before they reach you'
+    ],
+    hook: 'Prospects visit your site but leave without booking because no one\'s there to help them.',
+    story: 'Our AI agents are trained on your business and available round-the-clock. They answer questions, qualify prospects, and book appointments directly into your calendar while you sleep.',
+    offer: 'AI agents that work 24/7 to capture and qualify leads, turning website visitors into booked appointments.',
+    offerHighlights: ['Custom AI training on your business', '24/7 lead capture and qualification', 'Direct calendar integration'],
     ctaHref: '/sign-up'
   },
   {
@@ -148,7 +150,7 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-purple-500/50',
     bgGlow: 'from-purple-500/20 via-pink-500/20 to-transparent',
     bullets: [
-      'Content Engine + Auto-Publishing — grow your digital footprint on autopilot',
+      'Content Engine + Auto-Publishing - grow your digital footprint on autopilot',
       'Multi-channel content creation (email newsletters, blog posts for SEO, social media)',
       'Editorial calendar + approvals so you can sort, tweak, and greenlight fast',
       'SEO, design, and scheduling handled in one workspace'
@@ -171,13 +173,13 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-cyan-500/50',
     bgGlow: 'from-cyan-500/20 via-green-500/20 to-transparent',
     bullets: [
-      "Cold emailing / bulk emailing done the right way",
+      "Cold emailing done the right way",
       'Referral and reactivation campaigns',
-      'Funnels & Landing Pages — high-converting pages that drive sales',
+      'Funnels & Landing Pages - high-converting pages that drive sales',
       'Finds net-new high-intent buyers actively looking for what you sell'
     ],
     hook: "Your sales stall because nobody is out finding and warming brand-new buyers for what you sell.",
-    story: "We build a Lead Machine specifically for your offers. It sources fresh prospects, responds in real time, nurtures with product-specific messaging, and qualifies them until they're ready to pay—then we hand them to you.",
+    story: "We build a Lead Machine specifically for your offers. It sources fresh prospects, responds in real time, nurtures with product-specific messaging, and qualifies them until they're ready to pay, then we hand them to you.",
     offer: "Done-for-you capture + nurture + booking engine that delivers limitless net-new, sales-ready buyers for your exact business.",
     offerHighlights: ['Channel wiring done for you', 'Offer-specific scripts in your voice', 'Live dashboards + 24/7 optimization'],
     ctaHref: '/lead-machine'
@@ -376,7 +378,6 @@ export default function LandingPage() {
   const animationFrameRef = useRef<number | null>(null)
   const [trustSignalIndex, setTrustSignalIndex] = useState(0)
   const [isTrustSignalVisible, setIsTrustSignalVisible] = useState(true)
-  const [currentHeroClip, setCurrentHeroClip] = useState(0)
   const [howItWorksVisible, setHowItWorksVisible] = useState(true)
   const howItWorksRef = useRef<HTMLDivElement>(null)
   const [testimonialsVisible, setTestimonialsVisible] = useState(true)
@@ -628,12 +629,6 @@ export default function LandingPage() {
     }
   }, [mounted])
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentHeroClip((prev) => (prev + 1) % heroImages.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
 
   useEffect(() => {
     if (!selectedProduct) return
@@ -1004,67 +999,33 @@ export default function LandingPage() {
         ref={heroRef}
         className="relative min-h-screen flex items-center justify-center px-4 pt-32"
       >
-        <div className="max-w-6xl mx-auto w-full">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-            <div className="space-y-10 text-center lg:text-left">
-              <div>
-                <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight px-2 mt-16 ${
-                  isDarkMode ? 'text-white' : 'text-gray-900'
-                }`}>
-                  The all-in-one, AI-powered marketing and sales platform that works 24/7 for<br />
-                  <span className="inline-block min-h-[1.2em]">
-                    <TypewriterText gradientOffset={gradientOffset} isDarkMode={isDarkMode} />
-                  </span>
-                </h1>
+        <div className="max-w-4xl mx-auto w-full">
+          <div className="text-center space-y-10">
+            <div>
+              <h1 className={`text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-10xl font-bold mb-6 sm:mb-8 leading-tight px-2 mt-16 ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>
+                We install systems that book sales calls for you 24/7.
+              </h1>
 
-                <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto lg:mx-0 mb-8 sm:mb-12 px-4 lg:px-0 ${
-                  isDarkMode ? 'text-white/60' : 'text-gray-600'
-                }`}>
-                  Would you like 50% more sales on average over the next 90 days? We install this for you and you can try it free for 14 days. Cancel anytime.
+              <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-12 px-4 ${
+                isDarkMode ? 'text-white/60' : 'text-gray-600'
+              }`}>
+                Done-for-you CRM, AI follow-up, and automated marketing systems so no lead ever slips through.
+              </p>
+
+              <div className="flex flex-col items-center px-4">
+                <Link
+                  href="/sign-up"
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-auto justify-center"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative z-10">Book a free demo</span>
+                  <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+                <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+                  (Real person from TrueFlow)
                 </p>
-
-                <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start px-4 lg:px-0">
-                  <Link
-                    href="/sign-up"
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-full sm:w-auto justify-center"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="relative z-10">Start your free trial</span>
-                    <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </div>
-
-            </div>
-
-            <div className="w-full px-2 lg:px-0">
-              <div className="relative rounded-[32px] border border-white/10 bg-white/5 overflow-hidden shadow-[0_20px_80px_rgba(15,23,42,0.6)]">
-                <div className="relative w-full h-[420px] sm:h-[480px]">
-                  <Image
-                    key={`${currentHeroClip}-${isDarkMode ? 'dark' : 'light'}`}
-                    src={isDarkMode ? heroImages[currentHeroClip].imageDark : heroImages[currentHeroClip].imageLight}
-                    alt={heroImages[currentHeroClip].alt}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent pointer-events-none"></div>
-                <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end pointer-events-none">
-                  <div className="flex items-center gap-3 pt-4 pointer-events-auto">
-                    {heroImages.map((img, idx) => (
-                      <button
-                        key={img.id}
-                        type="button"
-                        onClick={() => setCurrentHeroClip(idx)}
-                        className={`h-1.5 flex-1 rounded-full transition-all duration-300 ${
-                          idx === currentHeroClip ? 'bg-white' : 'bg-white/30'
-                        }`}
-                        aria-label={`Show hero image ${idx + 1}`}
-                      ></button>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -1142,6 +1103,52 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Pain Point Section */}
+      <section className={`py-16 sm:py-20 px-4 relative ${
+        isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-white'
+      }`}>
+        <div className="max-w-4xl mx-auto">
+          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
+            isDarkMode
+              ? 'bg-white/5 border-white/10'
+              : 'bg-white border-gray-200 shadow-lg'
+          }`}>
+            {/* Header */}
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center leading-tight ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                Every missed follow-up is lost revenue you already paid for.
+              </span>
+            </h2>
+
+            {/* Pain Point Bullets */}
+            <div className="grid gap-4 sm:gap-6 max-w-3xl mx-auto">
+              {[
+                "You already have traffic.",
+                "You already have demand.",
+                "Leads book… then no-show.",
+                "Messages fall through the cracks.",
+                "Slow follow-up is lost revenue."
+              ].map((point, index) => (
+                <div key={index} className={`flex items-center space-x-4 p-4 sm:p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] group ${
+                  isDarkMode 
+                    ? 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30' 
+                    : 'bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-300'
+                }`}>
+                  <div className="flex-shrink-0 w-3 h-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                  <p className={`text-lg sm:text-xl font-medium ${
+                    isDarkMode ? 'text-white/90' : 'text-gray-800'
+                  }`}>
+                    {point}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Selection Section */}
       <section className={`py-16 sm:py-20 px-4 relative overflow-hidden ${
         isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-gray-100'
@@ -1149,8 +1156,11 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              Here's Everything You Get
+              We build and run the entire system for you.
             </h2>
+            <p className={`text-xl sm:text-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+              Here's what the system includes.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -2310,7 +2320,7 @@ export default function LandingPage() {
               Get a free 30-minute assessment and discover exactly how automation can save you time, capture more leads, and grow your revenue.
             </p>
             <p className="text-base text-blue-500 mb-8">
-              See your custom automation roadmap—no commitment required
+              See your custom automation roadmap - no commitment required
             </p>
             <Link
               href="/sign-up"

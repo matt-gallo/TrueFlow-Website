@@ -58,7 +58,7 @@ const workflow = [
 const features = [
   {
     title: 'Box Pipeline Engine',
-    description: 'Automation tuned for CrossFit gyms and strength studios—keeps new athletes walking in daily.',
+    description: 'Automation tuned for CrossFit gyms and strength studios, keeps new athletes walking in daily.',
     icon: Sparkles
   },
   {
@@ -149,7 +149,7 @@ const pricing = [
 const faqs = [
   {
     q: 'Can the AI talk like our coaches?',
-    a: 'We ingest your tone, programming highlights, and policies so every message feels like your head coach—not a bot.'
+    a: 'We ingest your tone, programming highlights, and policies so every message feels like your head coach, not a bot.'
   },
   {
     q: 'Do you integrate with our gym software?',
@@ -206,7 +206,7 @@ export default function CrossfitGymLeadMachinePage() {
                 CrossFit gyms: your AI membership closer.
               </h1>
               <p className={`text-2xl font-semibold mt-4 ${isDarkMode ? 'text-orange-200' : 'text-orange-700'}`}>
-                AI finds athletes, answers objections, and books intro sessions—while you coach.
+                AI finds athletes, answers objections, and books intro sessions while you coach.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 Built from our most successful functional fitness installs, this system keeps your classes full with motivated humans instead of churny trial seekers.
@@ -495,7 +495,7 @@ export default function CrossfitGymLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited. Choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div

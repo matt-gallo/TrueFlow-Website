@@ -394,7 +394,7 @@ export default function FAQPage() {
     {
       id: 'pricing-2',
       question: 'Do Platform tiers include CRM features?',
-      answer: 'Full CRM capabilities (lead tracking, automated follow-ups, sales pipeline) are currently available only in our Enterprise tier. We\'re building these features into the platform for all users—coming Q1 2026.',
+      answer: 'Full CRM capabilities (lead tracking, automated follow-ups, sales pipeline) are currently available only in our Enterprise tier. We\'re building these features into the platform for all users, coming Q1 2026.',
       category: 'business',
       icon: <CheckCircle className="h-5 w-5" />
     },

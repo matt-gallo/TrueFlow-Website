@@ -35,12 +35,12 @@ interface Particle {
 const features = [
   {
     title: 'AI Lead Hunter: Find buyers before your competitors do',
-    description: 'Scrapes live intent data from search, directories, and social to surface buyers who raised their hand in the last seven days — filtered by industry, revenue, tech stack, and geography.',
+    description: 'Scrapes live intent data from search, directories, and social to surface buyers who raised their hand in the last seven days, filtered by industry, revenue, tech stack, and geography.',
     icon: Search
   },
   {
     title: 'Cold Email Engine: Spark 1:1 conversations that turn into calls',
-    description: 'Human-tone outreach sequence crafted to sound personal and spark real replies — never robotic.',
+    description: 'Human-tone outreach sequence crafted to sound personal and spark real replies, never robotic.',
     icon: Mail
   },
   {
@@ -76,7 +76,7 @@ const features = [
 ]
 
 const benefits = [
-  'Your calendar fills with warm prospects — no more chasing cold leads.',
+  'Your calendar fills with warm prospects, no more chasing cold leads.',
   'Your team focuses on closing, not manual follow-up or list building.',
   'Revenue becomes predictable because the pipeline never runs dry.'
 ]
@@ -97,7 +97,7 @@ const systemColumns = [
   },
   {
     label: 'AI Outreach Engine',
-    description: 'Starts 1:1 conversations automatically—no cold-calling or spray-and-pray.',
+    description: 'Starts 1:1 conversations automatically - no cold-calling or spray-and-pray.',
     image: '/ai-outreach-engine-v2.png'
   },
   {
@@ -462,7 +462,7 @@ export default function LeadMachinePage() {
               <p className={`mt-6 text-xl sm:text-2xl font-medium ${
                 isDarkMode ? 'text-white/80' : 'text-gray-700'
               }`}>
-                We find, engage, and qualify ready-to-buy clients for you — automatically.
+                We find, engage, and qualify ready-to-buy clients for you, automatically.
               </p>
               <p className={`mt-6 text-lg ${
                 isDarkMode ? 'text-white/70' : 'text-gray-600'
@@ -482,7 +482,7 @@ export default function LeadMachinePage() {
               <p className={`mt-4 text-sm ${
                 isDarkMode ? 'text-white/60' : 'text-gray-500'
               }`}>
-                Takes 2 minutes — zero tech setup. <ShieldCheck className={`inline h-4 w-4 ml-2 mr-1 align-text-bottom ${
+                Takes 2 minutes, zero tech setup. <ShieldCheck className={`inline h-4 w-4 ml-2 mr-1 align-text-bottom ${
                   isDarkMode ? 'text-blue-300' : 'text-blue-500'
                 }`} /> ROI Assurance: if you don't recoup your setup fee in 90 days, we keep the machine running at no service cost until you do.
               </p>
@@ -498,7 +498,7 @@ export default function LeadMachinePage() {
             <p className={`mt-4 text-lg ${
               isDarkMode ? 'text-white/70' : 'text-gray-600'
             }`}>
-              From finding contacts to booking meetings — we handle every step of your B2B pipeline.
+              From finding contacts to booking meetings, we handle every step of your B2B pipeline.
             </p>
           </div>
 
@@ -525,7 +525,7 @@ export default function LeadMachinePage() {
               icon: Target
             }, {
               title: 'Appointment Setting',
-              description: 'We book qualified prospects directly into your calendar — warm and ready to buy.',
+              description: 'We book qualified prospects directly into your calendar, warm and ready to buy.',
               icon: Workflow
             }].map(item => (
               <div
@@ -575,7 +575,7 @@ export default function LeadMachinePage() {
           }`}>
             <p className={`text-xs uppercase tracking-[0.3em] ${
               isDarkMode ? 'text-white/60' : 'text-gray-500'
-            }`}>It's not hype — it's math</p>
+            }`}>It's not hype, it's math</p>
             <h2 className={`mt-3 text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text ${
               isDarkMode
                 ? 'bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300'
@@ -658,7 +658,7 @@ export default function LeadMachinePage() {
               <p className={`mt-4 ${
                 isDarkMode ? 'text-white/70' : 'text-gray-600'
               }`}>
-                Most tools hand you a CSV. Lead Machine hands you verified humans already talking back — with every reply tracked inside your CRM.
+                Most tools hand you a CSV. Lead Machine hands you verified humans already talking back, with every reply tracked inside your CRM.
               </p>
             </div>
             <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -701,7 +701,7 @@ export default function LeadMachinePage() {
             <div className="mt-10 grid gap-6 lg:grid-cols-3">
               {[{
                 title: 'Identify live intent',
-                copy: 'We scan the web for people searching your exact offers — not recycled lists.'
+                copy: 'We scan the web for people searching your exact offers, not recycled lists.'
               }, {
                 title: 'Start real conversations',
                 copy: 'AI outreach replies in your voice within 60 seconds and keeps the thread moving.'
@@ -790,7 +790,7 @@ export default function LeadMachinePage() {
               Every day you wait, a competitor runs this playbook and talks to the buyers you should be closing.
             </p>
             <p className={`mt-6 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-              There's only one reason you're not closing more — no one is talking to your best prospects first. We fix that in days, not months.
+              There's only one reason you're not closing more: no one is talking to your best prospects first. We fix that in days, not months.
             </p>
           </div>
         </section>
@@ -816,7 +816,7 @@ export default function LeadMachinePage() {
           <div className={`rounded-3xl border ${isDarkMode ? 'border-white/20' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-blue-900/40' : 'bg-gradient-to-br from-cyan-100 via-blue-100 to-blue-50'} p-8 sm:p-12`}>
             <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Why Believe Us</h2>
             <p className={`mt-6 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-              TrueFlow deploys Lead Machine™ systems for coaches, agencies, real estate teams, and local services—turning cold lists into booked calendars in under two weeks.
+              TrueFlow deploys Lead Machine™ systems for coaches, agencies, real estate teams, and local services, turning cold lists into booked calendars in under two weeks.
             </p>
             <p className={`mt-4 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>No playbooks. No templates. Just proven installs that produce pipeline.</p>
           </div>
@@ -993,7 +993,7 @@ export default function LeadMachinePage() {
                         <h3 className={`mt-2 text-3xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>{activePlanName} Plan</h3>
                         <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>
                           {manualPlanChoice
-                            ? 'We locked in your selection—scroll up to the pricing cards if you want the full breakdown.'
+                            ? 'We locked in your selection. Scroll up to the pricing cards if you want the full breakdown.'
                             : `Based on your answers, the ${activePlanName} package will keep your pipeline on pace.`}
                         </p>
 
@@ -1129,7 +1129,7 @@ export default function LeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited. Choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-white'}`}>
@@ -1235,7 +1235,7 @@ export default function LeadMachinePage() {
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>
-            <p className={`mt-3 text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>No payment due today—just pick your kickoff call.</p>
+            <p className={`mt-3 text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>No payment due today, just pick your kickoff call.</p>
           </div>
         </section>
 

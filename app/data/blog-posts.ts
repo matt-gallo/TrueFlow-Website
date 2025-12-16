@@ -1461,13 +1461,13 @@ TrueFlow AI transforms your data chaos into clarity:
     content: `
 # Building Strength, Building Software: The Unexpected Parallels Between Fitness and the TrueFlow Constant Content Engine™
 
-**The best software, like the best physiques, isn't built overnight—it's forged through consistent, progressive effort and an unwavering commitment to the fundamentals.**
+**The best software, like the best physiques, isn't built overnight. It's forged through consistent, progressive effort and an unwavering commitment to the fundamentals.**
 
 Hey, I'm Griffin Rutherford, Lead AI Implementation Engineer at TrueFlow. When I'm not architecting our Constant Content Engine™, you'll find me trail running through the Colorado Rockies or pushing iron in the gym. And here's what I've realized: the parallels between building physical strength and building powerful software are uncanny.
 
 ## The Progressive Overload Principle
 
-In weightlifting, progressive overload is sacred. You don't bench 225 on day one—you start with the bar, perfect your form, and gradually add weight. Each session builds on the last. Skip steps, and you plateau or worse, get injured.
+In weightlifting, progressive overload is sacred. You don't bench 225 on day one - you start with the bar, perfect your form, and gradually add weight. Each session builds on the last. Skip steps, and you plateau or worse, get injured.
 
 **Our Constant Content Engine™ follows the same principle.**
 
@@ -1478,7 +1478,7 @@ We didn't start by trying to generate perfect marketing campaigns from day one. 
 - Multi-format output
 - Strategic content planning
 
-Each feature was like adding another plate to the bar—calculated, intentional, and only after the foundation could support it.
+Each feature was like adding another plate to the bar - calculated, intentional, and only after the foundation could support it.
 
 ## The Mind-Muscle Connection
 
@@ -1486,7 +1486,7 @@ Ask any serious lifter about the mind-muscle connection, and they'll tell you it
 
 **In AI development, we call this the human-AI connection.**
 
-Our Constant Content Engine™ doesn't just process your words—it needs to understand your intent, your expertise, your unique perspective. That's why we built our adaptive conversation system. It's not just recording; it's actively listening, learning, establishing that crucial connection between human expertise and AI capability.
+Our Constant Content Engine™ doesn't just process your words - it needs to understand your intent, your expertise, your unique perspective. That's why we built our adaptive conversation system. It's not just recording; it's actively listening, learning, establishing that crucial connection between human expertise and AI capability.
 
 When you speak to our engine, you're not just inputting data. You're training it, like training a muscle group, to understand and amplify your unique business voice.
 
@@ -1496,19 +1496,19 @@ In the gym, compound movements like squats and deadlifts work multiple muscle gr
 
 **The Constant Content Engine™ is our compound movement for marketing.**
 
-Instead of isolated tools that handle one task—a blog writer here, an email generator there—we built a system that works everything at once:
+Instead of isolated tools that handle one task - a blog writer here, an email generator there - we built a system that works everything at once:
 - **Content creation** (the squat of marketing)
 - **Brand consistency** (your core stability)
 - **SEO optimization** (the power drive)
 - **Strategic deployment** (the full range of motion)
 
-One conversation generates blog posts, emails, social content—a full-body workout for your marketing, if you will.
+One conversation generates blog posts, emails, social content - a full-body workout for your marketing, if you will.
 
 ## Recovery and Adaptation
 
 Here's what non-lifters don't understand: muscles don't grow in the gym. They grow during recovery, when your body adapts to the stress you've placed on it. Skip recovery, and you'll burn out.
 
-**Software needs recovery too—we call it iteration cycles.**
+**Software needs recovery too - we call it iteration cycles.**
 
 After each major Constant Content Engine™ release, we don't immediately pile on new features. We observe, we listen to user feedback, we let the system "recover" while we analyze performance data. This recovery period is when the real improvements happen:
 - User patterns emerge
@@ -1519,7 +1519,7 @@ Just like how your CNS (central nervous system) adapts to heavy lifting over tim
 
 ## The Plateau Breaker
 
-Every lifter hits plateaus. You're progressing steadily, then suddenly—nothing. The weights won't budge. The solution? Change the stimulus. New rep ranges, different exercises, varied intensity.
+Every lifter hits plateaus. You're progressing steadily, then suddenly - nothing. The weights won't budge. The solution? Change the stimulus. New rep ranges, different exercises, varied intensity.
 
 **We hit our plateau six months ago.**
 
@@ -1541,11 +1541,11 @@ We don't ask users for marathon content sessions. Instead:
 - Sustainable content rhythm
 - Consistent output without burnout
 
-It's like a well-designed training program—challenging enough to drive adaptation, sustainable enough to maintain long-term.
+It's like a well-designed training program - challenging enough to drive adaptation, sustainable enough to maintain long-term.
 
 ## Form Over Weight
 
-Every gym has that person—loading up the bar, horrible form, half-reps, heading for injury. In lifting, form is everything. Perfect form with lighter weight beats heavy weight with bad form every time.
+Every gym has that person - loading up the bar, horrible form, half-reps, heading for injury. In lifting, form is everything. Perfect form with lighter weight beats heavy weight with bad form every time.
 
 **In AI, data quality is our form.**
 
@@ -1569,21 +1569,21 @@ Every conversation is recorded, analyzed, optimized. We track:
 - Optimal publishing cadence
 - Engagement patterns
 
-This isn't just analytics—it's your progressive overload map for content marketing. Each month, you can see exactly how your content strength has grown.
+This isn't just analytics - it's your progressive overload map for content marketing. Each month, you can see exactly how your content strength has grown.
 
 ## The Runner's High Meets Flow State
 
-As a trail runner, I chase that runner's high—when miles feel effortless, when you're in perfect flow with the trail. As a developer, I chase flow state—when code flows effortlessly, when solutions appear naturally.
+As a trail runner, I chase that runner's high - when miles feel effortless, when you're in perfect flow with the trail. As a developer, I chase flow state - when code flows effortlessly, when solutions appear naturally.
 
 **Our Constant Content Engine™ creates content flow state.**
 
-When you're speaking naturally about your expertise, not worrying about writing or editing, just sharing knowledge—that's content flow state. The AI handles the technical heavy lifting while you stay in your zone of genius.
+When you're speaking naturally about your expertise, not worrying about writing or editing, just sharing knowledge - that's content flow state. The AI handles the technical heavy lifting while you stay in your zone of genius.
 
-It's like having the perfect running partner who matches your pace, or a lifting partner who's always ready to spot—supportive but never intrusive.
+It's like having the perfect running partner who matches your pace, or a lifting partner who's always ready to spot - supportive but never intrusive.
 
 ## The Long Game
 
-Neither Rome nor muscle was built in a day. Real strength—physical or business—comes from playing the long game. Quick fixes don't last. Shortcuts lead to injury.
+Neither Rome nor muscle was built in a day. Real strength - physical or business - comes from playing the long game. Quick fixes don't last. Shortcuts lead to injury.
 
 **The Constant Content Engine™ is built for the long game.**
 
@@ -1601,7 +1601,7 @@ Here's what five years of lifting and running alongside building AI systems has 
 
 **The principles are universal.**
 
-Progressive overload. Consistency over intensity. Form over weight. Recovery and adaptation. These aren't just fitness concepts—they're life concepts, business concepts, software concepts.
+Progressive overload. Consistency over intensity. Form over weight. Recovery and adaptation. These aren't just fitness concepts - they're life concepts, business concepts, software concepts.
 
 The TrueFlow Constant Content Engine™ isn't just another AI tool. It's a training program for your business communication. Every conversation is a rep. Every piece of content is a set. Every campaign is a training cycle.
 
@@ -1609,11 +1609,11 @@ And just like in the gym, the results compound. The business that "trains" consi
 
 ## Your Training Starts Now
 
-Whether you're deadlifting 500 pounds or just starting with the bar, whether you're running ultras or walking around the block, whether you're a content veteran or complete beginner—the principles remain the same.
+Whether you're deadlifting 500 pounds or just starting with the bar, whether you're running ultras or walking around the block, whether you're a content veteran or complete beginner - the principles remain the same.
 
 Start where you are. Be consistent. Focus on form. Trust the process.
 
-The Constant Content Engine™ is your training partner, your spotter, your coach. It won't do the work for you—nothing can—but it will make your work exponentially more effective.
+The Constant Content Engine™ is your training partner, your spotter, your coach. It won't do the work for you - nothing can - but it will make your work exponentially more effective.
 
 **Because in the end, building a business is just like building strength: it's not about perfection, it's about progression.**
 
@@ -1660,11 +1660,11 @@ Ready to start training? Your Constant Content Engine™ awaits.
     id: 'levelup-2025-afterparty',
     title: 'Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch',
     slug: 'levelup-2025-afterparty',
-    excerpt: 'TrueFlow is heading to Dallas during GoHighLevel\'s LevelUp week—join our independent bar afterparty celebrating the production launch with free drinks, appetizers, and live demos.',
+    excerpt: 'TrueFlow is heading to Dallas during GoHighLevel\'s LevelUp week. Join our independent bar afterparty celebrating the production launch with free drinks, appetizers, and live demos.',
     content: `
 # Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch
 
-Team TrueFlow is thrilled to be in Dallas during the **GoHighLevel LevelUp Summit** week from October 13-16, 2025! While we plan to soak up the energy of the community and attend sessions as participants, this milestone is all about unveiling our first fully production-ready platform—on our own terms and at our own venue.
+Team TrueFlow is thrilled to be in Dallas during the **GoHighLevel LevelUp Summit** week from October 13-16, 2025! While we plan to soak up the energy of the community and attend sessions as participants, this milestone is all about unveiling our first fully production-ready platform - on our own terms and at our own venue.
 
 ## Why LevelUp Matters
 
@@ -1674,7 +1674,7 @@ For those unfamiliar with LevelUp, it's where 1,000+ forward-thinking entreprene
 
 ### Mark Your Calendars!
 
-We're hosting an **exclusive afterparty on Thursday, October 16th** to celebrate not just the energy of the week, but the official production launch of TrueFlow's Constant Content Engine™—at a bar completely separate from the conference.
+We're hosting an **exclusive afterparty on Thursday, October 16th** to celebrate not just the energy of the week, but the official production launch of TrueFlow's Constant Content Engine™ at a bar completely separate from the conference.
 
 ### What to Expect:
 
@@ -1686,7 +1686,7 @@ We're hosting an **exclusive afterparty on Thursday, October 16th** to celebrate
 
 ### Why This Night Is Special
 
-October 16th marks a pivotal moment for TrueFlow—it's the day our platform becomes fully production-ready. After months of development, testing, and refinement based on early user feedback, we're ready to show the world what AI-powered content creation truly looks like.
+October 16th marks a pivotal moment for TrueFlow - it's the day our platform becomes fully production-ready. After months of development, testing, and refinement based on early user feedback, we're ready to show the world what AI-powered content creation truly looks like.
 
 This isn't just a party; it's a celebration of:
 - **Camaraderie**: Building connections with like-minded entrepreneurs
@@ -1716,13 +1716,13 @@ Whether you're already attending LevelUp or still on the fence, we'd love to mee
 
 - **Date**: Thursday, October 16th, 2025
 - **Time**: Details coming soon (follow us for updates!)
-- **Location**: Dallas, TX (independent bar venue announcement coming — entirely separate from the LevelUp conference site)
+- **Location**: Dallas, TX (independent bar venue announcement coming - entirely separate from the LevelUp conference site)
 - **RSVP**: Watch our social channels for the registration link
-- **Capacity**: Limited space—first come, first served
+- **Capacity**: Limited space, first come, first served
 
 ## Why October 16th Changes Everything
 
-For months, we've been working toward this date. October 16th isn't just when we host a party—it's when TrueFlow officially enters the market as a production-ready solution. Every feature tested, every bug squashed, every workflow optimized.
+For months, we've been working toward this date. October 16th isn't just when we host a party - it's when TrueFlow officially enters the market as a production-ready solution. Every feature tested, every bug squashed, every workflow optimized.
 
 If you've been waiting for the right time to revolutionize your content creation process, this is it.
 
@@ -1736,7 +1736,7 @@ Fill out the form at [trueflow.ai/get-started](https://trueflow.ai/get-started) 
 
 See you in Dallas! Let's level up together.
 
-**P.S.** - Can't make it to Dallas? Don't worry—we'll be sharing highlights, insights, and special offers for our extended community. Follow our journey as we officially launch into production!
+**P.S.** - Can't make it to Dallas? Don't worry - we'll be sharing highlights, insights, and special offers for our extended community. Follow our journey as we officially launch into production!
     `,
     author: authors['griffin-rutherford'],
     date: '2025-09-25',
@@ -1757,7 +1757,7 @@ See you in Dallas! Let's level up together.
     },
     seo: {
       metaTitle: 'Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch',
-      metaDescription: 'TrueFlow is in Dallas during GoHighLevel\'s LevelUp week—join our independent afterparty celebrating the production launch of the Constant Content Engine™.',
+      metaDescription: 'TrueFlow is in Dallas during GoHighLevel\'s LevelUp week. Join our independent afterparty celebrating the production launch of the Constant Content Engine™.',
       keywords: [
         'LevelUp 2025',
         'GoHighLevel',
