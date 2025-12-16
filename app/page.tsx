@@ -3245,7 +3245,7 @@ export default function LandingPage() {
           onClick={() => setIsDemoModalOpen(false)}
         >
           <div
-            className={`relative w-full max-w-4xl max-h-[90vh] rounded-2xl overflow-hidden ${
+            className={`relative w-full max-w-2xl max-h-[85vh] rounded-2xl overflow-hidden ${
               isDarkMode ? 'bg-gray-900 border border-white/20' : 'bg-white border border-gray-200'
             }`}
             onClick={(e) => e.stopPropagation()}
@@ -3265,17 +3265,17 @@ export default function LandingPage() {
             </button>
 
             {/* Modal content */}
-            <div className="p-6">
+            <div className="p-6 max-h-[85vh] overflow-y-auto">
               <h3 className={`text-2xl font-bold mb-4 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
                 Schedule Your Demo
               </h3>
-              <div className="w-full" style={{ minHeight: '600px' }}>
+              <div className="w-full" style={{ minHeight: '500px' }}>
                 <iframe
                   src="https://api.leadconnectorhq.com/widget/booking/nc8KAbjOlywMkW6XPSBj"
-                  style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '600px' }}
-                  scrolling="no"
+                  style={{ width: '100%', border: 'none', minHeight: '500px' }}
+                  scrolling="yes"
                   id="nc8KAbjOlywMkW6XPSBj_1765305582551"
                 ></iframe>
                 <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
