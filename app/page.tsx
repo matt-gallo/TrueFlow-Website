@@ -103,10 +103,9 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-blue-500/50',
     bgGlow: 'from-blue-500/20 via-purple-500/20 to-transparent',
     bullets: [
+      'Lead capture from forms, ads, chat, website, and DMs.',
       'Full CRM & Pipeline Management - never lose a lead again',
-      'AI Chat Agents - book calls 2-3x faster, 24/7',
-      'Scheduling & Calendar Sync - prospects book directly into your calendar',
-      'Email & SMS Automation - nurture leads and close deals automatically',
+      'Email & SMS Automation - nurture leads automatically',
       'Reputation Management - collect 5-star reviews at scale',
       'Analytics & Reporting - know exactly what\'s working'
     ],
@@ -114,6 +113,29 @@ const solutionProducts: SolutionProduct[] = [
     story: 'We sit with your operators, map exactly how you sell and deliver, then configure your CRM with automations, approvals, and alerts that match your process. No more duct tape or guessing who owns what.',
     offer: '30-day retrofit: migration, automations, SOPs, and ongoing optimization so the system grows with you.',
     offerHighlights: ['Workflow mapping workshop', 'Custom dashboards for ops + revenue', 'Priority support & optimization hours'],
+    ctaHref: '/sign-up'
+  },
+  {
+    id: 'ai-chat-agents',
+    name: 'AI Chat Agents',
+    title: 'AI Chat Agents',
+    description: 'Smart chat agents that book calls 2-3x faster, available 24/7.',
+    icon: MessageSquare,
+    gradientFrom: 'from-green-500',
+    gradientTo: 'to-emerald-500',
+    accent: 'text-green-300',
+    borderHover: 'hover:border-green-500/50',
+    bgGlow: 'from-green-500/20 via-emerald-500/20 to-transparent',
+    bullets: [
+      'AI Chat Agents - book calls 2-3x faster, 24/7',
+      'Smart scheduling - prospects book directly into your calendar',
+      'Instant responses to common questions',
+      'Qualify leads automatically before they reach you'
+    ],
+    hook: 'Prospects visit your site but leave without booking because no one\'s there to help them.',
+    story: 'Our AI agents are trained on your business and available round-the-clock. They answer questions, qualify prospects, and book appointments directly into your calendar while you sleep.',
+    offer: 'AI agents that work 24/7 to capture and qualify leads, turning website visitors into booked appointments.',
+    offerHighlights: ['Custom AI training on your business', '24/7 lead capture and qualification', 'Direct calendar integration'],
     ctaHref: '/sign-up'
   },
   {
@@ -151,7 +173,7 @@ const solutionProducts: SolutionProduct[] = [
     borderHover: 'hover:border-cyan-500/50',
     bgGlow: 'from-cyan-500/20 via-green-500/20 to-transparent',
     bullets: [
-      "Cold emailing / bulk emailing done the right way",
+      "Cold emailing done the right way",
       'Referral and reactivation campaigns',
       'Funnels & Landing Pages - high-converting pages that drive sales',
       'Finds net-new high-intent buyers actively looking for what you sell'
@@ -980,7 +1002,7 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto w-full">
           <div className="text-center space-y-10">
             <div>
-              <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-tight px-2 mt-16 ${
+              <h1 className={`text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-10xl font-bold mb-6 sm:mb-8 leading-tight px-2 mt-16 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
                 We install systems that book sales calls for you 24/7.
@@ -1081,6 +1103,52 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Pain Point Section */}
+      <section className={`py-16 sm:py-20 px-4 relative ${
+        isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-white'
+      }`}>
+        <div className="max-w-4xl mx-auto">
+          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
+            isDarkMode
+              ? 'bg-white/5 border-white/10'
+              : 'bg-white border-gray-200 shadow-lg'
+          }`}>
+            {/* Header */}
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center leading-tight ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                Every missed follow-up is lost revenue you already paid for.
+              </span>
+            </h2>
+
+            {/* Pain Point Bullets */}
+            <div className="grid gap-4 sm:gap-6 max-w-3xl mx-auto">
+              {[
+                "You already have traffic.",
+                "You already have demand.",
+                "Leads book… then no-show.",
+                "Messages fall through the cracks.",
+                "Slow follow-up is lost revenue."
+              ].map((point, index) => (
+                <div key={index} className={`flex items-center space-x-4 p-4 sm:p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] group ${
+                  isDarkMode 
+                    ? 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30' 
+                    : 'bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-300'
+                }`}>
+                  <div className="flex-shrink-0 w-3 h-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                  <p className={`text-lg sm:text-xl font-medium ${
+                    isDarkMode ? 'text-white/90' : 'text-gray-800'
+                  }`}>
+                    {point}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Selection Section */}
       <section className={`py-16 sm:py-20 px-4 relative overflow-hidden ${
         isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-gray-100'
@@ -1088,8 +1156,11 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              Here's Everything You Get
+              We build and run the entire system for you.
             </h2>
+            <p className={`text-xl sm:text-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+              Here's what the system includes.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
