@@ -846,28 +846,6 @@ export default function LandingPage() {
                       How it Works
                     </a>
                     <a
-                      href="#flow-mode"
-                      onClick={() => setIsCoreSystemOpen(false)}
-                      className={`block px-4 py-3 transition-colors text-sm ${
-                        isDarkMode
-                          ? 'text-white/70 hover:text-white hover:bg-white/10'
-                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                      }`}
-                    >
-                      Flow Mode
-                    </a>
-                    <a
-                      href="#chat-widgets"
-                      onClick={() => setIsCoreSystemOpen(false)}
-                      className={`block px-4 py-3 transition-colors text-sm ${
-                        isDarkMode
-                          ? 'text-white/70 hover:text-white hover:bg-white/10'
-                          : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                      }`}
-                    >
-                      AI Chat Widgets
-                    </a>
-                    <a
                       href="#testimonials"
                       onClick={() => setIsCoreSystemOpen(false)}
                       className={`block px-4 py-3 transition-colors text-sm ${
@@ -964,8 +942,6 @@ export default function LandingPage() {
                 <a href="#why-trueflow" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Why TrueFlow?</a>
                 <a href="#features" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Features</a>
                 <a href="#how-it-works" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>How it Works</a>
-                <a href="#flow-mode" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Flow Mode</a>
-                <a href="#chat-widgets" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>AI Chat Widgets</a>
                 <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Success Stories</a>
                 <a href="#integrations" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Integrations</a>
               </div>
@@ -995,36 +971,36 @@ export default function LandingPage() {
       </nav>
 
       {/* Hero Section */}
-      <section 
+      <section
         ref={heroRef}
-        className="relative min-h-screen flex items-center justify-center px-4 pt-32"
+        className="relative flex items-center justify-center px-4 py-24 sm:py-28"
       >
         <div className="max-w-4xl mx-auto w-full">
-          <div className="text-center space-y-10">
+          <div className="text-center space-y-6 sm:space-y-8">
             <div>
-              <h1 className={`text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-10xl font-bold mb-6 sm:mb-8 leading-tight px-2 mt-16 ${
+              <h1 className={`text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-10xl font-bold mb-4 sm:mb-6 leading-tight px-2 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
                 We install systems that book sales calls for you 24/7.
               </h1>
 
-              <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-12 px-4 ${
+              <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-8 px-4 ${
                 isDarkMode ? 'text-white/60' : 'text-gray-600'
               }`}>
                 Done-for-you CRM, AI follow-up, and automated marketing systems so no lead ever slips through.
               </p>
 
               <div className="flex flex-col items-center px-4">
-                <Link
-                  href="/sign-up"
+                <button
+                  onClick={() => setIsDemoModalOpen(true)}
                   className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-auto justify-center"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10">Book a free demo</span>
                   <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-                </Link>
+                </button>
                 <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
-                  (Real person from TrueFlow)
+                  Live Call with TrueFlow Automation Expert
                 </p>
               </div>
             </div>
@@ -1122,6 +1098,76 @@ export default function LandingPage() {
               </span>
             </h2>
 
+            {/* Dynamic visual - Person overwhelmed with tasks */}
+            <div className="relative bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/20 overflow-hidden mb-12">
+              <div className="flex flex-col items-center space-y-6">
+                {/* Central person icon with stress animation */}
+                <div className="relative">
+                  <div className="w-20 h-20 bg-gradient-to-br from-gray-500 to-gray-700 rounded-full flex items-center justify-center animate-pulse">
+                    <Users className="h-10 w-10 text-white" />
+                  </div>
+
+                  {/* Orbiting tasks around the person */}
+                  {[
+                    { icon: Mail, angle: 0 },
+                    { icon: Calendar, angle: 60 },
+                    { icon: FileText, angle: 120 },
+                    { icon: BarChart3, angle: 180 },
+                    { icon: MessageSquare, angle: 240 },
+                    { icon: Target, angle: 300 }
+                  ].map((task, index) => (
+                    <div
+                      key={index}
+                      className="absolute"
+                      style={{
+                        left: '50%',
+                        top: '50%',
+                        width: '120px',
+                        height: '120px',
+                        animation: `orbit-wrapper-${task.angle} 15s linear infinite`,
+                      }}
+                    >
+                      <div
+                        className="absolute w-8 h-8 bg-red-500/20 border border-red-500/40 rounded-full flex items-center justify-center text-red-400"
+                        style={{
+                          right: '0',
+                          top: '50%',
+                          transform: 'translateY(-50%)',
+                        }}
+                      >
+                        <task.icon className="h-4 w-4" />
+                      </div>
+                    </div>
+                  ))}
+
+                  {/* Stress lines radiating from center */}
+                  <div className="absolute inset-0 animate-ping">
+                    <div className="w-full h-full rounded-full border-2 border-red-500/30"></div>
+                  </div>
+                </div>
+
+                <p className={`text-center font-medium animate-bounce ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                  Drowning in daily tasks
+                </p>
+              </div>
+
+              {/* Background stress pattern */}
+              <div className="absolute inset-0 opacity-10">
+                {[...Array(20)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-red-400 rounded-full animate-pulse"
+                    style={{
+                      left: `${Math.random() * 100}%`,
+                      top: `${Math.random() * 100}%`,
+                      animationDelay: `${Math.random() * 3}s`,
+                      animationDuration: `${2 + Math.random() * 2}s`
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
             {/* Pain Point Bullets */}
             <div className="grid gap-4 sm:gap-6 max-w-3xl mx-auto">
               {[
@@ -1149,6 +1195,106 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* So You Tried "Just Using Software" Section */}
+      <section className={`py-16 sm:py-20 px-4 relative ${
+        isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-white to-gray-50'
+      }`}>
+        <div className="max-w-4xl mx-auto">
+          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
+            isDarkMode
+              ? 'bg-white/5 border-white/10'
+              : 'bg-white border-gray-200 shadow-lg'
+          }`}>
+            {/* Header */}
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center leading-tight ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                So You Tried "Just Using Software"
+              </span>
+            </h2>
+
+            {/* Body Copy */}
+            <p className={`text-lg sm:text-xl mb-8 text-center ${
+              isDarkMode ? 'text-white/80' : 'text-gray-700'
+            }`}>
+              You signed up for CRMs, schedulers, email tools, chat widgets, and social tools.
+            </p>
+
+            {/* Tools Grid */}
+            <div className="grid grid-cols-3 gap-4 mb-8 max-w-md mx-auto">
+              {[
+                {
+                  name: 'Lead App',
+                  color: 'from-blue-500 to-blue-600',
+                  icon: Users
+                },
+                {
+                  name: 'Scheduler',
+                  color: 'from-orange-500 to-red-500',
+                  icon: Calendar
+                },
+                {
+                  name: 'Messenger',
+                  color: 'from-cyan-500 to-blue-500',
+                  icon: MessageSquare
+                },
+              ].map((tool) => (
+                <div
+                  key={tool.name}
+                  className={`bg-gradient-to-r ${tool.color} p-4 rounded-lg flex items-center justify-center`}
+                >
+                  <tool.icon className="w-8 h-8 text-white" />
+                </div>
+              ))}
+            </div>
+
+            <p className={`text-lg sm:text-xl mb-8 text-center font-medium ${
+              isDarkMode ? 'text-white/90' : 'text-gray-800'
+            }`}>
+              Now you have:
+            </p>
+
+            {/* Bullet Points */}
+            <div className="grid gap-4 sm:gap-6 max-w-3xl mx-auto mb-8">
+              {[
+                "5+ tools that don't talk to each other",
+                "Monthly subscriptions adding up fast",
+                "More manual work than before",
+                "Still missed leads and no-shows"
+              ].map((point, index) => (
+                <div key={index} className={`flex items-center space-x-4 p-4 sm:p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] group ${
+                  isDarkMode
+                    ? 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30'
+                    : 'bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-300'
+                }`}>
+                  <div className="flex-shrink-0 w-3 h-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                  <p className={`text-lg sm:text-xl font-medium ${
+                    isDarkMode ? 'text-white/90' : 'text-gray-800'
+                  }`}>
+                    {point}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Closing Statement */}
+            <div className="text-center space-y-2">
+              <p className={`text-lg sm:text-xl font-semibold ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>
+                Software didn't fail you.
+              </p>
+              <p className={`text-lg sm:text-xl font-semibold ${
+                isDarkMode ? 'text-white' : 'text-gray-900'
+              }`}>
+                Being forced to build and manage it yourself did.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Product Selection Section */}
       <section className={`py-16 sm:py-20 px-4 relative overflow-hidden ${
         isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-gray-100'
@@ -1156,11 +1302,151 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              We build and run the entire system for you.
+              We build and run the entire system with you, then fill it with leads.
             </h2>
-            <p className={`text-xl sm:text-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-              Here's what the system includes.
-            </p>
+          </div>
+
+          {/* Orbital Animation Container */}
+          <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] mb-12" style={{ perspective: '1000px' }}>
+            {/* Central TrueFlow Logo */}
+            <div className="absolute z-10">
+              {/* Outer glow ring */}
+              <div className="absolute inset-0 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full blur-2xl opacity-75"
+                style={{
+                  background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.8) 0%, rgba(139, 92, 246, 0.6) 30%, rgba(59, 130, 246, 0.4) 50%, transparent 70%)',
+                  transform: 'translate(-50%, -50%)',
+                  top: '50%',
+                  left: '50%'
+                }}
+              />
+
+              {/* Main logo container */}
+              <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 flex items-center justify-center relative">
+                {/* Enhanced glow effect */}
+                <div
+                  className="absolute inset-0 rounded-full blur-xl"
+                  style={{
+                    background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.6) 0%, rgba(139, 92, 246, 0.4) 30%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)',
+                  }}
+                />
+
+                {/* Inner bright ring */}
+                <div
+                  className="absolute inset-2 rounded-full blur-lg"
+                  style={{
+                    background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.5) 0%, rgba(139, 92, 246, 0.3) 50%, transparent 70%)',
+                  }}
+                />
+
+                <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/50 relative z-10">
+                  <TrueFlowLogoIcon size={typeof window !== 'undefined' && window.innerWidth < 640 ? 24 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 32 : 40} isDarkMode={isDarkMode} />
+                </div>
+              </div>
+            </div>
+
+            {/* Orbiting System Components */}
+            {[
+              {
+                name: 'Lead Capture',
+                icon: <Users className="w-5 h-5 sm:w-6 sm:h-6" />,
+                color: 'from-blue-400 to-blue-600',
+                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(37, 99, 235, 0.35) 60%, #2563eb 100%)',
+                lineShadow: '0 0 12px rgba(37, 99, 235, 0.35)'
+              },
+              {
+                name: 'AI Follow-up',
+                icon: <Brain className="w-5 h-5 sm:w-6 sm:h-6" />,
+                color: 'from-purple-400 to-purple-600',
+                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(147, 51, 234, 0.35) 60%, #9333ea 100%)',
+                lineShadow: '0 0 12px rgba(147, 51, 234, 0.35)'
+              },
+              {
+                name: 'Scheduling',
+                icon: <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />,
+                color: 'from-cyan-400 to-cyan-600',
+                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(6, 182, 212, 0.35) 60%, #06b6d4 100%)',
+                lineShadow: '0 0 12px rgba(6, 182, 212, 0.35)'
+              },
+              {
+                name: 'Pipeline',
+                icon: <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6" />,
+                color: 'from-green-400 to-green-600',
+                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(16, 185, 129, 0.35) 60%, #10b981 100%)',
+                lineShadow: '0 0 12px rgba(16, 185, 129, 0.35)'
+              },
+              {
+                name: 'Content',
+                icon: <FileText className="w-5 h-5 sm:w-6 sm:h-6" />,
+                color: 'from-orange-400 to-orange-600',
+                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(249, 115, 22, 0.35) 60%, #f97316 100%)',
+                lineShadow: '0 0 12px rgba(249, 115, 22, 0.35)'
+              },
+              {
+                name: 'Analytics',
+                icon: <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6" />,
+                color: 'from-pink-400 to-pink-600',
+                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(236, 72, 153, 0.35) 60%, #ec4899 100%)',
+                lineShadow: '0 0 12px rgba(236, 72, 153, 0.35)'
+              }
+            ].map((component, index) => {
+              const angle = (index * 60) + (scrollY * 0.08); // 60 degrees apart, rotates with scroll
+              const radius = typeof window !== 'undefined' && window.innerWidth < 640 ? 120 + Math.sin(scrollY * 0.005 + index) * 12 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 160 + Math.sin(scrollY * 0.005 + index) * 16 : 220 + Math.sin(scrollY * 0.005 + index) * 25;
+              const x = Math.cos(angle * Math.PI / 180) * radius;
+              const y = Math.sin(angle * Math.PI / 180) * radius;
+
+              // 3D depth effects
+              const baseDepth = (index % 3) * 20 - 30;
+              const scrollDepth = Math.sin(scrollY * 0.008 + index * 1.2) * 30;
+              const totalDepth = baseDepth + scrollDepth;
+
+              return (
+                <div
+                  key={index}
+                  className="absolute transition-all duration-300 ease-out"
+                  style={{
+                    transform: `translate(${x}px, ${y}px) translateZ(${totalDepth}px)`,
+                    transformStyle: 'preserve-3d',
+                  }}
+                >
+                  {/* Connecting line */}
+                  <div
+                    className="absolute pointer-events-none transition-opacity duration-300"
+                    style={{
+                      width: `${radius}px`,
+                      height: '8px',
+                      top: '50%',
+                      left: '50%',
+                      transformOrigin: '0 50%',
+                      transform: `rotate(${angle + 180}deg) translateY(-50%)`,
+                      opacity: Math.max(0.25, 0.4 + totalDepth * 0.003),
+                      zIndex: -1,
+                      clipPath: 'polygon(0 0%, 0 100%, 80% 90%, 100% 50%, 80% 10%)',
+                      background: component.lineGradient,
+                      boxShadow: component.lineShadow
+                    }}
+                  />
+
+                  {/* Component icon */}
+                  <div className="group relative">
+                    <div
+                      className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-r ${component.color} rounded-full flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer relative z-10`}
+                      style={{
+                        transform: `translateZ(${totalDepth}px)`,
+                      }}
+                    >
+                      {component.icon}
+                    </div>
+
+                    {/* Label */}
+                    <div className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                      isDarkMode ? 'bg-black/80 text-white' : 'bg-white/90 text-gray-900 shadow-md'
+                    }`}>
+                      {component.name}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -1207,23 +1493,12 @@ export default function LandingPage() {
             })}
           </div>
 
-          <div className="text-center mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/sign-up"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
-            >
-              Start your free trial
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+          <div className="text-center mt-12">
             <button
               onClick={() => setIsDemoModalOpen(true)}
-              className={`inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold text-lg border-2 hover:shadow-xl hover:scale-105 transition-all ${
-                isDarkMode
-                  ? 'border-white/20 text-white hover:bg-white/5'
-                  : 'border-gray-300 text-gray-900 hover:bg-gray-50'
-              }`}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
             >
-              Schedule your demo
+              Book your demo
               <Calendar className="w-5 h-5" />
             </button>
           </div>
@@ -1244,6 +1519,32 @@ export default function LandingPage() {
                 }`}>
                   Fill out the form below to get instant access to TrueFlow + 2 weeks in the Accelerator.
                 </p>
+              </div>
+
+              {/* Pricing Clarity Box */}
+              <div className={`${isDarkMode ? 'bg-gradient-to-br from-cyan-400/10 via-purple-500/10 to-transparent' : 'bg-white shadow-lg'} border ${isDarkMode ? 'border-cyan-400/30' : 'border-gray-200'} rounded-2xl p-6 mb-8`}>
+                <div className="grid gap-6 sm:grid-cols-3">
+                  <div className="text-center">
+                    <p className={`text-xs uppercase tracking-wider ${isDarkMode ? 'text-white/60' : 'text-gray-500'} mb-2`}>Today</p>
+                    <p className="text-3xl font-bold text-emerald-500">$0</p>
+                    <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>14-day free trial starts immediately</p>
+                  </div>
+                  <div className={`text-center sm:border-l sm:border-r ${isDarkMode ? 'sm:border-white/10' : 'sm:border-gray-200'} sm:px-6`}>
+                    <p className={`text-xs uppercase tracking-wider ${isDarkMode ? 'text-white/60' : 'text-gray-500'} mb-2`}>After Free Trial</p>
+                    <p className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$297<span className={`text-base font-normal ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>/mo</span></p>
+                    <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Full CRM + Automations, Chat Agents, and Constant Content Engine</p>
+                  </div>
+                  <div className="text-center">
+                    <p className={`text-xs uppercase tracking-wider ${isDarkMode ? 'text-white/60' : 'text-gray-500'} mb-2`}>After Trial - Accelerator</p>
+                    <p className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$350<span className={`text-base font-normal ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>/wk</span></p>
+                    <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Optional: live coaching + hands-on support</p>
+                  </div>
+                </div>
+                <div className={`mt-6 pt-4 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'} text-center`}>
+                  <p className={`text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    Cancel anytime before Day 14, no charge, no commitment
+                  </p>
+                </div>
               </div>
 
               {/* Progress Indicator */}
@@ -1385,7 +1686,7 @@ export default function LandingPage() {
               <p className={`text-lg ${
                 isDarkMode ? 'text-white/70' : 'text-gray-600'
               }`}>
-                Your 14-day journey from signup to fully automated operations
+                Your 14-day path to a live system we build and operate with you
               </p>
             </div>
 
@@ -1409,10 +1710,10 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    White-glove onboarding
+                    Technical Onboarding
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    Live intake, access granted, and we pull your content + data instantly.
+                    We audit your tools, connect your inboxes, calendars, forms, and pipelines, and confirm routing rules.
                   </p>
                 </div>
               </div>
@@ -1436,10 +1737,10 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Systems go live
+                    System Activation
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    Demand, content, and service workflows switch on with human QA.
+                    Lead capture, AI follow-up, scheduling, and pipeline logic go live. We handle setup and QA.
                   </p>
                 </div>
               </div>
@@ -1463,10 +1764,10 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    TrueFlow Accelerator workshop
+                    System Optimization Check-In
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    Walkthrough of marketing, sales, ops, and mindset frameworks.
+                    We review usage data and adjust timing, messaging, and automation rules to improve performance.
                   </p>
                 </div>
               </div>
@@ -1490,10 +1791,10 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Trial wrap + expansion
+                    Trial Wrap + Continuation
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    Card on file activates $297/mo membership unless you cancel.
+                    Your $297/month membership continues, or cancel before day 14. No charge.
                   </p>
                 </div>
               </div>
@@ -1510,797 +1811,7 @@ export default function LandingPage() {
             {/* Vertical Stacked Chapters */}
             <div className="flex flex-col gap-12 max-w-4xl mx-auto">
 
-            {/* Chapter 1: Once Upon A Time */}
-            <div className={`backdrop-blur-md rounded-2xl p-6 sm:p-8 border hover:border-red-500/30 transition-all duration-300 ${
-              isDarkMode ? 'bg-white/5 border-white/20' : 'bg-white border-gray-200 shadow-lg'
-            }`}>
-              <h3 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                You're Wearing Every Hat
-              </h3>
-              <div>
-                <p className={`text-base mb-6 leading-relaxed ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                  You're great at what you do. But between patient calls, property showings, coaching clients, film edits, and marketing campaigns... you're drowning in tasks that have nothing to do with your expertise. Meanwhile, leads slip through the cracks, follow-ups get forgotten, and potential revenue disappears.
-                </p>
-
-                {/* Dynamic visual - Person overwhelmed with tasks */}
-                <div className="relative bg-white/5 backdrop-blur-md rounded-xl p-8 border border-white/20 overflow-hidden">
-                  <div className="flex flex-col items-center space-y-6">
-                    {/* Central person icon with stress animation */}
-                    <div className="relative">
-                      <div className="w-20 h-20 bg-gradient-to-br from-gray-500 to-gray-700 rounded-full flex items-center justify-center animate-pulse">
-                        <Users className="h-10 w-10 text-white" />
-                      </div>
-                      
-                      {/* Orbiting tasks around the person */}
-                      {[
-                        { icon: Mail, angle: 0 },
-                        { icon: Calendar, angle: 60 },
-                        { icon: FileText, angle: 120 },
-                        { icon: BarChart3, angle: 180 },
-                        { icon: MessageSquare, angle: 240 },
-                        { icon: Target, angle: 300 }
-                      ].map((task, index) => (
-                        <div
-                          key={index}
-                          className="absolute"
-                          style={{
-                            left: '50%',
-                            top: '50%',
-                            width: '120px',
-                            height: '120px',
-                            animation: `orbit-wrapper-${task.angle} 15s linear infinite`,
-                          }}
-                        >
-                          <div
-                            className="absolute w-8 h-8 bg-red-500/20 border border-red-500/40 rounded-full flex items-center justify-center text-red-400"
-                            style={{
-                              right: '0',
-                              top: '50%',
-                              transform: 'translateY(-50%)',
-                            }}
-                          >
-                            <task.icon className="h-4 w-4" />
-                          </div>
-                        </div>
-                      ))}
-                      
-                      {/* Stress lines radiating from center */}
-                      <div className="absolute inset-0 animate-ping">
-                        <div className="w-full h-full rounded-full border-2 border-red-500/30"></div>
-                      </div>
-                    </div>
-                    
-                    <p className={`text-center font-medium animate-bounce ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                      Drowning in daily tasks
-                    </p>
-                  </div>
-                  
-                  {/* Background stress pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    {[...Array(20)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-1 h-1 bg-red-400 rounded-full animate-pulse"
-                        style={{
-                          left: `${Math.random() * 100}%`,
-                          top: `${Math.random() * 100}%`,
-                          animationDelay: `${Math.random() * 3}s`,
-                          animationDuration: `${2 + Math.random() * 2}s`
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapter 2: Then Came Automation */}
-            <div className={`backdrop-blur-md rounded-2xl p-6 sm:p-8 border hover:border-orange-500/30 transition-all duration-300 ${
-              isDarkMode ? 'bg-white/5 border-white/20' : 'bg-white border-gray-200 shadow-lg'
-            }`}>
-              <h3 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                So You Try DIY Solutions
-              </h3>
-
-              <div>
-                <p className={`text-base mb-6 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                  "Just get some software," they said. "It's easy," they said. So you sign up for CRMs, schedulers, email tools, social media managers... and now you're paying hundreds per month for tools that don't talk to each other, and you STILL have to do most of the work manually.
-                </p>
-                
-                {/* Simple Tools Grid */}
-                <div className="grid grid-cols-3 gap-2 mb-6">
-                  {[
-                    {
-                      name: 'Lead App',
-                      color: 'from-blue-500 to-blue-600',
-                      icon: Users
-                    },
-                    {
-                      name: 'Scheduler',
-                      color: 'from-orange-500 to-red-500',
-                      icon: Calendar
-                    },
-                    {
-                      name: 'Messenger',
-                      color: 'from-cyan-500 to-blue-500',
-                      icon: MessageSquare
-                    },
-                  ].map((tool, index) => (
-                    <div
-                      key={tool.name}
-                      className={`bg-gradient-to-r ${tool.color} p-3 rounded-lg text-center flex flex-col items-center justify-center`}
-                    >
-                      <tool.icon className="w-6 h-6 text-white mb-1" />
-                      <span className="text-white font-medium text-xs">{tool.name}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <p className={`text-lg font-semibold mb-4 ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>
-                  But here's the problem...
-                </p>
-
-                {/* Simple Problem Statement */}
-                <div className="bg-red-500/10 rounded-xl p-4 border border-red-500/20">
-                  <p className="text-red-400 font-semibold text-sm mb-2">Each app costs $50-$200/month</p>
-                  <p className="text-red-400 font-semibold text-sm mb-2">They don't talk to each other</p>
-                  <p className="text-red-400 font-semibold text-sm mb-2">You still do most of the work</p>
-                  <p className={`mt-3 text-xs font-semibold ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Expensive, confusing, and frustrating</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Chapter 3: Now */}
-            <div className={`backdrop-blur-md rounded-2xl p-6 sm:p-8 border-2 border-blue-500/30 hover:border-purple-500/50 transition-all duration-300 shadow-lg shadow-blue-500/10 ${
-              isDarkMode ? 'bg-gradient-to-br from-blue-500/10 to-purple-600/10' : 'bg-gradient-to-br from-blue-50 to-purple-50'
-            }`}>
-              <h3 className={`text-2xl sm:text-3xl font-bold mb-4 leading-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                We Build It. We Run It. You Reap The Benefits.
-              </h3>
-              <div>
-                <p className={`text-base mb-6 leading-relaxed ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                  We build custom automation systems that capture leads, follow up automatically, schedule appointments, send messages, and keep your business running 24/7 - while you focus on what you actually do best. No apps to learn. No tech headaches. Just results.
-                </p>
-                
-                {/* Dynamic unification visual */}
-                <div className="relative bg-gradient-to-r from-blue-500/20 to-purple-600/20 backdrop-blur-md rounded-xl p-8 border border-white/20 overflow-hidden">
-                  <div className="flex flex-col items-center space-y-6">
-                    {/* Central TrueFlow hub with converging elements */}
-                    <div className="relative w-40 h-40">
-                      {/* Central TrueFlow logo */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse">
-                          <TrueFlowLogoIcon size={32} isDarkMode={isDarkMode} />
-                        </div>
-                      </div>
-                      
-                      {/* Static positioned elements attached to lines */}
-                      {[
-                        { icon: Mail, angle: 0, name: 'Email' },
-                        { icon: Calendar, angle: 60, name: 'Scheduling' },
-                        { icon: MessageSquare, angle: 120, name: 'Texts' },
-                        { icon: Users, angle: 180, name: 'Leads' },
-                        { icon: Globe, angle: 240, name: 'Website' },
-                        { icon: Instagram, angle: 300, name: 'Social' }
-                      ].map((tool, index) => {
-                        const radians = (tool.angle - 90) * Math.PI / 180;
-                        const x = 80 + 60 * Math.cos(radians);
-                        const y = 80 + 60 * Math.sin(radians);
-                        return (
-                          <div
-                            key={tool.name}
-                            className="absolute w-6 h-6 bg-gradient-to-r from-slate-700 to-slate-800 rounded-full flex items-center justify-center shadow-lg animate-pulse"
-                            style={{
-                              left: `${x - 12}px`,
-                              top: `${y - 12}px`,
-                              animationDelay: `${index * 0.2}s`
-                            }}
-                          >
-                            <tool.icon className="h-3 w-3 text-white" />
-                          </div>
-                        );
-                      })}
-                      
-                      {/* Connecting lines that pulse */}
-                      <svg className="absolute inset-0 w-full h-full" viewBox="0 0 160 160">
-                        {/* Lines for all 6 icons */}
-                        {[0, 60, 120, 180, 240, 300].map((angle, index) => {
-                          const radians = (angle - 90) * Math.PI / 180;
-                          const x = 80 + 60 * Math.cos(radians);
-                          const y = 80 + 60 * Math.sin(radians);
-                          return (
-                            <line
-                              key={angle}
-                              x1="80"
-                              y1="80"
-                              x2={x}
-                              y2={y}
-                              stroke="url(#connectionGradient)"
-                              strokeWidth="2"
-                              className="animate-pulse"
-                              style={{
-                                animationDelay: `${index * 0.3}s`,
-                                animationDuration: '2s'
-                              }}
-                            />
-                          );
-                        })}
-                        <defs>
-                          <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.8" />
-                            <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0.3" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                      
-                      {/* Energy rings */}
-                      <div className="absolute inset-0 animate-ping">
-                        <div className="w-full h-full rounded-full border border-blue-400/30"></div>
-                      </div>
-                      <div className="absolute inset-4 animate-ping" style={{ animationDelay: '0.5s' }}>
-                        <div className="w-full h-full rounded-full border border-purple-400/30"></div>
-                      </div>
-                    </div>
-                    
-                    <p className={`text-center font-bold text-lg ${
-                      isDarkMode
-                        ? 'bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent'
-                        : 'text-gray-900'
-                    }`}>
-                      We handle the tech. You run your business.
-                    </p>
-                    
-                    {/* Success indicators */}
-                    <div className="flex items-center justify-center space-x-6 text-green-400">
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-5 w-5 animate-pulse" />
-                        <span className="text-sm font-medium">Done For You</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-5 w-5 animate-pulse" style={{ animationDelay: '0.5s' }} />
-                        <span className="text-sm font-medium">Simple Pricing</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <CheckCircle className="h-5 w-5 animate-pulse" style={{ animationDelay: '1s' }} />
-                        <span className="text-sm font-medium">Real Results</span>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Background harmony pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    {[...Array(15)].map((_, i) => (
-                      <div
-                        key={i}
-                        className="absolute w-2 h-2 bg-blue-400 rounded-full animate-pulse"
-                        style={{
-                          left: `${20 + (i % 3) * 30}%`,
-                          top: `${20 + Math.floor(i / 3) * 20}%`,
-                          animationDelay: `${i * 0.3}s`,
-                          animationDuration: '3s'
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-
-            {/* USP and Clear Offer */}
-            <div className="text-center mt-16 sm:mt-20 lg:mt-24 max-w-4xl mx-auto">
-              <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border-2 shadow-2xl ${
-                isDarkMode
-                  ? 'bg-gradient-to-br from-blue-500/20 to-purple-600/20 border-blue-500/40 shadow-blue-500/20'
-                  : 'bg-white border-blue-200 shadow-blue-200'
-              }`}>
-                <h3 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${
-                  isDarkMode ? 'text-white' : 'text-gray-900'
-                }`}>
-                  Our Promise: More Leads. Less Work. Real Results.
-                </h3>
-                <p className={`text-xl mb-8 leading-relaxed ${isDarkMode ? 'text-white/80' : 'text-gray-600'}`}>
-                  We build custom automation that works 24/7 to capture leads, follow up instantly, schedule appointments, and keep your pipeline full - so you can focus on serving your clients, not chasing them.
-                </p>
-
-                {/* Key Benefits */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-                  <div className={`rounded-xl p-6 border ${
-                    isDarkMode ? 'bg-white/5 border-white/20' : 'bg-gray-50 border-gray-200'
-                  }`}>
-                    <CheckCircle className="h-10 w-10 text-green-400 mb-3 mx-auto" />
-                    <h4 className={`font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Done For You</h4>
-                    <p className={`${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>
-                      We build it, manage it, and optimize it
-                    </p>
-                  </div>
-                  <div className={`rounded-xl p-6 border ${
-                    isDarkMode ? 'bg-white/5 border-white/20' : 'bg-gray-50 border-gray-200'
-                  }`}>
-                    <Clock className="h-10 w-10 text-blue-400 mb-3 mx-auto" />
-                    <h4 className={`font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Works 24/7</h4>
-                    <p className={`${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>
-                      Never miss a lead, even while you sleep
-                    </p>
-                  </div>
-                  <div className={`rounded-xl p-6 border ${
-                    isDarkMode ? 'bg-white/5 border-white/20' : 'bg-gray-50 border-gray-200'
-                  }`}>
-                    <Target className="h-10 w-10 text-purple-400 mb-3 mx-auto" />
-                    <h4 className={`font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Custom Built</h4>
-                    <p className={`${isDarkMode ? 'text-white/70' : 'text-gray-600'} text-sm`}>
-                      Tailored to your business, not one-size-fits-all
-                    </p>
-                  </div>
-                </div>
-
-                {/* Strong CTA */}
-                <Link
-                  href="/sign-up"
-                  className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
-                >
-                  <span>Get started here</span>
-                  <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
-                </Link>
-                <p className={`text-sm mt-4 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>No commitment. No credit card. Just honest advice about what automation can do for your business.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Carousel Section */}
-      <section id="features" className="py-12 sm:py-16 lg:py-20 px-4 overflow-hidden pt-16 sm:pt-24 lg:pt-32" ref={featuresRef}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              What Makes TrueFlow Different
-            </h2>
-            <p className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto mb-6 sm:mb-8 px-4 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-              We don't just sell you software. We build, manage, and optimize your entire automation system - so you can focus on running your business.
-            </p>
-          </div>
-
-          {/* Modern Feature Grid */}
-          <div className="relative">
-            {/* Feature Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-12">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className={`group relative backdrop-blur-sm rounded-2xl p-6 lg:p-8 border transition-all duration-500 cursor-pointer ${
-                    isDarkMode
-                      ? `bg-white/5 border-white/10 hover:border-white/15 hover:bg-white/7 ${index === currentFeatureIndex ? 'ring-1 ring-blue-500/30 bg-white/8' : ''}`
-                      : `bg-white border-gray-200 hover:border-gray-300 shadow-md hover:shadow-lg ${index === currentFeatureIndex ? 'ring-1 ring-blue-500/30 shadow-xl' : ''}`
-                  }`}
-                  onClick={() => setCurrentFeatureIndex(index)}
-                  style={{
-                    animationDelay: `${feature.delay}ms`
-                  }}
-                >
-                  {/* Gradient border effect */}
-                  <div 
-                    className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-500 ${
-                      index === currentFeatureIndex ? 'opacity-20' : ''
-                    }`}
-                    style={{
-                      background: `linear-gradient(135deg, ${
-                        feature.gradient.includes('from-blue-500') && feature.gradient.includes('to-cyan-500') ? '#3b82f6, #06b6d4' :
-                        feature.gradient.includes('from-purple-500') && feature.gradient.includes('to-pink-500') ? '#8b5cf6, #ec4899' :
-                        feature.gradient.includes('from-green-500') && feature.gradient.includes('to-emerald-500') ? '#10b981, #059669' :
-                        feature.gradient.includes('from-orange-500') && feature.gradient.includes('to-red-500') ? '#f97316, #ef4444' :
-                        '#3b82f6, #06b6d4'
-                      })`,
-                      filter: 'blur(20px)',
-                      zIndex: -1
-                    }}
-                  />
-                  
-                  {/* Icon */}
-                  <div className={`mb-6 text-white transition-all duration-500 flex items-center justify-center w-16 h-16 rounded-xl ${
-                    `bg-gradient-to-br ${feature.gradient}`
-                  } group-hover:scale-105`}>
-                    <div className="scale-75">
-                      {feature.icon}
-                    </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <h3 className={`text-xl lg:text-2xl font-bold mb-4 transition-colors duration-300 ${
-                    isDarkMode ? 'text-white group-hover:text-blue-300' : 'text-gray-900 group-hover:text-blue-500'
-                  }`}>
-                    {feature.title}
-                  </h3>
-                  <p className={`leading-relaxed mb-6 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                    {feature.description}
-                  </p>
-
-                  {/* Learn More Link */}
-                  <Link href="/content-engine" className={`flex items-center transition-colors duration-300 group-hover:translate-x-2 ${
-                    isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-500 hover:text-blue-600'
-                  }`}>
-                    <span className="font-medium">Learn More</span>
-                    <ArrowRight className="h-4 w-4 ml-2 transition-transform duration-300" />
-                  </Link>
-                </div>
-              ))}
-            </div>
-            
-            {/* Navigation Dots */}
-            <div className="flex justify-center space-x-3">
-              {features.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentFeatureIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentFeatureIndex
-                      ? 'bg-blue-500 scale-125'
-                      : isDarkMode ? 'bg-white/30 hover:bg-white/50' : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced How It Works */}
-      <section id="how-it-works" className="py-16 sm:py-24 lg:py-32 px-4" ref={howItWorksRef}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className={`text-5xl md:text-7xl font-bold mb-8 transition-all duration-1000 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              How It Works
-            </h2>
-            <p className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto px-4 transition-all duration-1000 ${
-              isDarkMode ? 'text-white/70' : 'text-gray-600'
-            }`}>
-              We handle the tech stuff. You focus on your business.
-            </p>
-          </div>
-
-          {/* Animated Progress Line */}
-          <div className="relative mb-20">
-            <div className={`hidden md:block absolute top-16 left-1/2 transform -translate-x-1/2 w-2/3 h-1 rounded-full ${
-              isDarkMode ? 'bg-white/20' : 'bg-gray-200'
-            }`}>
-              <div className={`h-full bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 rounded-full transition-all duration-2000 ${
-                'w-full'
-              }`}></div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12 relative px-4 sm:px-0">
-            {[
-              {
-                step: 1,
-                title: "Start Here",
-                description: "Tell us about your business and the challenges you face. We'll identify where automation can save you time and make you money.",
-                icon: <MessageSquare className="h-16 w-16" strokeWidth={1.5} />,
-                color: "from-green-500 to-emerald-600",
-                animation: "slide-in-left"
-              },
-              {
-                step: 2,
-                title: "We Build Your System",
-                description: "Our team creates custom automations tailored to your business. Lead capture, follow-ups, scheduling, messaging - whatever you need.",
-                icon: <Brain className="h-16 w-16" strokeWidth={1.5} />,
-                color: "from-blue-500 to-purple-600",
-                animation: "slide-in-up"
-              },
-              {
-                step: 3,
-                title: "You Get Results",
-                description: "Your automations start working immediately. More leads captured, faster follow-ups, happier customers. Plus you get beta access to our software.",
-                icon: <TrendingUp className="h-16 w-16" strokeWidth={1.5} />,
-                color: "from-purple-500 to-pink-600",
-                animation: "slide-in-right"
-              }
-            ].map((step, index) => (
-              <div
-                key={index}
-                className={`text-center group backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 relative transition-all duration-700 transform-gpu perspective-1000 ${
-                  isDarkMode
-                    ? 'bg-black/40 border border-white/20 hover:bg-black/60 hover:border-white/30'
-                    : 'bg-white border border-gray-200 shadow-md hover:shadow-xl hover:border-gray-300'
-                }`}
-                style={{
-                  transformStyle: 'preserve-3d',
-                  transition: 'transform 0.6s cubic-bezier(0.23, 1, 0.320, 1)'
-                }}
-                onMouseEnter={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  const centerX = rect.left + rect.width / 2
-                  const centerY = rect.top + rect.height / 2
-                  const mouseX = e.clientX - centerX
-                  const mouseY = e.clientY - centerY
-                  const rotateX = (mouseY / rect.height) * -20
-                  const rotateY = (mouseX / rect.width) * 20
-                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px) scale(1.05)`
-                }}
-                onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  const centerX = rect.left + rect.width / 2
-                  const centerY = rect.top + rect.height / 2
-                  const mouseX = e.clientX - centerX
-                  const mouseY = e.clientY - centerY
-                  const rotateX = (mouseY / rect.height) * -20
-                  const rotateY = (mouseX / rect.width) * 20
-                  e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px) scale(1.05)`
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
-                }}
-              >
-                {/* Animated background gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-
-                {/* Floating microparticles */}
-                <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  {[...Array(8)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="absolute w-1 h-1 bg-white/40 rounded-full animate-[icon-float_3s_ease-in-out_infinite]"
-                      style={{
-                        left: `${15 + i * 10}%`,
-                        top: `${20 + (i % 3) * 25}%`,
-                        animationDelay: `${i * 0.4}s`
-                      }}
-                    />
-                  ))}
-                </div>
-
-                <div className="relative mb-8 sm:mb-10 lg:mb-12 transform transition-all duration-500 group-hover:scale-105" style={{ margin: '2rem 0.5rem 2rem 0.5rem' }}>
-                  {/* Animated circle with gentle glow */}
-                  <div className={`w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-gradient-to-r ${step.color} rounded-full flex items-center justify-center mx-auto text-white shadow-xl group-hover:shadow-2xl transition-all duration-500 relative ${
-                    ''
-                  }`} style={{ animationDelay: `${index * 500}ms` }}>
-                    {/* Gentle rings */}
-                    <div className="absolute inset-0 rounded-full border-2 border-white/20 opacity-0 group-hover:opacity-40 transition-opacity duration-500"></div>
-                    <div className="absolute inset-2 rounded-full border border-white/10 opacity-50"></div>
-                    
-                    {/* Icon with gentle animation */}
-                    <div className={`transform transition-all duration-500 group-hover:scale-105 ${
-                      ''
-                    }`} style={{ animationDelay: `${index * 700}ms` }}>
-                      {step.icon}
-                    </div>
-                  </div>
-
-                  {/* Step number with enhanced styling - positioned to not get cut off */}
-                  <AnimatedStepNumber stepNumber={step.step} index={index} visible={howItWorksVisible} />
-                </div>
-
-                {/* Title with typewriter effect */}
-                <h3
-                  className={`text-xl sm:text-2xl font-bold mb-3 sm:mb-4 transition-all duration-500 ${
-                    isDarkMode ? 'text-white group-hover:text-blue-100' : 'text-gray-900 group-hover:text-blue-600'
-                  } translate-y-0 opacity-100`}
-                  style={{ transitionDelay: `${index * 300 + 1000}ms` }}
-                >
-                  {step.title}
-                </h3>
-
-                {/* Description with slide-in */}
-                <p
-                  className={`leading-relaxed text-sm sm:text-base lg:text-lg transition-all duration-500 ${
-                    isDarkMode ? 'text-white/70 group-hover:text-white/90' : 'text-gray-600 group-hover:text-gray-800'
-                  } translate-y-0 opacity-100`}
-                  style={{ transitionDelay: `${index * 300 + 1200}ms` }}
-                >
-                  {step.description}
-                </p>
-
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Flow Mode Feature Spotlight */}
-      <section id="flow-mode" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-        {/* Gradient background */}
-        <div className={`absolute inset-0 ${
-          isDarkMode ? 'bg-gradient-to-b from-purple-500/10 to-black' : 'bg-gradient-to-b from-purple-50 via-white to-white'
-        }`}></div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Content */}
-            <div className="space-y-6">
-              <div className={`inline-block px-4 py-2 rounded-full border ${
-                isDarkMode ? 'bg-purple-500/20 border-purple-500/30' : 'bg-purple-100 border-purple-200'
-              }`}>
-                <span className={`text-sm font-semibold ${isDarkMode ? 'text-purple-200' : 'text-purple-700'}`}>✨ Available Now</span>
-              </div>
-
-              <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Introducing <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Flow Mode</span>
-              </h2>
-
-              <p className={`text-xl leading-relaxed ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                The AI productivity system that turns scattered thoughts into organized action.
-                Stop using 5 different apps to plan your day.
-              </p>
-
-              <div className="space-y-4 pt-4">
-                <div className="flex items-start space-x-4">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                    isDarkMode ? 'bg-purple-500/20' : 'bg-purple-100'
-                  }`}>
-                    <Mic className="h-4 w-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className={`font-semibold mb-1 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>1. Brain Dump</h4>
-                    <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>Record everything on your mind in one voice memo</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                    isDarkMode ? 'bg-purple-500/20' : 'bg-purple-100'
-                  }`}>
-                    <Brain className="h-4 w-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className={`font-semibold mb-1 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>2. AI Extraction</h4>
-                    <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>Watch AI extract tasks and prioritize your day</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                    isDarkMode ? 'bg-purple-500/20' : 'bg-purple-100'
-                  }`}>
-                    <Target className="h-4 w-4 text-purple-400" />
-                  </div>
-                  <div>
-                    <h4 className={`font-semibold mb-1 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>3. Execute with Focus</h4>
-                    <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>One task at a time, zero distractions</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full font-bold hover:from-purple-700 hover:to-pink-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <span>Try Flow Mode Free</span>
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Right: Visual */}
-            <div className="relative">
-              <div className={`rounded-2xl p-8 border backdrop-blur-md ${
-                isDarkMode ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20 border-purple-500/30' : 'bg-white border-purple-100 shadow-xl'
-              }`}>
-                <div className="space-y-4">
-                  <div className={`${isDarkMode ? 'bg-black/40 border border-white/10' : 'bg-gray-50 border border-gray-200'} rounded-lg p-4`}>
-                    <p className={`${isDarkMode ? 'text-white/60' : 'text-gray-500'} text-sm mb-2`}>🎤 Voice Input</p>
-                    <p className={isDarkMode ? 'text-white/90' : 'text-gray-800'}>&quot;I need to finish the client proposal, schedule team meeting, and respond to that urgent email...&quot;</p>
-                  </div>
-
-                  <div className="flex items-center justify-center py-2">
-                    <ArrowRight className="h-6 w-6 text-purple-400" />
-                  </div>
-
-                  <div className={`${isDarkMode ? 'bg-black/40 border border-white/10' : 'bg-gray-50 border border-gray-200'} rounded-lg p-4 space-y-2`}>
-                    <p className={`${isDarkMode ? 'text-white/60' : 'text-gray-500'} text-sm mb-2`}>✨ AI Extracted Tasks</p>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-4 h-4 bg-red-500/30 border border-red-500 rounded"></div>
-                      <span className={`text-sm ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>Finish client proposal (High Priority)</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-4 h-4 bg-yellow-500/30 border border-yellow-500 rounded"></div>
-                      <span className={`text-sm ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>Schedule team meeting (Medium)</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <div className="w-4 h-4 bg-green-500/30 border border-green-500 rounded"></div>
-                      <span className={`text-sm ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>Respond to urgent email (Low)</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Chat Widget Feature Spotlight */}
-      <section id="chat-widgets" className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
-        {/* Gradient background */}
-        <div className={`absolute inset-0 ${
-          isDarkMode ? 'bg-gradient-to-b from-blue-500/10 to-black' : 'bg-gradient-to-b from-blue-50 via-white to-white'
-        }`}></div>
-
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Visual */}
-            <div className="order-2 lg:order-1 relative">
-              <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl p-8 border border-blue-500/30 backdrop-blur-md">
-                {/* Mockup of website with chat widget */}
-                <div className="bg-black/60 rounded-lg p-6 space-y-4 relative min-h-[400px]">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-1">
-                      <div className="h-3 w-32 bg-white/20 rounded"></div>
-                      <div className="h-2 w-48 bg-white/10 rounded"></div>
-                    </div>
-                  </div>
-
-                  {/* Chat widget mockup */}
-                  <div className="absolute bottom-8 right-8">
-                    <div className="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center shadow-2xl shadow-blue-500/50 animate-pulse">
-                      <MessageCircle className="h-8 w-8 text-white" />
-                    </div>
-
-                    {/* Chat window */}
-                    <div className="absolute bottom-20 right-0 bg-black/90 backdrop-blur-md rounded-2xl border border-blue-500/30 p-4 w-80 shadow-2xl">
-                      <div className="flex items-center justify-between mb-4">
-                        <span className="text-white font-semibold">TrueFlow Assistant</span>
-                        <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                      </div>
-                      <div className="space-y-3">
-                        <div className="bg-blue-500/20 rounded-lg p-3">
-                          <p className="text-white/90 text-sm">Hi! How can I help you today?</p>
-                        </div>
-                        <div className="bg-white/10 rounded-lg p-3">
-                          <p className="text-white/70 text-sm">Tell me about your services</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Content */}
-            <div className="order-1 lg:order-2 space-y-6">
-              <div className={`inline-block px-4 py-2 rounded-full border ${
-                isDarkMode ? 'bg-blue-500/20 border-blue-500/30' : 'bg-blue-100 border-blue-200'
-              }`}>
-                <span className={`text-sm font-semibold ${isDarkMode ? 'text-blue-200' : 'text-blue-700'}`}>✨ Available Now</span>
-              </div>
-
-              <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                AI Chat Widgets
-              </h2>
-
-              <p className={`text-xl leading-relaxed ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                Turn website visitors into conversations. Add intelligent AI assistants to any site
-                in 60 seconds. Capture leads, answer questions, and engage 24/7.
-              </p>
-
-              <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className={isDarkMode ? 'text-white/90' : 'text-gray-800'}>Fully customizable</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className={isDarkMode ? 'text-white/90' : 'text-gray-800'}>Unlimited websites</span>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className={isDarkMode ? 'text-white/90' : 'text-gray-800'}>Lead capture</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <CheckCircle className="h-5 w-5 text-green-400" />
-                    <span className={isDarkMode ? 'text-white/90' : 'text-gray-800'}>Real-time analytics</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <Link href="/ai-readiness-assessment" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-cyan-700 hover:shadow-xl hover:scale-105 transition-all duration-300">
-                  <span>Create Your Widget</span>
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -2314,21 +1825,18 @@ export default function LandingPage() {
               : 'bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200'
           }`}>
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              Ready to Save 10+ Hours a Week and Book More Clients?
+              See How We Build and Run Your System With You
             </h2>
-            <p className={`text-xl mb-4 max-w-2xl mx-auto ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-              Get a free 30-minute assessment and discover exactly how automation can save you time, capture more leads, and grow your revenue.
+            <p className={`text-xl mb-8 max-w-2xl mx-auto ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+              Book a demo to see how we handle setup, management, and optimization while you stay focused on your business.
             </p>
-            <p className="text-base text-blue-500 mb-8">
-              See your custom automation roadmap - no commitment required
-            </p>
-            <Link
-              href="/sign-up"
+            <button
+              onClick={() => setIsDemoModalOpen(true)}
               className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
             >
-              <span>Get started here</span>
+              <span>Book Your Demo</span>
               <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -2894,186 +2402,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 sm:py-24 lg:py-32 px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Pricing Section Header */}
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              Custom Packages for Your Business
-            </h2>
-            <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-white/80' : 'text-gray-600'}`}>
-              Every business is different. We build automation packages tailored to your specific needs and budget.
-            </p>
-          </div>
-
-              {/* Pricing Options */}
-              <div ref={pricingRef} className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 max-w-6xl mx-auto">
-                {/* Plan 1: Starter */}
-                <div className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu ${
-                  isDarkMode
-                    ? 'bg-white/5 border-white/20 hover:bg-white/10'
-                    : 'bg-white border-gray-200 shadow-sm hover:shadow-lg hover:border-blue-200'
-                }`}>
-                  <div className="text-center mb-6">
-                    <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                      Starter Package
-                    </h3>
-                    <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Custom Pricing</span>
-                    </div>
-                    <p className={`text-sm font-semibold mb-2 ${isDarkMode ? 'text-blue-400' : 'text-blue-600'}`}>
-                      Best for: New businesses getting started
-                    </p>
-                    <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                      Perfect for small businesses just getting started with automation
-                    </p>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    {[
-                      'Basic lead capture setup',
-                      'Automated follow-up messages',
-                      'Simple scheduling system',
-                      'Email & SMS notifications',
-                      'Beta software access',
-                      'Email support',
-                      'Monthly check-ins'
-                    ].map((feature, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Link
-                    href="/sign-up"
-                    className={`bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-4 rounded-full font-bold hover:from-gray-700 hover:to-gray-800 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 text-lg relative overflow-hidden group ${
-                      isDarkMode ? 'border-gray-500' : 'border-gray-300'
-                    }`}
-                  >
-                    <span className="relative z-10">Get started here</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                  </Link>
-                </div>
-
-                {/* Plan 2: Growth Package */}
-                <div className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu scale-105 ring-2 ${
-                  isDarkMode
-                    ? 'bg-gradient-to-r from-blue-500/20 to-purple-600/20 border-blue-500 ring-purple-500'
-                    : 'bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 ring-purple-200 shadow-xl'
-                }`}>
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                      Most Popular
-                    </span>
-                  </div>
-
-                  <div className="text-center mb-6">
-                    <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                      Growth Package
-                    </h3>
-                    <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Custom Pricing</span>
-                    </div>
-                    <p className={`text-sm font-semibold mb-2 ${isDarkMode ? 'text-purple-300' : 'text-purple-600'}`}>
-                      Best for: Teams ready to automate and scale
-                    </p>
-                    <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>For established businesses ready to scale</p>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    {[
-                      'Everything in Starter',
-                      'Advanced lead nurturing workflows',
-                      'Multi-channel communication',
-                      'Social media automation',
-                      'Review request automation',
-                      'Beta software access',
-                      'Priority phone support',
-                      'Bi-weekly optimization calls'
-                    ].map((feature, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Link
-                    href="/sign-up"
-                    className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-8 py-4 rounded-full font-bold hover:from-blue-700 hover:to-purple-700 hover:shadow-xl hover:scale-105 transition-all duration-300 w-full block text-center border-2 border-blue-500 text-lg relative overflow-hidden group"
-                  >
-                    <span className="relative z-10">Get started here</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent transform translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-                  </Link>
-                </div>
-
-                {/* Plan 3: Enterprise Package */}
-                <div className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer transform-gpu ${
-                  isDarkMode
-                    ? 'bg-white/5 border-white/20 hover:bg-white/10'
-                    : 'bg-white border-gray-200 shadow-sm hover:shadow-lg hover:border-purple-200'
-                }`}>
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                    <span className={`px-4 py-1 rounded-full text-sm font-semibold border ${
-                      isDarkMode ? 'bg-purple-500/20 text-purple-300 border-purple-500/30' : 'bg-purple-100 text-purple-700 border-purple-200'
-                    }`}>
-                      White Glove
-                    </span>
-                  </div>
-
-                  <div className="text-center mb-6">
-                    <h3 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                      Enterprise Package
-                    </h3>
-                    <div className="flex items-center justify-center space-x-1 mb-4">
-                      <span className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Custom Pricing</span>
-                    </div>
-                    <p className={`text-sm font-semibold mb-2 ${isDarkMode ? 'text-purple-300' : 'text-purple-600'}`}>
-                      Best for: Growing businesses scaling operations
-                    </p>
-                    <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>Complete automation with dedicated support</p>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    {[
-                      'Everything in Growth',
-                      'Custom integrations',
-                      'Advanced CRM workflows',
-                      'Full sales pipeline automation',
-                      'Marketing campaign automation',
-                      'Beta software access',
-                      'Dedicated account manager',
-                      'Weekly strategy calls',
-                      'Unlimited support & revisions'
-                    ].map((feature, index) => (
-                      <div key={index} className="flex items-center space-x-3">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
-                        <span className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <Link
-                    href="/sign-up"
-                    className={`w-full py-4 px-6 rounded-full font-semibold transition-all block text-center ${
-                      isDarkMode
-                        ? 'bg-white/10 text-white hover:bg-white/20 border border-white/20'
-                        : 'bg-purple-600 text-white hover:bg-purple-700 shadow border border-purple-600'
-                    }`}
-                  >
-                    Get started here
-                  </Link>
-                </div>
-
-              </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className={`py-16 sm:py-24 lg:py-32 px-4 ${isDarkMode ? 'bg-black/40' : 'bg-gray-50'}`}>
         <div className="max-w-4xl mx-auto">
@@ -3140,7 +2468,7 @@ export default function LandingPage() {
           <div className="text-center mt-12">
             <p className={`text-lg mb-6 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Still have questions?</p>
             <Link href="/sign-up" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
-              <span>Get started here</span>
+              <span>Book your live demo</span>
               <ChevronRight className="h-5 w-5" />
             </Link>
           </div>
