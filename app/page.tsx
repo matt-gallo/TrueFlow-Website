@@ -978,7 +978,7 @@ export default function LandingPage() {
         <div className="max-w-4xl mx-auto w-full">
           <div className="text-center space-y-6 sm:space-y-8">
             <div>
-              <h1 className={`text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-10xl font-bold mb-4 sm:mb-6 mt-8 sm:mt-12 leading-tight px-2 ${
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 mt-8 sm:mt-12 leading-tight px-2 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
                 We install systems that book sales calls for you 24/7.
@@ -1019,59 +1019,44 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Trust Signals Scrolling Banner */}
+      {/* Trust Signals Auto-Scrolling Banner */}
       <section className={`py-12 mt-16 overflow-hidden relative ${
         isDarkMode ? 'bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-blue-900/20' : 'bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50'
       }`}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5"></div>
 
-        {/* Scrolling Container */}
-        <div className="relative flex animate-scroll-banner">
-          {/* First set of stats */}
-          <div className="flex items-center space-x-16 px-8 flex-shrink-0">
-            {stats.map((stat, idx) => (
-              <div key={`stat-1-${idx}`} className="flex items-center space-x-4 min-w-[300px]">
-                <div className={`p-4 rounded-2xl ${
-                  isDarkMode ? 'bg-white/10' : 'bg-white shadow-sm'
-                }`}>
-                  {stat.icon}
-                </div>
-                <div>
-                  <p className={`text-4xl font-bold ${
-                    isDarkMode ? 'text-white' : 'text-gray-900'
+        {/* Auto-scrolling Container */}
+        <div className="relative">
+          <div
+            className="flex transition-transform duration-700 ease-out"
+            style={{
+              transform: `translateX(-${trustSignalIndex * 100}%)`
+            }}
+          >
+            {/* Render stats multiple times for seamless loop */}
+            {[...stats, ...stats, ...stats].map((stat, idx) => (
+              <div
+                key={idx}
+                className="flex-shrink-0 w-full flex items-center justify-center px-8"
+              >
+                <div className="flex items-center space-x-4">
+                  <div className={`p-4 rounded-2xl ${
+                    isDarkMode ? 'bg-white/10' : 'bg-white shadow-sm'
                   }`}>
-                    {stat.value}
-                  </p>
-                  <p className={`text-sm ${
-                    isDarkMode ? 'text-white/70' : 'text-gray-600'
-                  }`}>
-                    {stat.label}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Duplicate set for seamless loop */}
-          <div className="flex items-center space-x-16 px-8 flex-shrink-0">
-            {stats.map((stat, idx) => (
-              <div key={`stat-2-${idx}`} className="flex items-center space-x-4 min-w-[300px]">
-                <div className={`p-4 rounded-2xl ${
-                  isDarkMode ? 'bg-white/10' : 'bg-white shadow-sm'
-                }`}>
-                  {stat.icon}
-                </div>
-                <div>
-                  <p className={`text-4xl font-bold ${
-                    isDarkMode ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    {stat.value}
-                  </p>
-                  <p className={`text-sm ${
-                    isDarkMode ? 'text-white/70' : 'text-gray-600'
-                  }`}>
-                    {stat.label}
-                  </p>
+                    {stat.icon}
+                  </div>
+                  <div>
+                    <p className={`text-4xl font-bold ${
+                      isDarkMode ? 'text-white' : 'text-gray-900'
+                    }`}>
+                      {stat.value}
+                    </p>
+                    <p className={`text-sm ${
+                      isDarkMode ? 'text-white/70' : 'text-gray-600'
+                    }`}>
+                      {stat.label}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -1145,10 +1130,6 @@ export default function LandingPage() {
                     <div className="w-full h-full rounded-full border-2 border-red-500/30"></div>
                   </div>
                 </div>
-
-                <p className={`text-center font-medium animate-bounce ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                  Drowning in daily tasks
-                </p>
               </div>
 
               {/* Background stress pattern */}
@@ -1307,26 +1288,26 @@ export default function LandingPage() {
           </div>
 
           {/* Orbital Animation Container */}
-          <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] lg:min-h-[600px] mb-12" style={{ perspective: '1000px' }}>
-            {/* Central TrueFlow Logo */}
+          <div className="relative flex items-center justify-center min-h-[500px] sm:min-h-[600px] lg:min-h-[800px] mb-12" style={{ perspective: '1000px' }}>
+            {/* Central TrueFlow Symbol */}
             <div className="absolute z-10">
               {/* Outer glow ring */}
-              <div className="absolute inset-0 w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full blur-2xl opacity-75"
+              <div className="absolute inset-0 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full blur-2xl opacity-75"
                 style={{
-                  background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.8) 0%, rgba(139, 92, 246, 0.6) 30%, rgba(59, 130, 246, 0.4) 50%, transparent 70%)',
+                  background: 'radial-gradient(circle at center, rgba(14, 165, 233, 0.8) 0%, rgba(8, 145, 178, 0.6) 30%, rgba(14, 165, 233, 0.4) 50%, transparent 70%)',
                   transform: 'translate(-50%, -50%)',
                   top: '50%',
                   left: '50%'
                 }}
               />
 
-              {/* Main logo container */}
-              <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 flex items-center justify-center relative">
+              {/* Main symbol container */}
+              <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex items-center justify-center relative">
                 {/* Enhanced glow effect */}
                 <div
                   className="absolute inset-0 rounded-full blur-xl"
                   style={{
-                    background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.6) 0%, rgba(139, 92, 246, 0.4) 30%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)',
+                    background: 'radial-gradient(circle at center, rgba(8, 145, 178, 0.6) 0%, rgba(8, 145, 178, 0.4) 30%, rgba(14, 165, 233, 0.2) 50%, transparent 70%)',
                   }}
                 />
 
@@ -1334,70 +1315,90 @@ export default function LandingPage() {
                 <div
                   className="absolute inset-2 rounded-full blur-lg"
                   style={{
-                    background: 'radial-gradient(circle at center, rgba(59, 130, 246, 0.5) 0%, rgba(139, 92, 246, 0.3) 50%, transparent 70%)',
+                    background: 'radial-gradient(circle at center, rgba(14, 165, 233, 0.5) 0%, rgba(14, 165, 233, 0.3) 50%, transparent 70%)',
                   }}
                 />
 
-                <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-2xl shadow-blue-500/50 relative z-10">
-                  <TrueFlowLogoIcon size={typeof window !== 'undefined' && window.innerWidth < 640 ? 24 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 32 : 40} isDarkMode={isDarkMode} />
-                </div>
+                <Image
+                  src="/brand-kit/true-flow-logo-no-text.png"
+                  alt="TrueFlow System"
+                  width={60}
+                  height={60}
+                  className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain relative z-10 drop-shadow-[0_0_15px_rgba(14,165,233,0.8)]"
+                />
               </div>
             </div>
 
-            {/* Orbiting System Components */}
+            {/* Orbiting Integration Icons */}
             {[
               {
-                name: 'Lead Capture',
-                icon: <Users className="w-5 h-5 sm:w-6 sm:h-6" />,
-                color: 'from-blue-400 to-blue-600',
-                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(37, 99, 235, 0.35) 60%, #2563eb 100%)',
-                lineShadow: '0 0 12px rgba(37, 99, 235, 0.35)'
+                name: 'Instagram',
+                logo: <Instagram className="w-8 h-8" />,
+                color: 'from-pink-400 to-purple-500',
               },
               {
-                name: 'AI Follow-up',
-                icon: <Brain className="w-5 h-5 sm:w-6 sm:h-6" />,
-                color: 'from-purple-400 to-purple-600',
-                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(147, 51, 234, 0.35) 60%, #9333ea 100%)',
-                lineShadow: '0 0 12px rgba(147, 51, 234, 0.35)'
+                name: 'Facebook',
+                logo: <Facebook className="w-8 h-8" />,
+                color: 'from-blue-500 to-blue-600',
               },
               {
-                name: 'Scheduling',
-                icon: <Calendar className="w-5 h-5 sm:w-6 sm:h-6" />,
-                color: 'from-cyan-400 to-cyan-600',
-                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(6, 182, 212, 0.35) 60%, #06b6d4 100%)',
-                lineShadow: '0 0 12px rgba(6, 182, 212, 0.35)'
+                name: 'WhatsApp',
+                logo: (
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                  </svg>
+                ),
+                color: 'from-green-400 to-green-500',
               },
               {
-                name: 'Pipeline',
-                icon: <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6" />,
+                name: 'YouTube',
+                logo: <Youtube className="w-8 h-8" />,
+                color: 'from-red-500 to-red-600',
+              },
+              {
+                name: 'Discord',
+                logo: (
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0190 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9460 2.4189-2.1568 2.4189z"/>
+                  </svg>
+                ),
+                color: 'from-indigo-400 to-purple-500',
+              },
+              {
+                name: 'X',
+                logo: (
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+                  </svg>
+                ),
+                color: 'from-gray-700 to-black',
+              },
+              {
+                name: 'Zapier',
+                logo: <Zap className="w-8 h-8" />,
+                color: 'from-orange-500 to-red-500',
+              },
+              {
+                name: 'GoHighLevel',
+                logo: (
+                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3 8V22H5V8H8L4 3L0 8H3Z"/>
+                    <path d="M11 13V22H13V13H16L12 8L8 13H11Z"/>
+                    <path d="M19 8V22H21V8H24L20 3L16 8H19Z"/>
+                  </svg>
+                ),
                 color: 'from-green-400 to-green-600',
-                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(16, 185, 129, 0.35) 60%, #10b981 100%)',
-                lineShadow: '0 0 12px rgba(16, 185, 129, 0.35)'
-              },
-              {
-                name: 'Content',
-                icon: <FileText className="w-5 h-5 sm:w-6 sm:h-6" />,
-                color: 'from-orange-400 to-orange-600',
-                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(249, 115, 22, 0.35) 60%, #f97316 100%)',
-                lineShadow: '0 0 12px rgba(249, 115, 22, 0.35)'
-              },
-              {
-                name: 'Analytics',
-                icon: <BarChart3 className="w-5 h-5 sm:w-6 sm:h-6" />,
-                color: 'from-pink-400 to-pink-600',
-                lineGradient: 'linear-gradient(to left, transparent 0%, rgba(236, 72, 153, 0.35) 60%, #ec4899 100%)',
-                lineShadow: '0 0 12px rgba(236, 72, 153, 0.35)'
               }
-            ].map((component, index) => {
-              const angle = (index * 60) + (scrollY * 0.08); // 60 degrees apart, rotates with scroll
-              const radius = typeof window !== 'undefined' && window.innerWidth < 640 ? 120 + Math.sin(scrollY * 0.005 + index) * 12 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 160 + Math.sin(scrollY * 0.005 + index) * 16 : 220 + Math.sin(scrollY * 0.005 + index) * 25;
+            ].map((integration, index) => {
+              const angle = (index * 45) + (scrollY * 0.1); // 45 degrees apart, rotates with scroll
+              const radius = typeof window !== 'undefined' && window.innerWidth < 640 ? 150 + Math.sin(scrollY * 0.005 + index) * 15 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 200 + Math.sin(scrollY * 0.005 + index) * 20 : 280 + Math.sin(scrollY * 0.005 + index) * 30; // Responsive radius
               const x = Math.cos(angle * Math.PI / 180) * radius;
               const y = Math.sin(angle * Math.PI / 180) * radius;
 
-              // 3D depth effects
-              const baseDepth = (index % 3) * 20 - 30;
-              const scrollDepth = Math.sin(scrollY * 0.008 + index * 1.2) * 30;
-              const totalDepth = baseDepth + scrollDepth;
+              // 3D depth effects - forward/backward movement only
+              const baseDepth = (index % 4) * 30 - 45; // Base depth variation: -45, -15, 15, 45
+              const scrollDepth = Math.sin(scrollY * 0.008 + index * 1.2) * 40; // Dynamic depth based on scroll
+              const totalDepth = baseDepth + scrollDepth; // Combined depth effect
 
               return (
                 <div
@@ -1406,47 +1407,76 @@ export default function LandingPage() {
                   style={{
                     transform: `translate(${x}px, ${y}px) translateZ(${totalDepth}px)`,
                     transformStyle: 'preserve-3d',
+                    zIndex: 5 + Math.floor(totalDepth / 15) // Closer items have higher z-index
                   }}
                 >
-                  {/* Connecting line */}
-                  <div
-                    className="absolute pointer-events-none transition-opacity duration-300"
-                    style={{
-                      width: `${radius}px`,
-                      height: '8px',
-                      top: '50%',
-                      left: '50%',
-                      transformOrigin: '0 50%',
-                      transform: `rotate(${angle + 180}deg) translateY(-50%)`,
-                      opacity: Math.max(0.25, 0.4 + totalDepth * 0.003),
-                      zIndex: -1,
-                      clipPath: 'polygon(0 0%, 0 100%, 80% 90%, 100% 50%, 80% 10%)',
-                      background: component.lineGradient,
-                      boxShadow: component.lineShadow
-                    }}
-                  />
-
-                  {/* Component icon */}
                   <div className="group relative">
+                    {/* Tapered connection line to center - Always render for all logos */}
+                    {/* Force render connecting lines for ALL integration logos */}
                     <div
-                      className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-r ${component.color} rounded-full flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all duration-300 hover:scale-110 cursor-pointer relative z-10`}
+                      className="absolute transition-opacity duration-300"
                       style={{
-                        transform: `translateZ(${totalDepth}px)`,
+                        width: `${radius}px`,
+                        height: `8px`, // Slightly increased height for better visibility
+                        transformOrigin: '0 50%',
+                        transform: `rotate(${angle + 180}deg) translateY(-50%)`,
+                        zIndex: -1,
+                        top: '50%',
+                        left: '50%',
+                        opacity: Math.max(0.25, 0.4 + totalDepth * 0.003),
+                        clipPath: `polygon(0 0%, 0 100%, 80% 90%, 100% 50%, 80% 10%)`, // Dramatic taper: thick at outer logo, invisible near TrueFlow center
+                        background: (() => {
+                          // Enhanced gradient with transparency for taper effect
+                          const colorMap: Record<number, string> = {
+                            0: 'linear-gradient(to left, transparent 0%, rgba(190, 24, 93, 0.3) 50%, #be185d 100%)', // Instagram
+                            1: 'linear-gradient(to left, transparent 0%, rgba(29, 78, 216, 0.3) 50%, #1d4ed8 100%)', // Facebook
+                            2: 'linear-gradient(to left, transparent 0%, rgba(21, 128, 61, 0.3) 50%, #15803d 100%)', // WhatsApp
+                            3: 'linear-gradient(to left, transparent 0%, rgba(220, 38, 38, 0.3) 50%, #dc2626 100%)', // YouTube
+                            4: 'linear-gradient(to left, transparent 0%, rgba(67, 56, 202, 0.3) 50%, #4338ca 100%)', // Discord
+                            5: 'linear-gradient(to left, transparent 0%, rgba(55, 65, 81, 0.3) 50%, #374151 100%)', // X
+                            6: 'linear-gradient(to left, transparent 0%, rgba(234, 88, 12, 0.3) 50%, #ea580c 100%)', // Zapier
+                            7: 'linear-gradient(to left, transparent 0%, rgba(21, 128, 61, 0.3) 50%, #15803d 100%)', // GoHighLevel
+                          };
+                          return colorMap[index] || 'linear-gradient(to left, transparent 0%, rgba(59, 130, 246, 0.3) 50%, #3b82f6 100%)';
+                        })()
+                      }}
+                    />
+
+                    <div
+                      className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r ${integration.color} rounded-full flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer relative z-10`}
+                      style={{
+                        boxShadow: `
+                          0 ${Math.max(2, 8 + totalDepth * 0.2)}px ${Math.max(4, 16 + Math.abs(totalDepth) * 0.4)}px rgba(0,0,0,${Math.min(0.6, 0.3 + Math.abs(totalDepth) * 0.008)}),
+                          0 ${Math.max(1, 4 + totalDepth * 0.1)}px ${Math.max(2, 8 + Math.abs(totalDepth) * 0.2)}px rgba(0,0,0,${Math.min(0.3, 0.15 + Math.abs(totalDepth) * 0.004)}),
+                          0 0 ${Math.max(10, 20 + Math.abs(totalDepth) * 0.3)}px rgba(255,255,255,${totalDepth > 0 ? Math.min(0.3, totalDepth * 0.005) : 0})
+                        `,
+                        transform: `scale(${Math.max(0.8, 1 + totalDepth * 0.008)})`,
+                        transformStyle: 'preserve-3d'
                       }}
                     >
-                      {component.icon}
+                      {integration.logo}
                     </div>
 
-                    {/* Label */}
-                    <div className={`absolute top-full mt-2 left-1/2 -translate-x-1/2 whitespace-nowrap px-2 py-1 rounded text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
-                      isDarkMode ? 'bg-black/80 text-white' : 'bg-white/90 text-gray-900 shadow-md'
-                    }`}>
-                      {component.name}
+                    {/* Service name tooltip on hover */}
+                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
+                      <div className={`backdrop-blur-md rounded-lg px-2 py-1 text-xs whitespace-nowrap ${
+                        isDarkMode ? 'bg-black/80 text-white' : 'bg-white text-gray-700 border border-gray-200 shadow'
+                      }`}>
+                        {integration.name}
+                      </div>
                     </div>
                   </div>
                 </div>
               );
             })}
+
+            {/* Orbital rings for visual effect */}
+            <div className={`absolute rounded-full w-[600px] h-[600px] animate-spin ${
+              isDarkMode ? 'border border-white/10' : 'border border-gray-200'
+            }`} style={{ animationDuration: '20s' }} />
+            <div className={`absolute rounded-full w-[520px] h-[520px] animate-spin ${
+              isDarkMode ? 'border border-white/5' : 'border border-gray-100'
+            }`} style={{ animationDuration: '15s', animationDirection: 'reverse' }} />
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
