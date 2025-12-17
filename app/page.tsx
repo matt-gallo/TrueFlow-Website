@@ -973,12 +973,12 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative flex items-center justify-center px-4 py-24 sm:py-28"
+        className="relative flex items-center justify-center px-4 min-h-screen sm:py-28"
       >
         <div className="max-w-4xl mx-auto w-full">
           <div className="text-center space-y-6 sm:space-y-8">
             <div>
-              <h1 className={`text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-10xl font-bold mb-4 sm:mb-6 leading-tight px-2 ${
+              <h1 className={`text-4xl sm:text-6xl md:text-8xl lg:text-9xl xl:text-10xl font-bold mb-4 sm:mb-6 mt-8 sm:mt-12 leading-tight px-2 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
                 We install systems that book sales calls for you 24/7.
