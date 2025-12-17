@@ -1523,7 +1523,7 @@ export default function LandingPage() {
 
               {/* Pricing Clarity Box */}
               <div className={`${isDarkMode ? 'bg-gradient-to-br from-cyan-400/10 via-purple-500/10 to-transparent' : 'bg-white shadow-lg'} border ${isDarkMode ? 'border-cyan-400/30' : 'border-gray-200'} rounded-2xl p-6 mb-8`}>
-                <div className="grid gap-6 sm:grid-cols-3">
+                <div className="grid gap-6 sm:grid-cols-2">
                   <div className="text-center">
                     <p className={`text-xs uppercase tracking-wider ${isDarkMode ? 'text-white/60' : 'text-gray-500'} mb-2`}>Today</p>
                     <p className="text-3xl font-bold text-emerald-500">$0</p>
@@ -1533,11 +1533,6 @@ export default function LandingPage() {
                     <p className={`text-xs uppercase tracking-wider ${isDarkMode ? 'text-white/60' : 'text-gray-500'} mb-2`}>After Free Trial</p>
                     <p className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$297<span className={`text-base font-normal ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>/mo</span></p>
                     <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Full CRM + Automations, Chat Agents, and Constant Content Engine</p>
-                  </div>
-                  <div className="text-center">
-                    <p className={`text-xs uppercase tracking-wider ${isDarkMode ? 'text-white/60' : 'text-gray-500'} mb-2`}>After Trial - Accelerator</p>
-                    <p className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$350<span className={`text-base font-normal ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>/wk</span></p>
-                    <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Optional: live coaching + hands-on support</p>
                   </div>
                 </div>
                 <div className={`mt-6 pt-4 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'} text-center`}>
