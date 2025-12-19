@@ -18,10 +18,10 @@ export async function POST(request: NextRequest) {
   try {
     const leadData: PartialLeadData = await request.json()
 
-    // Validate required fields
-    if (!leadData.email || !leadData.phone) {
+    // Validate required fields (Email is mandatory, Phone is optional for Step 1)
+    if (!leadData.email) {
       return NextResponse.json(
-        { error: 'Missing required fields' },
+        { error: 'Missing required field: email' },
         { status: 400 }
       )
     }
@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
 👤 CONTACT INFORMATION CAPTURED:
 • Name: ${leadData.firstName} ${leadData.lastName || ''}
 • Email: ${leadData.email}
-• Phone: ${leadData.phone}
+• Phone: ${leadData.phone || '(Not provided yet)'}
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -63,19 +63,18 @@ This lead has provided contact info but hasn't completed the full form yet.
 
     // Initialize Resend with API key from environment variables
     const resendApiKey = process.env.RESEND_API_KEY
+    let emailSent = false
+    let emailErrorDetail = null
+
     if (!resendApiKey) {
-      console.error('RESEND_API_KEY environment variable is not set')
-      return NextResponse.json(
-        { error: 'Email service configuration error' },
-        { status: 500 }
-      )
-    }
+      console.warn('RESEND_API_KEY environment variable is not set - skipping email notification')
+      emailErrorDetail = 'RESEND_API_KEY missing'
+    } else {
+      const resend = new Resend(resendApiKey)
 
-    const resend = new Resend(resendApiKey)
-
-    try {
-      // Create HTML version with better formatting
-      const emailHtml = `
+      try {
+        // Create HTML version with better formatting
+        const emailHtml = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +103,7 @@ This lead has provided contact info but hasn't completed the full form yet.
         <div class="section-title">👤 Contact Information Captured</div>
         <p><strong>Name:</strong> ${leadData.firstName} ${leadData.lastName || ''}<br>
         <strong>Email:</strong> <a href="mailto:${leadData.email}">${leadData.email}</a><br>
-        <strong>Phone:</strong> ${leadData.phone}</p>
+        <strong>Phone:</strong> ${leadData.phone || '(Not provided yet)'}</p>
       </div>
       
       <div class="status-partial">
@@ -130,47 +129,91 @@ This lead has provided contact info but hasn't completed the full form yet.
   </div>
 </body>
 </html>
-      `.trim()
+        `.trim()
 
-      // Send email using Resend
-      const emailResult = await resend.emails.send({
-        from: 'TrueFlow Leads <onboarding@resend.dev>',
-        to: ['griffin@trueflow.ai', 'matt@trueflow.ai'],
-        subject: emailSubject,
-        text: emailContent,
-        html: emailHtml
-      })
+        // Send email using Resend
+        await resend.emails.send({
+          from: 'TrueFlow Leads <onboarding@resend.dev>',
+          to: ['griffin@trueflow.ai', 'matt@trueflow.ai'],
+          subject: emailSubject,
+          text: emailContent,
+          html: emailHtml
+        })
 
-      console.log('Partial lead email sent successfully:', emailResult)
-
-      const response = {
-        success: true,
-        message: 'Partial lead notification email sent successfully',
-        recipients: ['griffin@trueflow.ai', 'matt@trueflow.ai'],
-        leadId: `partial_lead_${Date.now()}`,
-        emailId: emailResult.data?.id || 'unknown'
+        console.log('Partial lead email sent successfully')
+        emailSent = true
+      } catch (emailError) {
+        console.error('Failed to send partial lead email via Resend:', emailError)
+        emailErrorDetail = emailError instanceof Error ? emailError.message : 'Unknown email error'
       }
-
-      return NextResponse.json(response, { status: 200 })
-
-    } catch (emailError) {
-      console.error('Failed to send partial lead email via Resend:', emailError)
-      
-      const errorMessage = emailError instanceof Error ? emailError.message : 'Unknown email service error'
-      
-      return NextResponse.json(
-        { 
-          error: 'Failed to send partial lead notification email',
-          details: errorMessage,
-          leadData: {
-            name: `${leadData.firstName} ${leadData.lastName || ''}`,
-            email: leadData.email,
-            phone: leadData.phone
-          }
-        },
-        { status: 500 }
-      )
     }
+
+    // ----------------------------------------------------------------------
+    // Create Contact in GoHighLevel (GHL)
+    // ----------------------------------------------------------------------
+    const ghlToken = process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
+    const ghlLocationId = process.env.GHL_LOCATION_ID
+    let ghlCreated = false
+    let ghlErrorDetail = null
+
+    if (ghlToken && ghlLocationId) {
+      try {
+        console.log('Creating GHL contact for:', leadData.email)
+        
+        const ghlPayload: any = {
+          firstName: leadData.firstName,
+          lastName: leadData.lastName,
+          name: `${leadData.firstName} ${leadData.lastName || ''}`.trim(),
+          email: leadData.email,
+          locationId: ghlLocationId,
+          tags: ["step-1-prospects"],
+          source: "trueflow-website-step-1"
+        }
+
+        if (leadData.phone) {
+          ghlPayload.phone = leadData.phone
+        }
+
+        const ghlResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${ghlToken}`,
+            'Content-Type': 'application/json',
+            'Version': '2021-07-28'
+          },
+          body: JSON.stringify(ghlPayload)
+        })
+
+        if (!ghlResponse.ok) {
+          const errorData = await ghlResponse.json().catch(() => ({}))
+          console.error('Failed to create GHL contact:', {
+            status: ghlResponse.status,
+            error: errorData
+          })
+          ghlErrorDetail = `GHL API Error: ${ghlResponse.status}`
+        } else {
+          console.log('Successfully created GHL contact tagged "step-1-prospects"')
+          ghlCreated = true
+        }
+      } catch (ghlError) {
+        console.error('Error executing GHL create contact request:', ghlError)
+        ghlErrorDetail = ghlError instanceof Error ? ghlError.message : 'Unknown GHL error'
+      }
+    } else {
+      console.warn('Skipping GHL contact creation: Missing GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN or GHL_LOCATION_ID')
+      ghlErrorDetail = 'Missing GHL environment variables'
+    }
+    // ----------------------------------------------------------------------
+
+    return NextResponse.json({
+      success: true,
+      emailSent,
+      ghlCreated,
+      details: {
+        email: emailErrorDetail,
+        ghl: ghlErrorDetail
+      }
+    }, { status: 200 })
 
   } catch (error) {
     console.error('Error processing partial lead notification:', error)

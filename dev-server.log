@@ -2,15 +2,8 @@
 > trueflow-landing@1.0.1 dev
 > next dev -p 3001
 
-  ▲ Next.js 14.2.35
+  ▲ Next.js 14.2.33
   - Local:        http://localhost:3001
-  - Environments: .env.local
 
  ✓ Starting...
- ✓ Ready in 4.1s
- ○ Compiling / ...
- ✓ Compiled / in 7.4s (624 modules)
- ✓ Compiled in 1279ms (320 modules)
- GET / 200 in 8833ms
- ⚠ The "images.domains" configuration is deprecated. Please use "images.remotePatterns" configuration instead.
- GET / 200 in 223ms
+ ✓ Ready in 1528ms

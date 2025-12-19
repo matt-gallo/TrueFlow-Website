@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import Navigation from '@/app/components/Navigation'
 import { useTheme } from '@/app/components/ThemeProvider'
 import {
@@ -110,6 +111,7 @@ const platformFeatures = [
 
 export default function SignUpPage() {
   const { isDarkMode } = useTheme()
+  const searchParams = useSearchParams()
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isComplete, setIsComplete] = useState(false)
@@ -119,11 +121,41 @@ export default function SignUpPage() {
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   const [signupId, setSignupId] = useState('')
 
+  const triggerPartialLeadCapture = async (data: { fullName: string, email: string, role: string, phone?: string }) => {
+    try {
+      console.log('Triggering partial lead capture for:', data.email)
+      await fetch('/api/partial-lead-notification', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: data.fullName.split(' ')[0],
+          lastName: data.fullName.split(' ').slice(1).join(' ') || '',
+          email: data.email,
+          phone: data.phone || '', 
+          timestamp: new Date().toISOString(),
+          isPartialLead: true
+        })
+      })
+    } catch (err) {
+      console.error('Failed to trigger partial lead capture:', err)
+    }
+  }
+
   // Generate unique signup ID on mount
   useEffect(() => {
     const id = `signup_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
     setSignupId(id)
-  }, [])
+    
+    // Auto-advance if data came from homepage
+    const fn = searchParams.get('fullName')
+    const em = searchParams.get('email')
+    const rl = searchParams.get('role')
+    if (fn && em) {
+      setCurrentStep(2)
+      // Trigger capture immediately for homepage leads
+      triggerPartialLeadCapture({ fullName: fn, email: em, role: rl || 'Founder / CEO' })
+    }
+  }, [searchParams])
 
   // Theme classes
   const theme = {
@@ -142,11 +174,13 @@ export default function SignUpPage() {
     glowOpacity: isDarkMode ? '/10' : '/5',
     sectionBg: isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-xl',
     backBtn: isDarkMode ? 'border-white/20 text-white/80 hover:text-white' : 'border-gray-300 text-gray-600 hover:text-gray-900',
+    infoBox: isDarkMode ? 'border-white/10 bg-white/5 text-white/80' : 'border-indigo-200 bg-indigo-50 text-indigo-900',
+    infoStrong: isDarkMode ? 'text-white' : 'text-indigo-950',
   }
   const [formData, setFormData] = useState<SignUpFormData>({
-    fullName: '',
-    email: '',
-    role: 'Founder / CEO',
+    fullName: searchParams.get('fullName') || '',
+    email: searchParams.get('email') || '',
+    role: searchParams.get('role') || 'Founder / CEO',
     company: '',
     phone: '',
     address: '',
@@ -272,6 +306,16 @@ export default function SignUpPage() {
   const handleNext = async () => {
     if (!validateStep(currentStep)) return
     if (currentStep < steps.length) {
+      // Trigger partial lead capture on Step 1 or 2 completion
+      if (currentStep === 1 || currentStep === 2) {
+        triggerPartialLeadCapture({ 
+          fullName: formData.fullName, 
+          email: formData.email, 
+          role: formData.role,
+          phone: formData.phone 
+        })
+      }
+
       // When entering Step 4 (payment), store form data on server
       if (currentStep === 3) {
         const signupData = {
@@ -434,14 +478,15 @@ export default function SignUpPage() {
     <div className={`min-h-screen ${theme.bg} ${theme.text} transition-colors duration-300`}>
       <div className="fixed inset-0 pointer-events-none">
         <div className={`absolute inset-0 bg-gradient-to-b ${theme.gradientBg}`} />
-        <div className={`absolute top-10 left-1/2 -translate-x-1/2 w-[620px] h-[620px] bg-[#1d929e]${theme.glowOpacity} blur-[160px]`} />
-        <div className={`absolute bottom-0 right-10 w-[420px] h-[420px] bg-emerald-500${theme.glowOpacity} blur-[180px]`} />
+        <div className={`absolute top-10 left-1/2 -translate-x-1/2 w-[620px] h-[620px] bg-blue-500${theme.glowOpacity} blur-[160px]`} />
+        <div className={`absolute bottom-0 right-10 w-[420px] h-[420px] bg-purple-500${theme.glowOpacity} blur-[180px]`} />
       </div>
 
       <div className="relative z-10">
         <Navigation />
 
         <main className="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
+<<<<<<< Updated upstream
           {/* Hero Section - What You're Getting */}
           <div className="max-w-6xl mx-auto mb-16">
             <div className="text-center mb-12">
@@ -524,13 +569,24 @@ export default function SignUpPage() {
                 <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Voice & brand cloning</span>
               </div>
             </div>
+=======
+          {/* Header Section */}
+          <div className="max-w-6xl mx-auto mb-16 text-center">
+            <p className="text-xs uppercase tracking-[0.4em] text-blue-500 mb-4">Start Your 14-Day Free Trial</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              The all-in-one platform to <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">grow your business</span>
+            </h1>
+            <p className={`text-xl ${theme.textMuted} mt-6 max-w-3xl mx-auto`}>
+              Get full access to TrueFlow&apos;s CRM, automation, and AI tools, plus 2 weeks in the TrueFlow Accelerator with live coaching, resources, and done-for-you setup.
+            </p>
+>>>>>>> Stashed changes
           </div>
 
-          <div className="max-w-6xl mx-auto grid gap-10 lg:grid-cols-[minmax(0,0.65fr)_minmax(0,0.35fr)]">
-            <section id="signup-form" className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-6 sm:p-8 shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'} scroll-mt-24 border`}>
+          <div className="max-w-6xl mx-auto">
+            <section id="signup-form" className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-6 sm:p-8 md:p-12 shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'} scroll-mt-24 border w-full`}>
               {isComplete ? (
                 <div className="space-y-8 text-center">
-                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-green-500/10 border border-green-400/30 text-green-200">
+                  <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-200">
                     <CheckCircle className="h-5 w-5" />
                     <span>Workspace Reserved</span>
                   </div>
@@ -546,22 +602,30 @@ export default function SignUpPage() {
                     {acceleratorMoments.slice(0, 3).map((moment) => {
                       const Icon = moment.icon
                       return (
-                        <div key={moment.day} className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                          <div className="text-xs text-white/60 uppercase tracking-wider">{moment.day}</div>
+                        <div key={moment.day} className={`p-4 rounded-2xl ${theme.cardBg} border ${theme.cardBorder}`}>
+                          <div className={`text-xs ${theme.textMuted2} uppercase tracking-wider`}>{moment.day}</div>
                           <div className="flex items-center gap-2 mt-2 font-semibold">
-                            <Icon className="h-4 w-4 text-[#1d929e]" />
+                            <Icon className="h-4 w-4 text-indigo-400" />
                             {moment.title}
                           </div>
-                          <p className="text-sm text-white/60 mt-2">{moment.detail}</p>
+                          <p className={`text-sm ${theme.textMuted} mt-2`}>{moment.detail}</p>
                         </div>
                       )
                     })}
                   </div>
+<<<<<<< HEAD
                   <p className="text-sm text-white/60">Hang tight, we&apos;re directing you to the secure login hub.</p>
+=======
+<<<<<<< Updated upstream
+                  <p className="text-sm text-white/60">Hang tight—we&apos;re directing you to the secure login hub.</p>
+=======
+                  <p className={`text-sm ${theme.textMuted}`}>Hang tight, we&apos;re directing you to the secure login hub.</p>
+>>>>>>> Stashed changes
+>>>>>>> 27629a7 (Enhance light mode readability, improve form layout, and implement partial lead capture)
                   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                     <Link
                       href="https://login.trueflow.ai"
-                      className="px-6 py-3 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 font-semibold shadow-lg shadow-[#1d929e]/20"
+                      className="px-6 py-3 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 font-semibold shadow-lg shadow-blue-500/20"
                     >
                       {isRedirecting ? 'Redirecting to Login...' : 'Go to Login.TrueFlow.ai'}
                     </Link>
@@ -593,7 +657,7 @@ export default function SignUpPage() {
                     </div>
                     <div className={`mt-3 h-2 ${isDarkMode ? 'bg-white/10' : 'bg-gray-200'} rounded-full`}>
                       <div
-                        className="h-2 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500"
+                        className="h-2 rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
@@ -604,7 +668,7 @@ export default function SignUpPage() {
                           type="button"
                           className={`p-3 rounded-2xl border text-left transition ${
                             currentStep === step.id
-                              ? 'border-[#1d929e] bg-[#1d929e]/10'
+                              ? 'border-indigo-400 bg-indigo-400/10'
                               : isDarkMode ? 'border-white/10 bg-white/5 hover:border-white/30' : 'border-gray-200 bg-gray-50 hover:border-gray-300'
                           }`}
                           onClick={() => handleStepSelect(step.id)}
@@ -624,7 +688,7 @@ export default function SignUpPage() {
                           Full name
                           <input
                             type="text"
-                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none`}
                             placeholder="Jordan Reyes"
                             value={formData.fullName}
                             onChange={(e) => updateFormData('fullName', e.target.value)}
@@ -636,7 +700,7 @@ export default function SignUpPage() {
                           Work email
                           <input
                             type="email"
-                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none`}
                             placeholder="you@company.com"
                             value={formData.email}
                             onChange={(e) => updateFormData('email', e.target.value)}
@@ -654,8 +718,8 @@ export default function SignUpPage() {
                               type="button"
                               className={`px-3 py-2 rounded-xl border text-xs font-semibold transition ${
                                 formData.role === role
-                                  ? 'border-[#1d929e] bg-[#1d929e]/10'
-                                  : isDarkMode ? 'border-white/10 hover:border-white/30' : 'border-gray-200 hover:border-gray-300'
+                                  ? 'border-indigo-400 bg-indigo-400/10'
+                                  : isDarkMode ? 'border-white/20 hover:border-white/40' : 'border-gray-300 hover:border-gray-400'
                               }`}
                               onClick={() => updateFormData('role', role)}
                             >
@@ -665,7 +729,7 @@ export default function SignUpPage() {
                         </div>
                       </label>
                       <p className={`${theme.textMuted2} text-sm flex items-center gap-2`}>
-                        <CheckCircle className="h-4 w-4 text-emerald-500" />
+                        <CheckCircle className="h-4 w-4 text-blue-400" />
                         Your login gives you access to the dashboard + accelerator curriculum instantly once the intake is complete.
                       </p>
                     </div>
@@ -679,7 +743,7 @@ export default function SignUpPage() {
                           Business name
                           <input
                             type="text"
-                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none`}
                             placeholder="The Growth Lab"
                             value={formData.company}
                             onChange={(e) => updateFormData('company', e.target.value)}
@@ -691,7 +755,7 @@ export default function SignUpPage() {
                           Phone (include country code)
                           <input
                             type="tel"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none font-mono`}
                             placeholder="+1 555 123 4567"
                             value={formData.phone}
                             onChange={(e) => updateFormData('phone', e.target.value)}
@@ -704,7 +768,7 @@ export default function SignUpPage() {
                         Business address
                         <input
                           type="text"
-                          className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                          className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none`}
                           placeholder="123 Main Street, Suite 400"
                           value={formData.address}
                           onChange={(e) => updateFormData('address', e.target.value)}
@@ -717,7 +781,7 @@ export default function SignUpPage() {
                           City
                           <input
                             type="text"
-                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none`}
                             placeholder="New York"
                             value={formData.city}
                             onChange={(e) => updateFormData('city', e.target.value)}
@@ -729,7 +793,7 @@ export default function SignUpPage() {
                           State
                           <input
                             type="text"
-                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none`}
                             placeholder="NY"
                             value={formData.state}
                             onChange={(e) => updateFormData('state', e.target.value)}
@@ -742,7 +806,7 @@ export default function SignUpPage() {
                           <input
                             type="text"
                             maxLength={2}
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none uppercase font-mono"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none uppercase font-mono`}
                             placeholder="US"
                             value={formData.country}
                             onChange={(e) => updateFormData('country', e.target.value)}
@@ -754,7 +818,7 @@ export default function SignUpPage() {
                           Postal code
                           <input
                             type="text"
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none font-mono"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none font-mono`}
                             placeholder="10001"
                             value={formData.postalCode}
                             onChange={(e) => updateFormData('postalCode', e.target.value)}
@@ -768,7 +832,7 @@ export default function SignUpPage() {
                           Website (optional)
                           <input
                             type="url"
-                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none`}
                             placeholder="yourwebsite.com"
                             value={formData.website}
                             onChange={(e) => updateFormData('website', e.target.value)}
@@ -779,7 +843,7 @@ export default function SignUpPage() {
                         <label className="flex flex-col gap-2 text-sm">
                           Timezone
                           <select
-                            className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none appearance-none cursor-pointer"
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none appearance-none cursor-pointer`}
                             value={formData.timezone}
                             onChange={(e) => updateFormData('timezone', e.target.value)}
                           >
@@ -801,7 +865,7 @@ export default function SignUpPage() {
                         <label className="flex flex-col gap-2 text-sm">
                           Team size
                           <select
-                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-[#1d929e] focus:outline-none`}
+                            className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none`}
                             value={formData.teamSize}
                             onChange={(e) => updateFormData('teamSize', e.target.value)}
                           >
@@ -821,8 +885,8 @@ export default function SignUpPage() {
                                 type="button"
                                 className={`px-3 py-2 rounded-xl border text-xs font-semibold transition ${
                                   formData.primaryGoal === goal
-                                    ? 'border-[#1d929e] bg-[#1d929e]/10'
-                                    : 'border-white/10 hover:border-white/30'
+                                    ? 'border-indigo-400 bg-indigo-400/10'
+                                    : isDarkMode ? 'border-white/20 hover:border-white/40' : 'border-gray-300 hover:border-gray-400'
                                 }`}
                                 onClick={() => updateFormData('primaryGoal', goal)}
                               >
@@ -835,14 +899,14 @@ export default function SignUpPage() {
                       <label className="flex flex-col gap-2 text-sm">
                         Drop any quick context we should know (optional)
                         <textarea
-                          className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none min-h-[100px]"
+                          className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none min-h-[100px]`}
                           placeholder="Tell us about your offer, audience, or current bottlenecks."
                           value={formData.voiceNotes}
                           onChange={(e) => updateFormData('voiceNotes', e.target.value)}
                         />
                       </label>
-                      <div className="p-4 rounded-2xl border border-white/10 bg-gradient-to-r from-blue-500/5 to-purple-600/5 text-sm text-white/80">
-                        <strong className="text-white">Heads up:</strong> this intel feeds your Account Blueprint so the accelerator coaches know exactly what to build with you on day one.
+                      <div className={`p-4 rounded-2xl border ${theme.infoBox} text-sm`}>
+                        <strong className={theme.infoStrong}>Heads up:</strong> this intel feeds your Account Blueprint so the accelerator coaches know exactly what to build with you on day one.
                       </div>
                     </div>
                   )}
@@ -850,9 +914,9 @@ export default function SignUpPage() {
                   {/* Step 3: Launch Game Plan */}
                   {currentStep === 3 && (
                     <div className="space-y-6">
-                      <div className="p-4 rounded-2xl border border-[#1d929e]/30 bg-[#1d929e]/5 flex gap-3">
-                        <Sparkles className="h-6 w-6 text-[#1d929e] flex-shrink-0" />
-                        <p className="text-sm text-white/80">
+                      <div className={`p-4 rounded-2xl border ${isDarkMode ? 'border-indigo-400/30 bg-indigo-400/5' : 'border-indigo-200 bg-indigo-50'} flex gap-3`}>
+                        <Sparkles className={`h-6 w-6 ${isDarkMode ? 'text-indigo-400' : 'text-indigo-600'} flex-shrink-0`} />
+                        <p className={`text-sm ${isDarkMode ? 'text-white/80' : 'text-indigo-900'}`}>
                           TrueFlow Accelerator gives you two live weeks of business, marketing, sales, and mindset resources. Pick what matters most and we&apos;ll stack your onboarding plan around it.
                         </p>
                       </div>
@@ -862,19 +926,19 @@ export default function SignUpPage() {
                             key={resource.label}
                             className={`flex items-start gap-3 p-4 rounded-2xl border cursor-pointer transition ${
                               selectedResources.includes(resource.label)
-                                ? 'border-[#1d929e] bg-[#1d929e]/10'
-                                : 'border-white/10 hover:border-white/30'
+                                ? 'border-indigo-400 bg-indigo-400/10'
+                                : isDarkMode ? 'border-white/10 hover:border-white/30' : 'border-gray-200 hover:border-gray-300'
                             }`}
                           >
                             <input
                               type="checkbox"
-                              className="mt-1 accent-[#1d929e]"
+                              className="mt-1 accent-indigo-500"
                               checked={selectedResources.includes(resource.label)}
                               onChange={() => toggleResource(resource.label)}
                             />
                             <div>
                               <p className="font-semibold">{resource.label}</p>
-                              <p className="text-sm text-white/70">{resource.description}</p>
+                              <p className={`text-sm ${theme.textMuted}`}>{resource.description}</p>
                             </div>
                           </label>
                         ))}
@@ -882,22 +946,22 @@ export default function SignUpPage() {
                       <label className="flex flex-col gap-2 text-sm">
                         What wins would make this trial feel legendary?
                         <textarea
-                          className="px-4 py-3 rounded-2xl bg-black/30 border border-white/10 focus:border-blue-400 focus:outline-none min-h-[120px]"
+                          className={`px-4 py-3 rounded-2xl ${theme.inputBg} border ${theme.inputBorder} focus:border-indigo-400 focus:outline-none min-h-[120px]`}
                           placeholder="Example: book 5 sales calls, launch weekly email, audit funnels, build leadership dashboard..."
                           value={formData.winsWanted}
                           onChange={(e) => updateFormData('winsWanted', e.target.value)}
                         />
                       </label>
                       <div className="grid gap-4 sm:grid-cols-2">
-                        <div className="p-4 rounded-2xl border border-white/10">
-                          <p className="text-xs text-white/60 uppercase tracking-widest">Included</p>
+                        <div className={`p-4 rounded-2xl border ${theme.cardBorder}`}>
+                          <p className={`text-xs ${theme.textMuted2} uppercase tracking-widest`}>Included</p>
                           <p className="font-semibold mt-2">TrueFlow Accelerator Live Access</p>
-                          <p className="text-sm text-white/70 mt-1">Small-group calls, templates, and swipe files usually billed at $350/week.</p>
+                          <p className={`text-sm ${theme.textMuted} mt-1`}>Small-group calls, templates, and swipe files usually billed at $350/week.</p>
                         </div>
-                        <div className="p-4 rounded-2xl border border-white/10">
-                          <p className="text-xs text-white/60 uppercase tracking-widest">Bonus</p>
+                        <div className={`p-4 rounded-2xl border ${theme.cardBorder}`}>
+                          <p className={`text-xs ${theme.textMuted2} uppercase tracking-widest`}>Bonus</p>
                           <p className="font-semibold mt-2">Automation & Success Library</p>
-                          <p className="text-sm text-white/70 mt-1">Scripts, metrics dashboards, and playbooks delivered inside your workspace.</p>
+                          <p className={`text-sm ${theme.textMuted} mt-1`}>Scripts, metrics dashboards, and playbooks delivered inside your workspace.</p>
                         </div>
                       </div>
                     </div>
@@ -909,13 +973,13 @@ export default function SignUpPage() {
                       {/* Success Manager Toggle - moved above payment */}
                       <label
                         className={`flex flex-col gap-2 p-4 rounded-2xl border cursor-pointer transition ${
-                          formData.includeSuccessManager ? 'border-[#1d929e] bg-[#1d929e]/10' : isDarkMode ? 'border-white/10 hover:border-white/30' : 'border-gray-200 hover:border-gray-300'
+                          formData.includeSuccessManager ? 'border-indigo-400 bg-indigo-400/10' : isDarkMode ? 'border-white/10 hover:border-white/30' : 'border-gray-200 hover:border-gray-300'
                         }`}
                       >
                         <div className="flex items-start justify-between gap-4">
                           <div>
                             <p className="font-semibold flex items-center gap-2">
-                              <HeartHandshake className="h-5 w-5 text-[#1d929e]" />
+                              <HeartHandshake className="h-5 w-5 text-indigo-400" />
                               Add 1:1 Success Manager
                             </p>
                             <p className={`text-sm ${theme.textMuted} mt-1`}>Direct support, quick-response voice and chat, essentially a personal operator in your corner.</p>
@@ -925,7 +989,7 @@ export default function SignUpPage() {
                         <button
                           type="button"
                           className={`mt-3 inline-flex items-center w-14 h-8 rounded-full p-1 transition ${
-                            formData.includeSuccessManager ? 'bg-[#1d929e]' : isDarkMode ? 'bg-white/10' : 'bg-gray-200'
+                            formData.includeSuccessManager ? 'bg-indigo-500' : isDarkMode ? 'bg-white/10' : 'bg-gray-200'
                           }`}
                           onClick={() => updateFormData('includeSuccessManager', !formData.includeSuccessManager)}
                         >
@@ -940,17 +1004,25 @@ export default function SignUpPage() {
                       {/* Pricing Summary */}
                       <div className={`p-5 rounded-2xl border ${isDarkMode ? 'border-white/10 bg-white/5' : 'border-gray-200 bg-gray-50'}`}>
                         <div className="flex flex-wrap items-center gap-3">
-                          <CreditCard className="h-6 w-6 text-[#1d929e]" />
+                          <CreditCard className="h-6 w-6 text-indigo-400" />
                           <p className="text-lg font-semibold">
                             14-Day Free Trial • Then {formData.includeSuccessManager ? '$444' : '$297'}/mo
                           </p>
                         </div>
                         <ul className={`mt-3 space-y-2 text-sm ${theme.textMuted}`}>
-                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Full TrueFlow platform + accelerator access</li>
+                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-blue-400" /> Full TrueFlow platform + accelerator access</li>
                           {formData.includeSuccessManager && (
-                            <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> 1:1 Success Manager included</li>
+                            <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-blue-400" /> 1:1 Success Manager included</li>
                           )}
+<<<<<<< HEAD
                           <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14, $0 charged</li>
+=======
+<<<<<<< Updated upstream
+                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14 — $0 charged</li>
+=======
+                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-blue-400" /> Cancel anytime before Day 14, $0 charged</li>
+>>>>>>> Stashed changes
+>>>>>>> 27629a7 (Enhance light mode readability, improve form layout, and implement partial lead capture)
                         </ul>
                       </div>
 
@@ -1005,7 +1077,7 @@ export default function SignUpPage() {
                       <button
                         type="button"
                         onClick={handleNext}
-                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 font-semibold shadow-lg shadow-[#1d929e]/20"
+                        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 font-semibold text-white shadow-lg shadow-blue-500/20"
                       >
                         Continue
                         <ArrowRight className="h-4 w-4" />
@@ -1028,33 +1100,68 @@ export default function SignUpPage() {
                 </form>
               )}
             </section>
+          </div>
 
-            {/* Sticky sidebar with Accelerator timeline only */}
-            <aside className="lg:sticky lg:top-36 lg:self-start space-y-6">
-              <div className={`p-6 rounded-3xl border border-[#1d929e]/30 ${isDarkMode ? 'bg-gradient-to-br from-[#1d929e]/20 via-emerald-500/10 to-transparent' : 'bg-white shadow-xl'}`}>
-                <div className={`flex items-center gap-3 text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                  <BadgeCheck className="h-5 w-5 text-[#1d929e]" />
-                  TrueFlow Accelerator Timeline
+          <div className="max-w-6xl mx-auto mt-20">
+            {/* Pricing Clarity Box */}
+            <div className={`${isDarkMode ? 'bg-gradient-to-br from-blue-500/20 via-purple-500/10 to-transparent' : 'bg-white shadow-xl'} border border-indigo-400/30 rounded-3xl p-8 mb-12`}>
+              <div className="grid gap-8 lg:grid-cols-3">
+                <div className="text-center lg:text-left">
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>Today</p>
+                  <p className="text-4xl font-bold text-blue-400">$0</p>
+                  <p className={`${theme.textMuted} mt-2`}>14-day free trial starts immediately</p>
                 </div>
-                <div className="mt-6 space-y-4">
-                  {acceleratorMoments.map((moment) => {
-                    const Icon = moment.icon
-                    return (
-                      <div key={moment.day} className="flex gap-3">
-                        <div className={`w-16 text-xs ${theme.textMuted2}`}>{moment.day}</div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 font-semibold">
-                            <Icon className="h-4 w-4 text-[#1d929e]" />
-                            {moment.title}
-                          </div>
-                          <p className={`text-sm ${theme.textMuted}`}>{moment.detail}</p>
-                        </div>
-                      </div>
-                    )
-                  })}
+                <div className={`text-center lg:text-left lg:border-l lg:border-r ${isDarkMode ? 'lg:border-white/10' : 'lg:border-gray-200'} lg:px-8`}>
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial - Platform</p>
+                  <p className="text-4xl font-bold">$297<span className={`text-lg font-normal ${theme.textMuted2}`}>/mo</span></p>
+                  <p className={`${theme.textMuted} mt-2`}>Full TrueFlow CRM + all features below</p>
+                </div>
+                <div className="text-center lg:text-left">
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial - Accelerator</p>
+                  <p className="text-4xl font-bold">$350<span className={`text-lg font-normal ${theme.textMuted2}`}>/wk</span></p>
+                  <p className={`${theme.textMuted} mt-2`}>Optional: live coaching + hands-on support</p>
                 </div>
               </div>
-            </aside>
+              <div className={`mt-8 pt-6 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'} text-center`}>
+                <p className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>
+                  <CheckCircle className="h-5 w-5 text-blue-400 inline mr-2" />
+                  Cancel anytime before Day 14, no charge, no commitment
+                </p>
+              </div>
+            </div>
+
+            {/* What's Included - Platform Features */}
+            <div className="mb-12">
+              <h2 className="text-2xl font-bold text-center mb-8">Everything you get with TrueFlow</h2>
+              <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2 max-w-4xl mx-auto">
+                {platformFeatures.map((feature) => (
+                  <div key={feature} className="flex items-center gap-3">
+                    <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                    <p className={isDarkMode ? 'text-white/90' : 'text-gray-700'}>{feature}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Accelerator Bonus Callout */}
+            <div className={`${isDarkMode ? 'bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-purple-500/10 border-white/10' : 'bg-gradient-to-r from-blue-500/5 via-indigo-500/5 to-purple-500/5 border-gray-200 shadow-lg'} border rounded-3xl p-8 text-center`}>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-500 text-sm font-semibold mb-4">
+                <Sparkles className="h-4 w-4" />
+                Included Free in Your Trial
+              </div>
+              <h3 className="text-2xl font-bold mb-3">TrueFlow Accelerator - 2 Weeks of Live Support</h3>
+              <p className={`${theme.textMuted} max-w-2xl mx-auto mb-6`}>
+                Don&apos;t just get the tools, get them set up right. For the first 14 days, you&apos;ll have access to live coaching calls, done-with-you onboarding, a dedicated success team, and our full library of trainings and AI tools. This is normally $350/week, but it&apos;s included free with your trial.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Live group coaching calls</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>AI Sales Coach</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Offer Architecture Blueprint</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Constant Content Engine</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Morning Mindset Mastery</span>
+                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Voice & brand cloning</span>
+              </div>
+            </div>
           </div>
         </main>
       </div>

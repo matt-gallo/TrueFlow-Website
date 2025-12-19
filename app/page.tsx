@@ -401,6 +401,13 @@ export default function LandingPage() {
   // Demo booking modal state
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
 
+  // Form state
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    role: 'Founder / CEO'
+  })
+
   const features = [
     {
       icon: <Users className="h-16 w-16" />,
@@ -1653,7 +1660,8 @@ export default function LandingPage() {
                         ? 'bg-black/30 border-white/10 text-white placeholder-white/40'
                         : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                     }`}
-                    readOnly
+                    value={formData.fullName}
+                    onChange={(e) => setFormData({...formData, fullName: e.target.value})}
                   />
                 </div>
 
@@ -1671,7 +1679,8 @@ export default function LandingPage() {
                         ? 'bg-black/30 border-white/10 text-white placeholder-white/40'
                         : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400'
                     }`}
-                    readOnly
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                   />
                 </div>
 
@@ -1687,7 +1696,8 @@ export default function LandingPage() {
                         ? 'bg-black/30 border-white/10 text-white'
                         : 'bg-white border-gray-300 text-gray-900'
                     }`}
-                    disabled
+                    value={formData.role}
+                    onChange={(e) => setFormData({...formData, role: e.target.value})}
                   >
                     <option>Founder / CEO</option>
                     <option>Operator</option>
@@ -1708,7 +1718,7 @@ export default function LandingPage() {
 
                 {/* CTA Button */}
                 <Link
-                  href="/sign-up"
+                  href={`/sign-up?fullName=${encodeURIComponent(formData.fullName)}&email=${encodeURIComponent(formData.email)}&role=${encodeURIComponent(formData.role)}`}
                   className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
                 >
                   Continue
