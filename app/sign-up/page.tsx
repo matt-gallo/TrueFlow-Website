@@ -486,90 +486,6 @@ export default function SignUpPage() {
         <Navigation />
 
         <main className="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
-<<<<<<< Updated upstream
-          {/* Hero Section - What You're Getting */}
-          <div className="max-w-6xl mx-auto mb-16">
-            <div className="text-center mb-12">
-              <p className="text-xs uppercase tracking-[0.4em] text-[#1d929e] mb-4">Start Your 14-Day Free Trial</p>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                The all-in-one platform to <span className="bg-gradient-to-r from-[#1d929e] to-emerald-400 bg-clip-text text-transparent">grow your business</span>
-              </h1>
-              <p className={`text-xl ${theme.textMuted} mt-6 max-w-3xl mx-auto`}>
-                Get full access to TrueFlow&apos;s CRM, automation, and AI tools, plus 2 weeks in the TrueFlow Accelerator with live coaching, resources, and done-for-you setup.
-              </p>
-            </div>
-
-            {/* Pricing Clarity Box */}
-            <div className={`${isDarkMode ? 'bg-gradient-to-br from-[#1d929e]/20 via-emerald-500/10 to-transparent' : 'bg-white shadow-xl'} border border-[#1d929e]/30 rounded-3xl p-8 mb-12`}>
-              <div className="grid gap-8 lg:grid-cols-3">
-                <div className="text-center lg:text-left">
-                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>Today</p>
-                  <p className="text-4xl font-bold text-emerald-500">$0</p>
-                  <p className={`${theme.textMuted} mt-2`}>14-day free trial starts immediately</p>
-                </div>
-                <div className={`text-center lg:text-left lg:border-l lg:border-r ${isDarkMode ? 'lg:border-white/10' : 'lg:border-gray-200'} lg:px-8`}>
-                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial - Platform</p>
-                  <p className="text-4xl font-bold">$297<span className={`text-lg font-normal ${theme.textMuted2}`}>/mo</span></p>
-                  <p className={`${theme.textMuted} mt-2`}>Full TrueFlow CRM + all features below</p>
-                </div>
-                <div className="text-center lg:text-left">
-                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial - Accelerator</p>
-                  <p className="text-4xl font-bold">$350<span className={`text-lg font-normal ${theme.textMuted2}`}>/wk</span></p>
-                  <p className={`${theme.textMuted} mt-2`}>Optional: live coaching + hands-on support</p>
-                </div>
-              </div>
-              <div className={`mt-8 pt-6 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'} text-center`}>
-                <p className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>
-                  <CheckCircle className="h-5 w-5 text-emerald-500 inline mr-2" />
-                  Cancel anytime before Day 14, no charge, no commitment
-                </p>
-              </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="text-center mb-12">
-              <a
-                href="#signup-form"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#1d929e] to-emerald-500 font-semibold text-lg shadow-lg shadow-[#1d929e]/25 hover:shadow-[#1d929e]/40 transition-shadow"
-              >
-                Sign Up Now
-                <ArrowRight className="h-5 w-5" />
-              </a>
-            </div>
-
-            {/* What's Included - Platform Features */}
-            <div className="mb-12">
-              <h2 className="text-2xl font-bold text-center mb-8">Everything you get with TrueFlow</h2>
-              <div className="grid gap-x-8 gap-y-3 sm:grid-cols-2 max-w-4xl mx-auto">
-                {platformFeatures.map((feature) => (
-                  <div key={feature} className="flex items-center gap-3">
-                    <CheckCircle className="h-5 w-5 text-emerald-500 flex-shrink-0" />
-                    <p className={isDarkMode ? 'text-white/90' : 'text-gray-700'}>{feature}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Accelerator Bonus Callout */}
-            <div className={`${isDarkMode ? 'bg-gradient-to-r from-[#1d929e]/10 via-emerald-500/10 to-teal-500/10 border-white/10' : 'bg-gradient-to-r from-[#1d929e]/5 via-emerald-500/5 to-teal-500/5 border-gray-200 shadow-lg'} border rounded-3xl p-8 text-center`}>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1d929e]/20 border border-[#1d929e]/30 text-[#1d929e] text-sm font-semibold mb-4">
-                <Sparkles className="h-4 w-4" />
-                Included Free in Your Trial
-              </div>
-              <h3 className="text-2xl font-bold mb-3">TrueFlow Accelerator - 2 Weeks of Live Support</h3>
-              <p className={`${theme.textMuted} max-w-2xl mx-auto mb-6`}>
-                Don&apos;t just get the tools, get them set up right. For the first 14 days, you&apos;ll have access to live coaching calls, done-with-you onboarding, a dedicated success team, and our full library of trainings and AI tools. This is normally $350/week, but it&apos;s included free with your trial.
-              </p>
-              <div className="flex flex-wrap justify-center gap-3">
-                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Live group coaching calls</span>
-                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>AI Sales Coach</span>
-                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Offer Architecture Blueprint</span>
-                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Constant Content Engine</span>
-                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Morning Mindset Mastery</span>
-                <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Voice & brand cloning</span>
-              </div>
-            </div>
-=======
           {/* Header Section */}
           <div className="max-w-6xl mx-auto mb-16 text-center">
             <p className="text-xs uppercase tracking-[0.4em] text-blue-500 mb-4">Start Your 14-Day Free Trial</p>
@@ -579,7 +495,6 @@ export default function SignUpPage() {
             <p className={`text-xl ${theme.textMuted} mt-6 max-w-3xl mx-auto`}>
               Get full access to TrueFlow&apos;s CRM, automation, and AI tools, plus 2 weeks in the TrueFlow Accelerator with live coaching, resources, and done-for-you setup.
             </p>
->>>>>>> Stashed changes
           </div>
 
           <div className="max-w-6xl mx-auto">
@@ -613,15 +528,7 @@ export default function SignUpPage() {
                       )
                     })}
                   </div>
-<<<<<<< HEAD
-                  <p className="text-sm text-white/60">Hang tight, we&apos;re directing you to the secure login hub.</p>
-=======
-<<<<<<< Updated upstream
-                  <p className="text-sm text-white/60">Hang tight—we&apos;re directing you to the secure login hub.</p>
-=======
                   <p className={`text-sm ${theme.textMuted}`}>Hang tight, we&apos;re directing you to the secure login hub.</p>
->>>>>>> Stashed changes
->>>>>>> 27629a7 (Enhance light mode readability, improve form layout, and implement partial lead capture)
                   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                     <Link
                       href="https://login.trueflow.ai"
@@ -1014,15 +921,7 @@ export default function SignUpPage() {
                           {formData.includeSuccessManager && (
                             <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-blue-400" /> 1:1 Success Manager included</li>
                           )}
-<<<<<<< HEAD
-                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14, $0 charged</li>
-=======
-<<<<<<< Updated upstream
-                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14 — $0 charged</li>
-=======
                           <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-blue-400" /> Cancel anytime before Day 14, $0 charged</li>
->>>>>>> Stashed changes
->>>>>>> 27629a7 (Enhance light mode readability, improve form layout, and implement partial lead capture)
                         </ul>
                       </div>
 
