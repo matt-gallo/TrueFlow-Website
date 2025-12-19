@@ -46,7 +46,8 @@ import {
   Facebook,
   MessageCircle,
   Youtube,
-  Sparkles
+  Sparkles,
+  ArrowDown
 } from 'lucide-react'
 import TrueFlowLogoIcon from './components/TrueFlowLogoIcon'
 import { Footer } from './components/Footer'
@@ -973,7 +974,7 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative flex items-center justify-center px-4 min-h-screen sm:py-28"
+        className="relative flex items-center justify-center px-4 min-h-screen sm:py-28 pb-32 sm:pb-40"
       >
         <div className="max-w-4xl mx-auto w-full">
           <div className="text-center space-y-6 sm:space-y-8">
@@ -1003,24 +1004,31 @@ export default function LandingPage() {
                   Live Call with TrueFlow Automation Expert
                 </p>
               </div>
+
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator - Hide when scrolled */}
-        <div 
-          className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce transition-opacity duration-300 ${
-            scrollY > 100 ? 'opacity-0 pointer-events-none' : 'opacity-100'
-          }`}
-        >
-          <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center">
-            <div className="w-1 h-4 bg-white/50 rounded-full mt-2"></div>
+        {scrollY < 200 && (
+          <div className="absolute bottom-24 sm:bottom-28 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-3 pointer-events-none">
+            <ArrowDown className="h-5 w-5 text-black arrow-breathe" />
+
+            {/* Scroll Indicator - Hide when scrolled */}
+            <div 
+              className={`animate-bounce transition-opacity duration-300 ${
+                scrollY > 100 ? 'opacity-0' : 'opacity-100'
+              }`}
+            >
+              <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center">
+                <div className="w-1 h-4 bg-white/50 rounded-full mt-2"></div>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* Trust Signals Auto-Scrolling Banner */}
-      <section className={`py-12 mt-16 overflow-hidden relative ${
+      <section className={`py-12 -mt-16 sm:-mt-24 overflow-hidden relative z-10 ${
         isDarkMode ? 'bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-blue-900/20' : 'bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50'
       }`}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5"></div>

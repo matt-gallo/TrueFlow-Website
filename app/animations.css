@@ -79,6 +79,15 @@
   100% { background-position: 1000px 0; }
 }
 
+@keyframes arrow-breathe {
+  0%, 100% { transform: scale(0.85); opacity: 0.75; }
+  50% { transform: scale(1.05); opacity: 1; }
+}
+
+.arrow-breathe {
+  animation: arrow-breathe 1.8s ease-in-out infinite;
+}
+
 @keyframes wave {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
