@@ -1524,6 +1524,16 @@ export default function LandingPage() {
           </div>
 
           <div className="text-center mt-12">
+            <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>
+              See How We Build and Run Your System With You
+            </h3>
+            <p className={`text-lg md:text-xl mb-8 max-w-3xl mx-auto ${
+              isDarkMode ? 'text-white/80' : 'text-gray-700'
+            }`}>
+              Book a demo to see how we handle setup, management, and optimization while you stay focused on your business.
+            </p>
             <button
               onClick={() => setIsDemoModalOpen(true)}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
@@ -1547,7 +1557,7 @@ export default function LandingPage() {
                 <p className={`text-base md:text-lg ${
                   isDarkMode ? 'text-white/70' : 'text-gray-600'
                 }`}>
-                  Fill out the form below to get instant access to TrueFlow + 2 weeks in the Accelerator.
+                  Fill out the form below to get instant access to TrueFlow.
                 </p>
               </div>
 
@@ -1562,7 +1572,7 @@ export default function LandingPage() {
                   <div className={`text-center sm:border-l sm:border-r ${isDarkMode ? 'sm:border-white/10' : 'sm:border-gray-200'} sm:px-6`}>
                     <p className={`text-xs uppercase tracking-wider ${isDarkMode ? 'text-white/60' : 'text-gray-500'} mb-2`}>After Free Trial</p>
                     <p className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$297<span className={`text-base font-normal ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>/mo</span></p>
-                    <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Full CRM + Automations, Chat Agents, and Constant Content Engine</p>
+                    <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Full CRM + Automations, Chat Agents, Constant Content Engine, and 24/7 Customer Support</p>
                   </div>
                 </div>
                 <div className={`mt-6 pt-4 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'} text-center`}>
@@ -1825,6 +1835,64 @@ export default function LandingPage() {
               </div>
             </div>
           </div>
+
+          {/* Done-for-You Section */}
+          <div className="mt-20 max-w-4xl mx-auto">
+            <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
+              isDarkMode
+                ? 'bg-gradient-to-br from-cyan-400/10 via-purple-500/10 to-transparent border-cyan-400/30'
+                : 'bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200'
+            }`}>
+              <div className="text-center mb-8">
+                <h3 className={`text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent`}>
+                  Want this done for you, customized to your business?
+                </h3>
+                <p className={`text-xl mb-6 ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>
+                  We'll set up your CRM, pipelines, Content Engine, and AI Chat Agents for you
+                </p>
+              </div>
+
+              <div className="mb-8">
+                <p className={`text-lg font-semibold mb-4 ${isDarkMode ? 'text-white/90' : 'text-gray-900'}`}>
+                  Plus get access to:
+                </p>
+                <ul className="space-y-3">
+                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    <span className="text-cyan-400 mt-1">•</span>
+                    <span>24/7 customer support</span>
+                  </li>
+                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    <span className="text-cyan-400 mt-1">•</span>
+                    <span>Monthly meeting with your success manager</span>
+                  </li>
+                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    <span className="text-cyan-400 mt-1">•</span>
+                    <span>Technical support & ongoing maintenance</span>
+                  </li>
+                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    <span className="text-cyan-400 mt-1">•</span>
+                    <span>90 Minute Content Engine Strategy & Setup Call</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="text-center mb-8">
+                <p className={`text-lg mb-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                  Pricing Varies…Book a Demo to Get a Quote
+                </p>
+                <button
+                  onClick={() => setIsDemoModalOpen(true)}
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+                >
+                  Book a Demo
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+                <p className={`text-sm mt-4 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+                  Typical plans start with a $3k setup fee + $497/mo
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1841,44 +1909,19 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Mid-page CTA Section */}
-      <section className={`py-16 sm:py-24 px-4 ${isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-gray-100'}`}>
-        <div className="max-w-4xl mx-auto text-center">
-          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
-            isDarkMode
-              ? 'bg-gradient-to-br from-blue-500/10 to-purple-600/10 border-blue-500/30'
-              : 'bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200'
-          }`}>
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              See How We Build and Run Your System With You
-            </h2>
-            <p className={`text-xl mb-8 max-w-2xl mx-auto ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-              Book a demo to see how we handle setup, management, and optimization while you stay focused on your business.
-            </p>
-            <button
-              onClick={() => setIsDemoModalOpen(true)}
-              className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/50 transition-all duration-300 group"
-            >
-              <span>Book Your Demo</span>
-              <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* Enhanced Testimonials Section */}
-      <section id="testimonials" className="py-16 sm:py-24 lg:py-32 px-4" ref={testimonialsScrollRef}>
+      <section id="testimonials" className="pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-24 lg:pb-32 px-4" ref={testimonialsScrollRef}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 sm:mb-16 lg:mb-20">
             <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 transition-all duration-1000 ${
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
-              Real Results from Real Businesses
+              Real Business<br />Real Results
             </h2>
             <p className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto px-4 transition-all duration-1000 ${
               isDarkMode ? 'text-white/70' : 'text-gray-600'
             }`}>
-              See how TrueFlow is transforming content creation for entrepreneurs worldwide
+              See how TrueFlow is helping business owners worldwide reach more customers, increase revenue, and save time.
             </p>
           </div>
 
@@ -2020,249 +2063,6 @@ export default function LandingPage() {
                   }`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Integrations Section */}
-      <section id="integrations" className="py-16 sm:py-24 lg:py-32 px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              Seamless{' '}
-              <span 
-                className="bg-clip-text text-transparent "
-                style={{
-                  backgroundImage: `linear-gradient(${gradientOffset}deg, 
-                    hsl(${(gradientOffset + 220) % 360}, 70%, 60%), 
-                    hsl(${(gradientOffset + 280) % 360}, 80%, 65%), 
-                    hsl(${(gradientOffset + 340) % 360}, 85%, 70%), 
-                    hsl(${(gradientOffset + 40) % 360}, 75%, 65%))`,
-                  backgroundSize: '300% 300%',
-                  animation: `gradient-shift 3s ease-in-out infinite`
-                }}
-              >
-                Integrations
-              </span>
-            </h2>
-            <p className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto px-4 ${
-              isDarkMode ? 'text-white/70' : 'text-gray-600'
-            }`}>
-              Connect with your favorite tools and platforms to supercharge your workflow
-            </p>
-          </div>
-
-          {/* Orbital Animation Container */}
-          <div className="relative flex items-center justify-center min-h-[500px] sm:min-h-[600px] lg:min-h-[800px]" style={{ perspective: '1000px' }}>
-            {/* Central TrueFlow Infinity Symbol */}
-            <div className="absolute z-10">
-              {/* Outer dark blue glow ring */}
-              <div className="absolute inset-0 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full blur-2xl opacity-75" 
-                style={{
-                  background: 'radial-gradient(circle at center, rgba(14, 165, 233, 0.8) 0%, rgba(8, 145, 178, 0.6) 30%, rgba(14, 165, 233, 0.4) 50%, transparent 70%)',
-                  transform: 'translate(-50%, -50%)',
-                  top: '50%',
-                  left: '50%'
-                }}
-              />
-              
-              {/* Main symbol container - transparent background */}
-              <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex items-center justify-center relative">
-                {/* Enhanced dark blue glow effect */}
-                <div 
-                  className="absolute inset-0 rounded-full blur-xl"
-                  style={{
-                    background: 'radial-gradient(circle at center, rgba(8, 145, 178, 0.6) 0%, rgba(8, 145, 178, 0.4) 30%, rgba(14, 165, 233, 0.2) 50%, transparent 70%)',
-                  }}
-                />
-                
-                {/* Inner bright dark blue ring */}
-                <div 
-                  className="absolute inset-2 rounded-full blur-lg"
-                  style={{
-                    background: 'radial-gradient(circle at center, rgba(14, 165, 233, 0.5) 0%, rgba(14, 165, 233, 0.3) 50%, transparent 70%)',
-                  }}
-                />
-                
-                <Image 
-                  src="/brand-kit/true-flow-logo-no-text.png" 
-                  alt="TrueFlow Infinity Symbol" 
-                  width={60} 
-                  height={60} 
-                  className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 object-contain relative z-10 drop-shadow-[0_0_15px_rgba(14,165,233,0.8)]"
-                />
-              </div>
-            </div>
-
-            {/* Orbiting Integration Icons */}
-            {[
-              {
-                name: 'Instagram',
-                logo: <Instagram className="w-8 h-8" />,
-                color: 'from-pink-400 to-purple-500',
-              },
-              {
-                name: 'Facebook',
-                logo: <Facebook className="w-8 h-8" />,
-                color: 'from-blue-500 to-blue-600',
-              },
-              {
-                name: 'WhatsApp',
-                logo: (
-                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
-                  </svg>
-                ),
-                color: 'from-green-400 to-green-500',
-              },
-              {
-                name: 'YouTube',
-                logo: <Youtube className="w-8 h-8" />,
-                color: 'from-red-500 to-red-600',
-              },
-              {
-                name: 'Discord',
-                logo: (
-                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0190 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9460 2.4189-2.1568 2.4189z"/>
-                  </svg>
-                ),
-                color: 'from-indigo-400 to-purple-500',
-              },
-              {
-                name: 'X',
-                logo: (
-                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
-                  </svg>
-                ),
-                color: 'from-gray-700 to-black',
-              },
-              {
-                name: 'Zapier',
-                logo: <Zap className="w-8 h-8" />,
-                color: 'from-orange-500 to-red-500',
-              },
-              {
-                name: 'GoHighLevel',
-                logo: (
-                  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3 8V22H5V8H8L4 3L0 8H3Z"/>
-                    <path d="M11 13V22H13V13H16L12 8L8 13H11Z"/>
-                    <path d="M19 8V22H21V8H24L20 3L16 8H19Z"/>
-                  </svg>
-                ),
-                color: 'from-green-400 to-green-600',
-              }
-            ].map((integration, index) => {
-              const angle = (index * 45) + (scrollY * 0.1); // 45 degrees apart, rotates with scroll
-              const radius = typeof window !== 'undefined' && window.innerWidth < 640 ? 150 + Math.sin(scrollY * 0.005 + index) * 15 : typeof window !== 'undefined' && window.innerWidth < 1024 ? 200 + Math.sin(scrollY * 0.005 + index) * 20 : 280 + Math.sin(scrollY * 0.005 + index) * 30; // Responsive radius
-              const x = Math.cos(angle * Math.PI / 180) * radius;
-              const y = Math.sin(angle * Math.PI / 180) * radius;
-              
-              // 3D depth effects - forward/backward movement only
-              const baseDepth = (index % 4) * 30 - 45; // Base depth variation: -45, -15, 15, 45
-              const scrollDepth = Math.sin(scrollY * 0.008 + index * 1.2) * 40; // Dynamic depth based on scroll
-              const totalDepth = baseDepth + scrollDepth; // Combined depth effect
-              
-              return (
-                <div
-                  key={index}
-                  className="absolute transition-all duration-300 ease-out"
-                  style={{
-                    transform: `translate(${x}px, ${y}px) translateZ(${totalDepth}px)`,
-                    transformStyle: 'preserve-3d',
-                    zIndex: 5 + Math.floor(totalDepth / 15) // Closer items have higher z-index
-                  }}
-                >
-                  <div className="group relative">
-                    {/* Tapered connection line to center - Always render for all logos */}
-                    {/* Force render connecting lines for ALL integration logos */}
-                    <div 
-                      className="absolute transition-opacity duration-300"
-                      style={{
-                        width: `${radius}px`,
-                        height: `8px`, // Slightly increased height for better visibility
-                        transformOrigin: '0 50%',
-                        transform: `rotate(${angle + 180}deg) translateY(-50%)`,
-                        zIndex: -1,
-                        top: '50%',
-                        left: '50%',
-                        opacity: Math.max(0.25, 0.4 + totalDepth * 0.003),
-                        clipPath: `polygon(0 0%, 0 100%, 80% 90%, 100% 50%, 80% 10%)`, // Dramatic taper: thick at outer logo, invisible near TrueFlow center
-                        background: (() => {
-                          // Enhanced gradient with transparency for taper effect
-                          const colorMap: Record<number, string> = {
-                            0: 'linear-gradient(to left, transparent 0%, rgba(190, 24, 93, 0.3) 50%, #be185d 100%)', // Instagram
-                            1: 'linear-gradient(to left, transparent 0%, rgba(29, 78, 216, 0.3) 50%, #1d4ed8 100%)', // Facebook
-                            2: 'linear-gradient(to left, transparent 0%, rgba(21, 128, 61, 0.3) 50%, #15803d 100%)', // WhatsApp
-                            3: 'linear-gradient(to left, transparent 0%, rgba(220, 38, 38, 0.3) 50%, #dc2626 100%)', // YouTube
-                            4: 'linear-gradient(to left, transparent 0%, rgba(67, 56, 202, 0.3) 50%, #4338ca 100%)', // Discord
-                            5: 'linear-gradient(to left, transparent 0%, rgba(55, 65, 81, 0.3) 50%, #374151 100%)', // X
-                            6: 'linear-gradient(to left, transparent 0%, rgba(234, 88, 12, 0.3) 50%, #ea580c 100%)', // Zapier
-                            7: 'linear-gradient(to left, transparent 0%, rgba(21, 128, 61, 0.3) 50%, #15803d 100%)', // GoHighLevel
-                          };
-                          return colorMap[index] || 'linear-gradient(to left, transparent 0%, rgba(59, 130, 246, 0.3) 50%, #3b82f6 100%)';
-                        })()
-                      }}
-                    />
-                    
-                    <div 
-                      className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r ${integration.color} rounded-full flex items-center justify-center text-white shadow-lg group-hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer relative z-10`}
-                      style={{
-                        boxShadow: `
-                          0 ${Math.max(2, 8 + totalDepth * 0.2)}px ${Math.max(4, 16 + Math.abs(totalDepth) * 0.4)}px rgba(0,0,0,${Math.min(0.6, 0.3 + Math.abs(totalDepth) * 0.008)}),
-                          0 ${Math.max(1, 4 + totalDepth * 0.1)}px ${Math.max(2, 8 + Math.abs(totalDepth) * 0.2)}px rgba(0,0,0,${Math.min(0.3, 0.15 + Math.abs(totalDepth) * 0.004)}),
-                          0 0 ${Math.max(10, 20 + Math.abs(totalDepth) * 0.3)}px rgba(255,255,255,${totalDepth > 0 ? Math.min(0.3, totalDepth * 0.005) : 0})
-                        `,
-                        transform: `scale(${Math.max(0.8, 1 + totalDepth * 0.008)})`,
-                        transformStyle: 'preserve-3d'
-                      }}
-                    >
-                      {integration.logo}
-                    </div>
-                    
-                    {/* Service name tooltip on hover */}
-                    <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
-                      <div className={`backdrop-blur-md rounded-lg px-2 py-1 text-xs whitespace-nowrap ${
-                        isDarkMode ? 'bg-black/80 text-white' : 'bg-white text-gray-700 border border-gray-200 shadow'
-                      }`}>
-                        {integration.name}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-
-
-            {/* Orbital rings for visual effect */}
-            <div className={`absolute rounded-full w-[600px] h-[600px] animate-spin ${
-              isDarkMode ? 'border border-white/10' : 'border border-gray-200'
-            }`} style={{ animationDuration: '20s' }} />
-            <div className={`absolute rounded-full w-[520px] h-[520px] animate-spin ${
-              isDarkMode ? 'border border-white/5' : 'border border-gray-100'
-            }`} style={{ animationDuration: '15s', animationDirection: 'reverse' }} />
-          </div>
-
-          <div className="text-center mt-16">
-            <p className={`mb-8 ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>And many more integrations coming soon...</p>
-            <div className="flex flex-wrap justify-center gap-4">
-              {['Slack', 'Notion', 'Airtable', 'Stripe', 'PayPal', 'Shopify'].map((tool, index) => (
-                <span
-                  key={index}
-                  className={`px-4 py-2 rounded-full text-sm backdrop-blur-md transition-colors cursor-pointer ${
-                    isDarkMode
-                      ? 'bg-white/10 text-white/60 border border-white/10 hover:bg-white/20'
-                      : 'bg-white text-gray-600 border border-gray-200 shadow hover:border-blue-300'
-                  }`}
-                >
-                  {tool}
-                </span>
               ))}
             </div>
           </div>
