@@ -1479,7 +1479,7 @@ export default function LandingPage() {
             }`} style={{ animationDuration: '15s', animationDirection: 'reverse' }} />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {solutionProducts.map((product) => {
               const Icon = product.icon
               return (
@@ -1694,7 +1694,7 @@ export default function LandingPage() {
                   <p className={`text-sm ${
                     isDarkMode ? 'text-white/80' : 'text-gray-700'
                   }`}>
-                    Your login gives you access to the dashboard + accelerator curriculum instantly once the intake is complete.
+                    Your login gives you access to the dashboard instantly once the intake is complete.
                   </p>
                 </div>
 
@@ -1716,12 +1716,12 @@ export default function LandingPage() {
               <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                Here's How It Works
+                Your First 14 Days Inside TrueFlow
               </h3>
               <p className={`text-lg ${
                 isDarkMode ? 'text-white/70' : 'text-gray-600'
               }`}>
-                Your 14-day path to a live system we build and operate with you
+                Your trial is about activating and validating the system—not waiting for us to build it for you
               </p>
             </div>
 
@@ -1745,15 +1745,15 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Technical Onboarding
+                    Account Activation & System Access
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    We audit your tools, connect your inboxes, calendars, forms, and pipelines, and confirm routing rules.
+                    You get access to the full TrueFlow system. Core automations, pipelines, AI follow-up logic, and templates are pre-installed. You're guided through connecting your tools and choosing your setup path.
                   </p>
                 </div>
               </div>
 
-              {/* Day 3 */}
+              {/* Days 1-7 */}
               <div className={`relative flex gap-6 p-6 rounded-2xl border ${
                 isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
               }`}>
@@ -1764,7 +1764,7 @@ export default function LandingPage() {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm font-bold text-cyan-500">Day 3</span>
+                    <span className="text-sm font-bold text-cyan-500">Days 1–7</span>
                     <div className={`h-px flex-1 ${
                       isDarkMode ? 'bg-white/10' : 'bg-gray-200'
                     }`}></div>
@@ -1772,15 +1772,15 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    System Activation
+                    Guided Setup & Configuration
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    Lead capture, AI follow-up, scheduling, and pipeline logic go live. We handle setup and QA.
+                    You follow step-by-step instructions to configure your lead flow, messaging, and routing. Our automations assist with setup, validation, and testing. Support is available if you get stuck.
                   </p>
                 </div>
               </div>
 
-              {/* Day 7 */}
+              {/* Days 8-13 */}
               <div className={`relative flex gap-6 p-6 rounded-2xl border ${
                 isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
               }`}>
@@ -1791,7 +1791,7 @@ export default function LandingPage() {
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm font-bold text-purple-500">Day 7</span>
+                    <span className="text-sm font-bold text-purple-500">Days 8–13</span>
                     <div className={`h-px flex-1 ${
                       isDarkMode ? 'bg-white/10' : 'bg-gray-200'
                     }`}></div>
@@ -1799,10 +1799,10 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    System Optimization Check-In
+                    System Live & Validation
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    We review usage data and adjust timing, messaging, and automation rules to improve performance.
+                    Your system is live. Leads are captured, followed up with, and routed automatically. You can see what's working and what needs adjustment.
                   </p>
                 </div>
               </div>
@@ -1826,10 +1826,10 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Trial Wrap + Continuation
+                    Decide How You Want to Proceed
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    Your $297/month membership continues, or cancel before day 14. No charge.
+                    Continue using the system DIY for $297/month—or explore a custom, done-for-you build if you want TrueFlow to take over execution. Cancel anytime before day 14, no charge.
                   </p>
                 </div>
               </div>
@@ -1845,10 +1845,10 @@ export default function LandingPage() {
             }`}>
               <div className="text-center mb-8">
                 <h3 className={`text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent`}>
-                  Want this done for you, customized to your business?
+                  Some clients decide they don't want to touch this
                 </h3>
                 <p className={`text-xl mb-6 ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>
-                  We'll set up your CRM, pipelines, Content Engine, and AI Chat Agents for you
+                  If you want us to build, customize, and run the entire system for you—we do that too
                 </p>
               </div>
 
@@ -1859,19 +1859,15 @@ export default function LandingPage() {
                 <ul className="space-y-3">
                   <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                     <span className="text-cyan-400 mt-1">•</span>
-                    <span>24/7 customer support</span>
+                    <span>CRM pipelines, content engine, AI chat set up for you</span>
                   </li>
                   <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                     <span className="text-cyan-400 mt-1">•</span>
-                    <span>Monthly meeting with your success manager</span>
+                    <span>Ongoing support and maintenance</span>
                   </li>
                   <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                     <span className="text-cyan-400 mt-1">•</span>
-                    <span>Technical support & ongoing maintenance</span>
-                  </li>
-                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                    <span className="text-cyan-400 mt-1">•</span>
-                    <span>90 Minute Content Engine Strategy & Setup Call</span>
+                    <span>Monthly success manager touchpoints</span>
                   </li>
                 </ul>
               </div>
@@ -1888,7 +1884,7 @@ export default function LandingPage() {
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 <p className={`text-sm mt-4 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
-                  Typical plans start with a $3k setup fee + $497/mo
+                  Typical plans start with a $3–5k setup fee + $497/mo
                 </p>
               </div>
             </div>
@@ -1916,7 +1912,7 @@ export default function LandingPage() {
             <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 transition-all duration-1000 ${
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
-              Real Business<br />Real Results
+              Real businesses. Real results.
             </h2>
             <p className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto px-4 transition-all duration-1000 ${
               isDarkMode ? 'text-white/70' : 'text-gray-600'
@@ -2245,31 +2241,27 @@ export default function LandingPage() {
             {[
               {
                 question: "Do I need to know anything about technology?",
-                answer: "Not at all! That's the whole point. We handle all the technical setup and maintenance. You just tell us what you want to accomplish, and we make it happen."
+                answer: "Not at all. TrueFlow handles all the technical setup and maintenance. You just complete guided steps inside the platform."
               },
               {
                 question: "How long does it take to get set up?",
-                answer: "Most basic automations are up and running within 1-2 weeks. More complex setups may take 3-4 weeks. We'll give you a clear timeline after your free assessment."
+                answer: "Your system goes live within your 14-day trial. Core automations are typically active within 3-7 days."
               },
               {
                 question: "What if I need changes or want to add something new?",
-                answer: "That's included! We're not a set-it-and-forget-it service. As your needs change, we adjust your automations. All packages include ongoing support and updates."
+                answer: "That's included. We're not a set-it-and-forget-it service. As your needs change, we adjust your automations. All packages include ongoing support and updates."
               },
               {
                 question: "Will this work with my existing tools?",
-                answer: "Almost always, yes. We build automations that connect with whatever you're already using - your phone, email, calendar, website, CRM, or any other software. If you have something specific, ask us during your free assessment."
+                answer: "Almost always, yes. TrueFlow connects with your existing phone, email, calendar, website, and CRM systems."
               },
               {
-                question: "What's included in 'beta software access'?",
-                answer: "As we build automation for your business, you'll also get early access to our TrueFlow platform. Think of it as a bonus - you can use it to manage tasks, create content, and see your business metrics in one place."
-              },
-              {
-                question: "How much does it really cost?",
-                answer: "It depends on what you need. A simple lead capture and follow-up system might be a few hundred dollars a month. A complete automation package with scheduling, messaging, and social media could be more. The best way to find out is to get your free assessment - we'll give you an exact price based on your needs."
+                question: "How much does it cost?",
+                answer: "$297/month for the standard plan with full CRM, automations, chat agents, and content engine. White Glove packages with custom setup start at $3–5k setup fee + $497/month."
               },
               {
                 question: "What if it doesn't work for my business?",
-                answer: "We're confident it will, but we include a satisfaction guarantee in all our packages. If you're not happy with the results, we'll work with you to make it right or part ways on good terms."
+                answer: "We're confident it will, but if you're not happy with the results, we'll work with you to make it right or part ways on good terms."
               },
               {
                 question: "Can I cancel anytime?",
