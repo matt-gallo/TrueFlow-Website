@@ -488,17 +488,6 @@ function SignUpPageContent() {
         <Navigation />
 
         <main className="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
-          {/* Header Section */}
-          <div className="max-w-6xl mx-auto mb-16 text-center">
-            <p className="text-xs uppercase tracking-[0.4em] text-blue-500 mb-4">Start Your 14-Day Free Trial</p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-              The all-in-one platform to <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">grow your business</span>
-            </h1>
-            <p className={`text-xl ${theme.textMuted} mt-6 max-w-3xl mx-auto`}>
-              Get full access to TrueFlow&apos;s CRM, automation, and AI tools, plus 2 weeks in the TrueFlow Accelerator with live coaching, resources, and done-for-you setup.
-            </p>
-          </div>
-
           <div className="max-w-6xl mx-auto">
             <section id="signup-form" className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-6 sm:p-8 md:p-12 shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'} scroll-mt-24 border w-full`}>
               {isComplete ? (
@@ -1001,6 +990,17 @@ function SignUpPageContent() {
                 </form>
               )}
             </section>
+          </div>
+
+          {/* Header Section */}
+          <div className="max-w-6xl mx-auto mt-20 mb-16 text-center">
+            <p className="text-xs uppercase tracking-[0.4em] text-blue-500 mb-4">Start Your 14-Day Free Trial</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              The all-in-one platform to <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">grow your business</span>
+            </h1>
+            <p className={`text-xl ${theme.textMuted} mt-6 max-w-3xl mx-auto`}>
+              Get full access to TrueFlow&apos;s CRM, automation, and AI tools, plus 2 weeks in the TrueFlow Accelerator with live coaching, resources, and done-for-you setup.
+            </p>
           </div>
 
           <div className="max-w-6xl mx-auto mt-20">
