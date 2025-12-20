@@ -152,7 +152,7 @@ This lead has provided contact info but hasn't completed the full form yet.
     // Create Contact in GoHighLevel (GHL)
     // ----------------------------------------------------------------------
     // Use sub-account specific token if available, otherwise fall back to agency token
-    const ghlToken = process.env.GHL_SUBACCOUNT_API_KEY || process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
+    const ghlToken = process.env.GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION || process.env.GHL_SUBACCOUNT_API_KEY || process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
     const ghlLocationId = process.env.GHL_LOCATION_ID
     let ghlCreated = false
     let ghlErrorDetail = null
@@ -176,7 +176,11 @@ This lead has provided contact info but hasn't completed the full form yet.
         }
 
         // Log which token type we're using (for debugging)
-        const tokenSource = process.env.GHL_SUBACCOUNT_API_KEY ? 'GHL_SUBACCOUNT_API_KEY' : 'GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN'
+        const tokenSource = process.env.GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION
+          ? 'GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION'
+          : process.env.GHL_SUBACCOUNT_API_KEY
+          ? 'GHL_SUBACCOUNT_API_KEY'
+          : 'GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN'
         console.log(`Using ${tokenSource} for GHL contact creation`)
 
         // Detect if this is a JWT token or legacy API key
@@ -232,6 +236,7 @@ This lead has provided contact info but hasn't completed the full form yet.
         email: emailErrorDetail,
         ghl: ghlErrorDetail,
         debug: {
+          hasTrueFlowSubAccountToken: !!process.env.GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION,
           hasSubAccountKey: !!process.env.GHL_SUBACCOUNT_API_KEY,
           hasAgencyToken: !!process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN,
           hasLocationId: !!process.env.GHL_LOCATION_ID
