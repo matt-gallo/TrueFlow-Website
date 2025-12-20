@@ -38,6 +38,19 @@ Add these to Railway (both staging and production environments). See `.env.ghl.e
    - **How to find it:** In GHL, go to Settings → Business Profile, or run `GET /locations/search` and use the `id` field from your main location
    - **Important:** This should be YOUR agency's main location ID where you want to capture leads, not a client location
 
+#### Optional: Sub-Account Specific API Key
+
+**`GHL_SUBACCOUNT_API_KEY`** - Sub-account specific API key for creating contacts
+   - **Recommended approach:** Use this instead of the agency-level token for partial lead capture
+   - Used by `/api/partial-lead-notification` to create contacts in the specific sub-account
+   - **How to get it:**
+     1. Log into the **specific GHL sub-account** where you want leads captured
+     2. Go to **Settings → Integrations → API Key** (legacy) OR create a **Private Integration** in that sub-account
+     3. Copy the API key
+   - **Format:** Either a legacy API key or Private Integration token
+   - **Fallback:** If not set, will use `GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN`
+   - **Benefits:** More secure, scoped to specific location, easier to manage permissions
+
 #### Required for Email Notifications
 
 4. **`RESEND_API_KEY`** - API key from Resend for sending welcome emails
