@@ -37,33 +37,34 @@ export default function BlogContent({ content, isDarkMode }: BlogContentProps) {
       html = html
         // Links - process before other elements to avoid conflicts
         .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (match, linkText, url) => {
+          const linkClasses = `relative text-transparent bg-gradient-to-r ${isDarkMode ? 'from-blue-400 to-purple-400 hover:from-blue-300 hover:to-purple-300 after:from-blue-400 after:to-purple-400' : 'from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 after:from-blue-600 after:to-purple-600'} bg-clip-text font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100`
           // Check if it's an internal link
           if (url.startsWith('/') || url.startsWith('#')) {
-            return `<a href="${url}" class="internal-link relative text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 hover:from-blue-300 hover:to-purple-300">${linkText}</a>`
+            return `<a href="${url}" class="internal-link ${linkClasses}">${linkText}</a>`
           } else {
-            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="relative text-transparent bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text font-medium after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-full after:h-0.5 after:bg-gradient-to-r after:from-blue-400 after:to-purple-400 after:transform after:scale-x-0 after:transition-transform after:duration-300 hover:after:scale-x-100 hover:from-blue-300 hover:to-purple-300">${linkText}</a>`
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="${linkClasses}">${linkText}</a>`
           }
         })
         // Headers with gradient text - handle various levels
-        .replace(/^#{4,}\s+(.*$)/gim, '<h4 class="text-xl font-semibold bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent mt-6 mb-3 hover:from-green-300 hover:to-blue-400 transition-all duration-300">$1</h4>')
-        .replace(/^###\s+(.*$)/gim, '<h3 class="text-2xl font-semibold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mt-8 mb-4 hover:from-cyan-300 hover:to-blue-400 transition-all duration-300">$1</h3>')
-        .replace(/^##\s+(.*$)/gim, '<h2 class="text-3xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent mt-12 mb-6 hover:from-purple-300 hover:via-pink-400 hover:to-red-400 transition-all duration-300">$1</h2>')
-        .replace(/^#\s+(.*$)/gim, '<h1 class="text-4xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mt-12 mb-6 animate-gradient-x">$1</h1>')
+        .replace(/^#{4,}\s+(.*$)/gim, `<h4 class="text-xl font-semibold mt-6 mb-3 transition-all duration-300 ${isDarkMode ? 'bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent hover:from-green-300 hover:to-blue-400' : 'bg-gradient-to-r from-green-600 to-blue-700 bg-clip-text text-transparent hover:from-green-500 hover:to-blue-600'}">$1</h4>`)
+        .replace(/^###\s+(.*$)/gim, `<h3 class="text-2xl font-semibold mt-8 mb-4 transition-all duration-300 ${isDarkMode ? 'bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent hover:from-cyan-300 hover:to-blue-400' : 'bg-gradient-to-r from-cyan-600 to-blue-700 bg-clip-text text-transparent hover:from-cyan-500 hover:to-blue-600'}">$1</h3>`)
+        .replace(/^##\s+(.*$)/gim, `<h2 class="text-3xl font-bold mt-12 mb-6 transition-all duration-300 ${isDarkMode ? 'bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent hover:from-purple-300 hover:via-pink-400 hover:to-red-400' : 'bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 bg-clip-text text-transparent hover:from-purple-500 hover:via-pink-500 hover:to-red-500'}">$1</h2>`)
+        .replace(/^#\s+(.*$)/gim, `<h1 class="text-4xl font-bold mt-12 mb-6 ${isDarkMode ? 'bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent' : 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent'}">$1</h1>`)
         // Bold with glow effect
         .replace(/\*\*(.+?)\*\*/g, `<strong class="font-semibold ${isDarkMode ? 'text-white hover:text-yellow-300' : 'text-gray-900 hover:text-blue-600'} relative inline-block transition-colors duration-200">$1</strong>`)
         // Italic
-        .replace(/\*([^*]+)\*/g, '<em class="italic text-transparent bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text">$1</em>')
+        .replace(/\*([^*]+)\*/g, `<em class="italic text-transparent bg-gradient-to-r ${isDarkMode ? 'from-yellow-300 to-orange-400' : 'from-yellow-600 to-orange-600'} bg-clip-text">$1</em>`)
         // Lists with colorful markers - process correctly regardless of number
-        .replace(/^\d+\.\s+(.+)$/gim, '<li class="ml-6 mb-2 list-decimal marker:text-purple-400 hover:marker:text-purple-300 transition-all duration-200">$1</li>')
-        .replace(/^-\s+(.+)$/gim, '<li class="ml-6 mb-2 list-disc marker:text-cyan-400 hover:marker:text-cyan-300 transition-all duration-200">$1</li>')
+        .replace(/^\d+\.\s+(.+)$/gim, `<li class="ml-6 mb-2 list-decimal transition-all duration-200 ${isDarkMode ? 'marker:text-purple-400 hover:marker:text-purple-300' : 'marker:text-purple-600 hover:marker:text-purple-700'}">$1</li>`)
+        .replace(/^-\s+(.+)$/gim, `<li class="ml-6 mb-2 list-disc transition-all duration-200 ${isDarkMode ? 'marker:text-cyan-400 hover:marker:text-cyan-300' : 'marker:text-cyan-600 hover:marker:text-cyan-700'}">$1</li>`)
         // Paragraphs
         .replace(/\n\n/g, `</p><p class="${isDarkMode ? 'text-white/80 hover:text-white/90' : 'text-gray-700 hover:text-gray-900'} leading-relaxed mb-6 transition-colors duration-200">`)
         // Code blocks with gradient border
-        .replace(/```([\s\S]+?)```/g, '<pre class="bg-gradient-to-br from-purple-900/20 to-blue-900/20 border border-transparent bg-clip-padding rounded-lg p-4 mb-6 overflow-x-auto relative before:absolute before:inset-0 before:bg-gradient-to-br before:from-purple-500 before:to-blue-500 before:rounded-lg before:-z-10 before:p-[1px] hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300"><code class="text-sm text-transparent bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text font-mono">$1</code></pre>')
+        .replace(/```([\s\S]+?)```/g, `<pre class="${isDarkMode ? 'bg-gradient-to-br from-purple-900/20 to-blue-900/20' : 'bg-gradient-to-br from-purple-100 to-blue-100'} border border-transparent bg-clip-padding rounded-lg p-4 mb-6 overflow-x-auto relative before:absolute before:inset-0 before:bg-gradient-to-br ${isDarkMode ? 'before:from-purple-500 before:to-blue-500' : 'before:from-purple-400 before:to-blue-400'} before:rounded-lg before:-z-10 before:p-[1px] hover:from-purple-900/30 hover:to-blue-900/30 transition-all duration-300"><code class="text-sm ${isDarkMode ? 'text-transparent bg-gradient-to-r from-cyan-300 to-blue-300 bg-clip-text' : 'text-gray-800'} font-mono">$1</code></pre>`)
         // Inline code with hover effect
-        .replace(/`(.+?)`/g, '<code class="bg-gradient-to-r from-purple-500/20 to-blue-500/20 px-2 py-1 rounded text-sm text-cyan-300 hover:from-purple-500/30 hover:to-blue-500/30 hover:text-cyan-200 transition-all duration-200 font-mono">$1</code>')
+        .replace(/`(.+?)`/g, `<code class="${isDarkMode ? 'bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-cyan-300 hover:from-purple-500/30 hover:to-blue-500/30 hover:text-cyan-200' : 'bg-gradient-to-r from-purple-100 to-blue-100 text-purple-800 hover:from-purple-200 hover:to-blue-200 hover:text-purple-900'} px-2 py-1 rounded text-sm transition-all duration-200 font-mono">$1</code>`)
         // Blockquotes with colorful styling
-        .replace(/^> (.+)$/gim, '<blockquote class="my-6"><span class="text-transparent bg-gradient-to-r from-purple-300 to-blue-300 bg-clip-text italic">$1</span></blockquote>')
+        .replace(/^> (.+)$/gim, `<blockquote class="my-6"><span class="text-transparent bg-gradient-to-r ${isDarkMode ? 'from-purple-300 to-blue-300' : 'from-purple-600 to-blue-600'} bg-clip-text italic">$1</span></blockquote>`)
 
       // Wrap in paragraph tags
       html = `<p class="${isDarkMode ? 'text-white/80' : 'text-gray-700'} leading-relaxed mb-6">${html}</p>`
@@ -121,9 +122,9 @@ export default function BlogContent({ content, isDarkMode }: BlogContentProps) {
                      [&>ol]:mb-6 [&>ol]:space-y-2 [&>ol]:list-decimal [&>ol]:list-inside [&>ol>li]:ml-6 [&>ol>li]:transition-colors
                      [&>blockquote]:border-l-4 [&>blockquote]:border-gradient-to-b [&>blockquote]:from-purple-500 [&>blockquote]:to-blue-500 [&>blockquote]:pl-6 [&>blockquote]:pr-4 [&>blockquote]:py-4 [&>blockquote]:italic [&>blockquote]:bg-gradient-to-r [&>blockquote]:from-purple-500/10 [&>blockquote]:to-blue-500/10 [&>blockquote]:rounded-r-lg [&>blockquote]:hover:from-purple-500/20 [&>blockquote]:hover:to-blue-500/20 [&>blockquote]:transition-all [&>blockquote]:duration-300
                      [&>pre]:mb-6 [&>pre]:overflow-x-auto
-                     [&_a]:relative [&_a]:text-transparent [&_a]:bg-gradient-to-r [&_a]:from-blue-400 [&_a]:to-purple-400 [&_a]:bg-clip-text [&_a]:font-medium [&_a]:after:content-[''] [&_a]:after:absolute [&_a]:after:left-0 [&_a]:after:bottom-0 [&_a]:after:w-full [&_a]:after:h-0.5 [&_a]:after:bg-gradient-to-r [&_a]:after:from-blue-400 [&_a]:after:to-purple-400 [&_a]:after:transform [&_a]:after:scale-x-0 [&_a]:after:transition-transform [&_a]:after:duration-300 [&_a:hover]:after:scale-x-100 [&_a:hover]:from-blue-300 [&_a:hover]:to-purple-300
+                     [&_a]:relative [&_a]:text-transparent [&_a]:bg-gradient-to-r ${isDarkMode ? '[&_a]:from-blue-400 [&_a]:to-purple-400 [&_a:hover]:from-blue-300 [&_a:hover]:to-purple-300 [&_a]:after:from-blue-400 [&_a]:after:to-purple-400' : '[&_a]:from-blue-600 [&_a]:to-purple-600 [&_a:hover]:from-blue-500 [&_a:hover]:to-purple-500 [&_a]:after:from-blue-600 [&_a]:after:to-purple-600'} [&_a]:bg-clip-text [&_a]:font-medium [&_a]:after:content-[''] [&_a]:after:absolute [&_a]:after:left-0 [&_a]:after:bottom-0 [&_a]:after:w-full [&_a]:after:h-0.5 [&_a]:after:bg-gradient-to-r [&_a]:after:transform [&_a]:after:scale-x-0 [&_a]:after:transition-transform [&_a]:after:duration-300 [&_a:hover]:after:scale-x-100
                      [&_strong]:font-semibold
-                     [&_em]:italic [&_em]:text-transparent [&_em]:bg-gradient-to-r [&_em]:from-yellow-300 [&_em]:to-orange-400 [&_em]:bg-clip-text
+                     [&_em]:italic [&_em]:text-transparent [&_em]:bg-gradient-to-r ${isDarkMode ? '[&_em]:from-yellow-300 [&_em]:to-orange-400' : '[&_em]:from-yellow-600 [&_em]:to-orange-600'} [&_em]:bg-clip-text
                      ${isDarkMode
                        ? '[&>p]:text-white/80 [&>ul>li]:text-white/80 [&>ul>li]:hover:text-white [&>ol>li]:text-white/80 [&>ol>li]:hover:text-white [&>blockquote]:text-white/70 [&_strong]:text-white'
                        : '[&>p]:text-gray-700 [&>ul>li]:text-gray-700 [&>ul>li]:hover:text-gray-900 [&>ol>li]:text-gray-700 [&>ol>li]:hover:text-gray-900 [&>blockquote]:text-gray-700 [&_strong]:text-gray-900'
