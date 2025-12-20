@@ -484,6 +484,8 @@ function SignUpPageContent() {
     }
   }
 
+  const desktopFormViewport = 'lg:max-h-[calc(100vh-160px)] lg:min-h-[calc(100vh-160px)] lg:overflow-hidden'
+
   return (
     <div className={`min-h-screen ${theme.bg} ${theme.text} transition-colors duration-300`}>
       <div className="fixed inset-0 pointer-events-none">
@@ -497,9 +499,13 @@ function SignUpPageContent() {
 
         <main className="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <section id="signup-form" className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-6 sm:p-8 md:p-12 shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'} scroll-mt-24 border w-full`}>
-              {isComplete ? (
-                <div className="space-y-8 text-center">
+            <section
+              id="signup-form"
+              className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-6 sm:p-8 md:p-12 shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'} scroll-mt-24 border w-full ${desktopFormViewport}`}
+            >
+              <div className="lg:h-full lg:overflow-y-auto lg:pr-4 lg:-mr-2">
+                {isComplete ? (
+                  <div className="space-y-8 text-center">
                   <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-200">
                     <CheckCircle className="h-5 w-5" />
                     <span>Workspace Reserved</span>
@@ -542,9 +548,9 @@ function SignUpPageContent() {
                       Return Home
                     </Link>
                   </div>
-                </div>
-              ) : (
-                <form className="space-y-10" onSubmit={handleSubmit}>
+                  </div>
+                ) : (
+                  <form className="space-y-10" onSubmit={handleSubmit}>
                   <div className="space-y-4">
                     <div>
                       <h2 className="text-2xl sm:text-3xl font-bold">
@@ -995,8 +1001,9 @@ function SignUpPageContent() {
                       </button>
                     </div>
                   )}
-                </form>
-              )}
+                  </form>
+                )}
+              </div>
             </section>
           </div>
 

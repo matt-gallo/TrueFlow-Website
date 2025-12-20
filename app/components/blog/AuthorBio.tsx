@@ -1,20 +1,42 @@
 import type { Author } from '@/app/types/blog'
 import Image from 'next/image'
+import { useTheme } from '@/app/components/ThemeProvider'
 
 interface AuthorBioProps {
   author: Author
 }
 
 export default function AuthorBio({ author }: AuthorBioProps) {
+  const { isDarkMode } = useTheme()
+
+  const sectionBorder = isDarkMode ? 'border-white/10' : 'border-gray-200'
+  const cardClasses = isDarkMode
+    ? 'bg-white/10 backdrop-blur-xl border-white/20 shadow-2xl shadow-white/5'
+    : 'bg-white border-gray-200 shadow-xl'
+  const headingClasses = isDarkMode
+    ? 'text-white bg-white/5 border-white/10'
+    : 'text-gray-900 bg-gray-100 border-gray-200'
+  const bioContainerClasses = isDarkMode
+    ? 'bg-white/5 border-white/15'
+    : 'bg-gray-50 border-gray-200'
+  const bodyText = isDarkMode ? 'text-white/80' : 'text-gray-700'
+  const roleText = isDarkMode ? 'text-blue-300' : 'text-blue-600'
+  const authorName = isDarkMode ? 'text-white' : 'text-gray-900'
+  const avatarClasses = isDarkMode
+    ? 'bg-white/15 border-white/25 text-white'
+    : 'bg-gray-100 border-gray-200 text-gray-700'
+
   return (
-    <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t border-white/10">
-      <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-8 border border-white/20 shadow-2xl shadow-white/5">
-        <h3 className="text-xl font-semibold text-white mb-6 px-4 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-lg inline-block">About the Author</h3>
+    <section className={`max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-t ${sectionBorder}`}>
+      <div className={`rounded-2xl p-8 border ${cardClasses}`}>
+        <h3 className={`text-xl font-semibold mb-6 px-4 py-2 backdrop-blur-md rounded-lg inline-block ${headingClasses}`}>
+          About the Author
+        </h3>
         
         <div className="flex flex-col sm:flex-row gap-6">
           {/* Avatar */}
           <div className="flex-shrink-0">
-            <div className="w-24 h-24 rounded-full overflow-hidden bg-white/15 backdrop-blur-md border-2 border-white/25 flex items-center justify-center text-white text-2xl font-bold shadow-xl">
+            <div className={`w-24 h-24 rounded-full overflow-hidden backdrop-blur-md border-2 flex items-center justify-center text-2xl font-bold shadow-xl ${avatarClasses}`}>
               {author.avatar ? (
                 <Image
                   src={author.avatar}
@@ -29,12 +51,12 @@ export default function AuthorBio({ author }: AuthorBioProps) {
             </div>
           </div>
           
-          {/* Bio with enhanced frosted glass */}
-          <div className="flex-1 bg-white/5 backdrop-blur-lg border border-white/15 rounded-xl p-6">
-            <h4 className="text-2xl font-semibold text-white mb-1">{author.name}</h4>
-            <p className="text-blue-300 mb-4 font-medium">{author.role}</p>
+          {/* Bio with adaptive styling */}
+          <div className={`flex-1 backdrop-blur-lg rounded-xl p-6 border ${bioContainerClasses}`}>
+            <h4 className={`text-2xl font-semibold mb-1 ${authorName}`}>{author.name}</h4>
+            <p className={`mb-4 font-medium ${roleText}`}>{author.role}</p>
             {author.bio && (
-              <p className="text-white/80 leading-relaxed">{author.bio}</p>
+              <p className={`${bodyText} leading-relaxed`}>{author.bio}</p>
             )}
             
             {/* Social Links - Coming Soon */}
