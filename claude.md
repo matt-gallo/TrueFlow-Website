@@ -32,30 +32,36 @@ Add these to Railway (both staging and production environments). See `.env.ghl.e
    - **NOT** the 7-digit Relationship Number (e.g., `1-234-567`)
    - **How to find it:** Run `GET /locations/search?limit=1` with your Private Integration Token and look for the `companyId` field in the response
 
+3. **`GHL_LOCATION_ID`** - Your primary GHL location/sub-account ID for capturing partial leads
+   - Used by `/api/partial-lead-notification` to create contacts when users fill out forms
+   - **Format:** Long alphanumeric string like `ve9EPM428h8vShlRW1KT`
+   - **How to find it:** In GHL, go to Settings → Business Profile, or run `GET /locations/search` and use the `id` field from your main location
+   - **Important:** This should be YOUR agency's main location ID where you want to capture leads, not a client location
+
 #### Required for Email Notifications
 
-3. **`RESEND_API_KEY`** - API key from Resend for sending welcome emails
+4. **`RESEND_API_KEY`** - API key from Resend for sending welcome emails
    - Get from: https://resend.com/api-keys
    - Ensure your domain (trueflow.ai) is verified in Resend dashboard
 
 #### Required for Webhook Processing
 
-4. **`NEXT_PUBLIC_LANDING_URL`** - Your application's public URL
+5. **`NEXT_PUBLIC_LANDING_URL`** - Your application's public URL
    - Production: `https://trueflow.ai`
    - Staging: `https://your-staging-url.railway.app`
    - Used by webhooks to call internal APIs (`/api/signup-data`, `/api/intake`)
 
 #### Optional But Recommended
 
-5. **`GHL_DEFAULT_USER_PASSWORD`** - Override password for newly created users
+6. **`GHL_DEFAULT_USER_PASSWORD`** - Override password for newly created users
    - If not set, a secure random password is generated automatically
    - Useful when you want to set a known default before forcing a password reset workflow
 
-6. **`GHL_WEBHOOK_SECRET`** - Secret for verifying webhook signatures from FastPay
+7. **`GHL_WEBHOOK_SECRET`** - Secret for verifying webhook signatures from FastPay
    - Recommended for production to prevent unauthorized webhook calls
    - If not set, signature verification is skipped
 
-7. **`GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN_USER_CREATION`** - Separate token for user creation
+8. **`GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN_USER_CREATION`** - Separate token for user creation
    - Only needed if you have different scopes/permissions for user management
    - Falls back to main token if not set
 
