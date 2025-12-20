@@ -151,8 +151,25 @@ This lead has provided contact info but hasn't completed the full form yet.
     // ----------------------------------------------------------------------
     // Create Contact in GoHighLevel (GHL)
     // ----------------------------------------------------------------------
-    // Use sub-account specific token if available, otherwise fall back to agency token
-    const ghlToken = process.env.GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION || process.env.GHL_SUBACCOUNT_API_KEY || process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
+    
+    // Determine the best available token, prioritizing the sub-account specific token as requested
+    let ghlToken = process.env.GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION
+    let tokenSource = 'GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION'
+
+    // Fallback to other tokens if the primary one is missing
+    if (!ghlToken) {
+      if (process.env.GHL_ACCESS_TOKEN && !process.env.GHL_ACCESS_TOKEN.includes('your_')) {
+        ghlToken = process.env.GHL_ACCESS_TOKEN
+        tokenSource = 'GHL_ACCESS_TOKEN'
+      } else if (process.env.GHL_SUBACCOUNT_API_KEY) {
+        ghlToken = process.env.GHL_SUBACCOUNT_API_KEY
+        tokenSource = 'GHL_SUBACCOUNT_API_KEY'
+      } else {
+        ghlToken = process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
+        tokenSource = 'GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN'
+      }
+    }
+
     const ghlLocationId = process.env.GHL_LOCATION_ID
     let ghlCreated = false
     let ghlErrorDetail = null
@@ -175,23 +192,30 @@ This lead has provided contact info but hasn't completed the full form yet.
           ghlPayload.phone = leadData.phone
         }
 
-        // Log which token type we're using (for debugging)
-        const tokenSource = process.env.GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION
-          ? 'GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION'
-          : process.env.GHL_SUBACCOUNT_API_KEY
-          ? 'GHL_SUBACCOUNT_API_KEY'
-          : 'GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN'
         console.log(`Using ${tokenSource} for GHL contact creation`)
 
-        // Detect if this token is a JWT (private integration) or legacy API key.
-        const tokenParts = ghlToken.split('.')
-        const looksLikeJWT = tokenParts.length === 3 && ghlToken.startsWith('ey')
-        const authVariants = looksLikeJWT
-          ? [`Bearer ${ghlToken}`, ghlToken]
-          : [ghlToken, `Bearer ${ghlToken}`]
+        // Determine auth variants based on token source and format
+        let authVariants: string[] = []
+        
+        if (tokenSource === 'GHL_ACCESS_TOKEN') {
+          // Standard OAuth Access Token is always Bearer
+          authVariants = [`Bearer ${ghlToken}`]
+        } else {
+          // Detect if this token is a JWT (private integration) or legacy API key.
+          // Private Integration Tokens (PIT) are usually JWTs and need 'Bearer'.
+          // Legacy API Keys are usually raw.
+          const tokenParts = ghlToken.split('.')
+          const looksLikeJWT = tokenParts.length === 3 && ghlToken.startsWith('ey')
+          
+          // Try Bearer first if it looks like a JWT (common for PIT), otherwise try raw first
+          authVariants = looksLikeJWT
+            ? [`Bearer ${ghlToken}`, ghlToken]
+            : [ghlToken, `Bearer ${ghlToken}`]
+        }
 
         let lastResponseStatus: number | null = null
         let lastErrorData: any = null
+        
         for (const authHeader of authVariants) {
           const headerType = authHeader.startsWith('Bearer') ? 'JWT-style' : 'API-key style'
           console.log(`Attempting GHL contact creation (${headerType} auth)`)
@@ -229,7 +253,8 @@ This lead has provided contact info but hasn't completed the full form yet.
             authMode: headerType
           })
 
-          const shouldRetry = response.status === 401 && headerType === 'JWT-style'
+          // Only retry if we have another variant to try
+          const shouldRetry = response.status === 401 && headerType === 'JWT-style' && authVariants.length > 1
           if (!shouldRetry) {
             ghlErrorDetail = `GHL API Error: ${response.status} - ${JSON.stringify(errorData).substring(0, 100)}`
             break
@@ -244,7 +269,7 @@ This lead has provided contact info but hasn't completed the full form yet.
         ghlErrorDetail = ghlError instanceof Error ? ghlError.message : 'Unknown GHL error'
       }
     } else {
-      console.warn('Skipping GHL contact creation: Missing GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN or GHL_LOCATION_ID')
+      console.warn('Skipping GHL contact creation: Missing GHL token or GHL_LOCATION_ID')
       ghlErrorDetail = 'Missing GHL environment variables'
     }
     // ----------------------------------------------------------------------
@@ -257,6 +282,7 @@ This lead has provided contact info but hasn't completed the full form yet.
         email: emailErrorDetail,
         ghl: ghlErrorDetail,
         debug: {
+          hasAccessToken: !!process.env.GHL_ACCESS_TOKEN && !process.env.GHL_ACCESS_TOKEN.includes('your_'),
           hasTrueFlowSubAccountToken: !!process.env.GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION,
           hasSubAccountKey: !!process.env.GHL_SUBACCOUNT_API_KEY,
           hasAgencyToken: !!process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN,
