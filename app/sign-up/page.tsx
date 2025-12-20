@@ -126,18 +126,26 @@ function SignUpPageContent() {
   const triggerPartialLeadCapture = async (data: { fullName: string, email: string, role: string, phone?: string }) => {
     try {
       console.log('Triggering partial lead capture for:', data.email)
-      await fetch('/api/partial-lead-notification', {
+      const response = await fetch('/api/partial-lead-notification', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           firstName: data.fullName.split(' ')[0],
           lastName: data.fullName.split(' ').slice(1).join(' ') || '',
           email: data.email,
-          phone: data.phone || '', 
+          phone: data.phone || '',
           timestamp: new Date().toISOString(),
           isPartialLead: true
         })
       })
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}))
+        console.error('Partial lead capture failed:', response.status, errorData)
+      } else {
+        const result = await response.json()
+        console.log('Partial lead captured successfully:', result)
+      }
     } catch (err) {
       console.error('Failed to trigger partial lead capture:', err)
     }
