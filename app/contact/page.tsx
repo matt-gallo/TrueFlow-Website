@@ -1,12 +1,33 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import Script from 'next/script'
 import Navigation from '@/app/components/Navigation'
 import { Footer } from '@/app/components/Footer'
 import { useTheme } from '@/app/components/ThemeProvider'
 
+const FORM_BASE_HEIGHT = 960
+const MIN_SCALE = 0.78
+const HEIGHT_OFFSET = 120
+
 export default function ContactPage() {
   const { isDarkMode } = useTheme()
+  const [formScale, setFormScale] = useState(1)
+
+  useEffect(() => {
+    const updateScale = () => {
+      const availableHeight = window.innerHeight - HEIGHT_OFFSET // account for nav + padding
+      const scale = Math.min(1, Math.max(MIN_SCALE, availableHeight / FORM_BASE_HEIGHT))
+      setFormScale(scale)
+    }
+
+    updateScale()
+    window.addEventListener('resize', updateScale)
+    return () => window.removeEventListener('resize', updateScale)
+  }, [])
+
+  const scaledWidthPercent = `${(1 / formScale) * 100}%`
+  const heightOffset = FORM_BASE_HEIGHT * (1 - formScale)
 
   return (
     <div className={`min-h-screen transition-colors ${
@@ -16,8 +37,8 @@ export default function ContactPage() {
       <Navigation />
 
       {/* Main Content */}
-      <main className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
+      <main className="pt-32 pb-20 px-0">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           {/* Page Header */}
           <div className="text-center mb-12">
             <h1 className={`text-4xl sm:text-5xl font-bold mb-4 ${
@@ -33,29 +54,41 @@ export default function ContactPage() {
           </div>
 
           {/* GoHighLevel Form Container */}
-          <div className={`backdrop-blur-lg border rounded-2xl overflow-hidden ${
-            isDarkMode
-              ? 'bg-white/5 border-white/10'
-              : 'bg-white border-gray-200 shadow-lg'
+          <div className={`rounded-3xl overflow-hidden ${
+            isDarkMode ? 'bg-transparent' : 'bg-transparent'
           }`}>
-            <div className="p-4 sm:p-8">
-              <iframe
-                src="https://api.leadconnectorhq.com/widget/form/Qcsc0GJ1eFMdThA0BqxJ"
-                style={{width: '100%', height: '932px', border: 'none', borderRadius: '3px'}}
-                id="inline-Qcsc0GJ1eFMdThA0BqxJ"
-                data-layout="{'id':'INLINE'}"
-                data-trigger-type="alwaysShow"
-                data-trigger-value=""
-                data-activation-type="alwaysActivated"
-                data-activation-value=""
-                data-deactivation-type="neverDeactivate"
-                data-deactivation-value=""
-                data-form-name="General Contact Form - Website"
-                data-height="932"
-                data-layout-iframe-id="inline-Qcsc0GJ1eFMdThA0BqxJ"
-                data-form-id="Qcsc0GJ1eFMdThA0BqxJ"
-                title="General Contact Form - Website"
-              />
+            <div className="p-0">
+              <div className="relative w-full" style={{ paddingBottom: heightOffset }}>
+                <div className="flex justify-center">
+                  <div
+                    className="origin-top"
+                    style={{
+                      transform: `scale(${formScale})`,
+                      transformOrigin: 'top center',
+                      width: scaledWidthPercent,
+                      height: FORM_BASE_HEIGHT
+                    }}
+                  >
+                    <iframe
+                      src="https://api.leadconnectorhq.com/widget/form/Qcsc0GJ1eFMdThA0BqxJ"
+                      style={{ width: '100%', height: FORM_BASE_HEIGHT, border: 'none', borderRadius: '12px', background: 'transparent' }}
+                      id="inline-Qcsc0GJ1eFMdThA0BqxJ"
+                      data-layout="{'id':'INLINE'}"
+                      data-trigger-type="alwaysShow"
+                      data-trigger-value=""
+                      data-activation-type="alwaysActivated"
+                      data-activation-value=""
+                      data-deactivation-type="neverDeactivate"
+                      data-deactivation-value=""
+                      data-form-name="General Contact Form - Website"
+                      data-height="932"
+                      data-layout-iframe-id="inline-Qcsc0GJ1eFMdThA0BqxJ"
+                      data-form-id="Qcsc0GJ1eFMdThA0BqxJ"
+                      title="General Contact Form - Website"
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -77,6 +110,7 @@ export default function ContactPage() {
 
       {/* Footer */}
       <Footer />
+      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="lazyOnload" />
     </div>
   )
 }
