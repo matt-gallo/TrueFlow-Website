@@ -653,24 +653,6 @@ export default function LandingPage() {
 
   const testimonials = [
     {
-      name: "Chris",
-      role: "Online Fitness Coach",
-      company: "",
-      tier: "Enterprise",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face",
-      quote: "Before TrueFlow, I was manually replying to DMs with no follow-up system and feeling overwhelmed with content creation. Now I have automated DM flows and AI-driven content with a clear pipeline. This changed how I run my business.",
-      results: ["50% more client inquiries", "Automated DM workflows", "Clear sales pipeline"]
-    },
-    {
-      name: "Melisa",
-      role: "Women's Coaching Program",
-      company: "",
-      tier: "Enterprise",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b9fc6ad1?w=150&h=150&fit=crop&crop=face",
-      quote: "I had scattered offers, inconsistent follow-up, and time-consuming planning. TrueFlow gave me clarity in my offer, a structured funnel, and automated lead tracking and scheduling. Now I can focus on coaching.",
-      results: ["Waitlist launch in days", "Structured funnel built", "Streamlined operations"]
-    },
-    {
       name: "Andrew",
       role: "Chiropractic Clinic",
       company: "",
@@ -678,6 +660,24 @@ export default function LandingPage() {
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
       quote: "I struggled to follow up with leads, track appointments, and manage forms. With TrueFlow's AI-driven lead capture, integrated scheduling, and automatic form tracking system, more calls get booked and intake is smoother. The backend now works like it should.",
       results: ["More calls booked", "Smoother intake process", "Automated form tracking"]
+    },
+    {
+      name: "Mike",
+      role: "Owner, CrossFit 103",
+      company: "",
+      tier: "Enterprise Client",
+      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=150&h=150&fit=crop&crop=face",
+      quote: "Before TrueFlow, our website was getting traffic, but visitors weren't turning into booked intros. We rebuilt the site, added AI-driven conversations, and automated follow-up. Without running ads, the system booked 13 appointments from organic traffic alone. Now that it works, we're confidently scaling with ads and social.",
+      results: ["13 appointments booked organically", "AI engaging leads 24/7", "Website → conversation → booking, automated"]
+    },
+    {
+      name: "Dr. Chris Butler",
+      role: "Founder, WellPath Center",
+      company: "",
+      tier: "Enterprise Client",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      quote: "Before TrueFlow, we were generating leads but the system wasn't keeping up. Messages went unanswered, conversations stalled, and follow-up depended on manual effort. We activated AI agents in our DMs and SMS to qualify and respond instantly. Now about 15% of inbound leads are automatically qualified and booked into calls, even while running paid ads.",
+      results: ["50 leads per week handled automatically", "AI qualifying via DM + SMS", "Consistent replies, follow-up, and bookings"]
     }
   ]
 
