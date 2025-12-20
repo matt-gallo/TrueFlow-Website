@@ -289,10 +289,10 @@ Remember: Content marketing isn't just about showing up - it's about showing up 
     ],
     primaryTag: tags['content-strategy'],
     featuredImage: {
-      url: '/blog/levelup-conference-2025.jpeg',
-      alt: 'LevelUp conference event showcasing marketing and business growth strategies',
+      url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop',
+      alt: 'Content marketing transformation strategy meeting',
       width: 1200,
-      height: 800
+      height: 630
     },
     seo: {
       metaTitle: 'Transform Your Content Marketing: From Zero Leads to Results | TrueFlow',
@@ -1750,10 +1750,10 @@ See you in Dallas! Let's level up together.
     ],
     primaryTag: tags['events'],
     featuredImage: {
-      url: '/blog/levelup-invitation.jpg',
-      alt: 'Exclusive invitation card for TrueFlow\'s LevelUp 2025 afterparty featuring gold foil details',
+      url: '/blog/levelup-conference-2025.jpeg',
+      alt: 'LevelUp conference event showcasing marketing and business growth strategies',
       width: 1200,
-      height: 630
+      height: 800
     },
     seo: {
       metaTitle: 'Join TrueFlow at LevelUp 2025: Exclusive Afterparty & Platform Launch',
