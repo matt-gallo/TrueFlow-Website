@@ -289,10 +289,10 @@ Remember: Content marketing isn't just about showing up - it's about showing up 
     ],
     primaryTag: tags['content-strategy'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop',
-      alt: 'Content marketing transformation strategy meeting',
+      url: '/blog/levelup-conference-2025.jpeg',
+      alt: 'LevelUp conference event showcasing marketing and business growth strategies',
       width: 1200,
-      height: 630
+      height: 800
     },
     seo: {
       metaTitle: 'Transform Your Content Marketing: From Zero Leads to Results | TrueFlow',
