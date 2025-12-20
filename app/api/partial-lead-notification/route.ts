@@ -179,10 +179,17 @@ This lead has provided contact info but hasn't completed the full form yet.
         const tokenSource = process.env.GHL_SUBACCOUNT_API_KEY ? 'GHL_SUBACCOUNT_API_KEY' : 'GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN'
         console.log(`Using ${tokenSource} for GHL contact creation`)
 
+        // Detect if this is a JWT token or legacy API key
+        // JWT tokens contain dots (.), legacy API keys don't
+        const isJWT = ghlToken.includes('.')
+        const authHeader = isJWT ? `Bearer ${ghlToken}` : ghlToken
+
+        console.log(`Token type detected: ${isJWT ? 'JWT (Private Integration)' : 'Legacy API Key'}`)
+
         const ghlResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${ghlToken}`,
+            'Authorization': authHeader,
             'Content-Type': 'application/json',
             'Version': '2021-07-28'
           },
