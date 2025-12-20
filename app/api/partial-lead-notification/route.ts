@@ -151,7 +151,8 @@ This lead has provided contact info but hasn't completed the full form yet.
     // ----------------------------------------------------------------------
     // Create Contact in GoHighLevel (GHL)
     // ----------------------------------------------------------------------
-    const ghlToken = process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
+    // Use sub-account specific token if available, otherwise fall back to agency token
+    const ghlToken = process.env.GHL_SUBACCOUNT_API_KEY || process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN
     const ghlLocationId = process.env.GHL_LOCATION_ID
     let ghlCreated = false
     let ghlErrorDetail = null
