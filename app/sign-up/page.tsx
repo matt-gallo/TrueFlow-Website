@@ -573,22 +573,8 @@ function SignUpPageContent() {
                         style={{ width: `${progress}%` }}
                       />
                     </div>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
-                      {steps.map((step) => (
-                        <button
-                          key={step.id}
-                          type="button"
-                          className={`p-3 rounded-2xl border text-left transition ${
-                            currentStep === step.id
-                              ? 'border-indigo-400 bg-indigo-400/10'
-                              : isDarkMode ? 'border-white/10 bg-white/5 hover:border-white/30' : 'border-gray-200 bg-gray-50 hover:border-gray-300'
-                          }`}
-                          onClick={() => handleStepSelect(step.id)}
-                        >
-                          <p className={`text-xs ${theme.textMuted2}`}>Step {step.id}</p>
-                          <p className="text-sm font-semibold">{step.title}</p>
-                        </button>
-                      ))}
+                    <div className="sr-only">
+                      {/* Step buttons removed but retained for accessibility */}
                     </div>
                   </div>
 
