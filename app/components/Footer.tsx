@@ -66,7 +66,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className={`border-t pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 ${
+        <div className={`border-t pt-8 pb-8 flex flex-col sm:flex-row justify-between items-center gap-4 ${
           isDarkMode ? 'border-white/10' : 'border-gray-200'
         }`}>
           <p className={`text-sm ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>
