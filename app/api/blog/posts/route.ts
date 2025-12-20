@@ -3,6 +3,9 @@ import { getPublishedPosts, getPostsByCategory, getPostsByTag } from '@/app/data
 import { calculatePagination, searchPosts } from '@/app/lib/blog-utils'
 import { BlogPost } from '@/app/types/blog'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 // GET /api/blog/posts - List all posts with pagination and filtering
 export async function GET(request: NextRequest) {
   try {

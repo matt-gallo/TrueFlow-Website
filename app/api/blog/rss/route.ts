@@ -3,6 +3,9 @@ import { getPublishedPosts } from '@/app/data/blog-posts'
 import { loadBlogConfig } from '@/app/lib/blog-config'
 import { formatDate } from '@/app/lib/blog-utils'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 // GET /api/blog/rss - Generate RSS feed
 export async function GET(request: NextRequest) {
   try {

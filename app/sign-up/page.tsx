@@ -1,6 +1,8 @@
 'use client'
 
-import { useEffect, useMemo, useState } from 'react'
+export const dynamic = 'force-dynamic'
+
+import { Suspense, useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import Navigation from '@/app/components/Navigation'
@@ -109,7 +111,7 @@ const platformFeatures = [
   'Analytics & Reporting - know exactly what\'s working'
 ]
 
-export default function SignUpPage() {
+function SignUpPageContent() {
   const { isDarkMode } = useTheme()
   const searchParams = useSearchParams()
   const [currentStep, setCurrentStep] = useState(1)
@@ -1065,5 +1067,13 @@ export default function SignUpPage() {
         </main>
       </div>
     </div>
+  )
+}
+
+export default function SignUpPage() {
+  return (
+    <Suspense fallback={null}>
+      <SignUpPageContent />
+    </Suspense>
   )
 }

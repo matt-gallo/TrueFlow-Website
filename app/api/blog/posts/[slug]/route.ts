@@ -3,6 +3,9 @@ import { getBlogPost, getRelatedPosts } from '@/app/data/blog-posts'
 import { generateSEOMetadata, getRelatedPostsWithScoring } from '@/app/lib/blog-utils'
 import { loadBlogConfig } from '@/app/lib/blog-config'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 // GET /api/blog/posts/[slug] - Get single post
 export async function GET(
   request: NextRequest,
