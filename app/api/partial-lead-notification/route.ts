@@ -183,40 +183,61 @@ This lead has provided contact info but hasn't completed the full form yet.
           : 'GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN'
         console.log(`Using ${tokenSource} for GHL contact creation`)
 
-        // Detect if this is a JWT token or legacy API key
-        // JWT tokens contain dots (.), legacy API keys don't
-        const isJWT = ghlToken.includes('.')
-        const authHeader = isJWT ? `Bearer ${ghlToken}` : ghlToken
+        // Detect if this token is a JWT (private integration) or legacy API key.
+        const tokenParts = ghlToken.split('.')
+        const looksLikeJWT = tokenParts.length === 3 && ghlToken.startsWith('ey')
+        const authVariants = looksLikeJWT
+          ? [`Bearer ${ghlToken}`, ghlToken]
+          : [ghlToken, `Bearer ${ghlToken}`]
 
-        console.log(`Token type detected: ${isJWT ? 'JWT (Private Integration)' : 'Legacy API Key'}`)
+        let lastResponseStatus: number | null = null
+        let lastErrorData: any = null
+        for (const authHeader of authVariants) {
+          const headerType = authHeader.startsWith('Bearer') ? 'JWT-style' : 'API-key style'
+          console.log(`Attempting GHL contact creation (${headerType} auth)`)
 
-        const ghlResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
-          method: 'POST',
-          headers: {
-            'Authorization': authHeader,
-            'Content-Type': 'application/json',
-            'Version': '2021-07-28'
-          },
-          body: JSON.stringify(ghlPayload)
-        })
+          const response = await fetch('https://services.leadconnectorhq.com/contacts/', {
+            method: 'POST',
+            headers: {
+              'Authorization': authHeader,
+              'Content-Type': 'application/json',
+              'Version': '2021-07-28'
+            },
+            body: JSON.stringify(ghlPayload)
+          })
 
-        if (!ghlResponse.ok) {
-          const errorData = await ghlResponse.json().catch(() => ({}))
-          console.error('Failed to create GHL contact:', {
-            status: ghlResponse.status,
-            statusText: ghlResponse.statusText,
+          if (response.ok) {
+            const responseData = await response.json()
+            console.log('Successfully created GHL contact:', {
+              contactId: responseData.contact?.id,
+              tags: ghlPayload.tags,
+              authMode: headerType
+            })
+            ghlCreated = true
+            ghlErrorDetail = null
+            break
+          }
+
+          lastResponseStatus = response.status
+          const errorData = await response.json().catch(() => ({}))
+          lastErrorData = errorData
+          console.error('Failed GHL contact attempt:', {
+            status: response.status,
+            statusText: response.statusText,
             error: errorData,
             tokenSource,
-            locationId: ghlLocationId
+            authMode: headerType
           })
-          ghlErrorDetail = `GHL API Error: ${ghlResponse.status} - ${JSON.stringify(errorData).substring(0, 100)}`
-        } else {
-          const responseData = await ghlResponse.json()
-          console.log('Successfully created GHL contact:', {
-            contactId: responseData.contact?.id,
-            tags: ghlPayload.tags
-          })
-          ghlCreated = true
+
+          const shouldRetry = response.status === 401 && headerType === 'JWT-style'
+          if (!shouldRetry) {
+            ghlErrorDetail = `GHL API Error: ${response.status} - ${JSON.stringify(errorData).substring(0, 100)}`
+            break
+          }
+        }
+
+        if (!ghlCreated && !ghlErrorDetail && lastResponseStatus) {
+          ghlErrorDetail = `GHL API Error: ${lastResponseStatus} - ${JSON.stringify(lastErrorData || {}).substring(0, 100)}`
         }
       } catch (ghlError) {
         console.error('Error executing GHL create contact request:', ghlError)

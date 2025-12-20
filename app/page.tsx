@@ -1035,7 +1035,7 @@ export default function LandingPage() {
       </section>
 
       {/* Trust Signals Auto-Scrolling Banner */}
-      <section className={`py-12 -mt-16 sm:-mt-24 overflow-hidden relative z-10 ${
+      <section className={`py-12 -mt-24 sm:-mt-28 md:-mt-32 overflow-hidden relative z-10 ${
         isDarkMode ? 'bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-blue-900/20' : 'bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50'
       }`}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5"></div>
