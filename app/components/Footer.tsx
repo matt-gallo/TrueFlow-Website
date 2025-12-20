@@ -31,8 +31,8 @@ export function Footer() {
           </div>
 
           {/* Quick Links - No Header */}
-          <div>
-            <ul className="space-y-2 mt-14">
+          <div className="flex items-center">
+            <ul className="space-y-2">
               <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Help Center</Link></li>
               <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Contact</Link></li>
               <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Community</Link></li>
