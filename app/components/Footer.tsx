@@ -13,7 +13,7 @@ export function Footer() {
       isDarkMode ? 'bg-black/80 border-white/10' : 'bg-gray-100 border-gray-200'
     }`}>
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
             <div className="mb-4">
@@ -30,24 +30,11 @@ export function Footer() {
             </p>
           </div>
 
-          {/* Product Links */}
+          {/* Quick Links - No Header */}
           <div>
-            <h4 className={`font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Product</h4>
-            <ul className="space-y-2">
-              <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Features</Link></li>
-              <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Pricing</Link></li>
-              <li><Link href="/api-docs" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>API</Link></li>
-              <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Integrations</Link></li>
-            </ul>
-          </div>
-
-          {/* Support Links */}
-          <div>
-            <h4 className={`font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Support</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-2 mt-14">
               <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Help Center</Link></li>
               <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Contact</Link></li>
-              <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Status</Link></li>
               <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Community</Link></li>
             </ul>
           </div>
@@ -72,7 +59,7 @@ export function Footer() {
 
           {/* CTA */}
           <div>
-            <Link href="/sign-up" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center">
+            <Link href="/sign-up" className="bg-gradient-to-r from-blue-600 to-purple-700 text-white px-6 py-3 rounded-full font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 inline-block text-center mt-10">
               Get started here
             </Link>
           </div>
