@@ -175,6 +175,10 @@ This lead has provided contact info but hasn't completed the full form yet.
           ghlPayload.phone = leadData.phone
         }
 
+        // Log which token type we're using (for debugging)
+        const tokenSource = process.env.GHL_SUBACCOUNT_API_KEY ? 'GHL_SUBACCOUNT_API_KEY' : 'GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN'
+        console.log(`Using ${tokenSource} for GHL contact creation`)
+
         const ghlResponse = await fetch('https://services.leadconnectorhq.com/contacts/', {
           method: 'POST',
           headers: {
@@ -189,11 +193,18 @@ This lead has provided contact info but hasn't completed the full form yet.
           const errorData = await ghlResponse.json().catch(() => ({}))
           console.error('Failed to create GHL contact:', {
             status: ghlResponse.status,
-            error: errorData
+            statusText: ghlResponse.statusText,
+            error: errorData,
+            tokenSource,
+            locationId: ghlLocationId
           })
-          ghlErrorDetail = `GHL API Error: ${ghlResponse.status}`
+          ghlErrorDetail = `GHL API Error: ${ghlResponse.status} - ${JSON.stringify(errorData).substring(0, 100)}`
         } else {
-          console.log('Successfully created GHL contact tagged "step-1-prospects"')
+          const responseData = await ghlResponse.json()
+          console.log('Successfully created GHL contact:', {
+            contactId: responseData.contact?.id,
+            tags: ghlPayload.tags
+          })
           ghlCreated = true
         }
       } catch (ghlError) {
@@ -212,7 +223,12 @@ This lead has provided contact info but hasn't completed the full form yet.
       ghlCreated,
       details: {
         email: emailErrorDetail,
-        ghl: ghlErrorDetail
+        ghl: ghlErrorDetail,
+        debug: {
+          hasSubAccountKey: !!process.env.GHL_SUBACCOUNT_API_KEY,
+          hasAgencyToken: !!process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN,
+          hasLocationId: !!process.env.GHL_LOCATION_ID
+        }
       }
     }, { status: 200 })
 
