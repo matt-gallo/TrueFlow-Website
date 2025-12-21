@@ -175,6 +175,7 @@ export default function AdminDashboard() {
             ]}
             onTest={(payload) => testEndpoint('/api/partial-lead-notification', 'partial-lead', payload)}
             result={testResults['partial-lead']}
+            isDarkMode={isDarkMode}
           />
 
           {/* Intake API Test */}
@@ -200,6 +201,7 @@ export default function AdminDashboard() {
             ]}
             onTest={(payload) => testEndpoint('/api/intake', 'intake', payload)}
             result={testResults['intake']}
+            isDarkMode={isDarkMode}
           />
 
           {/* Webhook Test */}
@@ -222,6 +224,7 @@ export default function AdminDashboard() {
             ]}
             onTest={(payload) => testEndpoint('/api/webhooks/ghl', 'webhook', payload)}
             result={testResults['webhook']}
+            isDarkMode={isDarkMode}
           />
 
           {/* Signup Data Test */}
@@ -239,6 +242,7 @@ export default function AdminDashboard() {
             envVarsUsed={[]}
             onTest={(payload) => testEndpoint('/api/signup-data', 'signup-data', payload)}
             result={testResults['signup-data']}
+            isDarkMode={isDarkMode}
           />
         </div>
       </div>
@@ -254,7 +258,8 @@ function EndpointTester({
   defaultPayload,
   envVarsUsed,
   onTest,
-  result
+  result,
+  isDarkMode
 }: {
   title: string
   endpoint: string
@@ -263,6 +268,7 @@ function EndpointTester({
   envVarsUsed: string[]
   onTest: (payload: any) => void
   result?: TestResult
+  isDarkMode: boolean
 }) {
   const [payload, setPayload] = useState(JSON.stringify(defaultPayload, null, 2))
   const [testing, setTesting] = useState(false)
@@ -343,8 +349,4 @@ function EndpointTester({
       )}
     </div>
   )
-}
-
-function isDarkMode() {
-  return true // Placeholder, will be replaced by actual theme context
 }
