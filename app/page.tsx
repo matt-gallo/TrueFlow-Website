@@ -981,7 +981,7 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative flex items-center justify-center px-4 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] sm:py-28 pb-20 sm:pb-32 md:pb-40"
+        className="relative flex items-center justify-center px-4 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] pt-28 sm:py-28 pb-20 sm:pb-32 md:pb-40"
       >
         <div className="max-w-4xl mx-auto w-full">
           <div className="text-center space-y-6 sm:space-y-8">
