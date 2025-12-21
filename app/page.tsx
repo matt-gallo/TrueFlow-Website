@@ -981,7 +981,7 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative flex items-center justify-center px-4 min-h-screen sm:py-28 pb-32 sm:pb-40"
+        className="relative flex items-center justify-center px-4 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] sm:py-28 pb-20 sm:pb-32 md:pb-40"
       >
         <div className="max-w-4xl mx-auto w-full">
           <div className="text-center space-y-6 sm:space-y-8">
@@ -1008,7 +1008,7 @@ export default function LandingPage() {
                   <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
                 <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
-                  Live Call with TrueFlow Automation Expert
+                  Live call with a TrueFlow expert
                 </p>
               </div>
 
@@ -1017,7 +1017,7 @@ export default function LandingPage() {
         </div>
 
         {scrollY < 200 && (
-          <div className="absolute bottom-24 sm:bottom-28 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-3 pointer-events-none">
+          <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-3 pointer-events-none">
             <ArrowDown className="h-5 w-5 text-black arrow-breathe" />
 
             {/* Scroll Indicator - Hide when scrolled */}
@@ -1035,7 +1035,7 @@ export default function LandingPage() {
       </section>
 
       {/* Trust Signals Auto-Scrolling Banner */}
-      <section className={`py-12 -mt-24 sm:-mt-28 md:-mt-32 overflow-hidden relative z-10 ${
+      <section className={`py-8 sm:py-12 -mt-8 sm:-mt-16 md:-mt-20 overflow-hidden relative z-10 ${
         isDarkMode ? 'bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-blue-900/20' : 'bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50'
       }`}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5"></div>
@@ -1556,6 +1556,9 @@ export default function LandingPage() {
               Book your demo
               <Calendar className="w-5 h-5" />
             </button>
+            <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+              Live call with a TrueFlow expert
+            </p>
           </div>
 
           {/* Embedded Sign-Up Form */}
@@ -1616,32 +1619,6 @@ export default function LandingPage() {
                 }`}>
                   <div className="h-full w-1/4 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"></div>
                 </div>
-              </div>
-
-              {/* Form Steps Preview */}
-              <div className="grid grid-cols-4 gap-2 mb-8">
-                {['Account Basics', 'Business Snapshot', 'Launch Game Plan', 'Trial + Payment'].map((step, idx) => (
-                  <div key={idx} className={`text-center p-3 rounded-lg border ${
-                    idx === 0
-                      ? isDarkMode ? 'bg-blue-500/10 border-blue-500/30' : 'bg-blue-50 border-blue-200'
-                      : isDarkMode ? 'bg-white/5 border-white/10' : 'bg-gray-50 border-gray-200'
-                  }`}>
-                    <div className={`text-xs font-semibold ${
-                      idx === 0
-                        ? 'text-blue-500'
-                        : isDarkMode ? 'text-white/50' : 'text-gray-400'
-                    }`}>
-                      Step {idx + 1}
-                    </div>
-                    <div className={`text-xs mt-1 ${
-                      idx === 0
-                        ? isDarkMode ? 'text-white/90' : 'text-gray-900'
-                        : isDarkMode ? 'text-white/40' : 'text-gray-500'
-                    }`}>
-                      {step}
-                    </div>
-                  </div>
-                ))}
               </div>
 
               {/* Form Fields */}
@@ -1901,7 +1878,10 @@ export default function LandingPage() {
                   Book a Demo
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                <p className={`text-sm mt-4 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+                <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+                  Live call with a TrueFlow expert
+                </p>
+                <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
                   Typical plans start with a $3–5k setup fee + $497/mo
                 </p>
               </div>
@@ -2306,6 +2286,9 @@ export default function LandingPage() {
               <span>Book your live demo</span>
               <ChevronRight className="h-5 w-5" />
             </Link>
+            <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+              Live call with a TrueFlow expert
+            </p>
           </div>
         </div>
       </section>
