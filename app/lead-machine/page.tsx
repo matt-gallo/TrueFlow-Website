@@ -227,7 +227,7 @@ export default function LeadMachinePage() {
         vy: (Math.random() - 0.5) * 0.5,
         size: Math.random() * 4 + 1,
         opacity: Math.random() * 0.5 + 0.1,
-        color: ['#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4'][Math.floor(Math.random() * 4)]
+        color: ['#22c55e', '#10b981', '#34d399', '#06b6d4'][Math.floor(Math.random() * 4)]
       })
     }
     setParticles(newParticles)
@@ -473,7 +473,7 @@ export default function LeadMachinePage() {
                 <button
                   type="button"
                   onClick={scrollToCalendar}
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-lg font-semibold hover:shadow-2xl hover:shadow-cyan-500/30 transition-all"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 text-lg font-semibold hover:shadow-2xl hover:shadow-green-500/30 transition-all"
                 >
                   See the Lead Machine in Action
                   <ArrowRight className="h-5 w-5" />
@@ -483,7 +483,7 @@ export default function LeadMachinePage() {
                 isDarkMode ? 'text-white/60' : 'text-gray-500'
               }`}>
                 Takes 2 minutes, zero tech setup. <ShieldCheck className={`inline h-4 w-4 ml-2 mr-1 align-text-bottom ${
-                  isDarkMode ? 'text-blue-300' : 'text-blue-500'
+                  isDarkMode ? 'text-green-300' : 'text-green-500'
                 }`} /> ROI Assurance: if you don't recoup your setup fee in 90 days, we keep the machine running at no service cost until you do.
               </p>
             </div>
@@ -532,12 +532,12 @@ export default function LeadMachinePage() {
                 key={item.title}
                 className={`relative rounded-3xl border p-6 overflow-hidden backdrop-blur-xl ${
                   isDarkMode
-                    ? 'border-blue-400/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/10'
-                    : 'border-blue-300/40 bg-gradient-to-br from-blue-100/80 to-cyan-50/60'
+                    ? 'border-blue-400/30 bg-gradient-to-br from-green-500/20 to-cyan-500/10'
+                    : 'border-green-300/40 bg-gradient-to-br from-green-100/80 to-cyan-50/60'
                 }`}
               >
                 <item.icon className={`absolute -right-6 -bottom-6 h-40 w-40 ${
-                  isDarkMode ? 'text-blue-400/10' : 'text-blue-200/30'
+                  isDarkMode ? 'text-green-400/10' : 'text-green-200/30'
                 }`} />
                 <div className="relative z-10">
                   <h3 className={`text-xl font-semibold mb-2 ${
@@ -578,8 +578,8 @@ export default function LeadMachinePage() {
             }`}>It's not hype, it's math</p>
             <h2 className={`mt-3 text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text ${
               isDarkMode
-                ? 'bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300'
-                : 'bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600'
+                ? 'bg-gradient-to-r from-green-300 via-cyan-300 to-emerald-300'
+                : 'bg-gradient-to-r from-green-600 via-cyan-600 to-emerald-600'
             }`}>Lead Machine identifies intent, starts the conversation, and syncs every reply into your pipeline + ads.</h2>
             <p className={`mt-4 text-lg ${
               isDarkMode ? 'text-white/70' : 'text-gray-600'
@@ -590,8 +590,8 @@ export default function LeadMachinePage() {
             <div className="mt-10 grid gap-6 md:grid-cols-3">
               <div className={`rounded-2xl border backdrop-blur-xl p-5 ${
                 isDarkMode
-                  ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20'
-                  : 'border-blue-300/40 bg-gradient-to-br from-blue-100/70 to-cyan-50/50'
+                  ? 'border-green-300/30 bg-gradient-to-br from-green-500/25 to-cyan-500/20'
+                  : 'border-blue-300/40 bg-gradient-to-br from-green-100/70 to-cyan-50/50'
               }`}>
                 <div className={`flex items-center gap-3 text-sm uppercase tracking-[0.2em] ${
                   isDarkMode ? 'text-white/80' : 'text-gray-600'
@@ -608,8 +608,8 @@ export default function LeadMachinePage() {
 
               <div className={`rounded-2xl border backdrop-blur-xl p-5 ${
                 isDarkMode
-                  ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20'
-                  : 'border-blue-300/40 bg-gradient-to-br from-blue-100/70 to-cyan-50/50'
+                  ? 'border-green-300/30 bg-gradient-to-br from-green-500/25 to-cyan-500/20'
+                  : 'border-blue-300/40 bg-gradient-to-br from-green-100/70 to-cyan-50/50'
               }`}>
                 <div className={`flex items-center gap-3 text-sm uppercase tracking-[0.2em] ${
                   isDarkMode ? 'text-white/80' : 'text-gray-600'
@@ -626,8 +626,8 @@ export default function LeadMachinePage() {
 
               <div className={`rounded-2xl border backdrop-blur-xl p-5 ${
                 isDarkMode
-                  ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20'
-                  : 'border-blue-300/40 bg-gradient-to-br from-blue-100/70 to-cyan-50/50'
+                  ? 'border-green-300/30 bg-gradient-to-br from-green-500/25 to-cyan-500/20'
+                  : 'border-blue-300/40 bg-gradient-to-br from-green-100/70 to-cyan-50/50'
               }`}>
                 <div className={`flex items-center gap-3 text-sm uppercase tracking-[0.2em] ${
                   isDarkMode ? 'text-white/80' : 'text-gray-600'
@@ -652,8 +652,8 @@ export default function LeadMachinePage() {
             <div className="text-center max-w-3xl mx-auto">
               <h2 className={`text-3xl sm:text-4xl font-semibold text-transparent bg-clip-text ${
                 isDarkMode
-                  ? 'bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-300'
-                  : 'bg-gradient-to-r from-cyan-600 via-blue-600 to-purple-600'
+                  ? 'bg-gradient-to-r from-green-300 via-cyan-300 to-emerald-300'
+                  : 'bg-gradient-to-r from-green-600 via-cyan-600 to-emerald-600'
               }`}>Stop paying for leads. Start owning conversations.</h2>
               <p className={`mt-4 ${
                 isDarkMode ? 'text-white/70' : 'text-gray-600'
@@ -674,8 +674,8 @@ export default function LeadMachinePage() {
               }].map(item => (
                 <div key={item.title} className={`rounded-3xl border backdrop-blur-xl p-6 ${
                   isDarkMode
-                    ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/25 to-cyan-500/20'
-                    : 'border-blue-300/40 bg-gradient-to-br from-blue-100/70 to-cyan-50/50'
+                    ? 'border-green-300/30 bg-gradient-to-br from-green-500/25 to-cyan-500/20'
+                    : 'border-blue-300/40 bg-gradient-to-br from-green-100/70 to-cyan-50/50'
                 }`}>
                   <h3 className={`text-xl font-semibold ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
@@ -690,7 +690,7 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-6xl mx-auto">
-          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-r from-cyan-900/40 via-blue-900/30 to-black/60' : 'bg-gradient-to-r from-cyan-100/60 via-blue-100/50 to-gray-50'} p-8 sm:p-12`}>
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-r from-green-900/40 via-cyan-900/30 to-black/60' : 'bg-gradient-to-r from-green-100/60 via-cyan-100/50 to-gray-50'} p-8 sm:p-12`}>
             <div className="text-center max-w-3xl mx-auto">
               <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>How the Lead Machine Works (in 3 moves)</h2>
               <p className={`mt-4 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
@@ -765,7 +765,7 @@ export default function LeadMachinePage() {
             <ul className={`mt-8 space-y-4 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               {benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-blue-400 mt-0.5" />
+                  <CheckCircle className="h-5 w-5 text-green-400 mt-0.5" />
                   <span className="text-lg">{benefit}</span>
                 </li>
               ))}
@@ -774,7 +774,7 @@ export default function LeadMachinePage() {
               <button
                 type="button"
                 onClick={scrollToCalendar}
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-4 text-lg font-semibold text-white hover:shadow-2xl hover:shadow-cyan-500/30"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 px-8 py-4 text-lg font-semibold text-white hover:shadow-2xl hover:shadow-green-500/30"
               >
                 Activate the Machine
                 <ArrowRight className="h-5 w-5" />
@@ -801,7 +801,7 @@ export default function LeadMachinePage() {
             <ol className="mt-6 space-y-4">
               {offerStack.map((item, index) => (
                 <li key={item} className={`flex items-start gap-4 rounded-2xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-black/40' : 'bg-gray-100'} px-5 py-4`}>
-                  <span className={`flex h-10 w-10 items-center justify-center rounded-full ${isDarkMode ? 'bg-cyan-500/20 text-cyan-100' : 'bg-cyan-100 text-cyan-700'} font-semibold`}>{index + 1}</span>
+                  <span className={`flex h-10 w-10 items-center justify-center rounded-full ${isDarkMode ? 'bg-green-500/20 text-green-100' : 'bg-cyan-100 text-cyan-700'} font-semibold`}>{index + 1}</span>
                   <span className={isDarkMode ? 'text-white/75' : 'text-gray-600'}>{item}</span>
                 </li>
               ))}
@@ -813,7 +813,7 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
-          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/20' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-blue-900/40' : 'bg-gradient-to-br from-cyan-100 via-blue-100 to-blue-50'} p-8 sm:p-12`}>
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/20' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-green-500/20 via-cyan-500/20 to-green-900/40' : 'bg-gradient-to-br from-cyan-100 via-blue-100 to-blue-50'} p-8 sm:p-12`}>
             <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Why Believe Us</h2>
             <p className={`mt-6 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               TrueFlow deploys Lead Machine™ systems for coaches, agencies, real estate teams, and local services, turning cold lists into booked calendars in under two weeks.
@@ -828,7 +828,7 @@ export default function LeadMachinePage() {
             <ul className="mt-6 space-y-4">
               {verticals.map((vertical) => (
                 <li key={vertical} className="flex items-start gap-3">
-                  <ArrowRight className="h-5 w-5 text-blue-400 mt-0.5" />
+                  <ArrowRight className="h-5 w-5 text-green-400 mt-0.5" />
                   <span className={isDarkMode ? 'text-white/75' : 'text-gray-600'}>{vertical}</span>
                 </li>
               ))}
@@ -844,7 +844,7 @@ export default function LeadMachinePage() {
             <div className="text-center max-w-4xl mx-auto mb-10">
               <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Transparent Pricing That Scales With You</h2>
               <p className={`mt-4 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                Start at <span className={`text-2xl font-semibold ${isDarkMode ? 'text-blue-300' : 'text-blue-600'}`}>$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
+                Start at <span className={`text-2xl font-semibold ${isDarkMode ? 'text-green-300' : 'text-green-600'}`}>$750 every 28 days</span> for 10 leads/day. Need more volume? Add packs of 10 leads/day as you scale.
               </p>
               <p className={`mt-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
                 One-time setup fee: <span className={`${isDarkMode ? 'text-white' : 'text-gray-900'} font-semibold`}>$2,000</span> (includes full buildout, CRM integration, and campaign optimization)
@@ -858,8 +858,8 @@ export default function LeadMachinePage() {
                   className={`rounded-3xl border p-8 flex flex-col gap-6 ${
                     plan.featured
                       ? isDarkMode
-                        ? 'border-cyan-400/50 bg-gradient-to-br from-cyan-500/10 via-blue-500/10 to-black/40 ring-2 ring-cyan-400/30'
-                        : 'border-cyan-400 bg-gradient-to-br from-cyan-50 via-blue-50 to-gray-100 ring-2 ring-cyan-400/50'
+                        ? 'border-green-400/50 bg-gradient-to-br from-green-500/10 via-cyan-500/10 to-black/40 ring-2 ring-green-400/30'
+                        : 'border-green-400 bg-gradient-to-br from-green-50 via-cyan-50 to-gray-100 ring-2 ring-green-400/50'
                       : isDarkMode
                         ? 'border-white/10 bg-black/40'
                         : 'border-gray-200 bg-gray-100'
@@ -896,7 +896,7 @@ export default function LeadMachinePage() {
                   <ul className="space-y-3 flex-grow">
                     {plan.features.map((feature) => (
                       <li key={feature} className="flex items-start gap-3">
-                        <CheckCircle className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
                         <span className={`${isDarkMode ? 'text-white/75' : 'text-gray-600'} text-sm`}>{feature}</span>
                       </li>
                     ))}
@@ -910,7 +910,7 @@ export default function LeadMachinePage() {
               <button
                 type="button"
                 onClick={toggleBuilder}
-                className={`inline-flex items-center gap-3 rounded-full border ${isDarkMode ? 'border-cyan-400/40 bg-cyan-500/10' : 'border-cyan-400 bg-cyan-50'} px-8 py-3 text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} transition-colors ${isDarkMode ? 'hover:bg-cyan-500/20' : 'hover:bg-cyan-100'}`}
+                className={`inline-flex items-center gap-3 rounded-full border ${isDarkMode ? 'border-green-400/40 bg-green-500/10' : 'border-cyan-400 bg-cyan-50'} px-8 py-3 text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} transition-colors ${isDarkMode ? 'hover:bg-green-500/20' : 'hover:bg-cyan-100'}`}
                 aria-expanded={isBuilderOpen}
               >
                 {isBuilderOpen ? 'Hide Build Planner' : 'Build Your Lead Machine'}
@@ -918,9 +918,9 @@ export default function LeadMachinePage() {
               <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Answer a few quick questions and we'll point you to the right Lead Machine™ package.</p>
             </div>
 
-            <div className={`mt-8 rounded-2xl border ${isDarkMode ? 'border-cyan-400/30 bg-gradient-to-br from-cyan-500/15 via-blue-500/20 to-transparent' : 'border-cyan-300 bg-gradient-to-br from-cyan-50 via-blue-50 to-transparent'} p-5 text-center`}>
+            <div className={`mt-8 rounded-2xl border ${isDarkMode ? 'border-green-400/30 bg-gradient-to-br from-green-500/15 via-cyan-500/20 to-transparent' : 'border-green-300 bg-gradient-to-br from-green-50 via-cyan-50 to-transparent'} p-5 text-center`}>
               <div className={`inline-flex items-center justify-center gap-3 ${isDarkMode ? 'text-white/90' : 'text-gray-800'} text-sm sm:text-base`}>
-                <ShieldCheck className={`h-6 w-6 ${isDarkMode ? 'text-cyan-300' : 'text-cyan-600'}`} />
+                <ShieldCheck className={`h-6 w-6 ${isDarkMode ? 'text-green-300' : 'text-green-600'}`} />
                 <p className="font-medium">90-Day ROI Guarantee If the system doesn't generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.</p>
               </div>
             </div>
@@ -954,8 +954,8 @@ export default function LeadMachinePage() {
                             className={`rounded-2xl border px-4 py-4 text-left text-sm transition-all ${
                               builderAnswers[currentQuestion.id] === option.value
                                 ? isDarkMode
-                                  ? 'border-cyan-300 bg-cyan-500/10 text-white shadow-lg shadow-cyan-900/30'
-                                  : 'border-cyan-400 bg-cyan-50 text-gray-900 shadow-lg shadow-cyan-200/50'
+                                  ? 'border-green-300 bg-green-500/10 text-white shadow-lg shadow-green-900/30'
+                                  : 'border-green-400 bg-green-50 text-gray-900 shadow-lg shadow-cyan-200/50'
                                 : isDarkMode
                                   ? 'border-white/10 bg-black/30 text-white/70 hover:border-white/40'
                                   : 'border-gray-200 bg-white text-gray-600 hover:border-gray-300'
@@ -978,7 +978,7 @@ export default function LeadMachinePage() {
                         <button
                           type="button"
                           onClick={handleNextStep}
-                          className="rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/30"
+                          className="rounded-full bg-gradient-to-r from-green-500 to-cyan-500 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-green-900/30"
                         >
                           {builderStep === totalBuilderSteps - 1 ? 'See Recommendation' : 'Next'}
                         </button>
@@ -1000,7 +1000,7 @@ export default function LeadMachinePage() {
                         <div className={`mt-6 rounded-2xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-black/30' : 'bg-white'} p-5 space-y-3`}>
                           {activePlanHighlights.map(feature => (
                             <div key={feature} className={`flex items-start gap-3 text-sm ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                              <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
+                              <CheckCircle className="mt-0.5 h-4 w-4 text-green-300" />
                               <span>{feature}</span>
                             </div>
                           ))}
@@ -1025,7 +1025,7 @@ export default function LeadMachinePage() {
                         <button
                           type="button"
                           onClick={scrollToCalendar}
-                          className="rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-900/30"
+                          className="rounded-full bg-gradient-to-r from-green-500 to-cyan-500 px-8 py-3 text-sm font-semibold text-white shadow-lg shadow-green-900/30"
                         >
                             Book my demo
                           </button>
@@ -1043,8 +1043,8 @@ export default function LeadMachinePage() {
                             className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                               (manualPlanChoice || recommendedPlanName) === plan.name && activePlanName === plan.name
                                 ? isDarkMode
-                                  ? 'border-cyan-300 bg-cyan-500/10 text-white'
-                                  : 'border-cyan-400 bg-cyan-50 text-gray-900'
+                                  ? 'border-green-300 bg-green-500/10 text-white'
+                                  : 'border-green-400 bg-green-50 text-gray-900'
                                 : isDarkMode
                                   ? 'border-white/15 text-white/70 hover:border-white/40'
                                   : 'border-gray-300 text-gray-600 hover:border-gray-400'
@@ -1069,7 +1069,7 @@ export default function LeadMachinePage() {
                           <p className={`text-sm font-semibold ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>What's inside {activePlanName}</p>
                           {activePlanHighlights.map(feature => (
                             <div key={feature} className={`flex items-start gap-3 text-xs ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                              <CheckCircle className="mt-0.5 h-4 w-4 text-blue-300" />
+                              <CheckCircle className="mt-0.5 h-4 w-4 text-green-300" />
                               <span>{feature}</span>
                             </div>
                           ))}
@@ -1095,7 +1095,7 @@ export default function LeadMachinePage() {
               <button
                 type="button"
                 onClick={scrollToCalendar}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-lg font-semibold hover:shadow-2xl hover:shadow-cyan-500/30 transition-all"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-green-500 to-cyan-500 text-lg font-semibold hover:shadow-2xl hover:shadow-green-500/30 transition-all"
               >
                 Book Your Free Demo
                 <ArrowRight className="h-5 w-5" />
@@ -1125,7 +1125,7 @@ export default function LeadMachinePage() {
               display: none !important;
             }
           `}</style>
-          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-cyan-600/20 via-blue-600/20 to-black/60' : 'bg-gradient-to-br from-cyan-100/80 via-blue-100/80 to-gray-50'} p-8 sm:p-10`}>
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-green-600/20 via-cyan-600/20 to-black/60' : 'bg-gradient-to-br from-green-100/80 via-cyan-100/80 to-gray-50'} p-8 sm:p-10`}>
             <div className="space-y-4 text-center mb-8">
               <h3 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
@@ -1195,7 +1195,7 @@ export default function LeadMachinePage() {
                 title: 'Day 8-14',
                 copy: 'Layer nurture, ads, and appointment setting so pipelines stay full while you close.'
               }].map(item => (
-                <div key={item.title} className={`rounded-3xl border ${isDarkMode ? 'border-blue-300/30 bg-gradient-to-br from-blue-500/20 to-cyan-500/15' : 'border-blue-300 bg-gradient-to-br from-blue-100/80 to-cyan-100/60'} backdrop-blur-xl p-6`}>
+                <div key={item.title} className={`rounded-3xl border ${isDarkMode ? 'border-green-300/30 bg-gradient-to-br from-green-500/20 to-cyan-500/15' : 'border-blue-300 bg-gradient-to-br from-green-100/80 to-cyan-100/60'} backdrop-blur-xl p-6`}>
                   <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'} uppercase tracking-[0.2em]`}>{item.title}</p>
                   <p className={`mt-3 ${isDarkMode ? 'text-white' : 'text-gray-900'} text-lg`}>{item.copy}</p>
                 </div>
@@ -1205,7 +1205,7 @@ export default function LeadMachinePage() {
         </section>
 
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto">
-          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-blue-600/40 via-slate-900/50 to-black/60' : 'bg-gradient-to-br from-blue-100 via-gray-100 to-gray-50'} p-8 sm:p-12`}>
+          <div className={`rounded-3xl border ${isDarkMode ? 'border-white/15' : 'border-gray-300'} ${isDarkMode ? 'bg-gradient-to-br from-green-600/40 via-slate-900/50 to-black/60' : 'bg-gradient-to-br from-green-100 via-gray-100 to-gray-50'} p-8 sm:p-12`}>
             <div className={`space-y-6 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               <p className={`text-sm uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Story time</p>
               <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>"We turned the machine on Friday. By Monday, five warm replies were waiting."</h2>
