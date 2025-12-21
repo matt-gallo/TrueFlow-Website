@@ -1740,7 +1740,7 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Account Activation & System Access
+                    You See Where Every Lead Goes
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                     You get access to the full TrueFlow system. Core automations, pipelines, AI follow-up logic, and templates are pre-installed. You're guided through connecting your tools and choosing your setup path.
@@ -1767,7 +1767,7 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Configuration and optimization
+                    Follow-Up Runs Without You
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                     You follow step-by-step instructions to configure your lead flow, messaging, and routing. Our automations and team assist with validating, testing, and optimizing. Support is available if you get stuck.
@@ -1794,7 +1794,7 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Leads show up in your pipeline
+                    Proof Shows Up in Your Pipeline
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                     Your system is live. Leads are captured, followed up with, and routed automatically. You can see what's working and what needs adjustment.
@@ -1821,7 +1821,7 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Accelerate & Scale
+                    Keep What's Working or Walk Away Clean
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                     Continue generating leads, booked appointments, and sales. Billing begins at $297/month. Cancel anytime before 14 days, no charge. Or if you want a TrueFlow Expert to build this for you, keep scrolling.
