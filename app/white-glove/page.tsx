@@ -435,7 +435,7 @@ export default function WhiteGlovePage() {
                     {/* Form Fields */}
                     <div className="space-y-4">
                       <div>
-                        <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                        <label className={`block text-sm font-medium mb-2 text-left ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                           Name
                         </label>
                         <input
@@ -452,7 +452,7 @@ export default function WhiteGlovePage() {
                       </div>
 
                       <div>
-                        <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                        <label className={`block text-sm font-medium mb-2 text-left ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                           Email
                         </label>
                         <input
@@ -469,7 +469,7 @@ export default function WhiteGlovePage() {
                       </div>
 
                       <div>
-                        <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                        <label className={`block text-sm font-medium mb-2 text-left ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                           Phone <span className={`text-xs ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>(optional)</span>
                         </label>
                         <input
@@ -486,7 +486,7 @@ export default function WhiteGlovePage() {
                       </div>
 
                       <div>
-                        <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                        <label className={`block text-sm font-medium mb-2 text-left ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
                           Business name
                         </label>
                         <input
