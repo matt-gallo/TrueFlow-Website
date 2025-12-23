@@ -1016,22 +1016,6 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {scrollY < 200 && (
-          <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-3 pointer-events-none">
-            <ArrowDown className="h-5 w-5 text-black arrow-breathe" />
-
-            {/* Scroll Indicator - Hide when scrolled */}
-            <div 
-              className={`animate-bounce transition-opacity duration-300 ${
-                scrollY > 100 ? 'opacity-0' : 'opacity-100'
-              }`}
-            >
-              <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center">
-                <div className="w-1 h-4 bg-white/50 rounded-full mt-2"></div>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
       {/* Trust Signals Auto-Scrolling Banner */}
