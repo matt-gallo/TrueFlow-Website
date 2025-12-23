@@ -432,24 +432,6 @@ export default function WhiteGlovePage() {
                       </p>
                     </div>
 
-                    {/* Pricing Preview */}
-                    <div className={`rounded-2xl p-6 mb-6 border ${
-                      isDarkMode ? 'bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-white/10' : 'bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200'
-                    }`}>
-                      <div className="grid grid-cols-2 gap-4 text-center">
-                        <div>
-                          <p className={`text-xs uppercase tracking-wider mb-1 ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>Setup</p>
-                          <p className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">$3,500</p>
-                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>One-time build & integration</p>
-                        </div>
-                        <div>
-                          <p className={`text-xs uppercase tracking-wider mb-1 ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>Ongoing</p>
-                          <p className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">$997<span className="text-sm">/mo</span></p>
-                          <p className={`text-xs mt-1 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>Management + support</p>
-                        </div>
-                      </div>
-                    </div>
-
                     {/* Form Fields */}
                     <div className="space-y-4">
                       <div>
