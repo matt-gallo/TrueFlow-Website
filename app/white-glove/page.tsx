@@ -436,7 +436,7 @@ export default function WhiteGlovePage() {
                     <div className="space-y-4">
                       <div>
                         <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          Full name
+                          Name
                         </label>
                         <input
                           type="text"
@@ -447,7 +447,7 @@ export default function WhiteGlovePage() {
                               ? 'bg-white/5 border-white/10 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none'
                               : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none'
                           }`}
-                          placeholder="John Smith"
+                          placeholder="John"
                         />
                       </div>
 
@@ -470,7 +470,7 @@ export default function WhiteGlovePage() {
 
                       <div>
                         <label className={`block text-sm font-medium mb-2 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          Phone
+                          Phone <span className={`text-xs ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>(optional)</span>
                         </label>
                         <input
                           type="tel"
@@ -504,18 +504,18 @@ export default function WhiteGlovePage() {
 
                       <button
                         onClick={() => {
-                          if (formData.fullName && formData.email && formData.phone && formData.businessName) {
+                          if (formData.fullName && formData.email && formData.businessName) {
                             setShowCalendar(true)
                           }
                         }}
-                        disabled={!formData.fullName || !formData.email || !formData.phone || !formData.businessName}
+                        disabled={!formData.fullName || !formData.email || !formData.businessName}
                         className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 ${
-                          formData.fullName && formData.email && formData.phone && formData.businessName
+                          formData.fullName && formData.email && formData.businessName
                             ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25'
                             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                         }`}
                       >
-                        Continue to booking
+                        Continue
                       </button>
                     </div>
 
