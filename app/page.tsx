@@ -1279,12 +1279,12 @@ export default function LandingPage() {
               <p className={`text-lg sm:text-xl font-semibold ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                Software didn't fail you.
+                Software didn't fail you
               </p>
               <p className={`text-lg sm:text-xl font-semibold ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                Being forced to build and manage it yourself did.
+                Being forced to build and manage it yourself did
               </p>
             </div>
           </div>
@@ -1968,7 +1968,7 @@ export default function LandingPage() {
             <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 transition-all duration-1000 ${
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
-              Real businesses. Real results.
+              Real businesses. Real results
             </h2>
             <p className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto px-4 transition-all duration-1000 ${
               isDarkMode ? 'text-white/70' : 'text-gray-600'
