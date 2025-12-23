@@ -424,12 +424,9 @@ export default function WhiteGlovePage() {
                     isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-xl'
                   }`}>
                     <div className="text-center mb-6">
-                      <h2 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                        Fill out the form below
+                      <h2 className={`text-2xl font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                        Book a private consultation with a TrueFlow expert
                       </h2>
-                      <p className={`text-base font-medium mb-3 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                        Then book a private consultation with a TrueFlow expert
-                      </p>
                       <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>
                         On this 30 minute call we will get to know you and your business&apos; needs, then you will have a chance to ask any questions you have. At the end of the call you will receive an AI Automation Roadmap and we&apos;ll share what it would take to build this for you.
                       </p>
