@@ -8,6 +8,7 @@
 import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
 import '../animations.css'
 import type { LucideIcon } from 'lucide-react'
 import {
@@ -53,6 +54,12 @@ interface SystemBlock {
   gradientTo: string
   bullets: string[]
 }
+
+const bookingWidgetSrc = 'https://api.leadconnectorhq.com/widget/booking/nc8KAbjOlywMkW6XPSBj'
+const heroBookingWidgetId = 'nc8KAbjOlywMkW6XPSBj_1766512585328'
+const modalBookingWidgetId = 'nc8KAbjOlywMkW6XPSBj_1766512585330'
+const bookingFormBaseHeight = 760
+const bookingFormScale = 0.7
 
 const systemBlocks: SystemBlock[] = [
   {
@@ -162,17 +169,12 @@ export default function WhiteGlovePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [showCalendar, setShowCalendar] = useState(false)
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    businessName: ''
-  })
+  const heroIframeRef = useRef<HTMLIFrameElement>(null)
+  const [heroBookingHeight, setHeroBookingHeight] = useState(bookingFormBaseHeight)
+  const heroScaledHeight = Math.round(heroBookingHeight * bookingFormScale)
 
   const heroRef = useRef<HTMLDivElement>(null)
   const animationFrameRef = useRef<number>()
-  const formRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -190,6 +192,33 @@ export default function WhiteGlovePage() {
     }))
     setParticles(initialParticles)
   }, [])
+
+  useEffect(() => {
+    if (!mounted) return
+    const iframe = heroIframeRef.current
+    if (!iframe) return
+
+    const updateHeight = () => {
+      const styleHeight = parseFloat(iframe.style.height || '')
+      const measuredHeight = Number.isFinite(styleHeight) && styleHeight > 0
+        ? styleHeight
+        : iframe.offsetHeight || bookingFormBaseHeight
+      setHeroBookingHeight(prev =>
+        Math.abs(prev - measuredHeight) > 2 ? measuredHeight : prev
+      )
+    }
+
+    const observer = new MutationObserver(() => updateHeight())
+    observer.observe(iframe, { attributes: true, attributeFilter: ['style'] })
+
+    const interval = window.setInterval(updateHeight, 1500)
+    updateHeight()
+
+    return () => {
+      observer.disconnect()
+      window.clearInterval(interval)
+    }
+  }, [mounted])
 
   const animateParticles = () => {
     setParticles(prevParticles =>
@@ -326,9 +355,11 @@ export default function WhiteGlovePage() {
   }
 
   return (
-    <div className={`min-h-screen overflow-x-hidden transition-colors ${
-      isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
-    }`}>
+    <>
+      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
+      <div className={`min-h-screen overflow-x-hidden transition-colors ${
+        isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
+      }`}>
 
       {/* Floating Particles */}
       {particles.map((particle) => (
@@ -400,9 +431,9 @@ export default function WhiteGlovePage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative flex items-center justify-center px-4 min-h-screen sm:py-28"
+        className="relative flex items-start justify-center px-4 min-h-screen sm:py-28"
       >
-        <div className="max-w-4xl mx-auto w-full">
+        <div className="max-w-6xl mx-auto w-full">
           <div className="text-center space-y-6 sm:space-y-8">
             <div>
               <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 mt-8 sm:mt-12 leading-tight px-2 ${
@@ -416,151 +447,52 @@ export default function WhiteGlovePage() {
               }`}>
                 Custom CRM, AI follow-up, content, and lead-gen systems - designed, installed, and managed by TrueFlow so nothing slips through.
               </p>
+            </div>
+          </div>
 
-              {/* Form Section */}
-              <div ref={formRef} className="max-w-2xl mx-auto px-4 w-full">
-                {!showCalendar ? (
-                  <div className={`backdrop-blur-md rounded-3xl border p-8 ${
-                    isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-xl'
-                  }`}>
-                    <div className="text-center mb-6">
-                      <h2 className={`text-2xl font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                        Book a private consultation with a TrueFlow expert
-                      </h2>
-                      <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>
-                        On this 30 minute call we will get to know you and your business&apos; needs, then answer any questions you have. At the end of the call you will receive a Custom AI Automation Roadmap and we&apos;ll share what it would take to build this for you.
-                      </p>
-                    </div>
+          {/* Calendar Section */}
+          <div className="mt-10">
+            <div className={`backdrop-blur-md rounded-3xl border p-6 sm:p-8 ${
+              isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-xl'
+            }`}>
+              <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-10">
+                <div className="lg:w-5/12 flex flex-col justify-center space-y-4 text-left">
+                  <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                    Book a private consultation with a TrueFlow expert
+                  </h2>
+                  <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                    On this 30 minute call we will get to know you and your business&apos; needs, then answer any questions you have. At the end of the call you will receive a Custom AI Automation Roadmap and we&apos;ll share what it would take to build this for you.
+                  </p>
+                </div>
 
-                    {/* Form Fields */}
-                    <div className="space-y-4">
-                      <div>
-                        <label className={`block text-sm font-medium mb-2 text-left ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.fullName}
-                          onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                          className={`w-full px-4 py-3 rounded-xl border transition-colors ${
-                            isDarkMode
-                              ? 'bg-white/5 border-white/10 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none'
-                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none'
-                          }`}
-                          placeholder="John"
-                        />
-                      </div>
-
-                      <div>
-                        <label className={`block text-sm font-medium mb-2 text-left ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className={`w-full px-4 py-3 rounded-xl border transition-colors ${
-                            isDarkMode
-                              ? 'bg-white/5 border-white/10 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none'
-                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none'
-                          }`}
-                          placeholder="john@company.com"
-                        />
-                      </div>
-
-                      <div>
-                        <label className={`block text-sm font-medium mb-2 text-left ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          Phone <span className={`text-xs ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>(optional)</span>
-                        </label>
-                        <input
-                          type="tel"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className={`w-full px-4 py-3 rounded-xl border transition-colors ${
-                            isDarkMode
-                              ? 'bg-white/5 border-white/10 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none'
-                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none'
-                          }`}
-                          placeholder="(555) 123-4567"
-                        />
-                      </div>
-
-                      <div>
-                        <label className={`block text-sm font-medium mb-2 text-left ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          Business name
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.businessName}
-                          onChange={(e) => setFormData({ ...formData, businessName: e.target.value })}
-                          className={`w-full px-4 py-3 rounded-xl border transition-colors ${
-                            isDarkMode
-                              ? 'bg-white/5 border-white/10 text-white placeholder-white/40 focus:border-blue-500 focus:outline-none'
-                              : 'bg-white border-gray-300 text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none'
-                          }`}
-                          placeholder="Your Company LLC"
-                        />
-                      </div>
-
-                      <button
-                        onClick={() => {
-                          if (formData.fullName && formData.email && formData.businessName) {
-                            setShowCalendar(true)
-                          }
-                        }}
-                        disabled={!formData.fullName || !formData.email || !formData.businessName}
-                        className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 ${
-                          formData.fullName && formData.email && formData.businessName
-                            ? 'bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25'
-                            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                        }`}
-                      >
-                        Continue
-                      </button>
-                    </div>
-
-                    <p className={`text-xs text-center mt-4 ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>
-                      We'll discuss your needs and show you exactly how the system works
-                    </p>
-                  </div>
-                ) : (
-                  <div className={`backdrop-blur-md rounded-3xl border p-8 ${
-                    isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-xl'
-                  }`}>
-                    <div className="text-center mb-6">
-                      <h2 className={`text-2xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                        Choose your time
-                      </h2>
-                      <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>
-                        Select a time that works best for your strategy call
-                      </p>
-                    </div>
-
-                    <div className="rounded-2xl overflow-hidden">
+                <div className="flex-1 w-full">
+                  <div
+                    className="rounded-2xl overflow-hidden w-full"
+                    style={{ height: `${heroScaledHeight}px` }}
+                  >
+                    <div
+                      className="origin-top-left"
+                      style={{
+                        transform: `scale(${bookingFormScale})`,
+                        width: `${100 / bookingFormScale}%`,
+                        height: `${heroBookingHeight}px`
+                      }}
+                    >
                       <iframe
-                        src="https://api.leadconnectorhq.com/widget/booking/gsRd445hTmINPYoWlA1a"
+                        ref={heroIframeRef}
+                        src={bookingWidgetSrc}
                         style={{
                           width: '100%',
-                          height: '600px',
-                          border: 'none'
+                          height: `${heroBookingHeight}px`,
+                          border: 'none',
+                          overflow: 'hidden'
                         }}
                         scrolling="no"
-                        id="msgsndr-calendar"
+                        id={heroBookingWidgetId}
                       />
                     </div>
-
-                    <button
-                      onClick={() => setShowCalendar(false)}
-                      className={`w-full mt-4 py-3 rounded-xl font-medium transition-colors ${
-                        isDarkMode
-                          ? 'bg-white/10 text-white hover:bg-white/20'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                    >
-                      ← Back to form
-                    </button>
                   </div>
-                )}
+                </div>
               </div>
             </div>
           </div>
@@ -1306,20 +1238,20 @@ export default function WhiteGlovePage() {
 
             <div className="aspect-[16/9] w-full">
               <iframe
-                src="https://api.leadconnectorhq.com/widget/booking/nc8KAbjOlywMkW6XPSBj"
+                src={bookingWidgetSrc}
                 style={{
                   width: '100%',
-                  height: '100%',
                   border: 'none',
                   overflow: 'hidden'
                 }}
                 scrolling="no"
-                id="nc8KAbjOlywMkW6XPSBj_1766178317115"
+                id={modalBookingWidgetId}
               ></iframe>
             </div>
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </>
   )
 }
