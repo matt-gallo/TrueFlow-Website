@@ -428,7 +428,7 @@ export default function WhiteGlovePage() {
                         Book a private consultation with a TrueFlow expert
                       </h2>
                       <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>
-                        On this 30 minute call we will get to know you and your business&apos; needs, then you will have a chance to ask any questions you have. At the end of the call you will receive an AI Automation Roadmap and we&apos;ll share what it would take to build this for you.
+                        On this 30 minute call we will get to know you and your business&apos; needs, then answer any questions you have. At the end of the call you will receive an AI Automation Roadmap and we&apos;ll share what it would take to build this for you.
                       </p>
                     </div>
 
