@@ -34,7 +34,7 @@ export function Footer() {
           <div className="flex items-center">
             <ul className="space-y-2">
               <li><Link href="/contact" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Contact</Link></li>
-              <li><Link href="/coming-soon" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Help Center</Link></li>
+              <li><Link href="/faq" className={`transition-colors text-sm ${isDarkMode ? 'text-white/60 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Frequently Asked Questions</Link></li>
               <li>
                 <Link
                   href="https://www.skool.com/the-hive-9609/about"

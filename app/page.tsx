@@ -989,7 +989,7 @@ export default function LandingPage() {
               <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 mt-8 sm:mt-12 leading-tight px-2 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                We install systems that book sales calls for you 24/7.
+                We install systems that book sales calls for you 24/7
               </h1>
 
               <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-8 px-4 ${
@@ -1094,7 +1094,7 @@ export default function LandingPage() {
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
               <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                Every missed follow-up is lost revenue you already paid for.
+                Every missed follow-up is lost revenue you already paid for
               </span>
             </h2>
 
@@ -1298,7 +1298,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              We build and run the entire system with you, then fill it with leads.
+              We build and run the entire system with you, then fill it with leads
             </h2>
           </div>
 
