@@ -909,7 +909,7 @@ export default function LandingPage() {
                 Sign in
               </a>
               <Link href="/sign-up" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
-                Get started here
+                Book a live demo
               </Link>
             </div>
 
@@ -971,7 +971,7 @@ export default function LandingPage() {
                 Sign in
               </a>
               <Link href="/sign-up" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
-                Get started here
+                Book a live demo
               </Link>
             </div>
           </div>
@@ -981,7 +981,7 @@ export default function LandingPage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative flex items-center justify-center px-4 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] sm:py-28 pb-20 sm:pb-32 md:pb-40"
+        className="relative flex items-center justify-center px-4 min-h-[70vh] sm:min-h-[75vh] md:min-h-[80vh] pt-28 sm:py-28 pb-20 sm:pb-32 md:pb-40"
       >
         <div className="max-w-4xl mx-auto w-full">
           <div className="text-center space-y-6 sm:space-y-8">
@@ -989,7 +989,7 @@ export default function LandingPage() {
               <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 mt-8 sm:mt-12 leading-tight px-2 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                We install systems that book sales calls for you 24/7.
+                We install systems that book sales calls for you 24/7
               </h1>
 
               <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-8 px-4 ${
@@ -1016,22 +1016,6 @@ export default function LandingPage() {
           </div>
         </div>
 
-        {scrollY < 200 && (
-          <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center space-y-3 pointer-events-none">
-            <ArrowDown className="h-5 w-5 text-black arrow-breathe" />
-
-            {/* Scroll Indicator - Hide when scrolled */}
-            <div 
-              className={`animate-bounce transition-opacity duration-300 ${
-                scrollY > 100 ? 'opacity-0' : 'opacity-100'
-              }`}
-            >
-              <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center">
-                <div className="w-1 h-4 bg-white/50 rounded-full mt-2"></div>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
       {/* Trust Signals Auto-Scrolling Banner */}
@@ -1094,7 +1078,7 @@ export default function LandingPage() {
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
               <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                Every missed follow-up is lost revenue you already paid for.
+                Every missed follow-up is lost revenue you already paid for
               </span>
             </h2>
 
@@ -1279,12 +1263,12 @@ export default function LandingPage() {
               <p className={`text-lg sm:text-xl font-semibold ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                Software didn't fail you.
+                Software didn't fail you
               </p>
               <p className={`text-lg sm:text-xl font-semibold ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                Being forced to build and manage it yourself did.
+                Being forced to build and manage it yourself did
               </p>
             </div>
           </div>
@@ -1298,7 +1282,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              We build and run the entire system with you, then fill it with leads.
+              We build and run the entire system with you, then fill it with leads
             </h2>
           </div>
 
@@ -1711,12 +1695,12 @@ export default function LandingPage() {
               <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                Your First 14 Days Inside TrueFlow
+                Activate and start using today
               </h3>
               <p className={`text-lg ${
                 isDarkMode ? 'text-white/70' : 'text-gray-600'
               }`}>
-                Your trial is about activating and validating the system—not waiting for us to build it for you
+                Typically a business can be up and running in under 90 min
               </p>
             </div>
 
@@ -1740,7 +1724,7 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Account Activation & System Access
+                    You See Where Every Lead Goes
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                     You get access to the full TrueFlow system. Core automations, pipelines, AI follow-up logic, and templates are pre-installed. You're guided through connecting your tools and choosing your setup path.
@@ -1767,10 +1751,10 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Guided Setup & Configuration
+                    Follow-Up Runs Without You
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    You follow step-by-step instructions to configure your lead flow, messaging, and routing. Our automations assist with setup, validation, and testing. Support is available if you get stuck.
+                    You follow step-by-step instructions to configure your lead flow, messaging, and routing. Our automations and team assist with validating, testing, and optimizing. Support is available if you get stuck.
                   </p>
                 </div>
               </div>
@@ -1794,7 +1778,7 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    System Live & Validation
+                    Proof Shows Up in Your Pipeline
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
                     Your system is live. Leads are captured, followed up with, and routed automatically. You can see what's working and what needs adjustment.
@@ -1821,10 +1805,10 @@ export default function LandingPage() {
                   <h4 className={`text-xl font-bold mb-2 ${
                     isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    Decide How You Want to Proceed
+                    Keep What's Working or Walk Away Clean
                   </h4>
                   <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-                    Continue using the system DIY for $297/month—or explore a custom, done-for-you build if you want TrueFlow to take over execution. Cancel anytime before day 14, no charge.
+                    Continue generating leads, booked appointments, and sales. Billing begins at $297/month. Cancel anytime before 14 days, no charge. Or if you want a TrueFlow Expert to build this for you, keep scrolling.
                   </p>
                 </div>
               </div>
@@ -1843,7 +1827,7 @@ export default function LandingPage() {
                   Some clients decide they don't want to touch this
                 </h3>
                 <p className={`text-xl mb-6 ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>
-                  If you want us to build, customize, and run the entire system for you—we do that too
+                  If you want us to build, customize, and run the entire system for you - we do that too
                 </p>
               </div>
 
@@ -1869,20 +1853,78 @@ export default function LandingPage() {
 
               <div className="text-center mb-8">
                 <p className={`text-lg mb-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                  Pricing Varies…Book a Demo to Get a Quote
+                  Pricing varies... book a private demo to get a quote
                 </p>
-                <button
-                  onClick={() => setIsDemoModalOpen(true)}
+                <Link
+                  href="/white-glove"
                   className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
                 >
-                  Book a Demo
+                  Get Quote
                   <ArrowRight className="w-5 h-5" />
-                </button>
+                </Link>
                 <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
                   Live call with a TrueFlow expert
                 </p>
                 <p className={`text-sm mt-2 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
                   Typical plans start with a $3–5k setup fee + $497/mo
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Lead Machine Section */}
+          <div className="mt-20 max-w-4xl mx-auto">
+            <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
+              isDarkMode
+                ? 'bg-gradient-to-br from-green-400/10 via-cyan-500/10 to-transparent border-green-400/30'
+                : 'bg-gradient-to-br from-green-50 to-cyan-50 border-green-200'
+            }`}>
+              <div className="text-center mb-8">
+                <h3 className={`text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-cyan-600 bg-clip-text text-transparent`}>
+                  Need more customers?
+                </h3>
+                <p className={`text-xl mb-6 ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>
+                  Our Lead Machine™ finds and qualifies hot prospects for your business
+                </p>
+              </div>
+
+              <div className="mb-8">
+                <p className={`text-lg font-semibold mb-4 ${isDarkMode ? 'text-white/90' : 'text-gray-900'}`}>
+                  What you get:
+                </p>
+                <ul className="space-y-3">
+                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    <span className="text-green-400 mt-1">•</span>
+                    <span>Targeted outreach to high-intent buyers actively looking for what you sell</span>
+                  </li>
+                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    <span className="text-green-400 mt-1">•</span>
+                    <span>Real-time engagement and qualification of prospects</span>
+                  </li>
+                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    <span className="text-green-400 mt-1">•</span>
+                    <span>Sales-ready leads delivered directly to you</span>
+                  </li>
+                  <li className={`flex items-start gap-3 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    <span className="text-green-400 mt-1">•</span>
+                    <span>24/7 optimization and live performance dashboards</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="text-center mb-8">
+                <p className={`text-lg mb-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                  Pricing varies... book a demo to get a quote
+                </p>
+                <Link
+                  href="/lead-machine"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+                >
+                  Get Quote
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+                  See how the Lead Machine™ works
                 </p>
               </div>
             </div>
@@ -1910,7 +1952,7 @@ export default function LandingPage() {
             <h2 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 transition-all duration-1000 ${
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
-              Real businesses. Real results.
+              Real businesses. Real results
             </h2>
             <p className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto px-4 transition-all duration-1000 ${
               isDarkMode ? 'text-white/70' : 'text-gray-600'
@@ -2243,7 +2285,7 @@ export default function LandingPage() {
               },
               {
                 question: "How long does it take to get set up?",
-                answer: "Your system goes live within your 14-day trial. Core automations are typically active within 3-7 days."
+                answer: "Your system is set up immediately, and you have 14 days to use and optimize. We guide you through so there's no guesswork."
               },
               {
                 question: "What if I need changes or want to add something new?",
@@ -2282,10 +2324,13 @@ export default function LandingPage() {
 
           <div className="text-center mt-12">
             <p className={`text-lg mb-6 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Still have questions?</p>
-            <Link href="/sign-up" className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300">
+            <button
+              onClick={() => setIsDemoModalOpen(true)}
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+            >
               <span>Book your live demo</span>
               <ChevronRight className="h-5 w-5" />
-            </Link>
+            </button>
             <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
               Live call with a TrueFlow expert
             </p>
