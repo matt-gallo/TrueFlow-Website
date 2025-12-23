@@ -66,7 +66,7 @@ export default function SignInPage() {
               <div>
                 <p className={`text-xs uppercase tracking-[0.4em] ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>Welcome back</p>
                 <h1 className={`text-3xl font-bold mt-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Sign in to TrueFlow</h1>
-                <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Pick up where you left off — drafts, automations, and Accelerator resources are waiting.</p>
+                <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Pick up where you left off  - drafts, automations, and Accelerator resources are waiting.</p>
               </div>
 
               <label className="flex flex-col gap-2 text-sm">
@@ -135,7 +135,7 @@ export default function SignInPage() {
                 <div className="mt-6 space-y-4">
                   <div>
                     <p className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>$297</p>
-                    <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>per month after your 14-day free trial — less than $10/day.</p>
+                    <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>per month after your 14-day free trial  - less than $10/day.</p>
                   </div>
                   <div>
                     <p className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>TrueFlow Accelerator access</p>
@@ -143,7 +143,7 @@ export default function SignInPage() {
                   </div>
                   <div>
                     <p className={`text-lg font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Optional 1:1 success manager</p>
-                    <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Instant messaging, voice replies, and proactive check-ins — like having a personal assistant living inside your business.</p>
+                    <p className={`text-sm ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Instant messaging, voice replies, and proactive check-ins  - like having a personal assistant living inside your business.</p>
                   </div>
                 </div>
               </div>
@@ -155,7 +155,7 @@ export default function SignInPage() {
               }`}>
                 <p className={`text-sm uppercase tracking-[0.3em] ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Testimonials</p>
                 <p className={`text-lg italic mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>"This experience feels like hiring a full stack team for the price of a software login. The accelerator alone paid for itself in two weeks."</p>
-                <p className={`text-sm mt-4 ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}>— Devon Miles, Founder @ Clarity Labs</p>
+                <p className={`text-sm mt-4 ${isDarkMode ? 'text-white/60' : 'text-gray-600'}`}> - Devon Miles, Founder @ Clarity Labs</p>
               </div>
             </div>
           </div>

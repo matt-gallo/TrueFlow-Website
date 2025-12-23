@@ -580,7 +580,7 @@ export default function LeadMachinePage() {
               isDarkMode
                 ? 'bg-gradient-to-r from-green-300 via-cyan-300 to-emerald-300'
                 : 'bg-gradient-to-r from-green-600 via-cyan-600 to-emerald-600'
-            }`}>Lead Machine identifies intent, starts the conversation, and syncs every reply into your pipeline + ads.</h2>
+            }`}>Lead Machine identifies intent, starts the conversation, and syncs every reply into your pipeline + ads</h2>
             <p className={`mt-4 text-lg ${
               isDarkMode ? 'text-white/70' : 'text-gray-600'
             }`}>
@@ -654,7 +654,7 @@ export default function LeadMachinePage() {
                 isDarkMode
                   ? 'bg-gradient-to-r from-green-300 via-cyan-300 to-emerald-300'
                   : 'bg-gradient-to-r from-green-600 via-cyan-600 to-emerald-600'
-              }`}>Stop paying for leads. Start owning conversations.</h2>
+              }`}>Stop paying for leads. Start owning conversations</h2>
               <p className={`mt-4 ${
                 isDarkMode ? 'text-white/70' : 'text-gray-600'
               }`}>
@@ -761,7 +761,7 @@ export default function LeadMachinePage() {
 
         <section className="mt-24 px-4 sm:px-6 max-w-5xl mx-auto">
           <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'} p-8 sm:p-12`}>
-            <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Here's what happens when you turn it on.</h2>
+            <h2 className={`text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Here's what happens when you turn it on</h2>
             <ul className={`mt-8 space-y-4 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               {benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
@@ -1087,7 +1087,7 @@ export default function LeadMachinePage() {
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
           <div className={`rounded-3xl border ${isDarkMode ? 'border-white/10' : 'border-gray-200'} ${isDarkMode ? 'bg-gradient-to-br from-cyan-600/40 via-blue-600/40 to-black/60' : 'bg-gradient-to-br from-cyan-100 via-blue-100 to-gray-50'} p-10 sm:p-14`}>
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${isDarkMode ? 'border-white/20 bg-white/5 text-white/70' : 'border-gray-300 bg-white text-gray-600'} uppercase tracking-[0.35em] text-xs`}>Ready?</span>
-            <h2 className={`mt-6 text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Let the machine do the prospecting for you.</h2>
+            <h2 className={`mt-6 text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Let the machine do the prospecting for you</h2>
             <p className={`mt-4 text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
               Book a free walkthrough, see your pipeline model, and decide if you want us to run it for you.
             </p>
@@ -1223,7 +1223,7 @@ export default function LeadMachinePage() {
         <section className="mt-24 px-4 sm:px-6 max-w-4xl mx-auto text-center">
           <div className={`rounded-3xl border ${isDarkMode ? 'border-rose-400/30 bg-gradient-to-br from-rose-600/30 via-purple-600/30 to-black/60' : 'border-rose-300 bg-gradient-to-br from-rose-100 via-purple-100 to-gray-50'} p-10 sm:p-14`}>
             <p className={`text-xs uppercase tracking-[0.35em] ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Urgent</p>
-            <h2 className={`mt-4 text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Only 22 installs per month. Next cohort starts Monday.</h2>
+            <h2 className={`mt-4 text-3xl sm:text-4xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Only 22 installs per month. Next cohort starts Monday</h2>
             <p className={`mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-700'} text-lg`}>If this is the week you stop guessing where leads will come from, grab a slot now.</p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <button

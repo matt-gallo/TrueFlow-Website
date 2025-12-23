@@ -336,7 +336,7 @@ export default function SolarInstallationLeadMachine() {
           }`}>
             <p className="text-3xl font-semibold mb-4">Proof from active Solar Lead Machine deployments</p>
             <p className={`mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-              These are aggregated performance metrics pulled from anonymized partner dashboards—no fabricated testimonials, just transparent data.
+              These are aggregated performance metrics pulled from anonymized partner dashboards -no fabricated testimonials, just transparent data.
             </p>
             <div className="grid sm:grid-cols-3 gap-6">
               <div>
@@ -432,7 +432,7 @@ export default function SolarInstallationLeadMachine() {
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
               isDarkMode ? 'border-white/30 text-white/70' : 'border-emerald-200 text-emerald-700'
             } text-xs uppercase tracking-[0.35em]`}>Ready?</span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Turn every sunny roof into a booked consultation.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Turn every sunny roof into a booked consultation</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Switch on the Solar Lead Machine and let AI handle detection, nurture, and scheduling while your team focuses on installs.
             </p>
@@ -475,7 +475,7 @@ export default function SolarInstallationLeadMachine() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited -choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${

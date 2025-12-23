@@ -448,7 +448,7 @@ export default function BusinessCoachLeadMachinePage() {
             >
               Ready?
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep cohorts sold out without living on Instagram.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep cohorts sold out without living on Instagram</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Turn on the Business Coach Lead Machine and let AI handle demand-gen, nurture, and scheduling while you ship transformations.
             </p>

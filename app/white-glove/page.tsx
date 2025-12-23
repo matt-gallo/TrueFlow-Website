@@ -406,7 +406,7 @@ export default function WhiteGlovePage() {
               <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-8 px-4 ${
                 isDarkMode ? 'text-white/60' : 'text-gray-600'
               }`}>
-                Custom CRM, AI follow-up, content, and lead systems — designed, installed, and managed by TrueFlow so nothing slips through.
+                Custom CRM, AI follow-up, content, and lead systems  - designed, installed, and managed by TrueFlow so nothing slips through.
               </p>
 
               <div className="flex flex-col items-center px-4">
@@ -577,7 +577,7 @@ export default function WhiteGlovePage() {
           <p className={`text-lg sm:text-xl max-w-3xl mx-auto ${
             isDarkMode ? 'text-white/70' : 'text-gray-600'
           }`}>
-            We take ownership of the entire backend — from strategy to setup to ongoing optimization — so your business runs smoothly without you babysitting software.
+            We take ownership of the entire backend  - from strategy to setup to ongoing optimization  - so your business runs smoothly without you babysitting software.
           </p>
         </div>
       </section>

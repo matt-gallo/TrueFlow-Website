@@ -1114,7 +1114,7 @@ export default function ReadinessAssessment() {
 
               {/* Business Type Section */}
               <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                <h2 className="text-lg font-bold mb-3">I am a...</h2>
+                <h2 className="text-lg font-bold mb-3">I am a</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {businessTypes.map((type) => (
                     <button
@@ -1146,7 +1146,7 @@ export default function ReadinessAssessment() {
 
               {/* Content Goals Section */}
               <div className="bg-white/5 rounded-2xl p-4 border border-white/10">
-                <h2 className="text-lg font-bold mb-3">I want to create...</h2>
+                <h2 className="text-lg font-bold mb-3">I want to create</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {contentGoalOptions.map((goal) => (
                     <button

@@ -92,7 +92,7 @@ export default function EventPopup({ onClose }: EventPopupProps) {
                   </p>
 
                   <p className="text-xs sm:text-sm text-gray-300 leading-relaxed">
-                    A small circle of creators, builders, and innovators coming together for one night — no name tags, no agendas, just conversation, connection, and flow.
+                    A small circle of creators, builders, and innovators coming together for one night  - no name tags, no agendas, just conversation, connection, and flow.
                   </p>
 
                   <div className="text-sm sm:text-base space-y-1 py-2">

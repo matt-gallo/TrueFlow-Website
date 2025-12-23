@@ -20,7 +20,7 @@ const inclusions = [
   },
   {
     title: 'Core Campaign Activation',
-    subtitle: 'Normally $750/mo — now $600/mo',
+    subtitle: 'Normally $750/mo  - now $600/mo',
     bullets: [
       'Up to 70 new verified contacts per week (~280/mo)',
       'AI-driven outreach in your brand tone',
@@ -119,7 +119,7 @@ export default function LeadMachineOfferPage() {
           <section className="p-6 rounded-3xl border border-white/10 bg-white/5 space-y-4 text-center">
             <p className="text-2xl font-semibold">Why this founder pricing?</p>
             <p className="text-white/70 text-lg max-w-3xl mx-auto">
-              We&apos;re taking on 10 businesses at this rate to showcase wins before we reset to $3,000 setup + $750/month. Lock in this offer now—it will not return.
+              We&apos;re taking on 10 businesses at this rate to showcase wins before we reset to $3,000 setup + $750/month. Lock in this offer now -it will not return.
             </p>
           </section>
 

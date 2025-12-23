@@ -57,7 +57,7 @@ const workflow = [
 const features = [
   {
     title: 'HVAC Booking Machine',
-    description: 'Automation tuned for heating and cooling pros—keeps the dispatch board full while techs stay in the field.',
+    description: 'Automation tuned for heating and cooling pros - keeps the dispatch board full while techs stay in the field.',
     icon: Hammer
   },
   {
@@ -156,7 +156,7 @@ const faqs = [
   },
   {
     q: 'Are the leads exclusive?',
-    a: 'Every homeowner conversation is exclusive to your company—no shared lead lists or auction-style bidding.'
+    a: 'Every homeowner conversation is exclusive to your company - no shared lead lists or auction-style bidding.'
   },
   {
     q: 'How fast can we go live?',
@@ -204,7 +204,7 @@ export default function HvacLeadMachinePage() {
                 AI finds urgent homeowners, answers them instantly, and drops booked jobs into your dispatch board.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Modeled after our best-performing trades campaigns, this system keeps crews busy with profitable installs and emergency calls—no more cold nights or idle technicians.
+                Modeled after our best-performing trades campaigns, this system keeps crews busy with profitable installs and emergency calls - no more cold nights or idle technicians.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <button
@@ -379,7 +379,7 @@ export default function HvacLeadMachinePage() {
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
               isDarkMode ? 'border-white/30 text-white/70' : 'border-amber-300 text-amber-700'
             } text-xs uppercase tracking-[0.35em]`}>Ready?</span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep trucks busy even when the phones spike.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep trucks busy even when the phones spike</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Let the HVAC Lead Machine book the calendar while your crews focus on installs and repairs.
             </p>
@@ -422,7 +422,7 @@ export default function HvacLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited - choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${

@@ -248,7 +248,7 @@ export default function SignUpPage() {
               </Link>
               <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-6">
                 <div className="text-center sm:text-right text-xs text-white/60">
-                  <p>Value-packed at $350/week — yours free for 14 days.</p>
+                  <p>Value-packed at $350/week  - yours free for 14 days.</p>
                   <p>After the trial it&apos;s just $297/mo.</p>
                 </div>
                 <NavAuthButtons />
@@ -289,7 +289,7 @@ export default function SignUpPage() {
                       )
                     })}
                   </div>
-                  <p className="text-sm text-white/60">Hang tight—we&apos;re directing you to the secure login hub.</p>
+                  <p className="text-sm text-white/60">Hang tight -we&apos;re directing you to the secure login hub.</p>
                   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                     <Link
                       href="https://login.trueflow.ai"

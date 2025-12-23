@@ -21,7 +21,7 @@ export default function ShareRedirect() {
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
       <div className="max-w-md w-full text-center">
-        <h1 className="text-3xl font-bold mb-4">Redirecting...</h1>
+        <h1 className="text-3xl font-bold mb-4">Redirecting</h1>
         
         <div className="bg-white/10 rounded-lg p-6 mb-6">
           <p className="mb-4">You're being redirected to:</p>

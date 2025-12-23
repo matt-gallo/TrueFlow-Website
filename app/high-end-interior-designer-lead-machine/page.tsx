@@ -34,7 +34,7 @@ const workflow = [
   },
   {
     title: 'Launch AI studio concierge',
-    description: 'AI responds like your design assistant—sharing portfolios, mood boards, and availability the moment inquiries land.',
+    description: 'AI responds like your design assistant -sharing portfolios, mood boards, and availability the moment inquiries land.',
     icon: MessageSquare
   },
   {
@@ -208,7 +208,7 @@ export default function HighEndInteriorDesignerLeadMachinePage() {
                 AI finds luxury renovations, answers instantly, and books vision consults while you perfect the reveal.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Built from our best-performing design studio installs, this system keeps your principal schedule full of affluent households and developer partners—without living on Instagram DMs.
+                Built from our best-performing design studio installs, this system keeps your principal schedule full of affluent households and developer partners -without living on Instagram DMs.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <button
@@ -345,7 +345,7 @@ export default function HighEndInteriorDesignerLeadMachinePage() {
           >
             <p className="text-3xl font-semibold mb-4">Proof from active interior design deployments</p>
             <p className={`mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-              Real studio benchmarks—no mock metrics.
+              Real studio benchmarks -no mock metrics.
             </p>
             <div className="grid sm:grid-cols-3 gap-6">
               <div>
@@ -451,7 +451,7 @@ export default function HighEndInteriorDesignerLeadMachinePage() {
             >
               Ready?
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep projects bespoke while the pipeline fills itself.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep projects bespoke while the pipeline fills itself</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Switch on the High-End Interior Designer Lead Machine and let AI concierge service attract, vet, and schedule affluent clients.
             </p>
@@ -496,7 +496,7 @@ export default function HighEndInteriorDesignerLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited -choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div
