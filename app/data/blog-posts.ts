@@ -138,11 +138,59 @@ export const tagColorPalettes: Record<string, string> = {
   'gohighlevel': 'from-green-600 to-teal-700',
   'product-launch': 'from-orange-600 to-red-700',
   'networking': 'from-blue-600 to-indigo-700',
-  'storytelling': 'from-rose-500 to-purple-600'
+  'storytelling': 'from-rose-500 to-purple-600',
+  'leadership': 'from-blue-600 to-cyan-700',
+  'operations': 'from-slate-600 to-blue-700',
+  'culture': 'from-purple-500 to-pink-600'
 }
+
+// Tags (add missing leadership/operations tags)
+export const leadershipTag: Tag = { name: 'Leadership', slug: 'leadership' }
+export const operationsTag: Tag = { name: 'Operations', slug: 'operations' }
+export const cultureTag: Tag = { name: 'Culture', slug: 'culture' }
 
 // Blog Posts
 export const blogPosts: BlogPost[] = [
+  {
+    id: '10',
+    slug: 'from-gym-floor-to-software-one-thing-that-scales',
+    title: 'From the Gym Floor to Software: The One Thing That Actually Scales',
+    excerpt: 'What running a gym taught me about partnerships, leadership, and why culture matters more than tactics in every business.',
+    content: '',
+    author: authors['matt-gallo'],
+    date: '2026-01-05',
+    readTime: 8,
+    category: categories.growth,
+    tags: [
+      leadershipTag,
+      operationsTag,
+      cultureTag,
+      tags['scaling'],
+      tags['startup'],
+      tags['small-business']
+    ],
+    primaryTag: leadershipTag,
+    featuredImage: {
+      url: '/blog-gym-to-software.jpg',
+      alt: 'From the Gym Floor to Software: The One Thing That Actually Scales',
+      width: 1200,
+      height: 600
+    },
+    seo: {
+      metaTitle: 'From the Gym Floor to Software: The One Thing That Actually Scales | TrueFlow',
+      metaDescription: 'What running a gym taught me about partnerships, leadership, and why culture matters more than tactics in every business.',
+      keywords: [
+        'leadership',
+        'business culture',
+        'operations',
+        'partnerships',
+        'scaling',
+        'founder lessons',
+        'business growth'
+      ]
+    },
+    published: true
+  },
   {
     id: '9',
     slug: 'transform-content-marketing-zero-leads',
