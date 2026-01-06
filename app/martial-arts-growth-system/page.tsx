@@ -653,30 +653,30 @@ export default function LandingPage() {
 
   const testimonials = [
     {
-      name: "Master Kim",
-      role: "Owner, Elite Taekwondo Academy",
+      name: "Andrew",
+      role: "Chiropractic Clinic",
       company: "",
       tier: "Enterprise",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
-      quote: "I struggled to follow up with trial students, track belt promotions, and manage parent communication. With TrueFlow's AI-driven lead capture, integrated scheduling, and automatic parent notification system, more trial classes get booked and student onboarding is smoother. The backend now works like it should.",
-      results: ["More trial classes booked", "Smoother student onboarding", "Automated parent communication"]
+      quote: "I struggled to follow up with leads, track appointments, and manage forms. With TrueFlow's AI-driven lead capture, integrated scheduling, and automatic form tracking system, more calls get booked and intake is smoother. The backend now works like it should.",
+      results: ["More calls booked", "Smoother intake process", "Automated form tracking"]
     },
     {
-      name: "Sensei Rodriguez",
-      role: "Owner, Victory Brazilian Jiu-Jitsu",
+      name: "Mike",
+      role: "Owner, CrossFit 103",
       company: "",
       tier: "Enterprise Client",
       image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=150&h=150&fit=crop&crop=face",
-      quote: "Before TrueFlow, our website was getting traffic, but visitors weren't turning into booked intro lessons. We rebuilt the site, added AI-driven conversations, and automated follow-up. Without running ads, the system booked 13 intro lessons from organic traffic alone. Now that it works, we're confidently scaling with ads and social.",
-      results: ["13 intro lessons booked organically", "AI engaging prospects 24/7", "Website → conversation → booking, automated"]
+      quote: "Before TrueFlow, our website was getting traffic, but visitors weren't turning into booked intros. We rebuilt the site, added AI-driven conversations, and automated follow-up. Without running ads, the system booked 13 appointments from organic traffic alone. Now that it works, we're confidently scaling with ads and social.",
+      results: ["13 appointments booked organically", "AI engaging leads 24/7", "Website → conversation → booking, automated"]
     },
     {
-      name: "Coach Martinez",
-      role: "Owner, Dragon MMA & Fitness",
+      name: "Dr. Chris Butler",
+      role: "Founder, WellPath Center",
       company: "",
       tier: "Enterprise Client",
       image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
-      quote: "Before TrueFlow, we were generating leads but the system wasn't keeping up. Messages from parents went unanswered, conversations stalled, and follow-up depended on manual effort. We activated AI agents in our DMs and SMS to qualify and respond instantly. Now about 15% of inbound leads are automatically qualified and booked into trial classes, even while running paid ads.",
+      quote: "Before TrueFlow, we were generating leads but the system wasn't keeping up. Messages went unanswered, conversations stalled, and follow-up depended on manual effort. We activated AI agents in our DMs and SMS to qualify and respond instantly. Now about 15% of inbound leads are automatically qualified and booked into calls, even while running paid ads.",
       results: ["50 leads per week handled automatically", "AI qualifying via DM + SMS", "Consistent replies, follow-up, and bookings"]
     }
   ]
