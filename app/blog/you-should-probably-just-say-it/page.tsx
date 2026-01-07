@@ -87,7 +87,8 @@ export default function BlogPost() {
                 </div>
                 <div className="text-left">
                   <p className="text-white font-semibold">Matt Gallo</p>
-                  <p className="text-white/60 text-sm">Gym Owner, Operator, Systems Builder</p>
+                  <p className="text-white/60 text-sm">Operations Lead & Creative Director, TrueFlow</p>
+                  <p className="text-white/50 text-xs">Former Gym Owner</p>
                 </div>
               </div>
 
