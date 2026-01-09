@@ -120,8 +120,8 @@ export async function DELETE(request: NextRequest) {
   }
 }
 
-// Cleanup expired entries - called manually or via cron
-export async function cleanupExpired() {
+// Internal cleanup function for expired entries
+async function cleanupExpired() {
   try {
     await ensureStorageDir()
     const files = await readdir(STORAGE_DIR)
@@ -157,3 +157,7 @@ export async function cleanupExpired() {
     return 0
   }
 }
+
+// Run cleanup when the module loads and periodically
+cleanupExpired().catch(console.error)
+setInterval(() => cleanupExpired().catch(console.error), 60 * 60 * 1000) // Every hour
