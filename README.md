@@ -1,6 +1,6 @@
-# TrueFlow AI Landing Page
+# TrueFlow AI Website
 
-A completely self-contained, independent landing page for TrueFlow AI with modern design, 3D carousel, and Apple-inspired animations.
+A completely self-contained, independent website for TrueFlow AI with modern design, 3D carousel, and Apple-inspired animations.
 
 ## Features
 
@@ -21,7 +21,7 @@ A completely self-contained, independent landing page for TrueFlow AI with moder
 
 1. Navigate to the project directory:
 ```bash
-cd trueflow-landing
+cd trueflow-website
 ```
 
 2. Install dependencies:

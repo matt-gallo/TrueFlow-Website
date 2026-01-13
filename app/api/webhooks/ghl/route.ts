@@ -741,7 +741,7 @@ async function sendEmailNotification(contact: any, webhookBody: any) {
 
     const subject = `New Web Lead: ${firstName} ${lastName}`
     const emailContent = `
-      <h2>New Web Lead from TrueFlow Landing Page</h2>
+      <h2>New Web Lead from TrueFlow Website</h2>
       <p><strong>Name:</strong> ${firstName} ${lastName}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Phone:</strong> ${phone}</p>
