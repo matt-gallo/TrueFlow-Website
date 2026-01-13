@@ -34,7 +34,7 @@ const workflow = [
   },
   {
     title: 'Launch AI accountability coach',
-    description: 'AI responds to DMs, opt-ins, and referrals with warm, human tone—sharing proof, answering objections, and nurturing momentum.',
+    description: 'AI responds to DMs, opt-ins, and referrals with warm, human tone -sharing proof, answering objections, and nurturing momentum.',
     icon: MessageSquare
   },
   {
@@ -156,7 +156,7 @@ const faqs = [
   },
   {
     q: 'Do we keep the conversations exclusive?',
-    a: 'All leads are exclusive to your practice—no shared lists or marketplaces. Everything routes into your CRM only.'
+    a: 'All leads are exclusive to your practice -no shared lists or marketplaces. Everything routes into your CRM only.'
   },
   {
     q: 'How fast can we launch?',
@@ -449,7 +449,7 @@ export default function HealthCoachLeadMachinePage() {
             >
               Ready?
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep clients on plan while pipeline fills itself.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep clients on plan while pipeline fills itself</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Flip on the Health Coach Lead Machine and let AI handle discovery, nurture, and scheduling so you can coach.
             </p>
@@ -494,7 +494,7 @@ export default function HealthCoachLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited -choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div

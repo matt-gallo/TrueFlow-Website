@@ -405,7 +405,7 @@ export default function CoreSystemPage() {
               <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-8 px-4 ${
                 isDarkMode ? 'text-white/60' : 'text-gray-600'
               }`}>
-                The TrueFlow Core System gives you the CRM, automations, AI follow-up, and content engine — plus the guidance to set it up the right way.
+                The TrueFlow Core System gives you the CRM, automations, AI follow-up, and content engine  - plus the guidance to set it up the right way.
               </p>
 
               <div className="flex flex-col items-center px-4">
@@ -577,7 +577,7 @@ export default function CoreSystemPage() {
           <p className={`text-lg sm:text-xl max-w-3xl mx-auto ${
             isDarkMode ? 'text-white/70' : 'text-gray-600'
           }`}>
-            TrueFlow Core System is for operators who want leverage — but don't want to reinvent sales and marketing systems from scratch.<br/><br/>
+            TrueFlow Core System is for operators who want leverage  - but don't want to reinvent sales and marketing systems from scratch.<br/><br/>
             You get the platform <em>and</em> the guidance to set it up correctly.
           </p>
         </div>
@@ -852,7 +852,7 @@ export default function CoreSystemPage() {
           <p className={`text-lg sm:text-xl mb-8 max-w-3xl mx-auto ${
             isDarkMode ? 'text-white/70' : 'text-gray-600'
           }`}>
-            Get the infrastructure, guidance, and tools — then decide how far you want to take it.
+            Get the infrastructure, guidance, and tools  - then decide how far you want to take it.
           </p>
 
           <Link href="/sign-up">

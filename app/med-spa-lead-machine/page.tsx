@@ -43,7 +43,7 @@ const workflow = [
   },
   {
     title: 'Auto-book consultations',
-    description: 'Syncs with GoHighLevel, Acuity, or Aesthetic Record calendars so clients lock in a slot instantly—no phone tag.',
+    description: 'Syncs with GoHighLevel, Acuity, or Aesthetic Record calendars so clients lock in a slot instantly -no phone tag.',
     icon: CalendarCheck
   },
   {
@@ -56,7 +56,7 @@ const workflow = [
 const features = [
   {
     title: 'Med Spa Booking Machine',
-    description: 'Automation tuned for high-ticket treatments—keeps injectors focused on clients while AI fills the calendar with pre-qualified consults.',
+    description: 'Automation tuned for high-ticket treatments -keeps injectors focused on clients while AI fills the calendar with pre-qualified consults.',
     icon: Sparkles
   },
   {
@@ -76,7 +76,7 @@ const features = [
   },
   {
     title: 'Calendar + CRM Sync',
-    description: 'Integrates with GoHighLevel, Aesthetic Record, Mindbody, or Nextech—keeping tasks, tags, and reminders aligned.',
+    description: 'Integrates with GoHighLevel, Aesthetic Record, Mindbody, or Nextech -keeping tasks, tags, and reminders aligned.',
     icon: CalendarCheck
   },
   {
@@ -147,7 +147,7 @@ const pricing = [
 const faqs = [
   {
     q: 'Do you provide exclusive leads?',
-    a: 'Yes. Each conversation is sourced and nurtured for your clinic only—no more sharing inquiries with competing spas.'
+    a: 'Yes. Each conversation is sourced and nurtured for your clinic only -no more sharing inquiries with competing spas.'
   },
   {
     q: 'Can the AI follow our consent and medical disclaimers?',
@@ -391,7 +391,7 @@ export default function MedSpaLeadMachinePage() {
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
               isDarkMode ? 'border-white/30 text-white/70' : 'border-rose-200 text-rose-700'
             } text-xs uppercase tracking-[0.35em]`}>Ready?</span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Turn consultations into memberships automatically.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Turn consultations into memberships automatically</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Flip on the Med Spa Lead Machine and let AI concierge service book out your injectors and estheticians.
             </p>
@@ -434,7 +434,7 @@ export default function MedSpaLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited -choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div className={`calendar-wrapper overflow-hidden rounded-2xl border ${

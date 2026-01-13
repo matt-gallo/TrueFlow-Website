@@ -102,14 +102,14 @@ const acceleratorMoments: AcceleratorMoment[] = [
 ]
 
 const platformFeatures = [
-  'Full CRM & Pipeline Management — never lose a lead again',
-  'AI Chat Agents — book calls 24/7, even while you sleep',
-  'Content Engine + Auto-Publishing — grow your footprint on autopilot',
-  'Email & SMS Automation — nurture and close deals automatically',
-  'Scheduling & Calendar Sync — prospects book directly into your calendar',
-  'Funnels & Landing Pages — high-converting pages that drive sales',
-  'Reputation Management — collect 5-star reviews at scale',
-  'Analytics & Reporting — know exactly what\'s working'
+  'Full CRM & Pipeline Management - never lose a lead again',
+  'AI Chat Agents - book calls 24/7, even while you sleep',
+  'Content Engine + Auto-Publishing - grow your footprint on autopilot',
+  'Email & SMS Automation - nurture and close deals automatically',
+  'Scheduling & Calendar Sync - prospects book directly into your calendar',
+  'Funnels & Landing Pages - high-converting pages that drive sales',
+  'Reputation Management - collect 5-star reviews at scale',
+  'Analytics & Reporting - know exactly what\'s working'
 ]
 
 export default function SignUpPageV2() {
@@ -423,12 +423,12 @@ export default function SignUpPageV2() {
               <div className="flex items-start gap-4">
                 <Clock className="h-8 w-8 text-rose-500 flex-shrink-0 mt-1" />
                 <div>
-                  <h2 className="text-2xl font-bold mb-3">You&apos;re hitting capacity, not potential.</h2>
+                  <h2 className="text-2xl font-bold mb-3">You&apos;re hitting capacity, not potential</h2>
                   <p className={`${theme.textMuted} text-lg mb-4`}>
                     You&apos;re working hard. The business is growing. But you&apos;re drowning in tasks, missing opportunities, and watching life pass by while you&apos;re stuck in the weeds.
                   </p>
                   <p className={`${theme.textMuted} text-lg`}>
-                    The problem isn&apos;t effort. It&apos;s leverage. You need systems that amplify you — not more to-dos.
+                    The problem isn&apos;t effort. It&apos;s leverage. You need systems that amplify you - not more to-dos.
                   </p>
                 </div>
               </div>
@@ -441,7 +441,7 @@ export default function SignUpPageV2() {
                   <Sparkles className="h-4 w-4" />
                   The Leverage You&apos;ve Been Missing
                 </div>
-                <h2 className="text-3xl font-bold mb-3">TrueFlow gives you a business that works even when you don&apos;t.</h2>
+                <h2 className="text-3xl font-bold mb-3">TrueFlow gives you a business that works even when you don&apos;t</h2>
                 <p className={`${theme.textMuted} text-lg max-w-2xl mx-auto`}>
                   AI agents, automations, CRM, and step-by-step coaching that turns busyness into growth.
                 </p>
@@ -453,7 +453,7 @@ export default function SignUpPageV2() {
                   <Brain className="h-8 w-8 text-[#1d929e] mb-3" />
                   <h3 className="font-bold text-lg mb-2">AI That Works For You</h3>
                   <p className={`${theme.textMuted} text-sm`}>
-                    Your AI team handles follow-ups, books calls, and nurtures leads 24/7 — even while you sleep.
+                    Your AI team handles follow-ups, books calls, and nurtures leads 24/7 - even while you sleep.
                   </p>
                 </div>
                 <div className={`p-6 rounded-2xl ${isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-gray-50 border border-gray-200'}`}>
@@ -477,7 +477,7 @@ export default function SignUpPageV2() {
             <div className={`${isDarkMode ? 'bg-gradient-to-br from-[#1d929e]/20 via-emerald-500/10 to-transparent' : 'bg-white shadow-xl'} border border-[#1d929e]/30 rounded-3xl p-8 mb-12`}>
               <div className="text-center mb-8">
                 <h2 className="text-2xl font-bold mb-2">Start your 14-day free trial</h2>
-                <p className={`${theme.textMuted}`}>Get full access to everything. Cancel anytime before Day 14 — no charge, no commitment.</p>
+                <p className={`${theme.textMuted}`}>Get full access to everything. Cancel anytime before Day 14 - no charge, no commitment.</p>
               </div>
               <div className="grid gap-8 lg:grid-cols-3">
                 <div className="text-center lg:text-left">
@@ -486,12 +486,12 @@ export default function SignUpPageV2() {
                   <p className={`${theme.textMuted} mt-2`}>14-day free trial starts immediately</p>
                 </div>
                 <div className={`text-center lg:text-left lg:border-l lg:border-r ${isDarkMode ? 'lg:border-white/10' : 'lg:border-gray-200'} lg:px-8`}>
-                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial — Platform</p>
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial - Platform</p>
                   <p className="text-4xl font-bold">$297<span className={`text-lg font-normal ${theme.textMuted2}`}>/mo</span></p>
                   <p className={`${theme.textMuted} mt-2`}>Full TrueFlow CRM + all features below</p>
                 </div>
                 <div className="text-center lg:text-left">
-                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial — Accelerator</p>
+                  <p className={`text-sm uppercase tracking-wider ${theme.textMuted2} mb-2`}>After Trial - Accelerator</p>
                   <p className="text-4xl font-bold">$350<span className={`text-lg font-normal ${theme.textMuted2}`}>/wk</span></p>
                   <p className={`${theme.textMuted} mt-2`}>Optional: live coaching + hands-on support</p>
                 </div>
@@ -499,7 +499,7 @@ export default function SignUpPageV2() {
               <div className={`mt-8 pt-6 border-t ${isDarkMode ? 'border-white/10' : 'border-gray-200'} text-center`}>
                 <p className={isDarkMode ? 'text-white/80' : 'text-gray-700'}>
                   <CheckCircle className="h-5 w-5 text-emerald-500 inline mr-2" />
-                  Cancel anytime before Day 14 — no charge, no commitment
+                  Cancel anytime before Day 14 - no charge, no commitment
                 </p>
               </div>
             </div>
@@ -534,9 +534,9 @@ export default function SignUpPageV2() {
                 <Sparkles className="h-4 w-4" />
                 Included Free in Your Trial
               </div>
-              <h3 className="text-2xl font-bold mb-3">TrueFlow Accelerator — 2 Weeks of Live Support</h3>
+              <h3 className="text-2xl font-bold mb-3">TrueFlow Accelerator - 2 Weeks of Live Support</h3>
               <p className={`${theme.textMuted} max-w-2xl mx-auto mb-6`}>
-                Don&apos;t just get the tools — get them set up right. For the first 14 days, you&apos;ll have access to live coaching calls, done-with-you onboarding, a dedicated success team, and our full library of trainings and AI tools. This is normally $350/week, but it&apos;s included free with your trial.
+                Don&apos;t just get the tools - get them set up right. For the first 14 days, you&apos;ll have access to live coaching calls, done-with-you onboarding, a dedicated success team, and our full library of trainings and AI tools. This is normally $350/week, but it&apos;s included free with your trial.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <span className={`px-4 py-2 rounded-full ${theme.chipBg} border ${theme.chipBorder} text-sm`}>Live group coaching calls</span>
@@ -580,7 +580,7 @@ export default function SignUpPageV2() {
                       )
                     })}
                   </div>
-                  <p className="text-sm text-white/60">Hang tight—we&apos;re directing you to the secure login hub.</p>
+                  <p className="text-sm text-white/60">Hang tight - we&apos;re directing you to the secure login hub.</p>
                   <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                     <Link
                       href="https://login.trueflow.ai"
@@ -986,7 +986,7 @@ export default function SignUpPageV2() {
                           {formData.includeSuccessManager && (
                             <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> 1:1 Success Manager included</li>
                           )}
-                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14 — $0 charged</li>
+                          <li className="flex items-center gap-2"><CheckCircle className="h-4 w-4 text-emerald-500" /> Cancel anytime before Day 14 - $0 charged</li>
                         </ul>
                       </div>
 
@@ -1004,7 +1004,7 @@ export default function SignUpPageV2() {
                       </div>
 
                       <p className={`text-xs ${theme.textMuted2}`}>
-                        By completing payment, you agree to the TrueFlow Terms of Service. Your 14-day free trial starts immediately — you won&apos;t be charged until Day 15.
+                        By completing payment, you agree to the TrueFlow Terms of Service. Your 14-day free trial starts immediately - you won&apos;t be charged until Day 15.
                       </p>
                     </div>
                   )}

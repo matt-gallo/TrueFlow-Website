@@ -292,7 +292,7 @@ export default function ArriveAliveBlogSample() {
           </div>
 
           <h3>Accredited Excellence You Can Trust</h3>
-          <p>We're aligned with American Heart Association, American Red Cross, and HSI standards. But we go beyond compliance—we ensure your team truly understands and can apply these life-saving skills under pressure.</p>
+          <p>We're aligned with American Heart Association, American Red Cross, and HSI standards. But we go beyond compliance -we ensure your team truly understands and can apply these life-saving skills under pressure.</p>
 
           <h3>Realistic, Scenario-Based Training</h3>
           <p>We don't just teach techniques; we create realistic emergency scenarios specific to your workplace. Your team practices responding to the exact situations they might actually face, building muscle memory and confidence that kicks in when every second counts.</p>
@@ -307,18 +307,18 @@ export default function ArriveAliveBlogSample() {
 
           <div className="author-box">
             <h3>Meet Josh: Your Expert Instructor</h3>
-            <p>As a certified first responder with years of real-world emergency experience, I know what it takes to save lives under pressure. But more importantly, I know how to teach these skills in a way that's engaging, memorable, and actually sticks. My students don't just pass their certification—they become confident, capable first responders who can act decisively when lives are on the line.</p>
+            <p>As a certified first responder with years of real-world emergency experience, I know what it takes to save lives under pressure. But more importantly, I know how to teach these skills in a way that's engaging, memorable, and actually sticks. My students don't just pass their certification -they become confident, capable first responders who can act decisively when lives are on the line.</p>
           </div>
 
           <h2>What Corporate Safety Managers Are Saying</h2>
 
-          <p><em>"Josh's training transformed our workplace culture around safety. Our employees actually feel prepared now, not just certified. When we had a real emergency last month, our team responded flawlessly—and we know it's because of the realistic, hands-on training Josh provided."</em> - Safety Director, Manufacturing Company</p>
+          <p><em>"Josh's training transformed our workplace culture around safety. Our employees actually feel prepared now, not just certified. When we had a real emergency last month, our team responded flawlessly -and we know it's because of the realistic, hands-on training Josh provided."</em> - Safety Director, Manufacturing Company</p>
 
-          <p><em>"The difference in confidence and competence after Arrive Alive Training was night and day. This isn't just compliance training—it's real preparation that gives me peace of mind as a safety coordinator."</em> - HR Safety Manager, Tech Company</p>
+          <p><em>"The difference in confidence and competence after Arrive Alive Training was night and day. This isn't just compliance training -it's real preparation that gives me peace of mind as a safety coordinator."</em> - HR Safety Manager, Tech Company</p>
 
           <h2>Your Team's Safety Can't Wait</h2>
 
-          <p>Every day you delay implementing real emergency preparedness training is another day your team—and your career—are at risk. The next emergency won't wait for convenient timing or budget approvals.</p>
+          <p>Every day you delay implementing real emergency preparedness training is another day your team -and your career -are at risk. The next emergency won't wait for convenient timing or budget approvals.</p>
 
           <p>But here's the good news: <span className="emphasis">getting your team properly trained is easier than you think.</span></p>
 
@@ -335,7 +335,7 @@ export default function ArriveAliveBlogSample() {
 
           <div className="cta-section">
             <h3>Don't Let Another Day Pass Without Real Protection</h3>
-            <p>Your employees trust you to keep them safe. Your company depends on you for compliance and risk management. Give them—and yourself—the confidence that comes from expert-led, hands-on emergency preparedness training.</p>
+            <p>Your employees trust you to keep them safe. Your company depends on you for compliance and risk management. Give them -and yourself -the confidence that comes from expert-led, hands-on emergency preparedness training.</p>
             
             <a href="#contact" className="cta-button">Schedule Your Corporate Training</a>
             <a href="#quote" className="cta-button">Get Custom Quote</a>

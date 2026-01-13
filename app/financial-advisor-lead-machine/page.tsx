@@ -378,7 +378,7 @@ export default function FinancialAdvisorLeadMachinePage() {
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border ${
               isDarkMode ? 'border-white/30 text-white/70' : 'border-cyan-200 text-cyan-700'
             } text-xs uppercase tracking-[0.35em]`}>Ready?</span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep markets moving while your calendar fills itself.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep markets moving while your calendar fills itself</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Turn on the Financial Advisor Lead Machine and let AI keep discovery calls booked.
             </p>

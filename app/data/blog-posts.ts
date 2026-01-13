@@ -138,11 +138,136 @@ export const tagColorPalettes: Record<string, string> = {
   'gohighlevel': 'from-green-600 to-teal-700',
   'product-launch': 'from-orange-600 to-red-700',
   'networking': 'from-blue-600 to-indigo-700',
-  'storytelling': 'from-rose-500 to-purple-600'
+  'storytelling': 'from-rose-500 to-purple-600',
+  'leadership': 'from-blue-600 to-cyan-700',
+  'operations': 'from-slate-600 to-blue-700',
+  'culture': 'from-purple-500 to-pink-600'
 }
+
+// Tags (add missing leadership/operations tags)
+export const leadershipTag: Tag = { name: 'Leadership', slug: 'leadership' }
+export const operationsTag: Tag = { name: 'Operations', slug: 'operations' }
+export const cultureTag: Tag = { name: 'Culture', slug: 'culture' }
 
 // Blog Posts
 export const blogPosts: BlogPost[] = [
+  {
+    id: '12',
+    slug: 'you-should-probably-just-say-it',
+    title: 'You Should Probably Just Say It',
+    excerpt: 'A practical framework for gym owners to sort their responsibilities, protect their unique ability, and simplify everything.',
+    content: '',
+    author: authors['matt-gallo'],
+    date: '2026-01-06',
+    readTime: 9,
+    category: categories.growth,
+    tags: [
+      operationsTag,
+      leadershipTag,
+      tags['productivity'],
+      tags['small-business']
+    ],
+    primaryTag: operationsTag,
+    featuredImage: {
+      url: '/blog-you-should-probably-just-say-it.jpg',
+      alt: 'You Should Probably Just Say It',
+      width: 1200,
+      height: 600
+    },
+    seo: {
+      metaTitle: 'You Should Probably Just Say It | TrueFlow',
+      metaDescription: 'A practical framework for gym owners to sort their responsibilities, protect their unique ability, and simplify everything. Learn the four buckets method.',
+      keywords: [
+        'gym ownership',
+        'operations',
+        'leadership',
+        'productivity',
+        'unique ability',
+        'delegation',
+        'business systems',
+        'gym management'
+      ]
+    },
+    published: true
+  },
+  {
+    id: '11',
+    slug: 'waiting-for-permission',
+    title: 'The Most Expensive Mistake Founders Make Without Realizing It',
+    excerpt: 'A look at avoidance, productivity, and the decisions founders quietly postpone.',
+    content: '',
+    author: authors['matt-gallo'],
+    date: '2026-01-05',
+    readTime: 7,
+    category: categories.growth,
+    tags: [
+      leadershipTag,
+      tags['productivity'],
+      tags['startup'],
+      tags['small-business']
+    ],
+    primaryTag: leadershipTag,
+    featuredImage: {
+      url: '/blog-waiting-for-permission.jpg',
+      alt: 'The Most Expensive Mistake Founders Make Without Realizing It',
+      width: 1200,
+      height: 600
+    },
+    seo: {
+      metaTitle: 'The Most Expensive Mistake Founders Make Without Realizing It | TrueFlow',
+      metaDescription: 'A look at avoidance, productivity, and the decisions founders quietly postpone. Discover what holds most founders back from growth.',
+      keywords: [
+        'leadership',
+        'founder mindset',
+        'productivity',
+        'decision making',
+        'self-authorization',
+        'business growth',
+        'founder psychology'
+      ]
+    },
+    published: true
+  },
+  {
+    id: '10',
+    slug: 'from-gym-floor-to-software-one-thing-that-scales',
+    title: 'From the Gym Floor to Software: The One Thing That Actually Scales',
+    excerpt: 'What running a gym taught me about partnerships, leadership, and why culture matters more than tactics in every business.',
+    content: '',
+    author: authors['matt-gallo'],
+    date: '2026-01-05',
+    readTime: 8,
+    category: categories.growth,
+    tags: [
+      leadershipTag,
+      operationsTag,
+      cultureTag,
+      tags['scaling'],
+      tags['startup'],
+      tags['small-business']
+    ],
+    primaryTag: leadershipTag,
+    featuredImage: {
+      url: '/blog-gym-to-software.jpg',
+      alt: 'From the Gym Floor to Software: The One Thing That Actually Scales',
+      width: 1200,
+      height: 600
+    },
+    seo: {
+      metaTitle: 'From the Gym Floor to Software: The One Thing That Actually Scales | TrueFlow',
+      metaDescription: 'What running a gym taught me about partnerships, leadership, and why culture matters more than tactics in every business.',
+      keywords: [
+        'leadership',
+        'business culture',
+        'operations',
+        'partnerships',
+        'scaling',
+        'founder lessons',
+        'business growth'
+      ]
+    },
+    published: true
+  },
   {
     id: '9',
     slug: 'transform-content-marketing-zero-leads',

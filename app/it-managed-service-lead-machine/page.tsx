@@ -34,7 +34,7 @@ const workflow = [
   },
   {
     title: 'Launch AI sales engineer',
-    description: 'AI replies like your vCIO—fielding tickets, SLAs, cyber readiness, and budgeting questions instantly.',
+    description: 'AI replies like your vCIO -fielding tickets, SLAs, cyber readiness, and budgeting questions instantly.',
     icon: MessageSquare
   },
   {
@@ -152,7 +152,7 @@ const faqs = [
   },
   {
     q: 'Will the leads be exclusive to our MSP?',
-    a: 'Yes. Every conversation routes only to your CRM or PSA—no shared lists or marketplaces.'
+    a: 'Yes. Every conversation routes only to your CRM or PSA -no shared lists or marketplaces.'
   },
   {
     q: 'Can you re-engage dormant pipeline or lost deals?',
@@ -208,7 +208,7 @@ export default function ItManagedServiceLeadMachinePage() {
                 AI pinpoints in-market accounts, answers technical questions, and books discovery calls automatically.
               </p>
               <p className={`text-lg mt-4 max-w-2xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Cut the cold list grind. This deployment watches for expiring MSP contracts, security scares, and infrastructure changes—then nurtures them with human-grade outreach until they hop on your calendar.
+                Cut the cold list grind. This deployment watches for expiring MSP contracts, security scares, and infrastructure changes -then nurtures them with human-grade outreach until they hop on your calendar.
               </p>
               <div className="flex flex-wrap gap-4 mt-8">
                 <button
@@ -443,7 +443,7 @@ export default function ItManagedServiceLeadMachinePage() {
             >
               Ready?
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Let AI watch the tickets while you close the contracts.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Let AI watch the tickets while you close the contracts</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Turn on the IT Managed Service Lead Machine and keep discovery calls rolling without burning your team out on cold lists.
             </p>
@@ -488,7 +488,7 @@ export default function ItManagedServiceLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited -choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div

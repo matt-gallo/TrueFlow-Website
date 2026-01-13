@@ -1,8 +1,8 @@
-# TrueFlow Landing Page Deployment Guide
+# TrueFlow Website Deployment Guide
 
-**⚠️ IMPORTANT: This guide is specifically for the TrueFlow Landing Page, NOT the main TrueFlow UI application.**
+**⚠️ IMPORTANT: This guide is specifically for the TrueFlow Website, NOT the main TrueFlow UI application.**
 
-This guide explains how to successfully build and deploy changes to the TrueFlow landing page on GitHub and Railway. The landing page is a separate, standalone Next.js application with its own repository and deployment pipeline.
+This guide explains how to successfully build and deploy changes to the TrueFlow website on GitHub and Railway. The website is a separate, standalone Next.js application with its own repository and deployment pipeline.
 
 ## Prerequisites
 
@@ -13,14 +13,14 @@ This guide explains how to successfully build and deploy changes to the TrueFlow
 
 ## Repository Structure
 
-**Landing Page Location** (separate from main UI):
+**Website Location** (separate from main UI):
 ```
 /Users/griffinrutherford/Documents/TrueFlow AI MVP/apps/landing/
 ```
 
 ## Local Development
 
-1. **Navigate to the landing page directory:**
+1. **Navigate to the website directory:**
    ```bash
    cd "/Users/griffinrutherford/Documents/TrueFlow AI MVP/apps/landing"
    ```
@@ -39,7 +39,7 @@ This guide explains how to successfully build and deploy changes to the TrueFlow
 ## Making Changes
 
 1. **Edit the main page:**
-   - Primary landing page: `app/page.tsx`
+   - Primary website page: `app/page.tsx`
    - Styles: `app/globals.css`
    - Other pages: `app/coming-soon/page.tsx`, `app/faq/page.tsx`, etc.
 
@@ -193,8 +193,8 @@ For issues:
 
 ## Additional Notes
 
-- **This is the landing page deployment only** - The main TrueFlow UI has a different deployment process
-- The landing page is a standalone Next.js app, separate from the main application
+- **This is the website deployment only** - The main TrueFlow UI has a different deployment process
+- The website is a standalone Next.js app, separate from the main application
 - The site automatically deploys when changes are pushed to the main branch
 - Railway uses Nixpacks for building the Next.js application
 - The production URL is: `trueflow-landing-page-production.up.railway.app`

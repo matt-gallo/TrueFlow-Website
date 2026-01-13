@@ -35,7 +35,7 @@ export default function WebinarPage() {
               How to Create More Content Than You Can Handle (In Minutes)
             </h1>
             <p className="text-xl sm:text-2xl mb-12 leading-relaxed text-white/70">
-              A live workshop showing you the simple voice-powered workflow that turns one short recording into a week of content—without stress, burnout, or busywork.
+              A live workshop showing you the simple voice-powered workflow that turns one short recording into a week of content -without stress, burnout, or busywork.
             </p>
 
             <div className="inline-flex flex-col sm:flex-row gap-6 mb-8 p-6 rounded-2xl backdrop-blur-md bg-white/5 border border-white/10">
@@ -135,7 +135,7 @@ export default function WebinarPage() {
               </li>
             </ul>
             <p className="text-lg font-semibold text-white">
-              You will walk away with a clear, repeatable method for staying consistent—even if you have struggled for months or hate writing.
+              You will walk away with a clear, repeatable method for staying consistent -even if you have struggled for months or hate writing.
             </p>
           </section>
 
@@ -193,7 +193,7 @@ export default function WebinarPage() {
                 <span className="text-lg text-white/80">Keeps you consistent even when life gets busy</span>
               </li>
             </ul>
-            <p className="text-xl font-bold text-white">You are going to see it in action—step by step.</p>
+            <p className="text-xl font-bold text-white">You are going to see it in action -step by step.</p>
           </section>
 
           <section className="mb-16 p-8 rounded-2xl backdrop-blur-md bg-white/5 border border-white/10">
@@ -264,14 +264,14 @@ export default function WebinarPage() {
               </div>
               <div className="flex items-center gap-3 justify-center mb-8">
                 <Ticket className="w-7 h-7 text-pink-400" />
-                <span className="font-bold text-xl text-white">Free to attend — limited spots</span>
+                <span className="font-bold text-xl text-white">Free to attend  - limited spots</span>
               </div>
             </div>
             <button className="cta-button inline-flex items-center gap-3 text-white px-12 py-6 rounded-full font-bold text-2xl shadow-2xl mb-6">
               Save My Spot Now
               <ArrowRight className="w-7 h-7" />
             </button>
-            <p className="text-sm text-white/60">Can not attend live? Register anyway—we will send the replay.</p>
+            <p className="text-sm text-white/60">Can not attend live? Register anyway -we will send the replay.</p>
           </section>
         </div>
       </div>

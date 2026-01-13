@@ -360,7 +360,7 @@ export default function RealEstateLeadMachine() {
               isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-lg'
             }`}>
               <p className={`text-xs uppercase tracking-[0.3em] font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                You don&apos;t have a retention problem—you have a lead flow problem.
+                You don&apos;t have a retention problem -you have a lead flow problem.
               </p>
               <h3 className="text-2xl font-semibold mb-4">
                 Agents leave for one reason: better opportunities elsewhere.
@@ -371,12 +371,12 @@ export default function RealEstateLeadMachine() {
 
               <ul className="space-y-4">
                 {[
-                  { title: 'Agent Retention Crisis:', text: 'Agents leave for brokerages with predictable lead flow—you lose GCI splits, recruiting momentum, and market share' },
-                  { title: 'The 80/20 Trap:', text: 'Your top 20% generate 80% of revenue while the rest struggle—no system to level the playing field' },
-                  { title: 'Lead Distribution Chaos:', text: 'Manual round-robin or favoritism creates resentment—no transparency on quality or conversion' },
-                  { title: 'Marketing Budget Black Hole:', text: 'Spending thousands on Zillow Premier Agent, Realtor.com, Facebook ads—with zero attribution or ROI clarity' },
-                  { title: 'CRM Graveyard:', text: 'Paid for kvCORE, BoomTown, or Follow Up Boss—but agents don\'t use it because manual data entry is a nightmare' },
-                  { title: 'Lost Buyer Intent:', text: 'Buyers exploring neighborhoods online go to Zillow, Redfin, Compass—you never even know they existed' }
+                  { title: 'Agent Retention Crisis:', text: 'Agents leave for brokerages with predictable lead flow -you lose GCI splits, recruiting momentum, and market share' },
+                  { title: 'The 80/20 Trap:', text: 'Your top 20% generate 80% of revenue while the rest struggle -no system to level the playing field' },
+                  { title: 'Lead Distribution Chaos:', text: 'Manual round-robin or favoritism creates resentment -no transparency on quality or conversion' },
+                  { title: 'Marketing Budget Black Hole:', text: 'Spending thousands on Zillow Premier Agent, Realtor.com, Facebook ads -with zero attribution or ROI clarity' },
+                  { title: 'CRM Graveyard:', text: 'Paid for kvCORE, BoomTown, or Follow Up Boss -but agents don\'t use it because manual data entry is a nightmare' },
+                  { title: 'Lost Buyer Intent:', text: 'Buyers exploring neighborhoods online go to Zillow, Redfin, Compass -you never even know they existed' }
                 ].map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
@@ -399,7 +399,7 @@ export default function RealEstateLeadMachine() {
             }`}>
               <h3 className="text-2xl font-semibold mb-4">Our Promise</h3>
               <p className={`mb-5 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
-                We build the Lead Machine™ inside your brokerage—hyper-local targeting, intent tracking, automated nurture, agent routing, and performance analytics—so your agents wake up to warm leads in their pipeline, not empty calendars.
+                We build the Lead Machine™ inside your brokerage -hyper-local targeting, intent tracking, automated nurture, agent routing, and performance analytics -so your agents wake up to warm leads in their pipeline, not empty calendars.
               </p>
               <p className={isDarkMode ? 'text-white/70' : 'text-gray-700'}>
                 When agents know quality leads are coming consistently, they stay. When they stay, you scale.
@@ -426,9 +426,9 @@ export default function RealEstateLeadMachine() {
               {[
                 'Monitors live buyer/seller intent across Google, Zillow, Realtor.com, and social platforms in your target zip codes',
                 'Enriches every lead with contact info, pre-qualification signals, property interests, and move timeline',
-                'Routes to the right agent based on specialty, geography, availability, or conversion rate—no favoritism, full transparency',
+                'Routes to the right agent based on specialty, geography, availability, or conversion rate -no favoritism, full transparency',
                 'Starts human-tone conversations with listing alerts, market updates, and neighborhood insights',
-                'Qualifies intent with a 2-minute Buyer/Seller Readiness Assessment—scores timeline, budget, and motivation',
+                'Qualifies intent with a 2-minute Buyer/Seller Readiness Assessment -scores timeline, budget, and motivation',
                 'Books qualified prospects directly onto agent calendars or routes to CRM nurture workflow'
               ].map((text, idx) => (
                 <div key={idx} className={`flex items-start gap-4 rounded-2xl p-6 ${
@@ -473,20 +473,20 @@ export default function RealEstateLeadMachine() {
               The Machine, Component by Component
             </h2>
             <p className="text-lg text-white/70 max-w-3xl mx-auto">
-              Every piece is done-for-you, integrated into your CRM, and tuned to your market—no assembly required.
+              Every piece is done-for-you, integrated into your CRM, and tuned to your market -no assembly required.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              { icon: Search, title: 'Hyper-Local Buyer Hunter', text: 'AI scrapes buyer intent from search, directory, and social behavior in your target zip codes—finds people searching "homes for sale in [your city]" or "best school districts near me" in the last 7 days.' },
-              { icon: Layers, title: 'Seller Trigger Engine', text: 'Identifies homeowners showing sell signals: equity thresholds hit, job relocation searches, life events, FSBO listings going stale—captures motivated sellers before Zillow does.' },
-              { icon: MessageCircle, title: 'Listing Alert Autopilot', text: 'Auto-sends new listing notifications to segmented buyer lists based on price, neighborhood, beds/baths, school district—turns cold databases into engaged prospects.' },
+              { icon: Search, title: 'Hyper-Local Buyer Hunter', text: 'AI scrapes buyer intent from search, directory, and social behavior in your target zip codes -finds people searching "homes for sale in [your city]" or "best school districts near me" in the last 7 days.' },
+              { icon: Layers, title: 'Seller Trigger Engine', text: 'Identifies homeowners showing sell signals: equity thresholds hit, job relocation searches, life events, FSBO listings going stale -captures motivated sellers before Zillow does.' },
+              { icon: MessageCircle, title: 'Listing Alert Autopilot', text: 'Auto-sends new listing notifications to segmented buyer lists based on price, neighborhood, beds/baths, school district -turns cold databases into engaged prospects.' },
               { icon: Lock, title: 'Open House Follow-Up Flow', text: 'Captures walk-in visitor info via iPad/QR code → triggers 7-day nurture sequence → books private showing or listing appointment automatically.' },
-              { icon: BarChart3, title: 'Agent Performance Analytics', text: 'Shows lead-to-close rate by agent, average days to conversion, response time benchmarks—surfaces coaching opportunities and top performers.' },
+              { icon: BarChart3, title: 'Agent Performance Analytics', text: 'Shows lead-to-close rate by agent, average days to conversion, response time benchmarks -surfaces coaching opportunities and top performers.' },
               { icon: FileText, title: 'Market Report Generator', text: 'AI-produced monthly market snapshots (average days on market, price trends, inventory levels) branded to your brokerage and auto-sent to lead lists.' },
-              { icon: Clock, title: 'CRM Sync & Task Automation', text: 'Integrates with kvCORE, BoomTown, Follow Up Boss, Chime, or GoHighLevel—auto-creates tasks, stages, tags, and alerts for every lead.' },
-              { icon: Clock, title: 'Retargeting Pixel Sync', text: 'Pushes new leads into Meta/Google audiences for remarketing and lookalike campaigns tied to listing launches—amplifies reach without manual uploads.' }
+              { icon: Clock, title: 'CRM Sync & Task Automation', text: 'Integrates with kvCORE, BoomTown, Follow Up Boss, Chime, or GoHighLevel -auto-creates tasks, stages, tags, and alerts for every lead.' },
+              { icon: Clock, title: 'Retargeting Pixel Sync', text: 'Pushes new leads into Meta/Google audiences for remarketing and lookalike campaigns tied to listing launches -amplifies reach without manual uploads.' }
             ].map((feature, idx) => {
               const Icon = feature.icon
               return (
@@ -520,11 +520,11 @@ export default function RealEstateLeadMachine() {
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
               {[
-                { title: 'Agent Retention:', text: 'Agents stay because you\'re delivering better leads than competitors—reduces recruiting/training costs' },
+                { title: 'Agent Retention:', text: 'Agents stay because you\'re delivering better leads than competitors -reduces recruiting/training costs' },
                 { title: 'Revenue Predictability:', text: 'Steady deal flow = more transactions = stable GCI splits and ancillary revenue (title, mortgage, insurance)' },
                 { title: 'Recruiting Advantage:', text: '"We provide exclusive leads to every agent" becomes your #1 recruiting pitch' },
                 { title: 'Market Dominance:', text: 'Capture buyer/seller intent before Zillow, Redfin, or Compass even know they\'re searching' },
-                { title: 'Time Back to Leadership:', text: 'Stop manually vetting leads or babysitting agent follow-up—the machine runs 24/7' },
+                { title: 'Time Back to Leadership:', text: 'Stop manually vetting leads or babysitting agent follow-up -the machine runs 24/7' },
                 { title: 'Scale Without Chaos:', text: 'Expand into new zip codes, property types (luxury, investment), or markets without rebuilding from scratch' }
               ].map((benefit, idx) => (
                 <div key={idx} className={`rounded-2xl p-6 flex items-start gap-3 ${
@@ -550,10 +550,10 @@ export default function RealEstateLeadMachine() {
               : 'from-purple-500/40 to-blue-500/40 border border-purple-300'
           }`}>
             <p className="text-3xl font-semibold leading-snug mb-5">
-              &quot;We went from losing 4 agents in Q1 to recruiting 6 new producers in Q2—because every agent now gets 15-20 qualified buyer leads per month, automatically.&quot;
+              &quot;We went from losing 4 agents in Q1 to recruiting 6 new producers in Q2 -because every agent now gets 15-20 qualified buyer leads per month, automatically.&quot;
             </p>
             <p className="text-white/70 mb-8">
-              — Managing Broker, Boutique Residential Brokerage (34 agents)
+               - Managing Broker, Boutique Residential Brokerage (34 agents)
             </p>
 
             <div className="flex flex-col md:flex-row justify-center gap-12">
@@ -588,10 +588,10 @@ export default function RealEstateLeadMachine() {
               Why the Lead Machine™ Is Different
             </h2>
             <p className="text-lg text-white/80 mb-4 max-w-4xl">
-              Unlike Zillow Premier Agent, Realtor.com leads, or Facebook ad agencies, we integrate the Lead Machine™ directly into <strong className="text-white">your</strong> CRM, inbox, and agent workflows. Every conversation, tag, and follow-up lives inside your environment—not someone else&apos;s portal—and we keep it running on flow, not friction.
+              Unlike Zillow Premier Agent, Realtor.com leads, or Facebook ad agencies, we integrate the Lead Machine™ directly into <strong className="text-white">your</strong> CRM, inbox, and agent workflows. Every conversation, tag, and follow-up lives inside your environment -not someone else&apos;s portal -and we keep it running on flow, not friction.
             </p>
             <p className="text-lg text-white/70">
-              These are <strong>exclusive leads</strong>—not shared with 5 other agents. Your brokerage owns the relationship from first search to closing table.
+              These are <strong>exclusive leads</strong> -not shared with 5 other agents. Your brokerage owns the relationship from first search to closing table.
             </p>
           </div>
         </div>
@@ -739,7 +739,7 @@ export default function RealEstateLeadMachine() {
                         <h3 className="mt-2 text-3xl font-semibold text-white">{activePlanName}</h3>
                         <p className="mt-3 text-white/70 text-sm">
                           {manualPlanChoice
-                            ? 'We locked in your selection—scroll up to the pricing cards if you want the full breakdown.'
+                            ? 'We locked in your selection -scroll up to the pricing cards if you want the full breakdown.'
                             : `Based on your answers, the ${activePlanName} will keep your pipeline on pace.`}
                         </p>
 
@@ -836,8 +836,8 @@ export default function RealEstateLeadMachine() {
           <div className="space-y-5">
             {[
               { question: '"Our agents don\'t follow up on leads"', answer: 'We nurture leads for 7-30 days before routing, so agents only get warm, engaged prospects who\'ve already raised their hand. We also surface agent response-time metrics so you can coach low performers.' },
-              { question: '"We already pay for Zillow Premier Agent"', answer: 'TrueFlow captures intent BEFORE prospects hit Zillow—these are exclusive leads, not shared with 5 other agents. You own the relationship from day one.' },
-              { question: '"Our CRM is a mess"', answer: 'We clean, organize, and standardize your data as part of setup—then keep it flowing correctly with tags, stages, and automated tasks. No more spreadsheet chaos.' },
+              { question: '"We already pay for Zillow Premier Agent"', answer: 'TrueFlow captures intent BEFORE prospects hit Zillow -these are exclusive leads, not shared with 5 other agents. You own the relationship from day one.' },
+              { question: '"Our CRM is a mess"', answer: 'We clean, organize, and standardize your data as part of setup -then keep it flowing correctly with tags, stages, and automated tasks. No more spreadsheet chaos.' },
               { question: '"This sounds expensive"', answer: 'One extra closing per month pays for the entire system. We guarantee ROI in 90 days or keep running at no service cost until you hit breakeven. The real cost is losing another agent to a competitor with better lead flow.' }
             ].map((item, idx) => (
               <div key={idx} className="bg-white/5 border border-white/10 rounded-3xl p-8">
@@ -860,7 +860,7 @@ export default function RealEstateLeadMachine() {
               Stop Chasing Agents. Start Retaining Them.
             </h2>
             <p className="text-lg text-white/80 mb-10">
-              Activate the TrueFlow Lead Machine™ and give every agent the lead flow top producers take for granted—starting in 14 days.
+              Activate the TrueFlow Lead Machine™ and give every agent the lead flow top producers take for granted -starting in 14 days.
             </p>
             <div className="flex flex-wrap justify-center gap-4 mb-5">
               <button
@@ -901,7 +901,7 @@ export default function RealEstateLeadMachine() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold text-white">Lock in Your Free Demo</h3>
               <p className="text-lg text-white/70">
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited -choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div className="calendar-wrapper overflow-hidden rounded-2xl border border-white/10 bg-white/5">

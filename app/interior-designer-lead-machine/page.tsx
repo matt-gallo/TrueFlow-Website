@@ -35,7 +35,7 @@ const workflow = [
   },
   {
     title: 'Deploy AI studio assistant',
-    description: 'AI responds to contact forms, DMs, and referrals using your tone—sharing portfolio links, onboarding guides, and pricing anchors instantly.',
+    description: 'AI responds to contact forms, DMs, and referrals using your tone -sharing portfolio links, onboarding guides, and pricing anchors instantly.',
     icon: MessageSquare
   },
   {
@@ -58,7 +58,7 @@ const workflow = [
 const features = [
   {
     title: 'Design Inquiry Radar',
-    description: 'Finds remodels, move-ins, and commercial refreshes the moment intent appears—no more guessing when the next project hits.',
+    description: 'Finds remodels, move-ins, and commercial refreshes the moment intent appears -no more guessing when the next project hits.',
     icon: Sparkles
   },
   {
@@ -157,7 +157,7 @@ const faqs = [
   },
   {
     q: 'Do homeowners stay exclusive to us?',
-    a: 'Absolutely. Each conversation routes to your CRM only—no shared inquiries or marketplaces.'
+    a: 'Absolutely. Each conversation routes to your CRM only -no shared inquiries or marketplaces.'
   },
   {
     q: 'How fast can we launch?',
@@ -284,7 +284,7 @@ export default function InteriorDesignerLeadMachinePage() {
             <div className="mb-10">
               <h2 className="text-4xl font-bold">How the Interior Designer Lead Machine runs</h2>
               <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Every touchpoint is curated—from first inquiry to install day follow-up.
+                Every touchpoint is curated -from first inquiry to install day follow-up.
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
@@ -444,7 +444,7 @@ export default function InteriorDesignerLeadMachinePage() {
             >
               Ready?
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep your design calendar full without sacrificing craft.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep your design calendar full without sacrificing craft</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Turn on the Interior Designer Lead Machine and let AI concierge service handle discovery, nurture, and scheduling while you design the reveal.
             </p>
@@ -489,7 +489,7 @@ export default function InteriorDesignerLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited -choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div

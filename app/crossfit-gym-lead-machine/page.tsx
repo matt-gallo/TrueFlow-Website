@@ -450,7 +450,7 @@ export default function CrossfitGymLeadMachinePage() {
             >
               Ready?
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep classes packed while you coach.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep classes packed while you coach</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Flip on the CrossFit Lead Machine and let AI handle discovery, nurture, and scheduling.
             </p>

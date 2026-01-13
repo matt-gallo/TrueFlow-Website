@@ -35,7 +35,7 @@ const workflow = [
   },
   {
     title: 'Launch AI treatment coordinator',
-    description: 'AI replies to forms, DMs, and referrals in your tone—answering pricing, financing, and “does it hurt?” questions 24/7.',
+    description: 'AI replies to forms, DMs, and referrals in your tone -answering pricing, financing, and “does it hurt?” questions 24/7.',
     icon: MessageSquare
   },
   {
@@ -58,7 +58,7 @@ const workflow = [
 const features = [
   {
     title: 'Orthodontic Booking Machine',
-    description: 'Automation tuned for orthodontists and aligner studios—fills treatment chairs while your team focuses on care.',
+    description: 'Automation tuned for orthodontists and aligner studios -fills treatment chairs while your team focuses on care.',
     icon: Sparkles
   },
   {
@@ -284,7 +284,7 @@ export default function OrthodontistLeadMachinePage() {
             <div className="mb-10">
               <h2 className="text-4xl font-bold">How the Orthodontist Lead Machine runs</h2>
               <p className={`mt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Every touchpoint is white-glove—from first question to treatment day.
+                Every touchpoint is white-glove -from first question to treatment day.
               </p>
             </div>
             <div className="grid md:grid-cols-2 gap-6">
@@ -450,7 +450,7 @@ export default function OrthodontistLeadMachinePage() {
             >
               Ready?
             </span>
-            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep new smiles flowing while your team focuses on care.</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mt-4">Keep new smiles flowing while your team focuses on care</h2>
             <p className={`text-lg mt-4 ${isDarkMode ? 'text-white/80' : 'text-gray-800'}`}>
               Turn on the Orthodontist Lead Machine and let AI concierge service nurture every inquiry into a booked case start.
             </p>
@@ -495,7 +495,7 @@ export default function OrthodontistLeadMachinePage() {
             <div className="space-y-4 text-center mb-8">
               <h3 className="text-3xl sm:text-4xl font-semibold">Lock in Your Demo</h3>
               <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-700'}`}>
-                Spots for this week are limited—choose a time below to secure your Lead Machine™ walkthrough.
+                Spots for this week are limited -choose a time below to secure your Lead Machine™ walkthrough.
               </p>
             </div>
             <div
