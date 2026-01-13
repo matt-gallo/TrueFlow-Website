@@ -45,6 +45,12 @@ export default function AdminDashboard() {
   const [e2eFlowRunning, setE2eFlowRunning] = useState(false)
   const [e2eFlowSteps, setE2eFlowSteps] = useState<Array<{step: string, status: 'pending' | 'running' | 'success' | 'error', message?: string}>>([])
 
+  // E2E Test Configuration
+  const [testEmail, setTestEmail] = useState('griffin@trueflow.ai')
+  const [testFirstName, setTestFirstName] = useState('Test')
+  const [testLastName, setTestLastName] = useState('User')
+  const [testBusinessName, setTestBusinessName] = useState('DELETE ME - E2E Test')
+
   // Fetch environment variable status
   useEffect(() => {
     fetch('/api/admin/env-status')
@@ -117,7 +123,7 @@ export default function AdminDashboard() {
   }
 
   const runEndToEndTest = async () => {
-    if (!confirm('This will create a REAL sub-account in GoHighLevel. Continue?')) return
+    if (!confirm(`This will create a REAL sub-account in GoHighLevel and send welcome email to ${testEmail}. Continue?`)) return
 
     setE2eFlowRunning(true)
     const signupId = `e2e-test-${Date.now()}`
@@ -126,7 +132,7 @@ export default function AdminDashboard() {
       { step: 'Store signup data', status: 'pending' as const },
       { step: 'Trigger webhook', status: 'pending' as const },
       { step: 'Create sub-account', status: 'pending' as const },
-      { step: 'Send welcome email', status: 'pending' as const },
+      { step: `Send welcome email to ${testEmail}`, status: 'pending' as const },
       { step: 'Cleanup test data', status: 'pending' as const }
     ]
     setE2eFlowSteps(steps)
@@ -136,8 +142,8 @@ export default function AdminDashboard() {
       setE2eFlowSteps(prev => prev.map((s, i) => i === 0 ? {...s, status: 'running'} : s))
       const signupData = {
         signupId,
-        name: `E2E Test Business ${Date.now()}`,
-        email: 'test-e2e@example.com',
+        name: testBusinessName,
+        email: testEmail,
         phone: '+1-555-999-0000',
         address: '123 Test St',
         city: 'Test City',
@@ -146,9 +152,9 @@ export default function AdminDashboard() {
         postalCode: '90001',
         timezone: 'America/Los_Angeles',
         prospectInfo: {
-          firstName: 'E2E',
-          lastName: 'Test',
-          email: 'test-e2e@example.com'
+          firstName: testFirstName,
+          lastName: testLastName,
+          email: testEmail
         }
       }
 
@@ -169,8 +175,8 @@ export default function AdminDashboard() {
         body: JSON.stringify({
           type: 'payment.succeeded',
           signup_id: signupId,
-          email: 'test-e2e@example.com',
-          name: 'E2E Test'
+          email: testEmail,
+          name: `${testFirstName} ${testLastName}`
         })
       })
 
@@ -179,7 +185,7 @@ export default function AdminDashboard() {
 
       // Steps 3-4 happen automatically in webhook handler
       setE2eFlowSteps(prev => prev.map((s, i) => i === 2 ? {...s, status: 'success', message: 'Check GHL'} : s))
-      setE2eFlowSteps(prev => prev.map((s, i) => i === 3 ? {...s, status: 'success', message: 'Check email'} : s))
+      setE2eFlowSteps(prev => prev.map((s, i) => i === 3 ? {...s, status: 'success', message: `Sent to ${testEmail}`} : s))
 
       // Step 5: Cleanup
       setE2eFlowSteps(prev => prev.map((s, i) => i === 4 ? {...s, status: 'running'} : s))
@@ -234,6 +240,57 @@ export default function AdminDashboard() {
         {/* Quick Actions */}
         <div className={`${theme.card} border rounded-2xl p-6`}>
           <h2 className="text-2xl font-bold mb-4">Quick Actions</h2>
+
+          {/* E2E Test Configuration */}
+          <div className={`${theme.card} border rounded-lg p-4 mb-4`}>
+            <h3 className="font-semibold mb-3">E2E Test Configuration</h3>
+            <p className={`text-sm ${theme.textMuted} mb-4`}>
+              Enter your email to receive the welcome email and verify the full flow works!
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label className="text-sm font-semibold mb-1 block">Email (you'll receive welcome email)</label>
+                <input
+                  type="email"
+                  value={testEmail}
+                  onChange={(e) => setTestEmail(e.target.value)}
+                  className={`w-full p-2 rounded border ${isDarkMode ? 'bg-black/50 border-white/20' : 'bg-gray-100 border-gray-300'} text-sm`}
+                  placeholder="your-email@example.com"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-semibold mb-1 block">Business Name</label>
+                <input
+                  type="text"
+                  value={testBusinessName}
+                  onChange={(e) => setTestBusinessName(e.target.value)}
+                  className={`w-full p-2 rounded border ${isDarkMode ? 'bg-black/50 border-white/20' : 'bg-gray-100 border-gray-300'} text-sm`}
+                  placeholder="Test Business"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-semibold mb-1 block">First Name</label>
+                <input
+                  type="text"
+                  value={testFirstName}
+                  onChange={(e) => setTestFirstName(e.target.value)}
+                  className={`w-full p-2 rounded border ${isDarkMode ? 'bg-black/50 border-white/20' : 'bg-gray-100 border-gray-300'} text-sm`}
+                  placeholder="First"
+                />
+              </div>
+              <div>
+                <label className="text-sm font-semibold mb-1 block">Last Name</label>
+                <input
+                  type="text"
+                  value={testLastName}
+                  onChange={(e) => setTestLastName(e.target.value)}
+                  className={`w-full p-2 rounded border ${isDarkMode ? 'bg-black/50 border-white/20' : 'bg-gray-100 border-gray-300'} text-sm`}
+                  placeholder="Last"
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <button
               onClick={loadWebhooks}
