@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-// In-memory storage for pending signups (in production, use a database)
-const pendingSignups = new Map<string, any>()
+// In-memory storage for signup data (survives within single deployment)
+const signupDataStore = new Map<string, any>()
+const TTL_HOURS = 24 // 24 hours
 
 // Store signup data before payment
 export async function POST(request: NextRequest) {
@@ -12,18 +13,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'signupId is required' }, { status: 400 })
     }
 
-    // Store data with TTL of 1 hour
-    pendingSignups.set(data.signupId, {
+    const signupData = {
       ...data,
       createdAt: Date.now(),
-      expiresAt: Date.now() + (60 * 60 * 1000) // 1 hour
-    })
+      expiresAt: Date.now() + (TTL_HOURS * 60 * 60 * 1000)
+    }
 
-    console.log('[SignupData] Stored pending signup:', data.signupId)
+    signupDataStore.set(data.signupId, signupData)
+
+    console.log('[SignupData] Stored pending signup:', data.signupId, 'expires in', TTL_HOURS, 'hours')
+    console.log('[SignupData] Current store size:', signupDataStore.size)
 
     return NextResponse.json({
       success: true,
-      signupId: data.signupId
+      signupId: data.signupId,
+      expiresAt: new Date(signupData.expiresAt).toISOString()
     })
   } catch (error) {
     console.error('[SignupData] Error storing signup data:', error)
@@ -43,19 +47,31 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'signupId parameter is required' }, { status: 400 })
   }
 
-  const data = pendingSignups.get(signupId)
+  try {
+    const data = signupDataStore.get(signupId)
 
-  if (!data) {
-    return NextResponse.json({ error: 'Signup data not found or expired' }, { status: 404 })
+    if (!data) {
+      console.log('[SignupData] Signup data not found:', signupId)
+      console.log('[SignupData] Current store has:', Array.from(signupDataStore.keys()))
+      return NextResponse.json({ error: 'Signup data not found or expired' }, { status: 404 })
+    }
+
+    // Check if expired
+    if (Date.now() > data.expiresAt) {
+      signupDataStore.delete(signupId)
+      console.log('[SignupData] Signup data expired:', signupId)
+      return NextResponse.json({ error: 'Signup data expired' }, { status: 410 })
+    }
+
+    console.log('[SignupData] Retrieved signup data:', signupId)
+    return NextResponse.json(data)
+  } catch (error) {
+    console.error('[SignupData] Error retrieving signup data:', error)
+    return NextResponse.json({
+      error: 'Failed to retrieve signup data',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 })
   }
-
-  // Check if expired
-  if (Date.now() > data.expiresAt) {
-    pendingSignups.delete(signupId)
-    return NextResponse.json({ error: 'Signup data expired' }, { status: 410 })
-  }
-
-  return NextResponse.json(data)
 }
 
 // Delete signup data after processing
@@ -67,30 +83,43 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: 'signupId parameter is required' }, { status: 400 })
   }
 
-  const existed = pendingSignups.has(signupId)
-  pendingSignups.delete(signupId)
+  try {
+    const existed = signupDataStore.has(signupId)
 
-  console.log('[SignupData] Deleted signup data:', signupId)
+    if (existed) {
+      signupDataStore.delete(signupId)
+      console.log('[SignupData] Deleted signup data:', signupId)
+    }
 
-  return NextResponse.json({
-    success: true,
-    existed
-  })
+    return NextResponse.json({
+      success: true,
+      existed
+    })
+  } catch (error) {
+    console.error('[SignupData] Error deleting signup data:', error)
+    return NextResponse.json({
+      error: 'Failed to delete signup data',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 })
+  }
 }
 
 // Cleanup expired entries periodically
-setInterval(() => {
+function cleanupExpired() {
   const now = Date.now()
   let cleanedCount = 0
 
-  Array.from(pendingSignups.entries()).forEach(([signupId, data]) => {
+  for (const [signupId, data] of signupDataStore.entries()) {
     if (now > data.expiresAt) {
-      pendingSignups.delete(signupId)
+      signupDataStore.delete(signupId)
       cleanedCount++
     }
-  })
+  }
 
   if (cleanedCount > 0) {
     console.log(`[SignupData] Cleaned up ${cleanedCount} expired signup entries`)
   }
-}, 5 * 60 * 1000) // Run every 5 minutes
+}
+
+// Run cleanup every hour
+setInterval(cleanupExpired, 60 * 60 * 1000)
