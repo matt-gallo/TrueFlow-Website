@@ -188,6 +188,19 @@ function getBaseUrl(): string {
 
 // Process payment success and create GHL sub-account
 async function processPaymentSuccess(webhookBody: any) {
+  // Track status of each step
+  const status = {
+    paymentReceived: true, // If we're here, payment succeeded
+    signupDataRetrieved: false,
+    subAccountCreated: false,
+    userProvisioned: false,
+    welcomeEmailSent: false,
+    errors: [] as string[]
+  }
+
+  let signupData: any = null
+  let intakeResult: any = null
+
   try {
     console.log('[Webhook] Processing payment success event')
 
@@ -200,6 +213,8 @@ async function processPaymentSuccess(webhookBody: any) {
     if (!signupId) {
       console.error('[Webhook] No signup_id found in payment webhook')
       console.error('[Webhook] Webhook body:', JSON.stringify(webhookBody, null, 2))
+      status.errors.push('No signup_id found in payment webhook')
+      await sendInternalNotification(status, null, null, webhookBody)
       return
     }
 
@@ -209,51 +224,92 @@ async function processPaymentSuccess(webhookBody: any) {
     console.log('[Webhook] Using base URL:', baseUrl)
 
     // Retrieve signup data from temporary storage
-    const signupDataResponse = await fetch(`${baseUrl}/api/signup-data?signupId=${signupId}`)
+    try {
+      const signupDataResponse = await fetch(`${baseUrl}/api/signup-data?signupId=${signupId}`)
 
-    if (!signupDataResponse.ok) {
-      console.error('[Webhook] Failed to retrieve signup data:', signupDataResponse.status)
-      const errorText = await signupDataResponse.text()
-      console.error('[Webhook] Response:', errorText)
+      if (!signupDataResponse.ok) {
+        const errorText = await signupDataResponse.text()
+        console.error('[Webhook] Failed to retrieve signup data:', signupDataResponse.status, errorText)
+        status.errors.push(`Failed to retrieve signup data: ${signupDataResponse.status} - ${errorText}`)
+        await sendInternalNotification(status, null, null, webhookBody)
+        return
+      }
+
+      signupData = await signupDataResponse.json()
+      status.signupDataRetrieved = true
+      console.log('[Webhook] Retrieved signup data for:', signupData.email)
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error'
+      console.error('[Webhook] Error retrieving signup data:', error)
+      status.errors.push(`Error retrieving signup data: ${errorMsg}`)
+      await sendInternalNotification(status, null, null, webhookBody)
       return
     }
-
-    const signupData = await signupDataResponse.json()
-    console.log('[Webhook] Retrieved signup data for:', signupData.email)
 
     // Call the intake endpoint to create sub-account + user
-    const intakeResponse = await fetch(`${baseUrl}/api/intake`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(signupData)
-    })
+    try {
+      const intakeResponse = await fetch(`${baseUrl}/api/intake`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(signupData)
+      })
 
-    const intakeResult = await intakeResponse.json()
+      intakeResult = await intakeResponse.json()
 
-    if (!intakeResponse.ok) {
-      console.error('[Webhook] Failed to create sub-account:', intakeResult)
-      // Send error notification email
-      await sendPaymentErrorNotification(signupData, intakeResult)
+      if (!intakeResponse.ok) {
+        console.error('[Webhook] Failed to create sub-account:', intakeResult)
+        status.errors.push(`Sub-account creation failed: ${intakeResult.error || 'Unknown error'}`)
+        await sendInternalNotification(status, signupData, intakeResult, webhookBody)
+        return
+      }
+
+      status.subAccountCreated = true
+      status.userProvisioned = true
+      console.log('[Webhook] Successfully created sub-account:', intakeResult.locationId)
+      console.log('[Webhook] Successfully created user:', intakeResult.userId)
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error'
+      console.error('[Webhook] Error creating sub-account:', error)
+      status.errors.push(`Error creating sub-account: ${errorMsg}`)
+      await sendInternalNotification(status, signupData, null, webhookBody)
       return
     }
 
-    console.log('[Webhook] Successfully created sub-account:', intakeResult.locationId)
-    console.log('[Webhook] Successfully created user:', intakeResult.userId)
+    // Send welcome email to customer
+    try {
+      const welcomeEmailSent = await sendWelcomeEmail(signupData, intakeResult)
+      status.welcomeEmailSent = welcomeEmailSent
+      if (!welcomeEmailSent) {
+        status.errors.push('Welcome email failed to send (check Resend logs)')
+      }
+    } catch (error) {
+      const errorMsg = error instanceof Error ? error.message : 'Unknown error'
+      console.error('[Webhook] Error sending welcome email:', error)
+      status.errors.push(`Error sending welcome email: ${errorMsg}`)
+    }
 
-    // Trigger password reset email for the new user
-    await triggerPasswordReset(signupData.email)
+    // Send comprehensive internal notification
+    await sendInternalNotification(status, signupData, intakeResult, webhookBody)
 
-    // Send success email to customer
-    await sendWelcomeEmail(signupData, intakeResult)
+    // Delete signup data after processing
+    try {
+      await fetch(`${baseUrl}/api/signup-data?signupId=${signupId}`, {
+        method: 'DELETE'
+      })
+      console.log('[Webhook] Cleaned up signup data')
+    } catch (error) {
+      console.error('[Webhook] Error cleaning up signup data:', error)
+    }
 
-    // Delete signup data after successful processing
-    await fetch(`${baseUrl}/api/signup-data?signupId=${signupId}`, {
-      method: 'DELETE'
-    })
-
-    console.log('[Webhook] Payment-to-account flow completed successfully')
+    if (status.errors.length === 0) {
+      console.log('[Webhook] Payment-to-account flow completed successfully')
+    } else {
+      console.log('[Webhook] Payment-to-account flow completed with errors:', status.errors)
+    }
   } catch (error) {
-    console.error('[Webhook] Error processing payment success:', error)
+    console.error('[Webhook] Unexpected error processing payment success:', error)
+    status.errors.push(`Unexpected error: ${error instanceof Error ? error.message : 'Unknown error'}`)
+    await sendInternalNotification(status, signupData, intakeResult, webhookBody)
   }
 }
 
@@ -281,11 +337,11 @@ async function triggerPasswordReset(email: string) {
 }
 
 // Send welcome email with login credentials
-async function sendWelcomeEmail(signupData: any, intakeResult: any) {
+async function sendWelcomeEmail(signupData: any, intakeResult: any): Promise<boolean> {
   try {
     if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.includes('your_')) {
       console.warn('[Webhook] Resend API key not configured, skipping welcome email')
-      return
+      return false
     }
 
     const { Resend } = await import('resend')
@@ -338,28 +394,213 @@ async function sendWelcomeEmail(signupData: any, intakeResult: any) {
       html: emailContent
     })
 
-    // Also notify internal team
+    console.log('[Webhook] Welcome email sent to:', signupData.email)
+    return true
+  } catch (error) {
+    console.error('[Webhook] Error sending welcome email:', error)
+    return false
+  }
+}
+
+// Send comprehensive internal notification with status of all steps
+async function sendInternalNotification(
+  status: {
+    paymentReceived: boolean
+    signupDataRetrieved: boolean
+    subAccountCreated: boolean
+    userProvisioned: boolean
+    welcomeEmailSent: boolean
+    errors: string[]
+  },
+  signupData: any,
+  intakeResult: any,
+  webhookBody: any
+) {
+  try {
+    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY.includes('your_')) {
+      console.warn('[Webhook] Resend API key not configured, skipping internal notification')
+      return
+    }
+
+    const { Resend } = await import('resend')
+    const resend = new Resend(process.env.RESEND_API_KEY)
+
+    const isSuccess = status.errors.length === 0
+    const statusIcon = isSuccess ? '✅' : '⚠️'
+    const statusText = isSuccess ? 'SUCCESS' : 'FAILED'
+    const statusColor = isSuccess ? '#10b981' : '#ef4444'
+
+    // Build status indicators
+    const getStatusIcon = (completed: boolean) => completed ? '✅' : '❌'
+
+    const emailHtml = `
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f9fafb; margin: 0; padding: 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .header { background: ${statusColor}; color: white; padding: 30px; text-align: center; }
+    .header h1 { margin: 0; font-size: 24px; }
+    .header .status { font-size: 14px; margin-top: 8px; opacity: 0.9; }
+    .content { padding: 30px; }
+    .status-section { background: #f3f4f6; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+    .status-row { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid #e5e7eb; }
+    .status-row:last-child { border-bottom: none; }
+    .status-label { flex: 1; font-weight: 500; }
+    .status-value { font-size: 20px; }
+    .info-section { margin-bottom: 20px; }
+    .info-row { padding: 8px 0; border-bottom: 1px solid #e5e7eb; }
+    .info-row:last-child { border-bottom: none; }
+    .info-label { font-weight: 600; color: #6b7280; font-size: 12px; text-transform: uppercase; margin-bottom: 4px; }
+    .info-value { color: #111827; }
+    .errors { background: #fef2f2; border-left: 4px solid #ef4444; padding: 16px; margin: 20px 0; border-radius: 4px; }
+    .errors h3 { color: #dc2626; margin: 0 0 10px 0; font-size: 16px; }
+    .errors ul { margin: 0; padding-left: 20px; color: #7f1d1d; }
+    .success-banner { background: #d1fae5; border-left: 4px solid #10b981; padding: 16px; margin: 20px 0; border-radius: 4px; color: #065f46; }
+    .footer { background: #f9fafb; padding: 20px; text-align: center; font-size: 12px; color: #6b7280; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>${statusIcon} Payment Processing ${statusText}</h1>
+      <div class="status">${new Date().toLocaleString()}</div>
+    </div>
+
+    <div class="content">
+      ${isSuccess ? `
+        <div class="success-banner">
+          <strong>✅ All systems operational!</strong> Customer account successfully created and welcome email delivered.
+        </div>
+      ` : ''}
+
+      ${status.errors.length > 0 ? `
+        <div class="errors">
+          <h3>⚠️ Errors Encountered:</h3>
+          <ul>
+            ${status.errors.map(error => `<li>${error}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+
+      <div class="status-section">
+        <h3 style="margin: 0 0 15px 0; color: #111827;">Processing Status</h3>
+        <div class="status-row">
+          <span class="status-label">Payment Received</span>
+          <span class="status-value">${getStatusIcon(status.paymentReceived)}</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Signup Data Retrieved</span>
+          <span class="status-value">${getStatusIcon(status.signupDataRetrieved)}</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Sub-Account Created</span>
+          <span class="status-value">${getStatusIcon(status.subAccountCreated)}</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">User Provisioned</span>
+          <span class="status-value">${getStatusIcon(status.userProvisioned)}</span>
+        </div>
+        <div class="status-row">
+          <span class="status-label">Welcome Email Sent</span>
+          <span class="status-value">${getStatusIcon(status.welcomeEmailSent)}</span>
+        </div>
+      </div>
+
+      ${signupData ? `
+        <div class="info-section">
+          <h3 style="margin: 0 0 15px 0; color: #111827;">Customer Information</h3>
+          <div class="info-row">
+            <div class="info-label">Business Name</div>
+            <div class="info-value">${signupData.name || 'N/A'}</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Contact Name</div>
+            <div class="info-value">${signupData.prospectInfo?.firstName || ''} ${signupData.prospectInfo?.lastName || ''}</div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Email</div>
+            <div class="info-value"><a href="mailto:${signupData.email}">${signupData.email}</a></div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">Phone</div>
+            <div class="info-value">${signupData.phone || 'N/A'}</div>
+          </div>
+          ${signupData.metadata?.role ? `
+          <div class="info-row">
+            <div class="info-label">Role</div>
+            <div class="info-value">${signupData.metadata.role}</div>
+          </div>
+          ` : ''}
+          ${signupData.metadata?.teamSize ? `
+          <div class="info-row">
+            <div class="info-label">Team Size</div>
+            <div class="info-value">${signupData.metadata.teamSize}</div>
+          </div>
+          ` : ''}
+          ${signupData.metadata?.primaryGoal ? `
+          <div class="info-row">
+            <div class="info-label">Primary Goal</div>
+            <div class="info-value">${signupData.metadata.primaryGoal}</div>
+          </div>
+          ` : ''}
+          ${signupData.metadata?.includeSuccessManager !== undefined ? `
+          <div class="info-row">
+            <div class="info-label">Success Manager</div>
+            <div class="info-value">${signupData.metadata.includeSuccessManager ? 'Yes (+$147/mo)' : 'No'}</div>
+          </div>
+          ` : ''}
+          ${signupData.metadata?.selectedResources && signupData.metadata.selectedResources.length > 0 ? `
+          <div class="info-row">
+            <div class="info-label">Selected Resources</div>
+            <div class="info-value">${signupData.metadata.selectedResources.join(', ')}</div>
+          </div>
+          ` : ''}
+        </div>
+      ` : ''}
+
+      ${intakeResult ? `
+        <div class="info-section">
+          <h3 style="margin: 0 0 15px 0; color: #111827;">GoHighLevel Details</h3>
+          <div class="info-row">
+            <div class="info-label">Location ID</div>
+            <div class="info-value"><code>${intakeResult.locationId}</code></div>
+          </div>
+          <div class="info-row">
+            <div class="info-label">User ID</div>
+            <div class="info-value"><code>${intakeResult.userId}</code></div>
+          </div>
+        </div>
+      ` : ''}
+
+      ${!isSuccess && !signupData ? `
+        <div class="info-section">
+          <h3 style="margin: 0 0 15px 0; color: #111827;">Raw Webhook Data</h3>
+          <pre style="background: #f3f4f6; padding: 12px; border-radius: 6px; font-size: 11px; overflow-x: auto;">${JSON.stringify(webhookBody, null, 2)}</pre>
+        </div>
+      ` : ''}
+    </div>
+
+    <div class="footer">
+      <p>TrueFlow Payment Processing System</p>
+      <p>This is an automated notification from your sign-up webhook handler</p>
+    </div>
+  </div>
+</body>
+</html>
+    `
+
     await resend.emails.send({
       from: 'TrueFlow AI <onboarding@resend.dev>',
       to: ['griffin@trueflow.ai', 'matt@trueflow.ai'],
-      subject: `New Account Created: ${signupData.name}`,
-      html: `
-        <h2>New TrueFlow Account Created</h2>
-        <p><strong>Business:</strong> ${signupData.name}</p>
-        <p><strong>Contact:</strong> ${signupData.prospectInfo?.firstName} ${signupData.prospectInfo?.lastName}</p>
-        <p><strong>Email:</strong> ${signupData.email}</p>
-        <p><strong>Phone:</strong> ${signupData.phone}</p>
-        <p><strong>Location ID:</strong> ${intakeResult.locationId}</p>
-        <p><strong>User ID:</strong> ${intakeResult.userId}</p>
-        <p><strong>Success Manager:</strong> ${signupData.metadata?.includeSuccessManager ? 'Yes (+$147/mo)' : 'No'}</p>
-        <p><strong>Primary Goal:</strong> ${signupData.metadata?.primaryGoal}</p>
-        <p><strong>Selected Resources:</strong> ${signupData.metadata?.selectedResources?.join(', ')}</p>
-      `
+      subject: `${statusIcon} ${isSuccess ? 'New Account Created' : 'Payment Processing Issue'}: ${signupData?.name || 'Unknown'}`,
+      html: emailHtml
     })
 
-    console.log('[Webhook] Welcome email sent to:', signupData.email)
+    console.log('[Webhook] Internal notification sent')
   } catch (error) {
-    console.error('[Webhook] Error sending welcome email:', error)
+    console.error('[Webhook] Error sending internal notification:', error)
   }
 }
 

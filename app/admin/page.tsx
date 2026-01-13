@@ -155,7 +155,15 @@ export default function AdminDashboard() {
           firstName: testFirstName,
           lastName: testLastName,
           email: testEmail
-        }
+        },
+        metadata: {
+          role: 'E2E Test',
+          teamSize: '1-3',
+          primaryGoal: 'Testing payment flow',
+          selectedResources: ['Admin Dashboard'],
+          includeSuccessManager: false
+        },
+        timestamp: new Date().toISOString()
       }
 
       const storeResponse = await fetch('/api/signup-data', {
