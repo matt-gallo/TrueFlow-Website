@@ -109,12 +109,13 @@ function cleanupExpired() {
   const now = Date.now()
   let cleanedCount = 0
 
-  for (const [signupId, data] of signupDataStore.entries()) {
+  // Convert Map entries to array for iteration (TypeScript compatibility)
+  Array.from(signupDataStore.entries()).forEach(([signupId, data]) => {
     if (now > data.expiresAt) {
       signupDataStore.delete(signupId)
       cleanedCount++
     }
-  }
+  })
 
   if (cleanedCount > 0) {
     console.log(`[SignupData] Cleaned up ${cleanedCount} expired signup entries`)
