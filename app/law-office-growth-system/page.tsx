@@ -54,17 +54,6 @@ import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
 import { Moon, Sun } from 'lucide-react'
 
-interface Particle {
-  id: number
-  x: number
-  y: number
-  vx: number
-  vy: number
-  size: number
-  opacity: number
-  color: string
-}
-
 interface CursorTrailPoint {
   x: number
   y: number
@@ -98,11 +87,11 @@ const solutionProducts: SolutionProduct[] = [
     title: 'Full CRM + Automations',
     description: 'All-in-one platform that tracks every lead and customer for you.',
     icon: Zap,
-    gradientFrom: 'from-blue-500',
-    gradientTo: 'to-purple-500',
-    accent: 'text-blue-300',
-    borderHover: 'hover:border-blue-500/50',
-    bgGlow: 'from-blue-500/20 via-purple-500/20 to-transparent',
+    gradientFrom: 'from-blue-900',
+    gradientTo: 'to-slate-700',
+    accent: 'text-amber-400',
+    borderHover: 'hover:border-blue-800/50',
+    bgGlow: 'from-blue-900/20 via-slate-800/20 to-transparent',
     bullets: [
       'Lead capture from forms, ads, chat, website, and DMs.',
       'Full CRM & Case Management - track every client, case, and matter without losing anyone',
@@ -122,11 +111,11 @@ const solutionProducts: SolutionProduct[] = [
     title: 'AI Chat Agents',
     description: 'Smart chat agents that book intros 2-3x faster, available 24/7.',
     icon: MessageSquare,
-    gradientFrom: 'from-green-500',
-    gradientTo: 'to-emerald-500',
-    accent: 'text-green-300',
-    borderHover: 'hover:border-green-500/50',
-    bgGlow: 'from-green-500/20 via-emerald-500/20 to-transparent',
+    gradientFrom: 'from-slate-700',
+    gradientTo: 'to-slate-600',
+    accent: 'text-amber-400',
+    borderHover: 'hover:border-slate-600/50',
+    bgGlow: 'from-slate-700/20 via-slate-600/20 to-transparent',
     bullets: [
       'AI Chat Agents - book consultations 2-3x faster, 24/7',
       'Smart scheduling - prospects book case consultations directly into your calendar',
@@ -145,11 +134,11 @@ const solutionProducts: SolutionProduct[] = [
     title: 'Constant Content Engine™',
     description: 'Grow your digital footprint on autopilot with multi-channel content creation.',
     icon: FileText,
-    gradientFrom: 'from-purple-500',
-    gradientTo: 'to-pink-500',
-    accent: 'text-purple-300',
-    borderHover: 'hover:border-purple-500/50',
-    bgGlow: 'from-purple-500/20 via-pink-500/20 to-transparent',
+    gradientFrom: 'from-blue-900',
+    gradientTo: 'to-blue-800',
+    accent: 'text-amber-400',
+    borderHover: 'hover:border-blue-800/50',
+    bgGlow: 'from-blue-900/20 via-blue-800/20 to-transparent',
     bullets: [
       'Content Engine + Auto-Publishing - grow your digital footprint on autopilot',
       'Multi-channel content creation (email newsletters, blog posts for SEO, social media)',
@@ -168,11 +157,11 @@ const solutionProducts: SolutionProduct[] = [
     title: 'Lead Machine™',
     description: "Finds new clients for you with targeted outreach done right.",
     icon: Users,
-    gradientFrom: 'from-cyan-500',
-    gradientTo: 'to-green-500',
-    accent: 'text-cyan-300',
-    borderHover: 'hover:border-cyan-500/50',
-    bgGlow: 'from-cyan-500/20 via-green-500/20 to-transparent',
+    gradientFrom: 'from-slate-800',
+    gradientTo: 'to-slate-700',
+    accent: 'text-amber-400',
+    borderHover: 'hover:border-slate-700/50',
+    bgGlow: 'from-slate-800/20 via-slate-700/20 to-transparent',
     bullets: [
       "Cold emailing done the right way",
       'Referral and reactivation campaigns',
@@ -361,7 +350,7 @@ function TypewriterText({ gradientOffset, isDarkMode }: { gradientOffset: number
 
 export default function LandingPage() {
   const router = useRouter()
-  const { isDarkMode, toggleTheme } = useTheme()
+  const { isDarkMode, toggleTheme, setTheme } = useTheme()
   const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -373,10 +362,8 @@ export default function LandingPage() {
   const [currentFeatureIndex, setCurrentFeatureIndex] = useState(-1)
   const [mounted, setMounted] = useState(false)
   const [gradientOffset, setGradientOffset] = useState(0)
-  const [particles, setParticles] = useState<Particle[]>([])
   const [cursorTrail, setCursorTrail] = useState<CursorTrailPoint[]>([])
   const cursorTrailRef = useRef<CursorTrailPoint[]>([])
-  const animationFrameRef = useRef<number | null>(null)
   const [trustSignalIndex, setTrustSignalIndex] = useState(0)
   const [isTrustSignalVisible, setIsTrustSignalVisible] = useState(true)
   const [howItWorksVisible, setHowItWorksVisible] = useState(true)
@@ -413,7 +400,7 @@ export default function LandingPage() {
       icon: <Users className="h-16 w-16" />,
       title: "Never Miss a Lead Again",
       description: "We build systems that capture every client inquiry and follow up automatically. Text, email, or call - your prospects hear back fast, even when you're in court or meeting with clients.",
-      gradient: "from-blue-500 to-cyan-500",
+      gradient: "from-blue-900 to-blue-700",
       delay: 0,
       badge: "Most Popular"
     },
@@ -421,7 +408,7 @@ export default function LandingPage() {
       icon: <MessageSquare className="h-16 w-16" />,
       title: "24/7 Client Communication",
       description: "Answer common questions about your practice areas, legal services, and case process. Update clients automatically throughout their journey. Give great service without lifting a finger.",
-      gradient: "from-purple-500 to-pink-500",
+      gradient: "from-slate-800 to-slate-600",
       delay: 100,
       badge: "Time Saver"
     },
@@ -429,14 +416,14 @@ export default function LandingPage() {
       icon: <Calendar className="h-16 w-16" />,
       title: "Smart Scheduling & Reminders",
       description: "Automatic consultation scheduling, confirmations, and reminders reduce no-shows. Keep your calendar full without the back-and-forth.",
-      gradient: "from-green-500 to-emerald-500",
+      gradient: "from-blue-800 to-slate-700",
       delay: 200
     },
     {
       icon: <Sparkles className="h-16 w-16" />,
       title: "Social Media That Works",
       description: "We create and post content that brings in new clients. Stay top-of-mind in your community without spending hours on Facebook and Instagram.",
-      gradient: "from-orange-500 to-red-500",
+      gradient: "from-amber-600 to-amber-700",
       delay: 300
     }
   ]
@@ -450,66 +437,18 @@ export default function LandingPage() {
   //   return () => clearInterval(interval)
   // }, [features.length])
 
-  // Generate floating particles
-  const generateParticles = () => {
-    const particleCount = 50
-    const newParticles: Particle[] = []
-    for (let i = 0; i < particleCount; i++) {
-      newParticles.push({
-        id: i,
-        x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-        y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 4 + 1,
-        opacity: Math.random() * 0.5 + 0.1,
-        color: ['#3b82f6', '#8b5cf6', '#ec4899', '#06b6d4'][Math.floor(Math.random() * 4)]
-      })
-    }
-    setParticles(newParticles)
-  }
-
-  // Animate particles
-  const animateParticles = () => {
-    setParticles(prev => prev.map(particle => {
-      let newX = particle.x + particle.vx
-      let newY = particle.y + particle.vy
-      
-      // Wrap around screen edges
-      const screenWidth = typeof window !== 'undefined' ? window.innerWidth : 1200
-      const screenHeight = typeof window !== 'undefined' ? window.innerHeight : 800
-      if (newX > screenWidth) newX = 0
-      if (newX < 0) newX = screenWidth
-      if (newY > screenHeight) newY = 0
-      if (newY < 0) newY = screenHeight
-      
-      return {
-        ...particle,
-        x: newX,
-        y: newY
-      }
-    }))
-  }
+  // Force dark mode for law office page
+  useEffect(() => {
+    setTheme('dark')
+  }, [setTheme])
 
   // Handle mounting to avoid hydration issues
   useEffect(() => {
     setMounted(true)
-    
+
     // Load recent blog posts
     const posts = getPublishedPosts().slice(0, 3) // Get the 3 most recent posts
     setRecentBlogPosts(posts)
-    
-    if (typeof window !== 'undefined') {
-      generateParticles()
-      
-      // Regenerate particles on window resize
-      const handleResize = () => {
-        generateParticles()
-      }
-      
-      window.addEventListener('resize', handleResize)
-      return () => window.removeEventListener('resize', handleResize)
-    }
   }, [])
 
   // Force clean background for landing page
@@ -615,25 +554,14 @@ export default function LandingPage() {
     const gradientInterval = setInterval(() => {
       setGradientOffset(prev => (prev + 0.5) % 360)
     }, 16) // ~60fps but slower rotation (0.5 degree per frame instead of 1)
-    
-    // Particle animation can use requestAnimationFrame
-    const animateLoop = () => {
-      animateParticles()
-      animationFrameRef.current = requestAnimationFrame(animateLoop)
-    }
-    
-    animationFrameRef.current = requestAnimationFrame(animateLoop)
-    
+
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('mousemove', handleMouseMove)
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('mousemove', handleMouseMove)
       clearInterval(gradientInterval)
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current)
-      }
     }
   }, [mounted])
 
@@ -716,28 +644,28 @@ export default function LandingPage() {
   }
 
   return (
-    <div className={`min-h-screen overflow-x-hidden transition-colors ${
-      isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
-    }`}>
+    <div className="min-h-screen overflow-x-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
 
-      {/* Floating Particles */}
-      {particles.map((particle) => (
+      {/* Professional Law Firm Background */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        {/* Subtle gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-950/20 via-transparent to-amber-950/10" />
+
+        {/* Geometric pattern for professional look */}
         <div
-          key={particle.id}
-          className="particle fixed pointer-events-none rounded-full z-0"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
-            left: `${particle.x}px`,
-            top: `${particle.y}px`,
-            width: `${particle.size}px`,
-            height: `${particle.size}px`,
-            backgroundColor: particle.color,
-            opacity: particle.opacity,
-            animationDelay: `${particle.id * 0.1}s`,
-            filter: 'blur(1px)',
-            boxShadow: `0 0 ${particle.size * 2}px ${particle.color}`,
+            backgroundImage: `
+              linear-gradient(to right, #94a3b8 1px, transparent 1px),
+              linear-gradient(to bottom, #94a3b8 1px, transparent 1px)
+            `,
+            backgroundSize: '100px 100px'
           }}
         />
-      ))}
+
+        {/* Subtle vignette effect */}
+        <div className="absolute inset-0 bg-gradient-radial from-transparent via-transparent to-black/40" />
+      </div>
 
       {/* Cursor Trail */}
       <div className="cursor-trail" style={{ position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999 }}>
@@ -754,7 +682,7 @@ export default function LandingPage() {
                 top: point.y - size / 2,
                 width: size,
                 height: size,
-                background: `radial-gradient(circle, rgba(59, 130, 246, ${opacity}) 0%, rgba(139, 92, 246, ${opacity * 0.5}) 50%, transparent 100%)`,
+                background: `radial-gradient(circle, rgba(30, 58, 138, ${opacity}) 0%, rgba(251, 191, 36, ${opacity * 0.5}) 50%, transparent 100%)`,
                 borderRadius: '50%',
                 pointerEvents: 'none',
               }}
@@ -764,12 +692,12 @@ export default function LandingPage() {
       </div>
 
       {/* Interactive Background */}
-      <div 
+      <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, 
-            rgba(59, 130, 246, 0.05) 0%, 
-            rgba(139, 92, 246, 0.03) 25%, 
+          background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px,
+            rgba(30, 58, 138, 0.05) 0%,
+            rgba(71, 85, 105, 0.03) 25%,
             transparent 50%)`,
           transition: 'background 0.3s ease-out'
         }}
@@ -908,7 +836,7 @@ export default function LandingPage() {
               >
                 Sign in
               </a>
-              <Link href="/sign-up" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
+              <Link href="/sign-up" className="bg-gradient-to-r from-blue-900 to-slate-800 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold border border-amber-500/20">
                 Book a live demo
               </Link>
             </div>
@@ -970,7 +898,7 @@ export default function LandingPage() {
               >
                 Sign in
               </a>
-              <Link href="/sign-up" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
+              <Link href="/sign-up" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-blue-900 to-slate-800 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center border border-amber-500/20">
                 Book a live demo
               </Link>
             </div>
@@ -1001,9 +929,9 @@ export default function LandingPage() {
               <div className="flex flex-col items-center px-4">
                 <button
                   onClick={() => setIsDemoModalOpen(true)}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-auto justify-center"
+                  className="bg-gradient-to-r from-blue-900 to-slate-800 text-white px-6 sm:px-8 lg:px-10 py-4 sm:py-5 rounded-full text-lg sm:text-xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/25 transition-all duration-300 flex items-center space-x-2 sm:space-x-3 relative overflow-hidden group w-auto justify-center border border-amber-500/20"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-950 to-slate-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="relative z-10">Book a free demo</span>
                   <ChevronRight className="h-6 w-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                 </button>
@@ -1020,9 +948,9 @@ export default function LandingPage() {
 
       {/* Trust Signals Auto-Scrolling Banner */}
       <section className={`py-8 sm:py-12 -mt-8 sm:-mt-16 md:-mt-20 overflow-hidden relative z-10 ${
-        isDarkMode ? 'bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-blue-900/20' : 'bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50'
+        isDarkMode ? 'bg-gradient-to-r from-blue-950/30 via-slate-900/30 to-blue-950/30' : 'bg-gradient-to-r from-blue-50 via-slate-50 to-blue-50'
       }`}>
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-900/5 via-slate-800/5 to-blue-900/5"></div>
 
         {/* Auto-scrolling Container */}
         <div className="relative">
@@ -1077,7 +1005,7 @@ export default function LandingPage() {
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center leading-tight ${
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
-              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 to-amber-400 bg-clip-text text-transparent">
                 Every missed follow-up is lost billable hours you already paid for
               </span>
             </h2>
@@ -1159,11 +1087,11 @@ export default function LandingPage() {
                 "Slow follow-up costs new cases."
               ].map((point, index) => (
                 <div key={index} className={`flex items-center space-x-4 p-4 sm:p-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] group ${
-                  isDarkMode 
-                    ? 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-500/30' 
+                  isDarkMode
+                    ? 'bg-white/5 border border-white/10 hover:bg-white/10 hover:border-blue-800/30'
                     : 'bg-gray-50 border border-gray-200 hover:bg-blue-50 hover:border-blue-300'
                 }`}>
-                  <div className="flex-shrink-0 w-3 h-3 bg-gradient-to-r from-cyan-400 to-purple-600 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                  <div className="flex-shrink-0 w-3 h-3 bg-gradient-to-r from-blue-600 to-amber-500 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
                   <p className={`text-lg sm:text-xl font-medium ${
                     isDarkMode ? 'text-white/90' : 'text-gray-800'
                   }`}>
@@ -1207,17 +1135,17 @@ export default function LandingPage() {
               {[
                 {
                   name: 'Lead App',
-                  color: 'from-blue-500 to-blue-600',
+                  color: 'from-blue-900 to-blue-800',
                   icon: Users
                 },
                 {
                   name: 'Scheduler',
-                  color: 'from-orange-500 to-red-500',
+                  color: 'from-amber-600 to-amber-700',
                   icon: Calendar
                 },
                 {
                   name: 'Messenger',
-                  color: 'from-cyan-500 to-blue-500',
+                  color: 'from-slate-800 to-slate-700',
                   icon: MessageSquare
                 },
               ].map((tool) => (
@@ -1536,7 +1464,7 @@ export default function LandingPage() {
             </p>
             <button
               onClick={() => setIsDemoModalOpen(true)}
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-900 to-slate-800 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all border border-amber-500/20"
             >
               Book your demo
               <Calendar className="w-5 h-5" />
@@ -1602,7 +1530,7 @@ export default function LandingPage() {
                 <div className={`h-2 rounded-full overflow-hidden ${
                   isDarkMode ? 'bg-white/10' : 'bg-gray-200'
                 }`}>
-                  <div className="h-full w-1/4 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"></div>
+                  <div className="h-full w-1/4 bg-gradient-to-r from-blue-900 to-amber-600 transition-all duration-300"></div>
                 </div>
               </div>
 
@@ -1681,7 +1609,7 @@ export default function LandingPage() {
                 {/* CTA Button */}
                 <Link
                   href={`/sign-up?fullName=${encodeURIComponent(formData.fullName)}&email=${encodeURIComponent(formData.email)}&role=${encodeURIComponent(formData.role)}`}
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-900 to-slate-800 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all border border-amber-500/20"
                 >
                   Continue
                   <ArrowRight className="w-5 h-5" />
@@ -1711,13 +1639,13 @@ export default function LandingPage() {
                 isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
               }`}>
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-900 to-blue-800 flex items-center justify-center">
                     <Sparkles className="w-8 h-8 text-white" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm font-bold text-blue-500">Day 1</span>
+                    <span className="text-sm font-bold text-blue-400">Day 1</span>
                     <div className={`h-px flex-1 ${
                       isDarkMode ? 'bg-white/10' : 'bg-gray-200'
                     }`}></div>
@@ -1738,13 +1666,13 @@ export default function LandingPage() {
                 isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
               }`}>
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-700 flex items-center justify-center">
                     <Zap className="w-8 h-8 text-white" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm font-bold text-cyan-500">Days 1–7</span>
+                    <span className="text-sm font-bold text-slate-400">Days 1–7</span>
                     <div className={`h-px flex-1 ${
                       isDarkMode ? 'bg-white/10' : 'bg-gray-200'
                     }`}></div>
@@ -1765,13 +1693,13 @@ export default function LandingPage() {
                 isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
               }`}>
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-800 to-slate-700 flex items-center justify-center">
                     <Users className="w-8 h-8 text-white" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm font-bold text-purple-500">Days 8–13</span>
+                    <span className="text-sm font-bold text-blue-300">Days 8–13</span>
                     <div className={`h-px flex-1 ${
                       isDarkMode ? 'bg-white/10' : 'bg-gray-200'
                     }`}></div>
@@ -1792,13 +1720,13 @@ export default function LandingPage() {
                 isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
               }`}>
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500 to-emerald-500 flex items-center justify-center">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-600 to-amber-700 flex items-center justify-center">
                     <Shield className="w-8 h-8 text-white" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-sm font-bold text-green-500">Day 14</span>
+                    <span className="text-sm font-bold text-amber-400">Day 14</span>
                     <div className={`h-px flex-1 ${
                       isDarkMode ? 'bg-white/10' : 'bg-gray-200'
                     }`}></div>
@@ -1858,7 +1786,7 @@ export default function LandingPage() {
                 </p>
                 <Link
                   href="/white-glove"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-900 to-slate-800 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all border border-amber-500/20"
                 >
                   Get Quote
                   <ArrowRight className="w-5 h-5" />
@@ -1919,7 +1847,7 @@ export default function LandingPage() {
                 </p>
                 <Link
                   href="/lead-machine"
-                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-cyan-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all"
+                  className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-900 to-slate-800 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-xl hover:scale-105 transition-all border border-amber-500/20"
                 >
                   Get Quote
                   <ArrowRight className="w-5 h-5" />
@@ -2003,7 +1931,7 @@ export default function LandingPage() {
                   }}
                 >
                   {/* Animated background gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-900/5 to-slate-800/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
                   
                   {/* Shimmer effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_2s_ease-in-out_infinite] -skew-x-12"></div>
@@ -2251,9 +2179,9 @@ export default function LandingPage() {
 
           {/* View All Posts Button */}
           <div className="text-center mt-12">
-            <Link 
-              href="/blog" 
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/25"
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-900 to-slate-800 hover:from-blue-950 hover:to-slate-900 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/25 border border-amber-500/20"
             >
               View All Posts
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2327,7 +2255,7 @@ export default function LandingPage() {
             <p className={`text-lg mb-6 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>Still have questions?</p>
             <button
               onClick={() => setIsDemoModalOpen(true)}
-              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-900 to-slate-800 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-amber-500/25 transition-all duration-300 border border-amber-500/20"
             >
               <span>Book your live demo</span>
               <ChevronRight className="h-5 w-5" />
