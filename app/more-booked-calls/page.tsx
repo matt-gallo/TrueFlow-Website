@@ -505,62 +505,6 @@ export default function VSLPage() {
         </div>
       </section>
 
-      {/* VSL Video Section */}
-      <section className={`py-16 sm:py-20 px-4 relative ${
-        isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-white'
-      }`}>
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                See how this works in action
-              </span>
-            </h2>
-            <p className={`text-lg sm:text-xl max-w-3xl mx-auto ${
-              isDarkMode ? 'text-white/70' : 'text-gray-600'
-            }`}>
-              Watch this short video to understand how we build and manage your entire sales and marketing system.
-            </p>
-          </div>
-
-          <div className={`backdrop-blur-md rounded-3xl border p-4 sm:p-6 lg:p-8 shadow-2xl ${
-            isDarkMode
-              ? 'bg-white/5 border-white/10'
-              : 'bg-white border-gray-200 shadow-lg'
-          }`}>
-            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                src="https://www.youtube.com/embed/6AxL-ewgMX8"
-                title="TrueFlow White Glove Service"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                style={{
-                  border: 'none'
-                }}
-              />
-            </div>
-          </div>
-
-          <div className="text-center mt-8">
-            <p className={`text-base sm:text-lg mb-6 ${
-              isDarkMode ? 'text-white/70' : 'text-gray-600'
-            }`}>
-              Ready to get your system built?
-            </p>
-            <button
-              onClick={scrollToBooking}
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 transition-all duration-300 inline-flex items-center space-x-2"
-            >
-              <span>Book a consultation</span>
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* Metrics / Proof Bar */}
       <section className={`py-16 relative ${
         isDarkMode ? 'bg-gradient-to-r from-blue-900/20 via-purple-900/20 to-blue-900/20' : 'bg-gradient-to-r from-blue-50 via-purple-50 to-blue-50'
