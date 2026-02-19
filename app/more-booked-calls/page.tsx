@@ -394,43 +394,6 @@ export default function VSLPage() {
         }}
       />
 
-      {/* Navigation */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-xl border-b transition-all duration-500 ${
-        isDarkMode
-          ? 'border-white/10 bg-black/60'
-          : 'border-gray-200 bg-white/80'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-24">
-            {/* Logo */}
-            <Link href="/" className="flex items-center">
-              <Image
-                src={logoSrc}
-                alt="TrueFlow"
-                width={280}
-                height={70}
-                className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto transform hover:scale-105 transition-transform"
-                priority
-                style={{
-                  maxWidth: '100%',
-                  objectFit: 'contain'
-                }}
-              />
-            </Link>
-
-            {/* CTA Button */}
-            <div className="flex items-center space-x-4">
-              <button
-                onClick={scrollToBooking}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 transition-all duration-300"
-              >
-                Book a call
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section
         ref={heroRef}
