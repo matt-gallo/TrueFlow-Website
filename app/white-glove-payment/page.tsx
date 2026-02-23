@@ -104,7 +104,7 @@ function WhiteGlovePaymentContent() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold">Direct Slack/SMS Access</p>
+                    <p className="font-semibold">Direct SMS Access</p>
                     <p className={`text-sm ${theme.textMuted}`}>Reach your success manager anytime via your preferred channel</p>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ function WhiteGlovePaymentContent() {
                 <div>
                   <p className="font-semibold mb-2">How do I contact my success manager?</p>
                   <p className={`text-sm ${theme.textMuted}`}>
-                    You'll have direct access via Slack, SMS, or email. Your success manager will provide their contact details within 24 hours of signup, and you can reach out anytime during business hours for priority support.
+                    You'll have direct access via SMS or email. Your success manager will provide their contact details within 24 hours of signup, and you can reach out anytime during business hours for priority support.
                   </p>
                 </div>
               </div>
