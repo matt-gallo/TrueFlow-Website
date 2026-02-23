@@ -156,7 +156,7 @@ function WhiteGlovePaymentContent() {
               <div className={`rounded-2xl overflow-hidden border ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
                 <iframe
                   src={paymentUrl}
-                  className="w-full min-h-[600px] border-0"
+                  className="w-full min-h-[900px] border-0"
                   title="White Glove Payment Form"
                   allow="payment"
                 />
