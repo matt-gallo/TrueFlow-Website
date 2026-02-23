@@ -109,6 +109,21 @@ export default function TermsOfService() {
             <p>
               Our SMS service is supported by major U.S. carriers. If you have questions about your carrier's support or experience delivery issues, text HELP or contact us directly.
             </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Carrier Liability Disclaimer</h3>
+            <p>
+              Carriers are not liable for delayed or undelivered messages. Message delivery is subject to effective transmission from your wireless service provider and is not guaranteed by TrueFlow AI LLC.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Age Restriction</h3>
+            <p>
+              You must be at least 18 years old to use our services or opt in to receive SMS communications from TrueFlow AI LLC. By submitting your information, you represent and warrant that you are 18 years of age or older.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>SMS Consent Summary</h3>
+            <p>
+              By providing your phone number and opting in, you consent to receive SMS messages from TrueFlow AI LLC related to appointment reminders, account notifications, and marketing communications (if selected). Message frequency may vary. Message & data rates may apply. Reply STOP to opt out or HELP for assistance. SMS consent is not shared with third parties or affiliates for marketing purposes.
+            </p>
           </section>
 
           <section className="mb-8">
