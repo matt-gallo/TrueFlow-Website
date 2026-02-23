@@ -20,10 +20,16 @@ export default function PrivacyPolicy() {
           <section className="mb-8">
             <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>1. Introduction</h2>
             <p>
-              TrueFlow AI ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how
+              TrueFlow AI LLC ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how
               we collect, use, disclose, and safeguard your information when you visit our website and use our services.
             </p>
-            <p>
+            <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg">
+              <p><strong>TrueFlow AI LLC</strong></p>
+              <p>Physical Address: 30 N Gould St Ste R, Sheridan, WY 82801</p>
+              <p>Email: matt@trueflow.ai</p>
+              <p>Phone: (307) 317-4795</p>
+            </div>
+            <p className="mt-4">
               Our lead machine, outreach, and associated data processing services operate solely within the United States outside California,
               and we automatically exclude California-based business contact records from those offerings. All other platform features operate
               globally and currently have no geographic restrictions.
@@ -64,11 +70,32 @@ export default function PrivacyPolicy() {
               <li>Process transactions and send billing or account-related updates</li>
               <li>Deliver onboarding, support, and technical notices</li>
               <li>Respond to inquiries, feedback, or troubleshooting requests</li>
-              <li>Send marketing communications with easy opt-out options</li>
+              <li>Send marketing communications (email and SMS) with easy opt-out options</li>
+              <li>Send appointment reminders and service notifications via SMS</li>
               <li>Monitor trends and usage to inform product decisions</li>
               <li>Detect, investigate, and prevent fraud or misuse</li>
               <li>Comply with contractual and legal obligations</li>
               <li>Operate lead machine, outreach, and data processing services solely in U.S. jurisdictions outside California, excluding California-based business contact records</li>
+            </ul>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-6 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>SMS Communications</h3>
+            <p>
+              When you provide your mobile phone number and consent to receive SMS messages, we may send you:
+            </p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Transactional messages (appointment confirmations, reminders, account updates)</li>
+              <li>Service notifications and alerts</li>
+              <li>Marketing and promotional messages (only with your explicit consent)</li>
+            </ul>
+            <p>
+              <strong>Important SMS Information:</strong>
+            </p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Message frequency varies based on your service usage and preferences</li>
+              <li>Standard message and data rates may apply from your mobile carrier</li>
+              <li>Your SMS consent is not shared with third parties for their marketing purposes</li>
+              <li>You can opt out at any time by replying STOP to any message</li>
+              <li>Reply HELP for assistance or contact us at (307) 317-4795</li>
             </ul>
           </section>
 
@@ -76,12 +103,15 @@ export default function PrivacyPolicy() {
             <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>4. Information Sharing and Disclosure</h2>
             <p>We do not sell or rent personal information. We may share data only when necessary:</p>
             <ul className="list-disc ml-6 mb-4">
-              <li><strong>Service Providers:</strong> Trusted vendors who help us operate, subject to confidentiality and security obligations.</li>
+              <li><strong>Service Providers:</strong> Trusted vendors who help us operate, subject to confidentiality and security obligations. This includes SMS delivery providers (such as Twilio, GoHighLevel) who transmit messages on our behalf strictly for business operations. These providers are contractually prohibited from using your data for their own purposes.</li>
               <li><strong>Legal Requirements:</strong> When required by applicable law, regulation, or legal process.</li>
               <li><strong>Business Transfers:</strong> In connection with a merger, financing, or acquisition of all or part of our business.</li>
               <li><strong>Consent:</strong> When you direct us to share information with partners or third parties.</li>
               <li><strong>Aggregated Insights:</strong> Non-identifying analytics used for benchmarking or marketing.</li>
             </ul>
+            <p className="mt-4">
+              <strong>Third-Party SMS Services:</strong> When you consent to receive SMS communications, your phone number and message content are transmitted through our SMS service providers solely for the purpose of delivering messages to you. Your SMS consent is never shared with third parties for their own marketing purposes.
+            </p>
           </section>
 
           <section className="mb-8">
@@ -186,11 +216,16 @@ export default function PrivacyPolicy() {
             <p>
               If you have any questions about this Privacy Policy or wish to exercise your privacy rights, contact us at:
             </p>
-            <div className="mt-4">
-              <p><strong>TrueFlow AI</strong></p>
+            <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg">
+              <p><strong>TrueFlow AI LLC</strong></p>
+              <p>30 N Gould St Ste R, Sheridan, WY 82801</p>
               <p>Email: matt@trueflow.ai</p>
+              <p>Phone: (307) 317-4795</p>
               <p>Website: www.trueflow.ai</p>
             </div>
+            <p className="mt-4">
+              <strong>For SMS-related inquiries or to opt out:</strong> Reply STOP to any SMS message or text HELP to (307) 317-4795.
+            </p>
           </section>
         </div>
       </main>
