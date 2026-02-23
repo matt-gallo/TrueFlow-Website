@@ -1,0 +1,213 @@
+'use client'
+
+export const dynamic = 'force-dynamic'
+
+import { Suspense, useEffect, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import Navigation from '@/app/components/Navigation'
+import { useTheme } from '@/app/components/ThemeProvider'
+import { CheckCircle, CreditCard, HeartHandshake, Shield, Sparkles } from 'lucide-react'
+
+function WhiteGlovePaymentContent() {
+  const { isDarkMode } = useTheme()
+  const searchParams = useSearchParams()
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [paymentId] = useState(`payment_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`)
+
+  useEffect(() => {
+    // Pre-fill from URL params if provided
+    const emailParam = searchParams.get('email')
+    const nameParam = searchParams.get('name')
+    if (emailParam) setEmail(emailParam)
+    if (nameParam) setName(nameParam)
+  }, [searchParams])
+
+  // Theme classes
+  const theme = {
+    bg: isDarkMode ? 'bg-black' : 'bg-gray-50',
+    text: isDarkMode ? 'text-white' : 'text-gray-900',
+    textMuted: isDarkMode ? 'text-white/70' : 'text-gray-600',
+    textMuted2: isDarkMode ? 'text-white/60' : 'text-gray-500',
+    cardBg: isDarkMode ? 'bg-white/5' : 'bg-white',
+    cardBorder: isDarkMode ? 'border-white/10' : 'border-gray-200',
+    gradientBg: isDarkMode ? 'from-black via-slate-950 to-black' : 'from-gray-50 via-white to-gray-50',
+    glowOpacity: isDarkMode ? '/10' : '/5',
+    sectionBg: isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-xl',
+  }
+
+  // White Glove payment link
+  const paymentUrl = `https://link.fastpaydirect.com/payment-link/696ffc86ac4fd06d0ec57a61?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&payment_id=${encodeURIComponent(paymentId)}`
+
+  return (
+    <div className={`min-h-screen ${theme.bg} ${theme.text} transition-colors duration-300`}>
+      <div className="fixed inset-0 pointer-events-none">
+        <div className={`absolute inset-0 bg-gradient-to-b ${theme.gradientBg}`} />
+        <div className={`absolute top-10 left-1/2 -translate-x-1/2 w-[620px] h-[620px] bg-blue-500${theme.glowOpacity} blur-[160px]`} />
+        <div className={`absolute bottom-0 right-10 w-[420px] h-[420px] bg-purple-500${theme.glowOpacity} blur-[180px]`} />
+      </div>
+
+      <div className="relative z-10">
+        <Navigation />
+
+        <main className="pt-36 pb-20 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            {/* Header Section */}
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-400 text-sm font-semibold mb-6">
+                <HeartHandshake className="h-4 w-4" />
+                White Glove Offer
+              </div>
+              <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4">
+                Upgrade to <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">White Glove Service</span>
+              </h1>
+              <p className={`text-xl ${theme.textMuted} max-w-2xl mx-auto`}>
+                Get personalized 1:1 support, dedicated success management, and hands-on assistance to maximize your results.
+              </p>
+            </div>
+
+            {/* What's Included Section */}
+            <div className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-8 mb-8 border shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'}`}>
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Sparkles className="h-6 w-6 text-blue-400" />
+                What You Get
+              </h2>
+              <div className="grid gap-6 sm:grid-cols-2">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold">Dedicated Success Manager</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Your personal point of contact for all questions and support</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold">Priority Response Time</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Get answers within hours, not days</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold">Custom Strategy Sessions</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Weekly 1:1 calls to optimize your systems and strategy</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold">Done-For-You Setup</p>
+                    <p className={`text-sm ${theme.textMuted}`}>We handle the technical implementation while you focus on growth</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold">Direct Slack/SMS Access</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Reach your success manager anytime via your preferred channel</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-semibold">Quarterly Business Reviews</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Strategic planning sessions to ensure you're hitting your goals</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pricing Section */}
+            <div className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-8 mb-8 border shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'}`}>
+              <div className="flex items-center gap-4 mb-6">
+                <CreditCard className="h-6 w-6 text-indigo-400" />
+                <div>
+                  <p className="text-2xl font-bold">White Glove Service</p>
+                  <p className={theme.textMuted}>Add-on to your existing TrueFlow plan</p>
+                </div>
+              </div>
+
+              <div className={`p-6 rounded-2xl border ${isDarkMode ? 'border-indigo-400/30 bg-indigo-400/5' : 'border-indigo-200 bg-indigo-50'} mb-6`}>
+                <div className="flex items-baseline gap-2 mb-4">
+                  <span className="text-4xl font-bold">$147</span>
+                  <span className={theme.textMuted}>/month</span>
+                </div>
+                <ul className="space-y-2">
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle className="h-4 w-4 text-blue-400" />
+                    Billed monthly, cancel anytime
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle className="h-4 w-4 text-blue-400" />
+                    Added to your existing TrueFlow subscription
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle className="h-4 w-4 text-blue-400" />
+                    No long-term contracts or commitments
+                  </li>
+                </ul>
+              </div>
+
+              <div className={`p-4 rounded-2xl border ${isDarkMode ? 'border-blue-500/30 bg-blue-500/10' : 'border-blue-300 bg-blue-50'} mb-6`}>
+                <p className={`text-sm ${isDarkMode ? 'text-blue-200' : 'text-blue-900'}`}>
+                  <Shield className="h-4 w-4 inline mr-2" />
+                  Your payment information is secure and encrypted. You can cancel your White Glove service at any time.
+                </p>
+              </div>
+
+              {/* Payment Embed */}
+              <div className={`rounded-2xl overflow-hidden border ${isDarkMode ? 'border-white/10' : 'border-gray-200'}`}>
+                <iframe
+                  src={paymentUrl}
+                  className="w-full min-h-[600px] border-0"
+                  title="White Glove Payment Form"
+                  allow="payment"
+                />
+              </div>
+            </div>
+
+            {/* FAQ Section */}
+            <div className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-8 border shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'}`}>
+              <h2 className="text-2xl font-bold mb-6">Common Questions</h2>
+              <div className="space-y-4">
+                <div>
+                  <p className="font-semibold mb-2">When does my White Glove service start?</p>
+                  <p className={`text-sm ${theme.textMuted}`}>
+                    Your service begins immediately after payment. You'll receive an email within 24 hours with your success manager's contact information and a link to schedule your first strategy call.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold mb-2">Can I cancel anytime?</p>
+                  <p className={`text-sm ${theme.textMuted}`}>
+                    Yes, absolutely. There are no long-term contracts. You can cancel your White Glove service at any time, and you'll retain access through the end of your current billing period.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold mb-2">What if I already have a TrueFlow subscription?</p>
+                  <p className={`text-sm ${theme.textMuted}`}>
+                    Perfect! This White Glove service is designed as an add-on to your existing TrueFlow plan. It enhances your current subscription with dedicated 1:1 support and hands-on assistance.
+                  </p>
+                </div>
+                <div>
+                  <p className="font-semibold mb-2">How do I contact my success manager?</p>
+                  <p className={`text-sm ${theme.textMuted}`}>
+                    You'll have direct access via Slack, SMS, or email. Your success manager will provide their contact details within 24 hours of signup, and you can reach out anytime during business hours for priority support.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  )
+}
+
+export default function WhiteGlovePaymentPage() {
+  return (
+    <Suspense fallback={null}>
+      <WhiteGlovePaymentContent />
+    </Suspense>
+  )
+}
