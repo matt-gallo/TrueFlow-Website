@@ -130,7 +130,7 @@ function WhiteGlovePaymentContent() {
 
               <div className={`p-6 rounded-2xl border ${isDarkMode ? 'border-indigo-400/30 bg-indigo-400/5' : 'border-indigo-200 bg-indigo-50'} mb-6`}>
                 <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-4xl font-bold">$147</span>
+                  <span className="text-4xl font-bold">$497</span>
                   <span className={theme.textMuted}>/month</span>
                 </div>
                 <ul className="space-y-2">
