@@ -55,14 +55,14 @@ function WhiteGlovePaymentContent() {
             {/* Header Section */}
             <div className="text-center mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/30 text-blue-400 text-sm font-semibold mb-6">
-                <CheckCircle className="h-4 w-4" />
+                <HeartHandshake className="h-4 w-4" />
                 White Glove Service
               </div>
               <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4">
-                <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">Monthly Management Payment</span>
+                Complete your <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">White Glove Service</span> payment
               </h1>
               <p className={`text-xl ${theme.textMuted} max-w-2xl mx-auto`}>
-                Your system is set up and running. This is your monthly payment to keep everything managed, optimized, and working for you.
+                We build and run your entire sales and marketing system for you - custom CRM, AI follow-up, content, and lead-gen systems designed, installed, and managed by TrueFlow.
               </p>
             </div>
 
@@ -70,42 +70,42 @@ function WhiteGlovePaymentContent() {
             <div className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-8 mb-8 border shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'}`}>
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
                 <Sparkles className="h-6 w-6 text-blue-400" />
-                Your Monthly Management Includes
+                What You Get
               </h2>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold">Full CRM + Automations Management</p>
-                    <p className={`text-sm ${theme.textMuted}`}>We monitor, optimize, and maintain your pipelines, automations, and integrations</p>
+                    <p className="font-semibold">Custom system build tailored to your business</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Full CRM, AI chat agents, content engine, and lead machine customized to how your business operates</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold">AI Chat Agents</p>
-                    <p className={`text-sm ${theme.textMuted}`}>24/7 AI responding to leads, booking calls, and qualifying prospects automatically</p>
+                    <p className="font-semibold">Ongoing technical management and optimization</p>
+                    <p className={`text-sm ${theme.textMuted}`}>We monitor, maintain, and continuously improve your systems so they work seamlessly</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold">Constant Content Engine™</p>
-                    <p className={`text-sm ${theme.textMuted}`}>Weekly content, emails, and social posts published and managed for you</p>
+                    <p className="font-semibold">Direct access to a TrueFlow success manager</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Your dedicated point of contact for strategy, support, and system expansion</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold">Lead Machine™</p>
-                    <p className={`text-sm ${theme.textMuted}`}>Targeted campaigns, funnels, and lead routing running on autopilot</p>
+                    <p className="font-semibold">Priority support and strategy calls</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Fast response times and regular check-ins to keep you on track</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <CheckCircle className="h-5 w-5 text-blue-400 flex-shrink-0 mt-1" />
                   <div>
-                    <p className="font-semibold">Direct Success Manager Access</p>
-                    <p className={`text-sm ${theme.textMuted}`}>Priority support, strategy calls, and system expansion as you grow</p>
+                    <p className="font-semibold">Content Engine strategy and setup</p>
+                    <p className={`text-sm ${theme.textMuted}`}>Weekly content aligned to your offer, published and managed for you</p>
                   </div>
                 </div>
               </div>
@@ -116,8 +116,8 @@ function WhiteGlovePaymentContent() {
               <div className="flex items-center gap-4 mb-6">
                 <CreditCard className="h-6 w-6 text-indigo-400" />
                 <div>
-                  <p className="text-2xl font-bold">Monthly Management Payment</p>
-                  <p className={theme.textMuted}>Ongoing system management and optimization</p>
+                  <p className="text-2xl font-bold">White Glove DFY Service</p>
+                  <p className={theme.textMuted}>Complete done-for-you system build and management</p>
                 </div>
               </div>
 
@@ -127,20 +127,20 @@ function WhiteGlovePaymentContent() {
                   <span className={theme.textMuted}>/month</span>
                 </div>
                 <p className={`text-base ${theme.textMuted} mb-4`}>
-                  Billed monthly. Your system is already set up and running - this covers ongoing management, optimization, and support.
+                  Typical plans include a setup fee and monthly management. Your custom pricing was discussed during your consultation.
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-center gap-2 text-sm">
                     <CheckCircle className="h-4 w-4 text-blue-400" />
-                    All systems monitored and maintained
+                    Complete CRM, automation, and AI system build
                   </li>
                   <li className="flex items-center gap-2 text-sm">
                     <CheckCircle className="h-4 w-4 text-blue-400" />
-                    Continuous optimization and improvements
+                    Ongoing management and optimization included
                   </li>
                   <li className="flex items-center gap-2 text-sm">
                     <CheckCircle className="h-4 w-4 text-blue-400" />
-                    Priority support and direct manager access
+                    Direct success manager access
                   </li>
                 </ul>
               </div>
@@ -148,7 +148,7 @@ function WhiteGlovePaymentContent() {
               <div className={`p-4 rounded-2xl border ${isDarkMode ? 'border-blue-500/30 bg-blue-500/10' : 'border-blue-300 bg-blue-50'} mb-6`}>
                 <p className={`text-sm ${isDarkMode ? 'text-blue-200' : 'text-blue-900'}`}>
                   <Shield className="h-4 w-4 inline mr-2" />
-                  Secure payment. Your system remains active and managed as long as your monthly payment is current.
+                  Your payment information is secure and encrypted.
                 </p>
               </div>
 
@@ -165,30 +165,30 @@ function WhiteGlovePaymentContent() {
 
             {/* FAQ Section */}
             <div className={`${theme.sectionBg} rounded-3xl backdrop-blur-xl p-8 border shadow-2xl ${isDarkMode ? 'shadow-[#1d929e]/10' : 'shadow-gray-200'}`}>
-              <h2 className="text-2xl font-bold mb-6">Payment Details</h2>
+              <h2 className="text-2xl font-bold mb-6">Common Questions</h2>
               <div className="space-y-4">
                 <div>
-                  <p className="font-semibold mb-2">What does this payment cover?</p>
+                  <p className="font-semibold mb-2">When does the system build start?</p>
                   <p className={`text-sm ${theme.textMuted}`}>
-                    This monthly payment covers ongoing management, monitoring, optimization, and support for all your systems - CRM, automations, AI agents, content publishing, and lead campaigns.
+                    Your build starts on Day 1. We'll begin with a strategy and technical onboarding session where we audit your current tools and map your sales flow. You'll receive an email within 24 hours with your success manager's contact information and next steps.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold mb-2">When is payment due?</p>
+                  <p className="font-semibold mb-2">What's the timeline for going live?</p>
                   <p className={`text-sm ${theme.textMuted}`}>
-                    Payment is billed monthly. Your system remains active and fully managed as long as your payment is current.
+                    Most systems go live within 7 days. Day 1: Strategy & onboarding. Day 3: System build & integration. Day 7: Activation & optimization. Ongoing: Management & support.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold mb-2">What happens after I pay?</p>
+                  <p className="font-semibold mb-2">What systems will be built for me?</p>
                   <p className={`text-sm ${theme.textMuted}`}>
-                    Your payment is processed immediately and your management continues uninterrupted. You'll receive a confirmation email, and your success manager remains available for any questions or adjustments.
+                    We build your full CRM with custom pipelines, AI chat agents trained on your business, automated follow-up sequences, content engine for weekly publishing, and lead acquisition systems - all customized to how your business operates.
                   </p>
                 </div>
                 <div>
-                  <p className="font-semibold mb-2">How do I contact support?</p>
+                  <p className="font-semibold mb-2">How do I contact my success manager?</p>
                   <p className={`text-sm ${theme.textMuted}`}>
-                    You have direct access to your TrueFlow success manager via SMS or email. Reach out anytime during business hours for priority support, strategy calls, or system updates.
+                    You'll have direct access via SMS or email. Your success manager will provide their contact details within 24 hours of payment, and you can reach out anytime during business hours for priority support.
                   </p>
                 </div>
               </div>
