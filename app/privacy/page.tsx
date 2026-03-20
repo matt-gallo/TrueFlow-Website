@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
         <h1 className={`text-4xl font-bold mb-8 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Privacy Policy</h1>
 
         <div className={`prose prose-lg max-w-none ${isDarkMode ? 'text-white/80' : 'prose-slate text-slate-600'}`}>
-          <p className={`text-sm mb-8 ${isDarkMode ? 'text-white/60' : 'text-slate-500'}`}>Last updated: December 2, 2025</p>
+          <p className={`text-sm mb-8 ${isDarkMode ? 'text-white/60' : 'text-slate-500'}`}>Last updated: March 20, 2026</p>
 
           <section className="mb-8">
             <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>1. Introduction</h2>
@@ -186,7 +186,84 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>11. Children's Privacy</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>11. Facebook Marketing API Integration</h2>
+            <p>
+              Our platform integrates with Meta's (Facebook's) Marketing API to enable you to create, manage, and publish advertising campaigns
+              directly through our service. This integration is designed to streamline your advertising workflow and provide enhanced campaign
+              management capabilities.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-6 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Data We Access From Facebook</h3>
+            <p>When you authorize our application to connect with your Facebook account, we may access:</p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Your Facebook ad account information and business assets</li>
+              <li>Advertising campaign data, including campaign names, budgets, and targeting parameters</li>
+              <li>Ad performance metrics and analytics (impressions, clicks, conversions, spend)</li>
+              <li>Facebook Pages and business profiles you manage</li>
+              <li>Audience lists and custom audience data you've created</li>
+              <li>Creative assets (images, videos, ad copy) associated with your campaigns</li>
+            </ul>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-6 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>How We Use Facebook Data</h3>
+            <p>We use the data accessed through the Facebook Marketing API exclusively to:</p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Create and publish advertising campaigns on your behalf through our platform</li>
+              <li>Manage, optimize, and monitor your active ad campaigns</li>
+              <li>Provide analytics, reporting, and performance insights within our dashboard</li>
+              <li>Synchronize campaign settings and creative assets between our platform and Facebook</li>
+              <li>Enable automated campaign optimization and budget management features</li>
+              <li>Troubleshoot technical issues and provide customer support</li>
+            </ul>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-6 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Data Sharing With Meta Platforms</h3>
+            <p>
+              To provide our advertising services, we share the following data with Meta Platforms (Facebook):
+            </p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Campaign configurations, ad creative content, and targeting parameters you create through our platform</li>
+              <li>Budget allocations and bidding strategies you set for your campaigns</li>
+              <li>API requests necessary to create, update, or delete campaigns on your behalf</li>
+            </ul>
+            <p className="mt-4">
+              <strong>Important:</strong> We do not sell, rent, or share your Facebook data with third parties for their own marketing purposes.
+              All data sharing with Meta is strictly necessary to operate the advertising services you've requested and is governed by Facebook's
+              Platform Terms and Data Policy.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-6 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Data Storage and Retention</h3>
+            <p>
+              We temporarily cache certain Facebook data (such as campaign performance metrics) on our servers to improve platform performance
+              and enable offline reporting features. This cached data is refreshed regularly and retained only for as long as necessary to
+              provide our services. When you disconnect our application from your Facebook account or request data deletion, we remove all
+              associated Facebook data from our systems within 30 days.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-6 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Your Control and Rights</h3>
+            <p>You maintain full control over the data our application can access from your Facebook account:</p>
+            <ul className="list-disc ml-6 mb-4">
+              <li><strong>Revoke Access:</strong> You can disconnect our application at any time through Facebook's Settings → Business Integrations page</li>
+              <li><strong>Manage Permissions:</strong> Review and modify the specific permissions our app has through Facebook's App Settings</li>
+              <li><strong>Request Data Deletion:</strong> Contact us at matt@trueflow.ai to request deletion of all Facebook-related data we've collected</li>
+              <li><strong>Download Your Data:</strong> Request a copy of the Facebook data we've stored on your behalf</li>
+            </ul>
+            <p className="mt-4">
+              When you revoke our app's access through Facebook, we will no longer be able to access your Facebook data, and any scheduled
+              campaigns or automation workflows will stop immediately.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-6 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Compliance With Facebook Platform Policies</h3>
+            <p>
+              Our use of the Facebook Marketing API is subject to Meta's Platform Terms, Developer Policies, and Advertising Policies. We are
+              committed to maintaining compliance with all Facebook platform requirements and promptly addressing any policy violations. For more
+              information about how Facebook handles your data, please review Facebook's Privacy Policy at{' '}
+              <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 underline">
+                https://www.facebook.com/privacy/policy
+              </a>.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>12. Children's Privacy</h2>
             <p>
               Our services are not directed to individuals under the age of 18, and we do not knowingly collect personal information from children.
               If we learn that a child has provided personal information, we will delete it.
@@ -194,7 +271,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>12. International Data Transfers</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>13. International Data Transfers</h2>
             <p>
               Your information may be transferred to servers located in the United States or other jurisdictions where we or our service providers
               operate. We use contractual protections and due diligence to safeguard data during cross-border transfers. International transfers apply
@@ -204,7 +281,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>13. Changes to This Privacy Policy</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>14. Changes to This Privacy Policy</h2>
             <p>
               We may update this Privacy Policy as our services evolve. Material changes will be posted on this page with an updated "Last updated" date,
               and we will notify you through product or email notices when legally required.
@@ -212,7 +289,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>14. Contact Us</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>15. Contact Us</h2>
             <p>
               If you have any questions about this Privacy Policy or wish to exercise your privacy rights, contact us at:
             </p>
