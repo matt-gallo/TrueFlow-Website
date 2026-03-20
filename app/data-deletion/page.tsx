@@ -72,7 +72,7 @@ export default function DataDeletion() {
               <p><strong>TrueFlow AI LLC</strong></p>
               <p>Email: <a href="mailto:matt@trueflow.ai" className="text-cyan-400 hover:text-cyan-300">matt@trueflow.ai</a></p>
               <p>Phone: (307) 317-4795</p>
-              <p>Address: 30 N Gould St Ste R, Sheridan, WY 82801</p>
+              <p>Address: 1621 Central Avenue, Cheyenne, Wyoming 82001</p>
             </div>
             <p className="mt-4">
               When contacting us, please include:
@@ -153,7 +153,7 @@ export default function DataDeletion() {
             </p>
             <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg">
               <p><strong>TrueFlow AI LLC</strong></p>
-              <p>30 N Gould St Ste R, Sheridan, WY 82801</p>
+              <p>1621 Central Avenue, Cheyenne, Wyoming 82001</p>
               <p>Email: <a href="mailto:matt@trueflow.ai" className="text-cyan-400 hover:text-cyan-300">matt@trueflow.ai</a></p>
               <p>Phone: (307) 317-4795</p>
               <p>Website: <a href="https://www.trueflow.ai" className="text-cyan-400 hover:text-cyan-300">www.trueflow.ai</a></p>

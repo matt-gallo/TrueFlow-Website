@@ -24,7 +24,7 @@ export default function TermsOfService() {
             </p>
             <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg">
               <p><strong>TrueFlow AI LLC</strong></p>
-              <p>Physical Address: 30 N Gould St Ste R, Sheridan, WY 82801</p>
+              <p>Physical Address: 1621 Central Avenue, Cheyenne, Wyoming 82001</p>
               <p>Email: matt@trueflow.ai</p>
               <p>Phone: (307) 317-4795</p>
             </div>
@@ -282,7 +282,7 @@ export default function TermsOfService() {
             </p>
             <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg">
               <p><strong>TrueFlow AI LLC</strong></p>
-              <p>30 N Gould St Ste R, Sheridan, WY 82801</p>
+              <p>1621 Central Avenue, Cheyenne, Wyoming 82001</p>
               <p>Email: matt@trueflow.ai</p>
               <p>Phone: (307) 317-4795</p>
               <p>Website: www.trueflow.ai</p>
