@@ -1894,9 +1894,7 @@ See you in Dallas! Let's level up together.
       ]
     },
     published: true
-  }
-]
-
+  },
   {
     id: '10',
     slug: 'you-dont-have-a-lead-problem',
