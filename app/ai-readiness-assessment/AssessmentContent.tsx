@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import Navigation from '../components/Navigation'
 import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
@@ -257,10 +258,14 @@ function getInsights(answers: number[]): string[] {
 
 export default function AIReadinessAssessmentContent() {
   const { isDarkMode } = useTheme()
+  const searchParams = useSearchParams()
   const [current, setCurrent] = useState(0)
   const [answers, setAnswers] = useState<number[]>([])
   const [selected, setSelected] = useState<number | null>(null)
   const [showResults, setShowResults] = useState(false)
+
+  const contactFirstName = searchParams.get('firstName') || ''
+  const contactEmail = searchParams.get('email') || ''
 
   const question = QUESTIONS[current]
   const progress = ((current) / QUESTIONS.length) * 100
@@ -274,6 +279,24 @@ export default function AIReadinessAssessmentContent() {
     if (current + 1 >= QUESTIONS.length) {
       setAnswers(newAnswers)
       setShowResults(true)
+
+      // Fire results to GHL asynchronously
+      if (contactEmail) {
+        const finalScore = Math.round((newAnswers.reduce((a, b) => a + b, 0) / MAX_SCORE) * 100)
+        const finalTier = getScoreTier(finalScore)
+        const finalInsights = getInsights(newAnswers)
+        fetch('/api/assessment-results', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: contactFirstName,
+            email: contactEmail,
+            score: finalScore,
+            tier: finalTier.label,
+            insights: finalInsights,
+          }),
+        }).catch(err => console.error('Failed to save assessment results:', err))
+      }
     } else {
       setAnswers(newAnswers)
       setCurrent(current + 1)
