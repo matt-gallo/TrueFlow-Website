@@ -53,6 +53,7 @@ import TrueFlowLogoIcon from './components/TrueFlowLogoIcon'
 import { Footer } from './components/Footer'
 import { useTheme } from './components/ThemeProvider'
 import { Moon, Sun } from 'lucide-react'
+import { AssessmentPopup } from './components/AssessmentPopup'
 
 interface Particle {
   id: number
@@ -719,6 +720,8 @@ export default function LandingPage() {
     <div className={`min-h-screen overflow-x-hidden transition-colors ${
       isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
     }`}>
+
+      <AssessmentPopup />
 
       {/* Floating Particles */}
       {particles.map((particle) => (
