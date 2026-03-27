@@ -76,7 +76,7 @@ export function AssessmentPopup() {
       setIsClosing(true)
       setTimeout(() => {
         setIsVisible(false)
-        router.push('/readiness-assessment')
+        router.push('/ai-readiness-assessment')
       }, 300)
     } catch {
       setError('Something went wrong. Please try again.')
