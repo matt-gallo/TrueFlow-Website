@@ -72,11 +72,12 @@ export function AssessmentPopup() {
         return
       }
 
-      // Success — close popup and go to assessment
+      // Success — close popup and go to assessment with contact info
       setIsClosing(true)
       setTimeout(() => {
         setIsVisible(false)
-        router.push('/ai-readiness-assessment')
+        const params = new URLSearchParams({ firstName, email })
+        router.push(`/ai-readiness-assessment?${params.toString()}`)
       }, 300)
     } catch {
       setError('Something went wrong. Please try again.')

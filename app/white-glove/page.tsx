@@ -33,6 +33,7 @@ import {
 } from 'lucide-react'
 import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
+import { AssessmentPopup } from '../components/AssessmentPopup'
 
 interface Particle {
   id: number
@@ -356,6 +357,7 @@ export default function WhiteGlovePage() {
 
   return (
     <>
+      <AssessmentPopup />
       <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
       <div className={`min-h-screen overflow-x-hidden transition-colors ${
         isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
