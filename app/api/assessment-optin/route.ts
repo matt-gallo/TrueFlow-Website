@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 
-const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/GVFoSfHpPaXzRXCJbym0/webhook-trigger/7481bde1-2a8c-4525-a3d1-996b81f04ff6';
+const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/GVFoSfHpPaXzRXCJbym0/webhook-trigger/e3da0205-1402-4433-8988-027379031571';
 
 export async function POST(request: NextRequest) {
   try {
