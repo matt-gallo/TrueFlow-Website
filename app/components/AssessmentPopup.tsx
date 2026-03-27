@@ -6,7 +6,7 @@ import { X, ArrowRight, CheckCircle, Zap } from 'lucide-react'
 
 const COOKIE_NAME = 'trueflow_assessment_dismissed'
 const DISMISS_DAYS = 7
-const DELAY_MS = 8000
+const DELAY_MS = 6000
 const SCROLL_PCT = 30
 
 export function AssessmentPopup() {
