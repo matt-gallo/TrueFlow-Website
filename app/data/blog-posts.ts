@@ -2044,9 +2044,7 @@ Want this built for you in just 3 days—for free—and you don't pay until you 
       keywords: ['CRM tagging', 'lead segmentation', 'intent tier', 'pipeline automation', 'lead organization', 'CRM automation', 'sales pipeline']
     },
     published: true
-  }
-]
-
+  },
   {
     id: '11',
     slug: 'stop-duct-taping-your-business-together',
