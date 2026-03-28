@@ -127,18 +127,18 @@ export default function CookieConsent() {
                   <div className="flex-1 space-y-1">
                     <div className="flex items-center gap-2">
                       <h3 className={`text-sm font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                        Visitor Information
+                        Analytics & Performance
                       </h3>
                       <span className={`px-2 py-0.5 rounded-full text-xs ${
                         isDarkMode ? 'bg-blue-500/20 text-blue-300' : 'bg-blue-100 text-blue-600'
                       }`}>
-                        Recommended
+                        Optional
                       </span>
                     </div>
                     <p className={`text-xs leading-relaxed ${
                       isDarkMode ? 'text-white/60' : 'text-gray-600'
                     }`}>
-                      We collect basic information (name, email, phone) to improve your experience and enhance our services.
+                      Help us improve your experience by allowing us to analyze site usage and performance.
                     </p>
                   </div>
 

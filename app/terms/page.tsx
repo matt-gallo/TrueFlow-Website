@@ -15,13 +15,19 @@ export default function TermsOfService() {
         <h1 className={`text-4xl font-bold mb-8 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Terms of Service</h1>
 
         <div className={`prose prose-lg max-w-none ${isDarkMode ? 'text-white/80' : 'prose-slate text-slate-600'}`}>
-          <p className={`text-sm mb-8 ${isDarkMode ? 'text-white/60' : 'text-slate-500'}`}>Last updated: January 13, 2025</p>
+          <p className={`text-sm mb-8 ${isDarkMode ? 'text-white/60' : 'text-slate-500'}`}>Last updated: March 20, 2026</p>
           
           <section className="mb-8">
             <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>1. Agreement to Terms</h2>
             <p>
-              By accessing or using TrueFlow AI's services ("Services"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access our Services.
+              By accessing or using TrueFlow AI LLC's services ("Services"), you agree to be bound by these Terms of Service ("Terms"). If you disagree with any part of these terms, you may not access our Services.
             </p>
+            <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg">
+              <p><strong>TrueFlow AI LLC</strong></p>
+              <p>Physical Address: 1621 Central Avenue, Cheyenne, Wyoming 82001</p>
+              <p>Email: matt@trueflow.ai</p>
+              <p>Phone: (307) 317-4795</p>
+            </div>
           </section>
 
           <section className="mb-8">
@@ -39,7 +45,50 @@ export default function TermsOfService() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>3. Account Registration</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>3. Third-Party Integrations and Services</h2>
+
+            <h3 className={`text-xl font-semibold mb-2 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Facebook/Meta Marketing API Integration</h3>
+            <p>
+              Our Services include integration with Facebook's (Meta's) Marketing API to enable advertising campaign management. By connecting your Facebook account to our platform, you acknowledge and agree that:
+            </p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>You authorize us to access your Facebook ad accounts, campaigns, and related data on your behalf</li>
+              <li>You are responsible for compliance with Facebook's Platform Terms, Business Tools Terms, and Advertising Policies</li>
+              <li>You grant us permission to create, modify, and manage advertising campaigns through Facebook's API using your credentials</li>
+              <li>You maintain full responsibility for the content, targeting, and compliance of advertisements created through our platform</li>
+              <li>You will not use our integration to violate Facebook's policies or engage in prohibited advertising practices</li>
+            </ul>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Your Responsibilities</h3>
+            <p>When using third-party integrations through our Services, you agree to:</p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Comply with all applicable terms, policies, and guidelines of the third-party platform</li>
+              <li>Ensure you have proper authorization to connect business accounts and manage advertising</li>
+              <li>Monitor your campaigns and ensure compliance with advertising regulations</li>
+              <li>Maintain valid payment methods with third-party platforms for advertising spend</li>
+              <li>Review and approve all campaign settings before publication</li>
+            </ul>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Third-Party Platform Changes</h3>
+            <p>
+              We are not responsible for changes to third-party platform APIs, policies, or features that may affect our Services. Third-party platforms may suspend or terminate access to their services at any time, which may impact functionality within our platform.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Disconnecting Third-Party Services</h3>
+            <p>
+              You may disconnect third-party integrations at any time through:
+            </p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Your account settings within our platform</li>
+              <li>The third-party platform's app management settings (e.g., Facebook Settings → Business Integrations)</li>
+            </ul>
+            <p className="mt-4">
+              When you disconnect a third-party integration, we will cease accessing that platform's data and delete associated data within 30 days, as outlined in our Privacy Policy. Active campaigns or automation may stop immediately upon disconnection.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>4. Account Registration</h2>
             <p>To use our Services, you must:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>Provide accurate, current, and complete information</li>
@@ -54,7 +103,7 @@ export default function TermsOfService() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>4. Acceptable Use</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>5. Acceptable Use</h2>
             <p>You agree not to use our Services to:</p>
             <ul className="list-disc ml-6 mb-4">
               <li>Violate any laws or regulations</li>
@@ -69,20 +118,72 @@ export default function TermsOfService() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>5. Intellectual Property Rights</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>6. SMS Communications and Consent</h2>
+
+            <h3 className={`text-xl font-semibold mb-2 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Consent to Receive SMS Messages</h3>
+            <p>
+              By providing your mobile phone number and opting in to receive SMS messages, you expressly consent to receive text messages from TrueFlow AI LLC at the number provided. This includes:
+            </p>
+            <ul className="list-disc ml-6 mb-4">
+              <li>Transactional messages (appointment confirmations, reminders, account alerts)</li>
+              <li>Service notifications and system updates</li>
+              <li>Marketing and promotional messages (only with explicit consent)</li>
+            </ul>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Message Frequency and Costs</h3>
+            <p>
+              Message frequency varies based on your service usage and account settings. Standard message and data rates may apply from your mobile carrier. You are responsible for all charges from your mobile carrier related to SMS messages.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Opt-Out Instructions</h3>
+            <p>
+              You may opt out of SMS communications at any time by:
+            </p>
+            <ul className="list-disc ml-6 mb-4">
+              <li><strong>Reply STOP:</strong> Text STOP to any message you receive from us to unsubscribe</li>
+              <li><strong>Reply HELP:</strong> Text HELP for assistance or more information</li>
+              <li><strong>Contact us:</strong> Email matt@trueflow.ai or call (307) 317-4795</li>
+            </ul>
+            <p>
+              After you send STOP, we will send one final confirmation message and then stop sending SMS messages to your number. You may continue to receive SMS messages briefly while we process your request.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Supported Carriers</h3>
+            <p>
+              Our SMS service is supported by major U.S. carriers. If you have questions about your carrier's support or experience delivery issues, text HELP or contact us directly.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Carrier Liability Disclaimer</h3>
+            <p>
+              Carriers are not liable for delayed or undelivered messages. Message delivery is subject to effective transmission from your wireless service provider and is not guaranteed by TrueFlow AI LLC.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Age Restriction</h3>
+            <p>
+              You must be at least 18 years old to use our services or opt in to receive SMS communications from TrueFlow AI LLC. By submitting your information, you represent and warrant that you are 18 years of age or older.
+            </p>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>SMS Consent Summary</h3>
+            <p>
+              By providing your phone number and opting in, you consent to receive SMS messages from TrueFlow AI LLC related to appointment reminders, account notifications, and marketing communications (if selected). Message frequency may vary. Message & data rates may apply. Reply STOP to opt out or HELP for assistance. SMS consent is not shared with third parties or affiliates for marketing purposes.
+            </p>
+          </section>
+
+          <section className="mb-8">
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>7. Intellectual Property Rights</h2>
             <h3 className={`text-xl font-semibold mb-2 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Our Property</h3>
             <p>
               All content, features, and functionality of our Services, including but not limited to text, graphics, logos, and software, are owned by TrueFlow AI and protected by intellectual property laws.
             </p>
-            
-            <h3 className="text-xl font-semibold text-slate-800 mb-2 mt-4">Your Content</h3>
+
+            <h3 className={`text-xl font-semibold mb-2 mt-4 ${isDarkMode ? 'text-white/90' : 'text-slate-800'}`}>Your Content</h3>
             <p>
               You retain ownership of content you submit to our Services. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, and distribute your content in connection with providing our Services.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>6. Payment Terms</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>8. Payment Terms</h2>
             <p>
               If you purchase a paid subscription:
             </p>
@@ -96,7 +197,7 @@ export default function TermsOfService() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>7. Disclaimers and Warranties</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>9. Disclaimers and Warranties</h2>
             <p>
               OUR SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED. WE DISCLAIM ALL WARRANTIES, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
             </p>
@@ -106,7 +207,7 @@ export default function TermsOfService() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>8. Limitation of Liability</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>10. Limitation of Liability</h2>
             <p>
               TO THE MAXIMUM EXTENT PERMITTED BY LAW, TRUEFLOW AI SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY, OR ANY LOSS OF DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES.
             </p>
@@ -116,21 +217,21 @@ export default function TermsOfService() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>9. Indemnification</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>11. Indemnification</h2>
             <p>
               You agree to defend, indemnify, and hold harmless TrueFlow AI, its affiliates, and their respective officers, directors, employees, and agents from any claims, damages, losses, liabilities, and expenses (including reasonable attorneys' fees) arising from your use of our Services or violation of these Terms.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>10. Data Processing and Privacy</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>12. Data Processing and Privacy</h2>
             <p>
               Your use of our Services is subject to our Privacy Policy. By using our Services, you consent to our collection and use of your information as described in our Privacy Policy.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>11. Termination</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>13. Termination</h2>
             <p>
               We may terminate or suspend your account and access to our Services immediately, without prior notice or liability, for any reason, including breach of these Terms.
             </p>
@@ -140,50 +241,55 @@ export default function TermsOfService() {
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>12. Modifications to Terms</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>14. Modifications to Terms</h2>
             <p>
               We reserve the right to modify these Terms at any time. We will notify you of any changes by posting the new Terms on this page and updating the "Last updated" date. Your continued use of our Services after changes constitutes acceptance of the modified Terms.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>13. Governing Law</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>15. Governing Law</h2>
             <p>
               These Terms shall be governed by and construed in accordance with the laws of the United States, without regard to its conflict of law provisions. You agree to submit to the personal jurisdiction of the courts located in our jurisdiction.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>14. Dispute Resolution</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>16. Dispute Resolution</h2>
             <p>
               Any disputes arising from these Terms or your use of our Services shall be resolved through binding arbitration in accordance with the rules of the American Arbitration Association. The arbitration shall be conducted in our jurisdiction, and judgment on the award may be entered in any court having jurisdiction.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>15. Severability</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>17. Severability</h2>
             <p>
               If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>16. Entire Agreement</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>18. Entire Agreement</h2>
             <p>
               These Terms, together with our Privacy Policy, constitute the entire agreement between you and TrueFlow AI regarding the use of our Services and supersede any prior agreements.
             </p>
           </section>
 
           <section className="mb-8">
-            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>17. Contact Information</h2>
+            <h2 className={`text-2xl font-semibold mb-4 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>19. Contact Information</h2>
             <p>
               For questions about these Terms of Service, please contact us at:
             </p>
-            <div className="mt-4">
-              <p><strong>TrueFlow AI</strong></p>
+            <div className="mt-4 p-4 bg-white/5 border border-white/10 rounded-lg">
+              <p><strong>TrueFlow AI LLC</strong></p>
+              <p>1621 Central Avenue, Cheyenne, Wyoming 82001</p>
               <p>Email: matt@trueflow.ai</p>
+              <p>Phone: (307) 317-4795</p>
               <p>Website: www.trueflow.ai</p>
             </div>
+            <p className="mt-4">
+              <strong>For SMS support:</strong> Reply STOP to opt out or HELP for assistance. You can also text or call (307) 317-4795.
+            </p>
           </section>
         </div>
       </main>
