@@ -2164,6 +2164,31 @@ The result? Less time managing. More time growing.
       keywords: ['marketing stack', 'unified marketing platform', 'marketing automation', 'ad management', 'CRM integration', 'campaign analytics', 'marketing tools']
     },
     published: true
+  },
+  {
+    id: '14',
+    slug: 'your-customers-dont-care-about-your-back-office',
+    title: "Your Customers Don't Care About Your Back Office — But They Feel It",
+    excerpt: "The messy operations behind the scenes are showing up in your customer experience. Here's how to fix that without hiring a team.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-03-29',
+    readTime: 5,
+    category: categories.automation,
+    tags: [tags['customer-experience'], tags['workflow-automation'], tags['sales-automation'], operationsTag],
+    primaryTag: tags['customer-experience'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=630&fit=crop',
+      alt: 'Clean, connected business operations flowing seamlessly',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Customers Don't Care About Your Back Office — But They Feel It | TrueFlow AI",
+      metaDescription: "Disconnected internal operations leak into your customer experience every time. Here's the three-day fix to connect everything into one seamless flow.",
+      keywords: ['customer experience', 'business operations', 'workflow automation', 'CRM automation', 'invoice automation', 'operations optimization', 'back office systems']
+    },
+    published: true
   }
 ]
 
