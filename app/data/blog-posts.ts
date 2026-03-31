@@ -2189,6 +2189,31 @@ The result? Less time managing. More time growing.
       keywords: ['customer experience', 'business operations', 'workflow automation', 'CRM automation', 'invoice automation', 'operations optimization', 'back office systems']
     },
     published: true
+  },
+  {
+    id: '15',
+    slug: 'your-onboarding-is-leaking-money',
+    title: "Your Onboarding Is Leaking Money — Here's How to Plug the Holes in 3 Days",
+    excerpt: "Most businesses lose new customers within the first 48 hours because onboarding is manual, inconsistent, and forgettable. Here's how automated onboarding sequences change everything.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-03-30',
+    readTime: 5,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['lead-nurturing'], tags['customer-experience'], tags['crm']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&h=630&fit=crop',
+      alt: 'Automated onboarding sequence connecting new clients to a business system',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Onboarding Is Leaking Money — Here's How to Plug the Holes in 3 Days | TrueFlow AI",
+      metaDescription: "The first 48 hours after a new lead joins are critical. Most businesses lose them to manual, inconsistent onboarding. Here's the automated fix.",
+      keywords: ['onboarding automation', 'client onboarding', 'lead nurturing', 'CRM automation', 'customer retention', 'automated follow-up', 'onboarding sequence']
+    },
+    published: true
   }
 ]
 
