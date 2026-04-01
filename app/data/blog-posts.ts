@@ -2214,6 +2214,31 @@ The result? Less time managing. More time growing.
       keywords: ['onboarding automation', 'client onboarding', 'lead nurturing', 'CRM automation', 'customer retention', 'automated follow-up', 'onboarding sequence']
     },
     published: true
+  },
+  {
+    id: '16',
+    slug: 'your-quoting-process-is-killing-your-deals',
+    title: "Your Quoting Process Is Killing Your Deals (And You Might Not Even Know It)",
+    excerpt: "Most businesses lose deals not because of price or product — but because their quoting process is slow, confusing, and manual. Here's how to fix it with automation.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-01',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['sales-automation'], tags['workflow-automation'], tags['crm'], tags['conversion-optimization']],
+    primaryTag: tags['sales-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=630&fit=crop',
+      alt: 'Automated quoting system sending a clean proposal instantly',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Quoting Process Is Killing Your Deals | TrueFlow AI",
+      metaDescription: "Most businesses lose deals not because of price — but because their quoting process is slow and manual. Here's what an automated quoting system looks like.",
+      keywords: ['quoting automation', 'sales automation', 'proposal automation', 'DocuSign automation', 'CRM quoting', 'sales process', 'deal velocity']
+    },
+    published: true
   }
 ]
 
