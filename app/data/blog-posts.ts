@@ -2239,6 +2239,31 @@ The result? Less time managing. More time growing.
       keywords: ['quoting automation', 'sales automation', 'proposal automation', 'DocuSign automation', 'CRM quoting', 'sales process', 'deal velocity']
     },
     published: true
+  },
+  {
+    id: '17',
+    slug: 'your-ads-arent-broken-your-funnel-is',
+    title: "Your Ads Aren't Broken — Your Funnel Is",
+    excerpt: "If your ads are getting clicks but not conversions, the problem isn't your ad spend — it's what happens after the click. Here's how to fix a funnel that leaks.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-02',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['conversion-optimization'], tags['sales-automation'], tags['workflow-automation'], tags['crm']],
+    primaryTag: tags['conversion-optimization'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: 'Marketing funnel optimization showing the gap between ad clicks and conversions',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Ads Aren't Broken — Your Funnel Is | TrueFlow AI",
+      metaDescription: "If your ads are getting clicks but not conversions, the problem isn't your ad spend — it's what happens after the click. Here's how to fix a funnel that leaks.",
+      keywords: ['funnel optimization', 'landing page conversion', 'ad funnel', 'conversion rate optimization', 'lead funnel', 'marketing funnel', 'ad spend']
+    },
+    published: true
   }
 ]
 
