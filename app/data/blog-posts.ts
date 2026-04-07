@@ -2242,6 +2242,31 @@ The result? Less time managing. More time growing.
   },
   {
     id: '17',
+    slug: 'your-ad-funnel-isnt-broken-your-landing-page-is',
+    title: "Your Ad Funnel Isn't Broken — Your Landing Page Is",
+    excerpt: "Most ad funnels fail not because the ads are wrong, but because the landing page doesn't speak to the prospect's actual pain. Here's how to fix it in one afternoon.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-04',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['conversion-optimization'], tags['sales-automation'], tags['workflow-automation'], tags['crm']],
+    primaryTag: tags['conversion-optimization'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop',
+      alt: 'Marketing funnel showing the gap between ad clicks and landing page conversions',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Ad Funnel Isn't Broken — Your Landing Page Is | TrueFlow AI",
+      metaDescription: "Most ad funnels fail not because the ads are wrong, but because the landing page doesn't speak to the prospect's actual pain. Here's how to fix it in one afternoon.",
+      keywords: ['landing page optimization', 'ad funnel', 'conversion rate optimization', 'landing page conversion', 'marketing funnel', 'ad spend', 'lead generation']
+    },
+    published: true
+  },
+  {
+    id: '18',
     slug: 'your-ads-arent-broken-your-funnel-is',
     title: "Your Ads Aren't Broken — Your Funnel Is",
     excerpt: "If your ads are getting clicks but not conversions, the problem isn't your ad spend — it's what happens after the click. Here's how to fix a funnel that leaks.",
@@ -2262,6 +2287,31 @@ The result? Less time managing. More time growing.
       metaTitle: "Your Ads Aren't Broken — Your Funnel Is | TrueFlow AI",
       metaDescription: "If your ads are getting clicks but not conversions, the problem isn't your ad spend — it's what happens after the click. Here's how to fix a funnel that leaks.",
       keywords: ['funnel optimization', 'landing page conversion', 'ad funnel', 'conversion rate optimization', 'lead funnel', 'marketing funnel', 'ad spend']
+    },
+    published: true
+  },
+  {
+    id: '19',
+    slug: 'stop-manually-delivering-what-automation-should-handle',
+    title: "Stop Manually Delivering What Automation Should Handle",
+    excerpt: "Most business owners still manually send links, reminders, and follow-ups after every sale. Here's how to build a product-triggered automation that does it all the moment someone buys.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-06',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['sales-automation'], tags['crm'], tags['conversion-optimization']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=630&fit=crop',
+      alt: 'Automated workflow delivering confirmation emails and reminders after a purchase',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Stop Manually Delivering What Automation Should Handle | TrueFlow AI",
+      metaDescription: "Most business owners still manually send links, reminders, and follow-ups after every sale. Here's how to build a product-triggered automation that does it all instantly.",
+      keywords: ['post-sale automation', 'workflow automation', 'GoHighLevel automation', 'event automation', 'product triggered workflow', 'CRM automation', 'business automation']
     },
     published: true
   }
