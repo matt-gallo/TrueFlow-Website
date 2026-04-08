@@ -99,11 +99,11 @@ export function AssessmentPopup() {
 
       {/* Modal */}
       <div
-        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[92%] max-w-lg transition-all duration-300 ${
+        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-[92%] max-w-lg max-h-[85vh] overflow-y-auto transition-all duration-300 ${
           isClosing ? 'opacity-0 scale-95' : 'opacity-100 scale-100'
         }`}
       >
-        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-white/10 rounded-2xl p-5 md:p-8 relative overflow-hidden shadow-2xl">
+        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 border border-white/10 rounded-2xl px-5 py-5 md:p-8 relative overflow-hidden shadow-2xl">
           {/* Glow blobs */}
           <div className="absolute top-0 left-0 w-64 h-64 bg-cyan-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none" />
@@ -118,26 +118,26 @@ export function AssessmentPopup() {
           </button>
 
           <div className="relative z-10">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-3 py-1 mb-3 md:mb-5">
+            {/* Badge — hidden on mobile to save space */}
+            <div className="hidden md:inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 rounded-full px-3 py-1 mb-5">
               <Zap className="h-3.5 w-3.5 text-cyan-400" />
               <span className="text-cyan-400 text-xs font-medium">Free AI Readiness Assessment</span>
             </div>
 
             {/* Headline */}
-            <h2 className="text-xl md:text-3xl font-bold text-white mb-2 md:mb-3 leading-tight">
+            <h2 className="text-lg md:text-3xl font-bold text-white mb-2 md:mb-3 leading-tight pr-6">
               Find out where your business is{' '}
               <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
                 leaking time and money
               </span>
             </h2>
 
-            <p className="text-white/60 text-xs md:text-sm mb-4 md:mb-5">
-              Take our 2-minute assessment and get a personalized report showing your top AI automation opportunities.
+            <p className="text-white/60 text-xs md:text-sm mb-3 md:mb-5">
+              Take our 2-minute assessment and get a personalized AI automation report.
             </p>
 
-            {/* Benefits */}
-            <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6">
+            {/* Benefits — hidden on mobile to keep popup compact */}
+            <ul className="hidden md:block space-y-2 mb-6">
               {[
                 'Your AI readiness score across 5 key areas',
                 'The top 3 inefficiencies costing you the most',
@@ -151,14 +151,14 @@ export function AssessmentPopup() {
             </ul>
 
             {/* Form */}
-            <form onSubmit={handleSubmit} className="space-y-3">
+            <form onSubmit={handleSubmit} className="space-y-2.5 md:space-y-3">
               <input
                 type="text"
                 placeholder="First name"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 md:py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
               />
               <input
                 type="email"
@@ -166,7 +166,7 @@ export function AssessmentPopup() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 md:py-3 text-white placeholder-white/30 text-sm focus:outline-none focus:border-cyan-500/50 transition-colors"
               />
 
               {error && (
@@ -176,7 +176,7 @@ export function AssessmentPopup() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-3 md:py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60"
+                className="w-full bg-gradient-to-r from-cyan-500 to-purple-600 text-white py-2.5 md:py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:opacity-90 transition-opacity disabled:opacity-60"
               >
                 {isSubmitting ? (
                   'Saving...'
@@ -191,7 +191,7 @@ export function AssessmentPopup() {
 
             <button
               onClick={dismiss}
-              className="block mx-auto mt-4 text-white/50 hover:text-white/80 text-sm underline underline-offset-2 transition-colors"
+              className="block mx-auto mt-3 md:mt-4 text-white/50 hover:text-white/80 text-sm underline underline-offset-2 transition-colors"
             >
               No thanks
             </button>
