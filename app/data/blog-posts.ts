@@ -2339,6 +2339,31 @@ The result? Less time managing. More time growing.
       keywords: ['sales system', 'lead intake automation', 'CRM automation', 'follow-up automation', 'sales funnel', 'lead conversion', 'business automation']
     },
     published: true
+  },
+  {
+    id: '21',
+    slug: 'you-treat-every-lead-the-same-thats-why-youre-losing-them',
+    title: "You Treat Every Lead the Same — That's Why You're Losing Them",
+    excerpt: "Most businesses blast the same follow-up to every lead. Here's why intent-based tagging changes everything — and how to build it into your CRM in days, not months.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-11',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['crm'], tags['sales-automation'], tags['workflow-automation'], tags['conversion-optimization']],
+    primaryTag: tags['crm'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&h=630&fit=crop',
+      alt: 'CRM lead segmentation showing intent-based tagging across contact records',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "You Treat Every Lead the Same — That's Why You're Losing Them | TrueFlow AI",
+      metaDescription: "Most businesses blast the same follow-up to every lead. Here's why intent-based tagging changes everything — and how to build it into your CRM in days, not months.",
+      keywords: ['lead segmentation', 'intent-based tagging', 'CRM automation', 'lead scoring', 'sales automation', 'GoHighLevel tagging', 'lead management']
+    },
+    published: true
   }
 ]
 
