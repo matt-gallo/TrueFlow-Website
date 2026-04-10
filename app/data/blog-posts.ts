@@ -2314,6 +2314,31 @@ The result? Less time managing. More time growing.
       keywords: ['post-sale automation', 'workflow automation', 'GoHighLevel automation', 'event automation', 'product triggered workflow', 'CRM automation', 'business automation']
     },
     published: true
+  },
+  {
+    id: '20',
+    slug: 'your-funnel-isnt-broken-your-system-is',
+    title: "Your Funnel Isn't Broken — Your System Is",
+    excerpt: "Most business owners blame their ads when leads don't convert. But the real problem is almost never the traffic — it's what happens after the click.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-07',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['sales-automation'], tags['workflow-automation'], tags['crm'], tags['conversion-optimization']],
+    primaryTag: tags['sales-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?w=1200&h=630&fit=crop',
+      alt: 'Sales system showing the path from ad click to closed deal',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Funnel Isn't Broken — Your System Is | TrueFlow AI",
+      metaDescription: "Most business owners blame their ads when leads don't convert. But the real problem is almost never the traffic — it's what happens after the click.",
+      keywords: ['sales system', 'lead intake automation', 'CRM automation', 'follow-up automation', 'sales funnel', 'lead conversion', 'business automation']
+    },
+    published: true
   }
 ]
 
