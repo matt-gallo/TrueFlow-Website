@@ -2364,6 +2364,106 @@ The result? Less time managing. More time growing.
       keywords: ['lead segmentation', 'intent-based tagging', 'CRM automation', 'lead scoring', 'sales automation', 'GoHighLevel tagging', 'lead management']
     },
     published: true
+  },
+  {
+    id: '22',
+    slug: 'your-sales-pipeline-is-leaking',
+    title: "Your Sales Pipeline Is Leaking — Here's How to Plug Every Hole with Automation",
+    excerpt: "Most businesses lose leads not because of bad marketing, but because their follow-up is broken. Here's how automated sales pipelines eliminate manual chasing and turn more leads into paying customers.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-14',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['sales-automation'], tags['workflow-automation'], tags['crm'], tags['conversion-optimization']],
+    primaryTag: tags['sales-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop',
+      alt: 'Sales pipeline showing automated stages from lead response to closed deal',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Sales Pipeline Is Leaking — Here's How to Plug Every Hole | TrueFlow AI",
+      metaDescription: "Most businesses lose leads not because of bad marketing, but because their follow-up is broken. Here's how automated sales pipelines eliminate manual chasing.",
+      keywords: ['sales pipeline automation', 'lead follow-up', 'automated follow-up', 'sales automation', 'pipeline leaks', 'CRM automation', 'quoting automation']
+    },
+    published: true
+  },
+  {
+    id: '23',
+    slug: 'the-gap-between-yes-and-paid',
+    title: "The Gap Between \"Yes\" and \"Paid\" Is Where Deals Die",
+    excerpt: "The moment a client says yes, a silent countdown starts. Here's why most businesses lose deals in the handoff — and how to close the gap with automation that runs the second someone agrees to buy.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-15',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['sales-automation'], tags['workflow-automation'], tags['crm'], tags['conversion-optimization']],
+    primaryTag: tags['sales-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&h=630&fit=crop',
+      alt: 'Automated contract and payment workflow closing the gap between yes and paid',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Gap Between \"Yes\" and \"Paid\" Is Where Deals Die | TrueFlow AI",
+      metaDescription: "The moment a client says yes, a silent countdown starts. Here's why most businesses lose deals in the handoff — and how to automate the post-sale process.",
+      keywords: ['post-sale automation', 'quoting automation', 'invoice automation', 'deal closing', 'sales handoff', 'payment automation', 'CRM automation']
+    },
+    published: true
+  },
+  {
+    id: '24',
+    slug: 'scope-creep-isnt-a-communication-problem',
+    title: "Scope Creep Isn't a Communication Problem. It's a System Problem.",
+    excerpt: "If one client takes 30% of your time and pays you 8% of your revenue, the issue isn't that you said yes too easily — it's that nothing in your business stopped you from saying yes.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-16',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['crm'], tags['sales-automation'], tags['conversion-optimization']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=630&fit=crop',
+      alt: 'Business owner overwhelmed by scope creep from a demanding client',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Scope Creep Isn't a Communication Problem. It's a System Problem. | TrueFlow AI",
+      metaDescription: "If one client takes 30% of your time and pays 8% of your revenue, nothing in your business stopped you from saying yes. Here's how to fix that with systems.",
+      keywords: ['scope creep', 'client management automation', 'intake automation', 'business systems', 'boundary setting', 'workflow automation', 'CRM intake']
+    },
+    published: true
+  },
+  {
+    id: '25',
+    slug: 'your-best-week-shouldnt-be-your-businesss-worst',
+    title: "Your Best Week Shouldn't Be Your Business's Worst",
+    excerpt: "When you step into your highest-leverage work — teaching, launching, speaking, serving — your business shouldn't go dark. Here's what it looks like when your systems compound your best days instead of competing with them.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-17',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['sales-automation'], tags['crm'], tags['conversion-optimization']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=630&fit=crop',
+      alt: 'Founder teaching a live class while business systems run autonomously in the background',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Best Week Shouldn't Be Your Business's Worst | TrueFlow AI",
+      metaDescription: "When you step into your highest-leverage work, your business shouldn't go dark. Here's what compounding looks like when your systems run without you.",
+      keywords: ['business automation', 'systems thinking', 'automated business', 'founder freedom', 'workflow automation', 'business operations', 'lead automation']
+    },
+    published: true
   }
 ]
 
