@@ -2464,6 +2464,231 @@ The result? Less time managing. More time growing.
       keywords: ['business automation', 'systems thinking', 'automated business', 'founder freedom', 'workflow automation', 'business operations', 'lead automation']
     },
     published: true
+  },
+  {
+    id: '26',
+    slug: 'the-proposal-you-havent-sent-is-the-deal-youve-already-lost',
+    title: "The Proposal You Haven't Sent Is the Deal You've Already Lost",
+    excerpt: "Most service businesses lose deals before the sales call ends — not because the offer was wrong, but because the follow-through was slow. Here's how to close the gap between conversation and close.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-18',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['sales-automation'], tags['workflow-automation'], tags['crm'], tags['conversion-optimization']],
+    primaryTag: tags['sales-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=630&fit=crop',
+      alt: 'Sales proposal being sent immediately after a discovery call',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Proposal You Haven't Sent Is the Deal You've Already Lost | TrueFlow AI",
+      metaDescription: "Most service businesses lose deals before the sales call ends — not because the offer was wrong, but because the follow-through was slow. Here's how to automate proposal delivery.",
+      keywords: ['proposal automation', 'sales follow-up', 'deal closing', 'sales automation', 'CRM automation', 'pipeline automation', 'quoting automation']
+    },
+    published: true
+  },
+  {
+    id: '27',
+    slug: 'stop-building-automation-start-mapping-what-actually-happens',
+    title: "Stop Building Automation. Start Mapping What Actually Happens.",
+    excerpt: "Most automation fails not because the tools are wrong, but because the map is wrong. Before you build a single workflow, you need to document what's actually happening in your business — not what you think is happening.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-19',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['sales-automation'], tags['crm'], tags['conversion-optimization']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&h=630&fit=crop',
+      alt: 'Business process map showing the actual flow of operations before automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Stop Building Automation. Start Mapping What Actually Happens. | TrueFlow AI",
+      metaDescription: "Most automation fails not because the tools are wrong, but because the map is wrong. Discover the process mapping step most agencies skip — and why it costs you everything.",
+      keywords: ['process mapping', 'automation strategy', 'workflow automation', 'business systems', 'automation consulting', 'CRM automation', 'operations mapping']
+    },
+    published: true
+  },
+  {
+    id: '28',
+    slug: 'aeo-is-the-new-seo-hubspot-just-shipped-the-playbook',
+    title: "AEO Is the New SEO — HubSpot Just Shipped the Playbook",
+    excerpt: "HubSpot's Spring 2026 Spotlight introduced Breeze AI and answer engine optimization. The shift from ranking to answering is already here — and most businesses aren't building for it.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-20',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['seo'], tags['ai-tools'], tags['content-strategy'], tags['crm']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=1200&h=630&fit=crop',
+      alt: 'Answer engine optimization replacing traditional SEO keyword strategy',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "AEO Is the New SEO — HubSpot Just Shipped the Playbook | TrueFlow AI",
+      metaDescription: "HubSpot's Spring 2026 Spotlight introduced answer engine optimization. The shift from ranking to answering is already here — here's what it means for your content strategy.",
+      keywords: ['answer engine optimization', 'AEO', 'SEO 2026', 'HubSpot Breeze AI', 'AI search', 'content strategy', 'GEO', 'generative engine optimization']
+    },
+    published: true
+  },
+  {
+    id: '29',
+    slug: 'mcp-just-broke-the-ai-agency-pricing-model',
+    title: "MCP Just Broke the AI Agency Pricing Model",
+    excerpt: "Anthropic's Model Context Protocol went multi-vendor in April 2026. The agencies charging $2,000/month to wire tools together are about to compete with a standard that does it for free.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-20',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['integration'], tags['crm']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop',
+      alt: 'MCP protocol connecting AI tools without custom middleware',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "MCP Just Broke the AI Agency Pricing Model | TrueFlow AI",
+      metaDescription: "Anthropic's Model Context Protocol went multi-vendor in April 2026. The agencies charging for custom integrations are about to compete with a standard that does it for free.",
+      keywords: ['MCP', 'Model Context Protocol', 'AI agency pricing', 'AI integration', 'GoHighLevel MCP', 'tool integration', 'automation pricing']
+    },
+    published: true
+  },
+  {
+    id: '30',
+    slug: 'hubspot-just-priced-a-support-ticket-at-50-cents',
+    title: "HubSpot Just Priced a Support Ticket at 50 Cents — Your BPO Contract Should Be Terrified",
+    excerpt: "HubSpot's Spring 2026 Spotlight shipped a Customer Agent at $0.50 per resolution. Your BPO is charging $3–8 per ticket. That gap isn't a gap — it's a cliff.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-21',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['customer-experience']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=630&fit=crop',
+      alt: 'AI customer support agent resolving tickets at a fraction of BPO cost',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "HubSpot Just Priced a Support Ticket at 50 Cents | TrueFlow AI",
+      metaDescription: "HubSpot's Customer Agent is $0.50 per resolved ticket. Your BPO charges $3–8. Here's what outcome-based AI pricing means for your support operation.",
+      keywords: ['HubSpot Customer Agent', 'AI support ticket', 'BPO replacement', 'outcome-based pricing', 'AI customer service', 'support automation', 'HubSpot Spring 2026']
+    },
+    published: true
+  },
+  {
+    id: '31',
+    slug: 'anthropic-meters-agent-runtime-openai-refused',
+    title: "Anthropic Put a Meter on Agent Runtime. OpenAI Refused. If You're an SMB, Neither Bet Is Built for You.",
+    excerpt: "Anthropic launched Claude Managed Agents at $0.08/session-hour. OpenAI shipped the Agents SDK for free. The real story: both products are built for developer harnesses, not the CRM-embedded workflows your business actually runs.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-22',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=630&fit=crop',
+      alt: 'Anthropic vs OpenAI agent pricing comparison for SMB use cases',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Anthropic Metered Agent Runtime. OpenAI Refused. Neither Is Built for SMBs. | TrueFlow AI",
+      metaDescription: "Anthropic's $0.08/hour vs OpenAI's free agent runtime debate misses the point for small businesses. Here's what the pricing fight actually means — and what SMBs should be building instead.",
+      keywords: ['Anthropic Managed Agents', 'OpenAI Agents SDK', 'agent pricing', 'SMB automation', 'AI agents for business', 'CRM agents', 'GoHighLevel AI agent']
+    },
+    published: true
+  },
+  {
+    id: '32',
+    slug: 'ghl-raised-sms-rates-your-followup-math-just-broke',
+    title: "GHL Quietly Raised SMS Rates on April 16 — Your Follow-Up Math Just Broke",
+    excerpt: "GoHighLevel updated messaging rates on April 16. If your follow-up playbook still treats texts as nearly free, your unit economics just changed — and your margin is quietly leaking.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-23',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['sales-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=1200&h=630&fit=crop',
+      alt: 'SMS follow-up cost analysis showing impact of GoHighLevel rate changes',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Raised SMS Rates — Your Follow-Up Math Just Broke | TrueFlow AI",
+      metaDescription: "GoHighLevel updated messaging rates on April 16. Here's how to audit your SMS follow-up playbook, cut volume without losing bookings, and protect your margin.",
+      keywords: ['GoHighLevel SMS rates', 'GHL messaging costs', 'SMS follow-up', 'follow-up automation', 'cost per booked call', 'SMS automation', 'GHL pricing']
+    },
+    published: true
+  },
+  {
+    id: '33',
+    slug: 'google-openai-salesforce-shipped-agent-platforms-april-22',
+    title: "Google, OpenAI, and Salesforce All Shipped Agent Platforms on April 22 — Here's the Bet We're Refusing to Make",
+    excerpt: "Three enterprise agent platforms launched in 24 hours. SMBs are being courted with stacks they can't actually operate. Here's why we're not betting on any of them.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-26',
+    readTime: 5,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=630&fit=crop',
+      alt: 'Enterprise AI agent platforms from Google, OpenAI, and Salesforce competing for SMB market',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Google, OpenAI, Salesforce Shipped Agent Platforms — The Bet We're Refusing | TrueFlow AI",
+      metaDescription: "Three enterprise agent platforms launched on April 22. SMBs are being courted with stacks they can't operate. Here's why we build inside your CRM instead.",
+      keywords: ['Google Gemini Enterprise', 'OpenAI Workspace Agents', 'Salesforce Agentforce', 'agent platform comparison', 'SMB AI agents', 'A2A protocol', 'MCP vs A2A']
+    },
+    published: true
+  },
+  {
+    id: '34',
+    slug: 'ghl-shipped-stripe-tax-back-office-shrink',
+    title: "GHL Quietly Shipped Stripe Tax for 100+ Countries — Your Back Office Is About to Shrink",
+    excerpt: "On April 23, GoHighLevel pushed global tax compliance powered by Stripe Tax. Sub-accounts can now collect tax, generate compliant invoices, and pull tax reports across 100+ countries — without leaving the CRM.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-28',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['crm'], tags['small-business'], tags['integration']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop',
+      alt: 'GoHighLevel Stripe Tax integration handling global tax compliance from within the CRM',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Shipped Stripe Tax for 100+ Countries — Your Back Office Is About to Shrink | TrueFlow AI",
+      metaDescription: "GoHighLevel now handles global tax compliance via Stripe Tax. Here's what the April 23 update means for agencies and SMBs paying separate tax vendors.",
+      keywords: ['GoHighLevel Stripe Tax', 'GHL tax compliance', 'global tax automation', 'CRM tax invoicing', 'GHL back office', 'Stripe Tax integration', 'GoHighLevel updates']
+    },
+    published: true
   }
 ]
 
