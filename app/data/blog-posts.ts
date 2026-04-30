@@ -2689,6 +2689,31 @@ The result? Less time managing. More time growing.
       keywords: ['GoHighLevel Stripe Tax', 'GHL tax compliance', 'global tax automation', 'CRM tax invoicing', 'GHL back office', 'Stripe Tax integration', 'GoHighLevel updates']
     },
     published: true
+  },
+  {
+    id: '35',
+    slug: 'ghl-shipped-version-control-for-ai-agents',
+    title: "GHL Just Shipped Version Control for AI Agents — The Vibe-Coded Build Era Is Over",
+    excerpt: "GoHighLevel's April 28 API Versioning release made AI Agent module versioning mandatory. Conversation AI and Voice AI templates now require Draft → Publish. The agencies still YOLO-editing live bots just got a deadline.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-04-30',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['gohighlevel']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1516259762381-22954d7d3ad2?w=1200&h=630&fit=crop',
+      alt: 'Version control dashboard showing AI agent draft and publish workflow in GoHighLevel',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Shipped Version Control for AI Agents — The Vibe-Coded Build Era Is Over | TrueFlow AI",
+      metaDescription: "GoHighLevel's April 28 release made AI Agent versioning mandatory. No more editing live bots. Here's what Draft → Publish means for your agency and your clients.",
+      keywords: ['GoHighLevel AI Agent versioning', 'GHL API versioning', 'Conversation AI template', 'Voice AI versioning', 'AI agent version control', 'GHL changelog April 2026', 'AI agency best practices']
+    },
+    published: true
   }
 ]
 
