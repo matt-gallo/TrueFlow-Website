@@ -8,6 +8,7 @@ import { Calendar, Clock, ArrowRight, Search } from 'lucide-react'
 import { getPublishedPosts, categories, tagColorPalettes } from '@/app/data/blog-posts'
 import type { BlogPost, Category } from '@/app/types/blog'
 import ParticleBackground from '@/app/components/ParticleBackground'
+import NewsletterSignup from '../components/NewsletterSignup'
 import { useTheme } from '../components/ThemeProvider'
 
 export default function BlogPage() {
@@ -117,6 +118,9 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+
+      {/* Newsletter Signup */}
+      <NewsletterSignup />
 
       {/* Blog Posts Grid */}
       <section className="pb-24 px-4">
