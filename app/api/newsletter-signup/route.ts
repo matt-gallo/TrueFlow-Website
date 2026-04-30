@@ -7,6 +7,9 @@ interface NewsletterSignupBody {
   interests?: string[]
 }
 
+const GHL_NEWSLETTER_WEBHOOK_URL =
+  'https://services.leadconnectorhq.com/hooks/GVFoSfHpPaXzRXCJbym0/webhook-trigger/e7d3c290-27e7-4c9c-a460-d75eb6c77fa7'
+
 const VALID_INTERESTS = new Set([
   'ai-tools',
   'ai-for-business',
@@ -38,15 +41,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Select at least one interest' }, { status: 400 })
     }
 
-    const webhookUrl = process.env.GHL_NEWSLETTER_WEBHOOK_URL
-    if (!webhookUrl) {
-      console.error('GHL_NEWSLETTER_WEBHOOK_URL is not configured')
-      return NextResponse.json(
-        { error: 'Newsletter signup is temporarily unavailable' },
-        { status: 503 },
-      )
-    }
-
     const payload = {
       firstName,
       lastName,
@@ -58,7 +52,7 @@ export async function POST(request: NextRequest) {
       submittedAt: new Date().toISOString(),
     }
 
-    const response = await fetch(webhookUrl, {
+    const response = await fetch(GHL_NEWSLETTER_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
