@@ -2714,6 +2714,31 @@ The result? Less time managing. More time growing.
       keywords: ['GoHighLevel AI Agent versioning', 'GHL API versioning', 'Conversation AI template', 'Voice AI versioning', 'AI agent version control', 'GHL changelog April 2026', 'AI agency best practices']
     },
     published: true
+  },
+  {
+    id: '36',
+    slug: 'health-premiums-skip-the-hire-may-2026',
+    title: "May 1: Your Health Premiums Just Reset 11% Higher. The Hire You Were About to Make Doesn't Pencil Anymore.",
+    excerpt: "Small group ACA plans renew today with a median 11% premium hike. Average employer cost per FTE crosses $17K. The back-office automation industry just shipped its first credible skip-the-hire toolset in the same week.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-01',
+    readTime: 4,
+    category: categories.growth,
+    tags: [tags['small-business'], tags['workflow-automation'], tags['sales-automation'], tags['future-of-work']],
+    primaryTag: tags['small-business'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=1200&h=630&fit=crop',
+      alt: 'Small business owner reviewing rising health insurance premium costs',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Health Premiums Reset 11% Higher May 1 — The Hire You Were About to Make Doesn't Pencil | TrueFlow AI",
+      metaDescription: "Small group ACA premiums are up 11% as of today. Average employer cost per employee crosses $17K. Here's how the labor-substitution math changed overnight — and what to do about it.",
+      keywords: ['small business health insurance 2026', 'ACA premium increase', 'employer health costs', 'skip the hire automation', 'back office automation', 'labor substitution', 'SMB operations']
+    },
+    published: true
   }
 ]
 
