@@ -2739,6 +2739,81 @@ The result? Less time managing. More time growing.
       keywords: ['small business health insurance 2026', 'ACA premium increase', 'employer health costs', 'skip the hire automation', 'back office automation', 'labor substitution', 'SMB operations']
     },
     published: true
+  },
+  {
+    id: '37',
+    slug: 'your-next-hire-was-already-going-to-be-a-workflow',
+    title: "Small Businesses Did 100% of the Net Hiring in Q1. 45% Still Can't Find Applicants. Your Next Hire Was Already Going to Be a Workflow.",
+    excerpt: "ADP's March 2026 report shows tiny firms added 112K jobs while large employers went net negative — and 45% of SMBs actively hiring say few or no qualified applicants are applying. The labor math just broke from a third side.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-02',
+    readTime: 4,
+    category: categories.growth,
+    tags: [tags['small-business'], tags['workflow-automation'], tags['sales-automation'], tags['future-of-work']],
+    primaryTag: tags['small-business'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=630&fit=crop',
+      alt: 'Small business owner looking at an empty applicant pool amid record-low turnover',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Next Hire Was Already Going to Be a Workflow — ADP Q1 2026 Data | TrueFlow AI",
+      metaDescription: "ADP March 2026: small businesses did 100% of net hiring while 45% can't find applicants. Turnover at a 9-year low. Here's why your next ops hire should be a workflow.",
+      keywords: ['ADP employment report 2026', 'small business hiring', 'labor shortage SMB', 'workflow automation hire', 'SMB operations', 'labor substitution automation', 'GHL workflow']
+    },
+    published: true
+  },
+  {
+    id: '38',
+    slug: 'ghl-ai-agent-reads-the-call',
+    title: "Your AI Agent Couldn't Hear the Sales Call Until Friday. That Was the Whole Problem.",
+    excerpt: "On May 1, GoHighLevel rebuilt the Workflow AI Builder and shipped a Call Transcript tool that gives the AI Agent voice context with zero configuration — collapsing the five-tool Whisper-to-Make-to-OpenAI stack most agencies are still selling.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-03',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['gohighlevel']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=1200&h=630&fit=crop',
+      alt: 'AI agent reading a sales call transcript to personalize follow-up messages',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL AI Agent Now Reads Sales Call Transcripts — The Integration Stack Is Dead | TrueFlow AI",
+      metaDescription: "GoHighLevel's May 1 release added a built-in Call Transcript tool to the AI Agent action. The five-tool Whisper-Make-OpenAI voice stack just became unnecessary.",
+      keywords: ['GHL AI Agent call transcript', 'GoHighLevel Workflow AI Builder', 'Transcript Generated trigger', 'voice to CRM automation', 'AI agent follow-up', 'GHL May 2026', 'post-call automation']
+    },
+    published: true
+  },
+  {
+    id: '39',
+    slug: 'ghl-killed-the-day-one-cold-blast',
+    title: "GHL Just Made New Agencies Earn The Inbox. The Spam-Blast Playbook Is Officially Dead.",
+    excerpt: "On April 27, GoHighLevel auto-enrolled every new agency in a Smart Sending Ramp-Up — no override button, stage-based daily caps, engagement-gated promotions. The day-one cold blast is mathematically impossible for anyone who signed up after April 27.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-04',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['email-marketing'], tags['workflow-automation'], tags['crm'], tags['gohighlevel']],
+    primaryTag: tags['email-marketing'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=630&fit=crop',
+      alt: 'Email deliverability ramp-up showing staged sending caps for new agencies',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Smart Sending Ramp-Up Kills the Day-One Cold Blast | TrueFlow AI",
+      metaDescription: "GoHighLevel's April 27 Smart Sending Ramp-Up makes cold-blast day-one impossible for new agencies. Here's what this means for deliverability, dedicated domains, and intent-based follow-up.",
+      keywords: ['GoHighLevel Smart Sending', 'GHL email ramp-up', 'email deliverability 2026', 'dedicated sending domain', 'GHL shared domain', 'cold email compliance', 'email warm-up GHL']
+    },
+    published: true
   }
 ]
 
