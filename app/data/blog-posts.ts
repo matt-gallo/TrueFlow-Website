@@ -2814,6 +2814,31 @@ The result? Less time managing. More time growing.
       keywords: ['GoHighLevel Smart Sending', 'GHL email ramp-up', 'email deliverability 2026', 'dedicated sending domain', 'GHL shared domain', 'cold email compliance', 'email warm-up GHL']
     },
     published: true
+  },
+  {
+    id: '40',
+    slug: 'the-best-agent-wont-come-from-your-crm',
+    title: "The Best Agent Won't Come From Your CRM — HubSpot Just Said It Out Loud",
+    excerpt: "On May 4, HubSpot's CPTO publicly conceded that vertical specialist agents will outcompete its own Breeze suite. The platform is plumbing now. The specialist intelligence comes from somewhere else.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-06',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['crm'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=630&fit=crop',
+      alt: 'AI agent ecosystem showing specialist vertical agents built on top of CRM platforms',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Best Agent Won't Come From Your CRM — HubSpot Just Said It Out Loud | TrueFlow AI",
+      metaDescription: "HubSpot's May 4 strategy note publicly conceded specialist agents will beat its own Breeze suite. Here's what the platform-as-plumbing shift means for your AI agency.",
+      keywords: ['HubSpot agent ecosystem', 'HubSpot MCP server', 'vertical AI agents', 'CRM AI strategy', 'Breeze AI', 'Anthropic Managed Agents', 'AI agency model 2026']
+    },
+    published: true
   }
 ]
 
