@@ -2839,6 +2839,156 @@ The result? Less time managing. More time growing.
       keywords: ['HubSpot agent ecosystem', 'HubSpot MCP server', 'vertical AI agents', 'CRM AI strategy', 'Breeze AI', 'Anthropic Managed Agents', 'AI agency model 2026']
     },
     published: true
+  },
+  {
+    id: '41',
+    slug: 'hubspot-priced-the-outsourced-sdr-at-a-dollar-a-lead',
+    title: "April's Jobs Print: Small Business Carried The Whole Number. The Middle Is Bleeding. HubSpot Just Repriced An SDR At $1 A Lead.",
+    excerpt: "Yesterday's ADP report confirmed the trap we've been calling for two weeks — small business is the only employer category still adding people, and the middle just went soft. The cheap fix everyone reached for last cycle, the outsourced SDR retainer, just got priced into oblivion by HubSpot's Breeze Prospecting Agent at $1 per recommended lead.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-07',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['sales-automation'], tags['lead-generation'], tags['small-business']],
+    primaryTag: tags['sales-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=1200&h=630&fit=crop',
+      alt: 'Outcome-based pricing replacing the outsourced SDR retainer model for small business',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "April Jobs Print + HubSpot's $1/Lead SDR Killed The Retainer | TrueFlow AI",
+      metaDescription: "ADP's May 6 report confirms middle-market softening while small business carries the hiring number. HubSpot's Breeze Prospecting Agent at $1 per recommended lead just put a price floor on the entire outsourced SDR category.",
+      keywords: ['HubSpot Prospecting Agent', 'Breeze AI', 'AI SDR replacement', 'outcome-based pricing', 'ADP April 2026', 'SMB hiring 2026', 'agency retainer model', 'AI automation pricing']
+    },
+    published: true
+  },
+  {
+    id: '42',
+    slug: 'ghl-made-every-ai-agent-run-auditable',
+    title: "GHL Just Made Every AI Agent Run Auditable — and Half the Agencies Don't Want You Looking",
+    excerpt: "On May 1, GoHighLevel turned the AI Agent execution log into a structured feedback flow — every reasoning step, every tool call, every token, scored. The 'trust me, the bot's working' agency pitch just got retired.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-05',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop',
+      alt: 'AI agent execution logs and feedback flow audit trail in GoHighLevel',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Made Every AI Agent Run Auditable — The Black Box Era Is Over | TrueFlow AI",
+      metaDescription: "GoHighLevel's new Feedback Flow inside AI Agent execution logs exposes every reasoning step, tool call, and token. The 'trust me, it's working' agency pitch just died.",
+      keywords: ['GHL AI agent logs', 'GoHighLevel execution logs', 'AI agent audit trail', 'AI agent feedback flow', 'GHL workflow builder', 'AI agency transparency', 'agent observability']
+    },
+    published: true
+  },
+  {
+    id: '43',
+    slug: 'n8n-mcp-builds-workflows-we-still-sit-with-you-for-3-days',
+    title: "n8n's MCP Server Now Builds Workflows From a Prompt. We Still Sit With You for 3 Days — Here's Why.",
+    excerpt: "n8n shipped a public preview that lets Claude or ChatGPT build, validate, and self-heal n8n workflows on demand. Most agencies will rebrand it as their new offer. We'd rather tell you what it doesn't fix.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-08',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1200&h=630&fit=crop',
+      alt: 'n8n workflow automation with MCP server building workflows from prompts',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "n8n MCP Builds Workflows From Prompts — Why We Still Sit With You 3 Days | TrueFlow AI",
+      metaDescription: "n8n's MCP server now creates, validates, and self-heals workflows from a single prompt. Here's what it doesn't fix — and why the 3-day install still matters.",
+      keywords: ['n8n MCP server', 'n8n workflow automation', 'AI workflow builder', 'automation agency', 'Claude workflow builder', 'MCP workflow creation', 'AI install agency']
+    },
+    published: true
+  },
+  {
+    id: '44',
+    slug: 'ghl-pulled-linear-into-workflows-middleware-audit',
+    title: "GHL Just Built Linear Inside Your Workflows. Your Middleware Stack Just Got Audited.",
+    excerpt: "HighLevel's new Linear integration collapses another integration line-item into the platform — and quietly tells every agency renting middleware to reposition.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-09',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&h=630&fit=crop',
+      alt: 'GHL and Linear native integration replacing middleware stack',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Built Linear Inside Your Workflows — Your Middleware Stack Got Audited | TrueFlow AI",
+      metaDescription: "HighLevel's native Linear integration ships 12 triggers and 13 actions inside the Workflow Builder. No Zapier. No n8n bridge. The integration layer just collapsed again.",
+      keywords: ['GHL Linear integration', 'GoHighLevel Linear', 'middleware replacement', 'GHL workflow builder', 'integration automation', 'Zapier alternative', 'native CRM integration']
+    },
+    published: true
+  },
+  {
+    id: '45',
+    slug: 'anthropic-defer-decision-killed-set-it-and-forget-it',
+    title: "Anthropic Just Added a 'Defer' Decision to AI Agents. The 'Set It and Forget It' Pitch Just Died.",
+    excerpt: "Claude's Agent SDK quietly shipped a fourth permission outcome this month — defer — and it exposes what every fully-autonomous AI agent pitch has been hiding.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-10',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=630&fit=crop',
+      alt: 'Human-in-the-loop AI agent checkpoints with defer decision architecture',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Anthropic's 'Defer' Decision Killed the Set-It-Forget-It AI Agent Pitch | TrueFlow AI",
+      metaDescription: "Claude Agent SDK v2.1.89 adds 'defer' as a fourth permission outcome — pausing the agent mid-run and handing control back to the calling process. The autonomous agent pitch just lost its foundation.",
+      keywords: ['Anthropic defer decision', 'Claude Agent SDK', 'human in the loop AI', 'AI agent checkpoints', 'autonomous agent architecture', 'PreToolUse hook', 'AI agent production']
+    },
+    published: true
+  },
+  {
+    id: '46',
+    slug: 'anthropic-advisor-tool-opus-is-now-a-consultant',
+    title: 'Anthropic Just Demoted Opus to Consultant. The "Run Everything On The Big Model" Era Is Over.',
+    excerpt: "Claude's new advisor tool just landed in public beta — and it ends the agency flex of quoting 'powered by Opus.' Here's what changed in our build process the week the header flipped on.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-11',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=630&fit=crop',
+      alt: 'Anthropic advisor tool model routing Sonnet executor Opus consultant pattern',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Anthropic Demoted Opus to Consultant — The Big Model Era Is Over | TrueFlow AI",
+      metaDescription: "Anthropic's advisor tool in public beta puts Opus in a part-time consultant role while Sonnet does the work. +2.7% accuracy, 11.9% lower cost. The 'powered by Opus' agency flex just became an architecture confession.",
+      keywords: ['Anthropic advisor tool', 'Claude Opus consultant', 'Claude Sonnet executor', 'model routing architecture', 'AI agent cost optimization', 'advisor-tool-2026-03-01', 'Anthropic beta API']
+    },
+    published: true
   }
 ]
 
