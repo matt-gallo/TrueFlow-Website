@@ -2989,6 +2989,181 @@ The result? Less time managing. More time growing.
       keywords: ['Anthropic advisor tool', 'Claude Opus consultant', 'Claude Sonnet executor', 'model routing architecture', 'AI agent cost optimization', 'advisor-tool-2026-03-01', 'Anthropic beta API']
     },
     published: true
+  },
+  {
+    id: '47',
+    slug: 'openai-workspace-agents-paid-the-agent-was-always-the-cheap-part',
+    title: "OpenAI Started Charging for Workspace Agents on May 6. Most Agencies Are Quoting You for the $20 Part.",
+    excerpt: "ChatGPT's Salesforce/Slack/Notion agent just hit paid pricing the same week HubSpot's MCP went GA. The agent shell is now a $20/seat commodity — here's what changed in our scopes the day the meter turned on.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-12',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=630&fit=crop',
+      alt: 'OpenAI Workspace Agents pricing CRM integration commodity layer',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "OpenAI Workspace Agents Now Paid — Most Agencies Are Selling You the $20 Part | TrueFlow AI",
+      metaDescription: "ChatGPT Workspace Agents hit credit-based pricing May 6. HubSpot MCP went GA same week. The agent shell is a $20 SKU. Here's what agencies should actually be charging for.",
+      keywords: ['OpenAI Workspace Agents', 'ChatGPT business agents', 'HubSpot MCP server', 'AI agent pricing', 'CRM agent automation', 'AI agency commodity', 'agent kill list']
+    },
+    published: true
+  },
+  {
+    id: '48',
+    slug: 'microsoft-agent-365-99-dollar-governance-main-street-zero-agents',
+    title: "Microsoft Shipped a $99-a-Seat Agent Control Plane This Month. NFIB Says 34% of Main Street Can't Fill a Seat at All.",
+    excerpt: "Microsoft Agent 365 hit GA May 1 with Shadow-AI governance priced for enterprises with too many agents. The same week, NFIB showed Main Street's problem is the opposite — zero agents and an empty chair open since March.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-13',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=1200&h=630&fit=crop',
+      alt: 'Microsoft Agent 365 enterprise governance vs small business hiring gap',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Microsoft Agent 365 at $99/Seat — NFIB Says SMBs Have 0 Agents Not Too Many | TrueFlow AI",
+      metaDescription: "Microsoft Agent 365 is a governance layer for enterprise agent sprawl. NFIB's April report confirms 87% of small businesses trying to hire can't find anyone. Wrong product, wrong problem.",
+      keywords: ['Microsoft Agent 365', 'M365 E7 Frontier Suite', 'AI agent governance', 'NFIB jobs report 2026', 'SMB hiring gap', 'enterprise AI vs small business', 'agent sprawl']
+    },
+    published: true
+  },
+  {
+    id: '49',
+    slug: 'claude-small-business-quickbooks-paypal-hubspot',
+    title: "Claude Just Walked Into QuickBooks, PayPal, and HubSpot. Your AI Agency's Retainer Just Got Awkward.",
+    excerpt: "Anthropic shipped Claude for Small Business on May 13 — putting agents inside QuickBooks, HubSpot, and PayPal. Here's why we stopped charging for the agent and started charging for the outcome.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-14',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=630&fit=crop',
+      alt: 'Claude for Small Business QuickBooks PayPal HubSpot native integrations',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Claude for Small Business Entered QuickBooks & HubSpot — Agency Retainers Just Got Awkward | TrueFlow AI",
+      metaDescription: "Anthropic's Claude for Small Business ships prebuilt connectors into QuickBooks, PayPal, HubSpot, and Docusign. The glue your agency was charging $2,500/month for is now in the signup box.",
+      keywords: ['Claude for Small Business', 'Anthropic small business', 'QuickBooks AI agent', 'HubSpot Claude integration', 'AI agency retainer', 'outcome-based AI pricing', 'Claude managed agents']
+    },
+    published: true
+  },
+  {
+    id: '50',
+    slug: 'salesforce-agentforce-operations-killed-single-agent-build',
+    title: "Salesforce Just Shipped Multi-Agent Back-Office Orchestration. The Single-Agent Pitch Most Agencies Sell Just Got Buried.",
+    excerpt: "Agentforce Operations shipped with specialist agents handing work to each other and 70% cycle-time cuts claimed. The unit of value just changed from agent to orchestration.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-15',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=1200&h=630&fit=crop',
+      alt: 'Salesforce Agentforce Operations multi-agent orchestration specialist handoffs',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Salesforce Agentforce Operations — Multi-Agent Orchestration Killed the Single-Agent Build | TrueFlow AI",
+      metaDescription: "Salesforce's Agentforce Operations ships specialist agents with clean handoffs claiming 70% cycle-time cuts. The single-agent pitch every agency sells is now the wrong shape.",
+      keywords: ['Salesforce Agentforce Operations', 'multi-agent orchestration', 'specialist AI agents', 'agent handoffs', 'AI back-office automation', 'Agentforce Studio', 'agent eval scoring']
+    },
+    published: true
+  },
+  {
+    id: '51',
+    slug: 'claude-agents-dream-static-builds-die',
+    title: "Claude Just Taught Its Agents to Dream. If Your AI Build Stopped Learning at Handoff, You Bought a Souvenir.",
+    excerpt: "Anthropic's May 2026 Managed Agents wave shipped Dreaming — agents that review past sessions and self-improve their own memory between runs. Most AI agency builds freeze on handoff day.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-16',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=630&fit=crop',
+      alt: 'Claude Managed Agents Dreaming self-improving memory between sessions',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Claude Agents Now Dream — Static AI Builds Are Souvenirs | TrueFlow AI",
+      metaDescription: "Anthropic's Dreaming feature lets Claude agents review past runs and self-improve memory between sessions. Agencies still selling static handoff builds are one release behind.",
+      keywords: ['Claude Managed Agents Dreaming', 'Anthropic Opus 4.7', 'self-improving AI agents', 'agent memory', 'outcome-based AI pricing', 'AI build improvement loop', 'agent runtime']
+    },
+    published: true
+  },
+  {
+    id: '52',
+    slug: 'anthropic-split-agent-sdk-billing-wrapper-agencies-priced-out',
+    title: "Anthropic Just Split Agent SDK Billing From the $200 Claude Plan. The Wrapper Agency Has Until June 15.",
+    excerpt: "On May 14, Anthropic announced that Claude Agent SDK usage stops counting against Claude Pro/Max subscriptions on June 15 — moving to a fixed credit billed at API rates. The AI agency model built on personal $200 plans just got a 60-day eviction notice.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-17',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&h=630&fit=crop',
+      alt: 'Anthropic Agent SDK billing split from Claude subscription June 15 deadline',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Anthropic Split Agent SDK Billing — Wrapper Agencies Have Until June 15 | TrueFlow AI",
+      metaDescription: "Claude Agent SDK usage moves to its own credit pool on June 15, separate from Pro/Max subscriptions. Agencies running client workloads on personal $200 plans face 12x–175x cost increases.",
+      keywords: ['Anthropic Agent SDK billing', 'Claude Max plan changes', 'Claude SDK pricing June 2026', 'AI agency pricing model', 'wrapper agency', 'API token costs', 'claude -p billing']
+    },
+    published: true
+  },
+  {
+    id: '53',
+    slug: 'ghl-voice-ai-took-over-your-personal-cell-receptionist-resell-is-dead',
+    title: "GHL Just Let Voice AI Answer Your Personal Cell. The AI Receptionist Resell Is Done.",
+    excerpt: "HighLevel rolled Voice AI Outbound on May 13 — and Voice AI can now dial from your existing personal mobile number. The $497/month AI receptionist SaaS your buddy is reselling just got obsoleted by a checkbox.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-18',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=1200&h=630&fit=crop',
+      alt: 'GHL Voice AI Outbound calling from personal mobile number receptionist automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Voice AI Answers Your Personal Cell — AI Receptionist Resell Is Dead | TrueFlow AI",
+      metaDescription: "HighLevel's Voice AI Outbound now connects to existing mobile numbers. 19 languages, 340+ voices, live calendar booking. The standalone AI receptionist SaaS just became a checkbox.",
+      keywords: ['GHL Voice AI', 'GoHighLevel Voice AI Outbound', 'AI receptionist replacement', 'voice AI personal cell', 'HighLevel voice automation', 'AI appointment booking', 'receptionist SaaS alternative']
+    },
+    published: true
   }
 ]
 
