@@ -1,13 +1,25 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Calendar, Coffee, Zap } from 'lucide-react'
+import { ArrowLeft, Calendar, Coffee, FileText, Gift, Zap } from 'lucide-react'
 import DailyNewsletterSignup from '../components/DailyNewsletterSignup'
 import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
 
+const HEADLINES: Array<{ lineOne: string; lineTwo: string }> = [
+  { lineOne: 'You run the business.', lineTwo: "We'll watch the AI space." },
+  { lineOne: "You don't have time to read every AI release.", lineTwo: 'We already did.' },
+  { lineOne: 'Every morning, a vendor ships something.', lineTwo: 'We tell you which ones matter.' },
+  { lineOne: "You're not behind on AI.", lineTwo: "You're behind on which AI matters this week." },
+  { lineOne: 'Built a real business?', lineTwo: "Here's the AI news that won't waste your morning." },
+]
+
 export default function SubscribePage() {
   const { isDarkMode } = useTheme()
+  const [headline] = useState(
+    () => HEADLINES[Math.floor(Math.random() * HEADLINES.length)]
+  )
 
   return (
     <div
@@ -35,13 +47,13 @@ export default function SubscribePage() {
       {/* Hero */}
       <section className="max-w-5xl mx-auto px-4 pt-12 pb-8 text-center">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-white/10 mb-6">
-          <Zap className="h-4 w-4 text-blue-400" />
+          <Gift className="h-4 w-4 text-blue-400" />
           <span
             className={`text-xs font-medium uppercase tracking-wider ${
               isDarkMode ? 'text-white/80' : 'text-gray-700'
             }`}
           >
-            TrueFlow Daily — Mon–Fri
+            Free bonus + Daily newsletter
           </span>
         </div>
 
@@ -50,10 +62,10 @@ export default function SubscribePage() {
             isDarkMode ? 'text-white' : 'text-gray-900'
           }`}
         >
-          One sharp read each morning.
+          {headline.lineOne}
           <br />
           <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            Zero fluff.
+            {headline.lineTwo}
           </span>
         </h1>
 
@@ -62,20 +74,67 @@ export default function SubscribePage() {
             isDarkMode ? 'text-white/70' : 'text-gray-600'
           }`}
         >
-          A weekday brief from Matt and the TrueFlow team — one real signal from the AI, CRM, and automation world, translated into plain English, with our take on what to actually do about it.
+          Get daily AI insights in your inbox so you never have to worry about missing the next big thing.
         </p>
         <p
           className={`text-sm ${
             isDarkMode ? 'text-white/50' : 'text-gray-500'
           }`}
         >
-          Mon, Tue, Wed, Thu, Fri · ~3-minute read · no spam, ever.
+          Daily Mon–Fri · ~3-minute read · unsubscribe anytime.
         </p>
       </section>
 
       {/* Signup form */}
       <section className="max-w-3xl mx-auto px-4 pb-12">
         <DailyNewsletterSignup />
+      </section>
+
+      {/* What's in the toolkit */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <div
+          className={`rounded-2xl p-8 sm:p-10 border ${
+            isDarkMode
+              ? 'bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 border-white/10'
+              : 'bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 border-gray-200'
+          }`}
+        >
+          <div className="flex flex-col md:flex-row items-start gap-6">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex-shrink-0">
+              <FileText className="h-7 w-7 text-white" />
+            </div>
+            <div className="flex-1">
+              <div
+                className={`text-xs font-semibold uppercase tracking-wider mb-2 ${
+                  isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                }`}
+              >
+                Plus, get this free when you subscribe
+              </div>
+              <h2
+                className={`text-2xl sm:text-3xl font-bold mb-3 ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}
+              >
+                The Q2/2026 Business Owner&apos;s AI Toolkit
+              </h2>
+              <p
+                className={`mb-4 leading-relaxed ${
+                  isDarkMode ? 'text-white/70' : 'text-gray-600'
+                }`}
+              >
+                A field guide to the AI plays business owners are actually running this quarter — the exact tools, the workflows, and the pricing benchmarks so you don&apos;t get fleeced by an agency selling 2024 thinking.
+              </p>
+              <p
+                className={`text-sm ${
+                  isDarkMode ? 'text-white/50' : 'text-gray-500'
+                }`}
+              >
+                Updated quarterly. Yours the moment you confirm your subscription.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* What you'll get */}

@@ -16,8 +16,8 @@ interface DailyNewsletterSignupProps {
 }
 
 export default function DailyNewsletterSignup({
-  headline = "The TrueFlow Daily, in your inbox each weekday.",
-  subheadline = "One signal from the AI / CRM / automation world — translated into plain English, with TrueFlow's take on what to do about it. Monday through Friday. No fluff.",
+  headline = "Get the Q2/2026 Business Owner's AI Toolkit — free.",
+  subheadline = "Daily AI insights in your inbox so you never miss the next big thing. Subscribe and we'll send you the Q2/2026 Business Owner's AI Toolkit on the house.",
   compact = false,
 }: DailyNewsletterSignupProps) {
   const { isDarkMode } = useTheme()
@@ -67,8 +67,11 @@ export default function DailyNewsletterSignup({
         >
           You're in, {firstName}.
         </h3>
-        <p className={isDarkMode ? 'text-white/70' : 'text-gray-600'}>
-          The next TrueFlow Daily lands in your inbox tomorrow morning — no fluff, just one signal worth your attention.
+        <p className={`mb-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+          Your Q2/2026 Business Owner's AI Toolkit is on its way — check your inbox in the next few minutes.
+        </p>
+        <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+          After that, the TrueFlow Daily lands each weekday morning. One signal worth your attention.
         </p>
       </div>
     )
@@ -95,7 +98,7 @@ export default function DailyNewsletterSignup({
                 isDarkMode ? 'text-white/80' : 'text-gray-700'
               }`}
             >
-              TrueFlow Daily — Mon–Fri
+              Free bonus + Daily newsletter
             </span>
           </div>
           <h2

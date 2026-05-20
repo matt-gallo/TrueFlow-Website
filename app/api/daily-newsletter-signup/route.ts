@@ -29,6 +29,8 @@ export async function POST(request: NextRequest) {
       email,
       name: firstName,
       source: 'trueflow-daily-newsletter-subscribe-page',
+      // GHL workflow uses this to trigger the bonus toolkit delivery + 7-day welcome sequence
+      bonusOptin: 'business-owners-ai-toolkit-q2-2026',
       submittedAt: new Date().toISOString(),
     }
 
