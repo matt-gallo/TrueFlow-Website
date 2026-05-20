@@ -3164,6 +3164,56 @@ The result? Less time managing. More time growing.
       keywords: ['GHL Voice AI', 'GoHighLevel Voice AI Outbound', 'AI receptionist replacement', 'voice AI personal cell', 'HighLevel voice automation', 'AI appointment booking', 'receptionist SaaS alternative']
     },
     published: true
+  },
+  {
+    id: '54',
+    slug: 'ghl-conversation-ai-v3-flow-builder-writes-its-own-bot',
+    title: "GHL's Conversation AI V3 Now Writes Its Own Flows. The $5K AI Setup Fee Just Became a Saturday Project.",
+    excerpt: "HighLevel's Conversation AI V3 ships a drag-and-drop Flow Builder with AI-generated flows baked in. Here's why the 'AI bot setup' line-item is the next casualty — and what TrueFlow stopped charging for.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-19',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=1200&h=630&fit=crop',
+      alt: 'GHL Conversation AI V3 Flow Builder AI-generated chatbot workflows automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Conversation AI V3 Ships AI-Generated Flows — The $5K Setup Fee Is Done | TrueFlow AI",
+      metaDescription: "HighLevel's Conversation AI V3 ships a visual Flow Builder with AI-Generated Flows. Drag-and-drop nodes, multi-calendar routing, bot-to-bot transfers. The 'AI bot setup' agency line-item is on the clock.",
+      keywords: ['GHL Conversation AI V3', 'Flow Builder', 'AI-Generated Flows', 'HighLevel chatbot', 'AI implementation agency', 'GHL workflow automation', 'AI bot setup fee']
+    },
+    published: true
+  },
+  {
+    id: '55',
+    slug: 'anthropic-mcp-tunnels-self-hosted-sandboxes-hosted-ai-agency-compliance-risk',
+    title: "Anthropic Just Shipped Private MCP Tunnels and Self-Hosted Sandboxes. The 'We Host Your AI' Agency Is Now a Compliance Risk.",
+    excerpt: "On May 19, Anthropic put Claude Managed Agents inside your firewall — MCP tunnels and self-hosted sandboxes. Here's why the central 'AI control plane' agency model just got an expiration date, and what TrueFlow has been building inside client perimeters all along.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-20',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['security'], tags['compliance'], tags['enterprise']],
+    primaryTag: tags['security'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&h=630&fit=crop',
+      alt: 'Anthropic MCP tunnels self-hosted sandboxes Claude Managed Agents enterprise compliance',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Anthropic MCP Tunnels & Self-Hosted Sandboxes — Hosted AI Agencies Are a Compliance Risk | TrueFlow AI",
+      metaDescription: "Anthropic shipped MCP tunnels and self-hosted sandboxes for Claude Managed Agents on May 19. The shared 'AI control plane' agency model is now an audit liability. Here's the new standard.",
+      keywords: ['Anthropic MCP tunnels', 'self-hosted sandboxes', 'Claude Managed Agents', 'AI compliance', 'AI agency lock-in', 'enterprise AI security', 'private MCP server', 'AI control plane']
+    },
+    published: true
   }
 ]
 
