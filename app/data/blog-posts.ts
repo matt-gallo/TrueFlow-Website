@@ -3214,6 +3214,56 @@ The result? Less time managing. More time growing.
       keywords: ['Anthropic MCP tunnels', 'self-hosted sandboxes', 'Claude Managed Agents', 'AI compliance', 'AI agency lock-in', 'enterprise AI security', 'private MCP server', 'AI control plane']
     },
     published: true
+  },
+  {
+    id: '56',
+    slug: 'notion-just-turned-into-an-agent-runtime-dont-move-your-crm-there',
+    title: "Notion Just Turned Into an Agent Runtime. Don't Move Your CRM There.",
+    excerpt: "On May 13, Notion launched Workers, an External Agents API, and Database Sync — and turned the workspace into an agent runtime. Here's the one workflow SMBs should move there, the three they shouldn't, and what TrueFlow is shipping inside the perimeter the customer relationship still lives in.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-21',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=1200&h=630&fit=crop',
+      alt: 'Notion Developer Platform Workers External Agents API SMB automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Notion Just Turned Into an Agent Runtime — Don't Move Your CRM There | TrueFlow AI",
+      metaDescription: "Notion launched its Developer Platform on May 13: Workers at $0.0023/run, External Agents API, Database Sync. Here's where SMBs should build with it — and where it'll quietly break their ops.",
+      keywords: ['Notion Developer Platform', 'Notion Workers', 'External Agents API', 'Notion AI agents', 'SMB automation', 'GoHighLevel CRM', 'system of record', 'workspace agents']
+    },
+    published: true
+  },
+  {
+    id: '57',
+    slug: 'ghl-made-workflow-integrations-two-clicks-the-setup-project-is-dead',
+    title: "GHL Made Workflow Integrations Two Clicks on May 21. Why Are Agencies Still Quoting It as a Project?",
+    excerpt: "GHL shipped a common integration experience inside Workflow Automations — locked-state previews, multi-account support, connect-without-leaving-the-flow. The standalone 'integration audit' line item just lost its job.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-22',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: 'GHL workflow integrations two-click setup common integration experience',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Made Workflow Integrations Two Clicks — Integration Audits Are Dead | TrueFlow AI",
+      metaDescription: "GoHighLevel's May 21 common integration experience shows required fields upfront, handles OAuth in-flow, and supports multi-account. The $3K integration audit SOW just became a button.",
+      keywords: ['GHL workflow integrations', 'GoHighLevel common integration experience', 'GHL OAuth workflow', 'integration audit agency', 'GHL automations May 2026', 'outcome-based automation pricing', 'Zendesk per-resolution pricing']
+    },
+    published: true
   }
 ]
 
