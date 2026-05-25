@@ -3314,6 +3314,31 @@ The result? Less time managing. More time growing.
       keywords: ['Zendesk Relate 2026', 'Zendesk Autonomous Service Workforce', 'outcome-based AI pricing', 'per resolution pricing', 'HubSpot Prospecting Agent $1', 'Intercom Fin pricing', 'Claude Agent SDK credits June 15', 'AI agency retainer dead']
     },
     published: true
+  },
+  {
+    id: '60',
+    slug: 'ghl-recordings-to-communities-course-portal-build-got-a-button',
+    title: "GHL Turned Recordings Into Community Posts on May 22. Your $8K Course-Portal Build Just Got a Button.",
+    excerpt: "On May 22 GHL shipped one-click 'Share as Post' from any recording into Communities, plus Conditional Visibility for whole layouts. Pair that with Skool at $99/mo and a labor-starved SMB market, and the customer community is no longer a build — it's a default.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-24',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['gohighlevel'], tags['workflow-automation'], tags['ai-tools'], tags['small-business']],
+    primaryTag: tags['gohighlevel'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&h=630&fit=crop',
+      alt: 'GHL Share as Post recordings to Communities course portal automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Turned Recordings Into Community Posts May 22 — Course Portal Build Is a Button | TrueFlow AI",
+      metaDescription: "GoHighLevel's May 22 'Share as Post' feature turns any meeting recording into a Community thread in two clicks. Conditional Visibility gates whole layouts by tag. The $8K course-portal build is now a default.",
+      keywords: ['GHL Share as Post', 'GoHighLevel Communities recording', 'GHL Conditional Visibility', 'course portal GHL', 'Skool vs GHL community', 'SMB community platform 2026', 'GHL workflow automation May 2026']
+    },
+    published: true
   }
 ]
 
