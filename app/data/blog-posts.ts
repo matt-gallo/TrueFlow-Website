@@ -3264,6 +3264,56 @@ The result? Less time managing. More time growing.
       keywords: ['GHL workflow integrations', 'GoHighLevel common integration experience', 'GHL OAuth workflow', 'integration audit agency', 'GHL automations May 2026', 'outcome-based automation pricing', 'Zendesk per-resolution pricing']
     },
     published: true
+  },
+  {
+    id: '58',
+    slug: 'ghl-wait-action-ai-nurture-cadence-audit-is-now-a-sentence',
+    title: "GHL Just Put AI Behind the Wait Action. Your 'Nurture Cadence Audit' Is Now a Sentence.",
+    excerpt: "GoHighLevel's Wait action got an AI-powered redesign with recurring schedules and natural-language setup — the same week Anthropic shipped 'outcomes' as a first-class agent primitive at Code w/ Claude. Configuration is no longer billable. Outcomes are.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-23',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['gohighlevel'], tags['workflow-automation'], tags['ai-tools'], tags['lead-nurturing']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=1200&h=630&fit=crop',
+      alt: 'GHL Wait Action AI redesign recurring schedules natural language workflow automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Wait Action Now AI-Driven — The Nurture Cadence Audit Is a Sentence | TrueFlow AI",
+      metaDescription: "GoHighLevel's Wait Action revamp shipped natural-language setup, recurring schedules, and single-step date waits. Pair it with Anthropic's May 22 'outcomes' primitive and the cadence-architecture line item is over.",
+      keywords: ['GHL Wait Action', 'GoHighLevel Wait AI', 'recurring wait schedules', 'nurture cadence agency', 'Claude Agent SDK outcomes', 'Code w/ Claude May 2026', 'outcome-based automation pricing', 'workflow AI builder']
+    },
+    published: true
+  },
+  {
+    id: '59',
+    slug: 'zendesk-relate-resolution-pricing-third-platform-retainer-is-the-anomaly',
+    title: "Zendesk Killed The Support Seat At Relate On May 19. That's Three Major Platforms Pricing AI On Outcomes In One Quarter — Your Flat Retainer Is Now The Anomaly.",
+    excerpt: "On May 19 at Relate 2026, Zendesk unveiled an Autonomous Service Workforce priced only on verified resolutions. Combined with HubSpot's $1-a-lead Prospecting Agent and Intercom Fin at $0.99 a resolution, the per-seat AI license is dead. The fixed-fee 'AI chatbot management retainer' is the only thing still acting like it's 2024.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-25',
+    readTime: 5,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['crm'], tags['small-business'], tags['customer-experience']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=1200&h=630&fit=crop',
+      alt: 'Zendesk Autonomous Service Workforce outcome-based pricing per resolution AI agent',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Zendesk Killed The Support Seat May 19 — Three Platforms Now Price AI On Outcomes | TrueFlow AI",
+      metaDescription: "Zendesk's Autonomous Service Workforce at Relate 2026 priced AI agents at $1.50–$2.00 per verified resolution. HubSpot, Intercom and Anthropic already moved off seats. The fixed-fee AI retainer is the anomaly.",
+      keywords: ['Zendesk Relate 2026', 'Zendesk Autonomous Service Workforce', 'outcome-based AI pricing', 'per resolution pricing', 'HubSpot Prospecting Agent $1', 'Intercom Fin pricing', 'Claude Agent SDK credits June 15', 'AI agency retainer dead']
+    },
+    published: true
   }
 ]
 
