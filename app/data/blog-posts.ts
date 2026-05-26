@@ -3339,6 +3339,31 @@ The result? Less time managing. More time growing.
       keywords: ['GHL Share as Post', 'GoHighLevel Communities recording', 'GHL Conditional Visibility', 'course portal GHL', 'Skool vs GHL community', 'SMB community platform 2026', 'GHL workflow automation May 2026']
     },
     published: true
+  },
+  {
+    id: '61',
+    slug: 'hubspot-run-agent-private-beta-every-crm-sells-agents-as-workflow-steps',
+    title: "HubSpot's 'Run Agent' Workflow Action Just Hit Private Beta. Four Major CRMs Now Sell The AI Agent As One Workflow Line. The Custom Build Is Cooked.",
+    excerpt: "HubSpot quietly opened the private beta on its Run Agent workflow action this spring — the same pattern GHL, Salesforce, and Microsoft already shipped. With Breeze billing $10 per 1,000 credits and SMB owners staring down a $6,214 median onboarding cost, the $25K custom agent build pitch just lost the room.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-26',
+    readTime: 5,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['crm'], tags['workflow-automation'], tags['sales-automation']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&h=630&fit=crop',
+      alt: 'HubSpot Breeze Run Agent workflow action AI agent CRM dropdown',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "HubSpot Run Agent Private Beta — Four Major CRMs Sell AI Agents As Workflow Steps | TrueFlow AI",
+      metaDescription: "HubSpot Breeze's Run Agent workflow action entered private beta this spring. With GHL, Salesforce Agentforce, and Microsoft Agent 365 all shipping the same pattern, AI agent invocation is now a dropdown. The $25K custom build pitch is dead.",
+      keywords: ['HubSpot Run Agent action', 'HubSpot Breeze private beta', 'AI agent workflow step', 'GHL AI Agent action', 'Salesforce Agentforce Operations', 'Microsoft Agent 365', 'HubSpot credits pricing', 'SMB AI automation 2026']
+    },
+    published: true
   }
 ]
 
