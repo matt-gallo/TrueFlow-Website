@@ -3364,6 +3364,31 @@ The result? Less time managing. More time growing.
       keywords: ['HubSpot Run Agent action', 'HubSpot Breeze private beta', 'AI agent workflow step', 'GHL AI Agent action', 'Salesforce Agentforce Operations', 'Microsoft Agent 365', 'HubSpot credits pricing', 'SMB AI automation 2026']
     },
     published: true
+  },
+  {
+    id: '62',
+    slug: 'ghl-daisy-chain-agents-mcp-orchestration-layer-dead',
+    title: "GHL Just Gave Workflow Agents 8,000 MCP Tools And A Daisy-Chain. The Orchestration Layer Was The Last Markup Left.",
+    excerpt: "GoHighLevel's May 2026 release lets one AI Agent step trigger another, with Zapier MCP wired in for 8,000+ external tools — all inside a Workflow. The standalone CrewAI/LangGraph 'orchestration layer' agencies have been billing for is now a dropdown.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-27',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['gohighlevel'], tags['workflow-automation'], tags['ai-tools'], tags['small-business']],
+    primaryTag: tags['gohighlevel'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&h=630&fit=crop',
+      alt: 'GHL AI Agent daisy-chain MCP orchestration workflow automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Daisy-Chain Agents With 8,000 MCP Tools — Orchestration Layer Is Dead | TrueFlow AI",
+      metaDescription: "GoHighLevel's May 2026 AI Agent action now supports agent-to-agent daisy-chaining and Zapier MCP for 8,000+ tools inside a single Workflow. The $4K–$8K standalone orchestration build just became a dropdown.",
+      keywords: ['GHL AI Agent daisy-chain', 'GoHighLevel MCP integration', 'GHL Zapier MCP', 'AI agent orchestration GHL', 'CrewAI LangGraph alternative', 'GHL workflow agents May 2026', 'outcome-based automation pricing']
+    },
+    published: true
   }
 ]
 
