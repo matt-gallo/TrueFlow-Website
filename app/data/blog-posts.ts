@@ -3389,6 +3389,31 @@ The result? Less time managing. More time growing.
       keywords: ['GHL AI Agent daisy-chain', 'GoHighLevel MCP integration', 'GHL Zapier MCP', 'AI agent orchestration GHL', 'CrewAI LangGraph alternative', 'GHL workflow agents May 2026', 'outcome-based automation pricing']
     },
     published: true
+  },
+  {
+    id: '63',
+    slug: 'ghl-ask-ai-memory-brand-voice-setup-retainer-dead',
+    title: "GHL Just Shipped 'Ask AI Memory' — Your Brand Voice Is Now A File Upload. The AI Persona Setup Retainer Is Done.",
+    excerpt: "GoHighLevel quietly pushed Ask AI Memory V1 into Labs this month. A non-technical owner can now upload a memory file describing their brand voice, offers, and niche — and the platform absorbs it across every prompt. The 'AI persona setup' phase agencies have been billing $2K–$5K for is officially a text box.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-05-28',
+    readTime: 5,
+    category: categories.automation,
+    tags: [tags['gohighlevel'], tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['gohighlevel'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1655720033654-a4239dd42d10?w=1200&h=630&fit=crop',
+      alt: 'GHL Ask AI Memory brand voice file upload agent persona',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Ask AI Memory V1 Ships — Brand Voice Setup Retainer Is Done | TrueFlow AI",
+      metaDescription: "GoHighLevel pushed Ask AI Memory V1 into Labs this month — a single uploaded file now grounds Ask AI, Conversation AI, and Voice AI in your brand voice. The $2K–$5K 'AI persona setup' phase is a paste. The prompt-tuning retainer is over.",
+      keywords: ['GHL Ask AI Memory', 'GoHighLevel brand voice file', 'AI persona setup', 'GHL Labs feature', 'agency prompt engineering pricing', 'AI brand voice document', 'Gemini Enterprise memory', 'Salesforce Agentforce multi-agent', 'small business AI 2026']
+    },
+    published: true
   }
 ]
 
