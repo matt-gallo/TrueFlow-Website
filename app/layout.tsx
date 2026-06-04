@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import CookieConsent from './components/CookieConsent'
 import ConditionalTracking from './components/ConditionalTracking'
+import GlobalChatWidget from './components/GlobalChatWidget'
 import { ThemeProvider } from './components/ThemeProvider'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -45,11 +46,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/true-flow-icon.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/true-flow-icon.png" />
         <meta name="theme-color" content="#000000" />
-        <script
-          src="https://widgets.leadconnectorhq.com/loader.js"
-          data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-          data-widget-id="6830ad06619d7c1715180638"
-        />
         <script dangerouslySetInnerHTML={{
           __html: `
             !function(f,b,e,v,n,t,s)
@@ -125,6 +121,7 @@ export default function RootLayout({
           </div>
           <CookieConsent />
           <ConditionalTracking />
+          <GlobalChatWidget />
         </ThemeProvider>
       </body>
     </html>

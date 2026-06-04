@@ -1,9 +1,13 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { X } from 'lucide-react'
 import { useTheme } from './ThemeProvider'
 import Link from 'next/link'
+
+// Routes where the consent popup should never appear (e.g. direct ad landing pages)
+const SUPPRESSED_PATHS = ['/growth-audit', '/ai-growth-audit', '/ai-growth-audit/chat', '/ai-growth-audit/chat/embed']
 
 interface ConsentPreferences {
   visitorData: boolean
@@ -12,6 +16,8 @@ interface ConsentPreferences {
 
 export default function CookieConsent() {
   const { isDarkMode } = useTheme()
+  const pathname = usePathname()
+  const isSuppressed = SUPPRESSED_PATHS.includes(pathname)
   const [showModal, setShowModal] = useState(false)
   const [visitorDataConsent, setVisitorDataConsent] = useState(true)
   const [isClient, setIsClient] = useState(false)
@@ -19,6 +25,8 @@ export default function CookieConsent() {
 
   useEffect(() => {
     setIsClient(true)
+
+    if (isSuppressed) return
 
     // Check if consent has already been given
     const consentData = localStorage.getItem('trueflow-consent')
@@ -38,7 +46,7 @@ export default function CookieConsent() {
         window.removeEventListener('scroll', handleScroll)
       }
     }
-  }, [hasScrolled])
+  }, [hasScrolled, isSuppressed])
 
   const handleAccept = () => {
     const preferences: ConsentPreferences = {
@@ -50,8 +58,8 @@ export default function CookieConsent() {
     setShowModal(false)
   }
 
-  // Don't render anything on server or if consent already given
-  if (!isClient || !showModal) {
+  // Don't render anything on server, on suppressed paths, or if consent already given
+  if (!isClient || isSuppressed || !showModal) {
     return null
   }
 
