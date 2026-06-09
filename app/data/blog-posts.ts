@@ -3414,6 +3414,31 @@ The result? Less time managing. More time growing.
       keywords: ['GHL Ask AI Memory', 'GoHighLevel brand voice file', 'AI persona setup', 'GHL Labs feature', 'agency prompt engineering pricing', 'AI brand voice document', 'Gemini Enterprise memory', 'Salesforce Agentforce multi-agent', 'small business AI 2026']
     },
     published: true
+  },
+  {
+    id: '64',
+    slug: 'ghl-shipped-email-spintax-deliverability-service-line-closed',
+    title: "GHL Shipped Email Spintax On June 8. If Your Agency Sells 'Deliverability' As A Service Line, That Line Just Closed.",
+    excerpt: "GoHighLevel added native spintax to the Email Builder on June 8 — the same word-randomization trick outbound agencies have quietly billed for. We've run it in Instantly since launch. Here's why it was never the moat, and what actually wins.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-09',
+    readTime: 5,
+    category: categories.marketing,
+    tags: [tags['gohighlevel'], tags['email-marketing'], tags['lead-generation'], tags['small-business']],
+    primaryTag: tags['gohighlevel'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=1200&h=630&fit=crop',
+      alt: 'GHL native email spintax variation cold outreach deliverability',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL Ships Native Email Spintax June 8 — The Deliverability Retainer Just Closed | TrueFlow AI",
+      metaDescription: "GoHighLevel added native spintax to the Email Builder on June 8, turning a billable 'deliverability optimization' service into a checkbox. Spintax was never the moat — segment-to-offer match and the reply path are. Here's what TrueFlow does instead.",
+      keywords: ['GHL email spintax', 'GoHighLevel spintax June 2026', 'cold email deliverability', 'inbox placement', 'outbound agency pricing', 'Instantly spintax', 'NFIB May 2026 labor costs', 'SMB outreach automation']
+    },
+    published: true
   }
 ]
 
