@@ -38,7 +38,7 @@
     "axios": "^1.11.0",
     "colors": "^1.4.0",
     "dotenv": "^17.2.1",
-    "framer-motion": "^12.23.6",
+    "framer-motion": "^11.18.2",
     "lucide-react": "^0.263.1",
     "next": "^14.2.30",
     "react": "^18.3.1",
