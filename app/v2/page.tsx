@@ -94,9 +94,14 @@ export default function V2Page() {
           </Link>
           <a
             href="#approach"
-            className="text-base font-medium text-white/70 hover:text-white transition-colors flex items-center gap-2"
+            className="group text-base font-medium text-white/70 hover:text-white transition-colors flex items-center gap-2.5"
           >
-            See our approach <span className="text-[#c9a24b]">→</span>
+            <span className="w-9 h-9 rounded-full border border-white/20 group-hover:border-[#c9a24b]/60 flex items-center justify-center transition-colors">
+              <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 ml-0.5" fill="currentColor" aria-hidden="true">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </span>
+            Watch our approach <span className="text-white/30 text-sm">· 90 sec</span>
           </a>
         </div>
       </section>
@@ -141,9 +146,47 @@ export default function V2Page() {
 
       {/* Approach — three quiet steps */}
       <section id="approach" className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 py-20 sm:py-28">
-        <p className="text-center text-xs tracking-[0.2em] uppercase text-white/40 mb-14">
+        <p className="text-center text-xs tracking-[0.2em] uppercase text-white/40 mb-10">
           The Approach
         </p>
+
+        {/*
+          90-second walkthrough video.
+          When the video is ready, replace the placeholder <div> below with ONE of:
+
+          YouTube/Vimeo:
+            <iframe
+              src="https://www.youtube.com/embed/VIDEO_ID"
+              title="How we work — 90-second walkthrough"
+              className="absolute inset-0 w-full h-full"
+              allow="accelerated-rotation; autoplay; encrypted-media; picture-in-picture"
+              allowFullScreen
+            />
+
+          Self-hosted mp4:
+            <video controls poster="/v2-approach-poster.jpg" className="absolute inset-0 w-full h-full object-cover">
+              <source src="/approach.mp4" type="video/mp4" />
+            </video>
+        */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="relative aspect-video rounded-2xl overflow-hidden border hairline bg-white/[0.03]">
+            {/* PLACEHOLDER — remove when the real video is dropped in (see comment above) */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-center px-6">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-b from-[#e7c87a] to-[#c9a24b] flex items-center justify-center">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 ml-0.5" fill="#0a0a0b" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <div>
+                <div className="serif text-lg sm:text-xl">The 90-second walkthrough</div>
+                <div className="text-xs tracking-widest uppercase text-white/35 mt-1">
+                  Exactly what working together looks like — coming soon
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="grid md:grid-cols-3 gap-10 md:gap-14">
           {[
             {
