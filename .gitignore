@@ -37,3 +37,13 @@ next-env.d.ts
 
 # signup data storage
 .signup-data/
+
+# local dev runtime artifacts
+*.log
+.pidfile
+.turbo/
+
+# editor / local backups
+*.bak
+*.backup
+.backup/

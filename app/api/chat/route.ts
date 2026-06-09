@@ -93,7 +93,7 @@ Be conversational, helpful, and provide insights based on the data you retrieve.
           // Execute the tool via MCP
           const result = await mcpClient.callTool({
             name: contentBlock.name,
-            arguments: contentBlock.input,
+            arguments: contentBlock.input as Record<string, unknown>,
           });
 
           toolResults.push({
@@ -125,18 +125,20 @@ Be conversational, helpful, and provide insights based on the data you retrieve.
     }
 
     // Extract text response
-    const textContent = finalResponse.content.find(
-      (block: any) => block.type === 'text'
+    const textBlock = finalResponse.content.find(
+      (block) => block.type === 'text'
     );
+    const responseText =
+      textBlock && textBlock.type === 'text' ? textBlock.text : '';
 
     await mcpClient.close();
 
     return NextResponse.json({
-      response: textContent?.text || 'I encountered an issue processing your request.',
+      response: responseText || 'I encountered an issue processing your request.',
       conversationHistory: [
         ...conversationHistory,
         { role: 'user', content: message },
-        { role: 'assistant', content: textContent?.text || '' },
+        { role: 'assistant', content: responseText },
       ],
     });
   } catch (error: any) {
