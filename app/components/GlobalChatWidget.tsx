@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import Script from 'next/script'
 
 // Routes that load their own chat widget and should NOT get the global one.
-const SUPPRESSED_PATHS = ['/ai-growth-audit', '/ai-growth-audit/chat', '/ai-growth-audit/chat/embed', '/chat-test']
+const SUPPRESSED_PATHS = ['/ai-growth-audit', '/ai-growth-audit/chat', '/ai-growth-audit/chat/embed', '/scale-without-you', '/scale-without-you/chat', '/scale-without-you/chat/embed', '/chat-test']
 
 /**
  * Loads the site-wide GoHighLevel chat bubble on every page EXCEPT routes that

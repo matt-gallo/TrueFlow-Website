@@ -378,8 +378,8 @@ export default function LandingPage() {
   const [cursorTrail, setCursorTrail] = useState<CursorTrailPoint[]>([])
   const cursorTrailRef = useRef<CursorTrailPoint[]>([])
   const animationFrameRef = useRef<number | null>(null)
-  const [trustSignalIndex, setTrustSignalIndex] = useState(0)
-  const [isTrustSignalVisible, setIsTrustSignalVisible] = useState(true)
+  // Respect the OS-level reduced-motion preference for heavy ambient effects
+  const reducedMotionRef = useRef(false)
   const [howItWorksVisible, setHowItWorksVisible] = useState(true)
   const howItWorksRef = useRef<HTMLDivElement>(null)
   const [testimonialsVisible, setTestimonialsVisible] = useState(true)
@@ -453,7 +453,12 @@ export default function LandingPage() {
 
   // Generate floating particles
   const generateParticles = () => {
-    const particleCount = 50
+    // Skip entirely when the user prefers reduced motion
+    if (reducedMotionRef.current) {
+      setParticles([])
+      return
+    }
+    const particleCount = 24
     const newParticles: Particle[] = []
     for (let i = 0; i < particleCount; i++) {
       newParticles.push({
@@ -495,11 +500,16 @@ export default function LandingPage() {
   // Handle mounting to avoid hydration issues
   useEffect(() => {
     setMounted(true)
-    
+
+    // Capture the user's reduced-motion preference once on mount
+    if (typeof window !== 'undefined' && window.matchMedia) {
+      reducedMotionRef.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    }
+
     // Load recent blog posts
     const posts = getPublishedPosts().slice(0, 3) // Get the 3 most recent posts
     setRecentBlogPosts(posts)
-    
+
     if (typeof window !== 'undefined') {
       generateParticles()
       
@@ -597,41 +607,47 @@ export default function LandingPage() {
     const handleMouseMove = (e: MouseEvent) => {
       const newPos = { x: e.clientX, y: e.clientY }
       setMousePosition(newPos)
-      
+
+      // Skip the cursor trail entirely for reduced-motion users (avoids a setState per mousemove)
+      if (reducedMotionRef.current) return
+
       // Add to cursor trail
       cursorTrailRef.current.push({
         x: newPos.x,
         y: newPos.y,
         timestamp: Date.now()
       })
-      
+
       // Keep only recent trail points (last 500ms)
       const now = Date.now()
       cursorTrailRef.current = cursorTrailRef.current.filter(point => now - point.timestamp < 500)
       setCursorTrail([...cursorTrailRef.current])
     }
     
-    // Animation loop for particles and gradients
+    // Animation loop for particles and gradients — skipped for reduced-motion users
     // Use setInterval for gradient animation to continue when tab loses focus
-    const gradientInterval = setInterval(() => {
-      setGradientOffset(prev => (prev + 0.5) % 360)
-    }, 16) // ~60fps but slower rotation (0.5 degree per frame instead of 1)
-    
-    // Particle animation can use requestAnimationFrame
-    const animateLoop = () => {
-      animateParticles()
+    let gradientInterval: NodeJS.Timeout | null = null
+    if (!reducedMotionRef.current) {
+      gradientInterval = setInterval(() => {
+        setGradientOffset(prev => (prev + 0.5) % 360)
+      }, 16) // ~60fps but slower rotation (0.5 degree per frame instead of 1)
+
+      // Particle animation can use requestAnimationFrame
+      const animateLoop = () => {
+        animateParticles()
+        animationFrameRef.current = requestAnimationFrame(animateLoop)
+      }
+
       animationFrameRef.current = requestAnimationFrame(animateLoop)
     }
-    
-    animationFrameRef.current = requestAnimationFrame(animateLoop)
-    
+
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('mousemove', handleMouseMove)
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
       window.removeEventListener('mousemove', handleMouseMove)
-      clearInterval(gradientInterval)
+      if (gradientInterval) clearInterval(gradientInterval)
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
@@ -658,7 +674,8 @@ export default function LandingPage() {
       role: "Chiropractic Clinic",
       company: "",
       tier: "Enterprise",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      initials: "A",
+      avatarGradient: "from-blue-500 to-cyan-500",
       quote: "I struggled to follow up with leads, track appointments, and manage forms. With TrueFlow's AI-driven lead capture, integrated scheduling, and automatic form tracking system, more calls get booked and intake is smoother. The backend now works like it should.",
       results: ["More calls booked", "Smoother intake process", "Automated form tracking"]
     },
@@ -667,7 +684,8 @@ export default function LandingPage() {
       role: "Owner, CrossFit 103",
       company: "",
       tier: "Enterprise Client",
-      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=150&h=150&fit=crop&crop=face",
+      initials: "M",
+      avatarGradient: "from-orange-500 to-red-500",
       quote: "Before TrueFlow, our website was getting traffic, but visitors weren't turning into booked intros. We rebuilt the site, added AI-driven conversations, and automated follow-up. Without running ads, the system booked 13 appointments from organic traffic alone. Now that it works, we're confidently scaling with ads and social.",
       results: ["13 appointments booked organically", "AI engaging leads 24/7", "Website → conversation → booking, automated"]
     },
@@ -676,7 +694,8 @@ export default function LandingPage() {
       role: "Founder, WellPath Center",
       company: "",
       tier: "Enterprise Client",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face",
+      initials: "CB",
+      avatarGradient: "from-purple-500 to-pink-500",
       quote: "Before TrueFlow, we were generating leads but the system wasn't keeping up. Messages went unanswered, conversations stalled, and follow-up depended on manual effort. We activated AI agents in our DMs and SMS to qualify and respond instantly. Now about 15% of inbound leads are automatically qualified and booked into calls, even while running paid ads.",
       results: ["50 leads per week handled automatically", "AI qualifying via DM + SMS", "Consistent replies, follow-up, and bookings"]
     }
@@ -688,22 +707,6 @@ export default function LandingPage() {
     { value: "0", label: "Leads Slipping Through", icon: <Target className="h-12 w-12" /> },
     { value: "24/7", label: "Working For You", icon: <Zap className="h-12 w-12" /> }
   ]
-
-  useEffect(() => {
-    let switchTimeout: NodeJS.Timeout | null = null
-    const interval = setInterval(() => {
-      setIsTrustSignalVisible(false)
-      switchTimeout = setTimeout(() => {
-        setTrustSignalIndex((prev) => (prev + 1) % stats.length)
-        setIsTrustSignalVisible(true)
-      }, 250)
-    }, 2000)
-
-    return () => {
-      clearInterval(interval)
-      if (switchTimeout) clearTimeout(switchTimeout)
-    }
-  }, [stats.length])
 
   // Don't render dynamic content until mounted
   if (!mounted) {
@@ -881,8 +884,8 @@ export default function LandingPage() {
                   </div>
                 )}
               </div>
-              <a href="https://trueflow.ai/lead-machine" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Lead Machine™</a>
-              <Link href="/content-engine" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Constant Content Engine™</Link>
+              <a href="https://trueflow.ai/lead-machine" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Lead Machine</a>
+              <Link href="/content-engine" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Constant Content Engine</Link>
               {/* <Link href="/for-business" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>For Business</Link> */}
               <a href="#blog" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Blog</a>
               <Link href="/faq" className={`transition-colors text-sm ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>FAQs</Link>
@@ -912,7 +915,7 @@ export default function LandingPage() {
                 Sign in
               </a>
               <Link href="/sign-up" className="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity text-sm font-semibold">
-                Book a live demo
+                Book a free demo
               </Link>
             </div>
 
@@ -956,8 +959,8 @@ export default function LandingPage() {
                 <a href="#testimonials" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Success Stories</a>
                 <a href="#integrations" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg pl-4 ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Integrations</a>
               </div>
-              <a href="https://trueflow.ai/lead-machine" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Lead Machine™</a>
-              <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Constant Content Engine™</Link>
+              <a href="https://trueflow.ai/lead-machine" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Lead Machine</a>
+              <Link href="/content-engine" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Constant Content Engine</Link>
               {/* <Link href="/for-business" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>For Business</Link> */}
               <a href="#blog" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>Blog</a>
               <Link href="/faq" onClick={() => setIsMenuOpen(false)} className={`block transition-colors text-lg ${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>FAQs</Link>
@@ -974,7 +977,7 @@ export default function LandingPage() {
                 Sign in
               </a>
               <Link href="/sign-up" onClick={() => setIsMenuOpen(false)} className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full hover:opacity-90 transition-opacity text-lg font-semibold block text-center">
-                Book a live demo
+                Book a free demo
               </Link>
             </div>
           </div>
@@ -995,11 +998,23 @@ export default function LandingPage() {
                 We install systems that book sales calls for you 24/7
               </h1>
 
-              <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-8 px-4 ${
+              <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 px-4 ${
                 isDarkMode ? 'text-white/60' : 'text-gray-600'
               }`}>
                 Done-for-you CRM, AI follow-up, and automated marketing systems so no lead ever slips through.
               </p>
+
+              {/* Hero proof line */}
+              <div className={`flex flex-wrap items-center justify-center gap-x-3 gap-y-2 mb-8 px-4 text-sm sm:text-base ${
+                isDarkMode ? 'text-white/70' : 'text-gray-600'
+              }`}>
+                <span className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </span>
+                <span className="font-medium">Trusted by chiropractors, gyms, and coaches</span>
+              </div>
 
               <div className="flex flex-col items-center px-4">
                 <button
@@ -1027,38 +1042,32 @@ export default function LandingPage() {
       }`}>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-blue-500/5"></div>
 
-        {/* Auto-scrolling Container */}
-        <div className="relative">
-          <div
-            className="flex transition-transform duration-700 ease-out"
-            style={{
-              transform: `translateX(-${trustSignalIndex * 100}%)`
-            }}
-          >
-            {/* Render stats multiple times for seamless loop */}
-            {[...stats, ...stats, ...stats].map((stat, idx) => (
+        {/* Static stat grid — all signals visible at a glance */}
+        <div className="relative max-w-6xl mx-auto px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {stats.map((stat, idx) => (
               <div
                 key={idx}
-                className="flex-shrink-0 w-full flex items-center justify-center px-8"
+                className={`flex flex-col items-center text-center gap-3 p-5 sm:p-6 rounded-2xl ${
+                  isDarkMode ? 'bg-white/5 border border-white/10' : 'bg-white border border-gray-200 shadow-sm'
+                }`}
               >
-                <div className="flex items-center space-x-4">
-                  <div className={`p-4 rounded-2xl ${
-                    isDarkMode ? 'bg-white/10' : 'bg-white shadow-sm'
+                <div className={`p-3 rounded-2xl ${
+                  isDarkMode ? 'bg-white/10' : 'bg-gray-50'
+                }`}>
+                  {stat.icon}
+                </div>
+                <div>
+                  <p className={`text-3xl sm:text-4xl font-bold ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
                   }`}>
-                    {stat.icon}
-                  </div>
-                  <div>
-                    <p className={`text-4xl font-bold ${
-                      isDarkMode ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {stat.value}
-                    </p>
-                    <p className={`text-sm ${
-                      isDarkMode ? 'text-white/70' : 'text-gray-600'
-                    }`}>
-                      {stat.label}
-                    </p>
-                  </div>
+                    {stat.value}
+                  </p>
+                  <p className={`text-sm mt-1 ${
+                    isDarkMode ? 'text-white/70' : 'text-gray-600'
+                  }`}>
+                    {stat.label}
+                  </p>
                 </div>
               </div>
             ))}
@@ -1935,15 +1944,76 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Problem Statement - Storytelling Section */}
+      {/* Why TrueFlow - Before / After Section */}
       <section id="why-trueflow" className="py-16 sm:py-24 lg:py-32 px-4 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto">
-          {/* Business Evolution: Side-by-Side Comparison */}
-          <div className="max-w-7xl mx-auto">
-            {/* Vertical Stacked Chapters */}
-            <div className="flex flex-col gap-12 max-w-4xl mx-auto">
-
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight ${
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}>
+              Why TrueFlow?
+            </h2>
+            <p className={`text-lg sm:text-xl max-w-2xl mx-auto ${
+              isDarkMode ? 'text-white/70' : 'text-gray-600'
+            }`}>
+              The difference between stitching tools together yourself and having one system built, run, and filled for you.
+            </p>
           </div>
+
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
+            {/* Before */}
+            <div className={`rounded-3xl border p-8 sm:p-10 ${
+              isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+            }`}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-red-500/15 border border-red-500/30 flex items-center justify-center">
+                  <X className="w-5 h-5 text-red-400" />
+                </div>
+                <h3 className={`text-xl sm:text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  Doing it yourself
+                </h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "Five tools that don't talk to each other",
+                  "Leads slip through when you're busy",
+                  "Follow-up depends on you remembering",
+                  "You're the bottleneck the business runs on"
+                ].map((item, idx) => (
+                  <li key={idx} className={`flex items-start gap-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                    <span className="mt-1.5 flex-shrink-0 w-2 h-2 rounded-full bg-red-400/70"></span>
+                    <span className="text-base sm:text-lg">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* After */}
+            <div className={`rounded-3xl border p-8 sm:p-10 relative overflow-hidden ${
+              isDarkMode ? 'bg-gradient-to-br from-blue-500/10 to-purple-500/10 border-blue-500/30' : 'bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200 shadow-lg'
+            }`}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-green-500/15 border border-green-500/30 flex items-center justify-center">
+                  <CheckCircle className="w-5 h-5 text-green-400" />
+                </div>
+                <h3 className={`text-xl sm:text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                  With TrueFlow
+                </h3>
+              </div>
+              <ul className="space-y-4">
+                {[
+                  "One connected system, built for your business",
+                  "Every lead captured and followed up automatically",
+                  "AI replies, qualifies, and books while you sleep",
+                  "The system runs the busywork so you can scale"
+                ].map((item, idx) => (
+                  <li key={idx} className={`flex items-start gap-3 ${isDarkMode ? 'text-white/90' : 'text-gray-800'}`}>
+                    <CheckCircle className="mt-0.5 flex-shrink-0 w-5 h-5 text-green-400" />
+                    <span className="text-base sm:text-lg font-medium">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -2014,13 +2084,14 @@ export default function LandingPage() {
                   <div className={`flex items-center mb-4 sm:mb-6 relative z-10 ${
                     ''
                   }`} style={{ animationDelay: `${index * 200 + 400}ms` }}>
-                    {/* Profile image with glow effect */}
+                    {/* Profile avatar (initials) with glow effect */}
                     <div className="relative mr-3 sm:mr-4">
-                      <img 
-                        src={testimonial.image} 
-                        alt={testimonial.name}
-                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-blue-500/30"
-                      />
+                      <div
+                        aria-hidden="true"
+                        className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center font-bold text-white text-lg sm:text-xl bg-gradient-to-br ${testimonial.avatarGradient} transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-blue-500/30`}
+                      >
+                        {testimonial.initials}
+                      </div>
                       {/* Animated ring around profile */}
                       <div className="absolute inset-0 rounded-full border-2 border-blue-400/0 group-hover:border-blue-400/50 transition-all duration-500 "></div>
                     </div>
@@ -2331,7 +2402,7 @@ export default function LandingPage() {
               onClick={() => setIsDemoModalOpen(true)}
               className="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300"
             >
-              <span>Book your live demo</span>
+              <span>Book a free demo</span>
               <ChevronRight className="h-5 w-5" />
             </button>
             <p className={`text-sm mt-3 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>

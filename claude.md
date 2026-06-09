@@ -1,5 +1,13 @@
 # Claude Development Notes
 
+## Preview / Dev Server Policy
+
+**Do NOT run `preview_start` or the preview verification workflow for this repo.**
+
+This project deploys automatically to Railway on every `git push`. There is no local dev server to verify against. All changes are verified by pushing to `main` (staging) or `production` and letting Railway build.
+
+---
+
 ## Git Branch & Environment Mapping
 
 **Important:** This project uses a different git branch convention than typical FAANG companies.

@@ -7,7 +7,7 @@ import { useTheme } from './ThemeProvider'
 import Link from 'next/link'
 
 // Routes where the consent popup should never appear (e.g. direct ad landing pages)
-const SUPPRESSED_PATHS = ['/growth-audit', '/ai-growth-audit', '/ai-growth-audit/chat', '/ai-growth-audit/chat/embed']
+const SUPPRESSED_PATHS = ['/growth-audit', '/ai-growth-audit', '/ai-growth-audit/chat', '/ai-growth-audit/chat/embed', '/scale-without-you', '/scale-without-you/chat', '/scale-without-you/chat/embed']
 
 interface ConsentPreferences {
   visitorData: boolean

@@ -1,6 +1,8 @@
 /**
- * TrueFlow White Glove DFY Page
- * Done-for-you service offering page
+ * TrueFlow — Scale Without You (variant)
+ * Ad-traffic landing page reframed around owner dependency / leverage.
+ * Frame: Growth → Leverage → Audit → AI. AI is the mechanism, not the headline.
+ * CTAs route to /scale-without-you/chat (minimal page; AI chat auto-opens).
  */
 
 'use client'
@@ -8,32 +10,29 @@
 import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Script from 'next/script'
+import { useRouter } from 'next/navigation'
 import '../animations.css'
 import type { LucideIcon } from 'lucide-react'
 import {
   ChevronRight,
+  ChevronDown,
   Zap,
-  MessageSquare,
-  FileText,
-  Users,
   Clock,
   TrendingUp,
-  Target,
+  Unplug,
   CheckCircle,
   Instagram,
   Facebook,
-  MessageCircle,
   Youtube,
-  X as XIcon,
-  Sparkles,
-  Globe,
-  Calendar,
-  Mail
+  Inbox,
+  BellRing,
+  Filter,
+  Repeat,
+  Database,
+  BarChart3
 } from 'lucide-react'
 import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
-import { AssessmentPopup } from '../components/AssessmentPopup'
 
 interface Particle {
   id: number
@@ -56,79 +55,89 @@ interface SystemBlock {
   bullets: string[]
 }
 
-const bookingWidgetSrc = 'https://api.leadconnectorhq.com/widget/booking/nc8KAbjOlywMkW6XPSBj'
-const heroBookingWidgetId = 'nc8KAbjOlywMkW6XPSBj_1766512585328'
-const modalBookingWidgetId = 'nc8KAbjOlywMkW6XPSBj_1766512585330'
-const bookingFormBaseHeight = 760
-const bookingFormScale = 0.7
+// CTAs navigate to /scale-without-you/chat (minimal page) where the AI chat
+// widget auto-opens. chatSectionId anchors the in-page "Start" section.
+const chatSectionId = 'audit-chat'
 
 const systemBlocks: SystemBlock[] = [
   {
-    id: 'full-crm',
-    title: 'Full CRM + Automations',
-    description: 'A fully built and managed CRM customized to how your business actually operates.',
-    icon: Zap,
+    id: 'lead-response',
+    title: 'Leads Answered Without You',
+    description: 'Every inbound lead gets a fast, on-brand response — so the deal never waits on you to pick up the phone.',
+    icon: BellRing,
     gradientFrom: 'from-blue-500',
     gradientTo: 'to-purple-500',
     bullets: [
-      'Lead capture from ads, website, chat, forms, and DMs',
-      'Custom pipelines built around your sales process',
-      'Automated follow-up that adapts to lead behavior',
-      'Reporting that shows exactly what\'s working'
+      'No more "I\'ll get back to them later"',
+      'Responses in seconds, 24/7',
+      'You stop being the response bottleneck'
     ]
   },
   {
-    id: 'ai-chat-agents',
-    title: 'AI Chat Agents',
-    description: 'AI-powered chat agents trained on your business that respond instantly and book qualified calls.',
-    icon: MessageSquare,
+    id: 'follow-up',
+    title: 'Follow-Up On Autopilot',
+    description: 'The nudging and chasing that only happens when you remember — now it happens every time, on its own.',
+    icon: Repeat,
     gradientFrom: 'from-green-500',
     gradientTo: 'to-emerald-500',
     bullets: [
-      '24/7 responses to inbound questions',
-      'Smart scheduling directly into your calendar',
-      'Automatic lead qualification before handoff',
-      'Fewer missed opportunities, faster response times'
+      'Sequences across email, SMS, and voicemail',
+      'Runs until the prospect buys or opts out',
+      'Nothing slips because you got busy'
     ]
   },
   {
-    id: 'content-engine',
-    title: 'Constant Content Engine™',
-    description: 'We design and manage your content engine so your business stays visible without constant effort.',
-    icon: FileText,
+    id: 'qualification',
+    title: 'Qualifying & Routing',
+    description: 'Good leads sorted from bad and sent to the right place automatically — not triaged by you or a coordinator.',
+    icon: Filter,
     gradientFrom: 'from-purple-500',
     gradientTo: 'to-pink-500',
     bullets: [
-      'Weekly content themes aligned to your offer',
-      'Blog posts, email newsletters, and social content',
-      'SEO, formatting, and publishing handled for you',
-      'Approval-based workflow so you stay in control'
+      'Your team only touches real opportunities',
+      'No manual triage or data entry',
+      'Built around how you actually sell'
     ]
   },
   {
-    id: 'lead-machine',
-    title: 'Lead Machine™',
-    description: 'Targeted lead acquisition systems built and managed the right way.',
-    icon: Users,
+    id: 'data-entry',
+    title: 'A Pipeline That Updates Itself',
+    description: 'The copy-paste, update-the-record busywork disappears — your CRM stays clean without anyone babysitting it.',
+    icon: Database,
     gradientFrom: 'from-cyan-500',
+    gradientTo: 'to-blue-500',
+    bullets: [
+      'Records update automatically',
+      'No outdated or duplicate contacts',
+      'Hours of admin time given back'
+    ]
+  },
+  {
+    id: 'intake',
+    title: 'Booking Without The Back-And-Forth',
+    description: 'Forms, scheduling, and email tag replaced by a system that just puts the right people on the calendar.',
+    icon: Inbox,
+    gradientFrom: 'from-orange-500',
+    gradientTo: 'to-red-500',
+    bullets: [
+      'Qualified prospects book themselves',
+      'No coordinator playing email tag',
+      'Reminders and confirmations handled'
+    ]
+  },
+  {
+    id: 'reporting',
+    title: 'Visibility Without The Spreadsheets',
+    description: 'The reports someone builds by hand each week, generated on their own — so you can see the business without running it.',
+    icon: BarChart3,
+    gradientFrom: 'from-teal-500',
     gradientTo: 'to-green-500',
     bullets: [
-      'Compliant outbound and reactivation campaigns',
-      'High-converting funnels and landing pages',
-      'Lead routing and tracking from first touch to booked call',
-      'Systems designed to attract high-intent buyers'
+      'See where time and revenue leak',
+      'Know what actually converts',
+      'No manual spreadsheet wrangling'
     ]
   }
-]
-
-const integrationPlatforms = [
-  { name: 'Instagram', icon: Instagram },
-  { name: 'Facebook', icon: Facebook },
-  { name: 'WhatsApp', icon: MessageCircle },
-  { name: 'YouTube', icon: Youtube },
-  { name: 'X', icon: XIcon },
-  { name: 'Email', icon: Mail },
-  { name: 'Calendar', icon: Calendar }
 ]
 
 const testimonials = [
@@ -158,26 +167,27 @@ const testimonials = [
   }
 ]
 
-export default function WhiteGlovePage() {
+export default function ScaleWithoutYouPage() {
   const { isDarkMode } = useTheme()
   const logoSrc = isDarkMode ? '/true-flow-logo.webp' : '/true-flow-logo-light-mode.png'
   const [mounted, setMounted] = useState(false)
   const [scrollY, setScrollY] = useState(0)
   const [particles, setParticles] = useState<Particle[]>([])
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const heroIframeRef = useRef<HTMLIFrameElement>(null)
-  const [heroBookingHeight, setHeroBookingHeight] = useState(bookingFormBaseHeight)
-  const heroScaledHeight = Math.round(heroBookingHeight * bookingFormScale)
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const heroRef = useRef<HTMLDivElement>(null)
   const animationFrameRef = useRef<number>()
+  const router = useRouter()
+
+  // All CTAs navigate to the minimal chat page where the AI widget auto-opens.
+  const openChat = () => {
+    router.push('/scale-without-you/chat')
+  }
 
   useEffect(() => {
     setMounted(true)
 
-    // Initialize particles
     const initialParticles: Particle[] = Array.from({ length: 50 }, (_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
@@ -190,33 +200,6 @@ export default function WhiteGlovePage() {
     }))
     setParticles(initialParticles)
   }, [])
-
-  useEffect(() => {
-    if (!mounted) return
-    const iframe = heroIframeRef.current
-    if (!iframe) return
-
-    const updateHeight = () => {
-      const styleHeight = parseFloat(iframe.style.height || '')
-      const measuredHeight = Number.isFinite(styleHeight) && styleHeight > 0
-        ? styleHeight
-        : iframe.offsetHeight || bookingFormBaseHeight
-      setHeroBookingHeight(prev =>
-        Math.abs(prev - measuredHeight) > 2 ? measuredHeight : prev
-      )
-    }
-
-    const observer = new MutationObserver(() => updateHeight())
-    observer.observe(iframe, { attributes: true, attributeFilter: ['style'] })
-
-    const interval = window.setInterval(updateHeight, 1500)
-    updateHeight()
-
-    return () => {
-      observer.disconnect()
-      window.clearInterval(interval)
-    }
-  }, [mounted])
 
   const animateParticles = () => {
     setParticles(prevParticles =>
@@ -290,56 +273,48 @@ export default function WhiteGlovePage() {
   }, [])
 
   const stats = [
-    { value: "1000s", label: "Hours saved", icon: <Clock className="h-12 w-12" /> },
-    { value: "$100k+", label: "Revenue protected", icon: <TrendingUp className="h-12 w-12" /> },
-    { value: "0", label: "Leads slipping through", icon: <Target className="h-12 w-12" /> },
-    { value: "24/7", label: "Systems working for you", icon: <Zap className="h-12 w-12" /> }
+    { value: "48hrs", label: "Unplug without it breaking", icon: <Unplug className="h-12 w-12" /> },
+    { value: "1000s", label: "Owner hours given back", icon: <Clock className="h-12 w-12" /> },
+    { value: "0", label: "New hires needed to scale", icon: <TrendingUp className="h-12 w-12" /> },
+    { value: "24/7", label: "Systems running for you", icon: <Zap className="h-12 w-12" /> }
   ]
 
-  const painPoints = [
-    'You have traffic, referrals, or inbound interest.',
-    'Leads book… then disappear.',
-    'Follow-up is inconsistent or manual.',
-    'Your CRM exists, but no one really owns it.',
-    'Growth feels heavier than it should.'
+  const dependencyPoints = [
+    'If sales slow down, you step in.',
+    'If leads need follow-up, you step in.',
+    'If customers need support, you step in.',
+    'If something breaks, you step in.'
   ]
 
-  const softwareProblems = [
-    '5+ tools that don\'t talk to each other',
-    'Subscriptions stacking up',
-    'More manual work than before',
-    'Still missed leads and no-shows'
+  const auditFinds = [
+    'Tasks consuming your time',
+    'Bottlenecks limiting growth',
+    'Processes that should be automated',
+    'Opportunities to improve efficiency',
+    'Areas where AI can create immediate leverage'
   ]
 
-  const howItWorksSteps = [
+  const faqs = [
     {
-      day: 'Day 1',
-      title: 'Strategy & Technical Onboarding',
-      description: 'We audit your current tools, map your sales flow, and define exactly how your system should operate.'
+      question: 'What exactly is the Growth Audit?',
+      answer: 'A working session where we map how your business actually runs, find where the work depends on you, and give you a clear roadmap of what to automate, delegate, or eliminate.'
     },
     {
-      day: 'Day 3',
-      title: 'System Build & Integration',
-      description: 'Your CRM, automations, AI agents, and pipelines are built and connected. We handle setup and QA.'
+      question: 'Is this just about AI?',
+      answer: 'No. The audit is about finding leverage — where your time and energy are trapped. AI is one of the most powerful tools we use to create that leverage, but the goal is a business that runs with far less of you in it.'
     },
     {
-      day: 'Day 7',
-      title: 'Activation & Optimization',
-      description: 'Your system goes live. We monitor performance and fine-tune messaging, timing, and routing.'
+      question: 'Do I need a CRM or any tools already?',
+      answer: 'No. We can build on what you have, or build the infrastructure from scratch. The audit works either way.'
     },
     {
-      day: 'Ongoing',
-      title: 'Management & Support',
-      description: 'We continue optimizing, supporting, and expanding your system as your business evolves.'
+      question: 'Will this replace my team?',
+      answer: 'No. It removes the repetitive work so your team can do more of what matters — and so you stop being the bottleneck for everything.'
+    },
+    {
+      question: 'Is the audit really free?',
+      answer: 'Yes. You\'ll leave with a clear picture of what should happen next — whether we end up working together or not.'
     }
-  ]
-
-  const offerIncludes = [
-    'Custom system build tailored to your business',
-    'Ongoing technical management and optimization',
-    'Direct access to a TrueFlow success manager',
-    'Priority support and strategy calls',
-    'Content Engine strategy and setup'
   ]
 
   if (!mounted) {
@@ -354,8 +329,6 @@ export default function WhiteGlovePage() {
 
   return (
     <>
-      <AssessmentPopup />
-      <Script src="https://link.msgsndr.com/js/form_embed.js" strategy="afterInteractive" />
       <div className={`min-h-screen overflow-x-hidden transition-colors ${
         isDarkMode ? 'bg-black text-white' : 'bg-gray-50 text-gray-900'
       }`}>
@@ -417,10 +390,10 @@ export default function WhiteGlovePage() {
             {/* CTA Button */}
             <div className="flex items-center space-x-4">
               <button
-                onClick={() => setIsDemoModalOpen(true)}
+                onClick={openChat}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:scale-105 transition-all duration-300"
               >
-                Book a demo
+                Get Your Free Growth Audit
               </button>
             </div>
           </div>
@@ -430,81 +403,105 @@ export default function WhiteGlovePage() {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative flex items-start justify-center px-4 min-h-screen sm:py-28"
+        className="relative flex items-center justify-center px-4 pt-40 pb-24 sm:pt-44 sm:pb-28"
       >
         <div className="max-w-6xl mx-auto w-full">
           <div className="text-center space-y-6 sm:space-y-8">
             <div>
-              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 mt-8 sm:mt-12 leading-tight px-2 ${
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                We build and run your entire sales and marketing system for you.
+                Build A Business That Doesn&apos;t Need You Every Minute
               </h1>
 
-              <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-6 sm:mb-8 px-4 ${
+              <p className={`text-base sm:text-lg md:text-xl max-w-3xl mx-auto mb-8 sm:mb-10 px-4 ${
                 isDarkMode ? 'text-white/60' : 'text-gray-600'
               }`}>
-                Custom CRM, AI follow-up, content, and lead-gen systems - designed, installed, and managed by TrueFlow so nothing slips through.
+                Most business owners didn&apos;t start a company to become the bottleneck. Discover where manual work, repetitive tasks, and operational inefficiencies are slowing growth — and get a custom roadmap showing exactly what to automate, delegate, or eliminate.
+              </p>
+
+              <button
+                onClick={openChat}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 sm:px-10 py-5 sm:py-6 rounded-full text-xl sm:text-2xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center space-x-3"
+              >
+                <span>Get Your Free Growth Audit</span>
+                <ChevronRight className="h-6 w-6" />
+              </button>
+
+              <p className={`mt-5 text-sm ${isDarkMode ? 'text-white/40' : 'text-gray-500'}`}>
+                No obligation. No technical experience required.
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Calendar Section */}
-          <div className="mt-10">
-            <div className={`backdrop-blur-md rounded-3xl border p-6 sm:p-8 ${
-              isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-xl'
-            }`}>
-              <div className="flex flex-col lg:flex-row items-stretch gap-6 lg:gap-10">
-                <div className="lg:w-5/12 flex flex-col justify-center space-y-4 text-left">
-                  <h2 className={`text-4xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                    Book a private consultation with a TrueFlow expert
-                  </h2>
-                  <p className={`text-lg leading-relaxed ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                    On this 30 minute call we will get to know you and your business&apos; needs, then answer any questions you have. At the end of the call you will receive a Custom AI Automation Roadmap and we&apos;ll share what it would take to build this for you.
+      {/* You Started A Business For Freedom */}
+      <section className={`py-16 sm:py-20 px-4 relative ${
+        isDarkMode ? 'bg-black' : 'bg-white'
+      }`}>
+        <div className="max-w-4xl mx-auto">
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-3 text-center leading-tight ${
+            isDarkMode ? 'text-white' : 'text-gray-900'
+          }`}>
+            You Started A Business For Freedom.
+          </h2>
+          <h3 className={`text-2xl sm:text-3xl font-bold mb-10 text-center ${
+            isDarkMode ? 'text-white/90' : 'text-gray-800'
+          }`}>
+            So Why Does Everything Still Depend On You?
+          </h3>
+
+          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl mb-8 ${
+            isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+          }`}>
+            <div className="space-y-4">
+              {dependencyPoints.map((point, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start space-x-3 p-4 rounded-xl ${
+                    isDarkMode ? 'bg-white/5' : 'bg-gray-50'
+                  }`}
+                >
+                  <div className="flex-shrink-0 mt-1">
+                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600"></div>
+                  </div>
+                  <p className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+                    {point}
                   </p>
                 </div>
-
-                <div className="flex-1 w-full">
-                  <div
-                    className="rounded-2xl overflow-hidden w-full"
-                    style={{ height: `${heroScaledHeight}px` }}
-                  >
-                    <div
-                      className="origin-top-left"
-                      style={{
-                        transform: `scale(${bookingFormScale})`,
-                        width: `${100 / bookingFormScale}%`,
-                        height: `${heroBookingHeight}px`
-                      }}
-                    >
-                      <iframe
-                        ref={heroIframeRef}
-                        src={bookingWidgetSrc}
-                        style={{
-                          width: '100%',
-                          height: `${heroBookingHeight}px`,
-                          border: 'none',
-                          overflow: 'hidden'
-                        }}
-                        scrolling="no"
-                        id={heroBookingWidgetId}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
 
-        {/* Scroll Indicator */}
-        <div
-          className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce transition-opacity duration-300 ${
-            scrollY > 100 ? 'opacity-0 pointer-events-none' : 'opacity-100'
-          }`}
-        >
-          <div className="w-8 h-12 border-2 border-white/30 rounded-full flex justify-center">
-            <div className="w-1 h-4 bg-white/50 rounded-full mt-2"></div>
+          <div className="text-center space-y-3">
+            <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+              The business grows. Your workload grows with it.
+            </p>
+            <p className={`text-xl sm:text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              That&apos;s not scale. <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">That&apos;s dependency.</span>
+            </p>
+            <p className={`text-lg sm:text-xl max-w-2xl mx-auto pt-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+              The highest-performing businesses don&apos;t grow by adding complexity. They grow by building systems.
+            </p>
+          </div>
+
+          {/* What the audit identifies */}
+          <div className="max-w-2xl mx-auto mt-12">
+            <p className={`text-lg font-semibold text-center mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              Your Growth Audit will identify:
+            </p>
+            <ul className="space-y-4">
+              {auditFinds.map((item, index) => (
+                <li key={index} className="flex items-start space-x-3">
+                  <CheckCircle className={`h-6 w-6 mt-0.5 flex-shrink-0 ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`} />
+                  <span className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p className={`text-base text-center mt-8 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+              You&apos;ll leave with a clear picture of what should happen next.
+            </p>
           </div>
         </div>
       </section>
@@ -540,132 +537,71 @@ export default function WhiteGlovePage() {
         </div>
       </section>
 
-      {/* Pain Section */}
+      {/* Scale Through Systems, Not Supervision */}
       <section className={`py-16 sm:py-20 px-4 relative ${
         isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-white'
       }`}>
         <div className="max-w-4xl mx-auto">
-          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
-            isDarkMode
-              ? 'bg-white/5 border-white/10'
-              : 'bg-white border-gray-200 shadow-lg'
-          }`}>
-            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center leading-tight ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}>
-              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                You already have demand. The system behind it is the problem.
-              </span>
-            </h2>
-
-            <div className="space-y-4">
-              {painPoints.map((point, index) => (
-                <div
-                  key={index}
-                  className={`flex items-start space-x-3 p-4 rounded-xl ${
-                    isDarkMode ? 'bg-white/5' : 'bg-gray-50'
-                  }`}
-                >
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600"></div>
-                  </div>
-                  <p className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                    {point}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* "So You Tried Just Using Software" Section */}
-      <section className={`py-16 sm:py-20 px-4 relative ${
-        isDarkMode ? 'bg-black' : 'bg-white'
-      }`}>
-        <div className="max-w-4xl mx-auto">
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            So you tried "just using software."
-          </h2>
-
-          <p className={`text-lg sm:text-xl text-center mb-8 ${
-            isDarkMode ? 'text-white/70' : 'text-gray-600'
-          }`}>
-            You signed up for CRMs, schedulers, email tools, chat widgets, and content platforms.
-          </p>
-
-          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl mb-8 ${
-            isDarkMode
-              ? 'bg-white/5 border-white/10'
-              : 'bg-white border-gray-200 shadow-lg'
-          }`}>
-            <h3 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              Now you have:
-            </h3>
-            <div className="space-y-4">
-              {softwareProblems.map((problem, index) => (
-                <div
-                  key={index}
-                  className={`flex items-start space-x-3 p-4 rounded-xl ${
-                    isDarkMode ? 'bg-red-500/10 border border-red-500/20' : 'bg-red-50 border border-red-200'
-                  }`}
-                >
-                  <div className="flex-shrink-0 mt-1">
-                    <div className="w-2 h-2 rounded-full bg-red-500"></div>
-                  </div>
-                  <p className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                    {problem}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <p className={`text-lg sm:text-xl text-center ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-            Software didn't fail you.
-            <br />
-            <span className="font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-              Being forced to architect, manage, and maintain it yourself did.
-            </span>
-          </p>
-        </div>
-      </section>
-
-      {/* Transition Section */}
-      <section className={`py-16 sm:py-20 px-4 relative ${
-        isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-white to-gray-50'
-      }`}>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center leading-tight ${
             isDarkMode ? 'text-white' : 'text-gray-900'
           }`}>
             <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-              We don't sell tools. We build and run systems.
+              Scale Through Systems, Not Supervision
             </span>
           </h2>
-          <p className={`text-lg sm:text-xl max-w-3xl mx-auto ${
-            isDarkMode ? 'text-white/70' : 'text-gray-600'
-          }`}>
-            We take ownership of the entire backend  - from strategy to setup to ongoing optimization  - so your business runs smoothly without you babysitting software.
+
+          <p className={`text-lg sm:text-xl text-center mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+            Most businesses solve growth problems by adding people.
           </p>
+
+          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl mb-8 ${
+            isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+          }`}>
+            <div className="flex flex-wrap justify-center gap-3">
+              {['More coordinators', 'More assistants', 'More managers', 'More meetings', 'More complexity'].map((item, index) => (
+                <span
+                  key={index}
+                  className={`px-4 py-2 rounded-full text-base font-medium ${
+                    isDarkMode ? 'bg-white/5 border border-white/10 text-white/80' : 'bg-gray-50 border border-gray-200 text-gray-700'
+                  }`}
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="text-center space-y-4">
+            <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+              The strongest businesses solve growth problems differently. They build systems that produce consistent outcomes whether the owner is present or not.
+            </p>
+            <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+              The goal isn&apos;t to work harder.
+              <br />
+              <span className="font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                The goal is to create leverage.
+              </span>
+            </p>
+            <p className={`text-base sm:text-lg max-w-2xl mx-auto pt-2 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+              Your Growth Audit shows exactly where that leverage exists inside your business.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* 3D Orbital System Visualization */}
       <section className={`py-16 sm:py-20 px-4 relative overflow-hidden ${
-        isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-50 to-gray-100'
+        isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-white to-gray-100'
       }`}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
               <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                One system. Every channel.
+                One system. Everything connected.
               </span>
             </h2>
             <p className={`text-lg sm:text-xl ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-              Everything connects. Nothing falls through.
+              Running quietly in the background — without you holding it together.
             </p>
           </div>
 
@@ -673,7 +609,6 @@ export default function WhiteGlovePage() {
           <div className="relative flex items-center justify-center min-h-[500px] sm:min-h-[600px] lg:min-h-[800px] mb-12" style={{ perspective: '1000px' }}>
             {/* Central TrueFlow Symbol */}
             <div className="absolute z-10">
-              {/* Outer glow ring */}
               <div className="absolute inset-0 w-28 h-28 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-full blur-2xl opacity-75"
                 style={{
                   background: 'radial-gradient(circle at center, rgba(14, 165, 233, 0.8) 0%, rgba(8, 145, 178, 0.6) 30%, rgba(14, 165, 233, 0.4) 50%, transparent 70%)',
@@ -682,25 +617,19 @@ export default function WhiteGlovePage() {
                   left: '50%'
                 }}
               />
-
-              {/* Main symbol container */}
               <div className="w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 flex items-center justify-center relative">
-                {/* Enhanced glow effect */}
                 <div
                   className="absolute inset-0 rounded-full blur-xl"
                   style={{
                     background: 'radial-gradient(circle at center, rgba(8, 145, 178, 0.6) 0%, rgba(8, 145, 178, 0.4) 30%, rgba(14, 165, 233, 0.2) 50%, transparent 70%)',
                   }}
                 />
-
-                {/* Inner bright ring */}
                 <div
                   className="absolute inset-2 rounded-full blur-lg"
                   style={{
                     background: 'radial-gradient(circle at center, rgba(14, 165, 233, 0.5) 0%, rgba(14, 165, 233, 0.3) 50%, transparent 70%)',
                   }}
                 />
-
                 <Image
                   src="/brand-kit/true-flow-logo-no-text.png"
                   alt="TrueFlow System"
@@ -713,16 +642,8 @@ export default function WhiteGlovePage() {
 
             {/* Orbiting Integration Icons */}
             {[
-              {
-                name: 'Instagram',
-                logo: <Instagram className="w-8 h-8" />,
-                color: 'from-pink-400 to-purple-500',
-              },
-              {
-                name: 'Facebook',
-                logo: <Facebook className="w-8 h-8" />,
-                color: 'from-blue-500 to-blue-600',
-              },
+              { name: 'Instagram', logo: <Instagram className="w-8 h-8" />, color: 'from-pink-400 to-purple-500' },
+              { name: 'Facebook', logo: <Facebook className="w-8 h-8" />, color: 'from-blue-500 to-blue-600' },
               {
                 name: 'WhatsApp',
                 logo: (
@@ -732,11 +653,7 @@ export default function WhiteGlovePage() {
                 ),
                 color: 'from-green-400 to-green-500',
               },
-              {
-                name: 'YouTube',
-                logo: <Youtube className="w-8 h-8" />,
-                color: 'from-red-500 to-red-600',
-              },
+              { name: 'YouTube', logo: <Youtube className="w-8 h-8" />, color: 'from-red-500 to-red-600' },
               {
                 name: 'Discord',
                 logo: (
@@ -755,11 +672,7 @@ export default function WhiteGlovePage() {
                 ),
                 color: 'from-gray-700 to-black',
               },
-              {
-                name: 'Zapier',
-                logo: <Zap className="w-8 h-8" />,
-                color: 'from-orange-500 to-red-500',
-              },
+              { name: 'Zapier', logo: <Zap className="w-8 h-8" />, color: 'from-orange-500 to-red-500' },
               {
                 name: 'GoHighLevel',
                 logo: (
@@ -792,7 +705,6 @@ export default function WhiteGlovePage() {
                   }}
                 >
                   <div className="group relative">
-                    {/* Connection line to center */}
                     <div
                       className="absolute transition-opacity duration-300"
                       style={{
@@ -836,7 +748,6 @@ export default function WhiteGlovePage() {
                       {integration.logo}
                     </div>
 
-                    {/* Service name tooltip */}
                     <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none z-20">
                       <div className={`backdrop-blur-md rounded-lg px-2 py-1 text-xs whitespace-nowrap ${
                         isDarkMode ? 'bg-black/80 text-white' : 'bg-white text-gray-700 border border-gray-200 shadow'
@@ -849,7 +760,6 @@ export default function WhiteGlovePage() {
               );
             })}
 
-            {/* Orbital rings for visual effect */}
             <div className={`absolute rounded-full w-[600px] h-[600px] animate-spin ${
               isDarkMode ? 'border border-white/10' : 'border border-gray-200'
             }`} style={{ animationDuration: '20s' }} />
@@ -860,12 +770,22 @@ export default function WhiteGlovePage() {
         </div>
       </section>
 
-      {/* Core System Blocks */}
+      {/* Where The Leverage Lives - System Blocks */}
       <section className={`py-16 sm:py-20 px-4 relative ${
-        isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-gray-50 to-white'
+        isDarkMode ? 'bg-gradient-to-b from-black to-gray-900' : 'bg-gradient-to-b from-gray-100 to-white'
       }`}>
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="text-center mb-12">
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                Where The Leverage Usually Hides
+              </span>
+            </h2>
+            <p className={`text-lg sm:text-xl max-w-2xl mx-auto ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+              These are the jobs that quietly keep you in the business. Systems — often powered by AI — can run them without you.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {systemBlocks.map((block) => {
               const Icon = block.icon
               return (
@@ -906,106 +826,75 @@ export default function WhiteGlovePage() {
         </div>
       </section>
 
-      {/* Primary CTA Section */}
-      <section className={`py-16 sm:py-20 px-4 relative ${
-        isDarkMode ? 'bg-black' : 'bg-white'
-      }`}>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-6 ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            See how we build and run this for your business.
-          </h2>
-
-          <p className={`text-lg sm:text-xl mb-8 max-w-3xl mx-auto ${
-            isDarkMode ? 'text-white/70' : 'text-gray-600'
-          }`}>
-            We'll walk you through the system, show real examples, and map out what this would look like customized to your operation.
-          </p>
-
-          <button
-            onClick={() => setIsDemoModalOpen(true)}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 sm:px-10 py-5 sm:py-6 rounded-full text-xl sm:text-2xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center space-x-3"
-          >
-            <span>Book a private demo</span>
-            <ChevronRight className="h-6 w-6" />
-          </button>
-        </div>
-      </section>
-
-      {/* How It Works Section */}
-      <section className={`py-16 sm:py-20 px-4 relative ${
-        isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-gray-50 to-white'
-      }`}>
-        <div className="max-w-5xl mx-auto">
-          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center ${
-            isDarkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-              Here's how the white-glove build works.
-            </span>
-          </h2>
-
-          <div className="space-y-8">
-            {howItWorksSteps.map((step, index) => (
-              <div
-                key={index}
-                className={`backdrop-blur-md rounded-3xl p-8 border shadow-xl ${
-                  isDarkMode
-                    ? 'bg-white/5 border-white/10'
-                    : 'bg-white border-gray-200 shadow-lg'
-                }`}
-              >
-                <div className="flex items-start space-x-6">
-                  <div className="flex-shrink-0">
-                    <div className={`w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold bg-gradient-to-br from-blue-500 to-purple-600 text-white`}>
-                      {index + 1}
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <div className={`inline-block px-4 py-1 rounded-full text-sm font-semibold mb-3 ${
-                      isDarkMode ? 'bg-cyan-400/20 text-cyan-400' : 'bg-cyan-100 text-cyan-700'
-                    }`}>
-                      {step.day}
-                    </div>
-                    <h3 className={`text-2xl font-bold mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                      {step.title}
-                    </h3>
-                    <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Offer Stack / Positioning */}
+      {/* What This Looks Like Day to Day */}
       <section className={`py-16 sm:py-20 px-4 relative ${
         isDarkMode ? 'bg-black' : 'bg-white'
       }`}>
         <div className="max-w-4xl mx-auto">
-          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
-            isDarkMode
-              ? 'bg-white/5 border-white/10'
-              : 'bg-white border-gray-200 shadow-lg'
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-10 text-center ${
+            isDarkMode ? 'text-white' : 'text-gray-900'
           }`}>
-            <h2 className={`text-3xl sm:text-4xl font-bold mb-8 text-center ${
+            Picture A Normal Tuesday — Without You In It
+          </h2>
+
+          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
+            isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+          }`}>
+            <div className="space-y-3">
+              {[
+                'A lead comes in at 11:47 PM — the system responds in seconds.',
+                'It answers questions and qualifies them.',
+                'Books the appointment.',
+                'Updates the CRM.',
+                'Sends reminders and follows up automatically.',
+                'Notifies your team only when a human is actually needed.',
+                'And logs every interaction so you can see it later.'
+              ].map((line, index) => (
+                <div
+                  key={index}
+                  className={`flex items-start space-x-3 p-3 rounded-xl ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'}`}
+                >
+                  <CheckCircle className={`h-5 w-5 mt-0.5 flex-shrink-0 ${isDarkMode ? 'text-green-400' : 'text-green-500'}`} />
+                  <span className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>{line}</span>
+                </div>
+              ))}
+            </div>
+            <p className={`text-lg sm:text-xl text-center mt-8 ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
+              You didn&apos;t touch a thing. You didn&apos;t even have your phone.
+              <br />
+              <span className="font-bold bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+                That&apos;s a business that runs on systems, not on you.
+              </span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Start Your Free Growth Audit — opens the AI chat widget */}
+      <section
+        id={chatSectionId}
+        className={`py-16 sm:py-20 px-4 relative scroll-mt-28 ${
+          isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-gray-50 to-white'
+        }`}
+      >
+        <div className="max-w-4xl mx-auto">
+          <div className={`backdrop-blur-md rounded-3xl p-8 sm:p-12 border shadow-2xl ${
+            isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-lg'
+          }`}>
+            <h2 className={`text-3xl sm:text-4xl font-bold mb-6 text-center ${
               isDarkMode ? 'text-white' : 'text-gray-900'
             }`}>
               <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                This is for business owners who want it done right.
+                Start Your Free Growth Audit
               </span>
             </h2>
 
-            <h3 className={`text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-              What's included:
-            </h3>
+            <p className={`text-lg text-center mb-8 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+              Chat with our assistant to see if you&apos;re a fit and book your call. On the audit we&apos;ll identify:
+            </p>
 
-            <ul className="space-y-4 mb-8">
-              {offerIncludes.map((item, index) => (
+            <ul className="space-y-4 mb-10 max-w-2xl mx-auto">
+              {auditFinds.map((item, index) => (
                 <li key={index} className="flex items-start space-x-3">
                   <CheckCircle className={`h-6 w-6 mt-1 flex-shrink-0 ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`} />
                   <span className={`text-lg ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
@@ -1015,22 +904,24 @@ export default function WhiteGlovePage() {
               ))}
             </ul>
 
-            <div className={`p-6 rounded-2xl ${isDarkMode ? 'bg-white/5' : 'bg-gray-50'}`}>
-              <h3 className={`text-xl font-bold mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                Pricing
-              </h3>
-              <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-                Custom. Based on scope and complexity.
-              </p>
-              <p className={`text-base mt-2 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
-                Typical plans start with a setup fee and monthly management.
+            <div className="text-center">
+              <button
+                onClick={openChat}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 sm:px-10 py-5 sm:py-6 rounded-full text-xl sm:text-2xl font-semibold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center space-x-3"
+              >
+                <span>Get Your Free Growth Audit</span>
+                <ChevronRight className="h-6 w-6" />
+              </button>
+
+              <p className={`text-sm text-center mt-6 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
+                No obligation. You&apos;ll leave with a clear picture of what should happen next — whether we work together or not.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enhanced Testimonials Section */}
+      {/* Testimonials Section */}
       <section className={`pt-8 sm:pt-12 lg:pt-16 pb-16 sm:pb-24 lg:pb-32 px-4 ${
         isDarkMode ? 'bg-black' : 'bg-gray-50'
       }`}>
@@ -1044,11 +935,10 @@ export default function WhiteGlovePage() {
             <p className={`text-lg sm:text-xl lg:text-2xl max-w-4xl mx-auto px-4 transition-all duration-1000 ${
               isDarkMode ? 'text-white/70' : 'text-gray-600'
             }`}>
-              See how white-glove service helps business owners get their systems built and managed without the hassle.
+              See how business owners built systems that run the work — so the business stopped depending on them.
             </p>
           </div>
 
-          {/* Enhanced Testimonials Horizontal Scroll */}
           <div className="relative">
             <div className="flex space-x-4 sm:space-x-6 lg:space-x-8 overflow-x-auto scrollbar-hidden pb-8 pt-8 pl-4 pr-4 sm:pl-6 sm:pr-6 lg:pl-8 lg:pr-8" style={{ scrollSnapType: 'x mandatory' }}>
               {testimonials.map((testimonial, index) => (
@@ -1088,15 +978,10 @@ export default function WhiteGlovePage() {
                     e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale(1)'
                   }}
                 >
-                  {/* Animated background gradient */}
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-
-                  {/* Shimmer effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shimmer_2s_ease-in-out_infinite] -skew-x-12"></div>
 
-                  {/* Profile section with enhanced animations */}
                   <div className={`flex items-center mb-4 sm:mb-6 relative z-10`} style={{ animationDelay: `${index * 200 + 400}ms` }}>
-                    {/* Profile image with glow effect */}
                     <div className="relative mr-3 sm:mr-4">
                       <div
                         aria-hidden="true"
@@ -1104,7 +989,6 @@ export default function WhiteGlovePage() {
                       >
                         {testimonial.name.split(' ').filter((w) => !/^(dr\.?|mr\.?|mrs\.?|ms\.?)$/i.test(w)).slice(0, 2).map((w) => w[0]).join('').toUpperCase()}
                       </div>
-                      {/* Animated ring around profile */}
                       <div className="absolute inset-0 rounded-full border-2 border-blue-400/0 group-hover:border-blue-400/50 transition-all duration-500"></div>
                     </div>
 
@@ -1126,17 +1010,14 @@ export default function WhiteGlovePage() {
                     </div>
                   </div>
 
-                  {/* Quote with typewriter reveal effect */}
                   <blockquote className={`mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed transition-all duration-500 relative z-10 overflow-hidden ${
                     isDarkMode ? 'text-white/80 group-hover:text-white/95' : 'text-gray-700 group-hover:text-gray-800'
                   }`} style={{ animationDelay: `${index * 200 + 600}ms` }}>
-                    {/* Quote mark decoration */}
                     <span className="absolute -top-2 -left-2 text-4xl text-blue-400/30 font-serif">"</span>
                     <span className="relative">{testimonial.quote}</span>
                     <span className="absolute -bottom-4 -right-2 text-4xl text-blue-400/30 font-serif">"</span>
                   </blockquote>
 
-                  {/* Results with staggered reveal */}
                   <div className="space-y-2 relative z-10">
                     {testimonial.results.map((result, idx) => (
                       <div
@@ -1144,7 +1025,6 @@ export default function WhiteGlovePage() {
                         className="flex items-center space-x-2 transition-all duration-500 translate-x-0 opacity-100"
                         style={{ transitionDelay: `${index * 200 + 800 + idx * 100}ms` }}
                       >
-                        {/* Checkmark */}
                         <div className="relative">
                           <CheckCircle className="h-4 w-4 text-green-400 transition-all duration-300 group-hover:scale-105 group-hover:text-green-300" />
                           <div className="absolute inset-0 bg-green-400/10 rounded-full scale-0 group-hover:scale-110 transition-transform duration-300"></div>
@@ -1156,7 +1036,6 @@ export default function WhiteGlovePage() {
                     ))}
                   </div>
 
-                  {/* Floating particles on hover */}
                   <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                     {[...Array(6)].map((_, i) => (
                       <div
@@ -1174,7 +1053,6 @@ export default function WhiteGlovePage() {
               ))}
             </div>
 
-            {/* Scroll indicators */}
             <div className="flex justify-center mt-8 space-x-2">
               {testimonials.map((_, index) => (
                 <div
@@ -1189,22 +1067,76 @@ export default function WhiteGlovePage() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className={`py-20 sm:py-24 px-4 relative ${
+      {/* FAQ Section */}
+      <section className={`py-16 sm:py-20 px-4 relative ${
         isDarkMode ? 'bg-gradient-to-b from-gray-900 to-black' : 'bg-gradient-to-b from-gray-50 to-white'
       }`}>
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-8 ${
+        <div className="max-w-3xl mx-auto">
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center ${
             isDarkMode ? 'text-white' : 'text-gray-900'
           }`}>
-            If you want this built and run for you, let's talk.
+            Frequently Asked Questions
           </h2>
 
+          <div className="space-y-4">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index
+              return (
+                <div
+                  key={index}
+                  className={`backdrop-blur-md rounded-2xl border overflow-hidden ${
+                    isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white border-gray-200 shadow-sm'
+                  }`}
+                >
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="w-full flex items-center justify-between p-6 text-left"
+                  >
+                    <span className={`text-lg sm:text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                      {faq.question}
+                    </span>
+                    <ChevronDown
+                      className={`h-6 w-6 flex-shrink-0 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180' : ''
+                      } ${isDarkMode ? 'text-cyan-400' : 'text-cyan-600'}`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-6 pb-6">
+                      <p className={`text-lg ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                        {faq.answer}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className={`py-20 sm:py-24 px-4 relative ${
+        isDarkMode ? 'bg-black' : 'bg-gray-50'
+      }`}>
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 ${
+            isDarkMode ? 'text-white' : 'text-gray-900'
+          }`}>
+            Stop Being The Bottleneck
+          </h2>
+
+          <p className={`text-lg sm:text-xl mb-10 max-w-2xl mx-auto ${
+            isDarkMode ? 'text-white/70' : 'text-gray-600'
+          }`}>
+            Find out where your business depends on you — and get a clear roadmap of what to automate, delegate, or eliminate so it can run without you.
+          </p>
+
           <button
-            onClick={() => setIsDemoModalOpen(true)}
+            onClick={openChat}
             className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-10 sm:px-12 py-6 sm:py-7 rounded-full text-2xl sm:text-3xl font-bold hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-300 inline-flex items-center space-x-4"
           >
-            <span>Book a demo</span>
+            <span>Get Your Free Growth Audit</span>
             <ChevronRight className="h-8 w-8" />
           </button>
         </div>
@@ -1212,45 +1144,6 @@ export default function WhiteGlovePage() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Demo Modal */}
-      {isDemoModalOpen && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-          onClick={() => setIsDemoModalOpen(false)}
-        >
-          <div
-            className={`relative w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl ${
-              isDarkMode ? 'bg-gray-900' : 'bg-white'
-            }`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setIsDemoModalOpen(false)}
-              className={`absolute top-4 right-4 z-10 p-2 rounded-full transition-colors ${
-                isDarkMode
-                  ? 'bg-white/10 hover:bg-white/20 text-white'
-                  : 'bg-gray-100 hover:bg-gray-200 text-gray-900'
-              }`}
-            >
-              <XIcon className="h-6 w-6" />
-            </button>
-
-            <div className="aspect-[16/9] w-full">
-              <iframe
-                src={bookingWidgetSrc}
-                style={{
-                  width: '100%',
-                  border: 'none',
-                  overflow: 'hidden'
-                }}
-                scrolling="no"
-                id={modalBookingWidgetId}
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      )}
       </div>
     </>
   )

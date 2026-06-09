@@ -128,7 +128,6 @@ const testimonials = [
     role: "SaaS Founder",
     company: "",
     tier: "Core System",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
     quote: "The Core System gave me the structure I needed without forcing me to hire. The guided setup saved me weeks of trial and error. Now I have a real CRM pipeline and AI chat working 24/7.",
     results: ["Set up in 5 days", "Pipeline fully automated", "24/7 AI responses"]
   },
@@ -137,7 +136,6 @@ const testimonials = [
     role: "Marketing Consultant",
     company: "",
     tier: "Core System",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
     quote: "I tried doing this myself with scattered tools. The Core System connected everything properly - CRM, calendar, email, content. The guidance made sure I didn't miss critical steps.",
     results: ["All tools connected", "No more missed leads", "Content on autopilot"]
   },
@@ -146,7 +144,6 @@ const testimonials = [
     role: "Local Service Business",
     company: "",
     tier: "Core System",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face",
     quote: "For $297/month I got what agencies charge $5k to set up. The system works, the guidance is clear, and I'm not locked into a huge contract. This is all I needed.",
     results: ["Saved $5k on setup", "Running in under a week", "Full control maintained"]
   }
@@ -1031,11 +1028,12 @@ export default function CoreSystemPage() {
                   <div className={`flex items-center mb-4 sm:mb-6 relative z-10`} style={{ animationDelay: `${index * 200 + 400}ms` }}>
                     {/* Profile image with glow effect */}
                     <div className="relative mr-3 sm:mr-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-blue-500/30"
-                      />
+                      <div
+                        aria-hidden="true"
+                        className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center font-bold text-white text-lg sm:text-xl bg-gradient-to-br ${['from-blue-500 to-cyan-500','from-orange-500 to-red-500','from-purple-500 to-pink-500','from-green-500 to-emerald-500'][index % 4]} transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-blue-500/30`}
+                      >
+                        {testimonial.name.split(' ').filter((w) => !/^(dr\.?|mr\.?|mrs\.?|ms\.?)$/i.test(w)).slice(0, 2).map((w) => w[0]).join('').toUpperCase()}
+                      </div>
                       {/* Animated ring around profile */}
                       <div className="absolute inset-0 rounded-full border-2 border-blue-400/0 group-hover:border-blue-400/50 transition-all duration-500"></div>
                     </div>

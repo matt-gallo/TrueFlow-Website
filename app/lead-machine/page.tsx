@@ -108,10 +108,10 @@ const systemColumns = [
 ]
 
 const verticals = [
-  'Local Service Businesses (chiropractors, contractors, med-spas, real estate teams)',
-  'Online Coaches & Creators',
   'Agencies & B2B Consultants',
-  'High-Ticket Offer Businesses'
+  'High-Ticket Offer Businesses',
+  'Online Coaches & Creators',
+  'Local Service Businesses with a B2B or high-ticket offer (contractors, real estate teams, B2B service providers)'
 ]
 
 const pricingPlans = [
@@ -559,7 +559,7 @@ export default function LeadMachinePage() {
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>One-time setup: $2,000</span> · <span className={`font-semibold ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
-              }`}>Monthly service starts at $1,250</span>
+              }`}>Monthly service from $750 every 28 days</span>
             </p>
             <p className={`mt-3 ${
               isDarkMode ? 'text-white/60' : 'text-gray-500'
@@ -603,7 +603,7 @@ export default function LeadMachinePage() {
                 }`}>70+ / day</p>
                 <p className={`mt-2 ${
                   isDarkMode ? 'text-white/80' : 'text-gray-600'
-                }`}>Live-intent scraping pulls people who raised their hand for your offer within the last 7 days.</p>
+                }`}>Live-intent signals surface people who raised their hand for your offer within the last 7 days.</p>
               </div>
 
               <div className={`rounded-2xl border backdrop-blur-xl p-5 ${
@@ -921,7 +921,7 @@ export default function LeadMachinePage() {
             <div className={`mt-8 rounded-2xl border ${isDarkMode ? 'border-green-400/30 bg-gradient-to-br from-green-500/15 via-cyan-500/20 to-transparent' : 'border-green-300 bg-gradient-to-br from-green-50 via-cyan-50 to-transparent'} p-5 text-center`}>
               <div className={`inline-flex items-center justify-center gap-3 ${isDarkMode ? 'text-white/90' : 'text-gray-800'} text-sm sm:text-base`}>
                 <ShieldCheck className={`h-6 w-6 ${isDarkMode ? 'text-green-300' : 'text-green-600'}`} />
-                <p className="font-medium">90-Day ROI Guarantee If the system doesn't generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.</p>
+                <p className="font-medium">Most installs see their first warm replies within 7 days — and you're protected by our 90-Day ROI Guarantee: if the system doesn't generate enough closings to cover its cost in 90 days, we keep it running at no service fee until it does.</p>
               </div>
             </div>
 

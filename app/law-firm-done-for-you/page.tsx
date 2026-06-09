@@ -128,7 +128,6 @@ const testimonials = [
     role: "Managing Partner",
     company: "Martinez & Associates",
     tier: "Enterprise",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face",
     quote: "We struggled to follow up with potential clients, track consultations, and manage intake forms. With TrueFlow's AI-driven lead capture, integrated scheduling, and automatic form tracking system, more consultations get booked and intake is smoother. The backend now works like it should.",
     results: ["More consultations booked", "Smoother intake process", "Automated form tracking"]
   },
@@ -137,7 +136,6 @@ const testimonials = [
     role: "Founding Attorney",
     company: "Chen Law Group",
     tier: "Enterprise Client",
-    image: "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=150&h=150&fit=crop&crop=face",
     quote: "Before TrueFlow, our website was getting traffic, but visitors weren't turning into consultations. We rebuilt the site, added AI-driven conversations, and automated follow-up. Without running ads, the system booked 13 consultations from organic traffic alone. Now that it works, we're confidently scaling with ads and social.",
     results: ["13 consultations booked organically", "AI engaging leads 24/7", "Website → conversation → booking, automated"]
   },
@@ -146,7 +144,6 @@ const testimonials = [
     role: "Partner",
     company: "Rodriguez Legal",
     tier: "Enterprise Client",
-    image: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&h=150&fit=crop&crop=face",
     quote: "Before TrueFlow, we were generating leads but the system wasn't keeping up. Messages went unanswered, conversations stalled, and follow-up depended on manual effort. We activated AI agents in our DMs and SMS to qualify and respond instantly. Now about 15% of inbound leads are automatically qualified and booked into consultations, even while running paid ads.",
     results: ["50 leads per week handled automatically", "AI qualifying via DM + SMS", "Consistent replies, follow-up, and bookings"]
   }
@@ -958,11 +955,12 @@ export default function LawFirmDoneForYouPage() {
                   <div className="flex items-center mb-4 sm:mb-6 relative z-10" style={{ animationDelay: `${index * 200 + 400}ms` }}>
                     {/* Profile image with glow effect */}
                     <div className="relative mr-3 sm:mr-4">
-                      <img
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-blue-500/30"
-                      />
+                      <div
+                        aria-hidden="true"
+                        className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center font-bold text-white text-lg sm:text-xl bg-gradient-to-br ${['from-blue-500 to-cyan-500','from-orange-500 to-red-500','from-purple-500 to-pink-500','from-green-500 to-emerald-500'][index % 4]} transition-all duration-500 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-blue-500/30`}
+                      >
+                        {testimonial.name.split(' ').filter((w) => !/^(dr\.?|mr\.?|mrs\.?|ms\.?)$/i.test(w)).slice(0, 2).map((w) => w[0]).join('').toUpperCase()}
+                      </div>
                       {/* Animated ring around profile */}
                       <div className="absolute inset-0 rounded-full border-2 border-blue-400/0 group-hover:border-blue-400/50 transition-all duration-500"></div>
                     </div>
