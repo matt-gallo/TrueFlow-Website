@@ -325,58 +325,41 @@ export default function ReadinessAssessment() {
     }
   }, [mounted])
 
+  const CHECKOUT_URLS: Record<string, string> = {
+    'white-glove': 'https://link.fastpaydirect.com/payment-link/696ffc86ac4fd06d0ec57a61',
+    'maintain': 'https://link.fastpaydirect.com/payment-link/6920f7f2bbe219eb5e3624d1',
+  }
+
   const plans: Plan[] = [
     {
-      id: 'platform-access',
-      name: 'Platform Access',
-      price: '$150',
-      period: '/week',
-      description: 'Self-service access to AI productivity and content tools',
+      id: 'white-glove',
+      name: 'White Glove',
+      price: '$497',
+      period: '/mo',
+      description: 'Full-service automation built and managed with you',
       features: [
-        'Flow Mode AI productivity system',
-        'AI-powered content creation',
-        'Transform voice to content',
-        'SEO-optimized blog posts',
-        'Unlimited AI chat widgets',
-        'Content dashboard access',
-        'Basic analytics'
-      ]
-    },
-    {
-      id: 'business-os',
-      name: 'Business Operating System',
-      price: '$300',
-      period: '/week',
-      description: 'Everything in Platform plus advanced features',
-      features: [
-        'Everything in Platform Access',
-        'Advanced analytics & reporting',
-        'Multi-brand content management',
-        'Priority support',
-        'Team collaboration tools',
-        'API access (beta)',
-        'Early access to new features',
-        'CRM coming Q1 2026'
+        'AI front desk — answers calls, texts & DMs 24/7',
+        'Automated Google review collection',
+        'Email & SMS marketing campaigns',
+        'Automated blog posts (SEO + AI search)',
+        'Custom dashboard & monthly health report',
+        'Free strategy session — we build it with you',
+        'Done-for-you implementation',
+        'Priority support'
       ],
       popular: true
     },
     {
-      id: 'enterprise',
-      name: 'Enterprise (Full Service)',
-      price: 'Starting at $2,000',
-      period: '/month',
-      description: 'Complete business automation with white-glove service',
+      id: 'maintain',
+      name: 'Maintain',
+      price: '$297',
+      period: '/mo',
+      description: 'Keep your current site and platform running smoothly',
       features: [
-        'Everything in Business OS',
-        'Full CRM system (available now)',
-        'Lead capture & tracking',
-        'Automated follow-up sequences',
-        'Sales pipeline management',
-        'Done-for-you implementation',
-        'Dedicated success manager',
-        'Custom workflow automation',
-        'White-label solutions',
-        'Priority support & training'
+        'Website hosting & maintenance',
+        'Platform access',
+        'Updates & technical support',
+        'Upgrade to White Glove anytime'
       ]
     },
   ]
@@ -444,27 +427,15 @@ export default function ReadinessAssessment() {
     else if (budget === 'enterprise') enterpriseIndicators++
     
     // Determine recommendation based on indicators and score
-    let recommendedPlan = 'not-sure'
+    let recommendedPlan = 'white-glove'
     let recommendationReason = ''
 
-    if (score < 25) {
-      recommendedPlan = 'not-sure'
-      recommendationReason = 'Based on your assessment, we recommend scheduling a consultation to better understand your needs and create a custom solution.'
-    } else if (enterpriseIndicators >= 3 && score >= 75) {
-      recommendedPlan = 'enterprise'
-      recommendationReason = 'Your high content volume, advanced systems, and substantial budget make you ideal for our Enterprise (Full Service) solution with dedicated support.'
-    } else if (completeSystemIndicators >= 2 && score >= 50) {
-      recommendedPlan = 'business-os'
-      recommendationReason = 'Your medium content needs and existing systems position you perfectly for our Business Operating System to streamline both content and operations.'
-    } else if (contentEngineIndicators >= 3 || score < 50) {
-      recommendedPlan = 'platform-access'
-      recommendationReason = 'Starting with our Platform Access will help you establish efficient content workflows and see immediate time savings.'
-    } else if (score >= 50) {
-      recommendedPlan = 'business-os'
-      recommendationReason = 'Your readiness score indicates you\'re prepared for full automation with our Business Operating System.'
+    if (score >= 40 || completeSystemIndicators >= 2 || enterpriseIndicators >= 2) {
+      recommendedPlan = 'white-glove'
+      recommendationReason = 'Based on your goals, White Glove is the right fit — we\'ll build it with you and handle everything from day one.'
     } else {
-      recommendedPlan = 'platform-access'
-      recommendationReason = 'Our Platform Access is the perfect starting point for your AI automation journey.'
+      recommendedPlan = 'white-glove'
+      recommendationReason = 'White Glove gives you the fastest path to results with done-for-you setup and ongoing support.'
     }
     
     return {
@@ -792,8 +763,13 @@ export default function ReadinessAssessment() {
         params.append('leadId', leadResult.data.id)
       }
 
-      // Redirect to TrueFlow app signup page with all data
-      window.location.href = `https://app.trueflow.ai/auth/signup?${params.toString()}`
+      // Redirect to checkout based on selected plan
+      const checkoutUrl = CHECKOUT_URLS[selectedPlan]
+      if (checkoutUrl) {
+        window.location.href = checkoutUrl
+      } else {
+        window.location.href = `https://app.trueflow.ai/auth/signup?${params.toString()}`
+      }
     } catch (error) {
       console.error('[Form Submit] Submission failed:', error)
       console.error('[Form Submit] Error type:', error instanceof Error ? error.constructor.name : typeof error)
