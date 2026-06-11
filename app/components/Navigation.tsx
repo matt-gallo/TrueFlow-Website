@@ -20,7 +20,7 @@ export default function Navigation() {
     { label: 'Features', href: '/#features', homeAnchor: '#features' },
     { label: 'How it Works', href: '/#how-it-works', homeAnchor: '#how-it-works' },
     { label: 'Success Stories', href: '/#testimonials', homeAnchor: '#testimonials' },
-    { label: 'Blog', href: '/blog', homeAnchor: '#blog' },
+    { label: 'Blog', href: '/blog' },
     { label: 'FAQs', href: '/faq' },
     { label: 'Recent Updates', href: 'https://app.trueflow.ai/changelog', external: true },
   ]
@@ -92,7 +92,7 @@ export default function Navigation() {
                 <a href="#features" className={`${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Features</a>
                 <a href="#how-it-works" className={`${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>How it Works</a>
                 <a href="#testimonials" className={`${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Success Stories</a>
-                <a href="#blog" className={`${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Blog</a>
+                <Link href="/blog" className={`${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>Blog</Link>
                 <Link href="/faq" className={`${isDarkMode ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'} transition-colors`}>FAQs</Link>
                 <a
                   href="https://app.trueflow.ai/changelog"
