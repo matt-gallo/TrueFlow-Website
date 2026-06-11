@@ -3439,6 +3439,56 @@ The result? Less time managing. More time growing.
       keywords: ['GHL email spintax', 'GoHighLevel spintax June 2026', 'cold email deliverability', 'inbox placement', 'outbound agency pricing', 'Instantly spintax', 'NFIB May 2026 labor costs', 'SMB outreach automation']
     },
     published: true
+  },
+  {
+    id: '65',
+    slug: 'ghl-ai-builder-analytics-monthly-report-retainer',
+    title: "GHL's AI Now Answers 'Is This Working?' Off Live Data — If Your Agency's Monthly Report Is the Deliverable, You're Paying for a PDF",
+    excerpt: "On June 4, GoHighLevel taught its AI Builder to answer analytics questions in plain language off live account data — and quietly made the agency reporting retainer the next line item owners should question.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-10',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['gohighlevel'], tags['workflow-automation'], tags['ai-tools'], tags['small-business']],
+    primaryTag: tags['gohighlevel'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=630&fit=crop',
+      alt: 'GHL AI Builder analytics plain language workflow performance data',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "GHL AI Builder Answers Analytics Questions Live — Monthly Report Retainer Is Dead | TrueFlow AI",
+      metaDescription: "GoHighLevel's AI Builder now answers 'where do contacts drop off' in plain language off live workflow data. The polished monthly PDF just became a markup. Here's what TrueFlow does instead.",
+      keywords: ['GHL AI Builder analytics', 'GoHighLevel workflow analytics June 2026', 'GHL drop-off analysis', 'agency monthly reporting retainer', 'GHL AI Assistant analytics', 'automation reporting SMB', 'BizBuySell 2026 AI adoption']
+    },
+    published: true
+  },
+  {
+    id: '66',
+    slug: 'claude-managed-agents-scheduled-deployments-maintenance-retainer',
+    title: "Claude Agents Now Run on a Cron Schedule With No Server — The 'Hosting and Maintenance' Retainer Just Lost Its Job",
+    excerpt: "On June 9, Anthropic shipped scheduled deployments and credential vaults for Claude Managed Agents — and quietly deleted the infrastructure line item most automation agencies bill you for every month.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-11',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business'], tags['crm']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&h=630&fit=crop',
+      alt: 'Claude Managed Agents scheduled deployments cron no server credential vault',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Claude Managed Agents Get Cron Schedules & Vaults June 9 — Hosting Retainer Is Done | TrueFlow AI",
+      metaDescription: "Anthropic's Claude Managed Agents now run on cron schedules with no server and store credentials in domain-scoped vaults. The infrastructure line item agencies have billed for is now a platform checkbox.",
+      keywords: ['Claude Managed Agents scheduled', 'Anthropic cron schedule agent', 'Claude credential vault', 'automation hosting retainer', 'Claude Partner Network June 2026', 'n8n alternative scheduled agents', 'SMB automation infrastructure 2026']
+    },
+    published: true
   }
 ]
 
