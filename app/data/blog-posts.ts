@@ -3489,6 +3489,31 @@ The result? Less time managing. More time growing.
       keywords: ['Claude Managed Agents scheduled', 'Anthropic cron schedule agent', 'Claude credential vault', 'automation hosting retainer', 'Claude Partner Network June 2026', 'n8n alternative scheduled agents', 'SMB automation infrastructure 2026']
     },
     published: true
+  },
+  {
+    id: '67',
+    slug: 'stop-buying-ai-tools-start-deleting-steps',
+    title: "The Average Small Business Now Spends $18,000 a Year on AI Tools. Stop Buying. Start Deleting.",
+    excerpt: "SMB AI adoption hit 82% in 2026 — and most owners are stacking tools on top of broken processes. The fix isn't another subscription. It's subtraction.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-11',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business'], tags['crm']],
+    primaryTag: tags['small-business'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&h=630&fit=crop',
+      alt: 'Small business owner deleting software subscriptions subtraction audit AI tools',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Stop Buying AI Tools — SMBs Spend $18K/Year and Still Lose | TrueFlow AI",
+      metaDescription: "82% of small businesses have AI tools. The average spend is $18,000/year. Cost is still the #1 complaint. The problem isn't the tools — it's that nobody runs the subtraction audit first: Delete → Condense → Automate.",
+      keywords: ['SMB AI tools spending 2026', 'subtraction audit automation', 'delete condense automate', 'small business software stack', 'AI tool overload', 'SBE Council 2026 survey', 'workflow optimization SMB']
+    },
+    published: true
   }
 ]
 
