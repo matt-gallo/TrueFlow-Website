@@ -3514,6 +3514,31 @@ The result? Less time managing. More time growing.
       keywords: ['SMB AI tools spending 2026', 'subtraction audit automation', 'delete condense automate', 'small business software stack', 'AI tool overload', 'SBE Council 2026 survey', 'workflow optimization SMB']
     },
     published: true
+  },
+  {
+    id: '68',
+    slug: 'last-mile-checkpoint-13-blank-fields',
+    title: "An Automated Contract Almost Went Out With 13 Blank Fields This Week. A Boring, Manual Step Caught It.",
+    excerpt: "Inside a real build review: why the one human checkpoint we refused to automate saved a client's sales agreement — and the Last-Mile Checkpoint rule you should copy.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-12',
+    readTime: 3,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=630&fit=crop',
+      alt: 'Contract review document automation checkpoint quality control',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Last-Mile Checkpoint: Why We Keep One Human in Every Automated Workflow | TrueFlow AI",
+      metaDescription: "An automated contract almost shipped with 13 blank fields. A single manual review step caught it. Here's the Last-Mile Checkpoint rule we now apply to every build.",
+      keywords: ['workflow automation review', 'last-mile checkpoint', 'automated contract errors', 'human in the loop', 'workflow quality control', 'business automation best practices']
+    },
+    published: true
   }
 ]
 
