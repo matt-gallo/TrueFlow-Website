@@ -3539,6 +3539,106 @@ The result? Less time managing. More time growing.
       keywords: ['workflow automation review', 'last-mile checkpoint', 'automated contract errors', 'human in the loop', 'workflow quality control', 'business automation best practices']
     },
     published: true
+  },
+  {
+    id: '69',
+    slug: 'crm-outcome-pricing-flat-retainer-last-holdout',
+    title: "Every Major CRM Now Charges by the Result — Per Resolution, Per Lead. The Flat Automation Retainer Is the Last Holdout.",
+    excerpt: "HubSpot, Intercom, Salesforce, and Sierra now charge only when their AI produces a result. Here's why that quietly redefines what your automation provider is allowed to bill for.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-13',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business'], tags['crm']],
+    primaryTag: tags['crm'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop',
+      alt: 'CRM outcome pricing per resolution per lead flat retainer',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Every Major CRM Now Charges by Results — The Flat Retainer Is the Last Holdout | TrueFlow AI",
+      metaDescription: "HubSpot moved to $0.50 per resolved conversation. Intercom, Salesforce, and Sierra followed. Here's what outcome pricing means for your automation spend.",
+      keywords: ['CRM outcome pricing', 'HubSpot Breeze pricing', 'pay per result automation', 'flat retainer automation', 'Intercom Fin pricing', 'Salesforce Agentforce cost']
+    },
+    published: true
+  },
+  {
+    id: '70',
+    slug: 'the-scream-test-silent-automation-failure',
+    title: "The Most Expensive Automation Is the One That Breaks Without Telling You",
+    excerpt: "Silent automation failures don't announce themselves — you find out from a customer. Here's the Scream Test we run on every workflow we build so a broken one can't hide.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-13',
+    readTime: 3,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=630&fit=crop',
+      alt: 'Silent automation failure monitoring alert system',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Scream Test: How to Stop Silent Automation Failures Before They Cost You | TrueFlow AI",
+      metaDescription: "Your automation broke 3 weeks ago. You found out from a customer. Here's the Scream Test — heartbeat, alarm, owner — that makes sure every workflow fails loudly.",
+      keywords: ['silent automation failure', 'workflow monitoring', 'automation alert', 'scream test', 'automation failure detection', 'lead follow-up automation']
+    },
+    published: true
+  },
+  {
+    id: '71',
+    slug: 'google-workspace-studio-agent-builder-building-was-never-the-problem',
+    title: "Google Just Put an AI Agent Builder Inside Gmail and Docs. Building Was Never Your Problem.",
+    excerpt: "Google's Workspace Studio lets anyone build automations by typing a sentence into Gmail. That removes the last bit of friction protecting most owners from automating their own chaos.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-14',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=1200&h=630&fit=crop',
+      alt: 'Google Workspace Studio AI agent builder Gmail automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Google Workspace Studio: Building Was Never Your Problem | TrueFlow AI",
+      metaDescription: "Google bundled a no-code AI agent builder into Gmail. 89% of teams already run 12 agents. The constraint was never building — it was knowing what not to build.",
+      keywords: ['Google Workspace Studio', 'AI agent builder Gmail', 'Google Cloud Next 2026', 'no-code automation', 'Gemini automation', 'Delete Condense Automate']
+    },
+    published: true
+  },
+  {
+    id: '72',
+    slug: 'we-run-this-blog-on-a-scheduled-agent-constrain-check-catch',
+    title: "We Run This Blog on a Scheduled AI Agent. The Hard Part Was Never the AI.",
+    excerpt: "An AI agent researches, writes, and ships this blog on a schedule with no one watching. What makes it safe isn't the model — it's three boring layers most automations skip.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-15',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=630&fit=crop',
+      alt: 'AI agent scheduled automation content blog constrain check catch',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Run This Blog on a Scheduled AI Agent. The Hard Part Was Never the AI. | TrueFlow AI",
+      metaDescription: "88% of AI agent pilots never reach production. We've run our content on a scheduled agent for months. Here's the Constrain, Check, Catch framework that makes it safe.",
+      keywords: ['scheduled AI agent', 'content automation', 'AI agent governance', 'constrain check catch', 'unattended automation', 'AI agent pilot to production']
+    },
+    published: true
   }
 ]
 
