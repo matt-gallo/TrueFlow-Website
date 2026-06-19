@@ -3639,6 +3639,106 @@ The result? Less time managing. More time growing.
       keywords: ['scheduled AI agent', 'content automation', 'AI agent governance', 'constrain check catch', 'unattended automation', 'AI agent pilot to production']
     },
     published: true
+  },
+  {
+    id: '73',
+    slug: 'your-automation-didnt-fail-the-feeder-step-did',
+    title: "Your Automation Didn't Fail. The Step Feeding It Did.",
+    excerpt: "Every automation depends on one manual input upstream — and that quiet 'feeder step' is where most systems actually break, not in the software.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-16',
+    readTime: 3,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=1200&h=630&fit=crop',
+      alt: 'Automation pipeline feeder step dependency chain',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Automation Didn't Fail. The Feeder Step Did. | TrueFlow AI",
+      metaDescription: "Every automation has a feeder step — one manual input at the top everything depends on. When that person stops, the whole system goes silent and looks exactly like success.",
+      keywords: ['automation feeder step', 'workflow dependency', 'automation failure', 'single point of failure', 'content automation', 'workflow audit']
+    },
+    published: true
+  },
+  {
+    id: '74',
+    slug: 'ai-employee-watches-your-screen-hit-a-wall-api-integration-won',
+    title: "The 'AI Employee' That Clicks Around Your Screen Just Hit a Wall. The Boring Integration Won.",
+    excerpt: "The industry is quietly retiring AI agents that watch and operate your screen in favor of agents that talk straight to your software. Here's why that flashy demo your vendor showed you is already a dead end.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-17',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200&h=630&fit=crop',
+      alt: 'AI agent screen automation API integration comparison',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The 'AI Employee' Screen Agent Hit a Wall. The API Integration Won. | TrueFlow AI",
+      metaDescription: "Google killed Project Mariner. OpenAI Operator enterprise buyers route around the screen-watching part. The boring API integration won. Here's what to ask your vendor.",
+      keywords: ['AI screen agent', 'Google Project Mariner', 'API integration automation', 'OpenAI Operator', 'AI employee automation', 'computer use agent']
+    },
+    published: true
+  },
+  {
+    id: '75',
+    slug: 'openai-replays-13-million-real-conversations-before-shipping-your-automation-went-live-on-three-test-cases',
+    title: "OpenAI Won't Ship a Model Without Replaying 1.3 Million Real Conversations First. Your Automation Went Live on Three Test Cases.",
+    excerpt: "OpenAI's new Deployment Simulation tests a model against 1.3M real past conversations before release. Most small-business automations get tested on a handful of made-up examples.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-18',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['ai-tools'], tags['workflow-automation'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1200&h=630&fit=crop',
+      alt: 'OpenAI deployment simulation real data testing automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "OpenAI Tests 1.3M Real Conversations Before Shipping. Your Automation Ran 3 Test Cases. | TrueFlow AI",
+      metaDescription: "OpenAI's Deployment Simulation replays 1.3M real conversations before any model ships. 6% of companies trust AI agents. The gap is testing against real data, not demos.",
+      keywords: ['OpenAI deployment simulation', 'AI automation testing', 'real data testing', 'automation quality control', 'AI agent trust', 'workflow testing']
+    },
+    published: true
+  },
+  {
+    id: '76',
+    slug: 'confusion-isnt-a-reminder-problem-count-your-sources-of-truth',
+    title: "When People Keep Asking the Same Question, Stop Adding Reminders. Count Your Sources of Truth.",
+    excerpt: "Confusion is rarely a signal to communicate more — it's a signal your information lives in too many places. Here's the audit we run before we automate a single reminder.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-19',
+    readTime: 3,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&h=630&fit=crop',
+      alt: 'Sources of truth information architecture reminder automation',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Stop Adding Reminders. Count Your Sources of Truth. | TrueFlow AI",
+      metaDescription: "A coaching business kept getting 'what time is class?' after automating reminders. The problem wasn't communication — it was 5 disagreeing sources. Delete, Condense, then Automate.",
+      keywords: ['source of truth', 'automation reminders', 'information architecture', 'delete condense automate', 'business communication', 'workflow clarity']
+    },
+    published: true
   }
 ]
 
