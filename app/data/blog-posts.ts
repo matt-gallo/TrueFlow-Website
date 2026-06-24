@@ -3739,6 +3739,131 @@ The result? Less time managing. More time growing.
       keywords: ['source of truth', 'automation reminders', 'information architecture', 'delete condense automate', 'business communication', 'workflow clarity']
     },
     published: true
+  },
+  {
+    id: '77',
+    slug: 'the-great-thinning-your-agency-is-about-to-pick-a-platform',
+    title: "Salesforce Just Cut Its Partner Badges From 170 to 28. Your Automation Agency Is About to Pick a Side.",
+    excerpt: "The big platforms are quietly forcing every implementation shop to specialize in one CRM. Here's why that should change the first question you ask anyone who automates your business.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-20',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=1200&h=630&fit=crop',
+      alt: 'Agency platform specialization CRM partner badges',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Salesforce Cut Partner Badges From 170 to 28. Your Agency Is Picking a Side. | TrueFlow AI",
+      metaDescription: "The great thinning is forcing agencies to go single-platform — at the exact moment technology is standardizing interoperability. Here's what to ask before you hire anyone to automate your business.",
+      keywords: ['salesforce partner program', 'CRM agency', 'automation agency', 'platform agnostic', 'great thinning', 'stack subtraction']
+    },
+    published: true
+  },
+  {
+    id: '78',
+    slug: 'your-software-bill-reads-900-the-stack-tax-is-hiding-the-other-half',
+    title: "Your Software Bill Reads $900 a Month. The Stack Tax Is Hiding the Other Half.",
+    excerpt: "The sticker price of your tools is the smallest line in what they actually cost you. Here's a three-line audit — the Stack Tax — to find the rest before you buy one more subscription.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-21',
+    readTime: 3,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=630&fit=crop',
+      alt: 'Software subscription bill stack tax hidden costs',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Stack Tax: Your Software Bill Is Half the Real Number | TrueFlow AI",
+      metaDescription: "36% of SaaS licenses go unused. Add the seams and switching costs and your $900 stack is really $1,800. Here's the three-line audit to find what to cancel before you buy anything new.",
+      keywords: ['SaaS stack tax', 'software subscriptions', 'dead seats', 'stack audit', 'cancel software', 'automation ROI']
+    },
+    published: true
+  },
+  {
+    id: '79',
+    slug: 'four-ai-models-this-month-your-automation-shouldnt-notice',
+    title: "Four AI Models Are Launching This Month. Your Automation Shouldn't Notice.",
+    excerpt: "Google, Anthropic, and xAI all have models landing in the same four weeks. Here's why the right reaction for a small business is to do nothing — and what to build so that staying calm is actually safe.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-22',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['ai-tools'], tags['small-business']],
+    primaryTag: tags['ai-tools'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1200&h=630&fit=crop',
+      alt: 'AI model launches automation stability',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Four AI Models Launching This Month. Your Automation Shouldn't Notice. | TrueFlow AI",
+      metaDescription: "Gemini 3.5 Pro, Mythos, Claude Sonnet 4.8, Grok 5 — four launches in four weeks. Here's why the right move for most service businesses is to do nothing, and how to build so that's safe.",
+      keywords: ['AI model launches', 'Gemini 3.5 Pro', 'model swap', 'automation stability', 'swappable model', 'AI business impact']
+    },
+    published: true
+  },
+  {
+    id: '80',
+    slug: 'we-sent-236-blank-reminder-emails-back-door-test',
+    title: "We Sent 236 Blank Reminder Emails Last Week. The Automation Did Exactly What We Built It To Do.",
+    excerpt: "A perfectly working automation still fired hundreds of blank emails — because the records were created through a door the trigger wasn't watching. Here's the Back-Door Test we now run on every build.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-23',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1596526131083-e8c633964948?w=1200&h=630&fit=crop',
+      alt: 'Blank email automation back door test failure',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Sent 236 Blank Emails. The Automation Worked Perfectly. | TrueFlow AI",
+      metaDescription: "The automation didn't fail — the bulk-create path bypassed the trigger. Here's the Back-Door Test: map every way a record enters your system and check what actually fires at each one.",
+      keywords: ['automation back door test', 'blank reminder emails', 'GHL bulk create', 'trigger failure', 'automation testing', 'GoHighLevel']
+    },
+    published: true
+  },
+  {
+    id: '81',
+    slug: 'stop-updating-your-pipeline-let-the-customer-move-the-deal',
+    title: "Stop Updating Your Sales Pipeline by Hand. Let the Customer Move the Deal.",
+    excerpt: "A pipeline that needs a human to keep it current is already leaking. Here's the One-Drag Test we run on every sales build — and why the best-built pipeline has exactly one manual step.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-24',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1560472355-536de3962603?w=1200&h=630&fit=crop',
+      alt: 'Sales pipeline CRM automation customer-driven deal stages',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Stop Updating Your Sales Pipeline. Let the Customer Move the Deal. | TrueFlow AI",
+      metaDescription: "Two-thirds of reps never update their CRM. The fix isn't discipline — it's design. Here's the One-Drag Test: wire every stage transition to an event that's already happening.",
+      keywords: ['sales pipeline automation', 'CRM update', 'one drag test', 'customer-driven pipeline', 'sales automation', 'deal stages']
+    },
+    published: true
   }
 ]
 
