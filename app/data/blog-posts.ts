@@ -3864,6 +3864,31 @@ The result? Less time managing. More time growing.
       keywords: ['sales pipeline automation', 'CRM update', 'one drag test', 'customer-driven pipeline', 'sales automation', 'deal stages']
     },
     published: true
+  },
+  {
+    id: '82',
+    slug: 'your-crm-now-charges-per-outcome-run-the-math',
+    title: "Salesforce Made $800M Charging Per AI Task. For a Small Business, Per-Outcome Pricing Can Be the More Expensive Deal.",
+    excerpt: "The whole CRM industry just switched from charging per seat to charging per outcome. It sounds fairer — but for a healthy, growing small business, the math can quietly turn against you. Here's how to check before you switch.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-25',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: 'Per-outcome CRM pricing Salesforce Agentforce unit economics',
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Salesforce Made $800M Per AI Task. Per-Outcome Pricing Can Cost You More. | TrueFlow AI",
+      metaDescription: "Salesforce, HubSpot, and Intercom all moved to per-outcome pricing. For a growing business, the variable meter runs faster than the flat fee. Here's the math to run before you switch.",
+      keywords: ['per outcome pricing', 'Salesforce Agentforce', 'HubSpot Breeze pricing', 'SaaS pricing model', 'CRM cost', 'agentic work units']
+    },
+    published: true
   }
 ]
 
