@@ -3891,6 +3891,7 @@ The result? Less time managing. More time growing.
     published: true
   },
   {
+    id: '83',
     slug: 'the-thing-nobody-tells-you-about-automation-same-way-twice',
     title: "The Thing Nobody Tells You About Automation: You Have to Do the Job the Same Way Twice First",
     excerpt: "Most automations don't break because of bad software — they break because the process was never the same thing twice. Here's the Sameness Test we run before we automate anything.",
@@ -3915,6 +3916,7 @@ The result? Less time managing. More time growing.
     published: true
   },
   {
+    id: '84',
     slug: 'ai-employee-four-minute-tasks-four-hour-failures',
     title: "Your 'AI Employee' Nails the 4-Minute Job and Quietly Blows the 4-Hour One. Here's Where to Draw the Line.",
     excerpt: "The newest research on AI agents shows exactly where they break — and it's not random. Here's the rule we use to decide what an AI runs unsupervised in a small business, and what still needs a human at the wheel.",
@@ -3939,6 +3941,7 @@ The result? Less time managing. More time growing.
     published: true
   },
   {
+    id: '85',
     slug: 'crm-pipeline-graveyard-audit',
     title: "The First Thing We Do Inside a New Client's CRM Isn't Automate. It's Count the Pipelines Nobody Finished.",
     excerpt: "When we take over a small business's CRM, we don't start building — we run a body count. Here's the Pipeline Graveyard Audit we run first, and why the best CRM has one pipeline, not six.",
