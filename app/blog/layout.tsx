@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import BlogNewsletterFooter from '../components/BlogNewsletterFooter'
 
 export const metadata: Metadata = {
   title: {
@@ -13,5 +14,10 @@ export default function BlogLayout({
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <>
+      {children}
+      <BlogNewsletterFooter />
+    </>
+  )
 }

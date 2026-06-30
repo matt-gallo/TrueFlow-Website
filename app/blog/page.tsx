@@ -8,7 +8,6 @@ import { Calendar, Clock, ArrowRight, Search } from 'lucide-react'
 import { getPublishedPosts, categories, tagColorPalettes } from '@/app/data/blog-posts'
 import type { BlogPost, Category } from '@/app/types/blog'
 import ParticleBackground from '@/app/components/ParticleBackground'
-import NewsletterSignup from '../components/NewsletterSignup'
 import { useTheme } from '../components/ThemeProvider'
 
 export default function BlogPage() {
@@ -47,6 +46,15 @@ export default function BlogPage() {
   }, [selectedCategory, searchQuery, posts])
 
   if (!mounted) return null
+
+  // Most recent post is featured on top; the rest fill the grid.
+  // getPublishedPosts() already sorts newest-first, so [0] is the latest.
+  const featuredPost = filteredPosts[0]
+  const gridPosts = filteredPosts.slice(1)
+  const featuredTagSlug = featuredPost?.primaryTag?.slug || featuredPost?.tags[0]?.slug
+  const featuredGradient = (featuredTagSlug && tagColorPalettes[featuredTagSlug])
+    ? tagColorPalettes[featuredTagSlug]
+    : 'from-gray-500 to-slate-600'
 
   return (
     <div className={`min-h-screen relative transition-colors ${
@@ -119,8 +127,105 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* Newsletter Signup */}
-      <NewsletterSignup />
+      {/* Featured (most recent) post */}
+      {featuredPost && (
+        <section className="px-4 mb-16">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-4 text-sm font-semibold uppercase tracking-widest">
+              <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                Latest Article
+              </span>
+            </div>
+            <Link href={`/blog/${featuredPost.slug}`} className="group block">
+              <article className={`grid md:grid-cols-2 rounded-3xl overflow-hidden border transition-all duration-300 transform hover:-translate-y-1 ${
+                isDarkMode
+                  ? 'bg-white/10 hover:bg-white/15 border-white/10 hover:border-white/20 hover:shadow-2xl hover:shadow-white/10'
+                  : 'bg-white hover:bg-gray-50 border-gray-200 hover:border-gray-300 hover:shadow-2xl hover:shadow-gray-200/50'
+              }`}>
+                {/* Featured Image */}
+                <div className={`relative min-h-[260px] md:min-h-[380px] bg-gradient-to-br ${featuredGradient} overflow-hidden`}>
+                  {featuredPost.featuredImage ? (
+                    <>
+                      <Image
+                        src={featuredPost.featuredImage.url}
+                        alt={featuredPost.featuredImage.alt}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className={`absolute inset-0 bg-gradient-to-br ${featuredGradient} opacity-50 group-hover:opacity-40 transition-opacity duration-300`}></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    </>
+                  ) : (
+                    <div className="absolute inset-0 overflow-hidden">
+                      <div className="absolute -top-20 -right-20 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+                      <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-xl"></div>
+                    </div>
+                  )}
+                  <div className="absolute bottom-4 left-4 z-10">
+                    <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm text-white">
+                      {featuredPost.category.name}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-8 sm:p-10 flex flex-col justify-center">
+                  <div className={`flex items-center gap-4 text-sm mb-4 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+                    <span className="flex items-center gap-1">
+                      <Calendar className="h-4 w-4" />
+                      {new Date(featuredPost.date).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                      })}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <Clock className="h-4 w-4" />
+                      {featuredPost.readTime} min read
+                    </span>
+                  </div>
+
+                  <h2 className={`text-2xl sm:text-3xl font-bold mb-4 group-hover:text-blue-400 transition-colors ${
+                    isDarkMode ? 'text-white' : 'text-gray-900'
+                  }`}>
+                    {featuredPost.title}
+                  </h2>
+
+                  <p className={`mb-6 line-clamp-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
+                    {featuredPost.excerpt}
+                  </p>
+
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {featuredPost.tags.slice(0, 3).map((tag) => {
+                      const tagGradient = tagColorPalettes[tag.slug] || 'from-gray-500 to-slate-600'
+                      return (
+                        <span
+                          key={tag.slug}
+                          className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gradient-to-r ${tagGradient} text-white opacity-80`}
+                        >
+                          {tag.name}
+                        </span>
+                      )
+                    })}
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <span className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
+                      By {featuredPost.author.name}
+                    </span>
+                    <span className={`inline-flex items-center gap-1 font-medium group-hover:translate-x-1 transition-transform ${
+                      isDarkMode ? 'text-blue-400' : 'text-blue-500'
+                    }`}>
+                      Read article <ArrowRight className="h-5 w-5" />
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* Blog Posts Grid */}
       <section className="pb-24 px-4">
@@ -131,7 +236,7 @@ export default function BlogPage() {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredPosts.map((post, index) => {
+              {gridPosts.map((post, index) => {
                 // Use primary tag for color, fallback to first tag
                 const primaryTagSlug = post.primaryTag?.slug || post.tags[0]?.slug
                 const gradientClass = primaryTagSlug && tagColorPalettes[primaryTagSlug] 
