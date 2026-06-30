@@ -3889,6 +3889,78 @@ The result? Less time managing. More time growing.
       keywords: ['per outcome pricing', 'Salesforce Agentforce', 'HubSpot Breeze pricing', 'SaaS pricing model', 'CRM cost', 'agentic work units']
     },
     published: true
+  },
+  {
+    slug: 'the-thing-nobody-tells-you-about-automation-same-way-twice',
+    title: "The Thing Nobody Tells You About Automation: You Have to Do the Job the Same Way Twice First",
+    excerpt: "Most automations don't break because of bad software — they break because the process was never the same thing twice. Here's the Sameness Test we run before we automate anything.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-26',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Process consistency Sameness Test before automating",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Thing Nobody Tells You About Automation: You Have to Do the Job the Same Way Twice First",
+      metaDescription: "Most automations don't break because of bad software — they break because the process was never the same thing twice. Here's the Sameness Test we run before we automate anything.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
+  },
+  {
+    slug: 'ai-employee-four-minute-tasks-four-hour-failures',
+    title: "Your 'AI Employee' Nails the 4-Minute Job and Quietly Blows the 4-Hour One. Here's Where to Draw the Line.",
+    excerpt: "The newest research on AI agents shows exactly where they break — and it's not random. Here's the rule we use to decide what an AI runs unsupervised in a small business, and what still needs a human at the wheel.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-29',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "AI agent task length reliability METR small business",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your 'AI Employee' Nails the 4-Minute Job and Quietly Blows the 4-Hour One. Here's Where to Draw the Line.",
+      metaDescription: "The newest research on AI agents shows exactly where they break — and it's not random. Here's the rule we use to decide what an AI runs unsupervised in a small business, and what still needs a human at the wheel.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
+  },
+  {
+    slug: 'crm-pipeline-graveyard-audit',
+    title: "The First Thing We Do Inside a New Client's CRM Isn't Automate. It's Count the Pipelines Nobody Finished.",
+    excerpt: "When we take over a small business's CRM, we don't start building — we run a body count. Here's the Pipeline Graveyard Audit we run first, and why the best CRM has one pipeline, not six.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-06-30',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "CRM cleanup pipeline audit small business automation",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The First Thing We Do Inside a New Client's CRM Isn't Automate. It's Count the Pipelines Nobody Finished.",
+      metaDescription: "When we take over a small business's CRM, we don't start building — we run a body count. Here's the Pipeline Graveyard Audit we run first, and why the best CRM has one pipeline, not six.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
