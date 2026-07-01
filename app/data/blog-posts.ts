@@ -3964,6 +3964,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '86',
+    slug: 'ai-hours-back-owner-benefits-least',
+    title: "Your Team Is Getting 11.5 Hours Back From AI. You're Getting 5. Here's Why the Owner Benefits Least.",
+    excerpt: "A 2026 survey found employees save more than double the weekly hours owners do from AI. It's structural — and it means most owners are aiming their automation at the wrong person.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-01',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Your Team Is Getting 11.5 Hours Back From AI. You're Getting 5. Here's Why the Owner Benefits Least.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Team Is Getting 11.5 Hours Back From AI. You're Getting 5. Here's Why the Owner Benefits Least.",
+      metaDescription: "A 2026 survey found employees save more than double the weekly hours owners do from AI. It's structural — and it means most owners are aiming their automation at the wrong person.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
