@@ -4014,6 +4014,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '88',
+    slug: 'small-business-ai-using-not-running-mistake',
+    title: "68% of Small Businesses Use AI Now. Most Are Making the Same Expensive Mistake.",
+    excerpt: "Adoption is no longer the problem — most owners use AI daily. The mistake is that they open it instead of running it, and the hidden costs are quietly doubling the bill.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-08',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "68% of Small Businesses Use AI Now. Most Are Making the Same Expensive Mistake.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "68% of Small Businesses Use AI Now. Most Are Making the Same Expensive Mistake.",
+      metaDescription: "Adoption is no longer the problem — most owners use AI daily. The mistake is that they open it instead of running it, and the hidden costs are quietly doubling the bill.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
