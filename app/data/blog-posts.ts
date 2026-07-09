@@ -4039,6 +4039,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '89',
+    slug: 'automation-owner-three-line-handoff',
+    title: "The Last Thing We Do on Every Build Isn't Code — It's Deciding Who Owns It When It Breaks.",
+    excerpt: "Most agencies hand you a login and disappear. Here's the Three-Line Handoff we write before any automation goes live — Owner, Signal, Move — and why a build without a named owner is a liability, not a system.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-09',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "The Last Thing We Do on Every Build Isn't Code — It's Deciding Who Owns It When It Breaks.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Last Thing We Do on Every Build Isn't Code — It's Deciding Who Owns It When It Breaks.",
+      metaDescription: "Most agencies hand you a login and disappear. Here's the Three-Line Handoff we write before any automation goes live — Owner, Signal, Move — and why a build without a named owner is a liability, not a system.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
