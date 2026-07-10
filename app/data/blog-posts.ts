@@ -4064,6 +4064,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '90',
+    slug: 'ai-model-cost-collapse-your-automation-bill-didnt',
+    title: "The Intelligence Under Your Automation Got 10x Cheaper This Year. Your Bill Didn't.",
+    excerpt: "On July 8 OpenAI put GPT-5.6-level intelligence on the market at half the old price, and raw model costs have fallen roughly 80% since 2023. So why is your automation invoice going up? Here's who's pocketing the difference — and the one question that finds out.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-10',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "The Intelligence Under Your Automation Got 10x Cheaper This Year. Your Bill Didn't.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Intelligence Under Your Automation Got 10x Cheaper This Year. Your Bill Didn't.",
+      metaDescription: "On July 8 OpenAI put GPT-5.6-level intelligence on the market at half the old price, and raw model costs have fallen roughly 80% since 2023. So why is your automation invoice going up? Here's who's pocketing the difference — and the one question that finds out.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
