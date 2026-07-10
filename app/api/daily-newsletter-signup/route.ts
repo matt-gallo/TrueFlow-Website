@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 interface DailyNewsletterSignupBody {
   firstName?: string
   email?: string
+  variant?: string
 }
 
 // TrueFlow Daily Newsletter — GHL webhook (Matt's subaccount workflow handles tagging + downstream)
@@ -16,10 +17,10 @@ export async function POST(request: NextRequest) {
     const body: DailyNewsletterSignupBody = await request.json()
     const firstName = body.firstName?.trim() || ''
     const email = body.email?.trim().toLowerCase() || ''
+    // A/B test variant (a|b|c) — kept short + safe for use in the source field
+    const variant = (body.variant || '').toString().trim().toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 12)
 
-    if (!firstName) {
-      return NextResponse.json({ error: 'First name is required' }, { status: 400 })
-    }
+    // First name is optional (email-first reduces signup friction). Email is required.
     if (!email || !EMAIL_REGEX.test(email)) {
       return NextResponse.json({ error: 'A valid email is required' }, { status: 400 })
     }
@@ -27,8 +28,12 @@ export async function POST(request: NextRequest) {
     const payload = {
       firstName,
       email,
-      name: firstName,
-      source: 'trueflow-daily-newsletter-subscribe-page',
+      // Fallback so GHL personalization tokens (e.g. "Hi {{firstName}}") don't render blank.
+      name: firstName || 'there',
+      source: variant
+        ? `trueflow-daily-newsletter-subscribe-${variant}`
+        : 'trueflow-daily-newsletter-subscribe-page',
+      variant: variant || 'page',
       // GHL workflow uses this to trigger the bonus toolkit delivery + 7-day welcome sequence
       bonusOptin: 'business-owners-ai-toolkit-q2-2026',
       submittedAt: new Date().toISOString(),

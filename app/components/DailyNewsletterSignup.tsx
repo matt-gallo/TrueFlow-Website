@@ -13,12 +13,15 @@ interface DailyNewsletterSignupProps {
   subheadline?: string
   /** Compact mode hides the badge + tightens spacing — useful for sidebars/footers */
   compact?: boolean
+  /** A/B test variant tag (e.g. "a" | "b" | "c") — passed to the API + conversion event for attribution */
+  variant?: string
 }
 
 export default function DailyNewsletterSignup({
   headline = "Get the Q2/2026 Business Owner's AI Toolkit — free.",
   subheadline = "Daily AI insights in your inbox so you never miss the next big thing. Subscribe and we'll send you the Q2/2026 Business Owner's AI Toolkit on the house.",
   compact = false,
+  variant,
 }: DailyNewsletterSignupProps) {
   const { isDarkMode } = useTheme()
   const [firstName, setFirstName] = useState('')
@@ -35,7 +38,7 @@ export default function DailyNewsletterSignup({
       const res = await fetch('/api/daily-newsletter-signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ firstName, email }),
+        body: JSON.stringify({ firstName, email, variant }),
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) {
@@ -44,6 +47,20 @@ export default function DailyNewsletterSignup({
         return
       }
       setStatus('success')
+
+      // Fire the Meta conversion event so ad optimization + reporting can see
+      // signups. Without this, Ads Manager only ever sees PageView (fired in
+      // layout.tsx) and reports "Leads = Not available".
+      // NOTE: browser pixel events can be dropped by ad blockers / iOS. For
+      // reliable optimization, also send this server-side (Conversions API)
+      // from app/api/daily-newsletter-signup/route.ts using the same event.
+      if (typeof window !== 'undefined' && (window as unknown as { fbq?: (...a: unknown[]) => void }).fbq) {
+        ;(window as unknown as { fbq: (...a: unknown[]) => void }).fbq('track', 'Lead', {
+          content_name: 'TrueFlow Daily Newsletter',
+          content_category: 'newsletter-signup',
+          ...(variant ? { content_ids: [`subscribe-${variant}`] } : {}),
+        })
+      }
     } catch {
       setStatus('error')
       setErrorMsg('Network error. Please try again.')
@@ -65,7 +82,7 @@ export default function DailyNewsletterSignup({
             isDarkMode ? 'text-white' : 'text-gray-900'
           }`}
         >
-          You're in, {firstName}.
+          You're in{firstName ? `, ${firstName}` : ''}.
         </h3>
         <p className={`mb-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
           Your Q2/2026 Business Owner's AI Toolkit is on its way — check your inbox in the next few minutes.
@@ -122,12 +139,11 @@ export default function DailyNewsletterSignup({
               isDarkMode ? 'text-white/80' : 'text-gray-700'
             }`}
           >
-            First name
+            First name <span className={isDarkMode ? 'text-white/40' : 'text-gray-400'}>(optional)</span>
           </label>
           <input
             id="daily-newsletter-first-name"
             type="text"
-            required
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             placeholder="Jane"
