@@ -99,7 +99,7 @@ export default function SubscribePageC() {
           <DailyNewsletterSignup
             variant="c"
             headline="Read tomorrow's issue."
-            subheadline="Free Q2/2026 AI Toolkit lands the moment you join. Mon–Fri — unsubscribe in one click."
+            subheadline="Free Q3/2026 AI Toolkit lands the moment you join. Mon–Fri — unsubscribe in one click."
           />
         </div>
       </section>

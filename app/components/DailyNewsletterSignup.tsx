@@ -18,8 +18,8 @@ interface DailyNewsletterSignupProps {
 }
 
 export default function DailyNewsletterSignup({
-  headline = "Get the Q2/2026 Business Owner's AI Toolkit — free.",
-  subheadline = "Daily AI insights in your inbox so you never miss the next big thing. Subscribe and we'll send you the Q2/2026 Business Owner's AI Toolkit on the house.",
+  headline = "Get the Q3/2026 Business Owner's AI Toolkit — free.",
+  subheadline = "Daily AI insights in your inbox so you never miss the next big thing. Subscribe and we'll send you the Q3/2026 Business Owner's AI Toolkit on the house.",
   compact = false,
   variant,
 }: DailyNewsletterSignupProps) {
@@ -85,7 +85,7 @@ export default function DailyNewsletterSignup({
           You're in{firstName ? `, ${firstName}` : ''}.
         </h3>
         <p className={`mb-3 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-          Your Q2/2026 Business Owner's AI Toolkit is on its way — check your inbox in the next few minutes.
+          Your Q3/2026 Business Owner's AI Toolkit is on its way — check your inbox in the next few minutes.
         </p>
         <p className={`text-sm ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
           After that, the TrueFlow Daily lands each weekday morning. One signal worth your attention.

@@ -70,7 +70,7 @@ export default function SubscribePageA() {
         <DailyNewsletterSignup
           variant="a"
           headline="Stop finding out last."
-          subheadline="Drop your email — tomorrow's brief is your first one. We'll send the free Q2/2026 AI Toolkit the moment you confirm."
+          subheadline="Drop your email — tomorrow's brief is your first one. We'll send the free Q3/2026 AI Toolkit the moment you confirm."
         />
       </section>
 
@@ -86,7 +86,7 @@ export default function SubscribePageA() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
-            { Icon: Zap, title: 'One real signal', body: 'A dated event from the AI, CRM, or automation world — “On June 3, X shipped Y. Here’s why it matters.”' },
+            { Icon: Zap, title: 'One real signal', body: 'A dated event from the AI, CRM, or automation world — “This week, X shipped Y. Here’s why it matters.”' },
             { Icon: Coffee, title: 'TrueFlow’s take', body: 'What it means for an operator, what we’d do about it, and what we’d push back on.' },
             { Icon: Calendar, title: 'Questions to ask', body: 'One or two sharp questions for your team or your provider — so the read pays for itself.' },
           ].map(({ Icon, title, body }) => (
