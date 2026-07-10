@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { ArrowLeft, Sparkles } from 'lucide-react'
 import DailyNewsletterSignup from '../components/DailyNewsletterSignup'
+import DeviceMockup, { GradientOrbs } from '../components/DeviceMockup'
+import { VariantMotif, StatStrip } from '../components/SubscribeVisuals'
 import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
 
@@ -46,13 +48,16 @@ export default function SubscribePageC() {
       </div>
 
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-4 pt-12 pb-8 text-center">
+      <section className="relative max-w-5xl mx-auto px-4 pt-12 pb-8 text-center">
+        <GradientOrbs />
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-white/10 mb-6">
           <Sparkles className="h-4 w-4 text-blue-400" />
           <span className={`text-xs font-medium uppercase tracking-wider ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
             Read by operators, not tourists
           </span>
         </div>
+
+        <VariantMotif variant="c" />
 
         <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           You can&apos;t track 40 AI releases a week.{' '}
@@ -65,6 +70,10 @@ export default function SubscribePageC() {
           The TrueFlow Daily turns the week&apos;s AI noise into one signal you can act on before lunch. Here&apos;s exactly
           what lands in your inbox tomorrow morning:
         </p>
+
+        <div className="mt-12">
+          <DeviceMockup tone="c" />
+        </div>
       </section>
 
       {/* Sample issue + form */}
@@ -93,6 +102,11 @@ export default function SubscribePageC() {
             subheadline="Free Q2/2026 AI Toolkit lands the moment you join. Mon–Fri — unsubscribe in one click."
           />
         </div>
+      </section>
+
+      {/* Format at a glance */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <StatStrip />
       </section>
 
       {/* Social proof — PLACEHOLDER, replace before running paid traffic */}

@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { ArrowLeft, FileText, Check } from 'lucide-react'
 import DailyNewsletterSignup from '../components/DailyNewsletterSignup'
+import DeviceMockup, { GradientOrbs } from '../components/DeviceMockup'
+import { VariantMotif, StatStrip } from '../components/SubscribeVisuals'
 import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
 
@@ -38,13 +40,16 @@ export default function SubscribePageB() {
       </div>
 
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-4 pt-12 pb-8 text-center">
+      <section className="relative max-w-5xl mx-auto px-4 pt-12 pb-8 text-center">
+        <GradientOrbs />
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-white/10 mb-6">
           <FileText className="h-4 w-4 text-blue-400" />
           <span className={`text-xs font-medium uppercase tracking-wider ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
             Free — Q2/2026 Business Owner&apos;s AI Toolkit
           </span>
         </div>
+
+        <VariantMotif variant="b" />
 
         <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           The AI plays business owners are actually running this quarter.{' '}
@@ -57,6 +62,10 @@ export default function SubscribePageB() {
           Subscribe to the TrueFlow Daily and we&apos;ll send you the Q2/2026 Toolkit right away — the exact tools, the
           workflows, and the pricing benchmarks, so no agency sells you 2024 thinking at 2026 prices.
         </p>
+
+        <div className="mt-12">
+          <DeviceMockup tone="b" />
+        </div>
       </section>
 
       {/* Toolkit + form, side by side */}
@@ -94,6 +103,11 @@ export default function SubscribePageB() {
             subheadline="Toolkit now. One sharp signal every weekday after. Free — unsubscribe anytime."
           />
         </div>
+      </section>
+
+      {/* Format at a glance */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <StatStrip />
       </section>
 
       <Footer />

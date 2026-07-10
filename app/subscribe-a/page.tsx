@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { ArrowLeft, Gift, Zap, Coffee, Calendar } from 'lucide-react'
 import DailyNewsletterSignup from '../components/DailyNewsletterSignup'
+import DeviceMockup, { GradientOrbs } from '../components/DeviceMockup'
+import { VariantMotif, StatStrip } from '../components/SubscribeVisuals'
 import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
 
@@ -31,13 +33,16 @@ export default function SubscribePageA() {
       </div>
 
       {/* Hero */}
-      <section className="max-w-5xl mx-auto px-4 pt-12 pb-8 text-center">
+      <section className="relative max-w-5xl mx-auto px-4 pt-12 pb-8 text-center">
+        <GradientOrbs />
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-600/20 border border-white/10 mb-6">
           <Gift className="h-4 w-4 text-blue-400" />
           <span className={`text-xs font-medium uppercase tracking-wider ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
             Free daily brief for operators
           </span>
         </div>
+
+        <VariantMotif variant="a" />
 
         <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
           The AI move that reshapes your industry lands on a Tuesday.
@@ -54,15 +59,24 @@ export default function SubscribePageA() {
         <p className={`text-sm ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
           Three minutes, before your coffee&apos;s cold. Mon–Fri · unsubscribe anytime.
         </p>
+
+        <div className="mt-12">
+          <DeviceMockup tone="a" />
+        </div>
       </section>
 
       {/* Signup */}
-      <section className="max-w-3xl mx-auto px-4 pb-12">
+      <section className="max-w-3xl mx-auto px-4 pt-4 pb-8">
         <DailyNewsletterSignup
           variant="a"
           headline="Stop finding out last."
           subheadline="Drop your email — tomorrow's brief is your first one. We'll send the free Q2/2026 AI Toolkit the moment you confirm."
         />
+      </section>
+
+      {/* Format at a glance */}
+      <section className="max-w-5xl mx-auto px-4 pb-16">
+        <StatStrip />
       </section>
 
       {/* What lands in your inbox */}
