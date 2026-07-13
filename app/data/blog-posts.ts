@@ -4089,6 +4089,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '91',
+    slug: 'every-platform-now-builds-agents-not-the-hard-part',
+    title: "Every Platform You Already Pay For Now Builds AI Agents for You. Building Was Never the Hard Part.",
+    excerpt: "HubSpot opened its Prospecting Agent to every paid account this month, Google put a no-code agent builder inside Workspace, and Anthropic shipped its most agentic model yet. The cost of building an agent went to zero. The cost of reviewing what it produces didn't.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-13',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Every Platform You Already Pay For Now Builds AI Agents for You. Building Was Never the Hard Part.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Every Platform You Already Pay For Now Builds AI Agents for You. Building Was Never the Hard Part.",
+      metaDescription: "HubSpot opened its Prospecting Agent to every paid account this month, Google put a no-code agent builder inside Workspace, and Anthropic shipped its most agentic model yet. The cost of building an agent went to zero. The cost of reviewing what it produces didn't.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
