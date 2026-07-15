@@ -4114,6 +4114,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '92',
+    slug: 'what-is-your-automation-waiting-on',
+    title: "What Would Happen If You Stopped Doing Data Entry Tomorrow? About Half Your Automations Would Go Quiet.",
+    excerpt: "Most automations that 'don't work' are working fine — they're just waiting on a human to type something first. Here's the Trigger Test (Event, Hand, Silence), a 20-minute audit that finds the ones holding their breath.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-15',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "What Would Happen If You Stopped Doing Data Entry Tomorrow? About Half Your Automations Would Go Quiet.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "What Would Happen If You Stopped Doing Data Entry Tomorrow? About Half Your Automations Would Go Quiet.",
+      metaDescription: "Most automations that 'don't work' are working fine — they're just waiting on a human to type something first. Here's the Trigger Test (Event, Hand, Silence), a 20-minute audit that finds the ones holding their breath.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
