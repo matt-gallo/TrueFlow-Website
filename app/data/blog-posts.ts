@@ -4139,6 +4139,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '93',
+    slug: 'ai-training-gap-is-a-build-gap',
+    title: "70% of Small Business Owners Say They Need More AI Training. Training Is the Wrong Fix.",
+    excerpt: "Thryv's July 15 survey found adoption at 66% and 86% of owners comfortable with AI — yet 7 in 10 say they need more training. The gap isn't a skills problem. It's a build problem, and training is how the industry avoids admitting it.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-16',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "70% of Small Business Owners Say They Need More AI Training. Training Is the Wrong Fix.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "70% of Small Business Owners Say They Need More AI Training. Training Is the Wrong Fix.",
+      metaDescription: "Thryv's July 15 survey found adoption at 66% and 86% of owners comfortable with AI — yet 7 in 10 say they need more training. The gap isn't a skills problem. It's a build problem, and training is how the industry avoids admitting it.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
