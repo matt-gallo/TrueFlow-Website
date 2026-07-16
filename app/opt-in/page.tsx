@@ -99,15 +99,15 @@ export default function OptInPage() {
               <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 ${
                 isDarkMode ? 'text-white' : 'text-gray-900'
               }`}>
-                Book Your{' '}
+                You already paid for the leads.{' '}
                 <span className="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-                  Strategy Call
+                  Let&apos;s go find the ones you lost.
                 </span>
               </h1>
               <p className={`text-lg sm:text-xl max-w-3xl mx-auto ${
                 isDarkMode ? 'text-white/70' : 'text-gray-600'
               }`}>
-                Let's discuss how TrueFlow AI can transform your business operations and help you capture more opportunities.
+                Thirty minutes. We&apos;ll walk your numbers, show you exactly where they&apos;re leaking, and you&apos;ll leave with the plan — whether or not you ever work with us.
               </p>
             </div>
 
@@ -122,7 +122,7 @@ export default function OptInPage() {
                     <h2 className={`text-2xl sm:text-3xl font-bold mb-4 ${
                       isDarkMode ? 'text-white' : 'text-gray-900'
                     }`}>
-                      What to Expect
+                      What actually happens
                     </h2>
                     <ul className="space-y-4">
                       <li className="flex items-start space-x-3">
@@ -130,7 +130,7 @@ export default function OptInPage() {
                           <div className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600"></div>
                         </div>
                         <p className={`text-base ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          <strong>30-minute consultation</strong> to understand your business goals and challenges
+                          <strong>We find the leak.</strong> Speed to lead, follow-up, no-shows, dead pipeline — we look at where the leads you already bought are falling out.
                         </p>
                       </li>
                       <li className="flex items-start space-x-3">
@@ -138,7 +138,7 @@ export default function OptInPage() {
                           <div className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600"></div>
                         </div>
                         <p className={`text-base ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          <strong>Custom strategy</strong> tailored to your specific needs
+                          <strong>We put a number on it.</strong> Not &ldquo;AI could help&rdquo; — what the leak is costing you, in dollars, this month.
                         </p>
                       </li>
                       <li className="flex items-start space-x-3">
@@ -146,7 +146,7 @@ export default function OptInPage() {
                           <div className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600"></div>
                         </div>
                         <p className={`text-base ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          <strong>Clear next steps</strong> on how to implement AI automation in your business
+                          <strong>You get the order of operations.</strong> What to fix first, what to fix later, and what to ignore no matter who&apos;s selling it.
                         </p>
                       </li>
                       <li className="flex items-start space-x-3">
@@ -154,7 +154,7 @@ export default function OptInPage() {
                           <div className="w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600"></div>
                         </div>
                         <p className={`text-base ${isDarkMode ? 'text-white/80' : 'text-gray-700'}`}>
-                          <strong>No pressure</strong> - just an honest conversation about what's possible
+                          <strong>You keep the plan.</strong> Build it yourself, hand it to your team, or have us do it. Yours either way.
                         </p>
                       </li>
                     </ul>

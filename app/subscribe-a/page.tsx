@@ -8,7 +8,11 @@ import { VariantMotif, StatStrip } from '../components/SubscribeVisuals'
 import { Footer } from '../components/Footer'
 import { useTheme } from '../components/ThemeProvider'
 
-// Variation A — "The cost of missing it" (Problem · Agitate · Solution / FOMO)
+// Variation A — "First to know, first to act" (gain-framed / opportunity-led)
+// Tests the gain frame against B (offer-led) and C (proof-led). Deliberately NOT
+// loss/FOMO: our reader is already ahead of the curve — telling him he's behind
+// repels the exact person we want. The differentiator is the ACT half; every
+// AI newsletter promises knowing.
 export default function SubscribePageA() {
   const { isDarkMode } = useTheme()
 
@@ -45,16 +49,17 @@ export default function SubscribePageA() {
         <VariantMotif variant="a" />
 
         <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-          The AI move that reshapes your industry lands on a Tuesday.
+          Be the first to know.
           <br />
           <span className="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            You hear about it Friday — from a competitor.
+            And the first to act.
           </span>
         </h1>
 
         <p className={`text-lg sm:text-xl max-w-2xl mx-auto mb-2 ${isDarkMode ? 'text-white/70' : 'text-gray-600'}`}>
-          Every weekday we read the AI, CRM and automation firehose so you don&apos;t have to — and send you the one
-          development that actually touches how you run your business, plus what to do about it.
+          Everyone&apos;s drowning in AI news. Almost nobody knows what to do with it. Every weekday we read the entire
+          AI, CRM and automation firehose, pull the one development that actually touches how you run your business,
+          and hand you the play to run with it.
         </p>
         <p className={`text-sm ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>
           Three minutes, before your coffee&apos;s cold. Mon–Fri · unsubscribe anytime.
@@ -69,8 +74,8 @@ export default function SubscribePageA() {
       <section className="max-w-3xl mx-auto px-4 pt-4 pb-8">
         <DailyNewsletterSignup
           variant="a"
-          headline="Stop finding out last."
-          subheadline="Drop your email — tomorrow's brief is your first one. We'll send the free Q3/2026 AI Toolkit the moment you confirm."
+          headline="Start tomorrow morning."
+          subheadline="Drop your email and tomorrow's brief is your first one. The free Q3/2026 AI Toolkit lands the moment you confirm."
         />
       </section>
 

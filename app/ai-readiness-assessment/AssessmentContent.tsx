@@ -191,33 +191,40 @@ const QUESTIONS = [
 
 const MAX_SCORE = QUESTIONS.length * 4 // 60
 
+// Identity tiers — named for who the operator IS at this stage, not what they lack.
+// Every label is one a successful founder would accept; the cost lives in the
+// description, never in the name. `slug` is what ships to GHL as `tier-<slug>`.
 function getScoreTier(pct: number) {
   if (pct >= 80) return {
-    label: 'AI-Ready',
+    label: 'The Conductor',
+    slug: 'conductor',
     color: 'from-cyan-400 to-blue-500',
     textColor: 'text-cyan-400',
-    description: 'Your systems are strong. You\'re in the best position to implement advanced AI — and the ROI will compound fast.',
+    description: 'The system plays without you in it. Your job now is deciding what it plays next — and that\'s a different kind of work than what got you here.',
     icon: <Zap className="h-6 w-6" />,
   }
   if (pct >= 60) return {
-    label: 'Nearly There',
+    label: 'The Architect',
+    slug: 'architect',
     color: 'from-blue-400 to-purple-500',
     textColor: 'text-blue-400',
-    description: 'You have solid foundations but a few key gaps are limiting your growth. Targeted automation will unlock significant capacity.',
+    description: 'You\'ve built real structure — parts of this business hold without you touching them. It isn\'t finished, and you already know exactly where.',
     icon: <TrendingUp className="h-6 w-6" />,
   }
   if (pct >= 40) return {
-    label: 'Building Momentum',
+    label: 'The Producer',
+    slug: 'producer',
     color: 'from-purple-400 to-pink-500',
     textColor: 'text-purple-400',
-    description: 'You\'re aware of the gaps and taking steps forward. The right automation stack will give you leverage you can feel immediately.',
+    description: 'Real output, real volume — and it\'s powered by effort, most of it yours. You don\'t have a work ethic problem. You have a leverage problem.',
     icon: <BarChart3 className="h-6 w-6" />,
   }
   return {
-    label: 'Early Stage',
+    label: 'The Craftsman',
+    slug: 'craftsman',
     color: 'from-orange-400 to-red-500',
     textColor: 'text-orange-400',
-    description: 'You\'re leaving significant time and money on the table. The good news: the biggest gains are often the fastest to implement.',
+    description: 'The work is excellent because it\'s yours — every piece of it passes through your hands. That\'s the whole strength, and it\'s also the ceiling.',
     icon: <AlertCircle className="h-6 w-6" />,
   }
 }
@@ -266,6 +273,10 @@ export default function AIReadinessAssessmentContent() {
 
   const contactFirstName = searchParams.get('firstName') || ''
   const contactEmail = searchParams.get('email') || ''
+  // Optional — passed through from the opt-in when we have it. When absent the
+  // API infers the site from the email domain.
+  const contactWebsite = searchParams.get('website') || ''
+  const contactBusiness = searchParams.get('businessName') || ''
 
   const question = QUESTIONS[current]
   const progress = ((current) / QUESTIONS.length) * 100
@@ -291,8 +302,11 @@ export default function AIReadinessAssessmentContent() {
           body: JSON.stringify({
             firstName: contactFirstName,
             email: contactEmail,
+            website: contactWebsite,
+            businessName: contactBusiness,
             score: finalScore,
             tier: finalTier.label,
+            tierSlug: finalTier.slug,
             insights: finalInsights,
           }),
         }).catch(err => console.error('Failed to save assessment results:', err))
