@@ -4164,6 +4164,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '94',
+    slug: 'the-lien-hiding-in-your-payment-dashboard',
+    title: "The Sale Was Days From Closing. Then Diligence Found the Loan in the Payment Dashboard.",
+    excerpt: "We watched a small-business sale nearly collapse this month over a $17,000 loan taken in two clicks inside a payment processor — and the lien it quietly attached to everything being sold. Here's the Clean-Title Test, a 20-minute check that finds yours before a buyer or a bank does.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-17',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "The Sale Was Days From Closing. Then Diligence Found the Loan in the Payment Dashboard.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Sale Was Days From Closing. Then Diligence Found the Loan in the Payment Dashboard.",
+      metaDescription: "We watched a small-business sale nearly collapse this month over a $17,000 loan taken in two clicks inside a payment processor — and the lien it quietly attached to everything being sold. Here's the Clean-Title Test, a 20-minute check that finds yours before a buyer or a bank does.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
