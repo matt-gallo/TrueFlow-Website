@@ -4189,6 +4189,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '95',
+    slug: 'break-even-line-worth-automating',
+    title: "The Break-Even Line: How to Know a Task Is Actually Worth Automating",
+    excerpt: "Most tasks you want to automate aren't worth automating — the honest math says delete them, not build them. Here's the Break-Even Line: three numbers, two minutes, and a rule that tells you whether to build, leave it alone, or kill the task entirely.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-23',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "The Break-Even Line: How to Know a Task Is Actually Worth Automating",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Break-Even Line: How to Know a Task Is Actually Worth Automating",
+      metaDescription: "Most tasks you want to automate aren't worth automating — the honest math says delete them, not build them. Here's the Break-Even Line: three numbers, two minutes, and a rule that tells you whether to build, leave it alone, or kill the task entirely.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
