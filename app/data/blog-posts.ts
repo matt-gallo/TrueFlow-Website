@@ -4214,6 +4214,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '96',
+    slug: 'speed-to-lead-overrated-build-the-follow-up-floor',
+    title: "Speed-to-Lead Is Overrated. The Money Is in the Follow-Up Nobody Sends.",
+    excerpt: "Every automation demo sells a faster first reply. But speed only matters on touch one, and most deals close past touch five. Here's the Follow-Up Floor — a fixed minimum every lead gets, on autopilot, so no sale dies in someone's memory.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-24',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Speed-to-Lead Is Overrated. The Money Is in the Follow-Up Nobody Sends.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Speed-to-Lead Is Overrated. The Money Is in the Follow-Up Nobody Sends.",
+      metaDescription: "Every automation demo sells a faster first reply. But speed only matters on touch one, and most deals close past touch five. Here's the Follow-Up Floor — a fixed minimum every lead gets, on autopilot, so no sale dies in someone's memory.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
