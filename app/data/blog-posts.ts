@@ -4264,6 +4264,131 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '98',
+    slug: 'your-agent-shipped-nobody-noticed-it-stopped',
+    title: "Your Agent Shipped Last Month. Nobody Noticed When It Stopped Producing Anything.",
+    excerpt: "Most agents fail silently. They run without error, output drops to zero, and the person who should care doesn't know it happened. Here's the Agent Health Check — a 10-minute audit that catches the ones already dead.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-18',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Your Agent Shipped Last Month. Nobody Noticed When It Stopped Producing Anything.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Agent Shipped Last Month. Nobody Noticed When It Stopped Producing Anything.",
+      metaDescription: "Most agents fail silently. They run without error, output drops to zero, and the person who should care doesn't know it happened. Here's the Agent Health Check — a 10-minute audit that catches the ones already dead.",
+      keywords: ['automation', 'AI agents', 'small business']
+    },
+    published: true
+  },
+  {
+    id: '99',
+    slug: 'on-demand-agents-killed-the-retainer',
+    title: "Scheduled Agents Cost Nothing Now. The Retainer Model Doesn't Survive That.",
+    excerpt: "Anthropic made scheduled agents free earlier this month. HubSpot moved Prospecting Agent to $1 per qualified lead. When the infrastructure is free and the outcomes are metered, recurring setup fees become indefensible. Here's what actually replaces them.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-19',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Scheduled Agents Cost Nothing Now. The Retainer Model Doesn't Survive That.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Scheduled Agents Cost Nothing Now. The Retainer Model Doesn't Survive That.",
+      metaDescription: "Anthropic made scheduled agents free earlier this month. HubSpot moved Prospecting Agent to $1 per qualified lead. When the infrastructure is free and the outcomes are metered, recurring setup fees become indefensible.",
+      keywords: ['automation', 'AI agents', 'retainer model', 'small business']
+    },
+    published: true
+  },
+  {
+    id: '100',
+    slug: 'agent-stack-falling-apart',
+    title: "7 Signs Your Agent Stack Is Falling Apart (Most Owners Have 4)",
+    excerpt: "ICML 2026 just had 60+ workshops on agentic AI. Your competitors are adding agents fast. But you already bought five AI tools last year. Here's what happens next — and why adding another agent breaks more than it fixes.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-20',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "7 Signs Your Agent Stack Is Falling Apart (Most Owners Have 4)",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "7 Signs Your Agent Stack Is Falling Apart (Most Owners Have 4)",
+      metaDescription: "ICML 2026 just had 60+ workshops on agentic AI. Your competitors are adding agents fast. But you already bought five AI tools last year. Here's what happens next — and why adding another agent breaks more than it fixes.",
+      keywords: ['automation', 'AI tools', 'small business', 'tool stack']
+    },
+    published: true
+  },
+  {
+    id: '101',
+    slug: 'ai-writes-this-blog-model-not-the-hard-part',
+    title: "We've Let an AI Write This Blog Every Morning for Weeks. The Model Was Never the Hard Part.",
+    excerpt: "This post was picked, researched, checked, and committed by a scheduled agent while we slept. The thing that made it reliable wasn't the model — it was three documents. Here's the part most automation agencies won't tell you.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-21',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "We've Let an AI Write This Blog Every Morning for Weeks. The Model Was Never the Hard Part.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We've Let an AI Write This Blog Every Morning for Weeks. The Model Was Never the Hard Part.",
+      metaDescription: "This post was picked, researched, checked, and committed by a scheduled agent while we slept. The thing that made it reliable wasn't the model — it was three documents. Here's the part most automation agencies won't tell you.",
+      keywords: ['automation', 'AI agents', 'content', 'small business']
+    },
+    published: true
+  },
+  {
+    id: '102',
+    slug: 'openai-work-agent-documents-not-operations',
+    title: "OpenAI Just Shipped a Work Agent to Everyone. Your Bottleneck Was Never a Missing Document.",
+    excerpt: "ChatGPT Work landed July 9 and it produces finished docs, sheets, and slides on demand — even on the free desktop app. But a work agent that makes artifacts is answering a question your business mostly isn't asking.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-22',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "OpenAI Just Shipped a Work Agent to Everyone. Your Bottleneck Was Never a Missing Document.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "OpenAI Just Shipped a Work Agent to Everyone. Your Bottleneck Was Never a Missing Document.",
+      metaDescription: "ChatGPT Work landed July 9 and it produces finished docs, sheets, and slides on demand — even on the free desktop app. But a work agent that makes artifacts is answering a question your business mostly isn't asking.",
+      keywords: ['OpenAI', 'automation', 'AI agents', 'small business', 'operations']
+    },
+    published: true
   }
 ]
 
