@@ -4389,6 +4389,31 @@ The result? Less time managing. More time growing.
       keywords: ['OpenAI', 'automation', 'AI agents', 'small business', 'operations']
     },
     published: true
+  },
+  {
+    id: '103',
+    slug: 'five-things-we-say-before-we-build-anything',
+    title: "The 5 Things We Say Before We Build You Anything (Most Agencies Skip Every One)",
+    excerpt: "Most automation agencies open with 'what do you want to build?' We open by trying to talk you out of half of it — here's the exact five-part conversation we run before touching a single workflow.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-26',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "The 5 Things We Say Before We Build You Anything (Most Agencies Skip Every One)",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The 5 Things We Say Before We Build You Anything (Most Agencies Skip Every One)",
+      metaDescription: "Most automation agencies open with 'what do you want to build?' We open by trying to talk you out of half of it — here's the exact five-part conversation we run before touching a single workflow.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
