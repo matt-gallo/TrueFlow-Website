@@ -4414,6 +4414,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '104',
+    slug: 'hubspot-no-code-agents-building-was-never-the-bottleneck',
+    title: "HubSpot Just Made AI Agents a No-Code Afternoon Project. Building Was Never Your Bottleneck.",
+    excerpt: "HubSpot's new Agent Builder lets anyone spin up a CRM agent in plain language — but the hard part of an AI agent was never building it. Here's the part a no-code canvas doesn't fix.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-27',
+    readTime: 4,
+    category: categories.industry,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "HubSpot Just Made AI Agents a No-Code Afternoon Project. Building Was Never Your Bottleneck.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "HubSpot Just Made AI Agents a No-Code Afternoon Project. Building Was Never Your Bottleneck.",
+      metaDescription: "HubSpot's new Agent Builder lets anyone spin up a CRM agent in plain language — but the hard part of an AI agent was never building it. Here's the part a no-code canvas doesn't fix.",
+      keywords: ['HubSpot', 'AI agents', 'no-code', 'automation', 'small business']
+    },
+    published: true
   }
 ]
 
