@@ -4464,6 +4464,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '106',
+    slug: 'we-almost-migrated-a-quoting-system-over-one-missing-number',
+    title: "We Almost Rebuilt a Client's Whole Quoting System Over One Missing Number",
+    excerpt: "Most 'we need to switch platforms' conversations are a missing field wearing a foundation costume. Here's the Layer Test we run before anyone migrates anything — and the one case where migrating is the only honest answer.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-31',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "We Almost Rebuilt a Client's Whole Quoting System Over One Missing Number",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Almost Rebuilt a Client's Whole Quoting System Over One Missing Number",
+      metaDescription: "Most 'we need to switch platforms' conversations are a missing field wearing a foundation costume. Here's the Layer Test we run before anyone migrates anything — and the one case where migrating is the only honest answer.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
