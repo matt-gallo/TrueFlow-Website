@@ -4439,6 +4439,31 @@ The result? Less time managing. More time growing.
       keywords: ['HubSpot', 'AI agents', 'no-code', 'automation', 'small business']
     },
     published: true
+  },
+  {
+    id: '105',
+    slug: 'intelligence-is-a-dial-your-automations-one-setting',
+    title: "Anthropic Just Turned Intelligence Into a Dial. Your Automations Are Stuck on One Setting.",
+    excerpt: "Claude Opus 5 shipped on July 24 with a per-request effort toggle, and downstream tools are already passing the savings through. Capability is now something you choose per task — but almost every small-business automation still runs one setting for every job. Here's how to sort them.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-07-30',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Anthropic Just Turned Intelligence Into a Dial. Your Automations Are Stuck on One Setting.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Anthropic Just Turned Intelligence Into a Dial. Your Automations Are Stuck on One Setting.",
+      metaDescription: "Claude Opus 5 shipped on July 24 with a per-request effort toggle, and downstream tools are already passing the savings through. Capability is now something you choose per task — but almost every small-business automation still runs one setting for every job. Here's how to sort them.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
