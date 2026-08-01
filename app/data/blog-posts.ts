@@ -4489,6 +4489,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '107',
+    slug: 'act-without-asking-what-can-your-agent-reach',
+    title: "Your AI Agent Has a Setting Called 'Act Without Asking.' Do You Know What It Can Reach?",
+    excerpt: "Researchers disclosed flaws in a Claude browser extension in late July that let rogue extensions fire Gmail, Docs, and Calendar actions with no user click — with risk concentrated in one autonomy toggle. The lesson isn't that agents are dangerous. It's that almost no owner has ever looked at what theirs can reach.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-01',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Your AI Agent Has a Setting Called 'Act Without Asking.' Do You Know What It Can Reach?",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your AI Agent Has a Setting Called 'Act Without Asking.' Do You Know What It Can Reach?",
+      metaDescription: "Researchers disclosed flaws in a Claude browser extension in late July that let rogue extensions fire Gmail, Docs, and Calendar actions with no user click — with risk concentrated in one autonomy toggle. The lesson isn't that agents are dangerous. It's that almost no owner has ever looked at what theirs can reach.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
