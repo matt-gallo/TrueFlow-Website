@@ -4514,6 +4514,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '108',
+    slug: 'four-automations-stopped-nothing-was-broken',
+    title: "Four of Our Automations Stopped Last Week. Not One of Them Was Broken.",
+    excerpt: "The most common way an automation dies isn't a bug — it's a consumable running out. Here's the Refill List: the three things every automation quietly burns, and the four-column page that catches them before your customers do.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-03',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Four of Our Automations Stopped Last Week. Not One of Them Was Broken.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Four of Our Automations Stopped Last Week. Not One of Them Was Broken.",
+      metaDescription: "The most common way an automation dies isn't a bug — it's a consumable running out. Here's the Refill List: the three things every automation quietly burns, and the four-column page that catches them before your customers do.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
