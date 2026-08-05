@@ -4539,6 +4539,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '109',
+    slug: 'agents-run-seven-days-notice-window',
+    title: "Google's Agents Can Now Run for Seven Days. Yours Should Be Capped at Your Notice Window.",
+    excerpt: "On July 29, Google made Agent Runtime generally available — agents that run continuously for up to seven days. It shipped alongside identity, audit, and observability tooling, and that pairing is the whole lesson. Here's the Notice Window, the one number that should govern how long your automations run unattended.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-05',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Google's Agents Can Now Run for Seven Days. Yours Should Be Capped at Your Notice Window.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Google's Agents Can Now Run for Seven Days. Yours Should Be Capped at Your Notice Window.",
+      metaDescription: "On July 29, Google made Agent Runtime generally available — agents that run continuously for up to seven days. It shipped alongside identity, audit, and observability tooling, and that pairing is the whole lesson. Here's the Notice Window, the one number that should govern how long your automations run unattended.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
