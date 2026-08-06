@@ -4564,6 +4564,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '110',
+    slug: 'ai-receptionist-thirty-cents-minute-resolved-call-rate',
+    title: "An AI Receptionist Now Costs 30 Cents a Minute. The Mistake Is Paying for Answered Calls.",
+    excerpt: "On July 9, Zoom unbundled its AI receptionist from its phone system and priced it at $29.99 per 100 minutes. That changes the buying question from 'which vendor' to 'what am I actually buying' — and almost every owner will measure the wrong number. Here's the Resolved-Call Rate.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-06',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "An AI Receptionist Now Costs 30 Cents a Minute. The Mistake Is Paying for Answered Calls.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "An AI Receptionist Now Costs 30 Cents a Minute. The Mistake Is Paying for Answered Calls.",
+      metaDescription: "On July 9, Zoom unbundled its AI receptionist from its phone system and priced it at $29.99 per 100 minutes. That changes the buying question from 'which vendor' to 'what am I actually buying' — and almost every owner will measure the wrong number. Here's the Resolved-Call Rate.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
