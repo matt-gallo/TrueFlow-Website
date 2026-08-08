@@ -4614,6 +4614,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '112',
+    slug: 'openai-cut-prices-eighty-percent-does-it-reach-your-invoice',
+    title: "OpenAI Cut Its Prices 80% Last Week. Check Whether Any of It Reaches Your Invoice.",
+    excerpt: "On July 30, OpenAI dropped GPT-5.6 Luna's input price by 80%. Almost no small business will feel it, because you don't buy tokens — you buy seats and subscriptions from vendors who do. Here's the twenty-minute line-item test that tells you which of your AI costs can actually fall.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-08',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "OpenAI Cut Its Prices 80% Last Week. Check Whether Any of It Reaches Your Invoice.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "OpenAI Cut Its Prices 80% Last Week. Check Whether Any of It Reaches Your Invoice.",
+      metaDescription: "On July 30, OpenAI dropped GPT-5.6 Luna's input price by 80%. Almost no small business will feel it, because you don't buy tokens — you buy seats and subscriptions from vendors who do. Here's the twenty-minute line-item test that tells you which of your AI costs can actually fall.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
