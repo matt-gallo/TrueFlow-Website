@@ -4639,6 +4639,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '113',
+    slug: 'automation-isnt-broken-wrong-person-holding-the-pen',
+    title: "Your Automation Isn't Broken. You're Asking Customers for Answers Only You Have.",
+    excerpt: "A deal went missing in a client's pipeline last week. The automation ran perfectly — a customer had typed one wrong character into a field that keyed the whole workflow. Here's the Field Owner Pass, the one-hour review that finds every field currently assigned to the wrong person.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-09',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Your Automation Isn't Broken. You're Asking Customers for Answers Only You Have.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Automation Isn't Broken. You're Asking Customers for Answers Only You Have.",
+      metaDescription: "A deal went missing in a client's pipeline last week. The automation ran perfectly — a customer had typed one wrong character into a field that keyed the whole workflow. Here's the Field Owner Pass, the one-hour review that finds every field currently assigned to the wrong person.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
