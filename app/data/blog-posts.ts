@@ -4689,6 +4689,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '115',
+    slug: 'would-you-let-automation-run-unwatched-receipt-rule',
+    title: "Would You Let Your Automation Run for a Week Unwatched? 78% of Owners Say No — For the Wrong Reason.",
+    excerpt: "Bluevine surveyed 942 small business owners and found 78% won't let AI handle even low-level tasks without supervision. That's usually read as a trust problem. It's a visibility problem — and the Receipt Rule fixes it in an afternoon.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-11',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Would You Let Your Automation Run for a Week Unwatched? 78% of Owners Say No — For the Wrong Reason.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Would You Let Your Automation Run for a Week Unwatched? 78% of Owners Say No — For the Wrong Reason.",
+      metaDescription: "Bluevine surveyed 942 small business owners and found 78% won't let AI handle even low-level tasks without supervision. That's usually read as a trust problem. It's a visibility problem — and the Receipt Rule fixes it in an afternoon.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
