@@ -4411,7 +4411,7 @@ The result? Less time managing. More time growing.
     seo: {
       metaTitle: "The 5 Things We Say Before We Build You Anything (Most Agencies Skip Every One)",
       metaDescription: "Most automation agencies open with 'what do you want to build?' We open by trying to talk you out of half of it — here's the exact five-part conversation we run before touching a single workflow.",
-      keywords: ['automation', 'small business', 'AI tools']
+      keywords: ['automation', 'AI agents', 'small business', 'workflow', 'operations']
     },
     published: true
   },
