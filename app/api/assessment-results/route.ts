@@ -32,7 +32,10 @@ function getAuthHeader() {
     process.env.GHL_TRUEFLOW_SUBACCOUNT_CONTACT_CREATION ||
     process.env.GHL_SUBACCOUNT_API_KEY ||
     process.env.GHL_AGENCY_PRIVATE_INTEGRATION_TOKEN || '';
-  return token.includes('.') ? `Bearer ${token}` : token;
+  // GHL wants a Bearer prefix for both PIT tokens (pit-...) and JWTs. The old
+  // `token.includes('.')` check only prefixed JWTs, so PIT tokens (no dot) were
+  // sent raw and rejected as "Invalid JWT". Always prefix; strip any existing one.
+  return `Bearer ${token.replace(/^Bearer\s+/i, '')}`;
 }
 
 async function ghlFetch(path: string, method: string, body?: object) {
