@@ -119,7 +119,9 @@ export async function generateAudit(input: AuditInput): Promise<AuditOutput> {
 
   try {
     const res = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      // claude-sonnet-4-20250514 was deprecated and returned 404 not_found,
+      // which silently fell back to echoing raw insights (no real audit).
+      model: process.env.GROWTH_AUDIT_MODEL || 'claude-sonnet-4-5-20250929',
       max_tokens: 1200,
       system: SYSTEM,
       messages: [{ role: 'user', content: buildUserPrompt(input) }],

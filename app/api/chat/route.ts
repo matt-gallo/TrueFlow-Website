@@ -69,7 +69,7 @@ export async function POST(request: NextRequest) {
 
     // Call Claude with MCP tools
     const response = await anthropic.messages.create({
-      model: 'claude-sonnet-4-20250514',
+      model: process.env.CHAT_MODEL || 'claude-sonnet-4-5-20250929',
       max_tokens: 4096,
       system: `You are a business intelligence assistant for TrueFlow. You help users understand their business metrics and data from GoHighLevel.
 
@@ -107,7 +107,7 @@ Be conversational, helpful, and provide insights based on the data you retrieve.
       // Continue conversation with tool results
       if (toolResults.length > 0) {
         finalResponse = await anthropic.messages.create({
-          model: 'claude-sonnet-4-20250514',
+          model: process.env.CHAT_MODEL || 'claude-sonnet-4-5-20250929',
           max_tokens: 4096,
           messages: [
             ...messages,
