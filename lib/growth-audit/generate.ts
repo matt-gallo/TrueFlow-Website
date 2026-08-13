@@ -29,6 +29,10 @@ export interface AuditOutput {
   summary: string
   /** The single highest-leverage fix, with the reason. Goes in {{recommendation}}. */
   recommendation: string
+  /** One-sentence pre-call teaser: names a gap WITHOUT giving the fix. The only
+   *  audit content shown to the booker; everything else is saved for the call.
+   *  Goes in {{teaser}}. */
+  teaser: string
   /** Ordered fixes for Matt to walk on the call. */
   priorities: string[]
   /** True when the model actually got to read their site. */
@@ -101,6 +105,7 @@ function buildUserPrompt(input: AuditInput): string {
 {
   "summary": "2-4 sentences mirroring what we saw. Plain, specific, no pitch.",
   "recommendation": "The ONE thing to fix first and why it's first. 2-3 sentences.",
+  "teaser": "ONE sentence that names a specific gap you noticed WITHOUT telling them how to fix it. This is the only finding they see before the call — it should make them curious, not satisfied. Name the problem, withhold the cure. No fix, no advice, no 'you should'.",
   "priorities": ["first fix", "second fix", "third fix"]
 }`)
 
@@ -111,6 +116,7 @@ export async function generateAudit(input: AuditInput): Promise<AuditOutput> {
   const fallback: AuditOutput = {
     summary: input.insights.join(' '),
     recommendation: input.insights[0] || '',
+    teaser: input.insights[0] || '',
     priorities: input.insights,
     usedSiteData: false,
   }
@@ -138,6 +144,7 @@ export async function generateAudit(input: AuditInput): Promise<AuditOutput> {
     return {
       summary: parsed.summary,
       recommendation: parsed.recommendation,
+      teaser: parsed.teaser || input.insights[0] || '',
       priorities: Array.isArray(parsed.priorities) && parsed.priorities.length
         ? parsed.priorities
         : input.insights,

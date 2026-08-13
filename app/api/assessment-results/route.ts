@@ -23,6 +23,8 @@ const FIELD_SUMMARY = 'R2xMXY1BvSCXvycoozwf';      // "readiness summary" (LARGE
 // The AI-written "what I'd fix first". Env var still wins if set, so a future
 // remap doesn't need a code change.
 const FIELD_RECOMMENDATION = process.env.GHL_FIELD_RECOMMENDATION || 'GEYL4Phe8movetNBtqme'; // "readiness recommendation" (LARGE_TEXT)
+// One-sentence pre-call teaser — the ONLY audit finding shown to the booker.
+const FIELD_TEASER = process.env.GHL_FIELD_TEASER || 'pBls9P5HIeoGAOiF30nK'; // "Readiness Teaser" (LARGE_TEXT)
 
 // Paste your assessment pipeline ID here once you have it from GHL
 const ASSESSMENT_PIPELINE_ID = process.env.GHL_ASSESSMENT_PIPELINE_ID || '';
@@ -135,6 +137,9 @@ export async function POST(request: NextRequest) {
       { id: FIELD_TIER, value: tier },
       { id: FIELD_SUMMARY, value: summaryText },
     ];
+    if (FIELD_TEASER && audit.teaser) {
+      customFields.push({ id: FIELD_TEASER, value: audit.teaser });
+    }
     if (FIELD_RECOMMENDATION) {
       customFields.push({ id: FIELD_RECOMMENDATION, value: audit.recommendation });
     }
