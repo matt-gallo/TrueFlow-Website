@@ -14,12 +14,15 @@ import { generateAudit } from '@/lib/growth-audit/generate';
 const GHL_BASE = 'https://services.leadconnectorhq.com';
 const LOCATION_ID = process.env.GHL_LOCATION_ID!;
 
-// Custom field IDs created in GHL
-const FIELD_SCORE = 'Kvv6Flk94vJb7KxEranS';
-const FIELD_TIER = 'HSkp8IcDealP9LYgI0ei';
-const FIELD_SUMMARY = 'gaDGblZETR1A0FVblqwm';
-// New — the AI-written "what I'd fix first". Create in GHL, paste the ID here.
-const FIELD_RECOMMENDATION = process.env.GHL_FIELD_RECOMMENDATION || '';
+// Custom field IDs — verified against the TrueFlow location (GVFoSfHpPaXzRXCJbym0)
+// on 2026-08-13. The previous IDs here did not exist in the location, which
+// (behind the auth failure) was silently dropping every field write.
+const FIELD_SCORE = '775YQw2eMJFlqQKhyNjN';        // "readiness score" (NUMERICAL)
+const FIELD_TIER = '9y4KOp7qN4dRVshd2m6o';         // "readiness tier" (TEXT)
+const FIELD_SUMMARY = 'R2xMXY1BvSCXvycoozwf';      // "readiness summary" (LARGE_TEXT)
+// The AI-written "what I'd fix first". Env var still wins if set, so a future
+// remap doesn't need a code change.
+const FIELD_RECOMMENDATION = process.env.GHL_FIELD_RECOMMENDATION || 'GEYL4Phe8movetNBtqme'; // "readiness recommendation" (LARGE_TEXT)
 
 // Paste your assessment pipeline ID here once you have it from GHL
 const ASSESSMENT_PIPELINE_ID = process.env.GHL_ASSESSMENT_PIPELINE_ID || '';
