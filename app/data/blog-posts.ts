@@ -4424,7 +4424,7 @@ The result? Less time managing. More time growing.
     author: authors['matt-gallo'],
     date: '2026-07-27',
     readTime: 4,
-    category: categories.industry,
+    category: categories.automation,
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
