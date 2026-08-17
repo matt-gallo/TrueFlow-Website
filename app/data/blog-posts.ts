@@ -4764,6 +4764,156 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '118',
+    slug: 'four-nag-screens-guardrails-dont-cover-your-economics',
+    title: "Your CRM Shipped Four Nag Screens in Two Days. That's the Most Valuable Thing It Did All Month.",
+    excerpt: "HighLevel's July 1–2 releases added zero new capability — they added validation, readiness scoring, and dedup. That shift tells you where money actually leaks. It also tells you exactly which leak no vendor will ever cover for you.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-02',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Your CRM Shipped Four Nag Screens in Two Days. That's the Most Valuable Thing It Did All Month.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your CRM Shipped Four Nag Screens in Two Days. That's the Most Valuable Thing It Did All Month.",
+      metaDescription: "HighLevel's July 1–2 releases added zero new capability — they added validation, readiness scoring, and dedup. That shift tells you where money actually leaks. It also tells you exactly which leak no vendor will ever cover for you.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
+  },
+  {
+    id: '119',
+    slug: '76-percent-use-ai-14-percent-load-bearing',
+    title: "76% of Small Businesses Use AI. Only 14% Have It Doing Real Work.",
+    excerpt: "A Goldman Sachs survey of 1,256 owners found 76% using AI and 14% with it embedded in core operations. Seventy-three percent asked for more training. That's the wrong ask — and the three-question Load-Bearing Test shows why.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-04',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "76% of Small Businesses Use AI. Only 14% Have It Doing Real Work.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "76% of Small Businesses Use AI. Only 14% Have It Doing Real Work.",
+      metaDescription: "A Goldman Sachs survey of 1,256 owners found 76% using AI and 14% with it embedded in core operations. Seventy-three percent asked for more training. That's the wrong ask — and the three-question Load-Bearing Test shows why.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
+  },
+  {
+    id: '120',
+    slug: 'stripe-turned-off-our-integration-shutoff-list',
+    title: "Stripe Switched Off One of Our Integrations. The Notice Arrived Nine Days Later.",
+    excerpt: "A vendor disabled a live connection on our own account and told us by email. Nothing on our side reported a problem. Here's the Shutoff List — the twenty-minute inventory of every connection a third party can turn off without asking you.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-13',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Stripe Switched Off One of Our Integrations. The Notice Arrived Nine Days Later.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Stripe Switched Off One of Our Integrations. The Notice Arrived Nine Days Later.",
+      metaDescription: "A vendor disabled a live connection on our own account and told us by email. Nothing on our side reported a problem. Here's the Shutoff List — the twenty-minute inventory of every connection a third party can turn off without asking you.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
+  },
+  {
+    id: '121',
+    slug: 'customer-answer-no-longer-written-by-you',
+    title: "The Answer a Customer Gets About Your Business Is No Longer Written by You",
+    excerpt: "Google retired the Q&A box on Business Profiles and replaced it with Ask Maps, which composes its own answer from your profile, your reviews, and your website. Meanwhile the share of consumers using AI to find local businesses went from 6% to 45% in a year. Here's the Public Record — the one-page inventory of every source a machine reads about you, and which ones you can still edit.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-14',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "The Answer a Customer Gets About Your Business Is No Longer Written by You",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Answer a Customer Gets About Your Business Is No Longer Written by You",
+      metaDescription: "Google retired the Q&A box on Business Profiles and replaced it with Ask Maps, which composes its own answer from your profile, your reviews, and your website. Meanwhile the share of consumers using AI to find local businesses went from 6% to 45% in a year. Here's the Public Record — the one-page inventory of every source a machine reads about you, and which ones you can still edit.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
+  },
+  {
+    id: '122',
+    slug: 'stop-testing-whether-it-works-test-what-changes',
+    title: "Stop Testing Whether It Works. Test What Happens When It Changes.",
+    excerpt: "Every system in your business was verified against the first version of a record — the first quote, the first booking, the first contact. The failures live in the second. Here's the Revision Test, a twenty-minute walk-through of what your customer is actually holding after you change something.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-15',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Stop Testing Whether It Works. Test What Happens When It Changes.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Stop Testing Whether It Works. Test What Happens When It Changes.",
+      metaDescription: "Every system in your business was verified against the first version of a record — the first quote, the first booking, the first contact. The failures live in the second. Here's the Revision Test, a twenty-minute walk-through of what your customer is actually holding after you change something.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
+  },
+  {
+    id: '123',
+    slug: 'client-wanted-35-hours-a-week-staffing-line',
+    title: "We Lost a Client Who Wanted 35 Hours a Week. They Were Right to Leave.",
+    excerpt: "A client ended our engagement on Thursday because another agency could commit thirty-five hours a week. The failure wasn't the loss — it was that the unit of value had quietly changed from output to attendance. Here's the Staffing Line, a fifteen-minute pass over every vendor you pay monthly.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-16',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "We Lost a Client Who Wanted 35 Hours a Week. They Were Right to Leave.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Lost a Client Who Wanted 35 Hours a Week. They Were Right to Leave.",
+      metaDescription: "A client ended our engagement on Thursday because another agency could commit thirty-five hours a week. The failure wasn't the loss — it was that the unit of value had quietly changed from output to attendance. Here's the Staffing Line, a fifteen-minute pass over every vendor you pay monthly.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
