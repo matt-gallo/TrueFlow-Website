@@ -174,7 +174,7 @@ export default function BlogPage() {
                   <div className={`flex items-center gap-4 text-sm mb-4 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
                     <span className="flex items-center gap-1">
                       <Calendar className="h-4 w-4" />
-                      {new Date(featuredPost.date).toLocaleDateString('en-US', {
+                      {new Date(featuredPost.date + 'T00:00:00').toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
                         year: 'numeric'
@@ -296,7 +296,7 @@ export default function BlogPage() {
                       <div className={`flex items-center gap-4 text-sm mb-3 ${isDarkMode ? 'text-white/60' : 'text-gray-500'}`}>
                         <span className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
-                          {new Date(post.date).toLocaleDateString('en-US', {
+                          {new Date(post.date + 'T00:00:00').toLocaleDateString('en-US', {
                             month: 'short',
                             day: 'numeric',
                             year: 'numeric'
