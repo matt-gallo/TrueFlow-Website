@@ -4739,6 +4739,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '117',
+    slug: 'who-owns-your-accounts-title-check',
+    title: "We Checked Who Actually Owns Our Accounts. One Answer Was a Person Who Doesn't Work Here.",
+    excerpt: "Access and ownership are not the same thing, and almost nobody has written down which one they have. Here's the Title Check — a twenty-minute pass over every account your business runs on, and whose name is actually on it.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-17',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "We Checked Who Actually Owns Our Accounts. One Answer Was a Person Who Doesn't Work Here.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Checked Who Actually Owns Our Accounts. One Answer Was a Person Who Doesn't Work Here.",
+      metaDescription: "Access and ownership are not the same thing, and almost nobody has written down which one they have. Here's the Title Check — a twenty-minute pass over every account your business runs on, and whose name is actually on it.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
