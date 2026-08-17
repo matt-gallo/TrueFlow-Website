@@ -2033,7 +2033,7 @@ Want this built for you in just 3 days—for free—and you don't pay until you 
     tags: [tags['crm'], tags['workflow-automation'], tags['lead-generation'], tags['sales-automation'], tags['data-driven']],
     primaryTag: tags['crm'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_b7309899-06b1-43c0-ace2-fe23c9108a24.png',
       alt: 'CRM pipeline organized by intent tier and lead source',
       width: 1200,
       height: 630
@@ -2153,7 +2153,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['integration'], tags['lead-generation'], tags['analytics']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_2b94c590-08c1-4386-9a3b-4fd65da369e6.png',
       alt: 'Unified marketing platform dashboard showing connected systems',
       width: 1200,
       height: 630
@@ -2278,7 +2278,7 @@ The result? Less time managing. More time growing.
     tags: [tags['conversion-optimization'], tags['sales-automation'], tags['workflow-automation'], tags['crm']],
     primaryTag: tags['conversion-optimization'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_486702d6-867b-4c4d-b13f-bf75137790ce.png',
       alt: 'Marketing funnel optimization showing the gap between ad clicks and conversions',
       width: 1200,
       height: 630
@@ -3253,7 +3253,7 @@ The result? Less time managing. More time growing.
     tags: [tags['ai-tools'], tags['workflow-automation'], tags['crm'], tags['small-business']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_c59dd056-0b44-42cd-a13a-606b8322a56a.png',
       alt: 'GHL workflow integrations two-click setup common integration experience',
       width: 1200,
       height: 630
@@ -3878,7 +3878,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_b3c347c7-0186-4628-9633-b2d677ad165f.png',
       alt: 'Per-outcome CRM pricing Salesforce Agentforce unit economics',
       width: 1200,
       height: 630
@@ -3903,7 +3903,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_1f83d281-aa98-47f3-abc8-f34123eba1f8.png',
       alt: "Process consistency Sameness Test before automating",
       width: 1200,
       height: 630
@@ -3928,7 +3928,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_1b334a12-32e3-443c-b3e7-b55e500f36a7.png',
       alt: "AI agent task length reliability METR small business",
       width: 1200,
       height: 630
@@ -3953,7 +3953,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_924ed403-8b44-46f1-b5b1-d9d42acb0c99.png',
       alt: "CRM cleanup pipeline audit small business automation",
       width: 1200,
       height: 630
@@ -3978,7 +3978,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_54e9d794-a4f3-4f0f-8d27-536456722ad4.png',
       alt: "Your Team Is Getting 11.5 Hours Back From AI. You're Getting 5. Here's Why the Owner Benefits Least.",
       width: 1200,
       height: 630
@@ -4003,7 +4003,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_277db610-a9b7-4412-a3e8-f42b8c2427ad.png',
       alt: "88% of AI Agent Pilots Never Reach Production. The Math — Not the Model — Kills Them.",
       width: 1200,
       height: 630
@@ -4028,7 +4028,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_c5e6b5a7-2fc3-480e-a16d-5a432a77495f.png',
       alt: "68% of Small Businesses Use AI Now. Most Are Making the Same Expensive Mistake.",
       width: 1200,
       height: 630
@@ -4053,7 +4053,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190850_788bc130-d3b9-4455-a935-e4da5ed4359b.png',
       alt: "The Last Thing We Do on Every Build Isn't Code — It's Deciding Who Owns It When It Breaks.",
       width: 1200,
       height: 630
@@ -4078,7 +4078,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_b0282d93-eb5b-49f7-a96d-f25aee244cfc.png',
       alt: "The Intelligence Under Your Automation Got 10x Cheaper This Year. Your Bill Didn't.",
       width: 1200,
       height: 630
@@ -4103,7 +4103,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_7779ca1e-40fc-4852-899f-ed457b0893b3.png',
       alt: "Every Platform You Already Pay For Now Builds AI Agents for You. Building Was Never the Hard Part.",
       width: 1200,
       height: 630
@@ -4128,7 +4128,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_9d984bf0-be2f-4c1e-98e7-d73e8ea5b84d.png',
       alt: "What Would Happen If You Stopped Doing Data Entry Tomorrow? About Half Your Automations Would Go Quiet.",
       width: 1200,
       height: 630
@@ -4153,7 +4153,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_f4b9511c-f41b-4223-8e87-767fc7cd433d.png',
       alt: "70% of Small Business Owners Say They Need More AI Training. Training Is the Wrong Fix.",
       width: 1200,
       height: 630
@@ -4178,7 +4178,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_60030650-2906-45cd-bdfd-21498c3676da.png',
       alt: "The Sale Was Days From Closing. Then Diligence Found the Loan in the Payment Dashboard.",
       width: 1200,
       height: 630
@@ -4203,7 +4203,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_7a4ee7ad-3977-47be-9b62-cf6d7af8987b.png',
       alt: "The Break-Even Line: How to Know a Task Is Actually Worth Automating",
       width: 1200,
       height: 630
@@ -4228,7 +4228,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_7ca01f32-2b06-4fe1-98e9-840222491c4e.png',
       alt: "Speed-to-Lead Is Overrated. The Money Is in the Follow-Up Nobody Sends.",
       width: 1200,
       height: 630
@@ -4253,7 +4253,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_d3a4d295-29cd-4994-b2f2-b55b8fda3ab5.png',
       alt: "OpenAI's New Model Spawns Eight Agents to Solve One Problem. Your Business Has the Opposite Problem.",
       width: 1200,
       height: 630
@@ -4278,7 +4278,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_44027413-d2f5-4416-9e87-680854704f56.png',
       alt: "Your Agent Shipped Last Month. Nobody Noticed When It Stopped Producing Anything.",
       width: 1200,
       height: 630
@@ -4303,7 +4303,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_edf82ffb-dc20-42b4-85cb-adf10869dba6.png',
       alt: "Scheduled Agents Cost Nothing Now. The Retainer Model Doesn't Survive That.",
       width: 1200,
       height: 630
@@ -4328,7 +4328,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_e80d98be-d5ec-478c-a27c-d6cce773a2ae.png',
       alt: "7 Signs Your Agent Stack Is Falling Apart (Most Owners Have 4)",
       width: 1200,
       height: 630
@@ -4353,7 +4353,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_151c433b-4bcc-4a13-877d-9c32d7493e37.png',
       alt: "We've Let an AI Write This Blog Every Morning for Weeks. The Model Was Never the Hard Part.",
       width: 1200,
       height: 630
@@ -4378,7 +4378,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190915_eca6d554-69ae-484c-ab6b-9b52ef80d94a.png',
       alt: "OpenAI Just Shipped a Work Agent to Everyone. Your Bottleneck Was Never a Missing Document.",
       width: 1200,
       height: 630
@@ -4403,7 +4403,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_19e657b5-c1ef-4816-8d64-65eac66d9314.png',
       alt: "The 5 Things We Say Before We Build You Anything (Most Agencies Skip Every One)",
       width: 1200,
       height: 630
@@ -4428,7 +4428,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_e55fffd2-7b92-45c7-801e-8403c0cf8092.png',
       alt: "HubSpot Just Made AI Agents a No-Code Afternoon Project. Building Was Never Your Bottleneck.",
       width: 1200,
       height: 630
@@ -4453,7 +4453,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_d0998142-e795-4adf-ae64-3d4223d7f9f0.png',
       alt: "Anthropic Just Turned Intelligence Into a Dial. Your Automations Are Stuck on One Setting.",
       width: 1200,
       height: 630
@@ -4478,7 +4478,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_6f3a571c-0feb-4396-8cb8-847efee477ec.png',
       alt: "We Almost Rebuilt a Client's Whole Quoting System Over One Missing Number",
       width: 1200,
       height: 630
@@ -4503,7 +4503,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_5ff6230f-aaa3-4c14-aabd-56813aa7a7b5.png',
       alt: "Your AI Agent Has a Setting Called 'Act Without Asking.' Do You Know What It Can Reach?",
       width: 1200,
       height: 630
@@ -4528,7 +4528,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_151bc11a-8e35-4a96-b2b3-4741b37fcf26.png',
       alt: "Four of Our Automations Stopped Last Week. Not One of Them Was Broken.",
       width: 1200,
       height: 630
@@ -4553,7 +4553,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_5099e8c5-1deb-4677-91a9-2704d0c25073.png',
       alt: "Google's Agents Can Now Run for Seven Days. Yours Should Be Capped at Your Notice Window.",
       width: 1200,
       height: 630
@@ -4578,7 +4578,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_4aea7074-1c13-4566-8f57-092a327b3d28.png',
       alt: "An AI Receptionist Now Costs 30 Cents a Minute. The Mistake Is Paying for Answered Calls.",
       width: 1200,
       height: 630
@@ -4603,7 +4603,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_de5eac6f-1cfe-4ae6-a374-90e8c2aefb27.png',
       alt: "We Stopped Asking Clients What to Automate. We Started Reading Their Interruptions.",
       width: 1200,
       height: 630
@@ -4628,7 +4628,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_4f7330d8-36b7-4e5e-9c52-fdd43d58149e.png',
       alt: "OpenAI Cut Its Prices 80% Last Week. Check Whether Any of It Reaches Your Invoice.",
       width: 1200,
       height: 630
@@ -4653,7 +4653,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_44820f32-b0e8-45d4-ae14-dd9aba658c05.png',
       alt: "Your Automation Isn't Broken. You're Asking Customers for Answers Only You Have.",
       width: 1200,
       height: 630
@@ -4678,7 +4678,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_840b0d73-cd6e-4310-8f29-59f3deabaa67.png',
       alt: "Your Booking Form Has a Second Kind of Visitor Now. Nobody Told You.",
       width: 1200,
       height: 630
@@ -4703,7 +4703,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_d88936e2-3fc7-4a2f-adca-30f437e6ee56.png',
       alt: "Would You Let Your Automation Run for a Week Unwatched? 78% of Owners Say No — For the Wrong Reason.",
       width: 1200,
       height: 630
@@ -4728,7 +4728,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_5f28ff54-ad05-42c2-9c08-120e9c9ce7e0.png',
       alt: "AI Connectors Hit 400 Million Downloads a Month. \\",
       width: 1200,
       height: 630
@@ -4753,7 +4753,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_8e73e8e9-fbea-4ebd-bdd1-fadbf0d5fb29.png',
       alt: "We Checked Who Actually Owns Our Accounts. One Answer Was a Person Who Doesn't Work Here.",
       width: 1200,
       height: 630
@@ -4778,7 +4778,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_a3a1c6f3-4100-4fbf-a150-51665ed13315.png',
       alt: "Your CRM Shipped Four Nag Screens in Two Days. That's the Most Valuable Thing It Did All Month.",
       width: 1200,
       height: 630
@@ -4803,7 +4803,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190929_c3b65383-e796-43e5-8b42-fa52f198adf7.png',
       alt: "76% of Small Businesses Use AI. Only 14% Have It Doing Real Work.",
       width: 1200,
       height: 630
@@ -4828,7 +4828,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_6ad918f2-959f-451b-b710-eac760fd3655.png',
       alt: "Stripe Switched Off One of Our Integrations. The Notice Arrived Nine Days Later.",
       width: 1200,
       height: 630
@@ -4853,7 +4853,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_fe1909e5-7b38-4d7d-ae20-1004b6428a15.png',
       alt: "The Answer a Customer Gets About Your Business Is No Longer Written by You",
       width: 1200,
       height: 630
@@ -4878,7 +4878,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_8d000b19-fb89-4338-8e9f-ab4e3912fae9.png',
       alt: "Stop Testing Whether It Works. Test What Happens When It Changes.",
       width: 1200,
       height: 630
@@ -4903,7 +4903,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_190831_da90c6d4-e38f-40bf-95af-ff584c35963f.png',
       alt: "We Lost a Client Who Wanted 35 Hours a Week. They Were Right to Leave.",
       width: 1200,
       height: 630
