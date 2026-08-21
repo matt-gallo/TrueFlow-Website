@@ -4914,6 +4914,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '124',
+    slug: 'zendesk-three-words-for-resolved-done-gap',
+    title: "Zendesk Has Three Words for “Resolved.” Your Business Has One.",
+    excerpt: "AI vendors now bill for finished work, which forced them to write down what finished means. Zendesk sorts every conversation into three tiers and only charges for one. Here's the Done Gap — twenty minutes to find the distance between what your system marks complete and what your customer would call finished.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-21',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260821_102730_d10dae77-478b-4351-9724-a98ebaec856f.png',
+      alt: "Zendesk Has Three Words for “Resolved.” Your Business Has One.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Zendesk Has Three Words for “Resolved.” Your Business Has One.",
+      metaDescription: "AI vendors now bill for finished work, which forced them to write down what finished means. Zendesk sorts every conversation into three tiers and only charges for one. Here's the Done Gap — twenty minutes to find the distance between what your system marks complete and what your customer would call finished.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
