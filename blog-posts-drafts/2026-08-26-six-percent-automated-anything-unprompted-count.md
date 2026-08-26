@@ -10,23 +10,25 @@ On June 17, 2026, the U.S. Chamber of Commerce Foundation published the first Ma
 
 The number nobody quoted sits four paragraphs down. Among the workers who use it, 64% say their main application is personal productivity — drafting, summarizing, brainstorming. Another 26% use it on recurring tasks. Six percent use it to automate workflows with minimal human involvement.
 
-## What Just Changed (In English)
+## Adoption Is a Headcount of People With a Habit
 
-Nothing did. That is the finding.
+Nothing changed. That is the finding.
 
-Six percent means that for nineteen of every twenty people who tell a pollster they use AI, the tool is a faster way to do the work by hand. Open the tab. Type. Read it back. Paste it somewhere. That is real value, and it is not automation, because it stops the second the person stops. Adoption, as the survey measures it, is a headcount of people with a habit.
+Six percent means that for nineteen of every twenty people who tell a pollster they use AI, the tool is a faster way to do the work by hand. Open the tab. Type. Read it back. Paste it somewhere. That is real value, and it is not automation, because it stops the second the person stops.
 
 The same survey carries a second number that explains the first. At businesses with two to nine employees, 43% use AI for work tasks, against 59% at businesses with 100 to 249. About one in ten workers has been offered any formal training. And where adoption happened, 19% say it came from employees finding tools on their own, against 11% who say it came from any direction by the business.
 
 So at the small end: a few people, no training, each with a private tab open, each doing their own work somewhat faster, none of it written down. That is not a system. It is a set of habits, and every one of them leaves when the person does.
 
-## What TrueFlow Is Actually Doing Differently
+## On Paper We Had 18. The Honest Number Was 15.
 
-We ran the count on ourselves first and it did not come back clean. There are 18 scheduled jobs on our list. Three of them produce nothing — one disabled, one retired earlier this month, and one that has sat in the list labeled as a scheduled task since March 31 with its schedule reading "manual only." It has never fired on its own. On paper we had 18. The honest number was 15.
+We ran the count on ourselves first and it did not come back clean. There are 18 scheduled jobs on our list. Three of them produce nothing — one disabled, one retired earlier this month, and one that has sat in the list labeled as a scheduled task since March 31 with its schedule reading "manual only." It has never fired on its own.
 
 That number has a name now, because we need it in client conversations.
 
-**The Unprompted Count.** The number of jobs in your business that produced an output in the last seven days without a person starting them.
+## The Unprompted Count
+
+The number of jobs in your business that produced an output in the last seven days without a person starting them.
 
 Three rules make it usable.
 
@@ -38,11 +40,11 @@ A job you review every morning still counts. A check is not a start. The questio
 
 Run it honestly and the count usually comes in below what the software bill implies. That gap — between what you are paying for and what runs on its own — is the thing worth fixing, and it is the same question the six percent number is asking.
 
-## What You Should Be Asking Right Now
+## When That Person Is Out for a Week, What Stops?
 
 Which of the AI tasks you do every week are you the trigger for, and what would have to be true for the trigger to be a time, an inbound message, or a change in a record instead?
 
-And when the person who found that tool is out for a week, what stops?
+That is the question worth sitting with, because the answer is a list of jobs you already know how to do and have never written down anywhere a machine can reach.
 
 ## Takeaway
 

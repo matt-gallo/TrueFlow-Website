@@ -51,21 +51,22 @@ export default function BlogPost() {
 
               <p>The number nobody quoted sits four paragraphs down. Among the workers who use it, 64% say their main application is personal productivity &mdash; drafting, summarizing, brainstorming. Another 26% use it on recurring tasks. Six percent use it to automate workflows with minimal human involvement.</p>
 
-              <h2 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent pt-4">What Just Changed (In English)</h2>
-              <p>Nothing did. That is the finding.</p>
+              <h2 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent pt-4">Adoption Is a Headcount of People With a Habit</h2>
+              <p>Nothing changed. That is the finding.</p>
 
-              <p>Six percent means that for nineteen of every twenty people who tell a pollster they use AI, the tool is a faster way to do the work by hand. Open the tab. Type. Read it back. Paste it somewhere. That is real value, and it is not automation, because it stops the second the person stops. Adoption, as the survey measures it, is a headcount of people with a habit.</p>
+              <p>Six percent means that for nineteen of every twenty people who tell a pollster they use AI, the tool is a faster way to do the work by hand. Open the tab. Type. Read it back. Paste it somewhere. That is real value, and it is not automation, because it stops the second the person stops.</p>
 
               <p>The same survey carries a second number that explains the first. At businesses with two to nine employees, 43% use AI for work tasks, against 59% at businesses with 100 to 249. About one in ten workers has been offered any formal training. And where adoption happened, 19% say it came from employees finding tools on their own, against 11% who say it came from any direction by the business.</p>
 
               <p>So at the small end: a few people, no training, each with a private tab open, each doing their own work somewhat faster, none of it written down. That is not a system. It is a set of habits, and every one of them leaves when the person does.</p>
 
-              <h2 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent pt-4">What TrueFlow Is Actually Doing Differently</h2>
-              <p>We ran the count on ourselves first and it did not come back clean. There are 18 scheduled jobs on our list. Three of them produce nothing &mdash; one disabled, one retired earlier this month, and one that has sat in the list labeled as a scheduled task since March 31 with its schedule reading &ldquo;manual only.&rdquo; It has never fired on its own. On paper we had 18. The honest number was 15.</p>
+              <h2 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent pt-4">On Paper We Had 18. The Honest Number Was 15.</h2>
+              <p>We ran the count on ourselves first and it did not come back clean. There are 18 scheduled jobs on our list. Three of them produce nothing &mdash; one disabled, one retired earlier this month, and one that has sat in the list labeled as a scheduled task since March 31 with its schedule reading &ldquo;manual only.&rdquo; It has never fired on its own.</p>
 
               <p>That number has a name now, because we need it in client conversations.</p>
 
-              <p><strong className="text-white">The Unprompted Count.</strong> The number of jobs in your business that produced an output in the last seven days without a person starting them.</p>
+              <h2 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent pt-4">The Unprompted Count</h2>
+              <p>The number of jobs in your business that produced an output in the last seven days without a person starting them.</p>
 
               <p>Three rules make it usable.</p>
 
@@ -77,10 +78,10 @@ export default function BlogPost() {
 
               <p>Run it honestly and the count usually comes in below what the software bill implies. That gap &mdash; between what you are paying for and what runs on its own &mdash; is the thing worth fixing, and it is the same question the six percent number is asking.</p>
 
-              <h2 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent pt-4">What You Should Be Asking Right Now</h2>
+              <h2 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent pt-4">When That Person Is Out for a Week, What Stops?</h2>
               <p>Which of the AI tasks you do every week are you the trigger for, and what would have to be true for the trigger to be a time, an inbound message, or a change in a record instead?</p>
 
-              <p>And when the person who found that tool is out for a week, what stops?</p>
+              <p>That is the question worth sitting with, because the answer is a list of jobs you already know how to do and have never written down anywhere a machine can reach.</p>
 
               <h2 className="text-3xl font-black bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent pt-4">Takeaway</h2>
               <p>Half of small business workers use AI. Six percent of them have automated anything. Those are the same people, describing the same tool, answering two different questions.</p>
