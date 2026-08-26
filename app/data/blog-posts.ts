@@ -4964,6 +4964,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '126',
+    slug: 'publisher-broke-46-records-undo-path',
+    title: "Our Publisher Broke 46 Records in a Single Run. Undoing It Took One Command.",
+    excerpt: "One bad run rewrote the image address on 46 posts and every one of them returned a 403. Undoing it was cheap, and that was luck rather than design. Here's the Undo Path — twenty minutes to find out which of your automations can be taken back and which ones cannot.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-23',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260824_031044_d5f51014-234a-4288-8e43-3ef2777910c7.png',
+      alt: "Our Publisher Broke 46 Records in a Single Run. Undoing It Took One Command.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Our Publisher Broke 46 Records in a Single Run. Undoing It Took One Command.",
+      metaDescription: "One bad run rewrote the image address on 46 posts and every one of them returned a 403. Undoing it was cheap, and that was luck rather than design. Here's the Undo Path — twenty minutes to find out which of your automations can be taken back and which ones cannot.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
