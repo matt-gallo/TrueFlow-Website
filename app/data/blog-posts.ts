@@ -5028,7 +5028,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260820_102646_59142e40-3f30-41b8-8b19-9dbc0cd22227.png',
       alt: "Our Blog Skipped a Day. Nothing Errored, Because Nothing Ran.",
       width: 1200,
       height: 630
