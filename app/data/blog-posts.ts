@@ -5039,6 +5039,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '129',
+    slug: 'email-can-send-receiving-answer-return-address',
+    title: "Your Business Can Send Email. Receiving the Answer Is a Separate Setting.",
+    excerpt: "We authenticated a client's sending domain down to the DKIM key, then read our own DMARC record back and found it reporting to nobody. Here's the Return Address — the three-step install that gives every automated message a way for the answer to reach a human.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-25',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260826_194214_4885324f-8c3b-4f19-b21e-1468facc151e.png',
+      alt: "Your Business Can Send Email. Receiving the Answer Is a Separate Setting.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Business Can Send Email. Receiving the Answer Is a Separate Setting.",
+      metaDescription: "We authenticated a client's sending domain down to the DKIM key, then read our own DMARC record back and found it reporting to nobody. Here's the Return Address — the three-step install that gives every automated message a way for the answer to reach a human.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
