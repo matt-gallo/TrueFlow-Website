@@ -4989,6 +4989,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '127',
+    slug: 'agents-hand-off-work-without-you-write-list',
+    title: "Agents Can Now Hand Work to Each Other Without Asking You. Nobody Wrote Down What They May Change.",
+    excerpt: "On August 17 Google's Agent2Agent protocol moved in alongside Anthropic's MCP under one Linux Foundation roof. The spec's own phrase for the feature is 'without a human brokering the handoff.' Here's the Write List — twenty minutes to find what every connection into your business is allowed to change.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-24',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260824_102642_0a7c745b-0156-4462-b5f4-bbbb402a5b72.png',
+      alt: "Agents Can Now Hand Work to Each Other Without Asking You. Nobody Wrote Down What They May Change.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Agents Can Now Hand Work to Each Other Without Asking You. Nobody Wrote Down What They May Change.",
+      metaDescription: "On August 17 Google's Agent2Agent protocol moved in alongside Anthropic's MCP under one Linux Foundation roof. The spec's own phrase for the feature is 'without a human brokering the handoff.' Here's the Write List — twenty minutes to find what every connection into your business is allowed to change.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
