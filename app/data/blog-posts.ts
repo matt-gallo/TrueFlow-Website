@@ -4939,6 +4939,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '125',
+    slug: 'six-percent-automated-anything-unprompted-count',
+    title: "Half of Small Business Workers Use AI. Six Percent of Them Have Automated Anything.",
+    excerpt: "The first Main Street AI Monitor put the adoption number at half of all small business workers. Four paragraphs down, six percent said they use it to run work with minimal human involvement. Here's the Unprompted Count — the only version of that question that survives contact with your P&L.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-26',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260826_102622_f9b6701e-b52d-4590-94e9-6a385ee54cfc.png',
+      alt: "Half of Small Business Workers Use AI. Six Percent of Them Have Automated Anything.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Half of Small Business Workers Use AI. Six Percent of Them Have Automated Anything.",
+      metaDescription: "The first Main Street AI Monitor put the adoption number at half of all small business workers. Four paragraphs down, six percent said they use it to run work with minimal human involvement. Here's the Unprompted Count — the only version of that question that survives contact with your P&L.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
