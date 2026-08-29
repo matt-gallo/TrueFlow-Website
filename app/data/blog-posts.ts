@@ -5089,6 +5089,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '131',
+    slug: 'moving-a-list-off-mailchimp-suppression-carry',
+    title: "We're Moving a Client Off Mailchimp This Week. The Export Carries Everyone Who Said Yes and Nobody Who Said No.",
+    excerpt: "A list export is a file of people who opted in. The people who opted out live somewhere else in the account and do not ride along. Here's the Suppression Carry — the four steps that move the nos before the yeses.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-27',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260827_102602_6e475a6c-53e7-4746-959e-9d5bcc0eed59.png',
+      alt: "We're Moving a Client Off Mailchimp This Week. The Export Carries Everyone Who Said Yes and Nobody Who Said No.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We're Moving a Client Off Mailchimp This Week. The Export Carries Everyone Who Said Yes and Nobody Who Said No.",
+      metaDescription: "A list export is a file of people who opted in. The people who opted out live somewhere else in the account and do not ride along. Here's the Suppression Carry — the four steps that move the nos before the yeses.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
