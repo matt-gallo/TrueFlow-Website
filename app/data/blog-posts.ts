@@ -5064,6 +5064,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '130',
+    slug: 'price-increase-cancelled-meter-still-changed',
+    title: "The Price Increase Scheduled for Tuesday Was Cancelled. The Meter Behind It Still Changed.",
+    excerpt: "Anthropic called off a 50% rate increase three weeks early. A footnote in the same post says the same text now maps to up to 35% more billable units. Here's the Unit Check — the pass that reads what your vendors are counting, not what they charge per count.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-29',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260829_102609_9c40afb5-8bf8-4ab2-9204-1be657c21ea2.png',
+      alt: "The Price Increase Scheduled for Tuesday Was Cancelled. The Meter Behind It Still Changed.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "The Price Increase Scheduled for Tuesday Was Cancelled. The Meter Behind It Still Changed.",
+      metaDescription: "Anthropic called off a 50% rate increase three weeks early. A footnote in the same post says the same text now maps to up to 35% more billable units. Here's the Unit Check — the pass that reads what your vendors are counting, not what they charge per count.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
