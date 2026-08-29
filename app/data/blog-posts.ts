@@ -5114,6 +5114,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '132',
+    slug: 'privacy-policy-carrier-reads-linked-page',
+    title: "Your Privacy Policy Is Now a Field in an API Call. A Carrier Reads It Before Your Customer Gets a Text.",
+    excerpt: "Twilio made privacy policy and terms URLs required for new A2P 10DLC campaigns on June 30. There are two separate rejection codes: one for a missing field, one for a page that does not hold up. Here's the Linked Page — the pass that reads every URL you handed a third party as evidence about your business.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-28',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260828_102827_bd3e7a18-e0b0-47f1-9545-6e68f4787d99.png',
+      alt: "Your Privacy Policy Is Now a Field in an API Call. A Carrier Reads It Before Your Customer Gets a Text.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Your Privacy Policy Is Now a Field in an API Call. A Carrier Reads It Before Your Customer Gets a Text.",
+      metaDescription: "Twilio made privacy policy and terms URLs required for new A2P 10DLC campaigns on June 30. There are two separate rejection codes: one for a missing field, one for a page that does not hold up. Here's the Linked Page — the pass that reads every URL you handed a third party as evidence about your business.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
