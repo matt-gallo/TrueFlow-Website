@@ -5139,6 +5139,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '133',
+    slug: 'lead-alert-left-out-which-one-round-trip',
+    title: "We Wrote the Email That Says a Lead Came In. We Left Out the Part That Says Which One.",
+    excerpt: "Our lead notification carries a name and a question and no identifier, so every rep who reads it starts by searching. Here's the Round Trip — the pass that checks whether a person can get from an automated message to the record it came from, and whether their reply lands back on it.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-31',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260831_102640_92302b42-b9b2-43db-81ab-f0a3e4a40ab7.png',
+      alt: "We Wrote the Email That Says a Lead Came In. We Left Out the Part That Says Which One.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Wrote the Email That Says a Lead Came In. We Left Out the Part That Says Which One.",
+      metaDescription: "Our lead notification carries a name and a question and no identifier, so every rep who reads it starts by searching. Here's the Round Trip — the pass that checks whether a person can get from an automated message to the record it came from, and whether their reply lands back on it.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
