@@ -5164,6 +5164,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '134',
+    slug: 'both-processes-documented-week-in-between-seam-check',
+    title: "Both Processes Were Documented. A Signed Client Could Still Sit a Week in Between.",
+    excerpt: "Our offer process ended at signature. Our launch process started at campaign build. Each one was complete on its own, and the space between them had no owner. Here's the Seam Check — the half hour that finds every place one of your documented processes ends and names the person who carries the work to the next one.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-08-30',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260830_102629_b2afef32-e206-44a6-b9a8-61dbdd2d2505.png',
+      alt: "Both Processes Were Documented. A Signed Client Could Still Sit a Week in Between.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Both Processes Were Documented. A Signed Client Could Still Sit a Week in Between.",
+      metaDescription: "Our offer process ended at signature. Our launch process started at campaign build. Each one was complete on its own, and the space between them had no owner. Here's the Seam Check — the half hour that finds every place one of your documented processes ends and names the person who carries the work to the next one.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
