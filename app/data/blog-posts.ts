@@ -5189,6 +5189,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '135',
+    slug: 'flow-can-reply-to-customer-email-send-roster',
+    title: "On September 14, a Flow at Your Company Can Reply to a Customer's Email. The Switch Ships Six Days Earlier.",
+    excerpt: "Google added four automation steps to Workspace Studio. Three of them move files around inside your company. The fourth sends mail out of it. Here's the Send Roster — every mechanism that can put a message in front of someone outside your business, and who is able to add another one.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-07',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260905_110424_696e3e66-9d95-43c0-b751-511f7877c8c7.png',
+      alt: "On September 14, a Flow at Your Company Can Reply to a Customer's Email. The Switch Ships Six Days Earlier.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "On September 14, a Flow at Your Company Can Reply to a Customer's Email. The Switch Ships Six Days Earlier.",
+      metaDescription: "Google added four automation steps to Workspace Studio. Three of them move files around inside your company. The fourth sends mail out of it. Here's the Send Roster — every mechanism that can put a message in front of someone outside your business, and who is able to add another one.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
