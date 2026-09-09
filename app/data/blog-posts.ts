@@ -5214,6 +5214,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '136',
+    slug: 'fifteen-a-seat-locked-forever-upgrade-toll',
+    title: "$15 a Seat, Locked “Forever.” The AI Agent Is on the $35 Plan, and You Can't Buy One Seat of It.",
+    excerpt: "Kommo raised its plans on September 1 and left legacy customers alone — on the condition they never switch plans. The feature most of them want is on the other side of that condition. Here's the Upgrade Toll — the four numbers that price a tier change as the account-wide repricing it actually is.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-09',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260909_102728_96773cc3-9ceb-479c-90db-7278c915283b.png',
+      alt: "$15 a Seat, Locked “Forever.” The AI Agent Is on the $35 Plan, and You Can't Buy One Seat of It.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "$15 a Seat, Locked “Forever.” The AI Agent Is on the $35 Plan, and You Can't Buy One Seat of It.",
+      metaDescription: "Kommo raised its plans on September 1 and left legacy customers alone — on the condition they never switch plans. The feature most of them want is on the other side of that condition. Here's the Upgrade Toll — the four numbers that price a tier change as the account-wide repricing it actually is.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
