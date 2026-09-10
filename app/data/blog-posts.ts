@@ -5239,6 +5239,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '137',
+    slug: 'person-that-brings-the-coffee-activity-vs-value',
+    title: "“You're Just the Person That Brings the Coffee.” A Rep Named His Own Problem Better Than We Could Have.",
+    excerpt: "A medical-device rep described his own worst days in the field, and it decided the order we built his system in. The intelligent part came second. The boring part came first.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-10',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260910_160555_3201a495-0719-45cc-a30f-a2a4ce1804a6.png',
+      alt: "“You're Just the Person That Brings the Coffee.” A Rep Named His Own Problem Better Than We Could Have.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "“You're Just the Person That Brings the Coffee.” A Rep Named His Own Problem Better Than We Could Have.",
+      metaDescription: "A medical-device rep described his own worst days in the field, and it decided the order we built his system in. The intelligent part came second. The boring part came first.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
