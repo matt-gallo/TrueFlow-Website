@@ -5239,31 +5239,6 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
-  },
-  {
-    id: '137',
-    slug: 'two-ways-to-record-wednesdays-call-empty-run',
-    title: "We Had Two Ways to Record Wednesday's Client Call. Nothing Downstream Noticed That Neither One Did.",
-    excerpt: "Our meeting bot sat in a waiting room and our cloud recording had quietly run out of storage. Every system that reads from transcripts ran on schedule anyway. Here's the Empty Run — what an unattended process produces on the day its input never arrives, and whether you could tell.",
-    content: ``,
-    author: authors['matt-gallo'],
-    date: '2026-09-10',
-    readTime: 4,
-    category: categories.automation,
-    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
-    primaryTag: tags['workflow-automation'],
-    featuredImage: {
-      url: 'https://d8j0ntlcm91z4.cloudfront.net/user_3FKO1bt7FjFocOQo9fkjece5IO5/hf_20260910_160555_3201a495-0719-45cc-a30f-a2a4ce1804a6.png',
-      alt: "We Had Two Ways to Record Wednesday's Client Call. Nothing Downstream Noticed That Neither One Did.",
-      width: 1200,
-      height: 630
-    },
-    seo: {
-      metaTitle: "We Had Two Ways to Record Wednesday's Client Call. Nothing Downstream Noticed That Neither One Did.",
-      metaDescription: "Our meeting bot sat in a waiting room and our cloud recording had quietly run out of storage. Every system that reads from transcripts ran on schedule anyway. Here's the Empty Run — what an unattended process produces on the day its input never arrives, and whether you could tell.",
-      keywords: ['automation', 'small business', 'AI tools']
-    },
-    published: true
   }
 ]
 
