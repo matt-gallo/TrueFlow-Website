@@ -5264,6 +5264,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '138',
+    slug: 'twilio-no-action-required-untouched-list',
+    title: "Twilio Says No Action Is Required. Starting September 14, It Moves the Code Nobody at Your Company Has Opened in Years.",
+    excerpt: "Between September 14 and October 26, Twilio migrates every active Functions (Classic) build to its new platform without asking. Here's the Untouched List — every automation nobody has edited in twelve months, who built it, what it sends, and the one outside test that proves it still runs.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-11',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=630&fit=crop',
+      alt: "Twilio Says No Action Is Required. Starting September 14, It Moves the Code Nobody at Your Company Has Opened in Years.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Twilio Says No Action Is Required. Starting September 14, It Moves the Code Nobody at Your Company Has Opened in Years.",
+      metaDescription: "Between September 14 and October 26, Twilio migrates every active Functions (Classic) build to its new platform without asking. Here's the Untouched List — every automation nobody has edited in twelve months, who built it, what it sends, and the one outside test that proves it still runs.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
