@@ -5314,6 +5314,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: false
+  },
+  {
+    id: '140',
+    slug: 'time-back-is-not-a-product-focus-is-the-constraint',
+    title: "Every AI Company Is Selling You Time Back. I Had All of It Once, and Nothing Got Done.",
+    excerpt: "After I sold my gym I had unlimited time and I watched every Star Wars movie. The 20% that moves the needle still didn't get done. Time was never the constraint, which means most of what this industry sells you is aimed at the wrong thing.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-16',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/time-back-is-not-a-product-focus-is-the-constraint.jpg',
+      alt: "Every AI Company Is Selling You Time Back. I Had All of It Once, and Nothing Got Done.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Every AI Company Is Selling You Time Back. I Had All of It Once, and Nothing Got Done.",
+      metaDescription: "After I sold my gym I had unlimited time and I watched every Star Wars movie. The 20% that moves the needle still didn't get done. Time was never the constraint, which means most of what this industry sells you is aimed at the wrong thing.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
