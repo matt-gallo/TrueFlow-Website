@@ -5289,6 +5289,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '139',
+    slug: 'sent-200-emails-115-arrived-71-percent-open-rate',
+    title: "We Sent 200 Emails and 115 Arrived. The Report Said the Open Rate Was 71%.",
+    excerpt: "Sending platforms calculate open rate against messages delivered, not messages sent — so the number that gets celebrated is computed on a base that already excludes your biggest problem. Here is the arithmetic on one of our own test batches, and the ninety-second recalculation to run before you read any rate.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-16',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/sent-200-emails-115-arrived-71-percent-open-rate.jpg',
+      alt: "We Sent 200 Emails and 115 Arrived. The Report Said the Open Rate Was 71%.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Sent 200 Emails and 115 Arrived. The Report Said the Open Rate Was 71%.",
+      metaDescription: "Sending platforms calculate open rate against messages delivered, not messages sent — so the number that gets celebrated is computed on a base that already excludes your biggest problem. Here is the arithmetic on one of our own test batches, and the ninety-second recalculation to run before you read any rate.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
