@@ -5313,7 +5313,7 @@ The result? Less time managing. More time growing.
       metaDescription: "Sending platforms calculate open rate against messages delivered, not messages sent — so the number that gets celebrated is computed on a base that already excludes your biggest problem. Here is the arithmetic on one of our own test batches, and the ninety-second recalculation to run before you read any rate.",
       keywords: ['automation', 'small business', 'AI tools']
     },
-    published: true
+    published: false
   }
 ]
 
