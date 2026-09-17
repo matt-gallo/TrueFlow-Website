@@ -5339,6 +5339,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '141',
+    slug: 'rule-to-stop-hype-cost-three-months-of-saying-anything',
+    title: "We Wrote a Rule to Stop Our AI Writing Hype. It Worked, and It Cost Us Three Months of Saying Anything.",
+    excerpt: "The rulebook that governs this blog banned every hype word, and it worked exactly as written — including on the sentences worth reading. Guardrails are the part of an automated system that goes stale first, and reviewing output will never show you which ones have.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-17',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/rule-to-stop-hype-cost-three-months-of-saying-anything.jpg',
+      alt: "We Wrote a Rule to Stop Our AI Writing Hype. It Worked, and It Cost Us Three Months of Saying Anything.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Wrote a Rule to Stop Our AI Writing Hype. It Worked, and It Cost Us Three Months of Saying Anything.",
+      metaDescription: "The rulebook that governs this blog banned every hype word, and it worked exactly as written — including on the sentences worth reading. Guardrails are the part of an automated system that goes stale first, and reviewing output will never show you which ones have.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
