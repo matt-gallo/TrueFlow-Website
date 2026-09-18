@@ -5364,6 +5364,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '142',
+    slug: 'twenty-minute-interview-nine-posts-question-engine',
+    title: "One Twenty-Minute Interview Produced Nine Posts. Transcription Wasn't the Hard Part, and Neither Was the Writing.",
+    excerpt: "We recorded twenty minutes of our founder talking on September 16 and came out with nine distinct posts, a rewritten positioning document, and two mistakes worth publishing. The scarce skill in automating someone's voice is the question, not the transcript.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-18',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/twenty-minute-interview-nine-posts-question-engine.jpg',
+      alt: "One Twenty-Minute Interview Produced Nine Posts. Transcription Wasn't the Hard Part, and Neither Was the Writing.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "One Twenty-Minute Interview Produced Nine Posts. Transcription Wasn't the Hard Part, and Neither Was the Writing.",
+      metaDescription: "We recorded twenty minutes of our founder talking on September 16 and came out with nine distinct posts, a rewritten positioning document, and two mistakes worth publishing. The scarce skill in automating someone's voice is the question, not the transcript.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
