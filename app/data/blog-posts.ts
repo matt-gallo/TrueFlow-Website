@@ -5389,6 +5389,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '143',
+    slug: 'six-figure-vehicle-video-six-views',
+    title: "A Six-Figure Vehicle Had a Video With Six Views. Nothing Needed to Be Filmed Again.",
+    excerpt: "A client already owned a walkaround video of every unit on the lot, fifty shop photographs and twenty-five drone shots. None of it had been aimed at anyone. The gap between what that business owned and what its buyers could see was never a production problem.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-19',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/six-figure-vehicle-video-six-views.jpg',
+      alt: "A Six-Figure Vehicle Had a Video With Six Views. Nothing Needed to Be Filmed Again.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "A Six-Figure Vehicle Had a Video With Six Views. Nothing Needed to Be Filmed Again.",
+      metaDescription: "A client already owned a walkaround video of every unit on the lot, fifty shop photographs and twenty-five drone shots. None of it had been aimed at anyone. The gap between what that business owned and what its buyers could see was never a production problem.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
