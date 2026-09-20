@@ -5414,6 +5414,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '144',
+    slug: 'stopped-at-three-jobs-the-ones-that-show',
+    title: "Most Companies Using AI Stopped at Three Jobs. The Three They Picked Are the Ones That Show.",
+    excerpt: "Census data puts 57% of AI-using firms at three business functions or fewer, and names which three. Every one of them produces something you can look at. The job that has been costing you the most produces nothing at all, which is why nobody has offered to automate it.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-20',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/stopped-at-three-jobs-the-ones-that-show.jpg',
+      alt: "Most Companies Using AI Stopped at Three Jobs. The Three They Picked Are the Ones That Show.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Most Companies Using AI Stopped at Three Jobs. The Three They Picked Are the Ones That Show.",
+      metaDescription: "Census data puts 57% of AI-using firms at three business functions or fewer, and names which three. Every one of them produces something you can look at. The job that has been costing you the most produces nothing at all, which is why nobody has offered to automate it.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
