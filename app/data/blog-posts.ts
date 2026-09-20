@@ -5428,7 +5428,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://trueflow.ai/blog-thumbs/stopped-at-three-jobs-the-ones-that-show.jpg',
+      url: '/blog-thumbs/stopped-at-three-jobs-the-ones-that-show.jpg',
       alt: "Most Companies Using AI Stopped at Three Jobs. The Three They Picked Are the Ones That Show.",
       width: 1200,
       height: 630
