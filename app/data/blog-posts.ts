@@ -5439,6 +5439,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '145',
+    slug: 'every-quote-opened-two-deals',
+    title: "Every Quote Opened Two Deals. Both Workflows Were Doing Exactly What They Were Told.",
+    excerpt: "Two automations on a pipeline we built listened for the same event, and each quote produced a real deal and a blank twin. Neither workflow was wrong. The system was, and the cost was never the duplicate — it was the person who stops trusting the board.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-22',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/every-quote-opened-two-deals.jpg',
+      alt: "Every Quote Opened Two Deals. Both Workflows Were Doing Exactly What They Were Told.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Every Quote Opened Two Deals. Both Workflows Were Doing Exactly What They Were Told.",
+      metaDescription: "Two automations on a pipeline we built listened for the same event, and each quote produced a real deal and a blank twin. Neither workflow was wrong. The system was, and the cost was never the duplicate — it was the person who stops trusting the board.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
