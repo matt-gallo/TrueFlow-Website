@@ -6,7 +6,7 @@ const nextConfig = {
   // and SIGTERM the build. This is a safe ceiling, not a behavior change.
   staticPageGenerationTimeout: 180,
   images: {
-    domains: ['images.unsplash.com', 'd8j0ntlcm91z4.cloudfront.net'],
+    domains: ['images.unsplash.com', 'd8j0ntlcm91z4.cloudfront.net', 'trueflow.ai'],
     remotePatterns: [
       {
         protocol: 'https',
@@ -21,6 +21,15 @@ const nextConfig = {
         hostname: 'd8j0ntlcm91z4.cloudfront.net',
         port: '',
         pathname: '/**',
+      },
+      {
+        // Self-hosted blog thumbnails. Manifest entries use relative
+        // /blog-thumbs/... paths, which skip this check; this entry is the
+        // safety net for any absolute https://trueflow.ai/... URL.
+        protocol: 'https',
+        hostname: 'trueflow.ai',
+        port: '',
+        pathname: '/blog-thumbs/**',
       },
     ],
   },

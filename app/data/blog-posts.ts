@@ -5303,7 +5303,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://trueflow.ai/blog-thumbs/sent-200-emails-115-arrived-71-percent-open-rate.jpg',
+      url: '/blog-thumbs/sent-200-emails-115-arrived-71-percent-open-rate.jpg',
       alt: "We Sent 200 Emails and 115 Arrived. The Report Said the Open Rate Was 71%.",
       width: 1200,
       height: 630
@@ -5328,7 +5328,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://trueflow.ai/blog-thumbs/time-back-is-not-a-product-focus-is-the-constraint.jpg',
+      url: '/blog-thumbs/time-back-is-not-a-product-focus-is-the-constraint.jpg',
       alt: "Every AI Company Is Selling You Time Back. I Had All of It Once, and Nothing Got Done.",
       width: 1200,
       height: 630
@@ -5353,7 +5353,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://trueflow.ai/blog-thumbs/rule-to-stop-hype-cost-three-months-of-saying-anything.jpg',
+      url: '/blog-thumbs/rule-to-stop-hype-cost-three-months-of-saying-anything.jpg',
       alt: "We Wrote a Rule to Stop Our AI Writing Hype. It Worked, and It Cost Us Three Months of Saying Anything.",
       width: 1200,
       height: 630
@@ -5378,7 +5378,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://trueflow.ai/blog-thumbs/twenty-minute-interview-nine-posts-question-engine.jpg',
+      url: '/blog-thumbs/twenty-minute-interview-nine-posts-question-engine.jpg',
       alt: "One Twenty-Minute Interview Produced Nine Posts. Transcription Wasn't the Hard Part, and Neither Was the Writing.",
       width: 1200,
       height: 630
@@ -5403,7 +5403,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://trueflow.ai/blog-thumbs/six-figure-vehicle-video-six-views.jpg',
+      url: '/blog-thumbs/six-figure-vehicle-video-six-views.jpg',
       alt: "A Six-Figure Vehicle Had a Video With Six Views. Nothing Needed to Be Filmed Again.",
       width: 1200,
       height: 630
@@ -5453,7 +5453,7 @@ The result? Less time managing. More time growing.
     tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
     primaryTag: tags['workflow-automation'],
     featuredImage: {
-      url: 'https://trueflow.ai/blog-thumbs/every-quote-opened-two-deals.jpg',
+      url: '/blog-thumbs/every-quote-opened-two-deals.jpg',
       alt: "Every Quote Opened Two Deals. Both Workflows Were Doing Exactly What They Were Told.",
       width: 1200,
       height: 630
