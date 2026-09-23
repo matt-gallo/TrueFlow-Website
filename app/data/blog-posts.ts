@@ -5464,31 +5464,6 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
-  },
-  {
-    id: '146',
-    slug: 'rulebook-lives-on-one-computer',
-    title: "The Rulebook This Blog Obeys Lives on One Computer. This Morning It Read One File and Stopped.",
-    excerpt: "This post is most of a working day late. The generator ran on time, then spent fifty-five minutes unable to read the documents that tell it what it is allowed to write. Every tool in the stack was fine. The instructions were unreachable, and almost nobody knows where theirs live.",
-    content: ``,
-    author: authors['matt-gallo'],
-    date: '2026-09-23',
-    readTime: 4,
-    category: categories.automation,
-    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
-    primaryTag: tags['workflow-automation'],
-    featuredImage: {
-      url: '/blog-thumbs/rulebook-lives-on-one-computer.jpg',
-      alt: "The Rulebook This Blog Obeys Lives on One Computer. This Morning It Read One File and Stopped.",
-      width: 1200,
-      height: 630
-    },
-    seo: {
-      metaTitle: "The Rulebook This Blog Obeys Lives on One Computer. This Morning It Read One File and Stopped.",
-      metaDescription: "This post is most of a working day late. The generator ran on time, then spent fifty-five minutes unable to read the documents that tell it what it is allowed to write. Every tool in the stack was fine. The instructions were unreachable, and almost nobody knows where theirs live.",
-      keywords: ['automation', 'small business', 'AI tools']
-    },
-    published: true
   }
 ]
 
