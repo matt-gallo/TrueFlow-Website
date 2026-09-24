@@ -5464,6 +5464,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '146',
+    slug: 'four-fields-customers-to-do-list',
+    title: "Four Fields Sat on the Customer's To-Do List. We Moved Them to Ours.",
+    excerpt: "A form on a client's pipeline had a completion problem and a data-quality problem, and both of them looked like form problems. Nothing on it was unnecessary. It was pointed at the wrong person, at the wrong hour of their week.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-24',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/four-fields-customers-to-do-list.jpg',
+      alt: "Four Fields Sat on the Customer's To-Do List. We Moved Them to Ours.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Four Fields Sat on the Customer's To-Do List. We Moved Them to Ours.",
+      metaDescription: "A form on a client's pipeline had a completion problem and a data-quality problem, and both of them looked like form problems. Nothing on it was unnecessary. It was pointed at the wrong person, at the wrong hour of their week.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
