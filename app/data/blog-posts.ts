@@ -5489,6 +5489,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '147',
+    slug: 'fixed-the-bug-conversation-happened-without-it',
+    title: "We Fixed the Recording Bug. The Conversation Worth Keeping Still Happened Without It.",
+    excerpt: "A bug in our app was stopping a client's recordings, and we fixed it. The most valuable hour his business produced last month happened anyway with nothing running — and so did a set of his scheduled tasks that were enabled, correct, and waiting on a person nobody had asked to be there.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-26',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/fixed-the-bug-conversation-happened-without-it.jpg',
+      alt: "We Fixed the Recording Bug. The Conversation Worth Keeping Still Happened Without It.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "We Fixed the Recording Bug. The Conversation Worth Keeping Still Happened Without It.",
+      metaDescription: "A bug in our app was stopping a client's recordings, and we fixed it. The most valuable hour his business produced last month happened anyway with nothing running — and so did a set of his scheduled tasks that were enabled, correct, and waiting on a person nobody had asked to be there.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
