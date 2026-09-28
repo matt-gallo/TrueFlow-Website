@@ -5514,6 +5514,31 @@ The result? Less time managing. More time growing.
       keywords: ['automation', 'small business', 'AI tools']
     },
     published: true
+  },
+  {
+    id: '148',
+    slug: 'workspace-was-ready-no-account-created',
+    title: "Our App Said Your Workspace Was Ready. No Account Had Been Created.",
+    excerpt: "On September 23 we signed up for our own beta the way a stranger would. Google authorization failed, the screen said the workspace was ready, and the signup looped back to the start. The authorization bug was the louder problem. The screen was the more expensive one.",
+    content: ``,
+    author: authors['matt-gallo'],
+    date: '2026-09-28',
+    readTime: 4,
+    category: categories.automation,
+    tags: [tags['workflow-automation'], tags['small-business'], tags['ai-tools']],
+    primaryTag: tags['workflow-automation'],
+    featuredImage: {
+      url: 'https://trueflow.ai/blog-thumbs/workspace-was-ready-no-account-created.jpg',
+      alt: "Our App Said Your Workspace Was Ready. No Account Had Been Created.",
+      width: 1200,
+      height: 630
+    },
+    seo: {
+      metaTitle: "Our App Said Your Workspace Was Ready. No Account Had Been Created.",
+      metaDescription: "On September 23 we signed up for our own beta the way a stranger would. Google authorization failed, the screen said the workspace was ready, and the signup looped back to the start. The authorization bug was the louder problem. The screen was the more expensive one.",
+      keywords: ['automation', 'small business', 'AI tools']
+    },
+    published: true
   }
 ]
 
